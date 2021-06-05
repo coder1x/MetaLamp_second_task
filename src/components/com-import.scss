@@ -1,0 +1,11 @@
+/* --------- Подключаем компоненты страниц --------- */
+@import "base/base.scss";
+@import "header/header.scss";
+@import "footer/footer.scss";
+@import "sidebar/sidebar.scss";
+
+/* --------- Медиа запросы компонентов --------- */
+@import "base/media_base.scss";
+@import "footer/media_footer.scss";
+@import "header/media_header.scss";
+@import "sidebar/media_sidebar.scss";

@@ -1,0 +1,120 @@
+$min-wrapeer: 319px;
+$max-wrapeer: 1270px;
+
+$color-hover: #000;
+$color-hover-button: #7c8d33;
+$color-section: #2b2b2b;
+$color-background: #7e8d57;
+$color-text: #fff;
+$color-fon: #fff;
+
+$font-size: 16;
+
+@mixin font-rem($size) {
+	font-size: #{$size / $font-size}rem;
+}
+//  @include font-rem(32);
+
+@mixin absolute-center {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+}
+
+@mixin flex-wsc {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@mixin flex-ccc {
+	// строки по центру
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-rcc {
+	// столбцы по центру
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-cfc {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+@mixin flex-cf {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+@mixin flex-wfc {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+@mixin link-text {
+	a {
+		text-decoration: none;
+		color: $color-text;
+	}
+
+	a:hover {
+		color: $color-hover;
+		transition: 0.3s ease-out;
+	}
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+	position: absolute;
+
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.modButton {
+	// повторяющиеся стили кнопок
+
+	text-decoration: none;
+	border-radius: 6px;
+	color: #fff;
+	font-size: 14px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	white-space: nowrap;
+	background-color: #7e8d57 !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.modButton:hover,
+.modButton:focus {
+	background-color: #7c8d33 !important;
+	transition: 0.3s ease-out;
+}

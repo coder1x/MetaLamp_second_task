@@ -1,0 +1,147 @@
+html {
+	height: 100%; /* растягиваем страницу на весь экран */
+	width: 100%; /* растягиваем страницу на весь экран */
+	font-size: #{$font-size}px;
+	@include helvetica("OpenSans");
+	min-width: $min-wrapeer;
+}
+
+::placeholder {
+	color: gray;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	min-height: 100%; /* растягиваем тело сайта на весь экран */
+	width: 100%; /* растягиваем тело сайта на весь экран */
+	background: rgb(255, 255, 255);
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100px;
+	width: 100%;
+	flex: 1 0 auto;
+
+	&__content {
+		width: 100%;
+		position: relative;
+		word-wrap: break-word; // параметр специально тут что бы текст или слова не выходили за пределы контейнеров
+		flex: 1 0 auto;
+		//background-image: url("../../img/decor/fon.jpg");
+		//background-size: 100%;
+		//background-repeat: no-repeat;
+		//background-position: left top;
+	}
+}
+
+//---------------------------------- Главные блоки контентной части
+
+main {
+	width: 100%;
+	max-width: $max-wrapeer;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+section {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	min-height: 300px;
+	background-color: #687a7c;
+	@include font-rem(32);
+}
+
+aside {
+	width: 100%;
+	max-width: 200px;
+	background-color: #53383b;
+}
+
+img {
+	height: auto;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+//-----------------------------------
+
+//------------ стиль скроулинга браузера
+
+::-webkit-scrollbar-button {
+	background-repeat: no-repeat;
+	width: 5px;
+	height: 0;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #000;
+}
+
+::-webkit-scrollbar-thumb {
+	// цвет полосы
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	background-color: #a6a8b6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(166, 168, 182, 0.26);
+}
+
+::-webkit-resizer {
+	background-repeat: no-repeat;
+	width: 4px;
+	height: 0;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+//--------------------------------
+
+//------------ кнопка на вверх
+#go-top {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+	cursor: pointer;
+	display: none;
+	border: 0;
+	transition: 0.2s ease-in-out;
+}
+
+.shadowSVG {
+	opacity: 0.6;
+	filter: drop-shadow(2px 2px 1px rgba(87, 87, 87, 0.55));
+	fill: #2c2c2c;
+}
+
+#go-top:hover {
+	transition: 0.2s ease-in-out;
+	filter: drop-shadow(3px 3px 2px rgba(162, 162, 162, 0.7));
+}
+
+//--------------------------------

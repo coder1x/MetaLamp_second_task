@@ -1,0 +1,24 @@
+/* --------- Библиотеки, миксины, нормолайзы, глобальные переменные --------- */
+@import "glob.scss";
+@import "fonts.scss";
+@import "~normalize.css";
+
+
+
+
+/* --------- Подключаем страницы --------- */
+
+
+@import "../../pages/index/index.scss";
+@import "../../pages/index/media_index.scss";
+
+
+
+/* --------- Подключаем компоненты --------- */
+@import "../../components/com-import.scss";
+
+
+
+
+
+

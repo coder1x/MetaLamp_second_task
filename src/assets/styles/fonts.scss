@@ -1,0 +1,23 @@
+$font-adres: "../fonts/";
+
+$font-name: ("OpenSans");
+
+@each $current-font in $font-name {
+	@font-face {
+		font-family: $current-font; /* Имя шрифта */
+		src: url("#{$font-adres}#{$current-font}.woff2");
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+}
+
+@mixin helvetica($style: map-get($font-name, 0)) {
+	@each $current-font in $font-name {
+		@if $style == $current-font {
+			font-family: $current-font;
+		}
+	}
+}
+
+//  @include helvetica('OpenSans');
