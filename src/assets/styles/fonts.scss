@@ -1,11 +1,13 @@
 $font-adres: "../fonts/";
 
-$font-name: ("OpenSans");
+$font-name: ("Montserrat-Regular", "Montserrat-Bold");
 
 @each $current-font in $font-name {
 	@font-face {
 		font-family: $current-font; /* Имя шрифта */
-		src: url("#{$font-adres}#{$current-font}.woff2");
+		src: url("#{$font-adres}#{$current-font}.woff2") format("woff2"),
+			url("#{$font-adres}#{$current-font}.woff") format("woff"),
+			url("#{$font-adres}#{$current-font}.ttf") format("truetype");
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
@@ -20,4 +22,4 @@ $font-name: ("OpenSans");
 	}
 }
 
-//  @include helvetica('OpenSans');
+//  @include helvetica('Montserrat-Regular');
