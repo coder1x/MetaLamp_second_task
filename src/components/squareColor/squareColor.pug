@@ -1,0 +1,7 @@
+mixin squareColor(cl_name,color,textTop,textBot)
+	- let class_name = 'squareColor '+cl_name+'__squareColor'
+	div(class=class_name)
+		div(class="squareColor__square" style="background:"+color)
+		div.squareColor__text
+			p(class="squareColor__color")= textTop
+			p(class="squareColor__hexColor")= textBot

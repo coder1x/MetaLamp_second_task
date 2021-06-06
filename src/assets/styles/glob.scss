@@ -1,13 +1,21 @@
 $min-wrapeer: 319px;
 $max-wrapeer: 1920px;
 
-$color-hover: #000;
-$color-hover-button: #7c8d33;
-$color-section: #2b2b2b;
-$color-background: #7e8d57;
-$color-text: #fff;
-$color-fon: #fff;
+//-------------------------------
+$Dark-Shade-100: #1f2041;
+$Dark-Shade-75: rgba(31, 32, 65, 0.75);
+$Dark-Shade-50: rgba(31, 32, 65, 0.5);
+$Dark-Shade-25: rgba(31, 32, 65, 0.25);
+$Dark-Shade-5: rgba(31, 32, 65, 0.05);
+$Purple: #bc9cff;
+$Green: #6fcf97;
 
+//-------------------------------
+$color-h: $Dark-Shade-100;
+$color-body: $Dark-Shade-75;
+$color-square-text: $Dark-Shade-100;
+
+//-------------------------------
 $font-size: 16;
 
 @mixin font-rem($size) {
@@ -15,6 +23,7 @@ $font-size: 16;
 }
 //  @include font-rem(32);
 
+//-------------------------------
 @mixin absolute-center {
 	top: 0;
 	left: 0;
@@ -23,7 +32,7 @@ $font-size: 16;
 	margin: auto;
 	position: absolute;
 }
-
+//-------------------------------
 @mixin flex-wsc {
 	display: flex;
 	flex-wrap: wrap;
@@ -67,6 +76,8 @@ $font-size: 16;
 	align-items: center;
 }
 
+//-------------------------------
+
 @mixin link-text {
 	a {
 		text-decoration: none;
@@ -79,6 +90,7 @@ $font-size: 16;
 	}
 }
 
+//-------------------------------
 .visually-hidden:not(:focus):not(:active),
 input[type="checkbox"].visually-hidden,
 input[type="radio"].visually-hidden {
@@ -96,6 +108,7 @@ input[type="radio"].visually-hidden {
 	overflow: hidden;
 }
 
+//-------------------------------
 .modButton {
 	// повторяющиеся стили кнопок
 

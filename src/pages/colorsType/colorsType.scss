@@ -1,0 +1,12 @@
+.map-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	padding-top: 67px;
+	padding-bottom: 145px;
+
+	&__squareColor {
+		margin-bottom: 20px;
+	}
+}
