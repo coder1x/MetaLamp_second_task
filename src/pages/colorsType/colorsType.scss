@@ -1,12 +1,16 @@
 .map-info {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	padding-top: 67px;
+	padding-left: 150px;
+	padding-top: 59px;
 	padding-bottom: 145px;
+	box-sizing: border-box;
 
 	&__squareColor {
 		margin-bottom: 20px;
+	}
+
+	&__styleText {
+		margin-left: 415px;
 	}
 }

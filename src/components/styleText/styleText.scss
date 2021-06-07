@@ -1,0 +1,23 @@
+.styleText {
+	width: 100%;
+	width: 426px;
+	display: grid;
+	grid-template-columns: 37px 100%;
+
+	&__teg {
+		text-transform: uppercase;
+		@include helvetica("Montserrat-Regular");
+		color: $style-text;
+		text-align: end;
+	}
+
+	&__text {
+		margin-left: 30px;
+		margin-bottom: 51px;
+	}
+
+	span {
+		text-transform: none;
+		color: $style-text;
+	}
+}
