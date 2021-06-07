@@ -31,7 +31,7 @@ module.exports = merge(devServ, {
 
 
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js', '.scss'],  // когда мы прописываем тут расширения то при импуте в index.js их можно не прописывать 
+		extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],  // когда мы прописываем тут расширения то при импуте в index.js их можно не прописывать 
 		alias: {
 			'@plugins': `${PATHS.src}\\plugins`,
 			'@styles': `${PATHS.src}${PATHS.assets}styles`,
