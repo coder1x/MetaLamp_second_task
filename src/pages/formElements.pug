@@ -7,3 +7,24 @@ html(lang="ru")
 			+logoGroup("ui-wrapper")
 			main
 				section.map-elements 
+					.colomn-left 
+						include ../components/textField/textField.pug
+						+textField("colomn-left",
+						"text field",
+						"Email",
+						"email",
+						"email","generalForm")
+						+textField("colomn-left",
+						"text field",
+						"",
+						"text",
+						"Name","generalForm")
+						include ../components/dropDownGuest/dropDownGuest.pug
+						+dropDownGuest("colomn-left",
+						"dropdown",
+						"Сколько гостей",
+						"text",
+						"Guest",
+						"generalForm")
+					.colomn-center 
+					.colomn-right
