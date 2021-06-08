@@ -1,5 +1,4 @@
-mixin dropDownGuest(cl_name,label,value,typeD,nameD,modif='')
-	- let classComp = 'dropDownGuest'
+mixin dropDownGuest(cl_name,classComp,label,value,typeD,nameD,modif='')
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		label(class=classComp+"__label" for="form-"+nameD)= label
@@ -9,7 +8,7 @@ mixin dropDownGuest(cl_name,label,value,typeD,nameD,modif='')
 		ul(class=classComp+"__select")
 			- let masElem = [['взрослые', 'дети', 'младенцы'], ['adults', 'children', 'babies'] ]
 			- for(let i=0; i<masElem[0].length; i++)	{
-				li(class=classComp+"__select-item" id= masElem[1][i])
+				li(class=classComp+"__select-item" data-type= masElem[1][i])
 					p(class=classComp+"__text")= masElem[0][i] 
 					img(class=classComp+"__minus" src="assets/img/inetrface/minus.svg" alt="" style="width: 30px;")
 					span(class=classComp+"__value") 0
