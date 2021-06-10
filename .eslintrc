@@ -8,7 +8,7 @@
 		"sourceType": "module" // установите значение «script» (по умолчанию) или «module», если ваш код находится в модулях ECMAScript. 
 	},
 	"plugins": [
-		"@typescript-eslint",
+		"@typescript-eslint"
 	],
 	"rules": {
 		"no-unused-vars": "warn", // ругаться на неиспользуемые переменные.
