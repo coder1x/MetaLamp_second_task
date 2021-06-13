@@ -14,12 +14,6 @@ class maskedTextField {
 		this.setActions();
 	}
 
-
-	// inputByMask(){
-
-	// }
-
-
 	setActions() {
 
 		let _this = this;
@@ -113,7 +107,8 @@ class maskedTextField {
 
 new maskedTextField('#form-maskedDate');
 
-
+new maskedTextField('#form-dateDrop');
+new maskedTextField('#form-dateDrop2');
 
 
 
