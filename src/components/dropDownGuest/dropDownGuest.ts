@@ -185,10 +185,7 @@ class dropDownGuest {
 
 		});
 
-
 	}
-
-
 
 }
 
