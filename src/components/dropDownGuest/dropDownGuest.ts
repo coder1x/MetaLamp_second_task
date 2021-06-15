@@ -78,18 +78,18 @@ class dropDownGuest {
 
 
 	setDomElem() {
-		const dropClass = '.' + this.className;
-		const inputClass = dropClass + '__input';
-		const itemsClass = dropClass + "__select-item";
-		const selectClass = dropClass + '__select';
-		const valueClass = dropClass + '__value';
-		this.imgClass = dropClass + '__tip';
-		this.applyClass = dropClass + "__button-apply";
+
+		const inputClass = this.className + '__input';
+		const itemsClass = this.className + "__select-item";
+		const selectClass = this.className + '__select';
+		const valueClass = this.className + '__value';
+		this.imgClass = this.className + '__tip';
+		this.applyClass = this.className + "__button-apply";
 
 
-		this.$clearBut = $(dropClass + "__button-clear");
+		this.$clearBut = $(this.className + "__button-clear");
 
-		this.elem = document.querySelector(dropClass);
+		this.elem = document.querySelector(this.className);
 
 		const adults = this.elem.querySelector('[data-type="adults"]');
 		const children = this.elem.querySelector('[data-type="children"]');
@@ -146,10 +146,12 @@ class dropDownGuest {
 		if (!$(this.selectEl).is(':visible') && !flag) {
 			border = '0px';
 			color = '0.5)';
+			$(this.imgClass).css('transform', 'rotate(180deg)');
 		}
 		else {
 			border = '4px';
 			color = '0.25)';
+			$(this.imgClass).css('transform', 'rotate(0deg)');
 		}
 
 		$(this.inputEl).css({
@@ -170,7 +172,17 @@ class dropDownGuest {
 
 		$(this.inputEl).on("click", funAct);
 		$(this.imgClass).on("click", funAct);
-		$(this.applyClass).on("click", funAct);
+		$(this.applyClass).on("click", () => {
+
+			if (this.inputEl.value == this.defoultText) {
+				alert('Выберите количество гостей.');
+			}
+			else {
+				funAct();
+			}
+		});
+
+
 		this.$clearBut.on("click", () => this.resetValue());
 
 
@@ -191,5 +203,5 @@ class dropDownGuest {
 
 
 
-new dropDownGuest('dropDownGuest');
+new dropDownGuest('.dropDownGuest');
 

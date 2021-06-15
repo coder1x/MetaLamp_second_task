@@ -1,0 +1,176 @@
+#range-datepicker {
+	display: none;
+	margin-top: 5.56px;
+	position: absolute;
+	top: 68px;
+	z-index: 1;
+}
+
+.datepicker {
+	border: 1px solid rgba(31, 32, 65, 0.25) !important;
+	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05) !important;
+
+	width: calc(100% - 2px) !important;
+
+	&--nav {
+		border: 0px !important;
+		padding: 0 !important;
+		margin-top: 20px;
+		margin-bottom: 30px;
+		min-height: unset !important;
+	}
+
+	&--nav-title {
+		@include helvetica("Montserrat-Bold");
+		font-size: 19px;
+		line-height: 23px;
+		text-align: center;
+		color: #1f2041;
+	}
+
+	&--nav-action {
+		width: auto !important;
+	}
+
+	&--nav-action[data-action="prev"] {
+		margin-left: 20px;
+	}
+
+	&--nav-action[data-action="next"] {
+		margin-right: 20px;
+	}
+
+	&--nav-action:hover,
+	&--nav-title:hover {
+		background-color: #fff !important;
+	}
+
+	&--day-name {
+		@include helvetica("Montserrat-Bold");
+		font-size: 12px !important;
+		text-transform: inherit !important;
+		line-height: 15px;
+		color: $color-days-names !important;
+	}
+
+	&--cells,
+	&--days-names {
+		justify-content: center;
+	}
+
+	&--days-names {
+		margin: 0px !important;
+	}
+
+	&--cell,
+	&--day-name {
+		width: 39.88px !important;
+		height: 40px !important;
+		flex: none !important;
+	}
+
+	&--cell-day {
+		@include helvetica("Montserrat-Regular");
+		font-size: 12px;
+		line-height: 15px;
+		color: rgba(31, 32, 65, 0.5) !important;
+	}
+
+	&--cell-day:hover {
+		border-radius: 50% !important;
+		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
+		color: #fff !important;
+		@include helvetica("Montserrat-Bold");
+	}
+}
+
+.datepicker--cell-day.-current- {
+	border-radius: 50% !important;
+	background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+	color: #fff !important;
+	@include helvetica("Montserrat-Bold");
+}
+
+.-range-from-::after {
+	content: "";
+	position: absolute;
+	width: 39.88px;
+	height: 40px;
+	right: 0px;
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+	background: linear-gradient(180deg, rgba(189, 158, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%) !important;
+}
+
+.-range-to-::before {
+	content: "";
+	position: absolute;
+	width: 39.88px;
+	height: 40px;
+	left: 0px;
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;
+	background: linear-gradient(180deg, rgba(189, 158, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%) !important;
+}
+
+.-range-to-,
+.-range-from- {
+	border: 0px solid #000 !important;
+	background-color: unset !important;
+	border-radius: 0px !important;
+}
+
+.-selected- {
+	position: relative !important;
+	border-radius: 50% !important;
+	background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
+	color: #ffffff !important;
+	@include helvetica("Montserrat-Bold");
+}
+
+.datepicker--cell-day.-in-range- {
+	background: linear-gradient(180deg, rgba(189, 158, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%) !important;
+	border-radius: 0px !important;
+	color: rgba(31, 32, 65, 0.5) !important;
+}
+
+.datepicker--cell-day.-in-range-:hover::before {
+	content: "";
+	position: absolute;
+	width: 39.88px;
+	height: 40px;
+	background: linear-gradient(180deg, rgba(189, 158, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%);
+	border-radius: 50%;
+	color: rgba(31, 32, 65, 0.5);
+}
+
+.-other-month- {
+	color: rgba(31, 32, 65, 0.25) !important;
+}
+
+.-in-range-.-current- {
+	color: #000 !important;
+	border-radius: 0px;
+}
+
+.datepicker-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin: 20px;
+
+	&__apply,
+	&__clear {
+		@include helvetica("Montserrat-Bold");
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-button;
+		cursor: pointer;
+	}
+
+	&__clear {
+		visibility: hidden;
+	}
+}

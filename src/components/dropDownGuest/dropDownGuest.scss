@@ -16,6 +16,8 @@
 		right: 14px;
 		bottom: 17px;
 		cursor: pointer;
+		transform: rotate(0deg);
+		transition: transform 0.5s;
 	}
 
 	&__minus,
