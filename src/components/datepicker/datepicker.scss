@@ -1,16 +1,6 @@
-#range-datepicker {
-	display: none;
-	margin-top: 5.56px;
-	position: absolute;
-	top: 68px;
-	z-index: 1;
-}
-
 .datepicker {
 	border: 1px solid rgba(31, 32, 65, 0.25) !important;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05) !important;
-
-	width: calc(100% - 2px) !important;
 
 	&--nav {
 		border: 0px !important;
@@ -62,12 +52,11 @@
 		margin: 0px !important;
 	}
 
-	&--cell,
-	&--day-name {
-		width: 39.88px !important;
-		height: 40px !important;
-		flex: none !important;
-	}
+	// &--cell,
+	// &--day-name {
+	// 	width: 39.88px !important;
+	// 	height: 40px !important;
+	// }
 
 	&--cell-day {
 		@include helvetica("Montserrat-Regular");
@@ -94,8 +83,6 @@
 .-range-from-::after {
 	content: "";
 	position: absolute;
-	width: 39.88px;
-	height: 40px;
 	right: 0px;
 	border-top-left-radius: 50%;
 	border-bottom-left-radius: 50%;
@@ -105,8 +92,6 @@
 .-range-to-::before {
 	content: "";
 	position: absolute;
-	width: 39.88px;
-	height: 40px;
 	left: 0px;
 	border-top-right-radius: 50%;
 	border-bottom-right-radius: 50%;
@@ -137,8 +122,6 @@
 .datepicker--cell-day.-in-range-:hover::before {
 	content: "";
 	position: absolute;
-	width: 39.88px;
-	height: 40px;
 	background: linear-gradient(180deg, rgba(189, 158, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%);
 	border-radius: 50%;
 	color: rgba(31, 32, 65, 0.5);

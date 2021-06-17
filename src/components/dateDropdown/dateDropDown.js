@@ -2,37 +2,65 @@
 
 class dateDropDown {
 
-	constructor(dateDrop, dateDrop2, datepicker) {
+	constructor(datepicker, dateDrop, dateDrop2 = '') {
 
 		this.flag = false;
 		this.flTog = false;
+		this.flInFilter = false;
+		this.masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
+			'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+
+		this.flRange = dateDrop2 != '';
 
 		this.input1 = document.querySelector(dateDrop);
-		this.input2 = document.querySelector(dateDrop2);
-		this.calendar = document.querySelector(datepicker);
-
 		this.imgLeft = this.input1.nextSibling;
-		this.imgRight = this.input2.nextSibling;
+
+		if (this.flRange) {
+			this.input2 = document.querySelector(dateDrop2);
+			this.imgRight = this.input2.nextSibling;
+		}
+
+
+		this.calendar = document.querySelector(datepicker);
 
 		this.createCalendar();
 		this.addButtons();
 		this.setActions();
+
+		if (!this.flRange)
+			this.setRange();
 	}
 
 
 	inputDate(date) {
 		if (this.flag) return;
 
-		this.input1.value = '';
-		this.input2.value = '';
+		if (!date) {
+			this.input1.value = '';
+			if (this.flRange)
+				this.input2.value = '';
+			return;
+		}
+
+		let getDateFilter = (date) => {
+			if (!date) return '';
+			let mas = date.split(".");
+			return mas[0] + ' ' + this.masMonth[mas[1] - 1];
+		};
 
 		let masDate = date.split(",");
 
+		this.input1.value = this.flRange ? masDate[0] :
+			getDateFilter(masDate[0]);
+
 		if (masDate.length == 2) {
-			this.input2.value = masDate[1];
+			if (this.flRange) {
+				this.input2.value = masDate[1];
+			} else {
+				this.input1.value += ' - ' + getDateFilter(masDate[1]);
+			}
 		}
 
-		this.input1.value = masDate[0];
 	}
 
 	addButtons() {
@@ -76,7 +104,8 @@ class dateDropDown {
 			},
 			onSelect: (formattedDate) => {
 				this.inputDate(formattedDate);
-				this.flag = false;
+				if (!this.flInFilter)
+					this.flag = false;
 				this.clearButton.style.visibility = 'unset';
 			}
 		}).data('datepicker');
@@ -87,26 +116,65 @@ class dateDropDown {
 	setRange() {
 		this.flag = true;
 
-		let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
-		let date1 = this.input1.value;
-		let date2 = this.input2.value;
-
-		if (!regexp.test(date1)) return;
-
 		function getDate(date) {
 			let mas = date.split(".");
-			return mas[1] + '.' + mas[0] + '.' + mas[2];
+			return new Date(mas[1] + '.' + mas[0] + '.' + mas[2]);
 		}
 
-		this.$calendarObj.clear();
+		let dateConversion = (dateText) => {
+			let date = dateText.trim().split(" ");
+			let index = this.masMonth.indexOf(date[1], 0);
+			let month = 0;
+			if (index != -1) {
+				month = ++index;
+			}
+			let currentDate = new Date();
+			return month + '.' + date[0] + '.' + currentDate.getFullYear();
+		};
 
-		if (date2 == '') {
-			this.$calendarObj.selectDate(
-				new Date(getDate(date1)));
+
+		let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+		let regexp2 =
+			`(0[1-9]|[12][0-9]|3[01])\\s\\p{sc=Cyrillic}{3}`;
+		let date1 = this.input1.value;
+
+
+		let oneMeaning = new RegExp('^' + regexp2 + '\\s-\\s' +
+			regexp2 + '$', 'ui').test(date1);
+
+		if (!regexp.test(date1))
+			if (!oneMeaning) return;
+
+
+		if (this.flRange) {
+			let date2 = this.input2.value;
+			this.$calendarObj.clear();
+			if (date2 == '') {
+				this.$calendarObj.selectDate(getDate(date1));
+			} else {
+				this.$calendarObj.selectDate([getDate(date1), getDate(date2)]);
+			}
 		} else {
-			this.$calendarObj.selectDate(
-				[new Date(getDate(date1)),
-				new Date(getDate(date2))]);
+
+			this.$calendarObj.clear();
+
+			let mas = date1.split("-");
+			let dateOne = dateConversion(mas[0]);
+			let dateTwo = dateConversion(mas[1]);
+
+			let minOne = Date.parse(dateOne) / 1000 / 60;
+			let minTwo = Date.parse(dateTwo) / 1000 / 60;
+
+			if (minOne > minTwo) {
+				let mas = dateTwo.split('.');
+				let num = Number(mas[2]) + 1;
+				dateTwo = mas[0] + '.' + mas[1] + '.' + num;
+			}
+
+			this.flInFilter = true;
+			this.$calendarObj.selectDate([new Date(dateOne),
+			new Date(dateTwo)]);
+			this.flInFilter = false;
 		}
 	}
 
@@ -116,7 +184,8 @@ class dateDropDown {
 		let setStyle = (display, rotate) => {
 			this.calendar.style.display = display;
 			this.imgLeft.style.transform = rotate;
-			this.imgRight.style.transform = rotate;
+			if (this.flRange)
+				this.imgRight.style.transform = rotate;
 		};
 
 		if (this.flTog == fl && this.calendar.style.display == 'flex') {
@@ -129,70 +198,108 @@ class dateDropDown {
 		this.flTog = fl;
 	}
 
+	validationRange() {
+		let twoMeanings = false, oneMeaning = false;
+
+		if (this.flRange) {
+			twoMeanings = Boolean(this.input1.value &&
+				this.input2.value);
+		}
+		else {
+			let regexp =
+				`(0[1-9]|[12][0-9]|3[01])\\s\\p{sc=Cyrillic}{3}`;
+
+			oneMeaning = new RegExp('^' + regexp + '\\s-\\s' +
+				regexp + '$', 'ui').test(this.input1.value);
+		}
+
+
+		if (twoMeanings || oneMeaning) {
+			this.calendar.style.display = 'none';
+		}
+		else {
+			alert('Выберите диапазон');
+		}
+	}
+
+	elementIsClicked(e) {
+		let elemFlag = false;
+
+		for (let item of e.path) {
+			if (this.calendar == item) {
+				elemFlag = true;
+				break;
+			}
+		}
+
+		let inStock = Boolean(
+			[this.input1,
+			this.imgLeft,
+			this.imgRight,
+			this.input2].find(item => item == e.target) || elemFlag);
+
+
+		if (!inStock && this.calendar.style.display == 'flex') {
+			this.toggleCal(this.flTog);
+		}
+	}
+
 
 	setActions() {
 		let actionClick = (elem, fl) => {
 			elem.addEventListener('click', () => this.toggleCal(fl));
 		};
 
-		this.input1.addEventListener('change', () => this.setRange());
-		this.input2.addEventListener('change', () => this.setRange());
-
 		actionClick(this.input1, true);
-		actionClick(this.input2, false);
 
 		if (this.imgLeft)
 			actionClick(this.imgLeft, true);
 
-		if (this.imgRight)
-			actionClick(this.imgRight, false);
+		this.input1.addEventListener('input', () => {
+			if (this.flRange) {
+				if (this.input1.value.length == 10)
+					this.setRange();
+			}
+			else {
+				if (this.input1.value.length == 15)
+					this.setRange();
+			}
+		}
+		);
+
+
+		if (this.flRange) {
+			this.input2.addEventListener('input', () => {
+				if (this.input2.value.length == 10)
+					this.setRange();
+			});
+			actionClick(this.input2, false);
+			if (this.imgRight)
+				actionClick(this.imgRight, false);
+		}
+
 
 		this.clearButton.addEventListener('click',
 			() => {
 				this.$calendarObj.clear();
+				if (!this.imgRight)
+					this.input1.value = '';
 				this.clearButton.style.visibility = 'hidden';
 			});
 
 
-		document.addEventListener("mouseup", (e) => {
+		document.addEventListener("mouseup", (e) => this.elementIsClicked(e));
 
-			let elemFlag = false;
-
-			for (let item of e.path) {
-				if (this.calendar == item) {
-					elemFlag = true;
-					break;
-				}
-			}
-
-			let inStock = Boolean(
-				[this.input1,
-				this.imgLeft,
-				this.imgRight,
-				this.input2].find(item => item == e.target) || elemFlag);
-
-
-			if (!inStock && this.calendar.style.display == 'flex') {
-				this.toggleCal(this.flTog);
-			}
-
-		});
 
 		this.acceptButton.addEventListener('click',
-			() => {
-				if (this.input1.value && this.input2.value) {
-					this.calendar.style.display = 'none';
-				}
-				else {
-					alert('Выберите диапазон');
-				}
-			});
+			() => this.validationRange());
 	}
 }
 
 
 
 
-new dateDropDown('#form-dateDrop', '#form-dateDrop2', '#range-datepicker');
+new dateDropDown('#range-datepicker', '#form-dateDrop', '#form-dateDrop2');
 
 
+new dateDropDown('#filter-datepicker', '#form-filterDate');

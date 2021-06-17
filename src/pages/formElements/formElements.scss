@@ -1,6 +1,7 @@
 .map-elements {
 	display: flex;
 	flex-direction: row;
+	height: 1500px;
 }
 
 .colomn-left {
@@ -23,6 +24,12 @@
 	}
 
 	&__dateDropdown {
+		margin-top: 31px;
+		max-width: 320px;
+	}
+
+	&__filterDateDropdown {
+		margin-top: 60px;
 		max-width: 320px;
 	}
 }

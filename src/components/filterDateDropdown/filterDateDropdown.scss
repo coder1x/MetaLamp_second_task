@@ -1,4 +1,4 @@
-.dateDropdown {
+.filterDateDropdown {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -18,7 +18,11 @@
 	&__wrap {
 		position: relative;
 		width: 100%;
-		max-width: 150px;
+	}
+
+	&__date-range {
+		width: 100%;
+		max-width: 266px;
 	}
 
 	&__tip {
@@ -58,7 +62,7 @@
 		cursor: pointer;
 	}
 
-	#range-datepicker {
+	#filter-datepicker {
 		display: none;
 		margin-top: 5.56px;
 		position: absolute;
@@ -67,12 +71,12 @@
 	}
 
 	.datepicker {
-		width: calc(100% - 2px) !important;
+		width: 266px !important;
 
 		&--cell,
 		&--day-name {
-			max-width: 39.88px !important;
-			height: 40px !important;
+			//max-width: 29.88px !important;
+			height: 35px !important;
 		}
 
 		&--cell-month,
@@ -82,17 +86,17 @@
 	}
 
 	.-range-from-::after {
-		width: 39.88px;
-		height: 40px;
+		width: 29.88px;
+		height: 35px;
 	}
 
 	.-range-to-::before {
-		width: 39.88px;
-		height: 40px;
+		width: 29.88px;
+		height: 35px;
 	}
 
 	.datepicker--cell-day.-in-range-:hover::before {
-		width: 39.88px;
-		height: 40px;
+		width: 36.85px;
+		height: 35px;
 	}
 }
