@@ -1,17 +1,16 @@
+/*
+Компонент dateDropDown использует плагин jQuery air-datepicker
+который позволяет осуществлять ввод Даты через календарь, а так же
+указывать диапазон Даты.
+*/
 
 
 class dateDropDown {
 
 	constructor(datepicker, dateDrop, dateDrop2 = '') {
 
-		this.flag = false;
-		this.flTog = false;
-		this.flInFilter = false;
-		this.masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
-			'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
 		this.flRange = dateDrop2 != '';
-
 		this.input1 = document.querySelector(dateDrop);
 		this.imgLeft = this.input1.nextSibling;
 
@@ -20,20 +19,26 @@ class dateDropDown {
 			this.imgRight = this.input2.nextSibling;
 		}
 
-
 		this.calendar = document.querySelector(datepicker);
 
-		this.createCalendar();
-		this.addButtons();
-		this.setActions();
+		this.#createCalendar();
+		this.#addButtons();
+		this.#setActions();
 
 		if (!this.flRange)
 			this.setRange();
 	}
 
 
-	inputDate(date) {
-		if (this.flag) return;
+	#flag = false;
+	#flTog = false;
+	#flInFilter = false;
+	#masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
+		'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+
+
+	#inputDate(date) {
+		if (this.#flag) return;
 
 		if (!date) {
 			this.input1.value = '';
@@ -45,7 +50,7 @@ class dateDropDown {
 		let getDateFilter = (date) => {
 			if (!date) return '';
 			let mas = date.split(".");
-			return mas[0] + ' ' + this.masMonth[mas[1] - 1];
+			return mas[0] + ' ' + this.#masMonth[mas[1] - 1];
 		};
 
 		let masDate = date.split(",");
@@ -63,8 +68,8 @@ class dateDropDown {
 
 	}
 
-	addButtons() {
 
+	#addButtons() {
 		let elem = this.$calendarObj.$el[0];
 		let datepicker = elem.querySelector('.datepicker');
 
@@ -93,7 +98,7 @@ class dateDropDown {
 	}
 
 
-	createCalendar() {
+	#createCalendar() {
 
 		this.$calendarObj = $(this.calendar).datepicker({
 			range: true,
@@ -103,9 +108,9 @@ class dateDropDown {
 				days: 'MM yyyy'
 			},
 			onSelect: (formattedDate) => {
-				this.inputDate(formattedDate);
-				if (!this.flInFilter)
-					this.flag = false;
+				this.#inputDate(formattedDate);
+				if (!this.#flInFilter)
+					this.#flag = false;
 				this.clearButton.style.visibility = 'unset';
 			}
 		}).data('datepicker');
@@ -114,7 +119,7 @@ class dateDropDown {
 
 
 	setRange() {
-		this.flag = true;
+		this.#flag = true;
 
 		function getDate(date) {
 			let mas = date.split(".");
@@ -123,7 +128,7 @@ class dateDropDown {
 
 		let dateConversion = (dateText) => {
 			let date = dateText.trim().split(" ");
-			let index = this.masMonth.indexOf(date[1], 0);
+			let index = this.#masMonth.indexOf(date[1], 0);
 			let month = 0;
 			if (index != -1) {
 				month = ++index;
@@ -171,16 +176,15 @@ class dateDropDown {
 				dateTwo = mas[0] + '.' + mas[1] + '.' + num;
 			}
 
-			this.flInFilter = true;
+			this.#flInFilter = true;
 			this.$calendarObj.selectDate([new Date(dateOne),
 			new Date(dateTwo)]);
-			this.flInFilter = false;
+			this.#flInFilter = false;
 		}
 	}
 
 
 	toggleCal(fl = false) {
-
 		let setStyle = (display, rotate) => {
 			this.calendar.style.display = display;
 			this.imgLeft.style.transform = rotate;
@@ -188,17 +192,16 @@ class dateDropDown {
 				this.imgRight.style.transform = rotate;
 		};
 
-		if (this.flTog == fl && this.calendar.style.display == 'flex') {
+		if (this.#flTog == fl && this.calendar.style.display == 'flex') {
 			setStyle('none', 'rotate(0deg)');
 		}
 		else {
 			setStyle('flex', 'rotate(180deg)');
 		}
-
-		this.flTog = fl;
+		this.#flTog = fl;
 	}
 
-	validationRange() {
+	#validationRange() {
 		let twoMeanings = false, oneMeaning = false;
 
 		if (this.flRange) {
@@ -222,7 +225,7 @@ class dateDropDown {
 		}
 	}
 
-	elementIsClicked(e) {
+	#elementIsClicked(e) {
 		let elemFlag = false;
 
 		for (let item of e.path) {
@@ -240,12 +243,12 @@ class dateDropDown {
 
 
 		if (!inStock && this.calendar.style.display == 'flex') {
-			this.toggleCal(this.flTog);
+			this.toggleCal(this.#flTog);
 		}
 	}
 
 
-	setActions() {
+	#setActions() {
 		let actionClick = (elem, fl) => {
 			elem.addEventListener('click', () => this.toggleCal(fl));
 		};
@@ -256,16 +259,10 @@ class dateDropDown {
 			actionClick(this.imgLeft, true);
 
 		this.input1.addEventListener('input', () => {
-			if (this.flRange) {
-				if (this.input1.value.length == 10)
-					this.setRange();
-			}
-			else {
-				if (this.input1.value.length == 15)
-					this.setRange();
-			}
-		}
-		);
+			let len = this.flRange ? 10 : 15;
+			if (this.input1.value.length == len)
+				this.setRange();
+		});
 
 
 		if (this.flRange) {
@@ -288,11 +285,11 @@ class dateDropDown {
 			});
 
 
-		document.addEventListener("mouseup", (e) => this.elementIsClicked(e));
+		document.addEventListener("mouseup", (e) => this.#elementIsClicked(e));
 
 
 		this.acceptButton.addEventListener('click',
-			() => this.validationRange());
+			() => this.#validationRange());
 	}
 }
 
