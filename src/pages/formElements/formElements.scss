@@ -9,7 +9,6 @@
 	flex-direction: column;
 	margin-left: 141px;
 	margin-top: 62px;
-
 	width: 100%;
 	max-width: 400px;
 
@@ -31,5 +30,10 @@
 	&__filterDateDropdown {
 		margin-top: 60px;
 		max-width: 320px;
+	}
+
+	&__subscriptionTextField {
+		margin-top: 40px;
+		max-width: 267px;
 	}
 }
