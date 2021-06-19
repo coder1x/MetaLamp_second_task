@@ -1,4 +1,5 @@
-.dropDownGuest {
+.dropDown,
+.dropDownRooms {
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -101,5 +102,10 @@
 		padding-right: 44px;
 		outline: 0;
 		cursor: pointer;
+		text-overflow: ellipsis;
+
+		&::placeholder {
+			color: $color-input !important;
+		}
 	}
 }

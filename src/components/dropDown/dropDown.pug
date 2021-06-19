@@ -1,12 +1,11 @@
-mixin dropDownGuest(cl_name,classComp,label,value,typeD,nameD,modif='')
+mixin dropDown(cl_name,classComp,label,value,typeD,nameD,masElem,modif='',button=false)
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		label(class=classComp+"__label" for="form-"+nameD)= label
 		p(class=classComp+"__wrap")
-			input(class=classComp+"__input" type=typeD  value=value name=nameD id="form-"+nameD)
+			input(class=classComp+"__input" type=typeD placeholder=value value='' name=nameD id="form-"+nameD)
 			img(class=classComp+"__tip" src="assets/img/inetrface/tip.svg" alt="" style="width: 13px;")
 		ul(class=classComp+"__select")
-			- let masElem = [['взрослые', 'дети', 'младенцы'], ['adults', 'children', 'babies'] ]
 			- for(let i=0; i<masElem[0].length; i++)	{
 				li(class=classComp+"__select-item" data-type= masElem[1][i])
 					p(class=classComp+"__text")= masElem[0][i] 
@@ -14,7 +13,9 @@ mixin dropDownGuest(cl_name,classComp,label,value,typeD,nameD,modif='')
 					span(class=classComp+"__value") 0
 					img(class=classComp+"__plus" src="assets/img/inetrface/plus.svg" alt="" style="width: 30px;")
 			-}
+			-if(button){
 			li(class=classComp+"__buttons")
 				span(class=classComp+"__button-clear") очистить
 				span(class=classComp+"__button-apply") применить
+			-}
 				

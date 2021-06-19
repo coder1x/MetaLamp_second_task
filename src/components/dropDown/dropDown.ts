@@ -1,8 +1,15 @@
 
+interface opt {
+	className: string,
+	selectMas: string[],
+	declensions: string[][],
+	componentType: string,
+	defoultText: string
+}
 
-class dropDownGuest {
+class dropDown {
 
-	inputEl: any;
+	inputEl: HTMLInputElement;
 	imgClass: string;
 	selectEl: Element;
 	$clearBut: any;
@@ -10,18 +17,24 @@ class dropDownGuest {
 	elem: Element;
 	items: any;
 	defoultText: string;
-	adultsEl: any;
-	childrenEl: any;
-	babiesEl: any;
-
+	valMas: HTMLElement[];
+	className: string;
+	selectMas: string[];
+	declensions: string[][];
+	componentType: string;
 
 	// eslint-disable-next-line no-unused-vars
-	constructor(public className: string) {
+	constructor(options: opt) {
+
+		this.className = options.className;
+		this.selectMas = options.selectMas;
+		this.declensions = options.declensions;
+		this.componentType = options.componentType;
+		this.defoultText = options.defoultText;
+
 		this.setDomElem();
 		this.setAction();
 		this.setActionSelect();
-
-		this.defoultText = 'Сколько гостей';
 	}
 
 
@@ -32,71 +45,95 @@ class dropDownGuest {
 				number % 10 : 5]];
 	}
 
+
 	setInput() {
-
-		let masGuest: string[] = ['гость', 'гостя', 'гостей'];
-		let masBabies: string[] = ['младенец', 'младенца', 'младенцев'];
-
-		let numGuest = Number(this.adultsEl.innerText) +
-			Number(this.childrenEl.innerText);
-		let numBabies = Number(this.babiesEl.innerText);
-
 		let text = '';
 
-		if (numGuest) {
-			text += numGuest + ' ' + this.declOfNum(numGuest, masGuest);
+		let mergeText = (num: string | number,
+			strMas: string[], fl = false) => {
+			num = Number(num);
+			if (!num) return;
+
+			if (!fl) {
+				text += num + ' ' +
+					this.declOfNum(num, strMas);
+			}
+			else {
+				let comma = text ? ', ' : '';
+				text += comma + num + ' ' +
+					this.declOfNum(num, strMas);
+			}
+		};
+
+		let val1: string | number = '';
+		let val2 = '';
+		let kl = 0;
+
+		switch (this.componentType) {
+			case 'Guests':
+				val1 = Number(this.valMas[0].innerText) +
+					Number(this.valMas[1].innerText);
+				val2 = this.valMas[2].innerText;
+				mergeText(val1, this.declensions[0]);
+				mergeText(val2, this.declensions[2], true);
+
+				break;
+			case 'Rooms':
+				for (let item of this.valMas) {
+					mergeText(item.innerText,
+						this.declensions[kl], Boolean(kl));
+					++kl;
+				}
+				break;
+			default:
+				break;
 		}
 
-		if (numBabies) {
-			let comma = text ? ', ' : '';
-			text += comma + numBabies + ' ' +
-				this.declOfNum(numBabies, masBabies);
-		}
 
 		if (text) {
 			this.$clearBut.css('visibility', 'unset');
 			this.inputEl.value = text;
+			this.inputEl.placeholder = text;
 		} else {
 			this.$clearBut.css('visibility', 'hidden');
-			this.inputEl.value = this.defoultText;
+			this.inputEl.value = '';
+			this.inputEl.placeholder = this.defoultText;
 		}
 
 	}
 
 
 	resetValue() {
-
 		for (let item of this.items) {
 			let listEl = $(item)[0].children;
 			listEl[2].innerText = '0';
 		}
 
 		this.inputEl.value = this.defoultText;
-
 		this.$clearBut.css('visibility', 'hidden');
 	}
 
 
 	setDomElem() {
-
 		const inputClass = this.className + '__input';
 		const itemsClass = this.className + "__select-item";
 		const selectClass = this.className + '__select';
 		const valueClass = this.className + '__value';
+
 		this.imgClass = this.className + '__tip';
 		this.applyClass = this.className + "__button-apply";
-
 
 		this.$clearBut = $(this.className + "__button-clear");
 
 		this.elem = document.querySelector(this.className);
 
-		const adults = this.elem.querySelector('[data-type="adults"]');
-		const children = this.elem.querySelector('[data-type="children"]');
-		const babies = this.elem.querySelector('[data-type="babies"]');
-		this.adultsEl = adults.querySelector(valueClass);
-		this.childrenEl = children.querySelector(valueClass);
-		this.babiesEl = babies.querySelector(valueClass);
+		this.valMas = [];
+		for (let i = 0; i < this.selectMas.length; i++) {
+			let item = this.elem.querySelector('[data-type="' +
+				this.selectMas[i] + '"]');
+
+			this.valMas.push(item.querySelector(valueClass));
+		}
 
 		this.inputEl = this.elem.querySelector(inputClass);
 		this.selectEl = this.elem.querySelector(selectClass);
@@ -106,18 +143,13 @@ class dropDownGuest {
 
 
 	setActionSelect() {
-
 		const funAct = (e: any) => {
-
 			let listEl = $(e.currentTarget)[0].children;
-
 			let minusEl = listEl[1];
 			let valueEl = listEl[2];
 			let plusEl = listEl[3];
 
-
 			let num = Number(valueEl.innerText);
-
 			if (e.target == minusEl && num) {
 				--num;
 			}
@@ -126,20 +158,16 @@ class dropDownGuest {
 			}
 
 			valueEl.innerText = num;
-
 			this.setInput();
-
 		};
 
 		for (let item of this.items) {
 			$(item).on("click", funAct);
 		}
-
 	}
 
 
 	styleWidget(flag = false) {
-
 		let border = '';
 		let color = '';
 
@@ -162,9 +190,7 @@ class dropDownGuest {
 	}
 
 
-
 	setAction() {
-
 		let funAct = () => {
 			this.styleWidget();
 			$(this.selectEl).toggle();
@@ -172,6 +198,7 @@ class dropDownGuest {
 
 		$(this.inputEl).on("click", funAct);
 		$(this.imgClass).on("click", funAct);
+
 		$(this.applyClass).on("click", () => {
 
 			if (this.inputEl.value == this.defoultText) {
@@ -182,9 +209,7 @@ class dropDownGuest {
 			}
 		});
 
-
 		this.$clearBut.on("click", () => this.resetValue());
-
 
 		$(document).on("mouseup", (e: any) => {
 
@@ -197,11 +222,35 @@ class dropDownGuest {
 		});
 
 	}
-
 }
 
 
+//==========================================================================
+
+let masGuest: string[] = ['гость', 'гостя', 'гостей'];
+let masBabies: string[] = ['младенец', 'младенца', 'младенцев'];
 
 
-new dropDownGuest('.dropDownGuest');
+new dropDown({
+	className: '.dropDown',
+	selectMas: ['adults', 'children', 'babies'],
+	declensions: [masGuest, masGuest, masBabies],
+	componentType: 'Guests',
+	defoultText: 'Сколько гостей'
+});
+
+
+
+let masBedrooms: string[] = ['спальня', 'спальни', 'спальней'];
+let masBed: string[] = ['кровать', 'кровати', 'кроватей'];
+let masBathrooms: string[] =
+	['ванная комната', 'ванной комнаты', 'ванных комнат'];
+
+new dropDown({
+	className: '.dropDownRooms',
+	selectMas: ['bedrooms', 'bed', 'bathrooms'],
+	declensions: [masBedrooms, masBed, masBathrooms],
+	componentType: 'Rooms',
+	defoultText: 'Сколько спален'
+});
 
