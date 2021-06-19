@@ -1,6 +1,5 @@
 
 
-
 class maskedTextField {
 
 	maskedDate: Element;

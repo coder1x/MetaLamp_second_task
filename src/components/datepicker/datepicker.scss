@@ -80,7 +80,7 @@
 	@include helvetica("Montserrat-Bold");
 }
 
-.-range-from-::after {
+.datepicker--cell-day.-range-from-::after {
 	content: "";
 	position: absolute;
 	right: 0px;
@@ -89,7 +89,7 @@
 	background: linear-gradient(180deg, rgba(189, 158, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%) !important;
 }
 
-.-range-to-::before {
+.datepicker--cell-day.-range-to-::before {
 	content: "";
 	position: absolute;
 	left: 0px;
@@ -105,7 +105,12 @@
 	border-radius: 0px !important;
 }
 
-.-selected- {
+.datepicker--cell-month.-selected-,
+.datepicker--cell-year.-selected- {
+	color: #bc9cff !important;
+}
+
+.datepicker--cell-day.-selected- {
 	position: relative !important;
 	border-radius: 50% !important;
 	background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
