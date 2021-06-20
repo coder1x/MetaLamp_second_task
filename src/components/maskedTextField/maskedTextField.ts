@@ -104,7 +104,7 @@ class maskedTextField {
 
 }
 
-new maskedTextField('#form-maskedDate');
+new maskedTextField('#maskedDate');
 
 new maskedTextField('#form-dateDrop');
 new maskedTextField('#form-dateDrop2');

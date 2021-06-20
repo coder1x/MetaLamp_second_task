@@ -241,10 +241,10 @@ new dropDown({
 
 
 
-let masBedrooms: string[] = ['спальня', 'спальни', 'спальней'];
+let masBedrooms: string[] = ['спальня', 'спальни', 'спален'];
 let masBed: string[] = ['кровать', 'кровати', 'кроватей'];
 let masBathrooms: string[] =
-	['ванная комната', 'ванной комнаты', 'ванных комнат'];
+	['ванная комната', 'ванных комнаты', 'ванных комнат'];
 
 new dropDown({
 	className: '.dropDownRooms',

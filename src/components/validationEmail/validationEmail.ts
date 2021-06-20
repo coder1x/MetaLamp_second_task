@@ -28,6 +28,6 @@ export class validationEmail {
 }
 
 
-new validationEmail('#form-email', 'change');
+new validationEmail('#email', 'change');
 
 

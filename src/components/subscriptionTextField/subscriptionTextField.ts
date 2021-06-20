@@ -8,7 +8,7 @@ class subscriptionTextField {
 		this.wraper = document.querySelector(className);
 		this.input = this.wraper.querySelector('input');
 		this.img = this.wraper.querySelector('img');
-		this.valid = new validationEmail('#form-subscription');
+		this.valid = new validationEmail('.' + this.input.className);
 
 		this.setActions();
 	}

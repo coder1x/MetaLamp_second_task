@@ -75,8 +75,22 @@ html(lang="ru")
 						masElem,
 						'expandable checkbox list',
 						'expCheckbox'
-
 						)
+						include ../components/feature/feature.pug
+						+feature("colomn-left",
+						"feature",
+						"assets/img/icon/insert_emoticon.svg",
+						"Комфорт",
+						"Шумопоглощающие стены"
+						)
+						+feature("colomn-left",
+						"feature",
+						"assets/img/icon/location_city.svg",
+						"Удобство",
+						"Окно в каждой из спален"
+						)
+
 
 					.colomn-center 
 					.colomn-right
+					.comment-wrap

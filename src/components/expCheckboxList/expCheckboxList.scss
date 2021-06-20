@@ -20,7 +20,7 @@
 	&__items {
 		height: auto;
 		overflow: hidden;
-		transition: height 500ms ease;
+		transition: height 200ms ease;
 	}
 
 	&__input + label {
@@ -32,7 +32,7 @@
 		color: $color-checkbox;
 		cursor: pointer;
 		padding-left: 26px;
-		margin-bottom: 11px;
+		margin-bottom: 9px;
 	}
 
 	&__input {

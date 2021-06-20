@@ -2,4 +2,4 @@ mixin textField(cl_name,label,placeholder,typeD,nameD,modif='')
 	- let class_name = 'textField '+cl_name+'__textField '+modif
 	p(class=class_name)
 		label(class="textField__label" for=nameD)= label
-		input(class="textField__input" type=typeD placeholder=placeholder value="" name=nameD id="form-"+nameD)
+		input(class="textField__input" type=typeD placeholder=placeholder value="" name=nameD id=nameD)
