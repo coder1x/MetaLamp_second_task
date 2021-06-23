@@ -1,9 +1,11 @@
-mixin expCheckboxList(cl_name,classComp,masElem,label,nameD,modif='')
+mixin expCheckboxList(cl_name,classComp,masElem,label,nameD,click=false,modif='')
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		div(class=classComp+"__wrap")
 			span(class=classComp+"__header")= label
+			- if(!click){
 			img(class=classComp+"__tip" src="assets/img/inetrface/tip.svg" alt="" style="width: 13px;")
+			-}
 		ul(class=classComp+"__items") 
 			- for(let i=0; i<masElem.length; i++)	{
 				li(class=classComp+"__item")

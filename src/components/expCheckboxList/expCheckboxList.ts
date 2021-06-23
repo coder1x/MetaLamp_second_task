@@ -13,7 +13,8 @@ class expCheckboxList {
 		this.headerEl = document.querySelector(this.className + '__header');
 		this.imgEl = document.querySelector(this.className + '__tip');
 
-		this.setActions();
+		if (this.imgEl)
+			this.setActions();
 	}
 
 	private setActions() {

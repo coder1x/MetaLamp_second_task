@@ -74,7 +74,8 @@ html(lang="ru")
 						"expCheckboxList",
 						masElem,
 						'expandable checkbox list',
-						'expCheckbox'
+						'expCheckbox',
+						false
 						)
 						include ../components/feature/feature.pug
 						+feature("colomn-left",
@@ -92,5 +93,21 @@ html(lang="ru")
 
 
 					.colomn-center 
+						- masElem = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей (до 10 человек)']
+						+expCheckboxList("colomn-center",
+						"expCheckboxList",
+						masElem,
+						'Checkbox Buttons',
+						'checkbox',
+						true
+						)
+						include ../components/radioButtons/radioButtons.pug
+						+radioButtons("colomn-center",
+						"radioButtons",
+						"Radio Buttons",
+						"genderSelection",
+						false
+						)
+						
 					.colomn-right
 					.comment-wrap

@@ -1,10 +1,24 @@
 .map-elements {
-	display: flex;
-	flex-direction: row;
-	height: 1500px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr 133px;
+}
+
+// .colomn-center {
+// 	//	background-color: teal;
+// }
+
+// .colomn-right {
+// 	//	background-color: tomato;
+// }
+
+.comment-wrap {
+	grid-column: 2 / 4;
+	//	background-color: violet;
 }
 
 .colomn-left {
+	grid-row: 1 / 3;
 	display: flex;
 	flex-direction: column;
 	margin-left: 141px;
@@ -46,5 +60,17 @@
 		margin-top: 40px;
 		max-width: 266px;
 		margin-bottom: 33px;
+	}
+}
+
+.colomn-center {
+	margin-left: 126px;
+	margin-top: 62px;
+	width: 100%;
+	max-width: 260px;
+
+	&__expCheckboxList {
+		max-width: 222px;
+		margin-bottom: 40px;
 	}
 }

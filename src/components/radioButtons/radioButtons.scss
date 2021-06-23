@@ -1,0 +1,64 @@
+.radioButtons {
+	&__header {
+		font-family: "Montserrat-Bold";
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-label;
+		cursor: pointer;
+		margin-bottom: 14px;
+	}
+
+	&__label {
+		font-family: "Montserrat-Regular";
+		font-size: 14px;
+		line-height: 24px;
+		color: $color-radio-label;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__input[type="radio"] {
+		display: none;
+	}
+	&__label {
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+		padding-left: 29px;
+		margin-right: 23px;
+		line-height: 18px;
+		user-select: none;
+	}
+	&__label:before {
+		content: "";
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		left: 0;
+		bottom: -1px;
+		border: 1px solid $color-radio;
+		border-radius: 50%;
+		box-sizing: border-box;
+		background-position: center center !important;
+	}
+
+	/* Checked */
+	&__input[type="radio"]:checked + label:before {
+		background: url("/assets/img/inetrface/Rectangle.svg") no-repeat;
+		border: 1px solid $color-radio-border;
+	}
+
+	&__input[type="radio"]:checked + label {
+		color: $color-radio-select;
+	}
+
+	/* Hover */
+	&__label:hover:before {
+		border: 1px solid $color-radio-border;
+	}
+}
