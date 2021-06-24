@@ -1,13 +1,17 @@
-mixin dateDropdown(cl_name,classComp,label,value,typeD,nameD,modif='')
+mixin dateDropdown(cl_name,classComp,label,value,typeD,nameD,modif='',flLabel=false)
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		div(class=classComp+"__date-left")
+			- if(!flLabel){
 			label(class=classComp+"__label" for="form-"+nameD)= label
+			-}
 			p(class=classComp+"__wrap")
 				input(class=classComp+"__input" type=typeD placeholder=value value="" name=nameD id="form-"+nameD)
 				img(class=classComp+"__tip" src="assets/img/inetrface/tip.svg" alt="" style="width: 13px;")
 		div(class=classComp+"__date-right")
+			- if(!flLabel){
 			label(class=classComp+"__label" for="form-"+nameD+"2")= label
+			-}
 			p(class=classComp+"__wrap")
 				input(class=classComp+"__input" type=typeD placeholder=value value="" name=nameD id="form-"+nameD+"2")
 				img(class=classComp+"__tip" src="assets/img/inetrface/tip.svg" alt="" style="width: 13px;")

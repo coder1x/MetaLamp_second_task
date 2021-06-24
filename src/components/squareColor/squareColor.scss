@@ -23,10 +23,10 @@
 	}
 
 	&__color {
-		@include helvetica("Montserrat-Bold");
+		font-family: "Montserrat-Bold";
 	}
 
 	&__hexColor {
-		@include helvetica("Montserrat-Regular");
+		font-family: "Montserrat-Regular";
 	}
 }

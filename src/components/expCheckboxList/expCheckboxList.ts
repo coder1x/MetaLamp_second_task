@@ -5,48 +5,68 @@ class expCheckboxList {
 	elem: HTMLElement;
 	headerEl: HTMLElement;
 	imgEl: HTMLElement;
+	baseEl: HTMLElement;
+	before: any;
+	input: any;
 
-	// eslint-disable-next-line no-unused-vars
+
 	constructor(public className: string) {
+		this.baseEl = document.querySelector(className);
 		this.elem =
-			document.querySelector(this.className + '__items');
-		this.headerEl = document.querySelector(this.className + '__header');
-		this.imgEl = document.querySelector(this.className + '__tip');
+			this.baseEl.querySelector(className + '__items');
+		this.headerEl = this.baseEl.querySelector(className + '__header');
+		this.imgEl = this.baseEl.querySelector(className + '__tip');
+		this.before = this.baseEl.querySelectorAll(className + '__bef');
+		this.input = this.baseEl.querySelectorAll(className + '__input');
 
-		if (this.imgEl)
-			this.setActions();
+
+		this.setActions();
 	}
+
+
+
+	toggleEl() {
+		let height = window.getComputedStyle(this.elem, null)
+			.getPropertyValue("height");
+
+		if (height === "0px") {
+			this.elem.style.height = `${this.elem.scrollHeight}px`;
+			this.imgEl.style.transform = 'rotate(180deg)';
+		} else {
+			this.elem.style.height = `${this.elem.scrollHeight}px`;
+			this.imgEl.style.transform = 'rotate(0deg)';
+			this.elem.style.height = "0";
+		}
+	}
+
+
+	toggleBef(elem: HTMLInputElement) {
+		elem.checked = elem.checked ? false : true;
+	}
+
 
 	private setActions() {
 
-		let toggleEl = () => {
-			if (this.elem.style.height === "0px") {
-				this.elem.style.height = `${this.elem.scrollHeight}px`;
-			} else {
-				this.elem.style.height = `${this.elem.scrollHeight}px`;
-				window.getComputedStyle(this.elem, null)
-					.getPropertyValue("height");
-				this.elem.style.height = "0";
-			}
-		};
+		if (this.imgEl) {
+			this.headerEl.addEventListener('click', () => { this.toggleEl(); });
+			this.imgEl.addEventListener('click', () => { this.toggleEl(); });
+			this.elem.addEventListener("transitionend", () => {
+				if (this.elem.style.height !== "0px") {
+					this.elem.style.height = "auto";
+				}
+			});
+		}
 
 
-		this.headerEl.addEventListener('click', toggleEl);
-
-
-		this.elem.addEventListener("transitionend", () => {
-			if (this.elem.style.height !== "0px") {
-				this.elem.style.height = "auto";
-			}
-		});
-
-		this.imgEl.addEventListener('click', toggleEl);
+		for (let i = 0; i < this.before.length; i++) {
+			this.before[i].addEventListener('click', (e: any) => {
+				e.preventDefault();
+				this.toggleBef(this.input[i]);
+			});
+		}
 	}
-
 }
 
 
-
 new expCheckboxList('.expCheckboxList');
-
-
+new expCheckboxList('.checkboxButtons');

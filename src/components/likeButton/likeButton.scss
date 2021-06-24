@@ -1,0 +1,50 @@
+$color-like: $Dark-Shade-25;
+$color-like-voted: $Purple;
+
+.likeButton {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	&__header {
+		font-family: "Montserrat-Bold";
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-label;
+		cursor: pointer;
+		margin-bottom: 14px;
+	}
+
+	&__like {
+		padding-left: 4px;
+		padding-right: 4px;
+		min-width: 40px;
+		height: 20px;
+		border: 1px solid $color-like;
+		box-sizing: border-box;
+		border-radius: 10px;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&__voted {
+		a {
+			border-color: $color-like-voted;
+		}
+
+		span {
+			color: $color-like-voted;
+		}
+	}
+
+	&__value {
+		font-family: "Montserrat-Regular";
+		margin-left: 5px;
+		font-size: 10px;
+		line-height: 12px;
+		color: $color-like;
+	}
+}

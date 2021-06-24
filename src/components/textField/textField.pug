@@ -1,5 +1,7 @@
-mixin textField(cl_name,label,placeholder,typeD,nameD,modif='')
+mixin textField(cl_name,label,placeholder,typeD,nameD,modif='',flLabel=false)
 	- let class_name = 'textField '+cl_name+'__textField '+modif
 	p(class=class_name)
+		- if(!flLabel){
 		label(class="textField__label" for=nameD)= label
+		-}
 		input(class="textField__input" type=typeD placeholder=placeholder value="" name=nameD id=nameD)

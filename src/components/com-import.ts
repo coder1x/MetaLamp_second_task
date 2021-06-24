@@ -4,5 +4,6 @@ import './maskedTextField/maskedTextField.ts';
 import './dateDropDown/dateDropDown.js';
 import './subscriptionTextField/subscriptionTextField.ts';
 import './expCheckboxList/expCheckboxList.ts';
-
-
+import './likeButton/likeButton.ts';
+import './radioButtons/radioButtons.ts';
+import './toggleButtons/toggleButtons.ts';

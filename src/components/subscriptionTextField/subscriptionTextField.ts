@@ -7,7 +7,7 @@ class subscriptionTextField {
 
 		this.wraper = document.querySelector(className);
 		this.input = this.wraper.querySelector('input');
-		this.img = this.wraper.querySelector('img');
+		this.link = this.wraper.querySelector(className + '__link');
 		this.valid = new validationEmail('.' + this.input.className);
 
 		this.setActions();
@@ -15,7 +15,7 @@ class subscriptionTextField {
 
 	wraper: Element;
 	input: Element;
-	img: Element;
+	link: Element;
 	valid: validationEmail;
 
 	validEmail() {
@@ -34,7 +34,8 @@ class subscriptionTextField {
 		});
 
 
-		this.img.addEventListener('click', () => {
+		this.link.addEventListener('click', (e) => {
+			e.preventDefault();
 			this.validEmail();
 		});
 	}

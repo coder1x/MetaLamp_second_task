@@ -1,3 +1,8 @@
+$color-radio-label: $Dark-Shade-50;
+$color-radio: $Dark-Shade-25;
+$color-radio-select: $Dark-Shade-75;
+$color-radio-border: $Purple;
+
 .radioButtons {
 	&__header {
 		font-family: "Montserrat-Bold";
@@ -24,32 +29,52 @@
 	&__input[type="radio"] {
 		display: none;
 	}
+
+	&__item {
+		position: relative;
+	}
+
 	&__label {
 		display: inline-block;
 		cursor: pointer;
-		position: relative;
+
 		padding-left: 29px;
 		margin-right: 23px;
 		line-height: 18px;
 		user-select: none;
 	}
-	&__label:before {
-		content: "";
+
+	&__bef {
 		display: inline-block;
 		width: 20px;
 		height: 20px;
 		position: absolute;
 		left: 0;
-		bottom: -1px;
+		bottom: 2px;
 		border: 1px solid $color-radio;
 		border-radius: 50%;
 		box-sizing: border-box;
 		background-position: center center !important;
+		outline: 0;
+	}
+
+	&__bef:after {
+		content: "";
+		position: absolute;
+		top: 2.5px;
+		left: 3px;
+		width: 12px;
+		height: 12px;
+		border-radius: 10px;
+		background: #fff;
 	}
 
 	/* Checked */
-	&__input[type="radio"]:checked + label:before {
-		background: url("/assets/img/inetrface/Rectangle.svg") no-repeat;
+	&__input[type="radio"]:checked + label + &__bef:after {
+		background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
+	}
+
+	&__input[type="radio"]:checked + label + &__bef {
 		border: 1px solid $color-radio-border;
 	}
 
@@ -57,8 +82,8 @@
 		color: $color-radio-select;
 	}
 
-	/* Hover */
-	&__label:hover:before {
+	&__bef:hover,
+	&__bef:focus-visible {
 		border: 1px solid $color-radio-border;
 	}
 }

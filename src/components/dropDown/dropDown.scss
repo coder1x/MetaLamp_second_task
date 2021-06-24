@@ -28,7 +28,7 @@
 
 	&__text,
 	&__value {
-		@include helvetica("Montserrat-Bold");
+		font-family: "Montserrat-Bold";
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -83,7 +83,7 @@
 
 	&__button-apply,
 	&__button-clear {
-		@include helvetica("Montserrat-Bold");
+		font-family: "Montserrat-Bold";
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;

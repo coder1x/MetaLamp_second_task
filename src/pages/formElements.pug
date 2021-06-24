@@ -95,11 +95,12 @@ html(lang="ru")
 					.colomn-center 
 						- masElem = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей (до 10 человек)']
 						+expCheckboxList("colomn-center",
-						"expCheckboxList",
+						"checkboxButtons",
 						masElem,
 						'Checkbox Buttons',
 						'checkbox',
-						true
+						true,
+						'checkboxButtons_visibal'
 						)
 						include ../components/radioButtons/radioButtons.pug
 						+radioButtons("colomn-center",
@@ -107,6 +108,22 @@ html(lang="ru")
 						"Radio Buttons",
 						"genderSelection",
 						false
+						)
+						include ../components/toggleButtons/toggleButtons.pug
+						+toggleButtons("colomn-center",
+						"toggleButtons",
+						"Получать спецпредложения",
+						"Toggle",
+						"toggleSub",
+						"subscription"
+
+						)
+
+						include ../components/likeButton/likeButton.pug
+						+likeButton("colomn-center",
+						"likeButton",
+						"like button"
+
 						)
 						
 					.colomn-right

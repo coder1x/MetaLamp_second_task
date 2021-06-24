@@ -1,8 +1,11 @@
-mixin subscriptionTextField(cl_name,classComp,label,value,typeD,nameD,modif='')
+mixin subscriptionTextField(cl_name,classComp,label,value,typeD,nameD,modif='',flLabel=false)
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		div(class=classComp+"__date-left")
+			- if(!flLabel){
 			label(class=classComp+"__label" for="form-"+nameD)= label
+			-}
 			p(class=classComp+"__wrap")
 				input(class=classComp+"__input" type=typeD placeholder=value value="" name=nameD id="form-"+nameD)
-				img(class=classComp+"__tip" src="assets/img/inetrface/arrow_forward.svg" alt="" style="width: 17px;")
+				a(class=classComp+"__link" href="#")
+					img(class=classComp+"__tip" src="assets/img/inetrface/arrow_forward.svg" alt="" style="width: 17px;")

@@ -7,6 +7,7 @@ $Dark-Shade-75: rgba(31, 32, 65, 0.75);
 $Dark-Shade-50: rgba(31, 32, 65, 0.5);
 $Dark-Shade-25: rgba(31, 32, 65, 0.25);
 $Dark-Shade-5: rgba(31, 32, 65, 0.05);
+$Dark-Shade-1: rgba(31, 32, 65, 0.1);
 $Purple: #bc9cff;
 $Green: #6fcf97;
 
@@ -17,16 +18,10 @@ $color-body: $Dark-Shade-75;
 $color-square-text: $Dark-Shade-100;
 $style-text: $Dark-Shade-25;
 $color-border: $Dark-Shade-25;
-$color-border-hover: rgba(31, 32, 65, 0.5);
+$color-border-hover: $Dark-Shade-50;
 $color-input: $Dark-Shade-75;
 $color-button: $Purple;
-$color-days-names: $Purple;
-$color-checkbox: $Dark-Shade-50;
 
-$color-radio-label: $Dark-Shade-50;
-$color-radio: $Dark-Shade-25;
-$color-radio-select: $Dark-Shade-75;
-$color-radio-border: $Purple;
 //-------------------------------
 $font-size: 16;
 
