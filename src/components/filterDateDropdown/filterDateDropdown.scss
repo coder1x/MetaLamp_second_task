@@ -49,7 +49,10 @@
 	}
 
 	&__value {
-		@include flex-ccc;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	&__input {

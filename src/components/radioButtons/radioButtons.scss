@@ -55,7 +55,7 @@ $color-radio-border: $Purple;
 		border-radius: 50%;
 		box-sizing: border-box;
 		background-position: center center !important;
-		outline: 0;
+		//outline: 0;
 	}
 
 	&__bef:after {
@@ -82,8 +82,12 @@ $color-radio-border: $Purple;
 		color: $color-radio-select;
 	}
 
-	&__bef:hover,
-	&__bef:focus-visible {
+	&__bef:hover {
 		border: 1px solid $color-radio-border;
+	}
+
+	&__bef:focus {
+		border: 1px solid $color-radio-border;
+		outline: 1px solid #8ba4f9;
 	}
 }

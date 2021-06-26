@@ -1,0 +1,11 @@
+mixin rateButton(cl_name,classComp,label,label2,nameID,nameIn,flLabel=false,modif='')
+	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
+	div(class=className)
+		- if(!flLabel){
+		p(class=classComp+"__header")= label2
+		-}
+		ul(class=classComp+"__items") 
+			li(class=classComp+"__item")
+				input(class=classComp+"__input" type='radio' name=nameD id="Man")
+				label(class=classComp+"__label" for="Man") Мужчина
+				a(class=classComp+"__bef" href="UrlNull")

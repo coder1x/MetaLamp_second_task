@@ -10,15 +10,17 @@ html(lang="ru")
 					.colomn-left 
 						include ../components/textField/textField.pug
 						+textField("colomn-left",
+						"textField",
 						"text field",
 						"Email",
 						"email",
-						"email","generalForm")
+						"email")
 						+textField("colomn-left",
+						"textField",
 						"text field",
 						"",
 						"text",
-						"Name","generalForm")
+						"Name")
 						include ../components/dropDown/dropDown.pug
 						- let masElem = [['взрослые', 'дети', 'младенцы'], ['adults', 'children', 'babies'] ]
 						+dropDown("colomn-left",
@@ -28,21 +30,21 @@ html(lang="ru")
 						"text",
 						"Guest",
 						masElem,
-						"generalForm",
+						"",
 						true)
 						+textField("colomn-left",
+						"textField",
 						"masked text field",
 						"ДД.ММ.ГГГГ",
 						"text",
-						"maskedDate","generalForm")
+						"maskedDate")
 						include ../components/dateDropdown/dateDropdown.pug
 						+dateDropdown("colomn-left",
 						"dateDropdown",
 						"date Drop down",
 						"ДД.ММ.ГГГГ",
 						"text",
-						"dateDrop",
-						"generalForm")
+						"dateDrop")
 						include ../components/filterDateDropdown/filterDateDropdown.pug
 						+filterDateDropdown("colomn-left",
 						"filterDateDropdown",
@@ -61,7 +63,7 @@ html(lang="ru")
 						"generalForm")
 						- masElem = [['спальни', 'кровати', 'ванные комнаты'], ['bedrooms', 'bed', 'bathrooms'] ]
 						+dropDown("colomn-left",
-						"dropDownRooms",
+						"dropDown",
 						"dropdown",
 						"Сколько спален",
 						"text",

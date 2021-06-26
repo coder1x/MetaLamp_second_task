@@ -2,8 +2,22 @@
 	display: flex;
 	flex-direction: column;
 
-	&__label {
+	&__label-text {
 		margin-bottom: 5px;
+		font-family: "Montserrat-Bold";
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-label;
+	}
+
+	input::placeholder {
+		color: $style-text;
+	}
+
+	input:hover,
+	input:focus {
+		border: 1px solid $color-border-hover;
 	}
 
 	&__input {
@@ -12,5 +26,13 @@
 		padding-left: 15px;
 		padding-right: 15px;
 		outline: 0;
+
+		border: 1px solid $color-border;
+		border-radius: 4px;
+		color: $color-input;
+		font-family: "Montserrat-Regular";
+		font-size: 14px;
+		line-height: 24px;
+		box-sizing: border-box;
 	}
 }

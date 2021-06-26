@@ -11,20 +11,23 @@
 		width: 100%;
 	}
 
-	&__label {
+	&__label-text {
 		margin-bottom: 5px;
+		font-family: "Montserrat-Bold";
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-label;
 	}
 
-	&__wrap {
+	&__label {
 		position: relative;
-		width: 100%;
-		max-width: 150px;
 	}
 
 	&__tip {
 		position: absolute;
 		right: 14px;
-		bottom: 17px;
+		bottom: 3px;
 		cursor: pointer;
 		transform: rotate(0deg);
 		transition: transform 0.5s;
@@ -45,20 +48,40 @@
 	}
 
 	&__value {
-		@include flex-ccc;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	&__input {
 		width: 100%;
-		//max-width: 150px;
+		max-width: 150px;
 		height: 44px;
 		padding-left: 15px;
 		padding-right: 44px;
 		outline: 0;
 		cursor: pointer;
+
+		border: 1px solid $color-border;
+		border-radius: 4px;
+		color: $color-input;
+		font-family: "Montserrat-Regular";
+		font-size: 14px;
+		line-height: 24px;
+		box-sizing: border-box;
 	}
 
-	#range-datepicker {
+	input::placeholder {
+		color: $style-text;
+	}
+
+	input:hover,
+	input:focus {
+		border: 1px solid $color-border-hover;
+	}
+
+	&__datepicker {
 		display: none;
 		margin-top: 5.56px;
 		position: absolute;

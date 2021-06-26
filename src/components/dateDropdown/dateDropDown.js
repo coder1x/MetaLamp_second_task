@@ -8,26 +8,10 @@
 
 class dateDropDown {
 
-	constructor(datepicker, dateDrop, dateDrop2 = '') {
+	constructor(datepicker) {
 
 
-		this.flRange = dateDrop2 != '';
-		this.input1 = document.querySelector(dateDrop);
-		this.imgLeft = this.input1.nextSibling;
-
-		if (this.flRange) {
-			this.input2 = document.querySelector(dateDrop2);
-			this.imgRight = this.input2.nextSibling;
-		}
-
-		this.calendar = document.querySelector(datepicker);
-
-		this.#createCalendar();
-		this.#addButtons();
-		this.#setActions();
-
-		if (!this.flRange)
-			this.setRange();
+		this.#initialization(datepicker);
 	}
 
 
@@ -36,6 +20,35 @@ class dateDropDown {
 	#flInFilter = false;
 	#masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
 		'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+
+	#initialization(datepicker) {
+		let сomponents = document.querySelectorAll(datepicker);
+
+		for (let item of сomponents) {
+			this.calendar = item.querySelector(datepicker + '__datepicker');
+
+			this.inputs = item.querySelectorAll('input');
+			this.flRange = this.inputs.length > 1 ? true : false;
+
+
+			this.input1 = this.inputs[0];
+			this.imgLeft = this.input1.nextSibling;
+
+			if (this.flRange) {
+				this.input2 = this.inputs[1];
+				this.imgRight = this.input2.nextSibling;
+			}
+
+
+			this.#createCalendar();
+			this.#addButtons();
+			this.#setActions();
+
+			if (!this.flRange)
+				this.setRange();
+		}
+
+	}
 
 
 	#inputDate(date) {
@@ -194,7 +207,9 @@ class dateDropDown {
 				this.imgRight.style.transform = rotate;
 		};
 
-		if (this.#flTog == fl && this.calendar.style.display == 'flex') {
+
+		const visible = this.calendar.style.display == 'flex';
+		if (this.#flTog == fl && visible) {
 			setStyle('none', 'rotate(0deg)');
 		}
 		else {
@@ -241,10 +256,12 @@ class dateDropDown {
 			[this.input1,
 			this.imgLeft,
 			this.imgRight,
-			this.input2].find(item => item == e.target) || elemFlag);
+			this.input2].find(item => item == e.target) ?? elemFlag);
 
 
-		if (!inStock && this.calendar.style.display == 'flex') {
+		const visible = this.calendar.style.display == 'flex';
+
+		if (!inStock && visible) {
 			this.toggleCal(this.#flTog);
 		}
 	}
@@ -257,8 +274,6 @@ class dateDropDown {
 
 		actionClick(this.input1, true);
 
-		if (this.imgLeft)
-			actionClick(this.imgLeft, true);
 
 		this.input1.addEventListener('input', () => {
 			let len = this.flRange ? 10 : 15;
@@ -273,8 +288,6 @@ class dateDropDown {
 					this.setRange();
 			});
 			actionClick(this.input2, false);
-			if (this.imgRight)
-				actionClick(this.imgRight, false);
 		}
 
 
@@ -297,8 +310,8 @@ class dateDropDown {
 
 
 
+new dateDropDown('.dateDropdown');
 
-new dateDropDown('#range-datepicker', '#form-dateDrop', '#form-dateDrop2');
 
 
-new dateDropDown('#filter-datepicker', '#form-filterDate');
+// new dateDropDown('#filter-datepicker', '#form-filterDate');

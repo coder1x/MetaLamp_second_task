@@ -1,14 +1,18 @@
-.dropDown,
-.dropDownRooms {
+.dropDown {
 	display: flex;
 	flex-direction: column;
 	position: relative;
 
-	&__label {
+	&__text-header {
 		margin-bottom: 5px;
+		font-family: "Montserrat-Bold";
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-label;
 	}
 
-	&__wrap {
+	&__label {
 		position: relative;
 	}
 
@@ -41,7 +45,10 @@
 	}
 
 	&__value {
-		@include flex-ccc;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	&__select {
@@ -104,8 +111,21 @@
 		cursor: pointer;
 		text-overflow: ellipsis;
 
+		border: 1px solid $color-border;
+		border-radius: 4px;
+		color: $color-input;
+		font-family: "Montserrat-Regular";
+		font-size: 14px;
+		line-height: 24px;
+		box-sizing: border-box;
+
 		&::placeholder {
-			color: $color-input !important;
+			color: $color-input;
 		}
+	}
+
+	&__input:hover,
+	&__input:focus {
+		border: 1px solid $color-border-hover;
 	}
 }

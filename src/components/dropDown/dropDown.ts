@@ -197,7 +197,6 @@ class dropDown {
 		};
 
 		$(this.inputEl).on("click", funAct);
-		$(this.imgClass).on("click", funAct);
 
 		$(this.applyClass).on("click", () => {
 
