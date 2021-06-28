@@ -7,5 +7,5 @@ mixin toggleButtons(cl_name,classComp,label,label2,nameID,nameIn,flLabel=false,m
 		p(class=classComp+"__tog")
 			input(class=classComp+"__input" type='checkbox' name=nameIn id=nameID)
 			label(class=classComp+"__label" for=nameID)= label
-			a(class=classComp+"__bef" href="UrlNull")
+			span(class=classComp+"__bef" tabindex="0")
 

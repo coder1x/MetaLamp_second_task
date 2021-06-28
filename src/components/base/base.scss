@@ -3,7 +3,7 @@ html {
 	width: 100%; /* растягиваем страницу на весь экран */
 	font-size: #{$font-size}px;
 	@include helvetica("OpenSans");
-	min-width: $min-wrapeer;
+	min-width: $min-wraper;
 }
 
 ::placeholder {
@@ -70,7 +70,7 @@ h3 {
 
 main {
 	width: 100%;
-	max-width: $max-wrapeer;
+	max-width: $max-wraper;
 	display: flex;
 	flex-direction: column;
 }

@@ -22,16 +22,17 @@ html(lang="ru")
 						"text",
 						"Name")
 						include ../components/dropDown/dropDown.pug
-						- let masElem = [['взрослые', 'дети', 'младенцы'], ['adults', 'children', 'babies'] ]
-						+dropDown("colomn-left",
-						"dropDown",
-						"dropdown",
-						"Сколько гостей",
-						"text",
-						"Guest",
-						masElem,
-						"",
-						true)
+						-
+							let masWord = [['взрослые', 'дети', 'младенцы'], 
+							['гость,гостя,гостей', 'гость,гостя,гостей', 'младенец,младенца,младенцев']]
+						+drop-down({
+							label:"dropdown",
+							value: "Сколько гостей",
+							name:"Guest",
+							masWord:masWord,
+							button:true
+						})
+					
 						+textField("colomn-left",
 						"textField",
 						"masked text field",
@@ -51,25 +52,22 @@ html(lang="ru")
 						"filter date dropdown",
 						"ДД month - ДД month",
 						"text",
-						"filterDate",
-						"generalForm")
+						"filterDate")
 						include ../components/subscriptionTextField/subscriptionTextField.pug
 						+subscriptionTextField("colomn-left",
 						"subscriptionTextField",
 						"subscription text field",
 						"Email",
 						"text",
-						"subscription",
-						"generalForm")
-						- masElem = [['спальни', 'кровати', 'ванные комнаты'], ['bedrooms', 'bed', 'bathrooms'] ]
-						+dropDown("colomn-left",
-						"dropDown",
-						"dropdown",
-						"Сколько спален",
-						"text",
-						"Rooms",
-						masElem,
-						"generalForm")
+						"subscription")
+						- masWord = [['спальни', 'кровати', 'ванные комнаты'], ['спальня,спальни,спален', 'кровать,кровати,кроватей', 'ванная комната,ванные комнаты,ванных комнат'] ]
+						+drop-down({
+							label:"dropdown",
+							value: "Сколько спален",
+							name:"Rooms",
+							masWord:masWord,
+							modif:'sharp'
+						})
 						include ../components/expCheckboxList/expCheckboxList.pug
 						- masElem = ['Завтрак', 'Письменный стол', 'Стул для кормления','Кроватка','Телевизор','Шампунь','Телевизор','Шампунь']
 						+expCheckboxList("colomn-left",

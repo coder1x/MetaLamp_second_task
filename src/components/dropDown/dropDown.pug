@@ -1,25 +1,35 @@
-mixin dropDown(cl_name,classComp,label,value,typeD,nameD,masElem,modif='',button=false,flLabel=false)
-	- let className = classComp+' '+cl_name+'__'+classComp
-	if modif
-		- className += ' '+classComp+'_'+modif
+mixin drop-down(options)
+	-
+		let label = options.label ?? ''
+		let value = options.value ?? ''
+		let name = options.name ?? ''
+		let masWord = options.masWord ?? []
+		let modif = options.modif ?? ''
+		let button = options.button ?? false
+		let flLabel = options.flLabel ?? false
+		let classComp = "drop-down"
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
 	div(class=className)
 		- if(!flLabel){
 		p(class=classComp+"__text-header")= label
 		-}
 		label(class=classComp+"__label")
-			input(class=classComp+"__input" type=typeD placeholder=value value='' name=nameD readonly)
+			input(class=classComp+"__input" type="text" placeholder=value value='' name=name readonly)
 			img(class=classComp+"__tip" src="assets/img/inetrface/tip.svg" alt="" style="width: 13px;")
 		ul(class=classComp+"__select")
-			- for(let i=0; i<masElem[0].length; i++)	{
-				li(class=classComp+"__select-item" data-type= masElem[1][i])
-					p(class=classComp+"__text")= masElem[0][i] 
-					img(class=classComp+"__minus" src="assets/img/inetrface/minus.svg" alt="" style="width: 30px;")
+			- for(let i=0; i<masWord[0].length; i++)	{
+				li(class=classComp+"__select-item" data-type= masWord[1][i])
+					p(class=classComp+"__text")= masWord[0][i] 
+					button(class=classComp+"__minus")
+						img(class=classComp+"__icon" src="assets/img/inetrface/minus.svg" alt="" style="width: 30px;")
 					span(class=classComp+"__value") 0
-					img(class=classComp+"__plus" src="assets/img/inetrface/plus.svg" alt="" style="width: 30px;")
+					button(class=classComp+"__plus")
+						img(class=classComp+"__icon" src="assets/img/inetrface/plus.svg" alt="" style="width: 30px;")
 			-}
 			-if(button){
 			li(class=classComp+"__buttons")
-				span(class=classComp+"__button-clear") очистить
-				span(class=classComp+"__button-apply") применить
+				button(class=classComp+"__button-clear") очистить
+				button(class=classComp+"__button-apply") применить
 			-}
-				

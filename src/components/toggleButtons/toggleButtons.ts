@@ -17,11 +17,12 @@ class toggleButtons {
 	setActions() {
 
 		for (let i = 0; i < this.buttons.length; i++) {
-			this.buttons[i].addEventListener('click', (e: any) => {
-				e.preventDefault();
-
+			this.buttons[i].addEventListener('click', () => {
 				this.input.checked = this.input.checked ? false : true;
-
+			});
+			this.buttons[i].addEventListener('keydown', (e: any) => {
+				if (e.key == 'Enter')
+					this.input.checked = this.input.checked ? false : true;
 			});
 		}
 

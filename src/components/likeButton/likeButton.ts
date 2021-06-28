@@ -32,7 +32,7 @@ class likeButton {
 
 	toggleStyle() {
 		// меняем стили в зависимости от события
-		const name = this.nameClass.replace(/^\./, '') + '__voted';
+		const name = this.nameClass.replace(/^\./, '') + '_voted';
 		if (this.flag) { // ставили лайк
 			this.iconEl.src = 'assets/img/inetrface/favorite.svg';
 			this.likeEl.classList.add(name);
@@ -59,9 +59,13 @@ class likeButton {
 	}
 
 	setAction() {
-		this.linkEl.addEventListener('click', (e) => {
-			e.preventDefault();
+		this.linkEl.addEventListener('click', () => {
 			this.toggleLike();
+		});
+
+		this.linkEl.addEventListener('keydown', (e: any) => {
+			if (e.key == 'Enter')
+				this.toggleLike();
 		});
 	}
 

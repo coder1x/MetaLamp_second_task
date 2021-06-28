@@ -1,5 +1,5 @@
-$min-wrapeer: 319px;
-$max-wrapeer: 1920px;
+$min-wraper: 319px;
+$max-wraper: 1920px;
 
 //-------------------------------
 $Dark-Shade-100: #1f2041;
@@ -64,56 +64,3 @@ input[type="radio"].visually-hidden {
 }
 
 //-------------------------------
-
-// .generalForm {
-// 	input {
-// 		border: 1px solid $color-border;
-// 		border-radius: 4px;
-// 		color: $color-input;
-// 		font-family: "Montserrat-Regular";
-// 		font-size: 14px;
-// 		line-height: 24px;
-// 		box-sizing: border-box;
-// 	}
-
-// 	input::placeholder {
-// 		color: $style-text;
-// 	}
-
-// 	input:hover,
-// 	input:focus {
-// 		border: 1px solid $color-border-hover;
-// 	}
-
-// 	label {
-// 		font-family: "Montserrat-Bold";
-// 		font-size: 12px;
-// 		line-height: 15px;
-// 		text-transform: uppercase;
-// 		color: $color-label;
-// 	}
-// }
-
-//-------------------------------
-.modButton {
-	// стили кнопок
-
-	text-decoration: none;
-	border-radius: 6px;
-	color: #fff;
-	font-size: 14px;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	white-space: nowrap;
-	background-color: #7e8d57 !important;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
-}
-
-.modButton:hover,
-.modButton:focus {
-	background-color: #7c8d33 !important;
-	transition: 0.3s ease-out;
-}

@@ -58,11 +58,11 @@ $color-toggle-border: $Purple;
 		height: 12px;
 		border-radius: 10px;
 		background: $color-toggle-bk;
-
+		cursor: pointer;
 		transition: 0.2s;
 	}
 
-	&__bef:focus-visible {
+	&__bef:focus {
 		outline: 0;
 		border-color: $color-toggle-border;
 	}

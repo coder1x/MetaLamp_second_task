@@ -24,20 +24,18 @@ $color-like-voted: $Purple;
 		border: 1px solid $color-like;
 		box-sizing: border-box;
 		border-radius: 10px;
-
+		cursor: pointer;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 	}
 
-	&__voted {
-		a {
-			border-color: $color-like-voted;
-		}
+	&_voted &__like {
+		border-color: $color-like-voted;
+	}
 
-		span {
-			color: $color-like-voted;
-		}
+	&_voted &__value {
+		color: $color-like-voted;
 	}
 
 	&__value {

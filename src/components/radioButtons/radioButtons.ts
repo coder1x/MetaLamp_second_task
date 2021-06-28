@@ -18,11 +18,12 @@ class radioButtons {
 	setActions() {
 
 		for (let i = 0; i < this.buttons.length; i++) {
-			this.buttons[i].addEventListener('click', (e: any) => {
-				e.preventDefault();
-
+			this.buttons[i].addEventListener('click', () => {
 				this.inputs[i].checked = true;
-
+			});
+			this.buttons[i].addEventListener('keydown', (e: any) => {
+				if (e.key == 'Enter')
+					this.inputs[i].checked = true;
 			});
 		}
 

@@ -1,6 +1,6 @@
 $color-checkbox: $Dark-Shade-50;
-$color-checkbox-border: $Purple;
-$color-checkbox-hover: $Dark-Shade-25;
+$color-checkbox-border: $Dark-Shade-25;
+$color-checkbox-hover: $Purple;
 
 .expCheckboxList,
 .checkboxButtons {
@@ -65,11 +65,11 @@ $color-checkbox-hover: $Dark-Shade-25;
 		position: absolute;
 		left: 0;
 		top: 1px;
+		cursor: pointer;
 	}
 
-	&__bef:focus-visible {
-		outline: 0;
-		border-color: $color-checkbox-hover;
+	&__bef:focus {
+		outline: 1;
 	}
 
 	&__input:checked + label + &__bef {
@@ -78,6 +78,7 @@ $color-checkbox-hover: $Dark-Shade-25;
 		background-size: 10px 10px;
 		background-repeat: no-repeat;
 		background-position: 4px 3px;
+		border-color: $color-checkbox-hover;
 	}
 
 	&__tip {

@@ -59,9 +59,12 @@ class expCheckboxList {
 
 
 		for (let i = 0; i < this.before.length; i++) {
-			this.before[i].addEventListener('click', (e: any) => {
-				e.preventDefault();
+			this.before[i].addEventListener('click', () => {
 				this.toggleBef(this.input[i]);
+			});
+			this.before[i].addEventListener('keydown', (e: any) => {
+				if (e.key == 'Enter')
+					this.toggleBef(this.input[i]);
 			});
 		}
 	}

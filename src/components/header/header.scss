@@ -4,7 +4,7 @@
 
 	&__wrapper {
 		min-height: 100px;
-		max-width: $max-wrapeer;
+		max-width: $max-wraper;
 		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
@@ -13,9 +13,9 @@
 		background-color: #302e29;
 	}
 
-	&__top {
-	}
+	// &__top {
+	// }
 
-	&__bottom {
-	}
+	// &__bottom {
+	// }
 }

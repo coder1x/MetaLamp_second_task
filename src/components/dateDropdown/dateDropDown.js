@@ -252,12 +252,13 @@ class dateDropDown {
 			}
 		}
 
+		// closest - нужно применить его .. 
+
 		let inStock = Boolean(
 			[this.input1,
 			this.imgLeft,
 			this.imgRight,
 			this.input2].find(item => item == e.target) ?? elemFlag);
-
 
 		const visible = this.calendar.style.display == 'flex';
 
@@ -312,6 +313,6 @@ class dateDropDown {
 
 new dateDropDown('.dateDropdown');
 
-
+new dateDropDown('.filterDateDropdown');
 
 // new dateDropDown('#filter-datepicker', '#form-filterDate');

@@ -13,6 +13,11 @@
 
 	&__label {
 		margin-bottom: 5px;
+		font-family: "Montserrat-Bold";
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-label;
 	}
 
 	&__wrap {
@@ -63,9 +68,25 @@
 		padding-right: 44px;
 		outline: 0;
 		cursor: pointer;
+		border: 1px solid $color-border;
+		border-radius: 4px;
+		color: $color-input;
+		font-family: "Montserrat-Regular";
+		font-size: 14px;
+		line-height: 24px;
+		box-sizing: border-box;
 	}
 
-	#filter-datepicker {
+	input::placeholder {
+		color: $style-text;
+	}
+
+	input:hover,
+	input:focus {
+		border: 1px solid $color-border-hover;
+	}
+
+	&__datepicker {
 		display: none;
 		margin-top: 5.56px;
 		position: absolute;
