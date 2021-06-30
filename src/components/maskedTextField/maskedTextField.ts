@@ -1,24 +1,30 @@
 
+interface opt {
+	className: string,
+	message: string,
+	elem?: Element
+}
+
 
 class maskedTextField {
 
-	maskedDate: any;
-	temp: string;
+	private className: string;
+	message: string;
+	private temp: string;
 
-	// eslint-disable-next-line no-unused-vars
-	constructor(public className: string, public message: string) {
-		this.maskedDate = document.querySelectorAll(className);
+	constructor(options: opt) {
 
+		this.className = options.className;
+		this.message = options.message;
 		this.temp = '';
-
-		this.setActions();
+		let elem = options.elem;
+		if (elem)
+			this.setActions(elem);
 	}
 
 
-	inputProcessing(e: any) {
-
+	private inputProcessing(e: any) {
 		let elem = e.target;
-
 		let val = elem.value.replace(/[^.\d]/g, '');
 
 		let strLen = val.length;
@@ -31,7 +37,6 @@ class maskedTextField {
 				val = val.substr(0, strLen - 1) + '0' + val[strLen - 1];
 			}
 		}
-
 
 		let day = `^(0|[1-9]|0[1-9]|[12][0-9]|3[01])`;
 		let month = day + `\\.(0|[1-9]|0[1-9]|1[012])`;
@@ -60,13 +65,12 @@ class maskedTextField {
 			else {
 				elem.value = this.temp;
 			}
-
 		}
 
 		this.temp = elem.value;
 	}
 
-	dateValidation(e: any) {
+	private dateValidation(e: any) {
 
 		let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 		let dateD = e.target.value;
@@ -81,7 +85,6 @@ class maskedTextField {
 		const month = d.getMonth() == masD[1];
 		const year = d.getFullYear() == masD[2];
 
-
 		if (year && month && day) {
 			return true;
 		} else {
@@ -90,34 +93,36 @@ class maskedTextField {
 		}
 	}
 
-	setActions() {
+	private setActions(elem: Element) {
+		elem.addEventListener('change', (e: any) => {
+			this.dateValidation(e);
+		});
 
-		for (let item of this.maskedDate) {
-			item.addEventListener('change', (e: any) => {
-				this.dateValidation(e);
-			});
-
-			item.addEventListener('input', (e: any) => {
-				this.inputProcessing(e);
-			});
-		}
-
+		elem.addEventListener('input', (e: any) => {
+			this.inputProcessing(e);
+		});
 	}
-
 }
 
 
+function renderMasked(options: opt) {
+	let components = document.querySelectorAll(options.className);
+	let objMas = [];
+	for (let elem of components) {
+		options.elem = elem;
+		objMas.push(new maskedTextField(options));
+	}
+	return objMas;
+}
 
-new maskedTextField('.textField__input[name="maskedDate"]',
-	'Введена некорректная дата!');
+renderMasked({
+	className: '.js-masked-date',
+	message: 'Введена некорректная дата!'
+});
 
-//
 
-new maskedTextField('.dateDropdown__input[name="dateDrop"]',
-	'Введена некорректная дата!');
 
-// new maskedTextField('#form-dateDrop');
-// new maskedTextField('#form-dateDrop2');
+
 
 
 

@@ -1,9 +1,9 @@
 import './test/main.ts';
-import './dropDown/dropDown.ts';
+import './drop-down/drop-down.ts';
 import './maskedTextField/maskedTextField.ts';
-import './dateDropDown/dateDropDown.js';
-import './validationEmail/validationEmail.ts';
-import './subscriptionTextField/subscriptionTextField.ts';
+import './date-dropdown/date-dropdown.js';
+import './validation-email/validation-email.ts';
+import './subscrip-textfield/subscrip-textfield.ts';
 import './expCheckboxList/expCheckboxList.ts';
 import './likeButton/likeButton.ts';
 import './radioButtons/radioButtons.ts';

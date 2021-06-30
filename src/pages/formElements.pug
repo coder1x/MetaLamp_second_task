@@ -1,83 +1,109 @@
+include ../components/head/head.pug
+include ../components/logoGroup/logoGroup.pug
+include ../components/text-field/text-field.pug
+include ../components/drop-down/drop-down.pug
+include ../components/date-dropdown/date-dropdown.pug
+include ../components/subscrip-textfield/subscrip-textfield.pug
+include ../components/expCheckboxList/expCheckboxList.pug
+include ../components/feature/feature.pug
+include ../components/radioButtons/radioButtons.pug
+include ../components/toggleButtons/toggleButtons.pug
+include ../components/likeButton/likeButton.pug
+
+
+
 doctype html
-html(lang="ru")
-	include ../components/head/head.pug
+html(lang='ru')
 	body
-		div(class="ui-wrapper")
-			include ../components/logoGroup/logoGroup.pug
-			+logoGroup("ui-wrapper")
+		div.ui-wrapper
+			+logoGroup('ui-wrapper')
 			main
 				section.map-elements 
 					.colomn-left 
-						include ../components/textField/textField.pug
-						+textField("colomn-left",
-						"textField",
-						"text field",
-						"Email",
-						"email",
-						"email")
-						+textField("colomn-left",
-						"textField",
-						"text field",
-						"",
-						"text",
-						"Name")
-						include ../components/dropDown/dropDown.pug
-						-
-							let masWord = [['взрослые', 'дети', 'младенцы'], 
-							['гость,гостя,гостей', 'гость,гостя,гостей', 'младенец,младенца,младенцев']]
-						+drop-down({
-							label:"dropdown",
-							value: "Сколько гостей",
-							name:"Guest",
-							masWord:masWord,
-							button:true
-						})
-					
-						+textField("colomn-left",
-						"textField",
-						"masked text field",
-						"ДД.ММ.ГГГГ",
-						"text",
-						"maskedDate")
-						include ../components/dateDropdown/dateDropdown.pug
-						+dateDropdown("colomn-left",
-						"dateDropdown",
-						"date Drop down",
-						"ДД.ММ.ГГГГ",
-						"text",
-						"dateDrop")
-						include ../components/filterDateDropdown/filterDateDropdown.pug
-						+filterDateDropdown("colomn-left",
-						"filterDateDropdown",
-						"filter date dropdown",
-						"ДД month - ДД month",
-						"text",
-						"filterDate")
-						include ../components/subscriptionTextField/subscriptionTextField.pug
-						+subscriptionTextField("colomn-left",
-						"subscriptionTextField",
-						"subscription text field",
-						"Email",
-						"text",
-						"subscription")
-						- masWord = [['спальни', 'кровати', 'ванные комнаты'], ['спальня,спальни,спален', 'кровать,кровати,кроватей', 'ванная комната,ванные комнаты,ванных комнат'] ]
-						+drop-down({
-							label:"dropdown",
-							value: "Сколько спален",
-							name:"Rooms",
-							masWord:masWord,
-							modif:'sharp'
-						})
-						include ../components/expCheckboxList/expCheckboxList.pug
-						- masElem = ['Завтрак', 'Письменный стол', 'Стул для кормления','Кроватка','Телевизор','Шампунь','Телевизор','Шампунь']
+						.colomn-left__text-field
+							+text-field({
+								label: "text field",
+								placeholder: "Email",
+								type: "email",
+								name: "email"
+							})
+						.colomn-left__text-field
+							+text-field({
+								label: "text field",
+								type: "text",
+								name: "Name"
+							})
+						
+						.colomn-left__guest
+							-
+								let masWord = [['взрослые', 'дети', 'младенцы'], 
+								['гость,гостя,гостей', 
+								'гость,гостя,гостей', 
+								'младенец,младенца,младенцев']]
+							+drop-down({
+								label:'dropdown',
+								value: 'Сколько гостей',
+								name:'Guest',
+								masWord:masWord,
+								button:true
+							})
+						.colomn-left__text-field
+							+text-field({
+								label: "masked text field",
+								placeholder: "ДД.ММ.ГГГГ",
+								type: "text",
+								name: "Date",
+								class: "js-masked-date"
+							})
+
+						.colomn-left__date-dropdown
+							+date-dropdown({
+								label: "date Drop down",
+								value: "ДД.ММ.ГГГГ",
+								class: "js-masked-date"
+							})
+
+						.colomn-left__filter-date
+							+date-dropdown({
+								label: "filter date dropdown",
+								value: "ДД month - ДД month",
+								modif: "filter",
+								filter: true
+							})
+
+
+						.colomn-left__subscrip-textfield
+							+subscrip-textfield({
+								label:"subscription text field",
+								value: "Email"
+							})
+
+						.colomn-left__rooms
+							- 
+								masWord = [['спальни', 'кровати', 'ванные комнаты'], 
+								['спальня,спальни,спален', 
+								'кровать,кровати,кроватей', 
+								'ванная комната,ванные комнаты,ванных комнат'] ]
+							+drop-down({
+								label:'dropdown',
+								value: 'Сколько спален',
+								name:'Rooms',
+								masWord:masWord,
+								modif:'sharp'
+							})
+						
+						- 
+							masWord = ['Завтрак', 'Письменный стол', 
+							'Стул для кормления','Кроватка','Телевизор',
+							'Шампунь','Телевизор','Шампунь']
 						+expCheckboxList("colomn-left",
 						"expCheckboxList",
-						masElem,
+						masWord,
 						'expandable checkbox list',
 						'expCheckbox',
 						false
 						)
-						include ../components/feature/feature.pug
+						
 						+feature("colomn-left",
 						"feature",
 						"assets/img/icon/insert_emoticon.svg",
@@ -91,35 +117,35 @@ html(lang="ru")
 						"Окно в каждой из спален"
 						)
 
-
 					.colomn-center 
-						- masElem = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей (до 10 человек)']
+						- 
+							masWord = ['Можно курить', 'Можно с питомцами', 
+							'Можно пригласить гостей (до 10 человек)']
 						+expCheckboxList("colomn-center",
 						"checkboxButtons",
-						masElem,
+						masWord,
 						'Checkbox Buttons',
 						'checkbox',
 						true,
 						'checkboxButtons_visibal'
 						)
-						include ../components/radioButtons/radioButtons.pug
+						
 						+radioButtons("colomn-center",
 						"radioButtons",
 						"Radio Buttons",
 						"genderSelection",
 						false
 						)
-						include ../components/toggleButtons/toggleButtons.pug
+						
 						+toggleButtons("colomn-center",
 						"toggleButtons",
 						"Получать спецпредложения",
 						"Toggle",
 						"toggleSub",
 						"subscription"
-
 						)
 
-						include ../components/likeButton/likeButton.pug
+						
 						+likeButton("colomn-center",
 						"likeButton",
 						"like button"

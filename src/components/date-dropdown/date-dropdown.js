@@ -8,46 +8,42 @@
 
 class dateDropDown {
 
-	constructor(datepicker) {
+	constructor(className, elem) {
 
+		this.#setDomElem(className, elem);
+		this.#createCalendar();
+		this.#addButtons();
+		this.#setActions();
 
-		this.#initialization(datepicker);
+		if (!this.flRange)
+			this.setRange();
 	}
 
-
+	#clickElemFl = false;
+	#classClear = '';
 	#flag = false;
 	#flTog = false;
 	#flInFilter = false;
 	#masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
 		'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
-	#initialization(datepicker) {
-		let сomponents = document.querySelectorAll(datepicker);
 
-		for (let item of сomponents) {
-			this.calendar = item.querySelector(datepicker + '__datepicker');
+	#setDomElem(className, elem) {
 
-			this.inputs = item.querySelectorAll('input');
-			this.flRange = this.inputs.length > 1 ? true : false;
+		this.className = className;
+		this.elem = elem;
+		this.calendar = elem.querySelector(className + '__datepicker');
 
+		this.inputs = elem.querySelectorAll('input');
+		this.flRange = this.inputs.length > 1 ? true : false;
 
-			this.input1 = this.inputs[0];
-			this.imgLeft = this.input1.nextSibling;
+		this.input1 = this.inputs[0];
+		this.imgLeft = this.input1.nextSibling;
 
-			if (this.flRange) {
-				this.input2 = this.inputs[1];
-				this.imgRight = this.input2.nextSibling;
-			}
-
-
-			this.#createCalendar();
-			this.#addButtons();
-			this.#setActions();
-
-			if (!this.flRange)
-				this.setRange();
+		if (this.flRange) {
+			this.input2 = this.inputs[1];
+			this.imgRight = this.input2.nextSibling;
 		}
-
 	}
 
 
@@ -82,8 +78,21 @@ class dateDropDown {
 
 	}
 
+	#visibleClear(fl = false) {
+		const nameSelector = this.#classClear + '_visible';
+		const objClear = this.clearButton.classList;
+		if (fl) {
+			objClear.add(nameSelector);
+		}
+		else {
+			objClear.remove(nameSelector);
+		}
+	}
 
 	#addButtons() {
+
+		this.#classClear = 'datepicker-buttons__clear';
+
 		let elem = this.$calendarObj.$el[0];
 		let datepicker = elem.querySelector('.datepicker');
 
@@ -97,12 +106,18 @@ class dateDropDown {
 
 		let divBut = createElem('div', 'datepicker-buttons');
 
-		let spanClr = createElem('span',
-			'datepicker-buttons__clear', 'очистить');
+		let spanClr = createElem(
+			'span',
+			this.#classClear,
+			'очистить');
+
 		divBut.appendChild(spanClr);
 
-		let spanAс = createElem('span',
-			'datepicker-buttons__apply', 'применить');
+		let spanAс = createElem(
+			'span',
+			'datepicker-buttons__apply',
+			'применить');
+
 		divBut.appendChild(spanAс);
 
 		datepicker.appendChild(divBut);
@@ -126,7 +141,7 @@ class dateDropDown {
 				this.#inputDate(formattedDate);
 				if (!this.#flInFilter)
 					this.#flag = false;
-				this.clearButton.style.visibility = 'unset';
+				this.#visibleClear(true);
 			}
 		}).data('datepicker');
 	}
@@ -198,22 +213,21 @@ class dateDropDown {
 		}
 	}
 
+	getVisible(elem) {
+		let display = window.getComputedStyle(elem, null)
+			.getPropertyValue("display");
+		return display === "none" ? false : true;
+	}
 
 	toggleCal(fl = false) {
-		let setStyle = (display, rotate) => {
-			this.calendar.style.display = display;
-			this.imgLeft.style.transform = rotate;
-			if (this.flRange)
-				this.imgRight.style.transform = rotate;
-		};
-
-
-		const visible = this.calendar.style.display == 'flex';
+		const nameModif = this.className.replace(/^\./, '') + '_visible';
+		const visible = this.getVisible(this.calendar);
+		const objElem = this.elem.classList;
 		if (this.#flTog == fl && visible) {
-			setStyle('none', 'rotate(0deg)');
+			objElem.remove(nameModif);
 		}
 		else {
-			setStyle('flex', 'rotate(180deg)');
+			objElem.add(nameModif);
 		}
 		this.#flTog = fl;
 	}
@@ -235,7 +249,7 @@ class dateDropDown {
 
 
 		if (twoMeanings || oneMeaning) {
-			this.calendar.style.display = 'none';
+			this.toggleCal(this.#flTog);
 		}
 		else {
 			alert('Выберите диапазон');
@@ -243,24 +257,14 @@ class dateDropDown {
 	}
 
 	#elementIsClicked(e) {
-		let elemFlag = false;
-
-		for (let item of e.path) {
-			if (this.calendar == item) {
-				elemFlag = true;
-				break;
-			}
-		}
-
-		// closest - нужно применить его .. 
 
 		let inStock = Boolean(
 			[this.input1,
 			this.imgLeft,
 			this.imgRight,
-			this.input2].find(item => item == e.target) ?? elemFlag);
-
-		const visible = this.calendar.style.display == 'flex';
+			this.input2].find(item => item == e.target) ?? this.#clickElemFl);
+		this.#clickElemFl = false;
+		const visible = this.getVisible(this.calendar);
 
 		if (!inStock && visible) {
 			this.toggleCal(this.#flTog);
@@ -269,12 +273,16 @@ class dateDropDown {
 
 
 	#setActions() {
+
+		this.calendar.addEventListener('click', () => {
+			this.#clickElemFl = true;
+		});
+
 		let actionClick = (elem, fl) => {
 			elem.addEventListener('click', () => this.toggleCal(fl));
 		};
 
 		actionClick(this.input1, true);
-
 
 		this.input1.addEventListener('input', () => {
 			let len = this.flRange ? 10 : 15;
@@ -297,11 +305,11 @@ class dateDropDown {
 				this.$calendarObj.clear();
 				if (!this.imgRight)
 					this.input1.value = '';
-				this.clearButton.style.visibility = 'hidden';
+				this.#visibleClear();
 			});
 
 
-		document.addEventListener("mouseup", (e) => this.#elementIsClicked(e));
+		document.addEventListener('click', (e) => this.#elementIsClicked(e));
 
 
 		this.acceptButton.addEventListener('click',
@@ -311,8 +319,14 @@ class dateDropDown {
 
 
 
-new dateDropDown('.dateDropdown');
 
-new dateDropDown('.filterDateDropdown');
+function renderComponent(className) {
+	let components = document.querySelectorAll(className);
+	let objMas = [];
+	for (let elem of components) {
+		objMas.push(new dateDropDown(className, elem));
+	}
+	return objMas;
+}
 
-// new dateDropDown('#filter-datepicker', '#form-filterDate');
+renderComponent('.date-dropdown');

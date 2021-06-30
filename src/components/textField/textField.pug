@@ -1,9 +1,0 @@
-mixin textField(cl_name,classComp,label,placeholder,typeD,nameD,modif='',flLabel=false)
-	- let className = classComp+' '+cl_name+'__'+classComp
-	if modif
-		- className += ' '+classComp+'_'+modif
-	div(class=className)
-		label(class=classComp+"__label")
-			if !flLabel
-				p(class=classComp+"__label-text")= label
-				input(class=classComp+"__input" type=typeD placeholder=placeholder value="" name=nameD)

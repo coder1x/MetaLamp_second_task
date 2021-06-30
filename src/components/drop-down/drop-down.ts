@@ -82,7 +82,6 @@ class dropDown {
 		});
 
 		this.inputEl.addEventListener("focus", () => {
-			//if (!this.getVisible(this.selectEl))
 			this.inputEl.click();
 		});
 
@@ -245,7 +244,7 @@ class dropDown {
 
 //==========================================================================
 
-function renderComponent(className: string) {
+function renderDropDown(className: string) {
 	let components = document.querySelectorAll(className);
 	let objMas = [];
 	for (let elem of components) {
@@ -254,6 +253,7 @@ function renderComponent(className: string) {
 	return objMas;
 }
 
-renderComponent('.drop-down');
+renderDropDown('.drop-down');
+
 
 

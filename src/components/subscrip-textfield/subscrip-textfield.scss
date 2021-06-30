@@ -1,17 +1,9 @@
-.filterDateDropdown {
+.subscrip-textfield {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: center;
 
-	position: relative;
-
-	&__datepicker {
-		position: absolute;
-		top: 1px;
-		width: 100%;
-	}
-
-	&__label {
+	&__label-text {
 		margin-bottom: 5px;
 		font-family: "Montserrat-Bold";
 		font-size: 12px;
@@ -25,18 +17,25 @@
 		width: 100%;
 	}
 
-	&__date-range {
-		width: 100%;
-		max-width: 266px;
+	&__tip {
+		width: 17px;
 	}
 
-	&__tip {
+	&__link {
+		display: block;
+		width: 17px;
+		height: 18px;
 		position: absolute;
 		right: 14px;
-		bottom: 17px;
+		bottom: 13px;
 		cursor: pointer;
 		transform: rotate(0deg);
 		transition: transform 0.5s;
+	}
+
+	&__link:focus {
+		//border: 1px solid rgba(31, 32, 65, 0.5);
+		outline: 1;
 	}
 
 	&__text,
@@ -62,12 +61,13 @@
 
 	&__input {
 		width: 100%;
-		//max-width: 150px;
+
 		height: 44px;
 		padding-left: 15px;
 		padding-right: 44px;
 		outline: 0;
 		cursor: pointer;
+
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
@@ -84,43 +84,5 @@
 	input:hover,
 	input:focus {
 		border: 1px solid $color-border-hover;
-	}
-
-	&__datepicker {
-		display: none;
-		margin-top: 5.56px;
-		position: absolute;
-		top: 68px;
-		z-index: 1;
-	}
-
-	.datepicker {
-		width: 266px !important;
-
-		&--cell,
-		&--day-name {
-			//max-width: 29.88px !important;
-			height: 35px !important;
-		}
-
-		&--cell-month,
-		&--cell-year {
-			max-width: none !important;
-		}
-	}
-
-	.-range-from-::after {
-		width: 29.88px;
-		height: 35px;
-	}
-
-	.-range-to-::before {
-		width: 29.88px;
-		height: 35px;
-	}
-
-	.datepicker--cell-day.-in-range-:hover::before {
-		width: 36.85px;
-		height: 35px;
 	}
 }

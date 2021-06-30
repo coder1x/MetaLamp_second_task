@@ -18,8 +18,13 @@ $color-border-show: $Dark-Shade-50;
 		position: relative;
 	}
 
+	&__icon {
+		width: 30px;
+	}
+
 	&__tip {
 		position: absolute;
+		width: 13px;
 		right: 14px;
 		bottom: 17px;
 		cursor: pointer;

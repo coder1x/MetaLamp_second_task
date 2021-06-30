@@ -1,15 +1,8 @@
-.dateDropdown {
+.date-dropdown {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-
 	position: relative;
-
-	&__datepicker {
-		position: absolute;
-		top: 1px;
-		width: 100%;
-	}
 
 	&__label-text {
 		margin-bottom: 5px;
@@ -26,6 +19,7 @@
 
 	&__tip {
 		position: absolute;
+		width: 13px;
 		right: 14px;
 		bottom: 3px;
 		cursor: pointer;
@@ -73,7 +67,7 @@
 	}
 
 	input::placeholder {
-		color: $style-text;
+		color: $color-input;
 	}
 
 	input:hover,
@@ -87,6 +81,14 @@
 		position: absolute;
 		top: 68px;
 		z-index: 1;
+	}
+
+	&_visible &__datepicker {
+		display: flex;
+	}
+
+	&_visible &__tip {
+		transform: rotate(180deg);
 	}
 
 	.datepicker {
@@ -117,5 +119,53 @@
 	.datepicker--cell-day.-in-range-:hover::before {
 		width: 39.88px;
 		height: 40px;
+	}
+
+	//----------------------------------------------- modif filter
+
+	&_filter &__date-wrap {
+		position: relative;
+		width: 100%;
+	}
+
+	&_filter &__date-wrap {
+		width: 100%;
+		max-width: 266px;
+	}
+
+	&_filter &__input {
+		width: 100%;
+		max-width: none;
+	}
+
+	&_filter .datepicker {
+		width: 266px !important;
+
+		&--cell,
+		&--day-name {
+			height: 35px !important;
+		}
+	}
+
+	&_filter .-range-from-::after {
+		width: 35px !important;
+		height: 35px !important;
+	}
+
+	&_filter .-range-to-::before {
+		width: 35px !important;
+		height: 35px !important;
+	}
+
+	&_filter .-in-range-:hover::before {
+		width: 36px !important;
+		height: 35px !important;
+	}
+
+	//----------------------------------------------- modif button
+	.datepicker-buttons__clear {
+		&_visible {
+			visibility: unset;
+		}
 	}
 }
