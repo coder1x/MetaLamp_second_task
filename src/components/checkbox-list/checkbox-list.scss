@@ -1,53 +1,51 @@
 $color-checkbox: $Dark-Shade-50;
 $color-checkbox-border: $Dark-Shade-25;
 $color-checkbox-hover: $Purple;
+$color-checkbox-rich: $Dark-Shade-75;
 
-.expCheckboxList,
-.checkboxButtons {
-	&__wrap {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		position: relative;
-		margin-bottom: 15px;
-	}
-
+.checkbox-list {
 	&__header {
+		position: relative;
+		width: 100%;
+		margin-bottom: 17px;
 		font-family: "Montserrat-Bold";
 		font-size: 12px;
-		line-height: 15px;
+		line-height: 13px;
 		text-transform: uppercase;
 		color: $color-label;
 		cursor: pointer;
 	}
 
-	&_visibal {
-		ul {
-			height: auto;
-		}
+	&__wrap {
+		display: none;
 	}
 
 	&__items {
-		height: 0px;
-		overflow: hidden;
-		transition: height 200ms ease;
+		border: 0px;
+		padding: 0px;
+		margin: 0px;
 	}
 
-	&__item {
+	&__label {
+		width: 100%;
 		position: relative;
-	}
-
-	&__input + label {
-		display: inline-block;
-		//position: relative;
+		display: flex;
+		flex-direction: column;
 		font-family: "Montserrat-Regular";
 		font-size: 14px;
-		line-height: 18px;
+		line-height: 19px;
 		color: $color-checkbox;
 		cursor: pointer;
 		padding-left: 29px;
-		margin-bottom: 10px;
+		margin-bottom: 12px;
+	}
+
+	&__text {
+		font-family: "Montserrat-Regular";
+		font-size: 12px;
+		line-height: 14px;
+		margin-top: 5px;
+		color: $color-checkbox;
 	}
 
 	&__input {
@@ -58,13 +56,13 @@ $color-checkbox-hover: $Purple;
 		display: inline-block;
 		width: 20px;
 		height: 20px;
-		background: #fff;
+		background: $color-background;
 		border: 1px solid $color-checkbox-border;
 		box-sizing: border-box;
 		border-radius: 4px;
 		position: absolute;
 		left: 0;
-		top: 1px;
+		top: -1px;
 		cursor: pointer;
 	}
 
@@ -72,7 +70,7 @@ $color-checkbox-hover: $Purple;
 		outline: 1;
 	}
 
-	&__input:checked + label + &__bef {
+	&__input:checked + &__bef {
 		display: block;
 		background-image: url("/assets/img/inetrface/Vector.svg");
 		background-size: 10px 10px;
@@ -83,10 +81,38 @@ $color-checkbox-hover: $Purple;
 
 	&__tip {
 		position: absolute;
+		top: 2px;
 		right: 14px;
-		bottom: 3px;
+		width: 13px;
 		cursor: pointer;
 		transform: rotate(0deg);
 		transition: transform 0.5s;
+	}
+
+	// ---------------------------- modif
+
+	&_visible &__wrap {
+		display: block;
+	}
+
+	&_visible &__tip {
+		transform: rotate(180deg);
+	}
+
+	// ---------------------------- modif Checkbox Buttons
+
+	&_visibleBut &__wrap {
+		display: block;
+	}
+
+	&_visibleBut &__header {
+		cursor: default;
+	}
+
+	// ---------------------------- modif RICH
+
+	&_rich &__label {
+		font-family: "Montserrat-Bold";
+		color: $color-checkbox-rich;
 	}
 }

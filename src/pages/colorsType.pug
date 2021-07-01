@@ -1,21 +1,49 @@
 doctype html
-html(lang="ru")
+html(lang='ru')
 	include ../components/head/head.pug
 	body
-		div(class="ui-wrapper")
+		div(class='ui-wrapper')
 			include ../components/logoGroup/logoGroup.pug
-			+logoGroup("ui-wrapper")
+			+logoGroup('ui-wrapper')
 			main
 				section.map-info 
 					.map-info__color 
 						include ../components/squareColor/squareColor.pug
-						+squareColor("map-info","#1F2041","Dark Shade 100%","#1F2041")
-						+squareColor("map-info","rgba(31, 32, 65, 0.75)","Dark Shade 75%","#1F2041")
-						+squareColor("map-info","rgba(31, 32, 65, 0.5)","Dark Shade 50%","#1F2041")
-						+squareColor("map-info","rgba(31, 32, 65, 0.25)","Dark Shade 25%","#1F2041")
-						+squareColor("map-info","rgba(31, 32, 65, 0.05)","Dark Shade 5%","#1F2041")
-						+squareColor("map-info","#BC9CFF","Purple","#BC9CFF")
-						+squareColor("map-info","#6FCF97","Green","#6FCF97")
+						+squareColor(
+						'map-info',
+						'#1F2041',
+						'Dark Shade 100%',
+						'#1F2041')
+						+squareColor(
+						'map-info',
+						'rgba(31, 32, 65, 0.75)',
+						'Dark Shade 75%',
+						'#1F2041')
+						+squareColor(
+						'map-info',
+						'rgba(31, 32, 65, 0.5)',
+						'Dark Shade 50%',
+						'#1F2041')
+						+squareColor(
+						'map-info',
+						'rgba(31, 32, 65, 0.25)',
+						'Dark Shade 25%',
+						'#1F2041')
+						+squareColor(
+						'map-info',
+						'rgba(31, 32, 65, 0.05)',
+						'Dark Shade 5%',
+						'#1F2041')
+						+squareColor(
+						'map-info',
+						'#BC9CFF',
+						'Purple',
+						'#BC9CFF')
+						+squareColor(
+						'map-info',
+						'#6FCF97',
+						'Green',
+						'#6FCF97')
 					.map-info__text
 						include ../components/styleText/styleText.pug
-						+styleText("map-info")
+						+styleText('map-info')

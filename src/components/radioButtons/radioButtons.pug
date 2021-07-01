@@ -2,15 +2,15 @@ mixin radioButtons(cl_name,classComp,label,nameD,flLabel=false,modif='')
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		- if(!flLabel){
-		p(class=classComp+"__header")= label
+		p(class=classComp+'__header')= label
 		-}
-		ul(class=classComp+"__items") 
-			li(class=classComp+"__item")
-				input(class=classComp+"__input" type='radio' name=nameD id="Man")
-				label(class=classComp+"__label" for="Man") Мужчина
-				span(class=classComp+"__bef" tabindex="0")
-			li(class=classComp+"__item")
-				input(class=classComp+"__input" type='radio' name=nameD id="Female")
-				label(class=classComp+"__label" for="Female") Женщина
-				span(class=classComp+"__bef" tabindex="0")
+		ul(class=classComp+'__items') 
+			li(class=classComp+'__item')
+				input(class=classComp+'__input' type='radio' name=nameD id='Man')
+				label(class=classComp+'__label' for='Man') Мужчина
+				span(class=classComp+'__bef' tabindex='0')
+			li(class=classComp+'__item')
+				input(class=classComp+'__input' type='radio' name=nameD id='Female')
+				label(class=classComp+'__label' for='Female') Женщина
+				span(class=classComp+'__bef' tabindex='0')
 

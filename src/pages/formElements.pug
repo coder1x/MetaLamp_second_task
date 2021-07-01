@@ -4,7 +4,7 @@ include ../components/text-field/text-field.pug
 include ../components/drop-down/drop-down.pug
 include ../components/date-dropdown/date-dropdown.pug
 include ../components/subscrip-textfield/subscrip-textfield.pug
-include ../components/expCheckboxList/expCheckboxList.pug
+include ../components/checkbox-list/checkbox-list.pug
 include ../components/feature/feature.pug
 include ../components/radioButtons/radioButtons.pug
 include ../components/toggleButtons/toggleButtons.pug
@@ -22,21 +22,22 @@ html(lang='ru')
 					.colomn-left 
 						.colomn-left__text-field
 							+text-field({
-								label: "text field",
-								placeholder: "Email",
-								type: "email",
-								name: "email"
+								label: 'text field',
+								placeholder: 'Email',
+								type: 'email',
+								name: 'email'
 							})
 						.colomn-left__text-field
 							+text-field({
-								label: "text field",
-								type: "text",
-								name: "Name"
+								label: 'text field',
+								type: 'text',
+								name: 'Name'
 							})
 						
 						.colomn-left__guest
 							-
-								let masWord = [['взрослые', 'дети', 'младенцы'], 
+								let masWord = [
+								['взрослые', 'дети', 'младенцы'], 
 								['гость,гостя,гостей', 
 								'гость,гостя,гостей', 
 								'младенец,младенца,младенцев']]
@@ -49,108 +50,125 @@ html(lang='ru')
 							})
 						.colomn-left__text-field
 							+text-field({
-								label: "masked text field",
-								placeholder: "ДД.ММ.ГГГГ",
-								type: "text",
-								name: "Date",
-								class: "js-masked-date"
+								label: 'masked text field',
+								placeholder: 'ДД.ММ.ГГГГ',
+								type: 'text',
+								name: 'Date',
+								class: 'js-masked-date'
 							})
 
 						.colomn-left__date-dropdown
 							+date-dropdown({
-								label: "date Drop down",
-								value: "ДД.ММ.ГГГГ",
-								class: "js-masked-date"
+								label: 'date Drop down',
+								value: 'ДД.ММ.ГГГГ',
+								class: 'js-masked-date'
 							})
 
 						.colomn-left__filter-date
 							+date-dropdown({
-								label: "filter date dropdown",
-								value: "ДД month - ДД month",
-								modif: "filter",
+								label: 'filter date dropdown',
+								value: 'ДД month - ДД month',
+								modif: 'filter',
 								filter: true
 							})
 
 
 						.colomn-left__subscrip-textfield
 							+subscrip-textfield({
-								label:"subscription text field",
-								value: "Email"
+								label:'subscription text field',
+								value:'Email'
 							})
 
 						.colomn-left__rooms
 							- 
-								masWord = [['спальни', 'кровати', 'ванные комнаты'], 
+								masWord = [
+								['спальни', 'кровати', 'ванные комнаты'], 
 								['спальня,спальни,спален', 
 								'кровать,кровати,кроватей', 
 								'ванная комната,ванные комнаты,ванных комнат'] ]
 							+drop-down({
 								label:'dropdown',
-								value: 'Сколько спален',
+								value:'Сколько спален',
 								name:'Rooms',
 								masWord:masWord,
 								modif:'sharp'
 							})
 						
-						- 
-							masWord = ['Завтрак', 'Письменный стол', 
-							'Стул для кормления','Кроватка','Телевизор',
-							'Шампунь','Телевизор','Шампунь']
-						+expCheckboxList("colomn-left",
-						"expCheckboxList",
-						masWord,
-						'expandable checkbox list',
-						'expCheckbox',
-						false
-						)
+						.colomn-left__checkbox-list
+							- 
+								masWord = [
+								'Завтрак', 'Письменный стол', 
+								'Стул для кормления','Кроватка','Телевизор',
+								'Шампунь','Телевизор','Шампунь']
+							+checkbox-list({
+								masWord:masWord,
+								legend:'expandable checkbox list',
+							})
 						
-						+feature("colomn-left",
-						"feature",
-						"assets/img/icon/insert_emoticon.svg",
-						"Комфорт",
-						"Шумопоглощающие стены"
+						+feature('colomn-left',
+						'feature',
+						'assets/img/icon/insert_emoticon.svg',
+						'Комфорт',
+						'Шумопоглощающие стены'
 						)
-						+feature("colomn-left",
-						"feature",
-						"assets/img/icon/location_city.svg",
-						"Удобство",
-						"Окно в каждой из спален"
+						+feature('colomn-left',
+						'feature',
+						'assets/img/icon/location_city.svg',
+						'Удобство',
+						'Окно в каждой из спален'
 						)
 
 					.colomn-center 
-						- 
-							masWord = ['Можно курить', 'Можно с питомцами', 
-							'Можно пригласить гостей (до 10 человек)']
-						+expCheckboxList("colomn-center",
-						"checkboxButtons",
-						masWord,
-						'Checkbox Buttons',
-						'checkbox',
-						true,
-						'checkboxButtons_visibal'
-						)
-						
-						+radioButtons("colomn-center",
-						"radioButtons",
-						"Radio Buttons",
-						"genderSelection",
+
+						.colomn-center__checkbox-list
+							- 
+								masWord = [
+								'Можно курить', 'Можно с питомцами', 
+								'Можно пригласить гостей (до 10 человек)']
+							+checkbox-list({
+								masWord:masWord,
+								legend:'Checkbox Buttons',
+								click: true,
+								modif:'visibleBut'
+							})
+
+						+radioButtons('colomn-center',
+						'radioButtons',
+						'Radio Buttons',
+						'genderSelection',
 						false
 						)
 						
-						+toggleButtons("colomn-center",
-						"toggleButtons",
-						"Получать спецпредложения",
-						"Toggle",
-						"toggleSub",
-						"subscription"
+						+toggleButtons('colomn-center',
+						'toggleButtons',
+						'Получать спецпредложения',
+						'Toggle',
+						'toggleSub',
+						'subscription'
 						)
 
 						
-						+likeButton("colomn-center",
-						"likeButton",
-						"like button"
-
+						+likeButton('colomn-center',
+						'likeButton',
+						'like button'
 						)
+
+						.colomn-center__checkbox-listRich
+							- 
+								masWord = [
+								'Широкий коридор', 
+								'Помощник для инвалидов']
+								masText = [
+								'Ширина коридоров в номере не менее 91 см.',
+								'На 1 этаже вас встретит специалист  и проводит до номера.']
+							+checkbox-list({
+								masWord:masWord,
+								masText:masText,
+								legend:'rich Checkbox Buttons',
+								click: true,
+								modif:'visibleBut',
+								class:'checkbox-list_rich'
+							})
 						
 					.colomn-right
 					.comment-wrap

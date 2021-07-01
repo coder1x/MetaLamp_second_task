@@ -6,7 +6,7 @@ mixin date-dropdown(options)
 		let addClass = options.class ?? ''
 		let flLabel = options.flLabel ?? false
 		let filter = options.filter ?? false
-		let classComp = "date-dropdown"
+		let classComp = 'date-dropdown'
 		let className = classComp
 		if(modif){
 		className += ' '+classComp+'_'+modif}
@@ -15,12 +15,12 @@ mixin date-dropdown(options)
 	div(class=className)
 		- let num = filter ? 1 : 2;
 		- for(let i=0; i<num; i++)	{
-			div(class=classComp+"__date-wrap")
+			div(class=classComp+'__date-wrap')
 				- if(!flLabel){
-				p(class=classComp+"__label-text")= label
+				p(class=classComp+'__label-text')= label
 				-}
-				label(class=classComp+"__label")
-					input(class=classComp+"__input" type="text" placeholder=value value="" name="Date")
-					img(class=classComp+"__tip" src="assets/img/inetrface/tip.svg" alt="")
+				label(class=classComp+'__label')
+					input(class=classComp+'__input' type='text' placeholder=value value='' name='Date')
+					img(class=classComp+'__tip' src='assets/img/inetrface/tip.svg' alt='')
 		-}
-		div(class=classComp+"__datepicker")
+		div(class=classComp+'__datepicker')

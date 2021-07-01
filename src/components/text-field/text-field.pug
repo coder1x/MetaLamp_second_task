@@ -7,14 +7,14 @@ mixin text-field(options)
 		let modif = options.modif ?? ''
 		let addClass = options.class ?? ''
 		let flLabel = options.flLabel ?? false
-		let classComp = "text-field"
+		let classComp = 'text-field'
 		let className = classComp
 		if(modif){
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
 		className += ' '+addClass}
 	div(class=className)
-		label(class=classComp+"__label")
+		label(class=classComp+'__label')
 			if !flLabel
-				p(class=classComp+"__label-text")= label
-				input(class=classComp+"__input" type=typeD placeholder=placeholder value="" name=name)
+				p(class=classComp+'__label-text')= label
+				input(class=classComp+'__input' type=typeD placeholder=placeholder value='' name=name)

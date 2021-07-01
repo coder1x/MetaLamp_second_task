@@ -3,17 +3,18 @@
 class dropDown {
 
 	inputEl: HTMLInputElement;
-	imgClass: string;
-	selectEl: Element;
+	private imgClass: string;
+	private selectEl: Element;
 	clearBut: HTMLElement;
-	applyClass: HTMLElement;
+	private applyClass: HTMLElement;
 	elem: Element;
-	items: any;
+	private items: any;
 	defoultText: string;
 	valMas: HTMLElement[];
 	declensions: string[][];
 	className: string;
-	flClick: boolean;
+	private flClick: boolean;
+	private clickElemFl: boolean;
 
 	constructor(className: string, component: Element) {
 
@@ -22,6 +23,7 @@ class dropDown {
 		this.elem = component;
 
 		this.flClick = false;
+		this.clickElemFl = false;
 
 		this.setDomElem();
 		this.setAction();
@@ -66,6 +68,9 @@ class dropDown {
 
 	private setAction() {
 
+		this.elem.addEventListener("click", () => {
+			this.clickElemFl = true;
+		});
 
 		this.inputEl.addEventListener("click", (e) => {
 
@@ -88,7 +93,10 @@ class dropDown {
 		if (this.applyClass)
 			this.applyClass.addEventListener("click", () => {
 
-				if (this.inputEl.value == this.defoultText) {
+				const defoultText = this.inputEl.value == this.defoultText;
+				const inputClear = defoultText || !this.inputEl.value;
+
+				if (inputClear) {
 					alert('Выберите количество гостей.');
 				}
 				else {
@@ -99,10 +107,11 @@ class dropDown {
 		if (this.clearBut)
 			this.clearBut.addEventListener('click', () => this.resetValue());
 
-		document.addEventListener("mouseup", (e: any) => {
-			if (!e.target.closest(this.className)) {
+		document.addEventListener("click", () => {
+			if (!this.clickElemFl) {
 				this.styleWidget(true);
 			}
+			this.clickElemFl = false;
 		});
 
 	}
@@ -121,7 +130,7 @@ class dropDown {
 	}
 
 
-	toggleModif(elem: Element, modif: string, flag = false) {
+	private toggleModif(elem: Element, modif: string, flag = false) {
 		let clearName = this.className.replace(/^\./, '') + modif;
 		let objClass = elem.classList;
 		flag ? objClass.add(clearName) : objClass.remove(clearName);

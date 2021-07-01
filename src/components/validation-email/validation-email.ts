@@ -1,7 +1,7 @@
 
 
 interface optV {
-	message: string,
+	message?: string,
 	event?: string,
 	elem: Element
 }
@@ -11,7 +11,7 @@ class validationEmail {
 	constructor(options: optV) {
 
 		let event = options.event ?? "";
-		let message = options.message ?? "";
+		let message = options.message ?? "Вы ввели неверный Email.";
 		this.inputElem = options.elem;
 
 		// eslint-disable-next-line no-control-regex
@@ -44,7 +44,7 @@ class validationEmail {
 interface opt {
 	className: string,
 	inputName: string,
-	message: string,
+	message?: string,
 	event?: string,
 	elem?: Element
 }
@@ -73,16 +73,10 @@ function renderValidationEmail(options: opt) {
 renderValidationEmail({
 	className: ".text-field",
 	inputName: "email",
-	message: "Вы ввели неверный Email.",
 	event: "change",
 });
 
 
-// new validationEmail('.subscrip-textfield__input[name="subscrip"]',
-// 	'Вы ввели неверный Email.');
-
-// new validationEmail('.text-field__input[name="email"]',
-// 	'Вы ввели неверный Email.', 'change');
 
 
 export { renderValidationEmail, validationEmail };

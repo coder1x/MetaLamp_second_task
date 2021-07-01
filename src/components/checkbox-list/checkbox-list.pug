@@ -1,0 +1,32 @@
+mixin checkbox-list(options)
+	-
+		let masWord = options.masWord ?? []
+		let masText = options.masText ?? []
+		let legend = options.legend ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let click = options.click ?? false
+		let classComp = 'checkbox-list'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		fieldset(class=classComp+'__items')
+			-if(!flLabel){
+				-if(!click){
+					legend(class=classComp+'__header' tabindex='0')= legend
+							img(class=classComp+'__tip' src='assets/img/inetrface/tip.svg' alt='')
+				-} else {
+					legend(class=classComp+'__header')= legend
+				-}	
+			-}
+			div(class=classComp+'__wrap')
+				each value, index in masWord
+					label(class=classComp+'__label')= value
+						input(class=classComp+'__input' type='checkbox' name=value)
+						span(class=classComp+'__bef' tabindex='0')
+						-if(masText.length)
+							span(class=classComp+'__text')=masText[index]

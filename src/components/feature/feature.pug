@@ -1,7 +1,7 @@
 mixin feature(cl_name,classComp,src,header,text,modif='')
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
-		img(class=classComp+"__icon" src=src alt="" style="width: 40px;")
-		div(class=classComp+"__description")
-			span(class=classComp+"__header")=header
-			p(class=classComp+"__text")=text
+		img(class=classComp+'__icon' src=src alt='' style='width: 40px;')
+		div(class=classComp+'__description')
+			span(class=classComp+'__header')=header
+			p(class=classComp+'__text')=text

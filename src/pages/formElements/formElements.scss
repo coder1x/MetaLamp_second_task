@@ -47,7 +47,7 @@
 		max-width: 267px;
 	}
 
-	&__expCheckboxList {
+	&__checkbox-list {
 		margin-top: 40px;
 		max-width: 266px;
 		margin-bottom: 33px;
@@ -60,9 +60,14 @@
 	width: 100%;
 	max-width: 260px;
 
-	&__expCheckboxList {
+	&__checkbox-list {
 		max-width: 222px;
 		margin-bottom: 40px;
+	}
+
+	&__checkbox-listRich {
+		max-width: 230px;
+		margin-top: 40px;
 	}
 
 	&__radioButtons {

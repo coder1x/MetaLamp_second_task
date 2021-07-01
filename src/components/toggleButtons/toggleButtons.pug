@@ -2,10 +2,10 @@ mixin toggleButtons(cl_name,classComp,label,label2,nameID,nameIn,flLabel=false,m
 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
 	div(class=className)
 		- if(!flLabel){
-		p(class=classComp+"__header")= label2
+		p(class=classComp+'__header')= label2
 		-}
-		p(class=classComp+"__tog")
-			input(class=classComp+"__input" type='checkbox' name=nameIn id=nameID)
-			label(class=classComp+"__label" for=nameID)= label
-			span(class=classComp+"__bef" tabindex="0")
+		p(class=classComp+'__tog')
+			input(class=classComp+'__input' type='checkbox' name=nameIn id=nameID)
+			label(class=classComp+'__label' for=nameID)= label
+			span(class=classComp+'__bef' tabindex='0')
 
