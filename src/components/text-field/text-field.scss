@@ -11,12 +11,12 @@
 		color: $color-label;
 	}
 
-	input::placeholder {
+	&__input::placeholder {
 		color: $style-text;
 	}
 
-	input:hover,
-	input:focus {
+	&__input:hover,
+	&__input:focus {
 		border: 1px solid $color-border-hover;
 	}
 

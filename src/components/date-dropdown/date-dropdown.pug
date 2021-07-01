@@ -1,6 +1,7 @@
 mixin date-dropdown(options)
 	-
 		let label = options.label ?? ''
+		let placeholder = options.placeholder ?? ''
 		let value = options.value ?? ''
 		let modif = options.modif ?? ''
 		let addClass = options.class ?? ''
@@ -20,7 +21,7 @@ mixin date-dropdown(options)
 				p(class=classComp+'__label-text')= label
 				-}
 				label(class=classComp+'__label')
-					input(class=classComp+'__input' type='text' placeholder=value value='' name='Date')
+					input(class=classComp+'__input' type='text' placeholder=placeholder value=value name='Date')
 					img(class=classComp+'__tip' src='assets/img/inetrface/tip.svg' alt='')
 		-}
 		div(class=classComp+'__datepicker')

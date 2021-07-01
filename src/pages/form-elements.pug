@@ -60,14 +60,15 @@ html(lang='ru')
 						.colomn-left__date-dropdown
 							+date-dropdown({
 								label: 'date Drop down',
-								value: 'ДД.ММ.ГГГГ',
+								placeholder:'ДД.ММ.ГГГГ',
 								class: 'js-masked-date'
 							})
 
 						.colomn-left__filter-date
 							+date-dropdown({
 								label: 'filter date dropdown',
-								value: 'ДД month - ДД month',
+								placeholder:'19 авг - 23 авг',
+								value: '19 авг - 23 авг',
 								modif: 'filter',
 								filter: true
 							})

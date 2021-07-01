@@ -290,7 +290,6 @@ class dateDropDown {
 				this.setRange();
 		});
 
-
 		if (this.flRange) {
 			this.input2.addEventListener('input', () => {
 				if (this.input2.value.length == 10)
@@ -298,7 +297,6 @@ class dateDropDown {
 			});
 			actionClick(this.input2, false);
 		}
-
 
 		this.clearButton.addEventListener('click',
 			() => {
@@ -308,9 +306,7 @@ class dateDropDown {
 				this.#visibleClear();
 			});
 
-
 		document.addEventListener('click', (e) => this.#elementIsClicked(e));
-
 
 		this.acceptButton.addEventListener('click',
 			() => this.#validationRange());

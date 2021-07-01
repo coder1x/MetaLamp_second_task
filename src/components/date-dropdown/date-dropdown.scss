@@ -66,12 +66,12 @@
 		box-sizing: border-box;
 	}
 
-	input::placeholder {
+	&__input::placeholder {
 		color: $color-input;
 	}
 
-	input:hover,
-	input:focus {
+	&__input:hover,
+	&__input:focus {
 		border: 1px solid $color-border-hover;
 	}
 

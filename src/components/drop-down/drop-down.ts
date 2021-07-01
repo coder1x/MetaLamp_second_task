@@ -56,7 +56,6 @@ class dropDown {
 		this.inputEl = this.elem.querySelector(inputClass);
 		this.defoultText = this.inputEl.placeholder;
 		this.selectEl = this.elem.querySelector(selectClass);
-
 	}
 
 
@@ -73,7 +72,6 @@ class dropDown {
 		});
 
 		this.inputEl.addEventListener("click", (e) => {
-
 			if (e.isTrusted) {
 				if (!this.flClick) {
 					this.styleWidget();
@@ -92,7 +90,6 @@ class dropDown {
 
 		if (this.applyClass)
 			this.applyClass.addEventListener("click", () => {
-
 				const defoultText = this.inputEl.value == this.defoultText;
 				const inputClear = defoultText || !this.inputEl.value;
 
