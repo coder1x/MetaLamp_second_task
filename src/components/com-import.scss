@@ -3,8 +3,8 @@
 @import "header/header.scss";
 @import "footer/footer.scss";
 @import "sidebar/sidebar.scss";
-@import "squareColor/squareColor.scss";
-@import "styleText/styleText.scss";
+@import "square-color/square-color.scss";
+@import "style-text/style-text.scss";
 @import "text-field/text-field.scss";
 @import "drop-down/drop-down.scss";
 @import "date-dropdown/datepicker.scss";
@@ -12,12 +12,12 @@
 @import "subscrip-textfield/subscrip-textfield.scss";
 @import "checkbox-list/checkbox-list.scss";
 @import "feature/feature.scss";
-@import "radioButtons/radioButtons.scss";
-@import "toggleButtons/toggleButtons.scss";
-@import "likeButton/likeButton.scss";
+@import "radio-buttons/radio-buttons.scss";
+@import "toggle-buttons/toggle-buttons.scss";
+@import "like-button/like-button.scss";
 
 /* --------- Медиа запросы компонентов --------- */
-@import "base/media_base.scss";
-@import "footer/media_footer.scss";
-@import "header/media_header.scss";
-@import "sidebar/media_sidebar.scss";
+@import "base/media-base.scss";
+@import "footer/media-footer.scss";
+@import "header/media-header.scss";
+@import "sidebar/media-sidebar.scss";

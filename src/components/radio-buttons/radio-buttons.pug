@@ -1,0 +1,26 @@
+mixin radio-buttons(options)
+	-
+		let label = options.label ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'radio-buttons'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		- if(!flLabel){
+		p(class=classComp+'__header')= label
+		-}
+		ul(class=classComp+'__items') 
+			li(class=classComp+'__item')
+				label(class=classComp+'__label') Мужчина
+					input(class=classComp+'__input' type='radio' name='gender')
+					span(class=classComp+'__bef' tabindex='0')
+			li(class=classComp+'__item')
+				label(class=classComp+'__label') Женщина
+					input(class=classComp+'__input' type='radio' name='gender')
+					span(class=classComp+'__bef' tabindex='0')
+

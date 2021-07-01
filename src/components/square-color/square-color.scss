@@ -1,4 +1,6 @@
-.squareColor {
+$color-square-text: $Dark-Shade-100;
+
+.square-color {
 	width: 100%;
 	max-width: 281.26px;
 
@@ -17,16 +19,19 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
+	}
+
+	&__color {
+		font-family: "Montserrat-Bold";
 		color: $color-square-text;
 		font-size: 19px;
 		line-height: 28px;
 	}
 
-	&__color {
-		font-family: "Montserrat-Bold";
-	}
-
 	&__hexColor {
 		font-family: "Montserrat-Regular";
+		color: $color-square-text;
+		font-size: 19px;
+		line-height: 28px;
 	}
 }

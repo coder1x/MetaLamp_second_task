@@ -1,0 +1,21 @@
+.map-info {
+	display: flex;
+	flex-direction: row;
+	padding-left: 150px;
+	padding-top: 59px;
+	padding-bottom: 145px;
+	box-sizing: border-box;
+
+	&__text {
+		width: 100%;
+		max-width: 852px;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	&__square-color {
+		margin-bottom: 20px;
+		min-width: 236px;
+	}
+}

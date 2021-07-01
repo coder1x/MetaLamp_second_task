@@ -1,8 +1,8 @@
-.styleText {
+.style-text {
 	width: 100%;
-	width: 426px;
+	max-width: 436px;
 	display: grid;
-	grid-template-columns: 37px 100%;
+	grid-template-columns: 37px 1fr;
 
 	&__teg {
 		text-transform: uppercase;

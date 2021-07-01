@@ -1,9 +1,0 @@
-mixin likeButton(cl_name,classComp,label,flLabel=false,modif='')
-	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
-	div(class=className)
-		- if(!flLabel){
-		p(class=classComp+'__header')= label
-		-}
-		div(class=classComp+'__like' tabindex='0')
-			img(class=classComp+'__icon' src='assets/img/inetrface/like.svg' alt='')
-			span(class=classComp+'__value') 2

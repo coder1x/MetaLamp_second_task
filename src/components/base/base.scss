@@ -2,13 +2,13 @@ html {
 	height: 100%; /* растягиваем страницу на весь экран */
 	width: 100%; /* растягиваем страницу на весь экран */
 	font-size: #{$font-size}px;
-	@include helvetica("OpenSans");
+	font-family: "Montserrat-Regular";
 	min-width: $min-wraper;
 }
 
-::placeholder {
-	color: gray;
-}
+// ::placeholder {
+// 	color: gray;
+// }
 
 body {
 	display: flex;
@@ -17,10 +17,10 @@ body {
 	padding: 0;
 	min-height: 100%; /* растягиваем тело сайта на весь экран */
 	width: 100%; /* растягиваем тело сайта на весь экран */
-	background: #fff;
+	background: $color-background;
 	font-size: 14px;
 	line-height: 24px;
-	@include helvetica("Montserrat-Regular");
+	font-family: inherit;
 	color: $color-body;
 }
 
@@ -36,10 +36,6 @@ body {
 		position: relative;
 		word-wrap: break-word; // параметр специально тут что бы текст или слова не выходили за пределы контейнеров
 		flex: 1 0 auto;
-		//background-image: url("../../img/decor/fon.jpg");
-		//background-size: 100%;
-		//background-repeat: no-repeat;
-		//background-position: left top;
 	}
 }
 
@@ -48,7 +44,7 @@ body {
 h1,
 h2,
 h3 {
-	@include helvetica("Montserrat-Bold");
+	font-family: "Montserrat-Bold";
 	color: $color-h;
 }
 
@@ -77,12 +73,6 @@ main {
 
 section {
 	width: 100%;
-}
-
-aside {
-	width: 100%;
-	max-width: 200px;
-	background-color: #53383b;
 }
 
 img {

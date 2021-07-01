@@ -1,7 +1,18 @@
-mixin feature(cl_name,classComp,src,header,text,modif='')
-	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
+mixin feature(options)
+	-
+		let header = options.header ?? ''
+		let src = options.src ?? ''
+		let text = options.text ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let classComp = 'feature'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
 	div(class=className)
-		img(class=classComp+'__icon' src=src alt='' style='width: 40px;')
+		img(class=classComp+'__icon' src=src alt='')
 		div(class=classComp+'__description')
 			span(class=classComp+'__header')=header
 			p(class=classComp+'__text')=text

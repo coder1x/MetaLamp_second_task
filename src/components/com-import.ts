@@ -1,10 +1,10 @@
 import './test/main.ts';
 import './drop-down/drop-down.ts';
-import './maskedTextField/maskedTextField.ts';
+import './masked-textfield/masked-textfield.ts';
 import './date-dropdown/date-dropdown.js';
 import './validation-email/validation-email.ts';
 import './subscrip-textfield/subscrip-textfield.ts';
 import './checkbox-list/checkbox-list.ts';
-import './likeButton/likeButton.ts';
-import './radioButtons/radioButtons.ts';
-import './toggleButtons/toggleButtons.ts';
+import './like-button/like-button.ts';
+import './radio-buttons/radio-buttons.ts';
+import './toggle-buttons/toggle-buttons.ts';

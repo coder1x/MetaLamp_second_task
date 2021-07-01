@@ -1,14 +1,14 @@
 include ../components/head/head.pug
-include ../components/logoGroup/logoGroup.pug
+include ../components/logo-group/logo-group.pug
 include ../components/text-field/text-field.pug
 include ../components/drop-down/drop-down.pug
 include ../components/date-dropdown/date-dropdown.pug
 include ../components/subscrip-textfield/subscrip-textfield.pug
 include ../components/checkbox-list/checkbox-list.pug
 include ../components/feature/feature.pug
-include ../components/radioButtons/radioButtons.pug
-include ../components/toggleButtons/toggleButtons.pug
-include ../components/likeButton/likeButton.pug
+include ../components/radio-buttons/radio-buttons.pug
+include ../components/toggle-buttons/toggle-buttons.pug
+include ../components/like-button/like-button.pug
 
 
 
@@ -16,7 +16,7 @@ doctype html
 html(lang='ru')
 	body
 		div.ui-wrapper
-			+logoGroup('ui-wrapper')
+			+logo-group('ui-wrapper')
 			main
 				section.map-elements 
 					.colomn-left 
@@ -104,19 +104,18 @@ html(lang='ru')
 								masWord:masWord,
 								legend:'expandable checkbox list',
 							})
-						
-						+feature('colomn-left',
-						'feature',
-						'assets/img/icon/insert_emoticon.svg',
-						'Комфорт',
-						'Шумопоглощающие стены'
-						)
-						+feature('colomn-left',
-						'feature',
-						'assets/img/icon/location_city.svg',
-						'Удобство',
-						'Окно в каждой из спален'
-						)
+						.colomn-left__feature
+							+feature({
+								header:'Комфорт',
+								src:'assets/img/icon/insert_emoticon.svg',
+								text:'Шумопоглощающие стены'
+							})
+						.colomn-left__feature
+							+feature({
+								header:'Удобство',
+								src:'assets/img/icon/location_city.svg',
+								text:'Окно в каждой из спален'
+							})
 
 					.colomn-center 
 
@@ -132,26 +131,19 @@ html(lang='ru')
 								modif:'visibleBut'
 							})
 
-						+radioButtons('colomn-center',
-						'radioButtons',
-						'Radio Buttons',
-						'genderSelection',
-						false
-						)
-						
-						+toggleButtons('colomn-center',
-						'toggleButtons',
-						'Получать спецпредложения',
-						'Toggle',
-						'toggleSub',
-						'subscription'
-						)
+						.colomn-center__radio-buttons
+							+radio-buttons({
+								label:'Radio Buttons',
+							})
 
-						
-						+likeButton('colomn-center',
-						'likeButton',
-						'like button'
-						)
+						.colomn-center__toggle-buttons
+							+toggle-buttons({
+								header:'Toggle',
+								label:'Получать спецпредложения'
+							})
+
+						.colomn-center__like-button
+							+like-button({label:'like button'})
 
 						.colomn-center__checkbox-listRich
 							- 

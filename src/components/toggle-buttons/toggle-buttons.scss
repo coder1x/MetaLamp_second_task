@@ -2,7 +2,7 @@ $color-toggle-label: $Dark-Shade-75;
 $color-toggle-bk: $Dark-Shade-25;
 $color-toggle-border: $Purple;
 
-.toggleButtons {
+.toggle-buttons {
 	&__header {
 		font-family: "Montserrat-Bold";
 		font-size: 12px;
@@ -20,10 +20,7 @@ $color-toggle-border: $Purple;
 	}
 
 	&__input {
-		position: absolute;
-		z-index: -1;
-		opacity: 0;
-		margin: 10px 0 0 20px;
+		display: none;
 	}
 
 	&__tog {
@@ -63,14 +60,13 @@ $color-toggle-border: $Purple;
 	}
 
 	&__bef:focus {
-		outline: 0;
-		border-color: $color-toggle-border;
+		outline: 1;
 	}
 
-	&__input:checked + label + &__bef {
+	&__input:checked + &__bef {
 		border-color: $color-toggle-border;
 	}
-	&__input:checked + label + &__bef:after {
+	&__input:checked + &__bef:after {
 		left: 22px;
 		background: linear-gradient(180deg, $color-toggle-border 0%, #8ba4f9 100%);
 	}

@@ -52,6 +52,10 @@
 		max-width: 266px;
 		margin-bottom: 33px;
 	}
+
+	&__feature {
+		margin-bottom: 20px;
+	}
 }
 
 .colomn-center {
@@ -70,12 +74,17 @@
 		margin-top: 40px;
 	}
 
-	&__radioButtons {
+	&__radio-buttons {
 		margin-bottom: 36px;
 	}
 
-	&__toggleButtons {
+	&__toggle-buttons {
 		max-width: 264px;
 		margin-bottom: 40px;
+	}
+
+	&__like-button {
+		max-width: 222px;
+		margin-bottom: 36px;
 	}
 }

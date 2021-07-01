@@ -3,7 +3,7 @@ $color-radio: $Dark-Shade-25;
 $color-radio-select: $Dark-Shade-75;
 $color-radio-border: $Purple;
 
-.radioButtons {
+.radio-buttons {
 	&__header {
 		font-family: "Montserrat-Bold";
 		font-size: 12px;
@@ -71,11 +71,11 @@ $color-radio-border: $Purple;
 	}
 
 	/* Checked */
-	&__input[type="radio"]:checked + label + &__bef:after {
+	&__input[type="radio"]:checked + &__bef:after {
 		background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
 	}
 
-	&__input[type="radio"]:checked + label + &__bef {
+	&__input[type="radio"]:checked + &__bef {
 		border: 1px solid $color-radio-border;
 	}
 
@@ -88,7 +88,6 @@ $color-radio-border: $Purple;
 	}
 
 	&__bef:focus {
-		border: 1px solid $color-radio-border;
-		outline: 1px solid #8ba4f9;
+		outline: 1;
 	}
 }

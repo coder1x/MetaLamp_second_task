@@ -13,13 +13,3 @@ $font-name: ("Montserrat-Regular", "Montserrat-Bold");
 		font-display: swap;
 	}
 }
-
-@mixin helvetica($style: map-get($font-name, 0)) {
-	@each $current-font in $font-name {
-		@if $style == $current-font {
-			font-family: $current-font;
-		}
-	}
-}
-
-//  @include helvetica('Montserrat-Regular');
