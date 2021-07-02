@@ -9,6 +9,7 @@ include ../components/feature/feature.pug
 include ../components/radio-buttons/radio-buttons.pug
 include ../components/toggle-buttons/toggle-buttons.pug
 include ../components/like-button/like-button.pug
+include ../components/rate-button/rate-button.pug
 
 
 
@@ -148,6 +149,11 @@ html(lang='ru')
 						.colomn-center__like-button
 							+like-button({label:'like button'})
 
+						.colomn-center__rate-button
+							+rate-button({
+								label:'rate button'
+							})
+							
 						.colomn-center__checkbox-listRich
 							- 
 								masWord = [
@@ -164,6 +170,6 @@ html(lang='ru')
 								modif:'visibleBut',
 								class:'checkbox-list_rich'
 							})
-						
+
 					.colomn-right
 					.comment-wrap

@@ -46,10 +46,10 @@ class maskedTextField {
 		let point = val + '.';
 		let last = point != this.temp;
 
-		if (val.match(new RegExp(day + "\\.?$"))) {
+		if (val.match(new RegExp(day + '\\.?$'))) {
 			elem.value = val.length == 2 && last ? point : val;
 		}
-		else if (val.match(new RegExp(month + "\\.?$"))) {
+		else if (val.match(new RegExp(month + '\\.?$'))) {
 			elem.value = val.length == 5 && last ? point : val;
 
 		} else if (val.match(new RegExp(year))) {

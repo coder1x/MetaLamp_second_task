@@ -10,8 +10,8 @@ class validationEmail {
 
 	constructor(options: optV) {
 
-		let event = options.event ?? "";
-		let message = options.message ?? "Вы ввели неверный Email.";
+		let event = options.event ?? '';
+		let message = options.message ?? 'Вы ввели неверный Email.';
 		this.inputElem = options.elem;
 
 		// eslint-disable-next-line no-control-regex
@@ -52,7 +52,7 @@ interface opt {
 function renderValidationEmail(options: opt) {
 
 	const className = options.className;
-	const name = options.inputName ?? "";
+	const name = options.inputName ?? '';
 	const input = className + '__input[name="' + name + '"]';
 
 	let components = document.querySelectorAll(input);
@@ -71,9 +71,9 @@ function renderValidationEmail(options: opt) {
 
 
 renderValidationEmail({
-	className: ".text-field",
-	inputName: "email",
-	event: "change",
+	className: '.text-field',
+	inputName: 'email',
+	event: 'change',
 });
 
 

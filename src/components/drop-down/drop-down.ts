@@ -107,11 +107,11 @@ class dropDown {
 
 	private setAction() {
 
-		this.elem.addEventListener("click", () => {
+		this.elem.addEventListener('click', () => {
 			this.clickElemFl = true;
 		});
 
-		this.inputEl.addEventListener("click", (e: any) => {
+		this.inputEl.addEventListener('click', (e: any) => {
 			if (e.isTrusted) {
 				if (!this.flClick) {
 					this.styleWidget();
@@ -124,12 +124,12 @@ class dropDown {
 			}
 		});
 
-		this.inputEl.addEventListener("focus", () => {
+		this.inputEl.addEventListener('focus', () => {
 			this.inputEl.click();
 		});
 
 		if (this.applyClass)
-			this.applyClass.addEventListener("click", () => {
+			this.applyClass.addEventListener('click', () => {
 				const defoultText = this.inputEl.value == this.defoultText;
 				const inputClear = defoultText || !this.inputEl.value;
 
@@ -144,7 +144,7 @@ class dropDown {
 		if (this.clearBut)
 			this.clearBut.addEventListener('click', () => this.resetValue());
 
-		document.addEventListener("click", () => {
+		document.addEventListener('click', () => {
 			if (!this.clickElemFl) {
 				this.styleWidget(true);
 			}
@@ -155,8 +155,8 @@ class dropDown {
 
 	private getVisible(elem: Element) {
 		let display = window.getComputedStyle(elem, null)
-			.getPropertyValue("display");
-		return display === "none" ? false : true;
+			.getPropertyValue('display');
+		return display === 'none' ? false : true;
 	}
 
 
@@ -216,7 +216,7 @@ class dropDown {
 		};
 
 		for (let item of this.items) {
-			item.addEventListener("click", funAct);
+			item.addEventListener('click', funAct);
 		}
 	}
 

@@ -215,7 +215,7 @@ class dateDropDown {
 
 	getVisible(elem) {
 		let display = window.getComputedStyle(elem, null)
-			.getPropertyValue("display");
+			.getPropertyValue('display');
 		return display === "none" ? false : true;
 	}
 

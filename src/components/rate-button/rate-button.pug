@@ -1,11 +1,23 @@
-//- mixin rate-button(cl_name,classComp,label,label2,nameID,nameIn,flLabel=false,modif='')
-//- 	- let className = classComp+' '+cl_name+'__'+classComp+' '+modif
-//- 	div(class=className)
-//- 		- if(!flLabel){
-//- 		p(class=classComp+"__header")= label2
-//- 		-}
-//- 		ul(class=classComp+"__items") 
-//- 			li(class=classComp+"__item")
-//- 				input(class=classComp+"__input" type='radio' name=nameD id="Man")
-//- 				label(class=classComp+"__label" for="Man") Мужчина
-//- 				span(class=classComp+"__bef" tabindex="0")
+mixin rate-button(options)
+	-
+		let label = options.label ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'rate-button'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		fieldset(class=classComp+"__stars") 
+			- if(!flLabel){
+			legend(class=classComp+"__header")= label
+			-}
+			div(class=classComp+"__group")
+				input(class=classComp+"__star" type='radio' name='rating' value='1' aria-label='Ужасно')
+				input(class=classComp+"__star" type='radio' name='rating' value='2' aria-label='Плохо')
+				input(class=classComp+"__star" type='radio' name='rating' value='3' aria-label='Нормально')
+				input(class=classComp+"__star" type='radio' name='rating' value='4' aria-label='Хорошо')
+				input(class=classComp+"__star" type='radio' name='rating' value='5' aria-label='Отлично')
