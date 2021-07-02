@@ -1,0 +1,31 @@
+mixin test(options)
+	-
+		let label = options.label ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'test'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		fieldset(class=classComp+"__items") 
+			- if(!flLabel){
+			legend(class=classComp+"__header")= label
+			-}
+			div(class=classComp+"__group")
+				label(class=classComp+"__label") первый
+					input(class=classComp+"__input" type='checkbox' name='') 
+					span(class=classComp+"__box")
+				label(class=classComp+"__label") второй
+					input(class=classComp+"__input" type='checkbox' name='' checked) 
+					span(class=classComp+"__box")
+				label(class=classComp+"__label") третий
+					input(class=classComp+"__input" type='checkbox' name='' disabled) 
+					span(class=classComp+"__box")
+				label(class=classComp+"__label") четвёртый
+					input(class=classComp+"__input" type='checkbox' name='' checked disabled) 
+					span(class=classComp+"__box")
+				

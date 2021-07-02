@@ -14,38 +14,35 @@ $color-radio-border: $Purple;
 		margin-bottom: 14px;
 	}
 
+	&__items {
+		display: flex;
+		flex-direction: row;
+		border: 0px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	&__input {
+		display: none;
+	}
+
 	&__label {
+		position: relative;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		padding-left: 29px;
+		margin-right: 23px;
+		line-height: 18px;
+		user-select: none;
 		font-family: "Montserrat-Regular";
 		font-size: 14px;
 		line-height: 24px;
 		color: $color-radio-label;
 	}
 
-	&__items {
-		display: flex;
-		flex-direction: row;
-	}
-
-	&__input[type="radio"] {
-		display: none;
-	}
-
-	&__item {
-		position: relative;
-	}
-
-	&__label {
-		display: inline-block;
-		cursor: pointer;
-
-		padding-left: 29px;
-		margin-right: 23px;
-		line-height: 18px;
-		user-select: none;
-	}
-
 	&__bef {
-		display: inline-block;
+		//display: inline-block;
 		width: 20px;
 		height: 20px;
 		position: absolute;
@@ -59,35 +56,29 @@ $color-radio-border: $Purple;
 		//outline: 0;
 	}
 
-	&__bef:after {
-		content: "";
-		position: absolute;
-		top: 2.5px;
-		left: 3px;
-		width: 12px;
-		height: 12px;
-		border-radius: 10px;
-		background: #fff;
-	}
-
-	/* Checked */
-	&__input[type="radio"]:checked + &__bef:after {
-		background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
-	}
-
 	&__input[type="radio"]:checked + &__bef {
+		border-color: $color-radio-border;
+		background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
+		box-shadow: inset 0px 0px 0px 3.5px $color-background;
+	}
+
+	&__input[type="radio"]:focus + &__bef {
 		border: 1px solid $color-radio-border;
 	}
 
-	&__input[type="radio"]:checked + label {
-		color: $color-radio-select;
+	&__input[type="radio"]:disabled + &__bef {
+		border-color: $Dark-Shade-1;
+	}
+
+	&__input[type="radio"]:checked:disabled + &__bef {
+		border-color: $Dark-Shade-1;
 	}
 
 	&__bef:hover {
-		border: 1px solid $color-radio-border;
+		border-color: $color-radio-border;
 	}
 
-	&__bef:focus {
-		outline: 1;
-	}
+	// &__bef:focus {
+	// 	outline: 1;
+	// }
 }

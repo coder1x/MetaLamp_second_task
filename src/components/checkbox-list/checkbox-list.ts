@@ -1,6 +1,10 @@
 
 
-
+interface optE {
+	str: string,
+	fl?: boolean,
+	dom?: Element
+}
 
 class сheckboxList {
 
@@ -18,14 +22,26 @@ class сheckboxList {
 		this.setActions();
 	}
 
-	private setDomElem() {
-		this.wrap = this.elem.querySelector(this.className + '__wrap');
-		this.headerEl = this.elem.querySelector(this.className + '__header');
-		this.imgEl = this.elem.querySelector(this.className + '__tip');
-		this.before = this.elem.querySelectorAll(this.className + '__bef');
-		this.input = this.elem.querySelectorAll(this.className + '__input');
+	private getElem(param: optE) {
+		let elem: any;
+		let dom = param.dom ?? this.elem;
+		let name = this.className + param.str;
+		if (param.fl) {
+			elem = dom.querySelectorAll(name);
+		}
+		else {
+			elem = dom.querySelector(name);
+		}
+		return elem;
 	}
 
+	private setDomElem() {
+		this.wrap = this.getElem({ str: '__wrap' });
+		this.headerEl = this.getElem({ str: '__header' });
+		this.imgEl = this.getElem({ str: '__tip' });
+		this.before = this.getElem({ str: '__bef', fl: true });
+		this.input = this.getElem({ str: '__input', fl: true });
+	}
 
 	toggleVis() {
 		let display = window.getComputedStyle(this.wrap, null)
@@ -41,11 +57,6 @@ class сheckboxList {
 		flag ? objClass.add(clearName) : objClass.remove(clearName);
 	}
 
-	private toggleChecked(elem: HTMLInputElement) {
-		elem.checked = elem.checked ? false : true;
-	}
-
-
 	private setActions() {
 
 		if (this.imgEl) {
@@ -54,20 +65,13 @@ class сheckboxList {
 			});
 			this.imgEl.addEventListener('click', () => { this.toggleVis(); });
 			this.headerEl.addEventListener('keydown', (e: any) => {
-				if (e.key == 'Enter')
+				if (e.key == 'Enter' || e.key == ' ')
 					this.toggleVis();
-			});
-		}
-
-
-		for (let i = 0; i < this.before.length; i++) { // focus
-			this.before[i].addEventListener('keydown', (e: any) => {
-				if (e.key == 'Enter')
-					this.toggleChecked(this.input[i]);
 			});
 		}
 	}
 }
+
 
 
 

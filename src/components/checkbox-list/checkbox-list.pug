@@ -27,6 +27,6 @@ mixin checkbox-list(options)
 				each value, index in masWord
 					label(class=classComp+'__label')= value
 						input(class=classComp+'__input' type='checkbox' name=value)
-						span(class=classComp+'__bef' tabindex='0')
+						span(class=classComp+'__bef')
 						-if(masText.length)
 							span(class=classComp+'__text')=masText[index]

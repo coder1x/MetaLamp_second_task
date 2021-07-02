@@ -11,7 +11,7 @@ include ../components/toggle-buttons/toggle-buttons.pug
 include ../components/like-button/like-button.pug
 include ../components/rate-button/rate-button.pug
 
-
+//include ../components/test/test.pug
 
 doctype html
 html(lang='ru')
@@ -21,6 +21,9 @@ html(lang='ru')
 			main
 				section.map-elements 
 					.colomn-left 
+						//- +test({
+						//- 	label:'Чекбоксы'
+						//- })
 						.colomn-left__text-field
 							+text-field({
 								label: 'text field',
@@ -153,7 +156,7 @@ html(lang='ru')
 							+rate-button({
 								label:'rate button'
 							})
-							
+
 						.colomn-center__checkbox-listRich
 							- 
 								masWord = [

@@ -1,4 +1,4 @@
-import './test/main.ts';
+import './test/test.ts';
 import './drop-down/drop-down.ts';
 import './masked-textfield/masked-textfield.ts';
 import './date-dropdown/date-dropdown.js';
