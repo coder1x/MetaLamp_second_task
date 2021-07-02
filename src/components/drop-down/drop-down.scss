@@ -18,10 +18,6 @@ $color-border-show: $Dark-Shade-50;
 		position: relative;
 	}
 
-	&__icon {
-		width: 30px;
-	}
-
 	&__tip {
 		position: absolute;
 		width: 13px;
@@ -36,9 +32,25 @@ $color-border-show: $Dark-Shade-50;
 	&__plus {
 		cursor: pointer;
 		border: 0px;
-		background: #fff;
+		background: $color-background;
 		padding: 0;
+		font-family: "Montserrat-Regular";
+		color: rgba(31, 32, 65, 0.5);
+		font-size: 18px;
+		line-height: 22px;
+		width: 30px;
+		height: 30px;
+		border: 1px solid rgba(31, 32, 65, 0.5);
+		border-radius: 50%;
+		box-sizing: border-box;
+
+		&_disable {
+			border: 1px solid rgba(31, 32, 65, 0.25);
+			color: rgba(31, 32, 65, 0.25);
+		}
 	}
+
+	// border: 1px solid rgba(31, 32, 65, 0.25);
 
 	&__text,
 	&__value {
@@ -165,4 +177,6 @@ $color-border-show: $Dark-Shade-50;
 			visibility: unset;
 		}
 	}
+
+	// ---------------------------- modif buttons
 }

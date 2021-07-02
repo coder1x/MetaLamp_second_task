@@ -1,12 +1,17 @@
 
+interface optE {
+	str: string,
+	fl?: boolean,
+	dom?: Element
+}
 
 class dropDown {
 
 	inputEl: HTMLInputElement;
 	private imgClass: string;
 	private selectEl: Element;
-	clearBut: HTMLElement;
-	private applyClass: HTMLElement;
+	clearBut: Element;
+	private applyClass: Element;
 	elem: Element;
 	private items: any;
 	defoultText: string;
@@ -15,6 +20,7 @@ class dropDown {
 	className: string;
 	private flClick: boolean;
 	private clickElemFl: boolean;
+	private disPlus: boolean;
 
 	constructor(className: string, component: Element) {
 
@@ -24,40 +30,74 @@ class dropDown {
 
 		this.flClick = false;
 		this.clickElemFl = false;
+		this.disPlus = false;
 
 		this.setDomElem();
 		this.setAction();
 		this.setActionSelect();
 	}
 
+	private getElem(param: optE) {
+		let elem: any;
+		let dom = param.dom ?? this.elem;
+		let name = this.className + param.str;
+		if (param.fl) {
+			elem = dom.querySelectorAll(name);
+		}
+		else {
+			elem = dom.querySelector(name);
+		}
+		return elem;
+	}
 
 	private setDomElem() {
-		const inputClass = this.className + '__input';
-		const itemsClass = this.className + '__select-item';
-		const selectClass = this.className + '__select';
 		const valueClass = this.className + '__value';
 
-		this.applyClass = this.elem.querySelector(
-			this.className + "__button-apply"
-		);
-
-		this.clearBut = this.elem.querySelector(
-			this.className + "__button-clear"
-		);
-
-		this.items = this.elem.querySelectorAll(itemsClass);
+		this.applyClass = this.getElem({ str: '__button-apply' });
+		this.clearBut = this.getElem({ str: '__button-clear' });
+		this.items = this.getElem({ str: '__select-item', fl: true });
 
 		this.valMas = [];
 		for (let item of this.items) {
+			this.getСheckVal(item);
 			this.valMas.push(item.querySelector(valueClass));
 			this.readingAttributes(item);
 		}
 
-		this.inputEl = this.elem.querySelector(inputClass);
+		this.inputEl = this.getElem({ str: '__input' });
 		this.defoultText = this.inputEl.placeholder;
-		this.selectEl = this.elem.querySelector(selectClass);
+		this.selectEl = this.getElem({ str: '__select' });
 	}
 
+
+	getСheckVal(item: Element) {
+		let minus = this.getElem({ str: '__minus', dom: item });
+		let value = this.getElem({ str: '__value', dom: item });
+		let plus = this.getElem({ str: '__plus', dom: item });
+
+		let getModif = (str: string, str2: string) => {
+			return this.className.replace(/^\./, '') + str + str2;
+		};
+
+		let classM = getModif('__minus', '_disable');
+		let val = Number(value.innerText);
+
+		if (!val) {
+			minus.classList.add(classM);
+		} else {
+			minus.classList.remove(classM);
+		}
+
+		let maxVal = Number(plus.getAttribute('data-max'));
+		let classP = getModif('__plus', '_disable');
+		if (val >= maxVal) {
+			plus.classList.add(classP);
+			this.disPlus = true;
+		} else {
+			plus.classList.remove(classP);
+			this.disPlus = false;
+		}
+	}
 
 	private readingAttributes(elem: Element) {
 		this.declensions.push(elem.getAttribute('data-type').split(','));
@@ -71,7 +111,7 @@ class dropDown {
 			this.clickElemFl = true;
 		});
 
-		this.inputEl.addEventListener("click", (e) => {
+		this.inputEl.addEventListener("click", (e: any) => {
 			if (e.isTrusted) {
 				if (!this.flClick) {
 					this.styleWidget();
@@ -138,9 +178,10 @@ class dropDown {
 		this.valMas.map((item: HTMLElement) => item.innerText = '0');
 		this.inputEl.value = this.defoultText;
 
+		for (let item of this.items) { this.getСheckVal(item); }
+
 		if (this.clearBut)
 			this.toggleModif(this.clearBut, '__button-clear_visible');
-
 	}
 
 	declOfNum(number: number, words: string[]) {
@@ -165,11 +206,12 @@ class dropDown {
 			if (minusEl && num) {
 				--num;
 			}
-			else if (plusEl) {
+			else if (plusEl && !this.disPlus) {
 				++num;
 			}
 
 			valueEl.innerText = num;
+			this.getСheckVal(liEl);
 			this.setInput();
 		};
 

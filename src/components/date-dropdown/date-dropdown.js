@@ -65,8 +65,8 @@ class dateDropDown {
 
 		let masDate = date.split(",");
 
-		this.input1.value = this.flRange ? masDate[0] :
-			getDateFilter(masDate[0]);
+		this.input1.value = this.flRange ?
+			masDate[0] : getDateFilter(masDate[0]);
 
 		if (masDate.length == 2) {
 			if (this.flRange) {
@@ -107,14 +107,14 @@ class dateDropDown {
 		let divBut = createElem('div', 'datepicker-buttons');
 
 		let spanClr = createElem(
-			'span',
+			'button',
 			this.#classClear,
 			'очистить');
 
 		divBut.appendChild(spanClr);
 
 		let spanAс = createElem(
-			'span',
+			'button',
 			'datepicker-buttons__apply',
 			'применить');
 
@@ -147,6 +147,18 @@ class dateDropDown {
 	}
 
 
+	dateConversion(dateText) {
+		let date = dateText.trim().split(" ");
+		let index = this.#masMonth.indexOf(date[1], 0);
+		let month = 0;
+		if (index != -1) {
+			month = ++index;
+		}
+		let currentDate = new Date();
+		return month + '.' + date[0] + '.' + currentDate.getFullYear();
+	}
+
+
 
 	setRange() {
 		this.#flag = true;
@@ -155,18 +167,6 @@ class dateDropDown {
 			let mas = date.split(".");
 			return new Date(mas[1] + '.' + mas[0] + '.' + mas[2]);
 		}
-
-		let dateConversion = (dateText) => {
-			let date = dateText.trim().split(" ");
-			let index = this.#masMonth.indexOf(date[1], 0);
-			let month = 0;
-			if (index != -1) {
-				month = ++index;
-			}
-			let currentDate = new Date();
-			return month + '.' + date[0] + '.' + currentDate.getFullYear();
-		};
-
 
 		let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 		let regexp2 =
@@ -194,8 +194,8 @@ class dateDropDown {
 			this.$calendarObj.clear();
 
 			let mas = date1.split("-");
-			let dateOne = dateConversion(mas[0]);
-			let dateTwo = dateConversion(mas[1]);
+			let dateOne = this.dateConversion(mas[0]);
+			let dateTwo = this.dateConversion(mas[1]);
 
 			let minOne = Date.parse(dateOne) / 1000 / 60;
 			let minTwo = Date.parse(dateTwo) / 1000 / 60;
@@ -301,8 +301,10 @@ class dateDropDown {
 		this.clearButton.addEventListener('click',
 			() => {
 				this.$calendarObj.clear();
-				if (!this.imgRight)
+				if (!this.imgRight) {
 					this.input1.value = '';
+					this.input1.placeholder = '';
+				}
 				this.#visibleClear();
 			});
 

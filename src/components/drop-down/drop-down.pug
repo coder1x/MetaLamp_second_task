@@ -4,6 +4,7 @@ mixin drop-down(options)
 		let value = options.value ?? ''
 		let name = options.name ?? ''
 		let masWord = options.masWord ?? [[]]
+		let maxValue = options.maxValue ?? []
 		let modif = options.modif ?? ''
 		let addClass = options.class ?? ''
 		let button = options.button ?? false
@@ -25,11 +26,9 @@ mixin drop-down(options)
 			- for(let i=0; i<masWord[0].length; i++)	{
 				li(class=classComp+'__select-item' data-type= masWord[1][i])
 					p(class=classComp+'__text')= masWord[0][i] 
-					button(class=classComp+'__minus')
-						img(class=classComp+'__icon' src='assets/img/inetrface/minus.svg' alt='')
+					button(class=classComp+'__minus') -
 					span(class=classComp+'__value') 0
-					button(class=classComp+'__plus')
-						img(class=classComp+'__icon' src='assets/img/inetrface/plus.svg' alt='')
+					button(class=classComp+'__plus' data-max=maxValue[i]) +
 			-}
 			-if(button){
 			li(class=classComp+'__buttons')

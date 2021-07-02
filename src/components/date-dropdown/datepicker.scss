@@ -160,6 +160,8 @@ $color-days-names: $Purple;
 		text-transform: uppercase;
 		color: $color-button;
 		cursor: pointer;
+		border: 0px;
+		background-color: $color-background;
 	}
 
 	&__clear {
