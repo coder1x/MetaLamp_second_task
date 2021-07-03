@@ -21,14 +21,16 @@ $color-feature-border: $Dark-Shade-1;
 	&__header {
 		font-size: 14px;
 		line-height: 24px;
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		color: $color-feature;
 	}
 
 	&__text {
 		font-size: 14px;
 		line-height: 24px;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		color: $color-feature;
 	}
 }

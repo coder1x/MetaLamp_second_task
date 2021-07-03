@@ -7,7 +7,8 @@ $color-like-voted: $Purple;
 	align-items: flex-start;
 
 	&__header {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -39,7 +40,8 @@ $color-like-voted: $Purple;
 	}
 
 	&__value {
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		margin-left: 5px;
 		font-size: 10px;
 		line-height: 12px;

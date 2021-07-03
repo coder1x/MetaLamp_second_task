@@ -5,7 +5,8 @@ $color-radio-border: $Purple;
 
 .radio-buttons {
 	&__header {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -35,14 +36,14 @@ $color-radio-border: $Purple;
 		margin-right: 23px;
 		line-height: 18px;
 		user-select: none;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
 		color: $color-radio-label;
 	}
 
 	&__bef {
-		//display: inline-block;
 		width: 20px;
 		height: 20px;
 		position: absolute;
@@ -51,26 +52,24 @@ $color-radio-border: $Purple;
 		border: 1px solid $color-radio;
 		border-radius: 50%;
 		box-sizing: border-box;
-		background-position: center center !important;
 		cursor: pointer;
-		//outline: 0;
 	}
 
-	&__input[type="radio"]:checked + &__bef {
+	&__input:checked + &__bef {
 		border-color: $color-radio-border;
 		background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
 		box-shadow: inset 0px 0px 0px 3.5px $color-background;
 	}
 
-	&__input[type="radio"]:focus + &__bef {
+	&__input:focus + &__bef {
 		border: 1px solid $color-radio-border;
 	}
 
-	&__input[type="radio"]:disabled + &__bef {
+	&__input:disabled + &__bef {
 		border-color: $Dark-Shade-1;
 	}
 
-	&__input[type="radio"]:checked:disabled + &__bef {
+	&__input:checked:disabled + &__bef {
 		border-color: $Dark-Shade-1;
 	}
 

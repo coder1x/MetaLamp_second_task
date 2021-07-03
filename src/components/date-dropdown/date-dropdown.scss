@@ -6,7 +6,8 @@
 
 	&__label-text {
 		margin-bottom: 5px;
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -29,7 +30,8 @@
 
 	&__text,
 	&__value {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -60,7 +62,8 @@
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
 		box-sizing: border-box;
@@ -91,18 +94,20 @@
 		transform: rotate(180deg);
 	}
 
-	.datepicker {
-		width: calc(100% - 2px) !important;
+	.date-dropdown__datepicker {
+		.datepicker {
+			width: calc(100% - 2px);
 
-		&--cell,
-		&--day-name {
-			max-width: 39.88px !important;
-			height: 40px !important;
-		}
+			&--cell,
+			&--day-name {
+				max-width: 39.88px;
+				height: 40px;
+			}
 
-		&--cell-month,
-		&--cell-year {
-			max-width: none !important;
+			&--cell-month,
+			&--cell-year {
+				max-width: none;
+			}
 		}
 	}
 
@@ -138,34 +143,43 @@
 		max-width: none;
 	}
 
-	&_filter .datepicker {
-		width: 266px !important;
-
-		&--cell,
-		&--day-name {
-			height: 35px !important;
+	&_filter .date-dropdown__datepicker {
+		.datepicker {
+			width: 264px;
+			&--cell,
+			&--day-name {
+				height: 35px;
+			}
 		}
 	}
 
-	&_filter .-range-from-::after {
-		width: 35px !important;
-		height: 35px !important;
+	&_filter .date-dropdown__datepicker {
+		.-range-from-::after {
+			width: 35px;
+			height: 35px;
+		}
 	}
 
-	&_filter .-range-to-::before {
-		width: 35px !important;
-		height: 35px !important;
+	&_filter .date-dropdown__datepicker {
+		.-range-to-::before {
+			width: 35px;
+			height: 35px;
+		}
 	}
 
-	&_filter .-in-range-:hover::before {
-		width: 36px !important;
-		height: 35px !important;
+	&_filter .date-dropdown__datepicker {
+		.-in-range-:hover::before {
+			width: 36px;
+			height: 35px;
+		}
 	}
 
 	//----------------------------------------------- modif button
-	.datepicker-buttons__clear {
-		&_visible {
-			visibility: unset;
+	.date-dropdown__datepicker {
+		.datepicker-buttons__clear {
+			&_visible {
+				visibility: unset;
+			}
 		}
 	}
 }

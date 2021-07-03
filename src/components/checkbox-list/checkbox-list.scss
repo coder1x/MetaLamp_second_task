@@ -8,7 +8,8 @@ $color-checkbox-rich: $Dark-Shade-75;
 		position: relative;
 		width: 100%;
 		margin-bottom: 17px;
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 13px;
 		text-transform: uppercase;
@@ -31,7 +32,8 @@ $color-checkbox-rich: $Dark-Shade-75;
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 14px;
 		line-height: 19px;
 		color: $color-checkbox;
@@ -41,7 +43,8 @@ $color-checkbox-rich: $Dark-Shade-75;
 	}
 
 	&__text {
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 12px;
 		line-height: 14px;
 		margin-top: 5px;
@@ -54,7 +57,6 @@ $color-checkbox-rich: $Dark-Shade-75;
 	}
 
 	&__bef {
-		//display: inline-block;
 		width: 20px;
 		height: 20px;
 		background: $color-background;
@@ -121,7 +123,8 @@ $color-checkbox-rich: $Dark-Shade-75;
 	// ---------------------------- modif RICH
 
 	&_rich &__label {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		color: $color-checkbox-rich;
 	}
 }

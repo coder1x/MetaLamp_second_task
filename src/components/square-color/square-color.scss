@@ -22,14 +22,16 @@ $color-square-text: $Dark-Shade-100;
 	}
 
 	&__color {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		color: $color-square-text;
 		font-size: 19px;
 		line-height: 28px;
 	}
 
 	&__hexColor {
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		color: $color-square-text;
 		font-size: 19px;
 		line-height: 28px;

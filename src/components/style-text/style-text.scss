@@ -6,7 +6,8 @@
 
 	&__teg {
 		text-transform: uppercase;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		color: $style-text;
 		text-align: end;
 	}

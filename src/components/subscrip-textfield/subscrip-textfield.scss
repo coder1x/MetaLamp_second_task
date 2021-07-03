@@ -5,7 +5,8 @@
 
 	&__label-text {
 		margin-bottom: 5px;
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -36,13 +37,13 @@
 	}
 
 	&__link:focus {
-		//border: 1px solid rgba(31, 32, 65, 0.5);
 		outline: 1;
 	}
 
 	&__text,
 	&__value {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -73,18 +74,19 @@
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
 		box-sizing: border-box;
 	}
 
-	input::placeholder {
+	&__input::placeholder {
 		color: $style-text;
 	}
 
-	input:hover,
-	input:focus {
+	&__input:hover,
+	&__input:focus {
 		border: 1px solid $color-border-hover;
 	}
 }

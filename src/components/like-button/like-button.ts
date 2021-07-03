@@ -61,8 +61,10 @@ class likeButton {
 		});
 
 		this.linkEl.addEventListener('keydown', (e: any) => {
-			if (e.key == 'Enter')
+			if (e.key == 'Enter' || e.key == ' ') {
 				this.toggleLike();
+				e.preventDefault();
+			}
 		});
 	}
 

@@ -1,4 +1,6 @@
 $color-border-show: $Dark-Shade-50;
+$color-button-pm: $Dark-Shade-50;
+$color-button-disable: $Dark-Shade-25;
 
 .drop-down {
 	display: flex;
@@ -7,7 +9,8 @@ $color-border-show: $Dark-Shade-50;
 
 	&__text-header {
 		margin-bottom: 5px;
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -34,27 +37,27 @@ $color-border-show: $Dark-Shade-50;
 		border: 0px;
 		background: $color-background;
 		padding: 0;
-		font-family: "Montserrat-Regular";
-		color: rgba(31, 32, 65, 0.5);
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		color: $color-button-pm;
 		font-size: 18px;
 		line-height: 22px;
 		width: 30px;
 		height: 30px;
-		border: 1px solid rgba(31, 32, 65, 0.5);
+		border: 1px solid $color-button-pm;
 		border-radius: 50%;
 		box-sizing: border-box;
 
 		&_disable {
-			border: 1px solid rgba(31, 32, 65, 0.25);
-			color: rgba(31, 32, 65, 0.25);
+			border: 1px solid $color-button-disable;
+			color: $color-button-disable;
 		}
 	}
 
-	// border: 1px solid rgba(31, 32, 65, 0.25);
-
 	&__text,
 	&__value {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -109,7 +112,8 @@ $color-border-show: $Dark-Shade-50;
 
 	&__button-apply,
 	&__button-clear {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -136,7 +140,8 @@ $color-border-show: $Dark-Shade-50;
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
 		box-sizing: border-box;

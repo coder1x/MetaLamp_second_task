@@ -4,7 +4,8 @@ $color-toggle-border: $Purple;
 
 .toggle-buttons {
 	&__header {
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
 		text-transform: uppercase;
@@ -13,7 +14,8 @@ $color-toggle-border: $Purple;
 	}
 
 	&__label {
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
 		color: $color-toggle-label;

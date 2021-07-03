@@ -1,15 +1,23 @@
 $font-adres: "../fonts/";
 
-$font-name: ("Montserrat-Regular", "Montserrat-Bold");
+$font-bold: "Montserrat-Bold";
+$font-regul: "Montserrat-Regular";
 
-@each $current-font in $font-name {
-	@font-face {
-		font-family: $current-font; /* Имя шрифта */
-		src: url("#{$font-adres}#{$current-font}.woff2") format("woff2"),
-			url("#{$font-adres}#{$current-font}.woff") format("woff"),
-			url("#{$font-adres}#{$current-font}.ttf") format("truetype");
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
+@font-face {
+	font-family: "Montserrat";
+	src: url("#{$font-adres}#{$font-regul}.woff2") format("woff2"),
+		url("#{$font-adres}#{$font-regul}.woff") format("woff"),
+		url("#{$font-adres}#{$font-regul}.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("#{$font-adres}#{$font-bold}.woff2") format("woff2"), url("#{$font-adres}#{$font-bold}.woff") format("woff"),
+		url("#{$font-adres}#{$font-bold}.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
 }

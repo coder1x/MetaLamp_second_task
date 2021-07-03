@@ -1,0 +1,58 @@
+.range-slider {
+	&__header {
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__label {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: #1f2041;
+		cursor: pointer;
+	}
+
+	&__value {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		margin-left: auto;
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: rgba(31, 32, 65, 0.5);
+	}
+
+	&__wrap {
+		.irs--flat .irs-line {
+			height: 6px;
+			background: #fff;
+			border: 1px solid rgba(31, 32, 65, 0.25);
+			box-sizing: border-box;
+			border-radius: 3px;
+		}
+
+		.irs--flat .irs-bar {
+			height: 6px;
+			background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+			border-radius: 3px;
+		}
+
+		.irs--flat .irs-handle {
+			width: 12px;
+			height: 12px;
+			top: 20px;
+			background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+			border: 2px solid #fff;
+			border-radius: 50%;
+			box-sizing: unset;
+		}
+	}
+
+	.irs--flat .irs-handle > i:first-child {
+		width: 0px;
+		height: 0px;
+		background-color: inherit;
+	}
+}
