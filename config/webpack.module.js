@@ -52,8 +52,8 @@ module.exports = {
 				test: /\.(png|jpg|svg|gif|webp)$/,
 				loader: 'file-loader',
 				options: {
-					outputPath: `${PATHS.assets}img\\decor`,
-					publicPath: '/assets/img/decor/',
+					outputPath: `${PATHS.assets}images/decor/`,
+					publicPath: '/assets/images/decor/',
 				},
 			},
 

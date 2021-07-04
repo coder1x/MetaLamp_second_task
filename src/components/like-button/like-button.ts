@@ -34,11 +34,11 @@ class likeButton {
 		// меняем стили в зависимости от события
 		const name = this.nameClass.replace(/^\./, '') + '_voted';
 		if (this.flag) { // ставили лайк
-			this.iconEl.src = 'assets/img/inetrface/favorite.svg';
+			this.iconEl.src = 'assets/images/like-button/img/favorite.svg';
 			this.likeEl.classList.add(name);
 
 		} else { // не ставили
-			this.iconEl.src = 'assets/img/inetrface/like.svg';
+			this.iconEl.src = 'assets/images/like-button/img/like.svg';
 			this.likeEl.classList.remove(name);
 		}
 	}

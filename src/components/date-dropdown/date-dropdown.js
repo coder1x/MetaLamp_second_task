@@ -132,8 +132,10 @@ class dateDropDown {
 		this.$calendarObj = $(this.calendar).datepicker({
 			range: true,
 			minDate: new Date(),
-			prevHtml: '<img src="assets/img/inetrface/arrow_back.svg">',
-			nextHtml: '<img src="assets/img/inetrface/arrow_forward.svg">',
+			prevHtml:
+				'<img src="assets/images/date-dropdown/img/arrow_back.svg">',
+			nextHtml:
+				'<img src="assets/images/date-dropdown/img/arrow_forward.svg">',
 			navTitles: {
 				days: 'MM yyyy'
 			},

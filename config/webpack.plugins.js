@@ -30,9 +30,15 @@ module.exports = {
 		new CopyPlugin({
 			patterns: [
 				{
-					from: `${PATHS.src}${PATHS.assets}img`,
-					to: `${PATHS.dist}/${PATHS.assets}img/`
-				}, // копируем все изображения в папку продакшена
+					from: `${PATHS.src}${PATHS.assets}images`,
+					to: `${PATHS.dist}/${PATHS.assets}images/`
+				},
+				{
+					context: `${PATHS.src}/components/`,
+					from: `**/**/*.(svg|jpg|png|webp)`,
+					to: `${PATHS.dist}/${PATHS.assets}images/`,
+					force: true
+				},
 			],
 		}),
 

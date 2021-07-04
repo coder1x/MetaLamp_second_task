@@ -21,7 +21,7 @@ mixin drop-down(options)
 		-}
 		label(class=classComp+'__label')
 			input(class=classComp+'__input' type='text' placeholder=value value='' name=name readonly)
-			img(class=classComp+'__tip' src='assets/img/inetrface/tip.svg' alt='')
+			img(class=classComp+'__tip' src='assets/images/drop-down/img/tip.svg' alt='')
 		ul(class=classComp+'__select')
 			- for(let i=0; i<masWord[0].length; i++)	{
 				li(class=classComp+'__select-item' data-type= masWord[1][i])
