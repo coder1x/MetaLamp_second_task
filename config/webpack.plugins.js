@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');  // Копирует отде
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
 const fs = require('fs');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-
+const WebpackFavicons = require('webpack-favicons');
 
 
 const FL = require('./filename');
@@ -14,6 +14,7 @@ const PATHS = require('./paths');
 const PAGES_DIR = `${PATHS.src}\\pages\\`; // каталог где располагаються PUG  файлы
 const PAGES = fs.readdirSync(PAGES_DIR).
 	filter(fileName => fileName.endsWith('.pug')); // получаем все PUG файлы в данном каталоге
+
 
 
 module.exports = {
@@ -26,6 +27,42 @@ module.exports = {
 			filename: `./${page.replace(/\.pug/, '.html')}`,
 			inject: 'body',
 		})),
+
+		new WebpackFavicons({
+			src: `${PATHS.src}${PATHS.assets}images/icon/favicon.png`,
+			path: "assets/favicons/",
+			cache: true,
+			icons: {
+				android: true,              // Create Android homescreen icon. `boolean`
+				appleIcon: [
+					"apple-touch-icon-114x114.png",
+					"apple-touch-icon-120x120.png",
+					"apple-touch-icon-144x144.png",
+					"apple-touch-icon-152x152.png",
+					"apple-touch-icon-167x167.png",
+					"apple-touch-icon-180x180.png",
+					"apple-touch-icon-57x57.png",
+					"apple-touch-icon-60x60.png",
+					"apple-touch-icon-72x72.png",
+					"apple-touch-icon-76x76.png",
+					"apple-touch-icon-precomposed.png",
+					"apple-touch-icon.png"
+				],
+				appleStartup: [
+					"apple-touch-startup-image-640x1136.png",
+					"apple-touch-startup-image-750x1334.png",
+					"apple-touch-startup-image-828x1792.png"
+				],
+				coast: true,                // Create Opera Coast icon. `boolean`
+				favicons: true,             // Create regular favicons. `boolean`
+				firefox: true,              // Create Firefox OS icons. `boolean`
+				opengraph: true,            // Create Facebook OpenGraph image. `boolean`
+				twitter: true,              // Create Twitter Summary Card image. `boolean`
+				windows: true,              // Create Windows 8 tile icons. `boolean`
+				yandex: true                // Create Yandex browser icon. `boolean`
+			}
+		}),
+
 
 		new CopyPlugin({
 			patterns: [
