@@ -27,7 +27,7 @@ class rangeSlider {
 
 		this.$myRange = $(".range-slider__input").ionRangeSlider({
 			type: "double",
-			min: 0,
+			//min: 0,
 			step: 1,
 			// eslint-disable-next-line camelcase
 			hide_min_max: true,

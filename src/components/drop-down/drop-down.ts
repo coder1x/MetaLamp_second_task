@@ -84,8 +84,10 @@ class dropDown {
 
 		if (!val) {
 			minus.classList.add(classM);
+			minus.disabled = true;
 		} else {
 			minus.classList.remove(classM);
+			minus.disabled = false;
 		}
 
 		let maxVal = Number(plus.getAttribute('data-max'));
@@ -93,9 +95,11 @@ class dropDown {
 		if (val >= maxVal) {
 			plus.classList.add(classP);
 			this.disPlus = true;
+			plus.disabled = true;
 		} else {
 			plus.classList.remove(classP);
 			this.disPlus = false;
+			plus.disabled = false;
 		}
 	}
 

@@ -54,6 +54,11 @@ $color-button-disable: $Dark-Shade-25;
 		}
 	}
 
+	&__minus:focus,
+	&__plus:focus {
+		outline-offset: 3px;
+	}
+
 	&__text,
 	&__value {
 		font-family: "Montserrat", Helvetica, Arial, sans-serif;
@@ -122,6 +127,11 @@ $color-button-disable: $Dark-Shade-25;
 		border: 0px;
 		background: $color-background;
 		padding: 0;
+	}
+
+	&__button-apply:focus,
+	&__button-clear:focus {
+		outline-offset: 3px;
 	}
 
 	&__button-clear {

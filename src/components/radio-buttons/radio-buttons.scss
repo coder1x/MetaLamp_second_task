@@ -24,7 +24,8 @@ $color-radio-border: $Purple;
 	}
 
 	&__input {
-		display: none;
+		position: absolute;
+		appearance: none;
 	}
 
 	&__label {
@@ -55,6 +56,16 @@ $color-radio-border: $Purple;
 		cursor: pointer;
 	}
 
+	&__bef::before {
+		content: "";
+		width: 26px;
+		height: 25px;
+		position: absolute;
+		left: -4px;
+		bottom: -3px;
+		box-sizing: border-box;
+	}
+
 	&__input:checked + &__bef {
 		border-color: $color-radio-border;
 		background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
@@ -62,22 +73,24 @@ $color-radio-border: $Purple;
 	}
 
 	&__input:focus + &__bef {
-		border: 1px solid $color-radio-border;
+		border: 1px solid $color-radio;
 	}
 
-	&__input:disabled + &__bef {
-		border-color: $Dark-Shade-1;
-	}
+	// &__input:disabled + &__bef {
+	// 	border-color: $Dark-Shade-1;
+	// }
 
-	&__input:checked:disabled + &__bef {
-		border-color: $Dark-Shade-1;
-	}
+	// &__input:checked:disabled + &__bef {
+	// 	border-color: $Dark-Shade-1;
+	// }
 
-	&__bef:hover {
-		border-color: $color-radio-border;
-	}
+	// &__bef:hover {
+	// 	border-color: $color-radio-border;
+	// }
 
-	// &__bef:focus {
+	// &__label:focus-within {
+	// 	outline: solid 1px $color-radio-select;
+	// 	outline-offset: 3px;
 	// 	outline: 1;
 	// }
 }

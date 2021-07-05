@@ -24,11 +24,17 @@ $color-like-voted: $Purple;
 		height: 20px;
 		border: 1px solid $color-like;
 		box-sizing: border-box;
+		background-color: $color-background;
 		border-radius: 10px;
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+	}
+
+	&__like:focus {
+		outline-offset: 3px;
+		outline: 1;
 	}
 
 	&_voted &__like {

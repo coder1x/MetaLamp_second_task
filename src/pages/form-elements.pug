@@ -11,6 +11,9 @@ include ../components/toggle-buttons/toggle-buttons.pug
 include ../components/like-button/like-button.pug
 include ../components/rate-button/rate-button.pug
 include ../components/range-slider/range-slider.pug
+include ../components/buttons/buttons.pug
+
+
 
 //include ../components/test/test.pug
 
@@ -177,5 +180,31 @@ html(lang='ru')
 							+range-slider({
 								label:'Range Slider'
 							})
-
+						span.colomn-right__logo buttons
+						.colomn-right__link
+							+buttons({
+								text:'CLICK ME',
+								link:'https://test/test',
+								type:'link',
+								modif:'link'
+							})
+						.colomn-right__link-border
+							+buttons({
+								text:'CLICK ME',
+								link:'https://test/test',
+								type:'link',
+								modif:'link-border'
+							})
+						.colomn-right__button-text
+							+buttons({
+								text:'CLICK ME',
+								type:'button',
+								modif:'text'
+							})
+						.colomn-right__submit
+							+buttons({
+								text:'перейти к оплате',
+								type:'submit',
+								modif:'submit'
+							})
 					.comment-wrap

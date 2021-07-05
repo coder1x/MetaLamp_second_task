@@ -16,6 +16,9 @@ $color-checkbox-rich: $Dark-Shade-75;
 		color: $color-label;
 		cursor: pointer;
 	}
+	&__header:focus {
+		outline-offset: 3px;
+	}
 
 	&__wrap {
 		display: none;

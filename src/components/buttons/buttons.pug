@@ -1,0 +1,22 @@
+mixin buttons(options)
+	-
+		let text = options.text ?? ''
+		let link = options.link ?? ''
+		let type = options.type ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let classComp = 'buttons'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	case type
+		when 'link'
+			a(class=className href=link)=text
+		when 'button'
+			button(class=className)=text
+		when 'submit'
+			button(class=className type='submit')=text
+				img(class=classComp+'__icon' src='assets/images/buttons/img/arrow_forward.svg')
+		

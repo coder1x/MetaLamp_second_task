@@ -92,10 +92,35 @@
 .colomn-right {
 	margin-top: 62px;
 	width: 100%;
-	max-width: 260px;
+	max-width: 322px;
 
 	&__range-slider {
 		max-width: 266px;
-		margin-bottom: 36px;
+		margin-bottom: 19px;
+	}
+
+	&__logo {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: #1f2041;
+	}
+
+	&__link {
+		margin-top: 16px;
+	}
+
+	&__link-border {
+		margin-top: 30px;
+	}
+
+	&__button-text {
+		margin-top: 32px;
+	}
+
+	&__submit {
+		margin-top: 30px;
 	}
 }

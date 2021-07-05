@@ -22,7 +22,8 @@ $color-toggle-border: $Purple;
 	}
 
 	&__input {
-		display: none;
+		position: absolute;
+		appearance: none;
 	}
 
 	&__tog {
@@ -60,8 +61,12 @@ $color-toggle-border: $Purple;
 		transition: 0.2s;
 	}
 
-	&__bef:focus {
-		outline: 1;
+	// &__bef:focus {
+	// 	outline: 1;
+	// }
+
+	&__input:focus + &__bef {
+		border-color: $color-toggle-border;
 	}
 
 	&__input:checked + &__bef {

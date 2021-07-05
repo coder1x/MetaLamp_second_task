@@ -6,6 +6,6 @@ import './validation-email/validation-email.ts';
 import './subscrip-textfield/subscrip-textfield.ts';
 import './checkbox-list/checkbox-list.ts';
 import './like-button/like-button.ts';
-import './radio-buttons/radio-buttons.ts';
-import './toggle-buttons/toggle-buttons.ts';
+//import './radio-buttons/radio-buttons.ts';
+//import './toggle-buttons/toggle-buttons.ts';
 import './range-slider/range-slider.js';
