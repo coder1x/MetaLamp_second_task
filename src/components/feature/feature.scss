@@ -6,16 +6,19 @@ $color-feature-border: $Dark-Shade-1;
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
-	max-width: 291px;
+	max-width: 280px;
 	border-bottom: 1px solid $color-feature-border;
-	padding-bottom: 20px;
+	padding-bottom: 19px;
 
-	&__description {
-		margin-left: 16px;
+	&__wrap-icon {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		width: 48px;
 	}
 
-	&__icon {
-		width: 40px;
+	&__description {
+		margin-left: 10px;
 	}
 
 	&__header {
