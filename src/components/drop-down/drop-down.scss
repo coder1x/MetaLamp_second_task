@@ -115,25 +115,6 @@ $color-button-disable: $Dark-Shade-25;
 		padding-top: 15px;
 	}
 
-	&__button-apply,
-	&__button-clear {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $color-button;
-		cursor: pointer;
-		border: 0px;
-		background: $color-background;
-		padding: 0;
-	}
-
-	&__button-apply:focus,
-	&__button-clear:focus {
-		outline-offset: 3px;
-	}
-
 	&__button-clear {
 		visibility: hidden;
 	}

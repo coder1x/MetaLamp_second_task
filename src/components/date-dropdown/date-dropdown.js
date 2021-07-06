@@ -12,7 +12,6 @@ class dateDropDown {
 
 		this.#setDomElem(className, elem);
 		this.#createCalendar();
-		this.#addButtons();
 		this.#setActions();
 
 		if (!this.flRange)
@@ -30,15 +29,21 @@ class dateDropDown {
 
 	#setDomElem(className, elem) {
 
+		this.#classClear = className.replace(/^\./, '') + '__clear';
+
 		this.className = className;
 		this.elem = elem;
 		this.calendar = elem.querySelector(className + '__datepicker');
+		this.calendarWrap = elem.querySelector(className + '__datepicker-wrap');
 
 		this.inputs = elem.querySelectorAll('input');
 		this.flRange = this.inputs.length > 1 ? true : false;
 
 		this.input1 = this.inputs[0];
 		this.imgLeft = this.input1.nextSibling;
+
+		this.clearButton = elem.querySelector(className + '__clear');
+		this.acceptButton = elem.querySelector(className + '__apply');
 
 		if (this.flRange) {
 			this.input2 = this.inputs[1];
@@ -87,43 +92,6 @@ class dateDropDown {
 		else {
 			objClear.remove(nameSelector);
 		}
-	}
-
-	#addButtons() {
-
-		this.#classClear = 'datepicker-buttons__clear';
-
-		let elem = this.$calendarObj.$el[0];
-		let datepicker = elem.querySelector('.datepicker');
-
-		let createElem = (teg, clasL, text = '') => {
-			let elem = document.createElement(teg);
-			elem.classList.add(clasL);
-			if (text)
-				elem.innerText = text;
-			return elem;
-		};
-
-		let divBut = createElem('div', 'datepicker-buttons');
-
-		let spanClr = createElem(
-			'button',
-			this.#classClear,
-			'очистить');
-
-		divBut.appendChild(spanClr);
-
-		let spanAс = createElem(
-			'button',
-			'datepicker-buttons__apply',
-			'применить');
-
-		divBut.appendChild(spanAс);
-
-		datepicker.appendChild(divBut);
-
-		this.clearButton = spanClr;
-		this.acceptButton = spanAс;
 	}
 
 
@@ -223,7 +191,7 @@ class dateDropDown {
 
 	toggleCal(fl = false) {
 		const nameModif = this.className.replace(/^\./, '') + '_visible';
-		const visible = this.getVisible(this.calendar);
+		const visible = this.getVisible(this.calendarWrap);
 		const objElem = this.elem.classList;
 		if (this.#flTog == fl && visible) {
 			objElem.remove(nameModif);
@@ -266,7 +234,7 @@ class dateDropDown {
 			this.imgRight,
 			this.input2].find(item => item == e.target) ?? this.#clickElemFl);
 		this.#clickElemFl = false;
-		const visible = this.getVisible(this.calendar);
+		const visible = this.getVisible(this.calendarWrap);
 
 		if (!inStock && visible) {
 			this.toggleCal(this.#flTog);
@@ -276,7 +244,7 @@ class dateDropDown {
 
 	#setActions() {
 
-		this.calendar.addEventListener('click', () => {
+		this.calendarWrap.addEventListener('click', () => {
 			this.#clickElemFl = true;
 		});
 

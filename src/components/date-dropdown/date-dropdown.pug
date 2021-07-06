@@ -1,3 +1,5 @@
+include ../buttons/buttons.pug
+
 mixin date-dropdown(options)
 	-
 		let label = options.label ?? ''
@@ -24,4 +26,18 @@ mixin date-dropdown(options)
 					input(class=classComp+'__input' type='text' placeholder=placeholder value=value name='Date')
 					img(class=classComp+'__tip' src='assets/images/date-dropdown/img/tip.svg' alt='')
 		-}
-		div(class=classComp+'__datepicker')
+		div(class=classComp+'__datepicker-wrap')
+			div(class=classComp+'__datepicker')
+			div(class=classComp+'__datepicker-buttons')
+				div(class=classComp+'__clear')
+					+buttons({
+						text:'очистить',
+						type:'button',
+						modif:'text'
+					})
+				div(class=classComp+'__apply')
+					+buttons({
+						text:'применить',
+						type:'button',
+						modif:'text'
+					})

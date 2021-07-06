@@ -1,3 +1,5 @@
+include ../buttons/buttons.pug
+
 mixin drop-down(options)
 	-
 		let label = options.label ?? ''
@@ -32,6 +34,18 @@ mixin drop-down(options)
 			-}
 			-if(button){
 			li(class=classComp+'__buttons')
-				button(class=classComp+'__button-clear') очистить
-				button(class=classComp+'__button-apply') применить
+				div(class=classComp+'__button-clear') 
+					+buttons({
+						text:'очистить',
+						type:'button',
+						modif:'text'
+								})
+				div(class=classComp+'__button-apply') 
+					+buttons({
+						text:'применить',
+						type:'button',
+						modif:'text'
+								})
 			-}
+
+			

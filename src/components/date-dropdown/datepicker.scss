@@ -11,14 +11,13 @@ $color-days-names: $Purple;
 .date-dropdown {
 	.date-dropdown__datepicker {
 		.datepicker {
-			border: 1px solid $color-datepicker-border;
-			box-shadow: 0px 10px 20px $color-datepicker-shadow;
+			border: 0;
 
 			&--nav {
 				border: 0px;
 				padding: 0;
 				margin-top: 20px;
-				margin-bottom: 30px;
+				margin-bottom: 25px;
 				min-height: unset;
 			}
 
@@ -48,7 +47,7 @@ $color-days-names: $Purple;
 			}
 
 			&--nav-action[data-action="next"] {
-				margin-right: 20px;
+				margin-right: 22px;
 			}
 
 			&--nav-action:hover,
@@ -159,31 +158,6 @@ $color-days-names: $Purple;
 		.-in-range-.-current- {
 			color: #000;
 			border-radius: 0px;
-		}
-
-		.datepicker-buttons {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: flex-end;
-			margin: 20px;
-
-			&__apply,
-			&__clear {
-				font-family: "Montserrat", Helvetica, Arial, sans-serif;
-				font-weight: bold;
-				font-size: 12px;
-				line-height: 15px;
-				text-transform: uppercase;
-				color: $color-button;
-				cursor: pointer;
-				border: 0px;
-				background-color: $color-background;
-			}
-
-			&__clear {
-				visibility: hidden;
-			}
 		}
 	}
 }

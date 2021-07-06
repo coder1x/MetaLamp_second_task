@@ -1,3 +1,6 @@
+$color-datepicker-border: $Dark-Shade-25;
+$color-datepicker-shadow: $Dark-Shade-5;
+
 .date-dropdown {
 	display: flex;
 	flex-wrap: wrap;
@@ -78,23 +81,62 @@
 		border: 1px solid $color-border-hover;
 	}
 
-	&__datepicker {
+	&__datepicker-wrap {
 		display: none;
 		margin-top: 5.56px;
 		position: absolute;
 		top: 68px;
 		z-index: 1;
+		background: $color-background;
+		box-shadow: 0px 10px 20px $color-datepicker-shadow;
 	}
 
-	&_visible &__datepicker {
+	&__datepicker-buttons {
 		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		background: $color-background;
+		height: 20px;
+
+		border-left: 1px solid $color-datepicker-border;
+		border-right: 1px solid $color-datepicker-border;
+		border-bottom: 1px solid $color-datepicker-border;
+		box-sizing: border-box;
+		box-shadow: 0px 10px 20px $color-datepicker-shadow;
+		border-radius: 4px;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		height: 51px;
+	}
+
+	&_visible &__datepicker-wrap {
+		display: flex;
+		flex-direction: column;
+		background-color: $color-background;
 	}
 
 	&_visible &__tip {
 		transform: rotate(180deg);
 	}
 
+	&__clear {
+		margin-left: 20px;
+		visibility: hidden;
+	}
+
+	&__apply {
+		margin-right: 20px;
+	}
+
 	.date-dropdown__datepicker {
+		border-top: 1px solid $color-datepicker-border;
+		border-left: 1px solid $color-datepicker-border;
+		border-right: 1px solid $color-datepicker-border;
+
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+
 		.datepicker {
 			width: calc(100% - 2px);
 
@@ -175,8 +217,8 @@
 	}
 
 	//----------------------------------------------- modif button
-	.date-dropdown__datepicker {
-		.datepicker-buttons__clear {
+	.date-dropdown__datepicker-buttons {
+		.date-dropdown__clear {
 			&_visible {
 				visibility: unset;
 			}
