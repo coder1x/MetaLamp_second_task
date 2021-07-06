@@ -19,7 +19,6 @@ class dropDown {
 	declensions: string[][];
 	className: string;
 	private flClick: boolean;
-	private clickElemFl: boolean;
 	private disPlus: boolean;
 
 	constructor(className: string, component: Element) {
@@ -29,7 +28,6 @@ class dropDown {
 		this.elem = component;
 
 		this.flClick = false;
-		this.clickElemFl = false;
 		this.disPlus = false;
 
 		this.setDomElem();
@@ -107,27 +105,20 @@ class dropDown {
 		this.declensions.push(elem.getAttribute('data-type').split(','));
 	}
 
-
-
 	private setActions() {
-		// this.clickElemFl -- true если кликаем на компонент 
-		// this.flClick -- флаг что бы отделить событие фокуса и клика.
-		// this.toggle(); -- проверяет открыть или закрыть компонент
-
-		// this.elem.addEventListener('click', () => {
-		// 	this.clickElemFl = true;
-		// });
 
 		this.inputEl.addEventListener('mouseup', () => {
-
+			this.toggle();
+			this.flClick = false;
 		});
 
 		this.inputEl.addEventListener('mousedown', () => {
-			this.toggle();
+			this.flClick = true;
 		});
 
 		this.inputEl.addEventListener('focus', () => {
-
+			if (!this.flClick)
+				this.toggle();
 		});
 
 		if (this.applyClass)
@@ -146,25 +137,17 @@ class dropDown {
 		if (this.clearBut)
 			this.clearBut.addEventListener('click', () => this.resetValue());
 
-		document.addEventListener('click', (e: any) => {
-			const domEl = e.target.closest(this.className);
 
-			if (domEl != this.elem) // если мы кликнули не на компонент
-			{
-				//if (!this.clickElemFl) {
-				this.toggle(true);
-				//}
-				//this.clickElemFl = false;
-			}
-		});
+		let eventDoc = (event: string) => {
+			document.addEventListener(event, (e: any) => {
+				const domEl = e.target.closest(this.className);
+				if (domEl != this.elem)
+					this.toggle(true);
+			});
+		};
 
-		// document.addEventListener('focusin', () => {
-		// 	if (!this.clickElemFl) {
-		// 		this.toggle(true);
-		// 	}
-		// 	this.clickElemFl = false;
-		// });
-
+		eventDoc('click');
+		eventDoc('focusin');
 	}
 
 	private getVisible(elem: Element) {
@@ -176,11 +159,7 @@ class dropDown {
 
 	private toggle(flag = false) {
 		const UlVisible: boolean = this.getVisible(this.selectEl);
-		console.log('UlVisible: ' + UlVisible);
-		console.log('flag: ' + flag);
 		let flagVis = !UlVisible && !flag;
-		console.log('flagVis:' + flagVis);
-
 		this.toggleModif(this.elem, '_visible', flagVis);
 	}
 

@@ -21,31 +21,31 @@ mixin drop-down(options)
 		- if(!flLabel){
 		p(class=classComp+'__text-header')= label
 		-}
-		label(class=classComp+'__label')
+		div(class=classComp+'__wrap')
 			input(class=classComp+'__input' type='text' placeholder=value value='' name=name readonly)
 			img(class=classComp+'__tip' src='assets/images/drop-down/img/tip.svg' alt='')
-		ul(class=classComp+'__select')
-			- for(let i=0; i<masWord[0].length; i++)	{
-				li(class=classComp+'__select-item' data-type= masWord[1][i])
-					p(class=classComp+'__text')= masWord[0][i] 
-					button(class=classComp+'__minus') -
-					span(class=classComp+'__value') 0
-					button(class=classComp+'__plus' data-max=maxValue[i]) +
-			-}
-			-if(button){
-			li(class=classComp+'__buttons')
-				div(class=classComp+'__button-clear') 
-					+buttons({
-						text:'очистить',
-						type:'button',
-						modif:'text'
-								})
-				div(class=classComp+'__button-apply') 
-					+buttons({
-						text:'применить',
-						type:'button',
-						modif:'text'
-								})
-			-}
+			ul(class=classComp+'__select')
+				- for(let i=0; i<masWord[0].length; i++)	{
+					li(class=classComp+'__select-item' data-type= masWord[1][i])
+						p(class=classComp+'__text')= masWord[0][i] 
+						button(class=classComp+'__minus') -
+						span(class=classComp+'__value') 0
+						button(class=classComp+'__plus' data-max=maxValue[i]) +
+				-}
+				-if(button){
+				li(class=classComp+'__buttons')
+					div(class=classComp+'__button-clear') 
+						+buttons({
+							text:'очистить',
+							type:'button',
+							modif:'text'
+									})
+					div(class=classComp+'__button-apply') 
+						+buttons({
+							text:'применить',
+							type:'button',
+							modif:'text'
+									})
+				-}
 
 			
