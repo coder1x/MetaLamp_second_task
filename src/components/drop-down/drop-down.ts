@@ -33,7 +33,7 @@ class dropDown {
 		this.disPlus = false;
 
 		this.setDomElem();
-		this.setAction();
+		this.setActions();
 		this.setActionSelect();
 	}
 
@@ -109,27 +109,25 @@ class dropDown {
 
 
 
-	private setAction() {
+	private setActions() {
+		// this.clickElemFl -- true если кликаем на компонент 
+		// this.flClick -- флаг что бы отделить событие фокуса и клика.
+		// this.toggle(); -- проверяет открыть или закрыть компонент
 
-		this.elem.addEventListener('click', () => {
-			this.clickElemFl = true;
+		// this.elem.addEventListener('click', () => {
+		// 	this.clickElemFl = true;
+		// });
+
+		this.inputEl.addEventListener('mouseup', () => {
+
 		});
 
-		this.inputEl.addEventListener('click', (e: any) => {
-			if (e.isTrusted) {
-				if (!this.flClick) {
-					this.styleWidget();
-				}
-				this.flClick = false;
-			}
-			else {
-				this.flClick = true;
-				this.styleWidget();
-			}
+		this.inputEl.addEventListener('mousedown', () => {
+			this.toggle();
 		});
 
 		this.inputEl.addEventListener('focus', () => {
-			this.inputEl.click();
+
 		});
 
 		if (this.applyClass)
@@ -141,19 +139,31 @@ class dropDown {
 					alert('Выберите количество гостей.');
 				}
 				else {
-					this.styleWidget();
+					this.toggle();
 				}
 			});
 
 		if (this.clearBut)
 			this.clearBut.addEventListener('click', () => this.resetValue());
 
-		document.addEventListener('click', () => {
-			if (!this.clickElemFl) {
-				this.styleWidget(true);
+		document.addEventListener('click', (e: any) => {
+			const domEl = e.target.closest(this.className);
+
+			if (domEl != this.elem) // если мы кликнули не на компонент
+			{
+				//if (!this.clickElemFl) {
+				this.toggle(true);
+				//}
+				//this.clickElemFl = false;
 			}
-			this.clickElemFl = false;
 		});
+
+		// document.addEventListener('focusin', () => {
+		// 	if (!this.clickElemFl) {
+		// 		this.toggle(true);
+		// 	}
+		// 	this.clickElemFl = false;
+		// });
 
 	}
 
@@ -164,9 +174,13 @@ class dropDown {
 	}
 
 
-	private styleWidget(flag = false) {
+	private toggle(flag = false) {
 		const UlVisible: boolean = this.getVisible(this.selectEl);
+		console.log('UlVisible: ' + UlVisible);
+		console.log('flag: ' + flag);
 		let flagVis = !UlVisible && !flag;
+		console.log('flagVis:' + flagVis);
+
 		this.toggleModif(this.elem, '_visible', flagVis);
 	}
 
