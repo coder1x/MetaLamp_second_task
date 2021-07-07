@@ -1,0 +1,41 @@
+$color-text: $Dark-Shade-75;
+$color-dot: $Dark-Shade-25;
+
+.bullet-list {
+	&__header {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $colot-header;
+		margin-bottom: 15px;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__item {
+		position: relative;
+		padding-left: 22px;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 24px;
+		color: $color-text;
+		margin-bottom: 10px;
+	}
+
+	&__item::before {
+		position: absolute;
+		top: 7px;
+		left: 1px;
+		content: "";
+		width: 10px;
+		height: 10px;
+		background-color: $color-dot;
+		border-radius: 50%;
+	}
+}

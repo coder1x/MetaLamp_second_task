@@ -1,0 +1,21 @@
+mixin bullet-list(options)
+	-
+		let label = options.label ?? ''
+		let text = options.text ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'bullet-list'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		- if(!flLabel){
+		p(class=classComp+'__header')= label
+		-}
+		ul(class=classComp+'__items')
+			-for(let item of text){
+			li(class=classComp+'__item')= item
+			-}	

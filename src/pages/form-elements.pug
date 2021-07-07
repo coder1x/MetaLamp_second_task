@@ -13,6 +13,7 @@ include ../components/rate-button/rate-button.pug
 include ../components/range-slider/range-slider.pug
 include ../components/buttons/buttons.pug
 include ../components/pagination/pagination.pug
+include ../components/bullet-list/bullet-list.pug
 
 
 //include ../components/test/test.pug
@@ -211,5 +212,16 @@ html(lang='ru')
 								.colomn-right__pagination
 									+pagination({
 										label:'pagination'
+									})
+								.colomn-right__bullet-list
+									-
+										masText= [
+										'Нельзя с питомцами',
+										'Без вечеринок и мероприятий',
+										'Время прибытия — после 13:00, а выезд до 12:00'
+										];
+									+bullet-list({
+										label:'bullet list',
+										text:masText
 									})
 						.comment-wrap
