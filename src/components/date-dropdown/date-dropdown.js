@@ -269,7 +269,8 @@ class dateDropDown {
 		}
 
 		this.clearButton.addEventListener('click',
-			() => {
+			(e) => {
+				e.preventDefault();
 				this.$calendarObj.clear();
 				if (!this.imgRight) {
 					this.input1.value = '';
@@ -281,7 +282,10 @@ class dateDropDown {
 		document.addEventListener('click', (e) => this.#elementIsClicked(e));
 
 		this.acceptButton.addEventListener('click',
-			() => this.#validationRange());
+			(e) => {
+				e.preventDefault();
+				this.#validationRange();
+			});
 	}
 }
 

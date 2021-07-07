@@ -1,0 +1,17 @@
+.cards-wrapper {
+	background: #f4f4f6;
+}
+
+.cards {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding-top: 71px;
+	padding-left: 141px;
+	box-sizing: border-box;
+
+	&__search-room {
+		width: 100%;
+		max-width: 380px;
+	}
+}

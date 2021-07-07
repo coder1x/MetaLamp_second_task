@@ -16,7 +16,6 @@ include ../components/pagination/pagination.pug
 include ../components/bullet-list/bullet-list.pug
 include ../components/comment/comment.pug
 
-//include ../components/test/test.pug
 
 doctype html
 html(lang='ru')
@@ -66,14 +65,14 @@ html(lang='ru')
 
 						.colomn-left__date-dropdown
 							+date-dropdown({
-								label: 'date Dropdown',
+								label: ['date Dropdown','date Dropdown'],
 								placeholder:'ДД.ММ.ГГГГ',
 								class: 'js-masked-date'
 							})
 
 						.colomn-left__filter-date
 							+date-dropdown({
-								label: 'filter date dropdown',
+								label: ['filter date dropdown'],
 								placeholder:'19 авг - 23 авг',
 								value: '19 авг - 23 авг',
 								modif: 'filter',

@@ -1,0 +1,17 @@
+include ../components/head/head.pug
+include ../components/logo-group/logo-group.pug
+include ../components/search-room/search-room.pug
+
+doctype html
+html(lang='ru')
+	body.cards-wrapper
+			+logo-group('ui-wrapper')
+			main
+				section.cards 
+					.cards__left
+						.cards__search-room
+							+search-room({
+								header:'Найдём номера под ваши пожелания'
+							})
+					.cards__center
+					.cards__right

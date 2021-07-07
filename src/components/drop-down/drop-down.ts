@@ -122,7 +122,8 @@ class dropDown {
 		});
 
 		if (this.applyClass)
-			this.applyClass.addEventListener('click', () => {
+			this.applyClass.addEventListener('click', (e: any) => {
+				e.preventDefault();
 				const defoultText = this.inputEl.value == this.defoultText;
 				const inputClear = defoultText || !this.inputEl.value;
 
@@ -135,7 +136,10 @@ class dropDown {
 			});
 
 		if (this.clearBut)
-			this.clearBut.addEventListener('click', () => this.resetValue());
+			this.clearBut.addEventListener('click', (e: any) => {
+				e.preventDefault();
+				this.resetValue();
+			});
 
 
 		let eventDoc = (event: string) => {
@@ -192,6 +196,7 @@ class dropDown {
 	private setActionSelect() {
 
 		const funAct = (e: any) => {
+			e.preventDefault();
 			let liEl = e.currentTarget;
 			let target = e.target;
 

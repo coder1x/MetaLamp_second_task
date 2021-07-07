@@ -2,7 +2,8 @@ html {
 	height: 100%; /* растягиваем страницу на весь экран */
 	width: 100%; /* растягиваем страницу на весь экран */
 	font-size: #{$font-size}px;
-	font-family: "Montserrat-Regular";
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+	font-weight: normal;
 	min-width: $min-wraper;
 }
 
@@ -44,7 +45,8 @@ body {
 h1,
 h2,
 h3 {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+	font-weight: bold;
 	color: $color-h;
 }
 
