@@ -12,7 +12,7 @@ include ../components/like-button/like-button.pug
 include ../components/rate-button/rate-button.pug
 include ../components/range-slider/range-slider.pug
 include ../components/buttons/buttons.pug
-
+include ../components/pagination/pagination.pug
 
 
 //include ../components/test/test.pug
@@ -207,5 +207,9 @@ html(lang='ru')
 										text:'перейти к оплате',
 										type:'submit',
 										modif:'submit'
+									})
+								.colomn-right__pagination
+									+pagination({
+										label:'pagination'
 									})
 						.comment-wrap

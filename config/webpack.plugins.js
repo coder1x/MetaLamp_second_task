@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');  // Копирует отде
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
 const fs = require('fs');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-//const WebpackFavicons = require('webpack-favicons');
+//const FoxFavicon = require('webpack-favicons');
 
 
 const FL = require('./filename');
@@ -24,19 +24,21 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
 
+
+
+
 		...PAGES.map(page => new HTMLWebpackPlugin({  // автоматическое добавление страниц PUG 
 			template: `${PAGES_DIR}/${page}`,
 			filename: `./${page.replace(/\.pug/, '.html')}`,
 			inject: 'body',
 		})),
 
-		// new WebpackFavicons({
-		// 	'src': `${PATHS.src}${PATHS.assets}images/icon/favicon.png`,
-		// 	'path': "/assets/favicons/",
-		// 	'scope': 'resources/',
-		// 	'background': '#fff',
-		// 	'theme_color': '#fff',
-		// 	'icons': {
+		// new FoxFavicon({
+		// 	src: `${PATHS.src}${PATHS.assets}images/icon/favicon.png`,
+		// 	path: "assets/favicons/",
+		// 	// eslint-disable-next-line camelcase
+		// 	url_icon: 'https://coderr.ru/assets/favicons/',
+		// 	icons: {
 		// 		'android': true,
 		// 		'appleIcon': [
 		// 			"apple-touch-icon-114x114.png",

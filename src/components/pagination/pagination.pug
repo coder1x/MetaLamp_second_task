@@ -1,0 +1,27 @@
+mixin pagination(options)
+	-
+		let label = options.label ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'pagination'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		- if(!flLabel){
+		p(class=classComp+'__header')= label
+		-}
+		div(class=classComp+'__links')
+			//- a(class=classComp+'__prev' href='https://test/test')
+			//- 	img(class=classComp+'__prev-img' src='assets/images/pagination/img/arrow_forward.svg', alt='')
+			span(class=classComp+'__current') 1
+			a(class=classComp+'__page-numbers' href='https://test/test') 2
+			a(class=classComp+'__page-numbers' href='https://test/test') 3
+			span(class=classComp+'__dots') ...
+			a(class=classComp+'__page-numbers' href='https://test/test') 15
+			a(class=classComp+'__next' href='https://test/test')
+				img(class=classComp+'__next-img' src='assets/images/pagination/img/arrow_forward.svg', alt='')
+		p(class=classComp+'__text') 1 – 12 из 100+ вариантов аренды
