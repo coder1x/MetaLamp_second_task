@@ -14,7 +14,7 @@ include ../components/range-slider/range-slider.pug
 include ../components/buttons/buttons.pug
 include ../components/pagination/pagination.pug
 include ../components/bullet-list/bullet-list.pug
-
+include ../components/comment/comment.pug
 
 //include ../components/test/test.pug
 
@@ -224,4 +224,13 @@ html(lang='ru')
 										label:'bullet list',
 										text:masText
 									})
-						.comment-wrap
+						.colomn-bottom
+							.colomn-bottom__comment
+								+comment({
+									name:'Мурад Сарафанов',
+									date:'5 дней назад',
+									message: 
+									`Великолепный матрас на кровати в основной спальне!
+									А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. 
+									Выкрикивал комплименты повару — никто не жаловался из соседей.`
+								})

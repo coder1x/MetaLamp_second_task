@@ -1,0 +1,24 @@
+include ../like-button/like-button.pug
+mixin comment(options)
+	-
+		let name = options.name ?? ''
+		let date = options.date ?? ''
+		let message = options.message ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let classComp = 'comment'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		div(class=classComp+'__avatar-wrap')
+			img(class=classComp+'__avatar' src='assets/images/comment/img/foto.jpg', alt=name)
+			div(class=classComp+'__like-wrap')
+				+like-button({flLabel:true})
+		div(class=classComp+'__message-wrap')
+			div(class=classComp+'__header-wrap')
+				p(class=classComp+'__name')= name
+				p(class=classComp+'__date')= date
+			p(class=classComp+'__message')= message
