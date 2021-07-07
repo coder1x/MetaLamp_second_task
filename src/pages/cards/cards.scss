@@ -1,5 +1,6 @@
 .cards-wrapper {
 	background: #f4f4f6;
+	padding-bottom: 100px;
 }
 
 .cards {
@@ -11,6 +12,12 @@
 	box-sizing: border-box;
 
 	&__search-room {
+		width: 100%;
+		max-width: 380px;
+	}
+
+	&__registration {
+		margin-top: 40px;
 		width: 100%;
 		max-width: 380px;
 	}

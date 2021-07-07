@@ -15,6 +15,7 @@ mixin text-field(options)
 		className += ' '+addClass}
 	div(class=className)
 		label(class=classComp+'__label')
-			if !flLabel
-				p(class=classComp+'__label-text')= label
-				input(class=classComp+'__input' type=typeField placeholder=placeholder value='' name=name)
+			- if(!flLabel){
+			p(class=classComp+'__label-text')= label
+			-}
+			input(class=classComp+'__input' type=typeField placeholder=placeholder value='' name=name)

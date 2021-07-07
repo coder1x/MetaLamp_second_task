@@ -1,0 +1,83 @@
+include ../text-field/text-field.pug
+include ../radio-buttons/radio-buttons.pug
+include ../toggle-buttons/toggle-buttons.pug
+include ../buttons/buttons.pug
+
+mixin registration(options)
+	-
+		let header = options.header ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'registration'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		- if(!flLabel){
+		h1(class=classComp+'__header')= header
+		-}
+		form(class=classComp+'__form' action='' method='post')
+			div(class=classComp+'__name-wrap')
+				+text-field({
+					flLabel:true,
+					placeholder: 'Имя',
+					type: 'text',
+					name: 'name'
+				})
+			div(class=classComp+'__surname-wrap')
+				+text-field({
+					flLabel:true,
+					placeholder: 'Фамилия',
+					type: 'text',
+					name: 'surname'
+				})
+			div(class=classComp+'__gender-wrap')
+				+radio-buttons({
+					flLabel:true
+				})
+			div(class=classComp+'__date-wrap')
+					+text-field({
+						label: 'дата рождения',
+						placeholder: 'ДД.ММ.ГГГГ',
+						type: 'text',
+						name: 'date',
+						class: 'js-masked-date'
+					})
+			p(class=classComp+'__data-text') данные для входа в сервис
+			div(class=classComp+'__email-wrap')
+				+text-field({
+					flLabel:true,
+					placeholder: 'Email',
+					type: 'email',
+					name: 'email'
+				})
+			div(class=classComp+'__pass-wrap')
+				+text-field({
+					flLabel:true,
+					placeholder: 'Пароль',
+					type: 'password',
+					name: 'password'
+				})
+			div(class=classComp+'__toggle-wrap')
+				+toggle-buttons({
+					flLabel:true,
+					label:'Получать спецпредложения'
+				})
+			div(class=classComp+'__submit-wrap')
+				+buttons({
+					text:'перейти к оплате',
+					type:'submit',
+					modif:'submit'
+				})
+			div(class=classComp+'__sign-in')
+				p(class=classComp+'__text-in') Уже есть аккаунт на Toxin
+				+buttons({
+					text:'Войти',
+					link:'https://test/test',
+					type:'link',
+					modif:'link-border'
+				})
+	
