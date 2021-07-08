@@ -1,0 +1,37 @@
+include ../rate-button/rate-button.pug
+
+mixin room-card(options)
+	-
+		let number = options.number ?? ''
+		let price = options.price ?? ''
+		let reviews = options.reviews ?? ''
+		let lux = options.lux ?? false
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let classComp = 'room-card'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		div(class=classComp+"__slider-wrap")
+			img(class=classComp+"__slide" src="assets/images/room-card/img/image1.jpg", alt="")
+		div(class=classComp+'__header-wrap')
+			div(class=classComp+'__number-wrap')
+				span(class=classComp+'__header-num') №
+				p(class=classComp+'__header')= number
+				- if(lux){
+				span(class=classComp+'__lux') люкс
+				-}
+			div(class=classComp+'__price-wrap')
+				span(class=classComp+'__price')= price+'₽'
+				span(class=classComp+'__price-text') в сутки
+		div(class=classComp+"__rate-wrap")
+			+rate-button({
+				flLabel:true,
+				name:'room-1'
+				})
+			div(class=classComp+"__reviews-wrap")
+				span(class=classComp+"__reviews")= reviews
+				span(class=classComp+"__reviews-text") Отзывов

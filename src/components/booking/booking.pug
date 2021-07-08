@@ -4,11 +4,10 @@ include ../buttons/buttons.pug
 
 mixin booking(options)
 	-
-		let header = options.header ?? ''
+		let number = options.number ?? ''
 		let price = options.price ?? ''
 		let modif = options.modif ?? ''
 		let addClass = options.class ?? ''
-		let flLabel = options.flLabel ?? false
 		let lux = options.lux ?? false
 		let classComp = 'booking'
 		let className = classComp
@@ -19,10 +18,8 @@ mixin booking(options)
 	div(class=className)
 		div(class=classComp+'__header-wrap')
 			div(class=classComp+'__number-wrap')
-				- if(!flLabel){
 				span(class=classComp+'__header-num') №
-				p(class=classComp+'__header')= header
-				-}
+				p(class=classComp+'__header')= number
 				- if(lux){
 				span(class=classComp+'__lux') люкс
 				-}

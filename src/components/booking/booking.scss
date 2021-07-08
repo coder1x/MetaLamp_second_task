@@ -53,20 +53,15 @@ $color-total-text: #1f2041;
 	}
 
 	&__header-num {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
-		font-weight: bold;
-		font-size: 14px;
-		line-height: 17px;
-		color: $color-header;
-	}
-
-	&__header-num {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
 		font-size: 13px;
 		line-height: 24px;
 		margin-right: 5px;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		color: $color-header;
 	}
 
 	&__lux {

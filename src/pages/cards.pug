@@ -4,6 +4,7 @@ include ../components/search-room/search-room.pug
 include ../components/registration/registration.pug
 include ../components/booking/booking.pug
 include ../components/sign-in/sign-in.pug
+include ../components/room-card/room-card.pug
 
 doctype html
 html(lang='ru')
@@ -24,7 +25,7 @@ html(lang='ru')
 					.cards__center
 						.cards__center__booking
 							+booking({
-								header:'888',
+								number:'888',
 								lux:true,
 								price: '9 990'
 							})
@@ -34,3 +35,10 @@ html(lang='ru')
 							})
 
 					.cards__right
+						.cards__right__room-card
+							+room-card({
+								number:'888',
+								lux:true,
+								price:'9 990',
+								reviews:'145'
+							})

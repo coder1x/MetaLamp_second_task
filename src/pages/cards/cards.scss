@@ -40,3 +40,13 @@
 		max-width: 380px;
 	}
 }
+
+.cards__right {
+	margin-left: 40px;
+	width: 100%;
+	max-width: 340px;
+	&__room-card {
+		width: 100%;
+		max-width: 270px;
+	}
+}

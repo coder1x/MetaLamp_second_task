@@ -1,0 +1,134 @@
+$color-bd-frame: rgba(0, 0, 0, 0.12);
+$color-shadow-frame: rgba(0, 0, 0, 0.2);
+$color-header: #1f2041;
+$color-text: $Dark-Shade-50;
+$color-lux: $Purple;
+
+.room-card {
+	background: $color-background;
+	border: 1px solid $color-bd-frame;
+	box-shadow: 0px 0px 25px $color-shadow-frame;
+	border-radius: 4px;
+	width: 100%;
+	max-width: 270px;
+
+	&__slide {
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+	}
+
+	&__header-wrap,
+	&__number-wrap,
+	&__price-wrap {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+	}
+
+	&__header-wrap {
+		position: relative;
+		justify-content: space-between;
+		margin-top: 20px;
+		margin-bottom: 21px;
+	}
+
+	&__header-wrap::before {
+		position: absolute;
+		bottom: -12px;
+		content: "";
+		background: rgba(31, 32, 65, 0.1);
+		width: 100%;
+		max-width: 230px;
+		height: 1px;
+	}
+
+	&__header {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 19px;
+		line-height: 23px;
+		color: $color-header;
+	}
+
+	&__price,
+	&__price-text {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 19px;
+		color: $color-text;
+	}
+
+	&__price-text {
+		font-weight: normal;
+		font-size: 12px;
+		margin-left: 4px;
+	}
+
+	&__header-num {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		margin-right: 3px;
+
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 20px;
+		color: $color-header;
+	}
+
+	&__lux {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 16px;
+		text-transform: uppercase;
+		color: $color-lux;
+		margin-left: 2px;
+	}
+
+	&__header-wrap {
+		padding-left: 21px;
+		padding-right: 17px;
+	}
+	&__rate-wrap {
+		padding-left: 22px;
+		padding-right: 17px;
+	}
+
+	&__rate-wrap {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 17px;
+	}
+
+	&__reviews-wrap {
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__reviews,
+	&__reviews-text {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 25px;
+		color: $color-text;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	&__reviews-text {
+		font-weight: normal;
+		font-size: 14px;
+		margin-left: 4px;
+		margin-right: 2px;
+	}
+}
