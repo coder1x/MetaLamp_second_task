@@ -8,15 +8,15 @@ class slider {
 	prevEl: Element;
 	nextEl: Element;
 	indexS: number;
+	indexDot: number;
 
 	constructor(className: string, elem: Element) {
 		this.className = className;
 		this.elem = elem;
 		this.indexS = 0;
+		this.indexDot = 0;
 		this.startSlider();
-
 	}
-
 
 	getElement(str: string): Element {
 		const selector = this.className + '__' + str + '-wrap';
@@ -25,8 +25,8 @@ class slider {
 
 	startSlider() {
 		this.setDom();
-		this.setVisible(this.indexS, true);
 		this.createDot();
+		this.paintDot();
 		this.setAction();
 	}
 
@@ -52,19 +52,30 @@ class slider {
 		!fl ? objClass.add(clearName) : objClass.remove(clearName);
 	}
 
+	paintDot() {
+		const dotCl = this.className + '__dot';
+		let modif = dotCl + '_paint';
+		modif = modif.replace(/^\./, '');
+		let dots = this.elem.querySelectorAll(dotCl);
+		this.indexDot;
 
-	setVisible(index: number, fl = false) {
-		if (!fl) {
-			this.toggle(this.slidesEl[this.indexS]); // удаляем класс с пред идущего слайда
-		}
+		let objClass = dots[this.indexDot].classList;
+		objClass.remove(modif); // удаляем модификатор с текущей точки
 
+		objClass = dots[this.indexS].classList;
+		objClass.add(modif); // ставим модификатор
+		this.indexDot = this.indexS;
+	}
+
+	setVisible(index: number) {
+		this.toggle(this.slidesEl[this.indexS]); // удаляем класс с пред идущего слайда
 		this.indexS = index;
 		this.toggle(this.slidesEl[this.indexS]); // показываем новый
+
+		this.paintDot();
 	}
 
 	createDot() {
-
-
 		const classN = this.className.replace(/^\./, '') + '__dot';
 
 		for (let i = 0; i < this.slidesEl.length; i++) {
@@ -73,9 +84,6 @@ class slider {
 			dot.setAttribute('data-index', String(i));
 			this.dotEl.appendChild(dot);
 		}
-
-
-
 	}
 
 
@@ -101,18 +109,12 @@ class slider {
 		});
 
 		this.dotEl.addEventListener('click', (e: any) => {
-
 			const index = Number(e.target.getAttribute('data-index'));
 
 			if (this.indexS != index && !isNaN(index))
 				this.setVisible(index);
-
 		});
-
 	}
-
-
-
 }
 
 function renderSlider(className: string) {
