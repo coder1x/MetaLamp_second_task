@@ -3,6 +3,7 @@ include ../components/logo-group/logo-group.pug
 include ../components/search-room/search-room.pug
 include ../components/registration/registration.pug
 include ../components/booking/booking.pug
+include ../components/sign-in/sign-in.pug
 
 doctype html
 html(lang='ru')
@@ -27,4 +28,9 @@ html(lang='ru')
 								lux:true,
 								price: '9 990'
 							})
+						.cards__center__sign-in
+							+sign-in({
+								header:'Войти',
+							})
+
 					.cards__right

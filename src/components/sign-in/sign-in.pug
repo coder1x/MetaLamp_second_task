@@ -1,0 +1,48 @@
+include ../text-field/text-field.pug
+include ../buttons/buttons.pug
+
+mixin sign-in(options)
+	-
+		let header = options.header ?? ''
+		let modif = options.modif ?? ''
+		let addClass = options.class ?? ''
+		let flLabel = options.flLabel ?? false
+		let classComp = 'sign-in'
+		let className = classComp
+		if(modif){
+		className += ' '+classComp+'_'+modif}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		- if(!flLabel){
+		h1(class=classComp+'__header')= header
+		-}
+		form(class=classComp+'__form' action='' method='post')
+			div(class=classComp+'__email-wrap')
+				+text-field({
+					flLabel:true,
+					placeholder: 'Email',
+					type: 'email',
+					name: 'email'
+				})
+			div(class=classComp+'__pass-wrap')
+				+text-field({
+					flLabel:true,
+					placeholder: 'Пароль',
+					type: 'password',
+					name: 'password'
+				})
+			div(class=classComp+'__button-wrap')
+				+buttons({
+					text:'войти',
+					type:'submit',
+					modif:'submit'
+				})
+			div(class=classComp+'__registration-wrap')
+				p(class=classComp+'__text-reg') Нет аккаунта на Toxin ?
+				+buttons({
+					text:'Создать',
+					link:'https://test/test',
+					type:'link',
+					modif:'link-border'
+				})

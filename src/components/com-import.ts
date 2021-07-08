@@ -9,3 +9,4 @@ import './like-button/like-button.ts';
 import './range-slider/range-slider.js';
 import './search-room/search-room.ts';
 import './registration/registration.ts';
+import './sign-in/sign-in.ts';
