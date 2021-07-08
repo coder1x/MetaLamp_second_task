@@ -14,9 +14,9 @@ class searchRoom {
 	}
 
 	setDom(elem: Element) {
-		const date = '.date-dropdown__input';
-		const guests = '.drop-down__input';
-		const submit = '.buttons_submit';
+		const date = this.className + '__date-wrap input';
+		const guests = this.className + '__dropdown-wrap input';
+		const submit = this.className + '__button-wrap button';
 
 		this.dateInputs = elem.querySelectorAll(date);
 		this.guestsInput = elem.querySelector(guests);
