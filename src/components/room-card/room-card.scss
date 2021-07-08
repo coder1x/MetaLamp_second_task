@@ -12,9 +12,74 @@ $color-lux: $Purple;
 	width: 100%;
 	max-width: 270px;
 
+	&__slider-wrap {
+		position: relative;
+		height: 152px;
+	}
+
 	&__slide {
+		width: 100%;
+		max-width: 270px;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		opacity: 0;
+		transition: opacity 0.5s;
+		margin: 0 auto;
+
+		&_visible {
+			opacity: 1;
+		}
+	}
+
+	&__dot-wrap {
+		position: absolute;
+		right: 20px;
+		bottom: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 55px;
+	}
+
+	&__dot {
+		display: block;
+		cursor: pointer;
+		width: 8px;
+		height: 8px;
+		border: 1px solid #fff;
+		border-radius: 50%;
+		box-sizing: border-box;
+		filter: drop-shadow(0px 5px 5px rgba(31, 32, 65, 0.3));
+		z-index: 50;
+	}
+
+	&__prev-wrap,
+	&__next-wrap {
+		cursor: pointer;
+		position: absolute;
+		width: 42px;
+		height: 151px;
+		bottom: 0;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__prev-wrap {
+		background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+		left: 0;
+	}
+
+	&__next-wrap {
+		background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+		transform: matrix(-1, 0, 0, 1, 0, 0);
+		right: 0;
 	}
 
 	&__header-wrap,
