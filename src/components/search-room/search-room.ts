@@ -80,3 +80,5 @@ function renderSearchRoom(className: string) {
 
 
 renderSearchRoom('.search-room');
+
+renderSearchRoom('.booking');

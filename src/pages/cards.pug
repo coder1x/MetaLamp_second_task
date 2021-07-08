@@ -2,7 +2,7 @@ include ../components/head/head.pug
 include ../components/logo-group/logo-group.pug
 include ../components/search-room/search-room.pug
 include ../components/registration/registration.pug
-
+include ../components/booking/booking.pug
 
 doctype html
 html(lang='ru')
@@ -21,4 +21,10 @@ html(lang='ru')
 							})
 
 					.cards__center
+						.cards__center__booking
+							+booking({
+								header:'888',
+								lux:true,
+								price: '9 990'
+							})
 					.cards__right
