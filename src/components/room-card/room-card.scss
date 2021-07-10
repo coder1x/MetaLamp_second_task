@@ -42,6 +42,15 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		}
 	}
 
+	&__link {
+		display: block;
+		height: 152px;
+	}
+
+	&__link:focus img {
+		filter: blur(1px) grayscale(1);
+	}
+
 	&__dot-wrap {
 		position: absolute;
 		right: 0px;

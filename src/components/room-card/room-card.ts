@@ -33,6 +33,7 @@ class slider {
 	setDom() {
 		const slide = this.className + '__slide';
 		this.slidesEl = this.elem.querySelectorAll(slide);
+
 		this.dotEl = this.getElement('dot');
 		this.prevEl = this.getElement('prev');
 		this.nextEl = this.getElement('next');
@@ -48,6 +49,7 @@ class slider {
 		const fl: boolean = this.getVisible(slide);
 		const prefics = '__slide' + '_visible';
 		const clearName = this.className.replace(/^\./, '') + prefics;
+
 		let objClass = slide.classList;
 		!fl ? objClass.add(clearName) : objClass.remove(clearName);
 	}
