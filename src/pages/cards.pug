@@ -9,36 +9,37 @@ include ../components/room-card/room-card.pug
 doctype html
 html(lang='ru')
 	body.cards-wrapper
-			+logo-group('ui-wrapper')
-			main
-				section.cards 
-					.cards__left
-						.cards__search-room
-							+search-room({
-								header:'Найдём номера под ваши пожелания'
-							})
-						.cards__registration
-							+registration({
-								header:'Регистрация аккаунта'
-							})
+		.cards-wrapper__logo
+			+logo-group({})
+		main.cards-content
+			section.cards 
+				.cards__left
+					.cards__search-room
+						+search-room({
+							header:'Найдём номера под ваши пожелания'
+						})
+					.cards__registration
+						+registration({
+							header:'Регистрация аккаунта'
+						})
 
-					.cards__center
-						.cards__center__booking
-							+booking({
-								number:'888',
-								lux:true,
-								price: '9 990'
-							})
-						.cards__center__sign-in
-							+sign-in({
-								header:'Войти',
-							})
+				.cards__center
+					.cards__center__booking
+						+booking({
+							number:'888',
+							lux:true,
+							price: '9 990'
+						})
+					.cards__center__sign-in
+						+sign-in({
+							header:'Войти',
+						})
 
-					.cards__right
-						.cards__right__room-card
-							+room-card({
-								number:'888',
-								lux:true,
-								price:'9 990',
-								reviews:'145'
-							})
+				.cards__right
+					.cards__right__room-card
+						+room-card({
+							number:'888',
+							lux:true,
+							price:'9 990',
+							reviews:'145'
+						})

@@ -3,12 +3,14 @@ mixin buttons(options)
 		let text = options.text ?? ''
 		let link = options.link ?? ''
 		let type = options.type ?? ''
-		let modif = options.modif ?? ''
+		let modif = options.modif ?? []
 		let addClass = options.class ?? ''
 		let classComp = 'buttons'
 		let className = classComp
 		if(modif){
-		className += ' '+classComp+'_'+modif}
+			for(let item of modif)
+		className += ' '+classComp+'_'+item
+		}
 		if(addClass){
 		className += ' '+addClass}
 	case type

@@ -1,10 +1,16 @@
+.elements-wrapper {
+	&__logo {
+		margin-top: 30px;
+		margin-left: 30px;
+	}
+}
+
 .map-elements {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	padding-top: 66px;
 	padding-left: 141px;
-	box-sizing: border-box;
 
 	&__wrap-right {
 		display: flex;
@@ -17,9 +23,6 @@
 		flex-direction: row;
 	}
 }
-
-// .comment-wrap {
-// }
 
 .colomn-left {
 	display: flex;
@@ -120,10 +123,12 @@
 
 	&__link {
 		margin-top: 16px;
+		display: flex;
 	}
 
 	&__link-border {
 		margin-top: 30px;
+		display: flex;
 	}
 
 	&__button-text {
@@ -132,6 +137,7 @@
 
 	&__submit {
 		margin-top: 30px;
+		display: flex;
 	}
 
 	&__pagination {

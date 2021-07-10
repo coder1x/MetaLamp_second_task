@@ -5,11 +5,11 @@
 
 /* --------- Подключаем страницы --------- */
 
-@import "../../pages/form-elements/form-elements.scss";
-@import "../../pages/colors-type/colors-type.scss";
-@import "../../pages/ui-kit/ui-kit.scss";
-@import "../../pages/cards/cards.scss";
 @import "../../pages/index/index.scss";
+@import "../../pages/colors-type/colors-type.scss";
+@import "../../pages/form-elements/form-elements.scss";
+@import "../../pages/cards/cards.scss";
+@import "../../pages/headers-footers/headers-footers.scss";
 
 /* --------- Подключаем компоненты --------- */
 @import "../../components/com-import.scss";

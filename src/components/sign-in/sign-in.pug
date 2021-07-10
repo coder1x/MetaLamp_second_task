@@ -36,7 +36,7 @@ mixin sign-in(options)
 				+buttons({
 					text:'войти',
 					type:'submit',
-					modif:'submit'
+					modif:['submit']
 				})
 			div(class=classComp+'__registration-wrap')
 				p(class=classComp+'__text-reg') Нет аккаунта на Toxin ?
@@ -44,5 +44,5 @@ mixin sign-in(options)
 					text:'Создать',
 					link:'https://test/test',
 					type:'link',
-					modif:'link-border'
+					modif:['link-border']
 				})

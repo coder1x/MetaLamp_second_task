@@ -3,19 +3,29 @@
 	background-color: #fff;
 
 	&__wrapper {
-		min-height: 100px;
+		min-height: 70px;
 		max-width: $max-wraper;
 		margin: 0 auto;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: center;
 		justify-content: space-between;
-
-		background-color: #302e29;
 	}
 
-	// &__top {
-	// }
+	&__menu-wrap {
+		margin-left: auto;
+	}
 
-	// &__bottom {
-	// }
+	&__items {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__items-down {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+	}
 }

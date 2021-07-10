@@ -1,0 +1,18 @@
+include ../components/head/head.pug
+include ../components/logo-group/logo-group.pug
+include ../components/header/header.pug
+
+
+doctype html
+html(lang='ru')
+	body.headersfooters-wrapper
+		.headersfooters-wrapper__logo
+			+logo-group({})
+		main.headersfooters-content
+			section.headers-footers 
+				.headers-footers__top
+					.headers-footers__authorization
+						+header({})
+					.headers-footers__authorized
+						+header({type:'authorized'})
+				.headers-footers__bottom

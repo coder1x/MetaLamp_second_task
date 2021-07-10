@@ -1,6 +1,11 @@
 .cards-wrapper {
 	background: #f4f4f6;
 	padding-bottom: 100px;
+
+	&__logo {
+		margin-top: 30px;
+		margin-left: 30px;
+	}
 }
 
 .cards {
@@ -9,7 +14,6 @@
 	justify-content: flex-start;
 	padding-top: 72px;
 	padding-left: 141px;
-	box-sizing: border-box;
 
 	&__search-room {
 		width: 100%;
