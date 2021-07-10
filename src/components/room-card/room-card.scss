@@ -3,18 +3,28 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
 $color-header: #1f2041;
 $color-text: $Dark-Shade-50;
 $color-lux: $Purple;
+$color-dot: #fff;
+$color-header-backgr: $Dark-Shade-1;
+$color-background-prev-next: linear-gradient(
+	90deg,
+	rgba(0, 0, 0, 0.5) 0%,
+	rgba(0, 0, 0, 0) 99.99%,
+	rgba(255, 255, 255, 0) 100%
+);
+$color-dot-filter: rgba(31, 32, 65, 0.3);
 
 .room-card {
 	background: $color-background;
 	border: 1px solid $color-bd-frame;
 	box-shadow: 0px 0px 25px $color-shadow-frame;
 	border-radius: 4px;
-	width: 100%;
-	max-width: 270px;
+	width: 270px;
 
 	&__slider-wrap {
 		position: relative;
 		height: 152px;
+		min-height: 152px;
+		overflow: hidden;
 	}
 
 	&__slide {
@@ -23,14 +33,12 @@ $color-lux: $Purple;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
 		position: absolute;
-		left: 0;
-		right: 0;
 		opacity: 0;
 		transition: opacity 0.5s;
-		margin: 0 auto;
 
 		&_visible {
 			opacity: 1;
+			z-index: 1;
 		}
 	}
 
@@ -56,15 +64,15 @@ $color-lux: $Purple;
 		cursor: pointer;
 		width: 8px;
 		height: 8px;
-		border: 1px solid #fff;
+		border: 1px solid $color-dot;
 		border-radius: 50%;
 		box-sizing: border-box;
-		filter: drop-shadow(0px 5px 5px rgba(31, 32, 65, 0.3));
+		filter: drop-shadow(0px 5px 5px $color-dot-filter);
 		z-index: 50;
 		margin-left: 3px;
 
 		&_paint {
-			background-color: #fff;
+			background-color: $color-dot;
 		}
 	}
 
@@ -74,8 +82,8 @@ $color-lux: $Purple;
 		position: absolute;
 		width: 42px;
 		height: 151px;
-		bottom: 0;
-
+		top: 0;
+		z-index: 2;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -83,12 +91,14 @@ $color-lux: $Purple;
 	}
 
 	&__prev-wrap {
-		background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+		border-top-left-radius: 4px;
+		background: $color-background-prev-next;
 		left: 0;
 	}
 
 	&__next-wrap {
-		background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+		border-top-left-radius: 4px;
+		background: $color-background-prev-next;
 		transform: matrix(-1, 0, 0, 1, 0, 0);
 		right: 0;
 	}
@@ -112,7 +122,7 @@ $color-lux: $Purple;
 		position: absolute;
 		bottom: -12px;
 		content: "";
-		background: rgba(31, 32, 65, 0.1);
+		background: $color-header-backgr;
 		width: 100%;
 		max-width: 230px;
 		height: 1px;
@@ -195,7 +205,6 @@ $color-lux: $Purple;
 		font-size: 14px;
 		line-height: 25px;
 		color: $color-text;
-
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
