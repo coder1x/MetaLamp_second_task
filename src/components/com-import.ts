@@ -11,3 +11,4 @@ import './search-room/search-room.ts';
 import './registration/registration.ts';
 import './sign-in/sign-in.ts';
 import './room-card/room-card.ts';
+import './header/header.ts';

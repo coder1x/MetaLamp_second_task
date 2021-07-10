@@ -1,6 +1,7 @@
 .header {
 	width: 100%;
 	background-color: #fff;
+	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 
 	&__wrapper {
 		min-height: 70px;
@@ -12,8 +13,36 @@
 		justify-content: space-between;
 	}
 
+	&__link,
+	&__link-down {
+		white-space: nowrap;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 17px;
+		color: rgba(31, 32, 65, 0.5);
+
+		&_bold {
+			font-weight: bold;
+		}
+	}
+
+	&__tip {
+		margin-left: 6px;
+	}
+
+	&__item {
+		margin-left: 22px;
+		position: relative;
+	}
+
+	&__item:first-child {
+		margin-left: 0;
+	}
+
 	&__menu-wrap {
 		margin-left: auto;
+		margin-right: 26px;
 	}
 
 	&__items {
@@ -24,8 +53,41 @@
 	}
 
 	&__items-down {
+		position: absolute;
+		top: 30px;
+		left: 50%;
+		transform: translate(-50%);
+		background-color: #fff;
+		padding: 10px;
+		z-index: 2;
+		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 		display: none;
 		flex-direction: column;
 		justify-content: center;
+	}
+
+	&__item-down {
+		margin-top: 10px;
+	}
+
+	&__user {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 30px;
+		border-left: 1px solid rgba(31, 32, 65, 0.1);
+	}
+
+	&__nikname {
+		margin-left: 20px;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 17px;
+		color: rgba(31, 32, 65, 0.5);
+	}
+
+	&__registration-wrap {
+		margin-left: 20px;
 	}
 }
