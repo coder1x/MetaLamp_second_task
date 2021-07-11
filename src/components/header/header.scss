@@ -1,8 +1,9 @@
-$color-box-shadow: rgba(31, 32, 65, 0.05);
-$color-user-border: rgba(31, 32, 65, 0.1);
-$color-nikname: rgba(31, 32, 65, 0.5);
-$color-line-backgr: rgba(31, 32, 65, 0.75);
-$color-link: rgba(31, 32, 65, 0.5);
+$color-box-shadow: $Dark-Shade-5;
+$color-user-border: $Dark-Shade-1;
+$color-nikname: $Dark-Shade-50;
+$color-line-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+$color-link: $Dark-Shade-50;
+$color-line-close: $Dark-Shade-50;
 
 .header {
 	width: 100%;
@@ -57,18 +58,14 @@ $color-link: rgba(31, 32, 65, 0.5);
 			margin-left: 0;
 			margin-right: 0;
 		}
-
-		&_visible {
-			transform: rotate(90deg);
-			transition: transform 0.5s;
-		}
 	}
 
 	&__toggle-line {
 		display: block;
-		background-color: $color-line-backgr;
+		background: $color-line-backgr;
 		width: 40px;
 		height: 4px;
+		transition: height 0.3s;
 	}
 
 	&__toggle-line::after {
@@ -76,7 +73,7 @@ $color-link: rgba(31, 32, 65, 0.5);
 		content: "";
 		top: 1px;
 		left: 0;
-		background-color: $color-line-backgr;
+		background: $color-line-backgr;
 		width: 40px;
 		height: 4px;
 		transform: rotate(0deg);
@@ -88,7 +85,7 @@ $color-link: rgba(31, 32, 65, 0.5);
 		content: "";
 		bottom: 1px;
 		left: 0;
-		background-color: $color-line-backgr;
+		background: $color-line-backgr;
 		width: 40px;
 		height: 4px;
 		transform: rotate(0deg);
@@ -123,6 +120,10 @@ $color-link: rgba(31, 32, 65, 0.5);
 		@include media-breakpoint-down($md) {
 			margin-left: 0px;
 			margin-top: 20px;
+
+			border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+			width: 100%;
+			padding-bottom: 10px;
 		}
 	}
 
@@ -140,7 +141,8 @@ $color-link: rgba(31, 32, 65, 0.5);
 			margin: 0px;
 			position: absolute;
 			top: 75px;
-			left: 20px;
+			left: 0;
+			width: 100%;
 		}
 
 		@include media-breakpoint-down($xs) {
@@ -220,5 +222,24 @@ $color-link: rgba(31, 32, 65, 0.5);
 .header .header__menu-wrap {
 	&_visible {
 		display: block;
+	}
+}
+
+.header .header__toggle-line {
+	&_visible {
+		height: 0px;
+		transition: height 0.5s;
+		&::before {
+			transform: rotate(-50deg);
+			transition: transform 0.3s;
+			bottom: 12px;
+			background: $color-line-close;
+		}
+		&::after {
+			transform: rotate(50deg);
+			transition: transform 0.3s;
+			top: 11px;
+			background: $color-line-close;
+		}
 	}
 }

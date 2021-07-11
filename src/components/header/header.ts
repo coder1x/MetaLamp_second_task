@@ -1,4 +1,6 @@
 
+
+
 class headerMenu {
 
 	className: string;
@@ -9,6 +11,7 @@ class headerMenu {
 	showElem: Element[];
 	button: Element;
 	nav: Element;
+	spanBut: Element;
 
 	constructor(className: string, elem: Element) {
 		this.className = className;
@@ -17,7 +20,7 @@ class headerMenu {
 	}
 
 
-	startMenu() {
+	private startMenu() {
 		this.showElem = [];
 		this.setDom();
 		this.setActions();
@@ -29,15 +32,16 @@ class headerMenu {
 		return this.elem.querySelectorAll(selector);
 	}
 
-	getElement(str: string): any {
+	getElement(str: string): Element {
 		const selector = this.className + '__' + str;
 		return this.elem.querySelector(selector);
 	}
 
-	setDom() {
+	private setDom() {
 		this.links = this.getElements('link');
 		this.items = this.getElements('items');
 		this.button = this.getElement('toggle');
+		this.spanBut = this.getElement('toggle-line');
 		this.nav = this.getElement('menu-wrap');
 
 		this.mapLinks = new Map();
@@ -46,11 +50,11 @@ class headerMenu {
 		}
 	}
 
-	getIndex(elem: Element) {
+	private getIndex(elem: Element) {
 		return this.mapLinks.get(elem);
 	}
 
-	getModif() {
+	private getModif() {
 		const selector = this.className + '__items-down_visible';
 		return selector.replace(/^\./, '');
 	}
@@ -61,7 +65,7 @@ class headerMenu {
 		return display === 'hidden' ? false : true;
 	}
 
-	showUl(index: number) {
+	private showUl(index: number) {
 		if (this.getVisButton(this.button)) return;
 
 		this.closeAll();
@@ -71,7 +75,7 @@ class headerMenu {
 		this.showElem.push(elem);
 	}
 
-	trackMouse(elem: Element) {  // следим за курсором когда он попадает на список
+	private trackMouse(elem: Element) {  // следим за курсором когда он попадает на список
 		elem.addEventListener('mouseout', (e: any) => {
 			const rel = e.relatedTarget;
 			let domEl = rel.closest('.' + this.getModif()) ?? false;
@@ -82,12 +86,12 @@ class headerMenu {
 		});
 	}
 
-	closeUl(elem: Element) {
+	private closeUl(elem: Element) {
 		elem.classList.remove(this.getModif());
 	}
 
 	closeAll() {
-		if (this.showElem.length) { // закрываем предидущие 
+		if (this.showElem.length) {
 			this.showElem.map((elem) => {
 				this.closeUl(elem);
 			});
@@ -100,7 +104,7 @@ class headerMenu {
 		return display === 'none' ? false : true;
 	}
 
-	setModif(elem: Element, mod: string, fl = false) {
+	private setModif(elem: Element, mod: string, fl = false) {
 		const select = '__' + mod + '_visible';
 		const clearName = this.className.replace(/^\./, '') + select;
 		let objClass = elem.classList;
@@ -109,22 +113,14 @@ class headerMenu {
 
 	private toggle() {
 		const navVisible: boolean = this.getVisible(this.nav);
-
 		this.setModif(this.nav, 'menu-wrap', navVisible);
-		this.setModif(this.button, 'toggle', navVisible);
+		this.setModif(this.spanBut, 'toggle-line', navVisible);
 	}
 
-
-
-
-	setActions() {
+	private setActions() {
 
 		this.button.addEventListener('click', () => {
-
 			this.toggle();
-			// вешаем модификатор на кнопку. 
-			// вешаем модификатор на меню. что бы оно появилось.
-			// при повторном нажатии закрываем. 
 		});
 
 		for (let item of this.links) {
