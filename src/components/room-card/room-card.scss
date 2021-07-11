@@ -90,26 +90,48 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		cursor: pointer;
 		position: absolute;
 		width: 42px;
-		height: 151px;
 		top: 0;
+		bottom: 0;
 		z-index: 2;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		background: none;
+		border: 0px;
+		padding: 0;
+	}
+
+	&__prev-wrap:hover,
+	&__prev-wrap:focus {
+		border-top-left-radius: 4px;
+		background: $color-background-prev-next;
+	}
+
+	&__next-wrap:hover,
+	&__next-wrap:focus {
+		border-top-left-radius: 4px;
+		background: $color-background-prev-next;
+		transform: matrix(-1, 0, 0, 1, 0, 0);
+	}
+
+	&__prev-wrap:hover > &__prev,
+	&__prev-wrap:focus > &__prev {
+		display: inline;
+	}
+
+	&__next-wrap:hover > &__next,
+	&__next-wrap:focus > &__next {
+		display: inline;
 	}
 
 	&__prev-wrap {
-		border-top-left-radius: 4px;
-		background: $color-background-prev-next;
 		left: 0;
 	}
 
 	&__next-wrap {
-		border-top-left-radius: 4px;
-		background: $color-background-prev-next;
-		transform: matrix(-1, 0, 0, 1, 0, 0);
 		right: 0;
+	}
+
+	&__next,
+	&__prev {
+		display: none;
 	}
 
 	&__header-wrap,

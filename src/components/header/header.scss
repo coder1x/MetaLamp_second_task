@@ -1,7 +1,17 @@
+$color-box-shadow: rgba(31, 32, 65, 0.05);
+$color-user-border: rgba(31, 32, 65, 0.1);
+$color-nikname: rgba(31, 32, 65, 0.5);
+$color-line-backgr: rgba(31, 32, 65, 0.75);
+$color-link: rgba(31, 32, 65, 0.5);
+
 .header {
 	width: 100%;
-	background-color: #fff;
-	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+	background-color: $color-background;
+	box-shadow: 0px 10px 20px $color-box-shadow;
+	padding-left: 20px;
+	padding-right: 20px;
+	box-sizing: border-box;
+	position: relative;
 
 	&__wrapper {
 		min-height: 70px;
@@ -11,6 +21,78 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
+
+		@include media-breakpoint-down($xs) {
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			min-height: 216px;
+		}
+	}
+
+	&__toggle {
+		position: absolute;
+		cursor: pointer;
+		visibility: hidden;
+		padding: 0;
+		border: 0;
+		width: 1px;
+		height: 1px;
+		background: none;
+		transform: rotate(0deg);
+		transition: transform 0.5s;
+
+		@include media-breakpoint-down($md) {
+			position: relative;
+			visibility: unset;
+			width: auto;
+			height: 27px;
+			margin-left: 40px;
+			margin-right: auto;
+		}
+
+		@include media-breakpoint-down($xs) {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&_visible {
+			transform: rotate(90deg);
+			transition: transform 0.5s;
+		}
+	}
+
+	&__toggle-line {
+		display: block;
+		background-color: $color-line-backgr;
+		width: 40px;
+		height: 4px;
+	}
+
+	&__toggle-line::after {
+		position: absolute;
+		content: "";
+		top: 1px;
+		left: 0;
+		background-color: $color-line-backgr;
+		width: 40px;
+		height: 4px;
+		transform: rotate(0deg);
+		transition: transform 0.5s;
+	}
+
+	&__toggle-line::before {
+		position: absolute;
+		content: "";
+		bottom: 1px;
+		left: 0;
+		background-color: $color-line-backgr;
+		width: 40px;
+		height: 4px;
+		transform: rotate(0deg);
+		transition: transform 0.5s;
 	}
 
 	&__link,
@@ -20,7 +102,7 @@
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;
-		color: rgba(31, 32, 65, 0.5);
+		color: $color-link;
 
 		&_bold {
 			font-weight: bold;
@@ -29,11 +111,19 @@
 
 	&__tip {
 		margin-left: 6px;
+		@include media-breakpoint-down($md) {
+			transform: rotate(-90deg);
+		}
 	}
 
 	&__item {
 		margin-left: 22px;
 		position: relative;
+
+		@include media-breakpoint-down($md) {
+			margin-left: 0px;
+			margin-top: 20px;
+		}
 	}
 
 	&__item:first-child {
@@ -43,6 +133,19 @@
 	&__menu-wrap {
 		margin-left: auto;
 		margin-right: 26px;
+
+		@include media-breakpoint-down($md) {
+			display: none;
+			z-index: 1;
+			margin: 0px;
+			position: absolute;
+			top: 75px;
+			left: 20px;
+		}
+
+		@include media-breakpoint-down($xs) {
+			top: 180px;
+		}
 	}
 
 	&__items {
@@ -50,6 +153,14 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
+
+		@include media-breakpoint-down($md) {
+			padding: 20px;
+			flex-direction: column;
+			align-items: flex-start;
+			background: $color-background;
+			box-shadow: 0px 10px 20px $color-box-shadow;
+		}
 	}
 
 	&__items-down {
@@ -57,13 +168,17 @@
 		top: 30px;
 		left: 50%;
 		transform: translate(-50%);
-		background-color: #fff;
-		padding: 10px;
+		background-color: $color-background;
+		padding: 20px;
 		z-index: 2;
-		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+		box-shadow: 0px 10px 20px $color-box-shadow;
 		display: none;
 		flex-direction: column;
 		justify-content: center;
+
+		&_visible {
+			display: flex;
+		}
 	}
 
 	&__item-down {
@@ -75,7 +190,12 @@
 		flex-direction: column;
 		justify-content: center;
 		height: 30px;
-		border-left: 1px solid rgba(31, 32, 65, 0.1);
+		border-left: 1px solid $color-user-border;
+
+		@include media-breakpoint-down($xs) {
+			border-top: 1px solid $color-user-border;
+			border-left: 0px;
+		}
 	}
 
 	&__nikname {
@@ -84,10 +204,21 @@
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;
-		color: rgba(31, 32, 65, 0.5);
+		color: $color-nikname;
+
+		@include media-breakpoint-down($xs) {
+			margin-left: 0px;
+			margin-top: 20px;
+		}
 	}
 
 	&__registration-wrap {
 		margin-left: 20px;
+	}
+}
+
+.header .header__menu-wrap {
+	&_visible {
+		display: block;
 	}
 }
