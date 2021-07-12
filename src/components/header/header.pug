@@ -1,4 +1,5 @@
 include ../buttons/buttons.pug
+include ../logo/logo.pug
 
 mixin header(options)
 	-
@@ -13,8 +14,8 @@ mixin header(options)
 		className += ' '+addClass}
 	header(class=className)
 		div(class=classComp+'__wrapper')
-			a(class=classComp+'__link-logo' href='https://test/test')
-				img(class=classComp+'__logo' src='assets/images/header/img/Logo.svg', alt='TOXIN')
+			div(class=classComp+'__link-logo')
+				+logo({link:'https://test/test'})
 			button(class=classComp+'__toggle')
 				span(class=classComp+'__toggle-line')
 			nav(class=classComp+'__menu-wrap')

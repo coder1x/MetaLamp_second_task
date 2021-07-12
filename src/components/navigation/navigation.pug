@@ -1,0 +1,21 @@
+mixin navigation(options)
+	-
+		let header = options.header ?? ''
+		let masText = options.masText ?? []
+		let modif = options.modif ?? []
+		let addClass = options.class ?? ''
+		let classComp = 'navigation'
+		let className = classComp
+		if(modif){
+			for(let item of modif)
+		className += ' '+classComp+'_'+item
+		}
+		if(addClass){
+		className += ' '+addClass}
+	div(class=className)
+		h3(class=classComp+'__header')= header
+		ul(class=classComp+'__items')
+			-for(let i=0; i<masText.length; i++){
+			li(class=classComp+'__item')
+				a(class=classComp+'__link' href='https://test/test')= masText[i]
+			-}

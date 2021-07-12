@@ -1,0 +1,26 @@
+.navigation {
+	&__header {
+		margin-bottom: 19px;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__item {
+		margin-bottom: 14px;
+	}
+
+	&__item:last-child {
+		margin-bottom: 0px;
+	}
+
+	&__link {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 17px;
+		color: rgba(31, 32, 65, 0.5);
+	}
+}
