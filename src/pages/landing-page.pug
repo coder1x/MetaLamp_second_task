@@ -9,13 +9,15 @@ html(lang='ru')
 		+header({})
 		.landing-page__wrap
 			main.landing-content
-				section.landing-content__search-room  
-					.landing-content__background
-						.landing-content__top-search-room
-							.landing-content__search-room-wrap
+				section.landing-content__search-room
+					.relation-ratio
+					img(class='landing-content__background' src='/assets/images/content/image 3.png', alt='')
+					.landing-content__search-room-wrap
+						.landing-content__top
+							.landing-content__top-wrap
 								+search-room({
 									header:'Найдём номера под ваши пожелания'
 								})
-						.landing-content__bottom-text-wrap
+						.landing-content__bottom
 							p(class='landing-content__bottom-text') Лучшие номера для вашей работы, отдыха и просто вдохновения
 		+footer({})

@@ -2,6 +2,7 @@ $color-top-shadow: $Dark-Shade-1;
 $color-bottom-shadow: $Dark-Shade-5;
 $color-subscrip-text: $Dark-Shade-75;
 $color-recommendation-text: $Dark-Shade-75;
+$color-copyright: $Dark-Shade-75;
 
 .footer {
 	width: 100%;
@@ -136,6 +137,14 @@ $color-recommendation-text: $Dark-Shade-75;
 		@include media-breakpoint-down($sm) {
 			padding-bottom: 91px;
 		}
+	}
+
+	&__copyright {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 17px;
+		color: $color-copyright;
 	}
 
 	&__social {

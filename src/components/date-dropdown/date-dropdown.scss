@@ -53,6 +53,13 @@ $color-datepicker-shadow: $Dark-Shade-5;
 		align-items: center;
 	}
 
+	&__date-wrap {
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 20px;
+			width: 100%;
+		}
+	}
+
 	&__input {
 		width: 100%;
 		max-width: 150px;
@@ -61,7 +68,6 @@ $color-datepicker-shadow: $Dark-Shade-5;
 		padding-right: 44px;
 		outline: 0;
 		cursor: pointer;
-
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
@@ -70,6 +76,10 @@ $color-datepicker-shadow: $Dark-Shade-5;
 		font-size: 14px;
 		line-height: 24px;
 		box-sizing: border-box;
+
+		@include media-breakpoint-down($xs) {
+			max-width: unset;
+		}
 	}
 
 	&__input::placeholder {
@@ -111,13 +121,17 @@ $color-datepicker-shadow: $Dark-Shade-5;
 	}
 
 	&_visible &__datepicker-wrap {
-		display: flex;
-		flex-direction: column;
-		background-color: $color-background;
+		@include media-breakpoint-up($xs) {
+			display: flex;
+			flex-direction: column;
+			background-color: $color-background;
+		}
 	}
 
 	&_visible &__tip {
-		transform: rotate(180deg);
+		@include media-breakpoint-up($xs) {
+			transform: rotate(180deg);
+		}
 	}
 
 	&__clear {

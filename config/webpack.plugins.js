@@ -31,6 +31,7 @@ module.exports = {
 			template: `${PAGES_DIR}/${page}`,
 			filename: `./${page.replace(/\.pug/, '.html')}`,
 			inject: 'body',
+			title: 'Caching',
 		})),
 
 		// new FoxFavicon({
