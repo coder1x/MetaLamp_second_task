@@ -14,6 +14,6 @@ mixin like-button(options)
 		- if(!flLabel){
 		p(class=classComp+'__header')= label
 		-}
-		button(class=classComp+'__like')
-			img(class=classComp+'__icon' src='assets/images/like-button/img/like.svg' alt='')
+		button(class=classComp+'__like' aria-label='поставить лайк')
+			img(class=classComp+'__icon' src='assets/images/like-button/img/like.svg' alt='like')
 			span(class=classComp+'__value') 2

@@ -94,6 +94,7 @@ $color-line-close: $Dark-Shade-50;
 
 	&__link,
 	&__link-down {
+		display: inline-block;
 		white-space: nowrap;
 		font-family: "Montserrat", Helvetica, Arial, sans-serif;
 		font-weight: normal;
@@ -101,7 +102,7 @@ $color-line-close: $Dark-Shade-50;
 		line-height: 17px;
 		color: $color-link;
 
-		&_bold {
+		&_current {
 			font-weight: bold;
 		}
 	}

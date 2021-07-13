@@ -28,9 +28,9 @@ mixin drop-down(options)
 				- for(let i=0; i<masWord[0].length; i++)	{
 					li(class=classComp+'__select-item' data-type= masWord[1][i])
 						p(class=classComp+'__text')= masWord[0][i] 
-						button(class=classComp+'__minus') -
+						button(class=classComp+'__minus' aria-label='минус') -
 						span(class=classComp+'__value') 0
-						button(class=classComp+'__plus' data-max=maxValue[i]) +
+						button(class=classComp+'__plus' data-max=maxValue[i] aria-label='плюс') +
 				-}
 				-if(button){
 				li(class=classComp+'__buttons')
@@ -38,13 +38,13 @@ mixin drop-down(options)
 						+buttons({
 							text:'очистить',
 							type:'button',
-							modif:'text'
+							modif:['text']
 									})
 					div(class=classComp+'__button-apply') 
 						+buttons({
 							text:'применить',
 							type:'button',
-							modif:'text'
+							modif:['text']
 									})
 				-}
 

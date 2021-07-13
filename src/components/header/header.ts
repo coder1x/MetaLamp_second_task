@@ -1,24 +1,20 @@
-
-
-
 class headerMenu {
 
 	className: string;
 	elem: Element;
-	links: any;
 	items: any;
 	mapLinks: any;
 	showElem: Element[];
 	button: Element;
 	nav: Element;
 	spanBut: Element;
+	linksDown: any;
 
 	constructor(className: string, elem: Element) {
 		this.className = className;
 		this.elem = elem;
 		this.startMenu();
 	}
-
 
 	private startMenu() {
 		this.showElem = [];
@@ -38,15 +34,15 @@ class headerMenu {
 	}
 
 	private setDom() {
-		this.links = this.getElements('link');
+		this.linksDown = this.getElements('link');
 		this.items = this.getElements('items');
 		this.button = this.getElement('toggle');
 		this.spanBut = this.getElement('toggle-line');
 		this.nav = this.getElement('menu-wrap');
 
 		this.mapLinks = new Map();
-		for (let i = 0; i < this.links.length; i++) {
-			this.mapLinks.set(this.links[i], i);
+		for (let i = 0; i < this.linksDown.length; i++) {
+			this.mapLinks.set(this.linksDown[i], i);
 		}
 	}
 
@@ -123,7 +119,7 @@ class headerMenu {
 			this.toggle();
 		});
 
-		for (let item of this.links) {
+		for (let item of this.linksDown) {
 			item.addEventListener('mouseover', (e: any) => {
 				this.showUl(this.getIndex(e.currentTarget));
 			});
@@ -150,7 +146,6 @@ class headerMenu {
 		});
 	}
 }
-
 
 
 function renderHeaderMenu(className: string) {

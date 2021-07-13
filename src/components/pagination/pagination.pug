@@ -15,13 +15,13 @@ mixin pagination(options)
 		p(class=classComp+'__header')= label
 		-}
 		div(class=classComp+'__links')
-			//- a(class=classComp+'__prev' href='https://test/test')
+			//- a(class=classComp+'__prev' href='https://test/test' aria-label='пагинация страницы - стрелка назад')
 			//- 	img(class=classComp+'__prev-img' src='assets/images/pagination/img/arrow_forward.svg', alt='')
 			span(class=classComp+'__current') 1
-			a(class=classComp+'__page-numbers' href='https://test/test') 2
-			a(class=classComp+'__page-numbers' href='https://test/test') 3
+			a(class=classComp+'__page-numbers' href='https://test/test' aria-label='пагинация страницы 2') 2
+			a(class=classComp+'__page-numbers' href='https://test/test' aria-label='пагинация страницы 3') 3
 			span(class=classComp+'__dots') ...
-			a(class=classComp+'__page-numbers' href='https://test/test') 15
-			a(class=classComp+'__next' href='https://test/test')
+			a(class=classComp+'__page-numbers' href='https://test/test' aria-label='пагинация страницы 15') 15
+			a(class=classComp+'__next' href='https://test/test' aria-label='пагинация страницы - стрелка дальше')
 				img(class=classComp+'__next-img' src='assets/images/pagination/img/arrow_forward.svg', alt='')
 		p(class=classComp+'__text') 1 – 12 из 100+ вариантов аренды
