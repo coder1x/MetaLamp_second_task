@@ -1,3 +1,5 @@
+import "./datepicker.scss";
+import "./date-dropdown.scss";
 /*
 Компонент dateDropDown использует плагин jQuery air-datepicker
 который позволяет осуществлять ввод Даты через календарь, а так же

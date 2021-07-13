@@ -1,3 +1,5 @@
+import "./search-room.scss";
+
 
 class searchRoom {
 

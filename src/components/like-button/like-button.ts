@@ -1,3 +1,5 @@
+import "./like-button.scss";
+
 class likeButton {
 
 	likeEl: Element;

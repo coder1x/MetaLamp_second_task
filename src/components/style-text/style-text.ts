@@ -1,0 +1,1 @@
+import "./style-text.scss";

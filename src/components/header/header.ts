@@ -1,3 +1,5 @@
+import "./header.scss";
+
 class headerMenu {
 
 	className: string;

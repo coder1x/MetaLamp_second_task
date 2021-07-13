@@ -1,3 +1,0 @@
-
-import '../../components/com-import';
-

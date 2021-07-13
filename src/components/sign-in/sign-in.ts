@@ -1,3 +1,5 @@
+import "./sign-in.scss";
+
 class signIn {
 
 	emailInputs: HTMLInputElement;

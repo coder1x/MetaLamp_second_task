@@ -1,3 +1,4 @@
+import "./drop-down.scss";
 
 interface optE {
 	str: string,

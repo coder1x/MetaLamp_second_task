@@ -1,3 +1,5 @@
+import "./room-card.scss";
+
 
 class slider {
 

@@ -1,3 +1,4 @@
+import "./subscrip-textfield.scss";
 import { validationEmail } from '../validation-email/validation-email';
 
 

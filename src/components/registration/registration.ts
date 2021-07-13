@@ -1,3 +1,4 @@
+import "./registration.scss";
 
 class registration {
 

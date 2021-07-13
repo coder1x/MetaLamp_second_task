@@ -1,3 +1,4 @@
+import "./range-slider.scss";
 
 class rangeSlider {
 
