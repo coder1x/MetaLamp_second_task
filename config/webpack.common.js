@@ -38,6 +38,7 @@ module.exports = merge(devServ, {
 			'@plugins': `${PATHS.src}\\plugins`,
 			'@styles': `${PATHS.src}${PATHS.assets}styles`,
 			'@typescript': `${PATHS.src}${PATHS.assets}ts`,
+			'@img': `${PATHS.src}${PATHS.assets}images`,
 			'@': PATHS.src,
 			comp: PATHS.components,
 		}

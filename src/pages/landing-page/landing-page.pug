@@ -1,7 +1,7 @@
-include ../components/head/head.pug
-include ../components/header/header.pug
-include ../components/footer/footer.pug
-include ../components/search-room/search-room.pug
+include ../../components/head/head.pug
+include ../../components/header/header.pug
+include ../../components/footer/footer.pug
+include ../../components/search-room/search-room.pug
 
 doctype html
 html(lang='ru')
@@ -11,7 +11,7 @@ html(lang='ru')
 			main.landing-content
 				section.landing-content__search-room
 					.relation-ratio
-					img(class='landing-content__background' src='/assets/images/content/image 3.png', alt='')
+					img(class='landing-content__background' src=require('@img/content/image 3.png').default, alt='')
 					.landing-content__search-room-wrap
 						.landing-content__top
 							.landing-content__top-wrap

@@ -12,11 +12,12 @@ const FL = require('./filename');
 const DP = require('./isDev');
 const PATHS = require('./paths');
 const PAGES_DIR = `${PATHS.src}\\pages\\`; // каталог где располагаються PUG  файлы
-const PAGES = fs.readdirSync(PAGES_DIR).
-	filter(fileName => fileName.endsWith('.pug')); // получаем все PUG файлы в данном каталоге
 
 
-
+const pages = [];
+fs.readdirSync(PAGES_DIR).forEach((file) => {
+	pages.push(file.split('/', 2));
+});
 
 
 module.exports = {
@@ -24,11 +25,26 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
 
-		...PAGES.map(page => new HTMLWebpackPlugin({  // автоматическое добавление страниц PUG 
-			template: `${PAGES_DIR}/${page}`,
-			filename: `./${page.replace(/\.pug/, '.html')}`,
+		...pages.map(fileName => new HTMLWebpackPlugin({
+			getData: () => {
+				try {
+					return JSON.parse(fs.readFileSync(
+						`./pages/${fileName}/data.json`, 'utf8'
+					));
+				} catch (e) {
+					console.warn(
+						`data.json was not provided for page ${fileName}`
+					);
+					return {};
+				}
+			},
+			filename: `${fileName}.html`,
+			template: `./pages/${fileName}/${fileName}.pug`,
+			alwaysWriteToDisk: true,
 			inject: 'body',
+			hash: true,
 		})),
+
 
 		// new FoxFavicon({
 		// 	src: `${PATHS.src}${PATHS.assets}images/icon/favicon.png`,
