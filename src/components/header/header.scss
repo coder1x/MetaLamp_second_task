@@ -9,8 +9,8 @@ $color-line-close: $Dark-Shade-50;
 	width: 100%;
 	background-color: $color-background;
 	box-shadow: 0px 10px 20px $color-box-shadow;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: $size-padding;
+	padding-right: $size-padding;
 	box-sizing: border-box;
 	position: relative;
 

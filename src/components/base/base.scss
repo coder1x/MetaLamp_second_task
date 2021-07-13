@@ -7,10 +7,6 @@ html {
 	min-width: $min-wraper;
 }
 
-// ::placeholder {
-// 	color: gray;
-// }
-
 body {
 	display: flex;
 	flex-direction: column;
@@ -19,25 +15,7 @@ body {
 	min-height: 100%; /* растягиваем тело сайта на весь экран */
 	width: 100%; /* растягиваем тело сайта на весь экран */
 	background: $color-background;
-	font-size: 14px;
-	line-height: 24px;
-	font-family: inherit;
 	color: $color-body;
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100px;
-	width: 100%;
-	flex: 1 0 auto;
-
-	&__content {
-		width: 100%;
-		position: relative;
-		word-wrap: break-word; // параметр специально тут что бы текст или слова не выходили за пределы контейнеров
-		flex: 1 0 auto;
-	}
 }
 
 //---------------------------------- Главные блоки контентной части

@@ -11,8 +11,8 @@ $color-recommendation-text: $Dark-Shade-75;
 		width: 100%;
 		box-shadow: 0px 1px 0px $color-top-shadow;
 		height: 372px;
-		padding-left: 20px;
-		padding-right: 20px;
+		padding-left: $size-padding;
+		padding-right: $size-padding;
 		box-sizing: border-box;
 		@include media-breakpoint-down($sm) {
 			box-shadow: none;
@@ -82,8 +82,8 @@ $color-recommendation-text: $Dark-Shade-75;
 
 	&__bottom {
 		box-shadow: 0px 10px 20px $color-bottom-shadow;
-		padding-left: 20px;
-		padding-right: 20px;
+		padding-left: $size-padding;
+		padding-right: $size-padding;
 		box-sizing: border-box;
 	}
 

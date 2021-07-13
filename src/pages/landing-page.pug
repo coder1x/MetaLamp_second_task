@@ -1,0 +1,21 @@
+include ../components/head/head.pug
+include ../components/header/header.pug
+include ../components/footer/footer.pug
+include ../components/search-room/search-room.pug
+
+doctype html
+html(lang='ru')
+	body.landing-page
+		+header({})
+		.landing-page__wrap
+			main.landing-content
+				section.landing-content__search-room  
+					.landing-content__background
+						.landing-content__top-search-room
+							.landing-content__search-room-wrap
+								+search-room({
+									header:'Найдём номера под ваши пожелания'
+								})
+						.landing-content__bottom-text-wrap
+							p(class='landing-content__bottom-text') Лучшие номера для вашей работы, отдыха и просто вдохновения
+		+footer({})
