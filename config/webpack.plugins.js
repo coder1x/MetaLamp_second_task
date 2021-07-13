@@ -24,14 +24,10 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
 
-
-
-
 		...PAGES.map(page => new HTMLWebpackPlugin({  // автоматическое добавление страниц PUG 
 			template: `${PAGES_DIR}/${page}`,
 			filename: `./${page.replace(/\.pug/, '.html')}`,
 			inject: 'body',
-			title: 'Caching',
 		})),
 
 		// new FoxFavicon({
