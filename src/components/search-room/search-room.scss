@@ -8,7 +8,7 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
 	box-shadow: 0px 0px 25px $color-shadow-frame;
 	border-radius: 4px;
-	padding: 40px 30px 14px 28px;
+	padding: 40px 30px 28px 28px;
 
 	&__header {
 		margin-bottom: 22px;
@@ -16,6 +16,10 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
 
 	&__date-wrap {
 		margin-bottom: 22px;
+		border: 0px;
+		padding: 0;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	&__dropdown-wrap {

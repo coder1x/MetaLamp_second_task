@@ -12,13 +12,13 @@ mixin comment(options)
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
 		className += ' '+addClass}
-	div(class=className)
+	article(class=className)
 		div(class=classComp+'__avatar-wrap')
 			img(class=classComp+'__avatar' src='assets/images/comment/img/foto.jpg', alt=name)
 			div(class=classComp+'__like-wrap')
 				+like-button({flLabel:true})
 		div(class=classComp+'__message-wrap')
-			div(class=classComp+'__header-wrap')
-				p(class=classComp+'__name')= name
+			footer(class=classComp+'__header-wrap')
+				a(class=classComp+'__name' href='https://test/test')= name
 				p(class=classComp+'__date')= date
 			p(class=classComp+'__message')= message

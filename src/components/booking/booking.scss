@@ -16,7 +16,7 @@ $color-total-text: #1f2041;
 	box-sizing: border-box;
 	box-shadow: 0px 0px 25px $color-shadow-frame;
 	border-radius: 4px;
-	padding: 40px 29px 15px 29px;
+	padding: 40px 29px 30px 29px;
 
 	&__header-wrap,
 	&__number-wrap,
@@ -81,6 +81,10 @@ $color-total-text: #1f2041;
 
 	&__date-wrap {
 		margin-bottom: 21px;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0;
+		border: 0;
 	}
 
 	&__dropdown-wrap {

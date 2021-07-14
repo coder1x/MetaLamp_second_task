@@ -13,31 +13,33 @@ mixin sign-in(options)
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
 		className += ' '+addClass}
-	div(class=className)
+	article(class=className)
 		- if(!flLabel){
-		h1(class=classComp+'__header')= header
+		header(class=classComp+'__header-wrap')
+			h1(class=classComp+'__header')= header
 		-}
 		form(class=classComp+'__form' action='' method='post')
-			div(class=classComp+'__email-wrap')
-				+text-field({
-					flLabel:true,
-					placeholder: 'Email',
-					type: 'email',
-					name: 'email'
-				})
-			div(class=classComp+'__pass-wrap')
-				+text-field({
-					flLabel:true,
-					placeholder: 'Пароль',
-					type: 'password',
-					name: 'password'
-				})
-			div(class=classComp+'__button-wrap')
-				+buttons({
-					text:'войти',
-					type:'submit',
-					modif:['submit']
-				})
+			fieldset(class=classComp+'__authorization')
+				div(class=classComp+'__email-wrap')
+					+text-field({
+						flLabel:true,
+						placeholder: 'Email',
+						type: 'email',
+						name: 'email'
+					})
+				div(class=classComp+'__pass-wrap')
+					+text-field({
+						flLabel:true,
+						placeholder: 'Пароль',
+						type: 'password',
+						name: 'password'
+					})
+				div(class=classComp+'__button-wrap')
+					+buttons({
+						text:'войти',
+						type:'submit',
+						modif:['submit']
+					})
 			div(class=classComp+'__registration-wrap')
 				p(class=classComp+'__text-reg') Нет аккаунта на Toxin ?
 				+buttons({

@@ -15,7 +15,7 @@ mixin booking(options)
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
 		className += ' '+addClass}
-	div(class=className)
+	article(class=className)
 		div(class=classComp+'__header-wrap')
 			div(class=classComp+'__number-wrap')
 				span(class=classComp+'__header-num') №
@@ -28,7 +28,7 @@ mixin booking(options)
 				span(class=classComp+'__price-text') в сутки
 
 		form(class=classComp+'__form' action='' method='post')
-			div(class=classComp+'__date-wrap')
+			fieldset(class=classComp+'__date-wrap')
 				+date-dropdown({
 					label: ['прибытие','выезд'],
 					placeholder:'ДД.ММ.ГГГГ',

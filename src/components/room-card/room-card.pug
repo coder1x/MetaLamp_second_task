@@ -14,7 +14,7 @@ mixin room-card(options)
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
 		className += ' '+addClass}
-	div(class=className)
+	article(class=className)
 		div(class=classComp+'__slider-wrap')
 			a(class=classComp+'__link' href='https://test/test' aria-label='карточка номера')
 				img(class=classComp+'__slide '+classComp+'__slide_visible' src='assets/images/room-card/img/image1.jpg', alt='')

@@ -15,25 +15,27 @@ mixin registration(options)
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
 		className += ' '+addClass}
-	div(class=className)
+	article(class=className)
 		- if(!flLabel){
-		h1(class=classComp+'__header')= header
+		header(class=classComp+'__header-wrap')
+			h1(class=classComp+'__header')= header
 		-}
 		form(class=classComp+'__form' action='' method='post')
-			div(class=classComp+'__name-wrap')
-				+text-field({
-					flLabel:true,
-					placeholder: 'Имя',
-					type: 'text',
-					name: 'name'
-				})
-			div(class=classComp+'__surname-wrap')
-				+text-field({
-					flLabel:true,
-					placeholder: 'Фамилия',
-					type: 'text',
-					name: 'surname'
-				})
+			fieldset(class=classComp+'__full-name')
+				div(class=classComp+'__name-wrap')
+					+text-field({
+						flLabel:true,
+						placeholder: 'Имя',
+						type: 'text',
+						name: 'name'
+					})
+				div(class=classComp+'__surname-wrap')
+					+text-field({
+						flLabel:true,
+						placeholder: 'Фамилия',
+						type: 'text',
+						name: 'surname'
+					})
 			div(class=classComp+'__gender-wrap')
 				+radio-buttons({
 					flLabel:true
@@ -46,21 +48,22 @@ mixin registration(options)
 						name: 'date',
 						class: 'js-masked-date'
 					})
-			p(class=classComp+'__data-text') данные для входа в сервис
-			div(class=classComp+'__email-wrap')
-				+text-field({
-					flLabel:true,
-					placeholder: 'Email',
-					type: 'email',
-					name: 'email'
-				})
-			div(class=classComp+'__pass-wrap')
-				+text-field({
-					flLabel:true,
-					placeholder: 'Пароль',
-					type: 'password',
-					name: 'password'
-				})
+			fieldset(class=classComp+'__identification')
+				legend(class=classComp+'__data-text') данные для входа в сервис
+				div(class=classComp+'__email-wrap')
+					+text-field({
+						flLabel:true,
+						placeholder: 'Email',
+						type: 'email',
+						name: 'email'
+					})
+				div(class=classComp+'__pass-wrap')
+					+text-field({
+						flLabel:true,
+						placeholder: 'Пароль',
+						type: 'password',
+						name: 'password'
+					})
 			div(class=classComp+'__toggle-wrap')
 				+toggle-buttons({
 					flLabel:true,
