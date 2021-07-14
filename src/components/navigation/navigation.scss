@@ -1,8 +1,16 @@
 @import "@styles/glob.scss";
+$color-header: $Dark-Shade-100;
+$color-link: $Dark-Shade-50;
 
 .navigation {
 	&__header {
 		margin-bottom: 22px;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 15px;
+		text-transform: uppercase;
+		color: $color-header;
 	}
 
 	&__items {
@@ -23,6 +31,6 @@
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;
-		color: rgba(31, 32, 65, 0.5);
+		color: $color-link;
 	}
 }

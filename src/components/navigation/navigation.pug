@@ -13,8 +13,8 @@ mixin navigation(options)
 		if(addClass){
 		className += ' '+addClass}
 	div(class=className)
-		h3(class=classComp+'__header')= header
 		ul(class=classComp+'__items' role='navigation')
+			lh(class=classComp+'__header')= header
 			-for(let i=0; i<masText.length; i++){
 			li(class=classComp+'__item')
 				a(class=classComp+'__link' href='https://test/test')= masText[i]

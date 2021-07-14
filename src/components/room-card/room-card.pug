@@ -2,6 +2,7 @@ include ../rate-button/rate-button.pug
 
 mixin room-card(options)
 	-
+		let rateName = options.rateName ?? 'room-1'
 		let number = options.number ?? ''
 		let price = options.price ?? ''
 		let reviews = options.reviews ?? ''
@@ -39,7 +40,7 @@ mixin room-card(options)
 		div(class=classComp+"__rate-wrap")
 			+rate-button({
 				flLabel:true,
-				name:'room-1'
+				name:rateName
 				})
 			div(class=classComp+'__reviews-wrap')
 				span(class=classComp+'__reviews')= reviews

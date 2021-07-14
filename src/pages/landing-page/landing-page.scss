@@ -2,16 +2,6 @@
 
 $color-bottom-text: $Dark-Shade-75;
 
-.landing-page {
-	&__wrap {
-		display: flex;
-		flex-direction: column;
-		min-height: 100px;
-		width: 100%;
-		flex: 1 0 auto;
-	}
-}
-
 .landing-content {
 	width: 100%;
 	position: relative;

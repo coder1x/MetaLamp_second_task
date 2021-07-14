@@ -1,0 +1,20 @@
+extends ../layout/layout.pug
+include ../../components/room-card/room-card.pug
+
+
+block content
+	main.search-room-content
+		section.search-room-filter
+		section.search-room-cards
+			h1.search-room-cards__header Номера, которые мы для вас подобрали
+				ul 
+					- for(let i=0; i<12; i++){
+						li 
+							+room-card({
+								rateName:'room-'+i,
+								number:'888',
+								lux:true,
+								price:'9 990',
+								reviews:'145'
+							})
+					-}
