@@ -4,7 +4,7 @@ include ../../components/style-text/style-text.pug
 
 doctype html
 html(lang='ru')
-	include ../../components/head/head.pug
+	title= htmlWebpackPlugin.options.title
 	body.colorstype-wrapper
 		.colorstype-wrapper__logo
 			+logo-group({})

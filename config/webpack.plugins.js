@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он соз�
 const fs = require('fs');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 //const FoxFavicon = require('webpack-favicons');
-
+const FoxUrlConvertor = require('fox-url-convertor');
 
 const FL = require('./filename');
 const DP = require('./isDev');
@@ -19,6 +19,10 @@ fs.readdirSync(PAGES_DIR).forEach((file) => {
 	pages.push(file.split('/', 2));
 });
 
+const description =
+	'Лучшие номера для вашей работы, отдыха и просто вдохновения';
+const keywords = 'Номера, Отель';
+const title = 'TOXIN';
 
 module.exports = {
 
@@ -38,12 +42,43 @@ module.exports = {
 					return {};
 				}
 			},
+			title: title,
 			filename: `${fileName}.html`,
 			template: `./pages/${fileName}/${fileName}.pug`,
 			alwaysWriteToDisk: true,
 			inject: 'body',
 			hash: true,
+			meta: {
+				'viewport': {
+					'name': 'viewport',
+					'content':
+						'width=device-width, initial-scale=1, shrink-to-fit=no',
+
+				},
+				'Content-Type': {
+					'http-equiv': 'Content-Type',
+					'content': 'text/html; charset=utf-8'
+				},
+				'compatible': {
+					'http-equiv': 'x-ua-compatible',
+					'content': 'ie=edge'
+				},
+				'description': {
+					'name': 'description',
+					'content': description
+				},
+				'keywords': {
+					'name': 'keywords',
+					'content': keywords
+				}
+			},
 		})),
+
+
+		new FoxUrlConvertor({
+			URLchange: '%5C',
+			URLto: '/',
+		}),
 
 
 		// new FoxFavicon({

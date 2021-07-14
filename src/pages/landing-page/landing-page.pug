@@ -1,10 +1,10 @@
-include ../../components/head/head.pug
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
 include ../../components/search-room/search-room.pug
 
 doctype html
 html(lang='ru')
+	title= htmlWebpackPlugin.options.title
 	body.landing-page
 		+header({})
 		.landing-page__wrap
