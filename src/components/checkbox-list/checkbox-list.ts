@@ -65,8 +65,10 @@ class сheckboxList {
 			});
 			this.imgEl.addEventListener('click', () => { this.toggleVis(); });
 			this.headerEl.addEventListener('keydown', (e: any) => {
-				if (e.key == 'Enter' || e.key == ' ')
+				if (e.key == 'Enter' || e.key == ' ') {
+					e.preventDefault();
 					this.toggleVis();
+				}
 			});
 		}
 	}
