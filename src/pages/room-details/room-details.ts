@@ -1,0 +1,2 @@
+import './room-details.scss';
+

@@ -41,6 +41,9 @@ class sidebar {
 	}
 
 	private setActions() {
+
+		if (!this.block) return;
+
 		this.button.addEventListener('click', () => {
 			this.click = true;
 			this.toggle();

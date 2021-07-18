@@ -7,14 +7,24 @@ module.exports = {
 	jsLoaders: (ext = 'ts') => {
 		let loaders = null;
 		if (ext == 'js') {
-			loaders = [{
+			loaders = ['cache-loader', {
 				loader: 'babel-loader',
 			}];
 		}
 		else {
-			loaders = [{
-				loader: 'ts-loader',
-			}];
+			loaders = [
+				'cache-loader',
+				// {
+				// 	loader: 'thread-loader',
+				// },
+				{
+					loader: 'ts-loader',
+					// options: {
+					// 	happyPackMode: true,
+					// 	transpileOnly: true
+					// }
+				}
+			];
 		}
 
 		if (DP.isDev) {

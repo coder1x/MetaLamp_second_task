@@ -45,7 +45,7 @@ module.exports = {
 			{ // работа с ts файлами
 				test: /\.(ts|tsx)$/,
 				exclude: /node_modules/,  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
-				use: JL.jsLoaders()
+				use: JL.jsLoaders(),
 			},
 
 			{ // работа с графическими файлами

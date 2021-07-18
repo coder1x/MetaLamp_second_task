@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он соз�
 module.exports = {
 	cssLoaders: extra => {
 		const loaders = [
-
 			MiniCssExtractPlugin.loader,
+			'cache-loader',
 			'css-loader',
 			{
 				loader: 'postcss-loader',

@@ -7,6 +7,22 @@ const fs = require('fs');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 //const FoxFavicon = require('webpack-favicons');
 const FoxUrlConvertor = require('fox-url-convertor');
+//const HappyPack = require('happypack');
+
+// const threadLoader = require('thread-loader');
+
+// threadLoader.warmup(
+// 	{
+// 		workers: 12,
+// 	},
+// 	[
+// 		'ts-loader'
+// 	]
+// );
+
+
+
+//const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const FL = require('./filename');
 const DP = require('./isDev');
@@ -28,6 +44,16 @@ module.exports = {
 
 	plugins: [
 		new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
+
+		// new ForkTsCheckerWebpackPlugin({
+		// 	typescript: {
+		// 		configFile: '../tsconfig.json',
+		// 		diagnosticOptions: {
+		// 			semantic: true,
+		// 			syntactic: true,
+		// 		},
+		// 	},
+		// }),
 
 		...pages.map(fileName => new HTMLWebpackPlugin({
 			getData: () => {
@@ -150,7 +176,9 @@ module.exports = {
 			'window.jQuery': 'jquery'
 		}),
 
-		new webpack.HotModuleReplacementPlugin(),
+		new webpack.HotModuleReplacementPlugin({ multiStep: true }),
+
+
 
 	],
 
