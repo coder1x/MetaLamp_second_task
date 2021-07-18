@@ -1,6 +1,11 @@
 extends ../layout/layout.pug
+include ../../components/graph/graph.pug
+
 
 block content
 	main.room-details-content
 		.room-details-content__wrap
 			section.room-details-filter
+				+graph({
+					label:'Впечатления от номера'
+				})

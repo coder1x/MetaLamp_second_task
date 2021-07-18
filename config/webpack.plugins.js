@@ -3,13 +3,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // удаляе�
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
 const fs = require('fs');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+//const ImageminPlugin = require('imagemin-webpack-plugin').default;
 //const FoxFavicon = require('webpack-favicons');
 const FoxUrlConvertor = require('fox-url-convertor');
 
 
 const FL = require('./filename');
-const DP = require('./isDev');
+//const DP = require('./isDev');
 const PATHS = require('./paths');
 const PAGES_DIR = `${PATHS.src}\\pages\\`; // каталог где располагаються PUG  файлы
 
@@ -121,10 +121,10 @@ module.exports = {
 
 
 
-		new ImageminPlugin({
-			test: /\.(jpe?g|png|gif|svg|webp)$/i, // сжатие изображений работает только после плагина копирования
-			disable: !DP.isProd // сжимать только в продакшене.
-		}),
+		// new ImageminPlugin({
+		// 	test: /\.(jpe?g|png|gif|svg|webp)$/i, // сжатие изображений работает только после плагина копирования
+		// 	disable: !DP.isProd // сжимать только в продакшене.
+		// }),
 
 
 		new MiniCssExtractPlugin({
