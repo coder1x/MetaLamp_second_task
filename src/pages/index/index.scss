@@ -1,0 +1,65 @@
+@import "@styles/glob.scss";
+
+$color-header: $Dark-Shade-100;
+$color-link: $Dark-Shade-50;
+.page {
+	&__wrap {
+		display: flex;
+		flex-direction: column;
+		min-height: 100px;
+		width: 100%;
+		flex: 1 0 auto;
+	}
+
+	&__logo {
+		margin-left: 30px;
+		margin-top: 30px;
+	}
+}
+
+.home-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.toxin-links {
+	width: 100%;
+	max-width: $max-wraper;
+	margin: 0 auto;
+
+	&__menu {
+		margin-top: 80px;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__header {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 29px;
+		color: $color-header;
+		margin-bottom: 30px;
+	}
+
+	&__item {
+		margin-bottom: 20px;
+	}
+
+	&__link {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 24px;
+		line-height: 17px;
+		color: $color-link;
+	}
+
+	&__link:hover,
+	&__link:focus {
+		opacity: 0.5;
+		outline-offset: 4px;
+	}
+}

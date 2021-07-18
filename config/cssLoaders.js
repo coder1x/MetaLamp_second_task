@@ -1,12 +1,18 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
 // работа с файлами стилей
+//const DP = require('./isDev');
 
 module.exports = {
 	cssLoaders: extra => {
 		const loaders = [
 			MiniCssExtractPlugin.loader,
 			'cache-loader',
-			'css-loader',
+			{
+				loader: 'css-loader',
+				options: {
+					sourceMap: false,
+				}
+			},
 			{
 				loader: 'postcss-loader',
 				options: {

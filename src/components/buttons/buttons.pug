@@ -20,5 +20,5 @@ mixin buttons(options)
 			button(class=className)=text
 		when 'submit'
 			button(class=className type='submit')=text
-				img(class=classComp+'__icon' src='assets/images/buttons/img/arrow_forward.svg')
+				img(class=classComp+'__icon' src=require('@com/buttons/img/arrow_forward.svg').default)
 		

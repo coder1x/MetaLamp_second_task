@@ -18,7 +18,7 @@ mixin checkbox-list(options)
 			-if(!flLabel){
 				-if(!click){
 					legend(class=classComp+'__header' tabindex='0')= legend
-							img(class=classComp+'__tip' src='assets/images/checkbox-list/img/tip.svg' alt='')
+							img(class=classComp+'__tip' src=require('@com/checkbox-list/img/tip.svg').default alt='')
 				-} else {
 					legend(class=classComp+'__header')= legend
 				-}	

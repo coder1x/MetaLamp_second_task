@@ -49,11 +49,11 @@ module.exports = {
 			},
 
 			{ // работа с графическими файлами
-				test: /\.(png|jpg|svg|gif|webp)$/,
+				test: /\.(png|jpg|svg|gif|webp|avif)$/,
 				loader: 'file-loader',
 				options: {
-					outputPath: `${PATHS.assets}images/decor/`,
-					publicPath: '/assets/images/decor/',
+					outputPath: `${PATHS.assets}images/`,
+					publicPath: '/assets/images/',
 				},
 			},
 

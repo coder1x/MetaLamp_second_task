@@ -14,15 +14,8 @@ module.exports = {
 		else {
 			loaders = [
 				'cache-loader',
-				// {
-				// 	loader: 'thread-loader',
-				// },
 				{
 					loader: 'ts-loader',
-					// options: {
-					// 	happyPackMode: true,
-					// 	transpileOnly: true
-					// }
 				}
 			];
 		}

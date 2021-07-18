@@ -23,5 +23,5 @@ mixin pagination(options)
 			span(class=classComp+'__dots') ...
 			a(class=classComp+'__page-numbers' href='https://test/test' aria-label='пагинация страницы 15') 15
 			a(class=classComp+'__next' href='https://test/test' aria-label='пагинация страницы - стрелка дальше')
-				img(class=classComp+'__next-img' src='assets/images/pagination/img/arrow_forward.svg', alt='')
+				img(class=classComp+'__next-img' src=require('@com/pagination/img/arrow_forward.svg').default, alt='')
 		p(class=classComp+'__text') 1 – 12 из 100+ вариантов аренды

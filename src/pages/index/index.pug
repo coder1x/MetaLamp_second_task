@@ -1,0 +1,26 @@
+include ../../components/logo-group/logo-group.pug
+
+doctype html
+html(lang='ru')
+	title pages menu
+	body.page
+		.page__wrap
+			.page__logo
+				+logo-group({})
+			main.home-content
+				section.toxin-links
+					nav.toxin-links__menu 
+						ul.toxin-links__items(role="navigation")
+							lh.toxin-links__header Меню страниц сайта TOXIN
+							li.toxin-links__item
+								a(class='toxin-links__link' href='/colors-type.html' target="_blank") colors-type
+							li.toxin-links__item
+								a(class='toxin-links__link' href='/form-elements.html' target="_blank") form-elements
+							li.toxin-links__item
+								a(class='toxin-links__link' href='/cards.html' target="_blank") cards
+							li.toxin-links__item
+								a(class='toxin-links__link' href='/headers-footers.html' target="_blank") headers-footers
+							li.toxin-links__item
+								a(class='toxin-links__link' href='/landing-page.html' target="_blank") landing-page
+							li.toxin-links__item
+								a(class='toxin-links__link' href='/search-room.html' target="_blank") search-room

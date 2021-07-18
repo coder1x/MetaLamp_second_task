@@ -1,28 +1,12 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin'); // упрощает создаение HTML файлов, добавления хеша в имена файлов
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // удаляет все ненужные файлы при перестройке проекта
 const webpack = require('webpack');
-const CopyPlugin = require('copy-webpack-plugin');  // Копирует отдельные файлы или целые каталоги, которые уже существуют, в каталог сборки.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
 const fs = require('fs');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 //const FoxFavicon = require('webpack-favicons');
 const FoxUrlConvertor = require('fox-url-convertor');
-//const HappyPack = require('happypack');
 
-// const threadLoader = require('thread-loader');
-
-// threadLoader.warmup(
-// 	{
-// 		workers: 12,
-// 	},
-// 	[
-// 		'ts-loader'
-// 	]
-// );
-
-
-
-//const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const FL = require('./filename');
 const DP = require('./isDev');
@@ -45,15 +29,6 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
 
-		// new ForkTsCheckerWebpackPlugin({
-		// 	typescript: {
-		// 		configFile: '../tsconfig.json',
-		// 		diagnosticOptions: {
-		// 			semantic: true,
-		// 			syntactic: true,
-		// 		},
-		// 	},
-		// }),
 
 		...pages.map(fileName => new HTMLWebpackPlugin({
 			getData: () => {
@@ -144,20 +119,7 @@ module.exports = {
 		// }),
 
 
-		new CopyPlugin({
-			patterns: [
-				{
-					from: `${PATHS.src}${PATHS.assets}images`,
-					to: `${PATHS.dist}/${PATHS.assets}images/`
-				},
-				{
-					context: `${PATHS.src}/components/`,
-					from: `**/**/*.(svg|jpg|png|webp)`,
-					to: `${PATHS.dist}/${PATHS.assets}images/`,
-					force: true
-				},
-			],
-		}),
+
 
 		new ImageminPlugin({
 			test: /\.(jpe?g|png|gif|svg|webp)$/i, // сжатие изображений работает только после плагина копирования
@@ -177,9 +139,6 @@ module.exports = {
 		}),
 
 		new webpack.HotModuleReplacementPlugin({ multiStep: true }),
-
-
-
 	],
 
 };

@@ -98,14 +98,17 @@ class dateDropDown {
 
 
 	#createCalendar() {
-
+		const imgPrev =
+			require('@com/date-dropdown/img/arrow_back.svg').default;
+		const imgNext =
+			require('@com/date-dropdown/img/arrow_forward.svg').default;
 		this.$calendarObj = $(this.calendar).datepicker({
 			range: true,
 			minDate: new Date(),
 			prevHtml:
-				'<img src="assets/images/date-dropdown/img/arrow_back.svg">',
+				'<img src="' + imgPrev + '">',
 			nextHtml:
-				'<img src="assets/images/date-dropdown/img/arrow_forward.svg">',
+				'<img src="' + imgNext + '">',
 			navTitles: {
 				days: 'MM yyyy'
 			},
