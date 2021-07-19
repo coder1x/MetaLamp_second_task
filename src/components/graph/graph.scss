@@ -1,13 +1,71 @@
-.graph {
-	margin-top: 30px;
+@import "@styles/glob.scss";
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+$color-header: $Dark-Shade-100;
+$color-item: $Dark-Shade-75;
+
+.graph {
+	&__header {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		font-size: 19px;
+		line-height: 23px;
+		color: $color-header;
+		margin-bottom: 21px;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+		width: 100%;
+		max-width: 311px;
+	}
 
 	&__convas {
 		width: 100%;
 		max-width: 120px;
+	}
+
+	&__colors {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__colors-item {
+		position: relative;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 23px;
+		color: $color-item;
+	}
+
+	&__colors-item::before {
+		position: absolute;
+		content: "";
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		top: 50%;
+		left: -10px;
+		transform: translate(-50%, -50%);
+		box-sizing: border-box;
+	}
+
+	&__colors-item:nth-child(1)::before {
+		background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
+	}
+
+	&__colors-item:nth-child(2)::before {
+		background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+	}
+
+	&__colors-item:nth-child(3)::before {
+		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	}
+
+	&__colors-item:nth-child(4)::before {
+		background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
 	}
 }

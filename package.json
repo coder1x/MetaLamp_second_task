@@ -76,6 +76,8 @@
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.12.1",
+		"@types/css-font-loading-module": "0.0.6",
+		"@types/npm": "^2.0.32",
 		"@types/webpack-env": "^1.16.2",
 		"focus-visible": "^5.2.0",
 		"imagemin-webpack-plugin": "^2.4.2",
