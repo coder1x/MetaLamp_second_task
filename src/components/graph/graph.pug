@@ -12,12 +12,12 @@ mixin graph(options)
 		className += ' '+addClass}
 	div(class=className)
 		- if(!flLabel){
-			p(class=classComp+"__header")= label
+			p(class=classComp+'__header')= label
 		-}
-		div(class=classComp+"__wrapper")
-			canvas(class=classComp+"__convas" width="240" height="240" data-excellent='130' data-good='65' data-satisfactorily='65' data-disappointed='0')
-			ul(class=classComp+"__colors")
-				li(class=classComp+"__colors-item") Великолепно
-				li(class=classComp+"__colors-item") Хорошо
-				li(class=classComp+"__colors-item") Удовлетворительно
-				li(class=classComp+"__colors-item") Разочарован
+		div(class=classComp+'__wrapper')
+			canvas(class=classComp+'__convas' width='240' height='240' data-excellent='130' data-good='65' data-satisfactorily='65' data-disappointed='0')
+			ul(class=classComp+'__colors')
+				li(class=classComp+'__colors-item') Великолепно
+				li(class=classComp+'__colors-item') Хорошо
+				li(class=classComp+'__colors-item') Удовлетворительно
+				li(class=classComp+'__colors-item') Разочарован

@@ -1,0 +1,159 @@
+@import "@styles/glob.scss";
+
+.room-details-content {
+	border-bottom: 1px solid rgba(31, 32, 65, 0.25);
+	&__wrap {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.room-details-foto {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	max-width: 1920px;
+	max-height: 485px;
+	overflow: hidden;
+	margin: 0 auto;
+
+	&__big-foto {
+		flex-grow: 1;
+	}
+
+	&__min-foto {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__image {
+		width: 100%;
+	}
+}
+
+.room-details-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-top: 70px;
+	padding-bottom: 61px;
+
+	width: 100%;
+	max-width: $max-wraper;
+	margin: 0 auto;
+
+	&__left-column {
+		width: 100%;
+	}
+
+	&__right-column {
+		width: 100%;
+		max-width: 380px;
+	}
+
+	&__top-wrap {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	&__comment-wrap {
+		margin-top: 12px;
+		width: 100%;
+		max-width: 710px;
+	}
+
+	&__feature-header,
+	&__comment-header {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 19px;
+		line-height: 23px;
+		color: #1f2041;
+		margin-bottom: 21px;
+	}
+
+	&__feature-wrap {
+		width: 100%;
+		max-width: 280px;
+	}
+
+	&__feature {
+		margin-bottom: 22px;
+	}
+
+	&__feature:last-child {
+		margin-bottom: 0px;
+	}
+
+	&__graph {
+		width: 100%;
+		max-width: 311px;
+		margin-right: auto;
+		margin-left: 81px;
+	}
+
+	&__booking-wrap {
+		width: 100%;
+		max-width: 380px;
+		min-width: 315px;
+	}
+
+	&__comment-header-wrap {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	&__total-comments {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 14px;
+		text-align: right;
+		color: rgba(31, 32, 65, 0.5);
+		margin-top: 7px;
+	}
+
+	&__comment {
+		margin-bottom: 22px;
+	}
+
+	&__regulations-wrap {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-top: 33px;
+		width: 100%;
+		max-width: 702px;
+	}
+
+	&__bullet-list {
+		width: 100%;
+		max-width: 263px;
+	}
+
+	&__cancellation {
+		width: 100%;
+		max-width: 341px;
+	}
+
+	&__cancellation-header {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 19px;
+		line-height: 23px;
+		color: #1f2041;
+		margin-bottom: 19px;
+	}
+
+	&__cancellation-text {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 24px;
+		color: rgba(31, 32, 65, 0.75);
+	}
+}

@@ -160,7 +160,7 @@ class Graph {
 			this.ctx.fillText(String(percent), 60 * scaling, 50 * scaling);
 
 			this.ctx.font = fontText + 'px Montserrat';
-			this.ctx.fillText('голосов', 60 * scaling, 72 * scaling);
+			this.ctx.fillText('голосов', 60 * scaling, 73 * scaling);
 
 		});
 	}

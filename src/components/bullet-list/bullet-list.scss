@@ -15,6 +15,14 @@ $colot-header: $Dark-Shade-100;
 		margin-bottom: 15px;
 	}
 
+	&_big &__header {
+		font-size: 19px;
+		line-height: 23px;
+		text-transform: none;
+		margin-bottom: 19px;
+		margin-left: 19px;
+	}
+
 	&__items {
 		display: flex;
 		flex-direction: column;
@@ -22,7 +30,7 @@ $colot-header: $Dark-Shade-100;
 
 	&__item {
 		position: relative;
-		padding-left: 22px;
+		padding-left: 21px;
 		font-family: "Montserrat", Helvetica, Arial, sans-serif;
 		font-weight: normal;
 		font-size: 14px;

@@ -1,6 +1,7 @@
 include ../like-button/like-button.pug
 mixin comment(options)
 	-
+		let src = options.src ?? ''
 		let name = options.name ?? ''
 		let date = options.date ?? ''
 		let message = options.message ?? ''
@@ -15,7 +16,7 @@ mixin comment(options)
 	article(class=className)
 		div(class=classComp+'__avatar-wrap')
 			figure(class=classComp+'__author')
-				img(class=classComp+'__avatar' src=require('@com/comment/img/foto.jpg').default, alt=name)
+				img(class=classComp+'__avatar' src=require('@com/comment/img/'+src).default, alt=name)
 			div(class=classComp+'__like-wrap')
 				+like-button({flLabel:true})
 		div(class=classComp+'__message-wrap')
