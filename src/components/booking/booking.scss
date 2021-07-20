@@ -18,7 +18,16 @@ $color-total-text: #1f2041;
 	border-radius: 4px;
 	padding: 40px 29px 30px 29px;
 
-	&__header-wrap,
+	&__header-wrap {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+
+		@include media-breakpoint-down($xs) {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
 	&__number-wrap,
 	&__price-wrap {
 		display: flex;
@@ -112,6 +121,11 @@ $color-total-text: #1f2041;
 		max-width: 214px;
 	}
 
+	&__day-price,
+	&__services-price {
+		margin-left: 10px;
+	}
+
 	&__services::before {
 		content: "i";
 		position: absolute;
@@ -132,6 +146,10 @@ $color-total-text: #1f2041;
 		font-size: 14px;
 		line-height: 24px;
 		color: $color-before;
+
+		@include media-breakpoint-down($xs) {
+			display: none;
+		}
 	}
 
 	&__total-wrap {

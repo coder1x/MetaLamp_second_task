@@ -7,13 +7,15 @@ module.exports = {
 	jsLoaders: (ext = 'ts') => {
 		let loaders = null;
 		if (ext == 'js') {
-			loaders = ['cache-loader', {
-				loader: 'babel-loader',
-			}];
+			loaders = [
+				//'cache-loader', 
+				{
+					loader: 'babel-loader',
+				}];
 		}
 		else {
 			loaders = [
-				'cache-loader',
+				//'cache-loader',
 				{
 					loader: 'ts-loader',
 				}

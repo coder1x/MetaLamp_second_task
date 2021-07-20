@@ -17,6 +17,10 @@
 	overflow: hidden;
 	margin: 0 auto;
 
+	@include media-breakpoint-down($xs) {
+		display: none;
+	}
+
 	&__big-foto {
 		flex-grow: 1;
 	}
@@ -38,29 +42,72 @@
 	padding-top: 70px;
 	padding-bottom: 61px;
 
+	@include media-breakpoint-down($lg) {
+		padding-left: $size-padding;
+		padding-right: $size-padding;
+		padding-top: 40px;
+		box-sizing: border-box;
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+
 	width: 100%;
 	max-width: $max-wraper;
 	margin: 0 auto;
 
 	&__left-column {
 		width: 100%;
+
+		@include media-breakpoint-down($lg) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	&__right-column {
 		width: 100%;
 		max-width: 380px;
+
+		@include media-breakpoint-down($lg) {
+			margin-bottom: 40px;
+		}
 	}
 
 	&__top-wrap {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+
+		@include media-breakpoint-down($lg) {
+			width: 100%;
+			justify-content: space-around;
+			margin-bottom: 30px;
+		}
+
+		@include media-breakpoint-down($sm) {
+			flex-direction: column-reverse;
+			align-items: center;
+			justify-content: unset;
+		}
+	}
+
+	&__bottom-wrap {
+		@include media-breakpoint-down($lg) {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	&__comment-wrap {
 		margin-top: 12px;
 		width: 100%;
 		max-width: 710px;
+		@include media-breakpoint-down($lg) {
+			max-width: none;
+		}
 	}
 
 	&__feature-header,
@@ -77,6 +124,9 @@
 	&__feature-wrap {
 		width: 100%;
 		max-width: 280px;
+		@include media-breakpoint-down($sm) {
+			max-width: none;
+		}
 	}
 
 	&__feature {
@@ -92,12 +142,28 @@
 		max-width: 311px;
 		margin-right: auto;
 		margin-left: 81px;
+
+		@include media-breakpoint-down($lg) {
+			margin-right: unset;
+			margin-left: 20px;
+		}
+
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 40px;
+		}
+
+		@include media-breakpoint-down($xs) {
+			margin-left: 0px;
+		}
 	}
 
 	&__booking-wrap {
 		width: 100%;
 		max-width: 380px;
 		min-width: 315px;
+		@include media-breakpoint-down($xs) {
+			min-width: unset;
+		}
 	}
 
 	&__comment-header-wrap {
@@ -114,6 +180,10 @@
 		text-align: right;
 		color: rgba(31, 32, 65, 0.5);
 		margin-top: 7px;
+
+		@include media-breakpoint-down($xs) {
+			display: none;
+		}
 	}
 
 	&__comment {
@@ -127,16 +197,29 @@
 		margin-top: 33px;
 		width: 100%;
 		max-width: 702px;
+
+		@include media-breakpoint-down($sm) {
+			flex-direction: column;
+			justify-content: unset;
+			max-width: unset;
+		}
 	}
 
 	&__bullet-list {
 		width: 100%;
 		max-width: 263px;
+		@include media-breakpoint-down($sm) {
+			max-width: unset;
+			margin-bottom: 30px;
+		}
 	}
 
 	&__cancellation {
 		width: 100%;
 		max-width: 341px;
+		@include media-breakpoint-down($sm) {
+			max-width: unset;
+		}
 	}
 
 	&__cancellation-header {
