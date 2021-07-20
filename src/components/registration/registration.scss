@@ -18,7 +18,9 @@ $color-text-in: #000;
 	}
 
 	&__header-wrap {
-		text-align: center;
+		@include media-breakpoint-down($xs) {
+			text-align: center;
+		}
 	}
 
 	&__header {

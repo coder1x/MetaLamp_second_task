@@ -1,0 +1,14 @@
+extends ../layout/layout.pug
+include ../../components/sign-in/sign-in.pug
+
+
+block content
+	main.sign-in-content
+		section.sign-in-form
+			.sign-in-form__relation-ratio
+			img(class='sign-in-form__background' src=require('@pag/sign-in/img/image_4.webp').default, alt='')
+			.sign-in-form__wrapper
+				.sign-in-form__sign-in-wrap
+					+sign-in({
+						header:'Войти'
+					})
