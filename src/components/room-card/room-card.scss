@@ -20,21 +20,27 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 	border: 1px solid $color-bd-frame;
 	box-shadow: 0px 0px 25px $color-shadow-frame;
 	border-radius: 4px;
-	width: 270px;
+	//width: 270px;
+
+	&__relation-ratio {
+		padding-top: 55.97%;
+	}
 
 	&__slider-wrap {
 		position: relative;
-		height: 152px;
+		//height: 152px;
 		min-height: 152px;
 		overflow: hidden;
 	}
 
 	&__slide {
 		width: 100%;
-		max-width: 270px;
+		//max-width: 270px;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
 		position: absolute;
+		top: 0px;
+		left: 0px;
 		opacity: 0;
 		transition: opacity 0.5s;
 
@@ -44,10 +50,14 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		}
 	}
 
-	&__link {
-		display: block;
-		height: 152px;
-	}
+	// &__link {
+	// 	display: block;
+	// 	//height: 152px;
+
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// }
 
 	&__link:focus img {
 		filter: blur(1px) grayscale(1);
@@ -156,8 +166,9 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		bottom: -12px;
 		content: "";
 		background: $color-header-backgr;
-		width: 100%;
-		max-width: 230px;
+		//width: 100%;
+		//max-width: 230px;
+		width: calc(100% - 39px);
 		height: 1px;
 	}
 
@@ -176,6 +187,10 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		font-size: 14px;
 		line-height: 19px;
 		color: $color-text;
+	}
+
+	&__price {
+		margin-left: 5px;
 	}
 
 	&__price-text {
@@ -207,7 +222,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		line-height: 16px;
 		text-transform: uppercase;
 		color: $color-lux;
-		margin-left: 2px;
+		margin-left: 8px;
 	}
 
 	&__header-wrap {
@@ -229,6 +244,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 	&__reviews-wrap {
 		display: flex;
 		flex-direction: row;
+		margin-left: 5px;
 	}
 
 	&__reviews,
