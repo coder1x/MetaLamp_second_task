@@ -1,0 +1,65 @@
+@import "@styles/glob.scss";
+
+.registration-content {
+	width: 100%;
+	word-wrap: break-word;
+	min-height: 683px;
+	flex: 1 0 auto;
+}
+
+.registration-form {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 1920px;
+	max-height: 683px;
+	position: relative;
+	display: flex;
+	//overflow: hidden;
+
+	&__background {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		bottom: 0;
+		z-index: -1;
+
+		@include media-breakpoint-down($lg) {
+			top: 0;
+			bottom: unset;
+		}
+
+		@include media-breakpoint-down($sm) {
+			display: none;
+		}
+	}
+
+	&__wrapper {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-left: $min-size-padding;
+		padding-right: $min-size-padding;
+		box-sizing: border-box;
+	}
+
+	&__registration-wrap {
+		margin: 0 auto;
+		width: 100%;
+		max-width: 380px;
+		margin-top: 19px;
+
+		@include media-breakpoint-down($xs) {
+			max-width: unset;
+		}
+	}
+}
+
+.relation-ratio {
+	padding-top: 51.97%;
+	height: 0;
+}

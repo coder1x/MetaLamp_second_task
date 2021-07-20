@@ -13,6 +13,14 @@ $color-text-in: #000;
 	border-radius: 4px;
 	padding: 40px 30px 30px 28px;
 
+	@include media-breakpoint-down($xxs) {
+		padding: 40px 15px 30px 15px;
+	}
+
+	&__header-wrap {
+		text-align: center;
+	}
+
 	&__header {
 		margin-bottom: 20px;
 	}
@@ -66,6 +74,9 @@ $color-text-in: #000;
 	}
 
 	&__submit-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		margin-bottom: 30px;
 	}
 
@@ -84,5 +95,6 @@ $color-text-in: #000;
 		font-size: 14px;
 		line-height: 18px;
 		color: $color-text-in;
+		margin-right: 10px;
 	}
 }

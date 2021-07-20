@@ -1,0 +1,14 @@
+extends ../layout/layout.pug
+include ../../components/registration/registration.pug
+
+
+block content
+	main.registration-content
+		section.registration-form
+			.relation-ratio
+			img(class='registration-form__background' src=require('@pag/registration/img/image_4.webp').default, alt='')
+			.registration-form__wrapper
+				.registration-form__registration-wrap
+					+registration({
+						header:'Регистрация аккаунта'
+					})
