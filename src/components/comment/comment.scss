@@ -33,6 +33,7 @@ $color-message: $Dark-Shade-75;
 	&__message-wrap {
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	&__name {

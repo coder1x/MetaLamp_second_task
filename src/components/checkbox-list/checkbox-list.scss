@@ -4,6 +4,7 @@ $color-checkbox: $Dark-Shade-50;
 $color-checkbox-border: $Dark-Shade-25;
 $color-checkbox-hover: $Purple;
 $color-checkbox-rich: $Dark-Shade-75;
+$color-border-focus: $Dark-Shade-100;
 
 .checkbox-list {
 	&__header {
@@ -73,7 +74,7 @@ $color-checkbox-rich: $Dark-Shade-75;
 		top: -1px;
 		cursor: pointer;
 		&_border {
-			box-shadow: 0px 0px 0px 2px $Dark-Shade-100;
+			box-shadow: 0px 0px 0px 2px $color-border-focus;
 		}
 	}
 

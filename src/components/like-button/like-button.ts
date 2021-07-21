@@ -2,37 +2,43 @@ import "./like-button.scss";
 
 class likeButton {
 
-	likeEl: Element;
-	iconEl: HTMLImageElement;
+	private likeEl: Element;
+	private iconEl: HTMLImageElement;
 	valueEl: HTMLElement;
-	linkEl: HTMLElement;
+	private linkEl: HTMLElement;
 	likes: number;
-	flag: boolean;
+	private flag: boolean;
+	private strKey: string;
 
-	constructor(public nameClass: string, elem: Element) {
-
+	// eslint-disable-next-line no-unused-vars
+	constructor(public nameClass: string, elem: any) {
+		this.strKey = String(elem.offsetLeft + elem.offsetTop);
 		this.likeEl = elem;
-		this.iconEl = this.likeEl.querySelector(nameClass + '__icon');
-		this.valueEl = this.likeEl.querySelector(nameClass + '__value');
-		this.linkEl = this.likeEl.querySelector(nameClass + '__like');
+		this.setDom();
 
 		this.likes = this.getLikes() || 0; // получаем начальное значение
-		this.flag = Boolean(localStorage.getItem('likes')) || false; // проверяем ставили мы лайк или нет
+		this.flag = Boolean(localStorage.getItem(this.strKey)) || false; // проверяем ставили мы лайк или нет
 
 		this.toggleStyle();
 		this.setAction();
+	}
+
+	private setDom() {
+		this.iconEl = this.likeEl.querySelector(this.nameClass + '__icon');
+		this.valueEl = this.likeEl.querySelector(this.nameClass + '__value');
+		this.linkEl = this.likeEl.querySelector(this.nameClass + '__like');
 	}
 
 	getLikes() {
 		return Number(this.valueEl.innerText);
 	}
 
-	setLikes(like: number, fl = 'true') {
+	private setLikes(like: number, fl = 'true') {
 		this.valueEl.innerText = String(like);
-		localStorage.setItem('likes', String(fl));
+		localStorage.setItem(this.strKey, String(fl));
 	}
 
-	toggleStyle() {
+	private toggleStyle() {
 		// меняем стили в зависимости от события
 		const name = this.nameClass.replace(/^\./, '') + '_voted';
 		if (this.flag) { // ставили лайк
@@ -59,7 +65,7 @@ class likeButton {
 		this.toggleStyle();
 	}
 
-	setAction() {
+	private setAction() {
 		this.linkEl.addEventListener('click', () => {
 			this.toggleLike();
 		});

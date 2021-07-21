@@ -4,6 +4,7 @@ $color-radio-label: $Dark-Shade-50;
 $color-radio: $Dark-Shade-25;
 $color-radio-select: $Dark-Shade-75;
 $color-radio-border: $Purple;
+$color-border-focus: $Dark-Shade-100;
 
 .radio-buttons {
 	&__header {
@@ -78,21 +79,7 @@ $color-radio-border: $Purple;
 		border: 1px solid $color-radio;
 	}
 
-	// &__input:disabled + &__bef {
-	// 	border-color: $Dark-Shade-1;
-	// }
-
-	// &__input:checked:disabled + &__bef {
-	// 	border-color: $Dark-Shade-1;
-	// }
-
-	// &__bef:hover {
-	// 	border-color: $color-radio-border;
-	// }
-
-	// &__label:focus-within {
-	// 	outline: solid 1px $color-radio-select;
-	// 	outline-offset: 3px;
-	// 	outline: 1;
-	// }
+	&__items &__label &__bef_border {
+		border: 2px solid $color-border-focus;
+	}
 }

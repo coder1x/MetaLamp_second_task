@@ -2,6 +2,7 @@
 $color-toggle-label: $Dark-Shade-75;
 $color-toggle-bk: $Dark-Shade-25;
 $color-toggle-border: $Purple;
+$color-border-focus: $Dark-Shade-100;
 
 .toggle-buttons {
 	&__header {
@@ -47,6 +48,9 @@ $color-toggle-border: $Purple;
 		border-radius: 10px;
 		transition: 0.2s;
 		box-sizing: border-box;
+		&_border {
+			box-shadow: 0px 0px 0px 2px $color-border-focus;
+		}
 	}
 
 	&__bef:after {

@@ -11,7 +11,6 @@ class сheckboxList {
 	wrap: HTMLElement;
 	headerEl: HTMLElement;
 	imgEl: HTMLElement;
-	input: any;
 	keyF: boolean;
 
 
@@ -41,7 +40,6 @@ class сheckboxList {
 		this.wrap = this.getElem({ str: '__wrap' });
 		this.headerEl = this.getElem({ str: '__header' });
 		this.imgEl = this.getElem({ str: '__tip' });
-		this.input = this.getElem({ str: '__input', fl: true });
 	}
 
 	toggleVis() {
@@ -60,34 +58,6 @@ class сheckboxList {
 
 	private setActions() {
 
-		let focusToggle = (elem: HTMLElement, fl = false) => {
-			const bef = elem.nextElementSibling;
-			this.toggleModif(bef, '__bef_border', fl);
-		};
-
-
-		for (let item of this.input) {
-			item.addEventListener('click', (e: any) => {
-				if (!this.keyF)
-					focusToggle(e.target);
-
-				this.keyF = false;
-			});
-
-			item.addEventListener('focus', (e: any) => {
-				focusToggle(e.target, true);
-			});
-
-			item.addEventListener('focusout', (e: any) => {
-				focusToggle(e.target);
-			});
-
-			item.addEventListener('keyup', () => {
-				this.keyF = true;
-			});
-		}
-
-
 		if (this.imgEl) {
 			this.headerEl.addEventListener('click', () => {
 				this.toggleVis();
@@ -102,7 +72,6 @@ class сheckboxList {
 		}
 	}
 }
-
 
 
 
