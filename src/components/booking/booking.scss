@@ -18,6 +18,10 @@ $color-total-text: #1f2041;
 	border-radius: 4px;
 	padding: 40px 29px 30px 29px;
 
+	@include media-breakpoint-down($xs) {
+		padding: 40px 10px 30px 10px;
+	}
+
 	&__header-wrap {
 		display: flex;
 		flex-direction: row;

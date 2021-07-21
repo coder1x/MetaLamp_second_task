@@ -254,7 +254,12 @@ class dateDropDown {
 		});
 
 		let actionClick = (elem, fl) => {
-			elem.addEventListener('click', () => this.toggleCal(fl));
+			elem.addEventListener('click', (e) => {
+				this.toggleCal(fl);
+
+				if (this.getVisible(this.calendarWrap))
+					e.target.blur();
+			});
 		};
 
 		actionClick(this.input1, true);

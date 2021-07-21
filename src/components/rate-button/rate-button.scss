@@ -1,5 +1,7 @@
 @import "@styles/glob.scss";
 
+$color-focus: $Dark-Shade-100;
+
 .rate-button {
 	&__group {
 		position: relative;
@@ -43,7 +45,8 @@
 	}
 
 	&__star:focus {
-		outline: 1;
+		outline-offset: 4px;
+		outline: 2px solid $color-focus;
 	}
 
 	&__star:checked,

@@ -1,4 +1,7 @@
 @import "@styles/glob.scss";
+
+$color-focus: $Dark-Shade-100;
+
 .subscrip-textfield {
 	display: flex;
 	flex-direction: column;
@@ -28,8 +31,9 @@
 		width: 17px;
 		height: 18px;
 		position: absolute;
-		right: 19px;
-		bottom: 14px;
+		padding: 0px;
+		right: 14px;
+		bottom: 13px;
 		border: 0px;
 		background-color: $color-background;
 		cursor: pointer;
@@ -38,8 +42,8 @@
 	}
 
 	&__link:focus {
-		outline-offset: 3px;
-		outline: 1;
+		outline-offset: 5px;
+		outline: 2px solid $color-focus;
 	}
 
 	&__text,

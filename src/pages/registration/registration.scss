@@ -16,6 +16,11 @@
 	display: flex;
 	//overflow: hidden;
 
+	&__relation-ratio {
+		padding-top: 51.97%;
+		height: 0;
+	}
+
 	&__background {
 		position: absolute;
 		width: 100%;
@@ -57,9 +62,4 @@
 			max-width: unset;
 		}
 	}
-}
-
-.relation-ratio {
-	padding-top: 51.97%;
-	height: 0;
 }

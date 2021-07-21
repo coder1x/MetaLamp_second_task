@@ -72,6 +72,9 @@ $color-checkbox-rich: $Dark-Shade-75;
 		left: 0;
 		top: -1px;
 		cursor: pointer;
+		&_border {
+			box-shadow: 0px 0px 0px 2px $Dark-Shade-100;
+		}
 	}
 
 	&__input:checked + &__bef {
@@ -83,7 +86,7 @@ $color-checkbox-rich: $Dark-Shade-75;
 		border-color: $color-checkbox-hover;
 	}
 
-	&__input:focus + &__bef {
+	&__input:focus-within + &__bef {
 		border-color: $color-checkbox-hover;
 	}
 

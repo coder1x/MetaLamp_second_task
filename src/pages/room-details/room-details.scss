@@ -43,8 +43,8 @@
 	padding-bottom: 61px;
 
 	@include media-breakpoint-down($lg) {
-		padding-left: $size-padding;
-		padding-right: $size-padding;
+		padding-left: $min-size-padding;
+		padding-right: $min-size-padding;
 		padding-top: 40px;
 		box-sizing: border-box;
 		flex-direction: column-reverse;

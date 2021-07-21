@@ -10,6 +10,10 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
 	padding: 40px 30px 28px 28px;
 
+	@include media-breakpoint-down($xs) {
+		padding: 40px 10px 28px 10px;
+	}
+
 	&__header {
 		margin-bottom: 22px;
 	}

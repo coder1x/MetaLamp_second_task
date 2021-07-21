@@ -123,17 +123,17 @@ $color-datepicker-shadow: $Dark-Shade-5;
 	}
 
 	&_visible &__datepicker-wrap {
-		@include media-breakpoint-up($xs) {
-			display: flex;
-			flex-direction: column;
-			background-color: $color-background;
-		}
+		//@include media-breakpoint-up($xs) {
+		display: flex;
+		flex-direction: column;
+		background-color: $color-background;
+		//}
 	}
 
 	&_visible &__tip {
-		@include media-breakpoint-up($xs) {
-			transform: rotate(180deg);
-		}
+		//@include media-breakpoint-up($xs) {
+		transform: rotate(180deg);
+		//}
 	}
 
 	&__clear {

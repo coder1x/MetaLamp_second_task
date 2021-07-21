@@ -22,7 +22,7 @@ fs.readdirSync(PAGES_DIR).forEach((file) => {
 const description =
 	'Лучшие номера для вашей работы, отдыха и просто вдохновения';
 const keywords = 'Номера, Отель';
-const title = 'TOXIN';
+const title = 'booking rooms for TOXIN';
 
 module.exports = {
 
