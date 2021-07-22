@@ -84,7 +84,7 @@ module.exports = {
 		new FoxFavicon({
 			src: `${PATHS.src}${PATHS.assets}images/icon/favicon.png`,
 			path: 'assets/favicons/',
-			pathManifest: '/assets/favicons/',
+			//pathManifest: '/assets/favicons/',
 			urlIcon: 'https://thylacine.ru/assets/favicons/',
 			devMode: DP.isDev,
 			appName: 'бронирование номеров в TOXIN отель.',

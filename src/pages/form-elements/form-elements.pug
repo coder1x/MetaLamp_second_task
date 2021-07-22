@@ -18,7 +18,8 @@ include ../../components/comment/comment.pug
 
 doctype html
 html(lang='ru')
-	title= htmlWebpackPlugin.options.title
+	head
+		title= htmlWebpackPlugin.options.title
 	body.elements-wrapper
 		.elements-wrapper__logo
 			+logo-group({})

@@ -4,7 +4,8 @@ include ../../components/footer/footer.pug
 
 doctype html
 html(lang='ru')
-	title= htmlWebpackPlugin.options.title
+	head
+		title= htmlWebpackPlugin.options.title
 	body.headersfooters-wrapper
 		.headersfooters-wrapper__logo
 			+logo-group({})

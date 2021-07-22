@@ -12,7 +12,6 @@ class Graph {
 		if (this.setDom()) {
 			this.buildGraph();
 		}
-
 	}
 
 	setDom() {
@@ -132,7 +131,6 @@ class Graph {
 
 		const color = this.getColors();
 
-
 		let line = 0;
 
 		for (let i = 0; i < ugol.length; i++) {
@@ -164,7 +162,6 @@ class Graph {
 
 		});
 	}
-
 
 }
 
