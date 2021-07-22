@@ -7,10 +7,13 @@ class slider {
 	elem: Element;
 	slidesEl: any;
 	dotEl: Element;
-	prevEl: Element;
-	nextEl: Element;
+	prevEl: any;
+	nextEl: any;
 	indexS: number;
 	indexDot: number;
+	sliderWrap: Element;
+	flagSwipe: boolean;
+	linkSlide: Element;
 
 	constructor(className: string, elem: Element) {
 		this.className = className;
@@ -30,6 +33,7 @@ class slider {
 		this.createDot();
 		this.paintDot();
 		this.setAction();
+		this.setActionSwipe();
 	}
 
 	setDom() {
@@ -39,6 +43,9 @@ class slider {
 		this.dotEl = this.getElement('dot');
 		this.prevEl = this.getElement('prev');
 		this.nextEl = this.getElement('next');
+		this.sliderWrap = this.getElement('slider');
+		this.linkSlide = this.elem.querySelector(this.className + '__link');
+
 	}
 
 	private getVisible(elem: Element) {
@@ -112,6 +119,14 @@ class slider {
 			}
 		});
 
+		this.linkSlide.addEventListener('click', (e: any) => {
+
+			if (this.flagSwipe) {
+				e.preventDefault();
+			}
+			this.flagSwipe = false;
+		});
+
 		this.dotEl.addEventListener('click', (e: any) => {
 			const index = Number(e.target.getAttribute('data-index'));
 
@@ -119,6 +134,62 @@ class slider {
 				this.setVisible(index);
 		});
 	}
+
+
+	setActionSwipe() {
+
+		let xyDown: number[] = [];
+
+		function handleSwipeStart(ev: any) {
+			xyDown = getCoordinatesXY(ev);
+		}
+
+		function getCoordinatesXY(ev: any): number[] {
+			if (ev.type == 'touchstart' || ev.type == 'touchmove')
+				return [ev.touches[0].clientX, ev.touches[0].clientY];
+
+			if (ev.type == 'mousedown' || ev.type == 'mousemove')
+				return [ev.clientX, ev.clientY];
+
+			return [];
+		}
+
+		let swipe = (xyDiff: any) => {
+			if (xyDiff[0] > 0) {
+				this.nextEl.click();
+			} else {
+				this.prevEl.click();
+			}
+			this.flagSwipe = true;
+		};
+
+		function handleSwipeMove(ev: any) {
+			if (!xyDown) {
+				return;
+			}
+
+			const touchmove = ev.type == 'touchmove';
+			const mousemove = ev.type == 'mousemove';
+			const event = touchmove || mousemove && ev.buttons == 1;
+
+			if (event) {
+				let xyUp: number[] = getCoordinatesXY(ev);
+
+				if (Math.abs((xyUp[0] - xyDown[0])) > 10) {
+					let xyDiff = [xyDown[0] - xyUp[0], xyDown[1] - xyUp[1]];
+					swipe(xyDiff);
+					xyDown = [];
+				}
+			}
+		}
+
+		this.sliderWrap.addEventListener('touchstart', handleSwipeStart);
+		this.sliderWrap.addEventListener('touchmove', handleSwipeMove);
+		this.sliderWrap.addEventListener('mousedown', handleSwipeStart);
+		this.sliderWrap.addEventListener('mousemove', handleSwipeMove);
+	}
+
+
 }
 
 function renderSlider(className: string) {
