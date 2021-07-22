@@ -12,8 +12,13 @@ html(lang='ru')
 			section.headers-footers 
 				.headers-footers__top
 					.headers-footers__authorization
-						+header({})
+						+header({
+							current:true,
+						})
 					.headers-footers__authorized
-						+header({type:'authorized'})
+						+header({
+							type:'authorized',
+							current:true,
+						})
 				.headers-footers__bottom
 					+footer({})

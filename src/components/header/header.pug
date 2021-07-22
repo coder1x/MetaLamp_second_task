@@ -3,11 +3,14 @@ include ../logo/logo.pug
 
 mixin header(options)
 	-
+		let current = options.current ?? ''
 		let type = options.type ?? ''
 		let modif = options.modif ?? ''
 		let addClass = options.class ?? ''
 		let classComp = 'header'
 		let className = classComp
+		if(current){
+			current = classComp+'__link_current'}
 		if(modif){
 		className += ' '+classComp+'_'+modif}
 		if(addClass){
@@ -21,7 +24,7 @@ mixin header(options)
 			nav(class=classComp+'__menu-wrap')
 				ul(class=classComp+'__items' role='navigation')
 					li(class=classComp+'__item')
-						a(class=classComp+'__link '+classComp+'__link_current' href='https://test/test') О нас
+						a(class=classComp+'__link '+current href='https://test/test') О нас
 					li(class=classComp+'__item')
 						a(class=classComp+'__link-down' href='https://test/test') Услуги
 							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='')

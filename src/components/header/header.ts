@@ -7,10 +7,12 @@ class headerMenu {
 	items: any;
 	mapLinks: any;
 	showElem: Element[];
+	showTip: Element[];
 	button: Element;
 	nav: Element;
 	spanBut: Element;
 	linksDown: any;
+	tip: any;
 
 	constructor(className: string, elem: Element) {
 		this.className = className;
@@ -20,6 +22,7 @@ class headerMenu {
 
 	private startMenu() {
 		this.showElem = [];
+		this.showTip = [];
 		this.setDom();
 		this.setActions();
 	}
@@ -42,6 +45,9 @@ class headerMenu {
 		this.spanBut = this.getElement('toggle-line');
 		this.nav = this.getElement('menu-wrap');
 
+		const selector = this.className + '__tip';
+		this.tip = this.elem.querySelectorAll(selector);
+
 		this.mapLinks = new Map();
 		for (let i = 0; i < this.linksDown.length; i++) {
 			this.mapLinks.set(this.linksDown[i], i);
@@ -63,14 +69,34 @@ class headerMenu {
 		return display === 'hidden' ? false : true;
 	}
 
+	private rotateTip(elem: Element, fl = false) {
+		const name = (this.className + '__tip_rotate').replace(/^\./, '');
+		if (!fl) {
+			elem.classList.remove(name);
+		} else {
+			elem.classList.add(name);
+			this.showTip.push(elem);
+		}
+	}
+
 	private showUl(index: number) {
 		if (this.getVisButton(this.button)) return;
 
 		this.closeAll();
 		const elem = this.items[index];
+		this.rotateTip(this.tip[index], true);
 		elem.classList.add(this.getModif());
 		this.trackMouse(elem);
 		this.showElem.push(elem);
+	}
+
+	private closeTip() {
+		if (this.showTip.length) {
+			this.showTip.map((elem) => {
+				this.rotateTip(elem);
+			});
+		}
+		this.showTip = [];
 	}
 
 	private trackMouse(elem: Element) {  // следим за курсором когда он попадает на список
@@ -79,7 +105,10 @@ class headerMenu {
 			let domEl = rel.closest('.' + this.getModif()) ?? false;
 
 			if (!domEl) {
-				this.closeUl(e.currentTarget);
+				{
+					this.closeUl(e.currentTarget);
+					this.closeTip();
+				}
 			}
 		});
 	}
@@ -94,6 +123,9 @@ class headerMenu {
 				this.closeUl(elem);
 			});
 		}
+		this.showElem = [];
+
+		this.closeTip();
 	}
 
 	private getVisible(elem: Element) {
@@ -121,20 +153,41 @@ class headerMenu {
 			this.toggle();
 		});
 
+
+
 		for (let item of this.linksDown) {
 			item.addEventListener('mouseover', (e: any) => {
-				this.showUl(this.getIndex(e.currentTarget));
+				const elem = e.currentTarget;
+				this.showUl(this.getIndex(elem));
 			});
 
-			item.addEventListener('focus', (e: any) => {
-				this.showUl(this.getIndex(e.currentTarget));
+			let showMenuFocus = (e: any) => {
+				if (e.key == ' ') {
+					e.preventDefault();
+					const currentEl = e.currentTarget;
+					const index = this.getIndex(currentEl);
+					const elem = this.items[index];
+
+					if (elem.classList.contains(this.getModif())) {
+						this.closeAll();
+					}
+					else {
+						this.showUl(this.getIndex(currentEl));
+					}
+				}
+			};
+
+			item.addEventListener('keydown', (e: any) => {
+				showMenuFocus(e);
 			});
 		}
 
 		document.addEventListener('click', (e: any) => {
 			const domEl = e.target.closest('.' + this.getModif()) ?? false;
-			if (!domEl)
+			if (!domEl) {
 				this.closeAll();
+			}
+
 		});
 
 
@@ -143,8 +196,7 @@ class headerMenu {
 				this.className + '__link-down'
 			) ?? false;
 			const ulEl = e.target.closest('.' + this.getModif()) ?? false;
-			if (!linkEl && !ulEl)
-				this.closeAll();
+			if (!linkEl && !ulEl) { this.closeAll(); }
 		});
 	}
 }

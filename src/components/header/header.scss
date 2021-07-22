@@ -111,8 +111,14 @@ $color-line-close: $Dark-Shade-50;
 
 	&__tip {
 		margin-left: 6px;
+		transition: transform 0.5s;
+		transform: rotate(0deg);
 		@include media-breakpoint-down($md) {
 			transform: rotate(-90deg);
+		}
+
+		&_rotate {
+			transform: rotate(180deg);
 		}
 	}
 
