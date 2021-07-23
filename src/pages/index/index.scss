@@ -27,6 +27,7 @@ $color-link: $Dark-Shade-50;
 	max-width: $max-wraper;
 	margin: 0 auto;
 	padding-left: 20px;
+	box-sizing: border-box;
 
 	&__menu {
 		margin-top: 80px;

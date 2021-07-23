@@ -101,6 +101,7 @@ $color-datepicker-shadow: $Dark-Shade-5;
 		z-index: 5;
 		background: $color-background;
 		box-shadow: 0px 10px 20px $color-datepicker-shadow;
+		min-width: 266px;
 	}
 
 	&__datepicker-buttons {

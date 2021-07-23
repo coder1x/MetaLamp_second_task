@@ -1,6 +1,7 @@
 mixin buttons(options)
 	-
 		let text = options.text ?? ''
+		let atrr = options.atrr ?? ''
 		let link = options.link ?? ''
 		let type = options.type ?? ''
 		let modif = options.modif ?? []
@@ -18,6 +19,8 @@ mixin buttons(options)
 			a(class=className href=link)=text
 		when 'button'
 			button(class=className)=text
+		when 'btn-popup'
+			button(class=className aria-haspopup aria-expanded="false")=text
 		when 'submit'
 			button(class=className type='submit')=text
 				img(class=classComp+'__icon' src=require('@com/buttons/img/arrow_forward.svg').default)

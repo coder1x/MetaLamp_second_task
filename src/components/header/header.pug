@@ -19,7 +19,7 @@ mixin header(options)
 		div(class=classComp+'__wrapper')
 			div(class=classComp+'__link-logo')
 				+logo({link:'https://test/test'})
-			button(class=classComp+'__toggle')
+			button(class=classComp+'__toggle' aria-haspopup aria-expanded="false" aria-label='гамбургер главного меню')
 				span(class=classComp+'__toggle-line')
 			nav(class=classComp+'__menu-wrap')
 				ul(class=classComp+'__items' role='navigation')
@@ -27,7 +27,7 @@ mixin header(options)
 						a(class=classComp+'__link '+current href='https://test/test') О нас
 					li(class=classComp+'__item')
 						a(class=classComp+'__link-down' href='https://test/test') Услуги
-							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='')
+							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='угалок')
 						ul(class=classComp+'__items-down' role='navigation')
 							li(class=classComp+'__item-down')
 								a(class=classComp+'__link' href='https://test/test') Услуга 1
@@ -43,7 +43,7 @@ mixin header(options)
 						a(class=classComp+'__link' href='https://test/test') Новости
 					li(class=classComp+'__item')
 						a(class=classComp+'__link-down' href='https://test/test') Соглашения
-							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='')
+							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='угалок')
 						ul(class=classComp+'__items-down' role='navigation')
 							li(class=classComp+'__item-down')
 								a(class=classComp+'__link' href='https://test/test') Соглашения 1

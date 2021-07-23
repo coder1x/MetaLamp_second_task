@@ -50,8 +50,9 @@ $color-item: $Dark-Shade-75;
 		font-family: "Montserrat", Helvetica, Arial, sans-serif;
 		font-weight: normal;
 		font-size: 14px;
-		line-height: 23px;
+		line-height: 18px;
 		color: $color-item;
+		margin-top: 6px;
 	}
 
 	&__colors-item::before {

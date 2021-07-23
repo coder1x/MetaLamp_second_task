@@ -17,8 +17,8 @@ mixin checkbox-list(options)
 		fieldset(class=classComp+'__items')
 			-if(!flLabel){
 				-if(!click){
-					legend(class=classComp+'__header' tabindex='0')= legend
-							img(class=classComp+'__tip' src=require('@com/checkbox-list/img/tip.svg').default alt='')
+					legend(class=classComp+'__header' tabindex='0' aria-label='раскрывающийся список')= legend
+							img(class=classComp+'__tip' src=require('@com/checkbox-list/img/tip.svg').default alt='угалок')
 				-} else {
 					legend(class=classComp+'__header')= legend
 				-}	

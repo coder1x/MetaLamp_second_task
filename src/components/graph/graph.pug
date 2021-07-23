@@ -15,9 +15,9 @@ mixin graph(options)
 			p(class=classComp+'__header')= label
 		-}
 		div(class=classComp+'__wrapper')
-			canvas(class=classComp+'__convas' width='240' height='240' data-excellent='130' data-good='65' data-satisfactorily='65' data-disappointed='0')
+			canvas(class=classComp+'__convas' width='240' height='240')
 			ul(class=classComp+'__colors')
-				li(class=classComp+'__colors-item') Великолепно
-				li(class=classComp+'__colors-item') Хорошо
-				li(class=classComp+'__colors-item') Удовлетворительно
-				li(class=classComp+'__colors-item') Разочарован
+				li(class=classComp+'__colors-item' date-grade='130' date-name='excellent') Великолепно
+				li(class=classComp+'__colors-item' date-grade='65' date-name='good') Хорошо
+				li(class=classComp+'__colors-item' date-grade='65' date-name='satisfactorily') Удовлетворительно
+				li(class=classComp+'__colors-item' date-grade='0' date-name='disappointed') Разочарован

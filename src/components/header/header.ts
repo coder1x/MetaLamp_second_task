@@ -149,10 +149,24 @@ class headerMenu {
 
 	private setActions() {
 
-		this.button.addEventListener('click', () => {
+		this.button.addEventListener('click', (e: any) => {
+			const elem = e.currentTarget;
+			let expanded = elem.getAttribute('aria-expanded');
+			expanded = expanded == 'true' ? 'false' : 'true';
+			elem.setAttribute('aria-expanded', expanded);
+
 			this.toggle();
 		});
 
+		let keydown = (e: any) => {
+			if (e.key == 'Escape') {
+				e.preventDefault();
+				this.toggle();
+			}
+		};
+
+		this.button.addEventListener('keydown', keydown);
+		this.nav.addEventListener('keydown', keydown);
 
 
 		for (let item of this.linksDown) {
@@ -174,12 +188,14 @@ class headerMenu {
 					else {
 						this.showUl(this.getIndex(currentEl));
 					}
+				} else {
+					if (e.key == 'Escape') {
+						this.closeAll();
+					}
 				}
 			};
 
-			item.addEventListener('keydown', (e: any) => {
-				showMenuFocus(e);
-			});
+			item.addEventListener('keydown', showMenuFocus);
 		}
 
 		document.addEventListener('click', (e: any) => {

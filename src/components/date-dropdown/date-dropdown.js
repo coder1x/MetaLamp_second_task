@@ -264,6 +264,20 @@ class dateDropDown {
 
 		actionClick(this.input1, true);
 
+
+		let keydownX = (e) => {
+			if (e.key == 'Escape') {
+				e.preventDefault();
+				const nameModif = this.className.replace(/^\./, '') + '_visible';
+				this.elem.classList.remove(nameModif);
+			}
+		};
+
+		this.input1.addEventListener('keydown', keydownX);
+		if (this.input2)
+			this.input2.addEventListener('keydown', keydownX);
+
+
 		this.input1.addEventListener('input', () => {
 			let len = this.flRange ? 10 : 15;
 			if (this.input1.value.length == len)

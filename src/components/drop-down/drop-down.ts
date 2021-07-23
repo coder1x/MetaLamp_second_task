@@ -122,6 +122,20 @@ class dropDown {
 				this.toggle();
 		});
 
+
+		let keydown = (e: any) => {
+			if (e.key == 'Escape') {
+				e.preventDefault();
+				this.toggle(true);
+			} else if (e.key == ' ') {
+				e.preventDefault();
+				this.toggle();
+			}
+		};
+
+		this.selectEl.addEventListener('keydown', keydown);
+		this.inputEl.addEventListener('keydown', keydown);
+
 		if (this.applyClass)
 			this.applyClass.addEventListener('click', (e: any) => {
 				e.preventDefault();

@@ -8,8 +8,8 @@ interface PT {
 class sidebar {
 	blockClass: string;
 	buttonClass: string;
-	button: Element;
-	block: Element;
+	button: HTMLButtonElement;
+	block: HTMLElement;
 	classVisible: string;
 	private click: boolean;
 
@@ -34,23 +34,53 @@ class sidebar {
 	}
 
 	private toggle(fl = this.getVisible()) {
+
 		let objClass = this.block.classList;
-		!fl ?
-			objClass.add(this.classVisible) :
+
+		if (!fl) {
+			objClass.add(this.classVisible);
+			let elem = this.block.querySelector('input');
+			elem.focus();
+		}
+		else {
 			objClass.remove(this.classVisible);
+		}
 	}
 
 	private setActions() {
 
 		if (!this.block) return;
 
-		this.button.addEventListener('click', () => {
+		this.button.addEventListener('click', (e: any) => {
 			this.click = true;
 			this.toggle();
+
+			const elem = e.target;
+			let expanded = elem.getAttribute('aria-expanded');
+			expanded = expanded == 'true' ? 'false' : 'true';
+			elem.setAttribute('aria-expanded', expanded);
 		});
 
 		this.block.addEventListener('click', () => {
 			this.click = true;
+		});
+
+
+		this.block.addEventListener('keydown', (e: any) => {
+			if (e.key == 'Escape') {
+				e.preventDefault();
+				this.toggle();
+			}
+		});
+
+		document.addEventListener('focusin', (e: any) => {
+			const linkEl = e.target.closest(this.blockClass) ?? false;
+			if (!linkEl && this.getVisible()) {
+
+				const elem = this.button.querySelector('button');
+				this.toggle();
+				elem.focus();
+			}
 		});
 
 		document.addEventListener('click', () => {

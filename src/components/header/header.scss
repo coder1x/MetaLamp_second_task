@@ -225,6 +225,9 @@ $color-line-close: $Dark-Shade-50;
 
 	&__registration-wrap {
 		margin-left: 20px;
+		@include media-breakpoint-down($xs) {
+			margin-left: 0px;
+		}
 	}
 }
 
