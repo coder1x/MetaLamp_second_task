@@ -1,11 +1,14 @@
 @import "@styles/glob.scss";
+
+$font: "Montserrat", Helvetica, Arial, sans-serif;
+
 .text-field {
 	display: flex;
 	flex-direction: column;
 
 	&__label-text {
 		margin-bottom: 5px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -32,7 +35,7 @@
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;

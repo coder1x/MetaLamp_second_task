@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-bd-frame: rgba(0, 0, 0, 0.12);
 $color-shadow-frame: rgba(0, 0, 0, 0.2);
 $color-date-text: #1f2041;
@@ -44,7 +45,7 @@ $color-text-in: #000;
 	}
 
 	&__data-text {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -92,7 +93,7 @@ $color-text-in: #000;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 18px;

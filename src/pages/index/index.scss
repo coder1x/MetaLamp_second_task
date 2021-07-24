@@ -1,7 +1,10 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-header: $Dark-Shade-100;
 $color-link: $Dark-Shade-50;
+$color-link-focus: $Dark-Shade-100;
+
 .page {
 	&__wrap {
 		display: flex;
@@ -39,7 +42,7 @@ $color-link: $Dark-Shade-50;
 	}
 
 	&__header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 24px;
 		line-height: 29px;
@@ -52,7 +55,7 @@ $color-link: $Dark-Shade-50;
 	}
 
 	&__link {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 24px;
 		line-height: 17px;
@@ -63,5 +66,6 @@ $color-link: $Dark-Shade-50;
 	&__link:focus {
 		opacity: 0.5;
 		outline-offset: 4px;
+		outline-color: $color-link-focus;
 	}
 }

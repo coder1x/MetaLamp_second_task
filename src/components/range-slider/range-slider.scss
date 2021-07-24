@@ -1,5 +1,7 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
+
 .range-slider {
 	&__header {
 		display: flex;
@@ -7,7 +9,7 @@
 	}
 
 	&__label {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -17,7 +19,7 @@
 	}
 
 	&__value {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		margin-left: auto;
 		font-size: 12px;

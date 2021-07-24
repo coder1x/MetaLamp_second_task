@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-box-shadow: $Dark-Shade-5;
 $color-user-border: $Dark-Shade-1;
 $color-nikname: $Dark-Shade-50;
@@ -98,7 +99,7 @@ $color-line-close: $Dark-Shade-50;
 	&__link-down {
 		display: inline-block;
 		white-space: nowrap;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;
@@ -211,7 +212,7 @@ $color-line-close: $Dark-Shade-50;
 
 	&__nikname {
 		margin-left: 20px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;

@@ -1,5 +1,7 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
+
 .room-details-content {
 	border-bottom: 1px solid rgba(31, 32, 65, 0.25);
 	&__wrap {
@@ -12,7 +14,7 @@
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	max-width: 1920px;
+	max-width: $xxl;
 	max-height: 485px;
 	overflow: hidden;
 	margin: 0 auto;
@@ -32,6 +34,7 @@
 
 	&__image {
 		width: 100%;
+		object-fit: cover;
 	}
 }
 
@@ -112,7 +115,7 @@
 
 	&__feature-header,
 	&__comment-header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 19px;
@@ -173,7 +176,7 @@
 	}
 
 	&__total-comments {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 14px;
@@ -223,7 +226,7 @@
 	}
 
 	&__cancellation-header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 19px;
@@ -233,7 +236,7 @@
 	}
 
 	&__cancellation-text {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;

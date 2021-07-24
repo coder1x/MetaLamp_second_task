@@ -1,5 +1,7 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
+
 .search-room-content {
 	width: 100%;
 	border-bottom: 1px solid rgba(31, 32, 65, 0.25);
@@ -85,7 +87,7 @@
 
 	&__price-text {
 		margin-top: 5px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 12px;
 		line-height: 14px;
@@ -134,11 +136,6 @@
 		grid-column-gap: 12px;
 		margin-top: 20px;
 	}
-
-	// &__card {
-	// 	display: grid;
-	// 	justify-content: center;
-	// }
 
 	&__pagination {
 		width: 100%;

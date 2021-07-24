@@ -1,10 +1,12 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
+
 html {
 	height: 100%; /* растягиваем страницу на весь экран */
 	width: 100%; /* растягиваем страницу на весь экран */
 	font-size: #{$font-size}px;
-	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+	font-family: $font;
 	font-weight: normal;
 	min-width: $min-wraper;
 }
@@ -25,7 +27,7 @@ body {
 h1,
 h2,
 h3 {
-	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+	font-family: $font;
 	font-weight: bold;
 	color: $color-h;
 }
@@ -69,20 +71,20 @@ p {
 
 //-----------------------------------
 
-// .visually-hidden:not(:focus):not(:active),
-// input[type="checkbox"].visually-hidden,
-// input[type="radio"].visually-hidden {
-// 	position: absolute;
-// 	width: 1px;
-// 	height: 1px;
-// 	margin: -1px;
-// 	border: 0;
-// 	padding: 0;
-// 	white-space: nowrap;
-// 	clip-path: inset(100%);
-// 	clip: rect(0 0 0 0);
-// 	overflow: hidden;
-// }
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
 
 .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;

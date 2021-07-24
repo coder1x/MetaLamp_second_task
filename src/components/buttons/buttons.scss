@@ -1,7 +1,16 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
+$solor-focus: $Dark-Shade-100;
+$color-submit-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+$color-text-hover: $Dark-Shade-50;
+$color-link-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+$color-link-border: inset 0px 2px 0px 0px #bc9cff, inset 0px 0px 0px 2px #8ba4f9;
+$color-text: $Purple;
+$color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 0px 0px 0px 2px rgba(139, 164, 249, 0.5);
+
 .buttons {
-	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+	font-family: $font;
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 15px;
@@ -16,8 +25,6 @@
 		align-items: center;
 		padding-left: 20px;
 		padding-right: 20px;
-		// width: 100%;
-		// max-width: 99px;
 		min-width: 99px;
 		height: 44px;
 		border-radius: 22px;
@@ -34,7 +41,8 @@
 	&_link:focus,
 	&_submit:focus,
 	&_text:focus {
-		outline-offset: 3px;
+		outline-offset: 5px;
+		outline-color: $solor-focus;
 	}
 
 	&_submit {
@@ -50,7 +58,7 @@
 		height: 44px;
 		border-radius: 22px;
 		box-sizing: border-box;
-		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+		background: $color-submit-backgr;
 		border: 0;
 		cursor: pointer;
 	}
@@ -66,7 +74,7 @@
 	}
 
 	&_text {
-		color: #bc9cff;
+		color: $color-text;
 		background-color: $color-background;
 		border: 0;
 		cursor: pointer;
@@ -74,11 +82,11 @@
 	}
 
 	&_text:hover {
-		color: rgba(31, 32, 65, 0.5);
+		color: $color-text-hover;
 	}
 
 	&_link {
-		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+		background: $color-link-backgr;
 	}
 
 	&_link:hover {
@@ -86,20 +94,15 @@
 	}
 
 	&_link-border {
-		color: #bc9cff;
+		color: $color-text;
 		background-color: $color-background;
 		position: relative;
 		background-clip: padding-box;
-		box-shadow: inset 0px 2px 0px 0px #bc9cff, inset 0px 0px 0px 2px #8ba4f9;
+		box-shadow: $color-link-border;
 	}
 
 	&_link-border:hover,
 	&_link-border:focus {
-		box-shadow: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 0px 0px 0px 2px rgba(139, 164, 249, 0.5);
+		box-shadow: $color-link-border-hover;
 	}
 }
-
-// .buttons_header {
-// 	height: 34px;
-// 	min-width: auto;
-// }

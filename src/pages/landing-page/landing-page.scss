@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-bottom-text: $Dark-Shade-75;
 
 .landing-content {
@@ -15,7 +16,7 @@ $color-bottom-text: $Dark-Shade-75;
 
 	&__search-room {
 		width: 100%;
-		max-width: 1920px;
+		max-width: $xxl;
 		margin: 0 auto;
 		position: relative;
 		display: flex;
@@ -36,11 +37,6 @@ $color-bottom-text: $Dark-Shade-75;
 		left: 0;
 		bottom: 0;
 		z-index: -1;
-
-		// @include media-breakpoint-down($lg) {
-		// 	top: 0;
-		// 	bottom: unset;
-		// }
 
 		@include media-breakpoint-down($sm) {
 			display: none;
@@ -111,7 +107,7 @@ $color-bottom-text: $Dark-Shade-75;
 	&__bottom-text {
 		width: 100%;
 		max-width: 297px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;

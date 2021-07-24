@@ -1,8 +1,10 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-border-show: $Dark-Shade-50;
 $color-button-pm: $Dark-Shade-50;
 $color-button-disable: $Dark-Shade-25;
+$color-focus: $Dark-Shade-100;
 
 .drop-down {
 	display: flex;
@@ -11,7 +13,7 @@ $color-button-disable: $Dark-Shade-25;
 
 	&__text-header {
 		margin-bottom: 5px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -26,7 +28,7 @@ $color-button-disable: $Dark-Shade-25;
 	&__tip {
 		position: absolute;
 		width: 13px;
-		right: 14px;
+		right: 16px;
 		bottom: 17px;
 		cursor: pointer;
 		transform: rotate(0deg);
@@ -39,7 +41,7 @@ $color-button-disable: $Dark-Shade-25;
 		border: 0px;
 		background: $color-background;
 		padding: 0;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		color: $color-button-pm;
 		font-size: 18px;
@@ -58,12 +60,13 @@ $color-button-disable: $Dark-Shade-25;
 
 	&__minus:focus,
 	&__plus:focus {
-		outline-offset: 3px;
+		outline-offset: 4px;
+		outline-color: $color-focus;
 	}
 
 	&__text,
 	&__value {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -135,7 +138,7 @@ $color-button-disable: $Dark-Shade-25;
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;

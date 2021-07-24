@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-datepicker-border: $Dark-Shade-25;
 $color-datepicker-shadow: $Dark-Shade-5;
 
@@ -11,7 +12,7 @@ $color-datepicker-shadow: $Dark-Shade-5;
 
 	&__label-text {
 		margin-bottom: 5px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -35,7 +36,7 @@ $color-datepicker-shadow: $Dark-Shade-5;
 
 	&__text,
 	&__value {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -73,7 +74,7 @@ $color-datepicker-shadow: $Dark-Shade-5;
 		border: 1px solid $color-border;
 		border-radius: 4px;
 		color: $color-input;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
@@ -124,17 +125,13 @@ $color-datepicker-shadow: $Dark-Shade-5;
 	}
 
 	&_visible &__datepicker-wrap {
-		//@include media-breakpoint-up($xs) {
 		display: flex;
 		flex-direction: column;
 		background-color: $color-background;
-		//}
 	}
 
 	&_visible &__tip {
-		//@include media-breakpoint-up($xs) {
 		transform: rotate(180deg);
-		//}
 	}
 
 	&__clear {

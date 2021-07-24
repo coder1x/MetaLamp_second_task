@@ -1,11 +1,13 @@
 @import "@styles/glob.scss";
+
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-header: $Dark-Shade-100;
 $color-link: $Dark-Shade-50;
 
 .navigation {
 	&__header {
 		margin-bottom: 22px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -27,7 +29,7 @@ $color-link: $Dark-Shade-50;
 	}
 
 	&__link {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;

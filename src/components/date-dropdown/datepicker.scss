@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-datepicker-border: $Dark-Shade-25;
 $color-datepicker-shadow: $Dark-Shade-5;
 $color-datepicker-nav: $Dark-Shade-100;
@@ -32,7 +33,7 @@ $color-days-names: $Purple;
 			}
 
 			&--nav-title {
-				font-family: "Montserrat", Helvetica, Arial, sans-serif;
+				font-family: $font;
 				font-weight: bold;
 				font-size: 19px;
 				line-height: 23px;
@@ -58,7 +59,7 @@ $color-days-names: $Purple;
 			}
 
 			&--day-name {
-				font-family: "Montserrat", Helvetica, Arial, sans-serif;
+				font-family: $font;
 				font-weight: bold;
 				font-size: 12px;
 				text-transform: inherit;
@@ -76,7 +77,7 @@ $color-days-names: $Purple;
 			}
 
 			&--cell-day {
-				font-family: "Montserrat", Helvetica, Arial, sans-serif;
+				font-family: $font;
 				font-weight: normal;
 				font-size: 12px;
 				line-height: 15px;
@@ -87,7 +88,7 @@ $color-days-names: $Purple;
 				border-radius: 50%;
 				background: linear-gradient(180deg, $color-datepicker-hover 0%, #8ba4f9 100%);
 				color: #fff;
-				font-family: "Montserrat", Helvetica, Arial, sans-serif;
+				font-family: $font;
 				font-weight: bold;
 			}
 		}
@@ -96,7 +97,7 @@ $color-days-names: $Purple;
 			border-radius: 50%;
 			background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
 			color: #fff;
-			font-family: "Montserrat", Helvetica, Arial, sans-serif;
+			font-family: $font;
 			font-weight: bold;
 		}
 
@@ -135,7 +136,7 @@ $color-days-names: $Purple;
 			border-radius: 50%;
 			background: linear-gradient(180deg, $color-datepicker-selected 0%, #8ba4f9 100%);
 			color: #fff;
-			font-family: "Montserrat", Helvetica, Arial, sans-serif;
+			font-family: $font;
 			font-weight: bold;
 		}
 

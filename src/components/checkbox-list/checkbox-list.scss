@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-checkbox: $Dark-Shade-50;
 $color-checkbox-border: $Dark-Shade-25;
 $color-checkbox-hover: $Purple;
@@ -11,16 +12,17 @@ $color-border-focus: $Dark-Shade-100;
 		position: relative;
 		width: 100%;
 		margin-bottom: 17px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
-		line-height: 13px;
+		line-height: 16px;
 		text-transform: uppercase;
 		color: $color-label;
 		cursor: pointer;
 	}
 	&__header:focus {
-		outline-offset: 3px;
+		outline-offset: 6px;
+		outline-color: $color-border-focus;
 	}
 
 	&__wrap {
@@ -38,7 +40,7 @@ $color-border-focus: $Dark-Shade-100;
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 19px;
@@ -49,7 +51,7 @@ $color-border-focus: $Dark-Shade-100;
 	}
 
 	&__text {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 12px;
 		line-height: 14px;
@@ -87,8 +89,8 @@ $color-border-focus: $Dark-Shade-100;
 		border-color: $color-checkbox-hover;
 	}
 
-	&__input:focus-within + &__bef {
-		border-color: $color-checkbox-hover;
+	&__wrap &__label &__bef_border {
+		border-color: $color-border-focus;
 	}
 
 	&__input:disabled + &__bef {
@@ -101,8 +103,8 @@ $color-border-focus: $Dark-Shade-100;
 
 	&__tip {
 		position: absolute;
-		top: 2px;
-		right: 14px;
+		top: 4px;
+		right: 15px;
 		width: 13px;
 		cursor: pointer;
 		transform: rotate(0deg);
@@ -132,7 +134,7 @@ $color-border-focus: $Dark-Shade-100;
 	// ---------------------------- modif RICH
 
 	&_rich &__label {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		color: $color-checkbox-rich;
 	}

@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-feature: $Dark-Shade-75;
 $color-feature-border: $Dark-Shade-1;
 
@@ -8,7 +9,6 @@ $color-feature-border: $Dark-Shade-1;
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
-	//max-width: 280px;
 	border-bottom: 1px solid $color-feature-border;
 	padding-bottom: 19px;
 
@@ -26,7 +26,7 @@ $color-feature-border: $Dark-Shade-1;
 	&__header {
 		font-size: 14px;
 		line-height: 24px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		color: $color-feature;
 	}
@@ -34,7 +34,7 @@ $color-feature-border: $Dark-Shade-1;
 	&__text {
 		font-size: 14px;
 		line-height: 24px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		color: $color-feature;
 	}

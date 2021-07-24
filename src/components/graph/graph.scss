@@ -1,11 +1,12 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-header: $Dark-Shade-100;
 $color-item: $Dark-Shade-75;
 
 .graph {
 	&__header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 19px;
 		line-height: 23px;
@@ -47,7 +48,7 @@ $color-item: $Dark-Shade-75;
 
 	&__colors-item {
 		position: relative;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 18px;

@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-square-text: $Dark-Shade-100;
 
 .square-color {
@@ -24,7 +25,7 @@ $color-square-text: $Dark-Shade-100;
 	}
 
 	&__color {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		color: $color-square-text;
 		font-size: 19px;
@@ -32,7 +33,7 @@ $color-square-text: $Dark-Shade-100;
 	}
 
 	&__hexColor {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		color: $color-square-text;
 		font-size: 19px;

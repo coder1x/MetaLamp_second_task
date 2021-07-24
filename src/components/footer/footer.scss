@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-top-shadow: $Dark-Shade-1;
 $color-bottom-shadow: $Dark-Shade-5;
 $color-subscrip-text: $Dark-Shade-75;
@@ -35,7 +36,7 @@ $color-copyright: $Dark-Shade-75;
 	}
 
 	&__recommendation-text {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
@@ -124,7 +125,7 @@ $color-copyright: $Dark-Shade-75;
 
 	&__subscrip-text {
 		margin-bottom: 22px;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
@@ -142,7 +143,7 @@ $color-copyright: $Dark-Shade-75;
 	}
 
 	&__copyright {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 17px;

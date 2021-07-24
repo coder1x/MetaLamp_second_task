@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-radio-label: $Dark-Shade-50;
 $color-radio: $Dark-Shade-25;
 $color-radio-select: $Dark-Shade-75;
@@ -8,7 +9,7 @@ $color-border-focus: $Dark-Shade-100;
 
 .radio-buttons {
 	&__header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -40,7 +41,7 @@ $color-border-focus: $Dark-Shade-100;
 		margin-right: 23px;
 		line-height: 18px;
 		user-select: none;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;

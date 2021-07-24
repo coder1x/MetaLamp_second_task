@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-like: $Dark-Shade-25;
 $color-like-voted: $Purple;
 $color-focus: $Dark-Shade-100;
@@ -10,7 +11,7 @@ $color-focus: $Dark-Shade-100;
 	align-items: flex-start;
 
 	&__header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -49,7 +50,7 @@ $color-focus: $Dark-Shade-100;
 	}
 
 	&__value {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		margin-left: 5px;
 		font-size: 10px;

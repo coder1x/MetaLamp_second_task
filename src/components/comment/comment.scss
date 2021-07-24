@@ -1,5 +1,6 @@
 @import "@styles/glob.scss";
 
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-name: $Dark-Shade-75;
 $color-message: $Dark-Shade-75;
 
@@ -37,7 +38,7 @@ $color-message: $Dark-Shade-75;
 	}
 
 	&__name {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 14px;
 		line-height: 25px;
@@ -46,7 +47,7 @@ $color-message: $Dark-Shade-75;
 
 	&__date,
 	&__message {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;

@@ -133,7 +133,12 @@ class dropDown {
 			}
 		};
 
-		this.selectEl.addEventListener('keydown', keydown);
+		this.selectEl.addEventListener('keydown', (e: any) => {
+			if (e.key == 'Escape') {
+				e.preventDefault();
+				this.toggle(true);
+			}
+		});
 		this.inputEl.addEventListener('keydown', keydown);
 
 		if (this.applyClass)

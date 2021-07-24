@@ -1,4 +1,6 @@
 @import "@styles/glob.scss";
+
+$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-toggle-label: $Dark-Shade-75;
 $color-toggle-bk: $Dark-Shade-25;
 $color-toggle-border: $Purple;
@@ -6,7 +8,7 @@ $color-border-focus: $Dark-Shade-100;
 
 .toggle-buttons {
 	&__header {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: bold;
 		font-size: 12px;
 		line-height: 15px;
@@ -16,7 +18,7 @@ $color-border-focus: $Dark-Shade-100;
 	}
 
 	&__label {
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-family: $font;
 		font-weight: normal;
 		font-size: 14px;
 		line-height: 24px;
@@ -66,19 +68,15 @@ $color-border-focus: $Dark-Shade-100;
 		transition: 0.2s;
 	}
 
-	// &__bef:focus {
-	// 	outline: 1;
-	// }
-
-	&__input:focus + &__bef {
-		border-color: $color-toggle-border;
-	}
-
 	&__input:checked + &__bef {
 		border-color: $color-toggle-border;
 	}
 	&__input:checked + &__bef:after {
 		left: 22px;
 		background: linear-gradient(180deg, $color-toggle-border 0%, #8ba4f9 100%);
+	}
+
+	&__tog &__label &__bef_border {
+		border-color: $color-border-focus;
 	}
 }
