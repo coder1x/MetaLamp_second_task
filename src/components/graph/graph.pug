@@ -12,7 +12,7 @@ mixin graph(options)
 		className += ' '+addClass}
 	div(class=className)
 		- if(!flLabel){
-			p(class=classComp+'__header')= label
+			h2(class=classComp+'__header')= label
 		-}
 		div(class=classComp+'__wrapper')
 			canvas(class=classComp+'__convas' width='240' height='240')

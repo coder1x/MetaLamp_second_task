@@ -16,10 +16,11 @@ block content
 					img.room-details-foto__image(src=require('@pag/room-details/img/image2.webp').default, alt='Номер люкс - вторая комната')
 					img.room-details-foto__image(src=require('@pag/room-details/img/Mask_Group.webp').default, alt='Номер люкс - гостиная')
 			section.room-details-info 
+				h1.visually-hidden подробная информация о люкс номере
 				.room-details-info__left-column
 					.room-details-info__top-wrap 
 						.room-details-info__feature-wrap
-							p.room-details-info__feature-header Сведения о номере
+							h2.room-details-info__feature-header Сведения о номере
 							.room-details-info__feature
 								+feature({
 									header:'Комфорт',
@@ -48,7 +49,7 @@ block content
 					.room-details-info__bottom-wrap
 						.room-details-info__comment-wrap
 							.room-details-info__comment-header-wrap
-								p.room-details-info__comment-header Отзывы посетителей номера
+								h2.room-details-info__comment-header Отзывы посетителей номера
 								span.room-details-info__total-comments 2 отзыва
 							.room-details-info__comment
 								+comment({
