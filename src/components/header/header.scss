@@ -106,12 +106,17 @@ $color-focus: $Dark-Shade-100;
 		line-height: 17px;
 		color: $color-link;
 
-		outline-offset: 4px;
-		outline-color: $color-focus;
+		// outline-color: $color-focus;
 
 		&_current {
 			font-weight: bold;
 		}
+	}
+
+	&__link:focus,
+	&__link-down:focus {
+		outline: 2px solid $color-focus;
+		outline-offset: 4px;
 	}
 
 	&__tip {

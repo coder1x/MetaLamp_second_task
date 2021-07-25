@@ -18,8 +18,8 @@ fs.readdirSync(PAGES_DIR).forEach((file) => {
 	pages.push(file.split('/', 2));
 });
 
-const description =
-	'Лучшие номера для вашей работы, отдыха и просто вдохновения';
+const description = 'Лучшие номера для вашей работы,' +
+	' отдыха и просто вдохновения';
 const keywords = 'Номера, Отель';
 const title = 'booking rooms for TOXIN';
 
@@ -52,7 +52,7 @@ module.exports = {
 				'viewport': {
 					'name': 'viewport',
 					'content':
-						'width=device-width, initial-scale=1, shrink-to-fit=no',
+						'width=device-width, initial-scale=1',
 
 				},
 				'Content-Type': {
@@ -70,7 +70,29 @@ module.exports = {
 				'keywords': {
 					'name': 'keywords',
 					'content': keywords
+				},
+				'twitter-card': {
+					'name': 'twitter:card',
+					'content': 'summary_large_image'
+				},
+				'twitter-title': {
+					'name': 'twitter:title',
+					'content': 'TOXIN'
+				},
+				'twitter-description': {
+					'name': 'twitter:description',
+					'content': 'Лучшие номера для вашей работы,' +
+						' отдыха и просто вдохновения'
+				},
+				'twitter-site': {
+					'name': 'twitter:site',
+					'content': 'https://thylacine.ru/'
+				},
+				'twitter-image': {
+					'name': 'twitter:image',
+					'content': 'https://thylacine.ru/social.webp'
 				}
+
 			},
 		})),
 

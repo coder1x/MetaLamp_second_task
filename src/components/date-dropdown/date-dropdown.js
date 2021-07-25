@@ -98,10 +98,12 @@ class dateDropDown {
 
 
 	#createCalendar() {
-		const imgPrev =
-			require('@com/date-dropdown/img/arrow_back.svg').default;
-		const imgNext =
-			require('@com/date-dropdown/img/arrow_forward.svg').default;
+		const imgPrev = require(
+			'@com/date-dropdown/img/arrow_back.svg'
+		).default;
+		const imgNext = require(
+			'@com/date-dropdown/img/arrow_forward.svg'
+		).default;
 		this.$calendarObj = $(this.calendar).datepicker({
 			range: true,
 			minDate: new Date(),
@@ -119,18 +121,19 @@ class dateDropDown {
 				this.#visibleClear(true);
 			}
 		}).data('datepicker');
+
 	}
 
 
 	dateConversion(dateText) {
-		let date = dateText.trim().split(' ');
+		const date = dateText.trim().split(' ');
 		let index = this.#masMonth.indexOf(date[1], 0);
 		let month = 0;
 		if (index != -1) {
 			month = ++index;
 		}
-		let currentDate = new Date();
-		return month + '.' + date[0] + '.' + currentDate.getFullYear();
+		const currentDate = new Date();
+		return currentDate.getFullYear() + '-' + month + '-' + date[0];
 	}
 
 
@@ -167,7 +170,6 @@ class dateDropDown {
 		} else {
 
 			this.$calendarObj.clear();
-
 			let mas = date1.split('-');
 			let dateOne = this.dateConversion(mas[0]);
 			let dateTwo = this.dateConversion(mas[1]);
@@ -283,6 +285,7 @@ class dateDropDown {
 			if (this.input1.value.length == len)
 				this.setRange();
 		});
+
 
 		if (this.flRange) {
 			this.input2.addEventListener('input', () => {
