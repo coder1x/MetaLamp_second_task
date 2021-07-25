@@ -1,4 +1,4 @@
-import "./sign-in.scss";
+import './sign-in.scss';
 
 class signIn {
 

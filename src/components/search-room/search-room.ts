@@ -1,4 +1,4 @@
-import "./search-room.scss";
+import './search-room.scss';
 
 
 class searchRoom {

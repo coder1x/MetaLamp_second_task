@@ -1,1 +1,1 @@
-import "./landing-page.scss";
+import './landing-page.scss';

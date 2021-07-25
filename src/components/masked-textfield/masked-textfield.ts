@@ -77,7 +77,7 @@ class maskedTextField {
 
 		if (!regexp.test(dateD)) return;
 
-		let masD = dateD.split(".").map((item: string) => Number(item.replace(/^0/, '')));
+		let masD = dateD.split('.').map((item: string) => Number(item.replace(/^0/, '')));
 		masD[1] = masD[1] - 1;
 		let d = new Date(masD[2], masD[1], masD[0]);
 

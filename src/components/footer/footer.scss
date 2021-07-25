@@ -6,6 +6,7 @@ $color-bottom-shadow: $Dark-Shade-5;
 $color-subscrip-text: $Dark-Shade-75;
 $color-recommendation-text: $Dark-Shade-75;
 $color-copyright: $Dark-Shade-75;
+$color-focus: $Dark-Shade-100;
 
 .footer {
 	width: 100%;
@@ -166,6 +167,8 @@ $color-copyright: $Dark-Shade-75;
 
 	&__social-link {
 		display: inline-block;
+		outline-offset: 4px;
+		outline-color: $color-focus;
 	}
 
 	&__social-item {

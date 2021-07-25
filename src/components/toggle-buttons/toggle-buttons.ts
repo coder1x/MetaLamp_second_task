@@ -1,1 +1,1 @@
-import "./toggle-buttons.scss";
+import './toggle-buttons.scss';

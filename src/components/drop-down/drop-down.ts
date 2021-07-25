@@ -1,4 +1,4 @@
-import "./drop-down.scss";
+import './drop-down.scss';
 
 interface optE {
 	str: string,
@@ -74,7 +74,7 @@ class dropDown {
 		let value = this.getElem({ str: '__value', dom: item });
 		let plus = this.getElem({ str: '__plus', dom: item });
 
-		let getModif = (str: string, str2: string) => {
+		const getModif = (str: string, str2: string) => {
 			return this.className.replace(/^\./, '') + str + str2;
 		};
 
@@ -123,7 +123,7 @@ class dropDown {
 		});
 
 
-		let keydown = (e: any) => {
+		const keydown = (e: any) => {
 			if (e.key == 'Escape') {
 				e.preventDefault();
 				this.toggle(true);
@@ -162,7 +162,7 @@ class dropDown {
 			});
 
 
-		let eventDoc = (event: string) => {
+		const eventDoc = (event: string) => {
 			document.addEventListener(event, (e: any) => {
 				const domEl = e.target.closest(this.className);
 				if (domEl != this.elem)
@@ -287,7 +287,8 @@ class dropDown {
 		}
 
 
-		let setData = (visibility: boolean,
+		let setData = (
+			visibility: boolean,
 			value: string,
 			placeholder: string) => {
 

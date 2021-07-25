@@ -1,4 +1,4 @@
-import "./checkbox-list.scss";
+import './checkbox-list.scss';
 
 interface optE {
 	str: string,

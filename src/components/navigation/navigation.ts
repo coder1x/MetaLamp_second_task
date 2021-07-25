@@ -1,1 +1,1 @@
-import "./navigation.scss";
+import './navigation.scss';

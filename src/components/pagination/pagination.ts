@@ -1,1 +1,1 @@
-import "./pagination.scss";
+import './pagination.scss';

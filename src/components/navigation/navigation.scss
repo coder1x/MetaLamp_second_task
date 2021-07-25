@@ -3,6 +3,7 @@
 $font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-header: $Dark-Shade-100;
 $color-link: $Dark-Shade-50;
+$color-focus: $Dark-Shade-100;
 
 .navigation {
 	&__header {
@@ -34,5 +35,7 @@ $color-link: $Dark-Shade-50;
 		font-size: 14px;
 		line-height: 17px;
 		color: $color-link;
+		outline-offset: 4px;
+		outline-color: $color-focus;
 	}
 }

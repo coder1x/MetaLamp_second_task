@@ -1,1 +1,1 @@
-import "./feature.scss";
+import './feature.scss';

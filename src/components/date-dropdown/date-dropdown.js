@@ -1,5 +1,5 @@
-import "./datepicker.scss";
-import "./date-dropdown.scss";
+import './datepicker.scss';
+import './date-dropdown.scss';
 /*
 Компонент dateDropDown использует плагин jQuery air-datepicker
 который позволяет осуществлять ввод Даты через календарь, а так же
@@ -64,13 +64,13 @@ class dateDropDown {
 			return;
 		}
 
-		let getDateFilter = (date) => {
+		const getDateFilter = (date) => {
 			if (!date) return '';
-			let mas = date.split(".");
+			let mas = date.split('.');
 			return mas[0] + ' ' + this.#masMonth[mas[1] - 1];
 		};
 
-		let masDate = date.split(",");
+		let masDate = date.split(',');
 
 		this.input1.value = this.flRange ?
 			masDate[0] : getDateFilter(masDate[0]);
@@ -123,7 +123,7 @@ class dateDropDown {
 
 
 	dateConversion(dateText) {
-		let date = dateText.trim().split(" ");
+		let date = dateText.trim().split(' ');
 		let index = this.#masMonth.indexOf(date[1], 0);
 		let month = 0;
 		if (index != -1) {
@@ -139,7 +139,7 @@ class dateDropDown {
 		this.#flag = true;
 
 		function getDate(date) {
-			let mas = date.split(".");
+			let mas = date.split('.');
 			return new Date(mas[1] + '.' + mas[0] + '.' + mas[2]);
 		}
 
@@ -168,7 +168,7 @@ class dateDropDown {
 
 			this.$calendarObj.clear();
 
-			let mas = date1.split("-");
+			let mas = date1.split('-');
 			let dateOne = this.dateConversion(mas[0]);
 			let dateTwo = this.dateConversion(mas[1]);
 
@@ -191,7 +191,7 @@ class dateDropDown {
 	getVisible(elem) {
 		let display = window.getComputedStyle(elem, null)
 			.getPropertyValue('display');
-		return display === "none" ? false : true;
+		return display === 'none' ? false : true;
 	}
 
 	toggleCal(fl = false) {
@@ -253,7 +253,7 @@ class dateDropDown {
 			this.#clickElemFl = true;
 		});
 
-		let actionClick = (elem, fl) => {
+		const actionClick = (elem, fl) => {
 			elem.addEventListener('click', (e) => {
 				this.toggleCal(fl);
 
@@ -265,7 +265,7 @@ class dateDropDown {
 		actionClick(this.input1, true);
 
 
-		let keydownX = (e) => {
+		const keydownX = (e) => {
 			if (e.key == 'Escape') {
 				e.preventDefault();
 				const nameModif = this.className.replace(/^\./, '') + '_visible';

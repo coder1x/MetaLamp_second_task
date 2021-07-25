@@ -3,6 +3,7 @@
 $font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-name: $Dark-Shade-75;
 $color-message: $Dark-Shade-75;
+$color-focus: $Dark-Shade-100;
 
 .comment {
 	display: flex;
@@ -43,6 +44,8 @@ $color-message: $Dark-Shade-75;
 		font-size: 14px;
 		line-height: 25px;
 		color: $color-name;
+		outline-offset: 4px;
+		outline-color: $color-focus;
 	}
 
 	&__date,

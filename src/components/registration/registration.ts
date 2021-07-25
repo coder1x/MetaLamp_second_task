@@ -1,4 +1,4 @@
-import "./registration.scss";
+import './registration.scss';
 
 class registration {
 
@@ -31,7 +31,7 @@ class registration {
 
 	validation() {
 
-		let messageErr = (str: string, len: number) => {
+		const messageErr = (str: string, len: number) => {
 
 			function check(result: boolean, mess: string) {
 				if (result) {

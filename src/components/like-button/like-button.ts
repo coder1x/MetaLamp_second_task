@@ -1,4 +1,4 @@
-import "./like-button.scss";
+import './like-button.scss';
 
 class likeButton {
 

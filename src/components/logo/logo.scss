@@ -1,5 +1,9 @@
 @import "@styles/glob.scss";
 
+$color-focus: $Dark-Shade-100;
+
 .logo {
 	display: inline-block;
+	outline-offset: 4px;
+	outline-color: $color-focus;
 }

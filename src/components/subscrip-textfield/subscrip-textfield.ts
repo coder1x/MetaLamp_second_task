@@ -1,4 +1,4 @@
-import "./subscrip-textfield.scss";
+import './subscrip-textfield.scss';
 import { validationEmail } from '../validation-email/validation-email';
 
 
@@ -29,7 +29,7 @@ class subscriptionTextField {
 
 	private setActions() {
 
-		let action = (e: any, fl = false) => {
+		const action = (e: any, fl = false) => {
 			if (fl) {
 				this.validEmail();
 			}

@@ -7,6 +7,7 @@ $color-nikname: $Dark-Shade-50;
 $color-line-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $color-link: $Dark-Shade-50;
 $color-line-close: $Dark-Shade-50;
+$color-focus: $Dark-Shade-100;
 
 .header {
 	width: 100%;
@@ -104,6 +105,9 @@ $color-line-close: $Dark-Shade-50;
 		font-size: 14px;
 		line-height: 17px;
 		color: $color-link;
+
+		outline-offset: 4px;
+		outline-color: $color-focus;
 
 		&_current {
 			font-weight: bold;

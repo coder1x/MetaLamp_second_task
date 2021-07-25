@@ -5,7 +5,7 @@ import './rangeSlider/css/ion.rangeSlider.min.css';
 import './rangeSlider/js/ion.rangeSlider.min.js';
 
 // eslint-disable-next-line no-unused-vars
-import $ from "jquery";
+import $ from 'jquery';
 import 'focus-visible/dist/focus-visible.min.js';
 
 

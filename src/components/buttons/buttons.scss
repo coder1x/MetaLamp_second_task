@@ -40,7 +40,8 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
 
 	&_link:focus,
 	&_submit:focus,
-	&_text:focus {
+	&_text:focus,
+	&_link-border {
 		outline-offset: 5px;
 		outline-color: $solor-focus;
 	}

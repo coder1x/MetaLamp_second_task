@@ -26,7 +26,7 @@ class focusHandler {
 
 	private setActions() {
 
-		let focusToggle = (elem: HTMLElement, fl = false) => {
+		const focusToggle = (elem: HTMLElement, fl = false) => {
 			const bef = elem.nextElementSibling;
 			this.toggleModif(bef, '__bef_border', fl);
 		};

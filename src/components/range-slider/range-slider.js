@@ -1,4 +1,4 @@
-import "./range-slider.scss";
+import './range-slider.scss';
 
 class rangeSlider {
 
@@ -19,15 +19,15 @@ class rangeSlider {
 
 	createRangeSlider() {
 
-		let setRange = ({ from, to }) => {
+		const setRange = ({ from, to }) => {
 			const numFrom = from.toLocaleString();
 			const numTo = to.toLocaleString();
 			const range = numFrom + '₽ - ' + numTo + '₽';
 			this.valueEl.innerText = range;
 		};
 
-		this.$myRange = $(".range-slider__input").ionRangeSlider({
-			type: "double",
+		this.$myRange = $('.range-slider__input').ionRangeSlider({
+			type: 'double',
 			//min: 0,
 			step: 1,
 			// eslint-disable-next-line camelcase

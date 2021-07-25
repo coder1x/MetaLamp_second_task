@@ -1,4 +1,4 @@
-import "./header.scss";
+import './header.scss';
 
 class headerMenu {
 
@@ -158,7 +158,7 @@ class headerMenu {
 			this.toggle();
 		});
 
-		let keydown = (e: any) => {
+		const keydown = (e: any) => {
 			if (e.key == 'Escape') {
 				e.preventDefault();
 				this.toggle();
@@ -175,7 +175,7 @@ class headerMenu {
 				this.showUl(this.getIndex(elem));
 			});
 
-			let showMenuFocus = (e: any) => {
+			const showMenuFocus = (e: any) => {
 				if (e.key == ' ') {
 					e.preventDefault();
 					const currentEl = e.currentTarget;

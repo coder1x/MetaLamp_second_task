@@ -1,4 +1,4 @@
-import "./room-card.scss";
+import './room-card.scss';
 
 
 class slider {
@@ -154,7 +154,7 @@ class slider {
 			return [];
 		}
 
-		let swipe = (xyDiff: any) => {
+		const swipe = (xyDiff: any) => {
 			if (xyDiff[0] > 0) {
 				this.nextEl.click();
 			} else {
