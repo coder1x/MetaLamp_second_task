@@ -1,6 +1,7 @@
 @import "@styles/glob.scss";
 
 $font: "Montserrat", Helvetica, Arial, sans-serif;
+$color-focus: $Dark-Shade-100;
 
 .range-slider {
 	&__header {
@@ -16,6 +17,15 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 		text-transform: uppercase;
 		color: #1f2041;
 		cursor: pointer;
+	}
+
+	&__input {
+		appearance: none;
+		white-space: nowrap;
+		clip-path: inset(100%);
+		clip: rect(0 0 0 0);
+		overflow: hidden;
+		border: 0px;
 	}
 
 	&__value {
@@ -52,6 +62,11 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 			border-radius: 50%;
 			box-sizing: unset;
 		}
+	}
+
+	.irs-handle {
+		outline-offset: 4px;
+		outline-color: $color-focus;
 	}
 
 	.irs--flat .irs-handle > i:first-child {

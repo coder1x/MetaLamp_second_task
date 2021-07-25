@@ -19,6 +19,10 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 	overflow: hidden;
 	margin: 0 auto;
 
+	@include media-breakpoint-down($xs) {
+		display: none;
+	}
+
 	&__big-foto {
 		flex-grow: 1;
 	}

@@ -99,10 +99,14 @@ $color-datepicker-shadow: $Dark-Shade-5;
 		margin-top: 5.56px;
 		position: absolute;
 		top: 68px;
+		left: 50%;
+		transform: translate(-50%);
 		z-index: 5;
 		background: $color-background;
 		box-shadow: 0px 10px 20px $color-datepicker-shadow;
+		width: 100%;
 		min-width: 266px;
+		max-width: 320px;
 	}
 
 	&__datepicker-buttons {

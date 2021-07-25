@@ -21,7 +21,10 @@ $colot-header: $Dark-Shade-100;
 		line-height: 23px;
 		text-transform: none;
 		margin-bottom: 19px;
-		margin-left: 19px;
+
+		@include media-breakpoint-up($xs) {
+			margin-left: 19px;
+		}
 	}
 
 	&__items {

@@ -12,6 +12,10 @@ $color-feature-border: $Dark-Shade-1;
 	border-bottom: 1px solid $color-feature-border;
 	padding-bottom: 19px;
 
+	&_none-border {
+		border-bottom: 0px;
+	}
+
 	&__wrap-icon {
 		display: flex;
 		flex-direction: row;
