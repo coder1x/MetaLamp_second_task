@@ -30,14 +30,23 @@ $color-text-in: #000;
 
 	&__name-wrap {
 		margin-bottom: 10px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 20px;
+		}
 	}
 
 	&__surname-wrap {
 		margin-bottom: 8px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 20px;
+		}
 	}
 
 	&__gender-wrap {
 		margin-bottom: 23px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 30px;
+		}
 	}
 
 	&__date-wrap {
@@ -66,14 +75,23 @@ $color-text-in: #000;
 
 	&__email-wrap {
 		margin-bottom: 10px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 20px;
+		}
 	}
 
 	&__pass-wrap {
 		margin-bottom: 9px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 30px;
+		}
 	}
 
 	&__toggle-wrap {
 		margin-bottom: 20px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 35px;
+		}
 	}
 
 	&__submit-wrap {

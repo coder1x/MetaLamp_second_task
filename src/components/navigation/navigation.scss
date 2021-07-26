@@ -6,6 +6,9 @@ $color-link: $Dark-Shade-50;
 $color-focus: $Dark-Shade-100;
 
 .navigation {
+	padding-right: 10px;
+	box-sizing: border-box;
+
 	&__header {
 		margin-bottom: 22px;
 		font-family: $font;
@@ -23,6 +26,7 @@ $color-focus: $Dark-Shade-100;
 
 	&__item {
 		margin-bottom: 19px;
+		overflow-wrap: break-word;
 	}
 
 	&__item:last-child {
@@ -35,6 +39,7 @@ $color-focus: $Dark-Shade-100;
 		font-size: 14px;
 		line-height: 17px;
 		color: $color-link;
+		@include max-row(3);
 	}
 
 	&__link:focus {

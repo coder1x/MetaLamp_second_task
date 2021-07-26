@@ -37,6 +37,8 @@ class sidebar {
 
 		let objClass = this.block.classList;
 
+		//	console.log(fl);
+
 		if (!fl) {
 			objClass.add(this.classVisible);
 			let elem = this.block.querySelector('input');
@@ -76,15 +78,18 @@ class sidebar {
 		document.addEventListener('focusin', (e: any) => {
 			const linkEl = e.target.closest(this.blockClass) ?? false;
 			if (!linkEl && this.getVisible()) {
-
 				const elem = this.button.querySelector('button');
-				this.toggle();
-				elem.focus();
+
+				if (!e.path.includes(elem, 0)) {
+					this.toggle();
+					elem.focus();
+				}
 			}
 		});
 
 		document.addEventListener('click', () => {
 			const flag = this.getVisible() && !this.click;
+
 			if (flag)
 				this.toggle(true);
 			this.click = false;

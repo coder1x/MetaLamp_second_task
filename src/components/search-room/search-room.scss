@@ -16,6 +16,7 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
 
 	&__header {
 		margin-bottom: 22px;
+		@include max-row(3);
 	}
 
 	&__date-wrap {

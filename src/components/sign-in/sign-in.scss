@@ -23,10 +23,16 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
 
 	&__email-wrap {
 		margin-bottom: 10px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 20px;
+		}
 	}
 
 	&__pass-wrap {
 		margin-bottom: 20px;
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 30px;
+		}
 	}
 
 	&__button-wrap {

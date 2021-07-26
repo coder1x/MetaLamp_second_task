@@ -176,9 +176,11 @@ $color-focus: $Dark-Shade-100;
 
 	&__items {
 		display: flex;
-		flex-direction: row;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
+		padding-left: 20px;
+		box-sizing: border-box;
 
 		@include media-breakpoint-down($md) {
 			padding: 20px;
