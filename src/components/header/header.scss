@@ -64,6 +64,11 @@ $color-focus: $Dark-Shade-100;
 		}
 	}
 
+	&__toggle:focus {
+		outline: 2px solid $color-focus;
+		outline-offset: 4px;
+	}
+
 	&__toggle-line {
 		display: block;
 		background: $color-line-backgr;
@@ -231,6 +236,11 @@ $color-focus: $Dark-Shade-100;
 			margin-left: 0px;
 			margin-top: 20px;
 		}
+	}
+
+	&__nikname:focus {
+		outline: 2px solid $color-focus;
+		outline-offset: 4px;
 	}
 
 	&__registration-wrap {

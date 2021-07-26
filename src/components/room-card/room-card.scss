@@ -8,6 +8,7 @@ $color-text: $Dark-Shade-50;
 $color-lux: $Purple;
 $color-dot: #fff;
 $color-header-backgr: $Dark-Shade-1;
+$color-focus: $Dark-Shade-100;
 $color-background-prev-next: linear-gradient(
 	90deg,
 	rgba(0, 0, 0, 0.5) 0%,
@@ -103,6 +104,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 	&__prev-wrap:focus {
 		border-top-left-radius: 4px;
 		background: $color-background-prev-next;
+		outline: 2px solid $color-focus;
 	}
 
 	&__next-wrap:hover,
@@ -110,6 +112,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		border-top-left-radius: 4px;
 		background: $color-background-prev-next;
 		transform: matrix(-1, 0, 0, 1, 0, 0);
+		outline: 2px solid $color-focus;
 	}
 
 	&__prev-wrap:hover > &__prev,
@@ -157,6 +160,11 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 		background: $color-header-backgr;
 		width: calc(100% - 39px);
 		height: 1px;
+	}
+
+	&__header-wrap:focus {
+		outline: 2px solid $color-focus;
+		outline-offset: 4px;
 	}
 
 	&__header {

@@ -182,4 +182,10 @@ $color-total-text: #1f2041;
 	&__total-dot {
 		margin-bottom: 4px;
 	}
+
+	&__button-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }

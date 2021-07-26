@@ -1,7 +1,7 @@
 @import "@styles/glob.scss";
 
 $font: "Montserrat", Helvetica, Arial, sans-serif;
-$solor-focus: $Dark-Shade-100;
+$color-focus: $Dark-Shade-100;
 $color-submit-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $color-text-hover: $Dark-Shade-50;
 $color-link-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
@@ -41,9 +41,9 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
 	&_link:focus,
 	&_submit:focus,
 	&_text:focus,
-	&_link-border {
+	&_link-border:focus {
+		outline: 2px solid $color-focus;
 		outline-offset: 5px;
-		outline-color: $solor-focus;
 	}
 
 	&_submit {

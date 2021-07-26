@@ -35,7 +35,10 @@ $color-focus: $Dark-Shade-100;
 		font-size: 14px;
 		line-height: 17px;
 		color: $color-link;
+	}
+
+	&__link:focus {
+		outline: 2px solid $color-focus;
 		outline-offset: 4px;
-		outline-color: $color-focus;
 	}
 }

@@ -68,11 +68,11 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
 	&__next:focus,
 	&__prev:focus {
 		outline-offset: 4px;
-		outline-color: $color-button-focus;
+		outline: 2px solid $color-button-focus;
 	}
 
 	&__page-numbers:focus {
-		outline-color: $color-button-focus;
+		outline: 2px solid $color-button-focus;
 	}
 
 	&__current {

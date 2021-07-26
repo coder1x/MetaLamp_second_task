@@ -64,9 +64,9 @@ $color-focus: $Dark-Shade-100;
 		}
 	}
 
-	.irs-handle {
+	.irs-handle:focus {
 		outline-offset: 4px;
-		outline-color: $color-focus;
+		outline: 2px solid $color-focus;
 	}
 
 	.irs--flat .irs-handle > i:first-child {

@@ -62,10 +62,12 @@ $color-link-focus: $Dark-Shade-100;
 		color: $color-link;
 	}
 
-	&__link:hover,
-	&__link:focus {
+	&__link:hover {
 		opacity: 0.5;
+	}
+
+	&__link:focus {
 		outline-offset: 4px;
-		outline-color: $color-link-focus;
+		outline: 2px solid $color-link-focus;
 	}
 }
