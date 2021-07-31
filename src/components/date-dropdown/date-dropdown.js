@@ -12,9 +12,12 @@ class dateDropDown {
 
 	constructor(className, elem) {
 
+		this.flClick = false;
+		this.defaultText = 'ДД.ММ.ГГГГ';
 		this.#setDomElem(className, elem);
 		this.#createCalendar();
 		this.#setActions();
+
 
 		if (!this.flRange)
 			this.setRange();
@@ -33,30 +36,37 @@ class dateDropDown {
 
 		this.#classClear = className.replace(/^\./, '') + '__clear';
 
+		const getElem = (name) => {
+			return elem.querySelector(className + '__' + name);
+		};
+
 		this.className = className;
 		this.elem = elem;
-		this.calendar = elem.querySelector(className + '__datepicker');
-		this.calendarWrap = elem.querySelector(className + '__datepicker-wrap');
+		this.calendar = getElem('datepicker');
+		this.calendarWrap = getElem('datepicker-wrap');
 
-		this.inputs = elem.querySelectorAll('input');
+		this.inputHidden = getElem('input-hidden');
+
+		this.inputs = elem.querySelectorAll(className + '__input');
 		this.flRange = this.inputs.length > 1 ? true : false;
 
 		this.input1 = this.inputs[0];
 		this.imgLeft = this.input1.nextSibling;
 
-		this.clearButton = elem.querySelector(className + '__clear');
-		this.acceptButton = elem.querySelector(className + '__apply');
+		this.clearButton = getElem('clear');
+		this.acceptButton = getElem('apply');
 
 		if (this.flRange) {
 			this.input2 = this.inputs[1];
 			this.imgRight = this.input2.nextSibling;
+
+			this.input1.placeholder = this.defaultText;
+			this.input2.placeholder = this.defaultText;
 		}
 	}
 
 
 	#inputDate(date) {
-		if (this.#flag) return;
-
 		if (!date) {
 			this.input1.value = '';
 			if (this.flRange)
@@ -67,19 +77,29 @@ class dateDropDown {
 		const getDateFilter = (date) => {
 			if (!date) return '';
 			let mas = date.split('.');
-			return mas[0] + ' ' + this.#masMonth[mas[1] - 1];
+			const month = Number(mas[1]);
+			return mas[0] + ' ' + this.#masMonth[month - 1];
 		};
+
 
 		let masDate = date.split(',');
 
-		this.input1.value = this.flRange ?
-			masDate[0] : getDateFilter(masDate[0]);
-
 		if (masDate.length == 2) {
 			if (this.flRange) {
+				this.input1.value = masDate[0];
 				this.input2.value = masDate[1];
 			} else {
-				this.input1.value += ' - ' + getDateFilter(masDate[1]);
+				this.input1.placeholder =
+					getDateFilter(masDate[0]) +
+					' - ' +
+					getDateFilter(masDate[1]);
+
+				this.inputHidden.value = masDate[0] + '-' + masDate[1];
+
+				if (this.getVisible(this.calendarWrap)) {
+					this.input1.value = masDate[0] + ' - ' + masDate[1];
+				}
+
 			}
 		}
 
@@ -125,41 +145,24 @@ class dateDropDown {
 	}
 
 
-	dateConversion(dateText) {
-		const date = dateText.trim().split(' ');
-		let index = this.#masMonth.indexOf(date[1], 0);
-		let month = 0;
-		if (index != -1) {
-			month = ++index;
-		}
-		const currentDate = new Date();
-		return currentDate.getFullYear() + '-' + month + '-' + date[0];
-	}
-
-
 
 	setRange() {
 		this.#flag = true;
 
-		function getDate(date) {
+		function getDate(date, fl = false) {
 			let mas = date.split('.');
-			return new Date(mas[1] + '.' + mas[0] + '.' + mas[2]);
+			const dateText = mas[1] + '.' + mas[0] + '.' + mas[2];
+			return !fl ? new Date(dateText) : dateText;
 		}
 
-		let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
-		let regexp2 =
-			`(0[1-9]|[12][0-9]|3[01])\\s\\p{sc=Cyrillic}{3}`;
-		let date1 = this.input1.value;
-
-
-		let oneMeaning = new RegExp('^' + regexp2 + '\\s-\\s' +
-			regexp2 + '$', 'ui').test(date1);
-
-		if (!regexp.test(date1))
-			if (!oneMeaning) return;
-
+		function trimDate(dateText) {
+			return dateText.trim().split(' ')[0];
+		}
 
 		if (this.flRange) {
+			const date1 = this.input1.value;
+			const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+			if (!regexp.test(date1)) return;
 			let date2 = this.input2.value;
 			this.$calendarObj.clear();
 			if (date2 == '') {
@@ -168,11 +171,16 @@ class dateDropDown {
 				this.$calendarObj.selectDate([getDate(date1), getDate(date2)]);
 			}
 		} else {
-
+			const date = this.inputHidden.value;
 			this.$calendarObj.clear();
-			let mas = date1.split('-');
-			let dateOne = this.dateConversion(mas[0]);
-			let dateTwo = this.dateConversion(mas[1]);
+			let mas = date.split('-');
+
+			if (mas.length < 2) return;
+			const leftValue = trimDate(mas[0]);
+			const rightValue = trimDate(mas[1]);
+
+			let dateOne = getDate(leftValue, true);
+			let dateTwo = getDate(rightValue, true);
 
 			let minOne = Date.parse(dateOne) / 1000 / 60;
 			let minTwo = Date.parse(dateTwo) / 1000 / 60;
@@ -202,6 +210,10 @@ class dateDropDown {
 		const objElem = this.elem.classList;
 		if (this.#flTog == fl && visible) {
 			objElem.remove(nameModif);
+
+			if (!this.flRange) {
+				this.input1.value = '';
+			}
 		}
 		else {
 			objElem.add(nameModif);
@@ -209,27 +221,47 @@ class dateDropDown {
 		this.#flTog = fl;
 	}
 
-	#validationRange() {
-		let twoMeanings = false, oneMeaning = false;
+	#validationRange(flShow = false) {
+
+		function trimDate(dateText) {
+			return dateText.trim().split(' ')[0];
+		}
+
+		const validСheck = (fl) => {
+			if (fl) {
+				if (!flShow)
+					this.toggleCal(this.#flTog);
+			}
+			else {
+				alert('Выберите диапазон');
+			}
+		};
+
 
 		if (this.flRange) {
-			twoMeanings = Boolean(this.input1.value &&
-				this.input2.value);
+			let twoMeanings = false;
+			twoMeanings = Boolean(
+				this.input1.value &&
+				this.input2.value
+			);
+
+			validСheck(twoMeanings);
 		}
 		else {
-			let regexp =
-				`(0[1-9]|[12][0-9]|3[01])\\s\\p{sc=Cyrillic}{3}`;
+			let oneMeaning = true;
+			const date = this.inputHidden.value;
+			let mas = date.split('-');
+			let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
-			oneMeaning = new RegExp('^' + regexp + '\\s-\\s' +
-				regexp + '$', 'ui').test(this.input1.value);
-		}
+			for (let i = 0; i < mas.length; i++) {
+				const val = trimDate(mas[i]);
+				if (!regexp.test(val)) {
+					oneMeaning = false;
+					break;
+				}
+			}
 
-
-		if (twoMeanings || oneMeaning) {
-			this.toggleCal(this.#flTog);
-		}
-		else {
-			alert('Выберите диапазон');
+			validСheck(oneMeaning);
 		}
 	}
 
@@ -248,6 +280,30 @@ class dateDropDown {
 		}
 	}
 
+	#setActionsFilter() {
+		this.input1.addEventListener('focus', () => {
+			const val = this.inputHidden.value.replace('-', ' - ');
+			this.input1.value = val;
+		});
+
+		this.input1.addEventListener('focusout', () => {
+			if (!this.flClick)
+				this.input1.value = '';
+			this.flClick = false;
+		});
+
+		this.input1.addEventListener('change', () => {
+			this.inputHidden.value = this.input1.value;
+			this.#validationRange(true);
+			this.setRange();
+		});
+
+		this.input1.addEventListener('input', (e) => {
+			let elem = e.target;
+			let val = elem.value.replace(/[^.-\d\s]/g, '');
+			elem.value = val;
+		});
+	}
 
 	#setActions() {
 
@@ -256,11 +312,13 @@ class dateDropDown {
 		});
 
 		const actionClick = (elem, fl) => {
-			elem.addEventListener('click', (e) => {
+			elem.addEventListener('click', () => {
+
+				this.flClick = true;
 				this.toggleCal(fl);
 
-				if (this.getVisible(this.calendarWrap))
-					e.target.blur();
+				// if (this.getVisible(this.calendarWrap))
+				// 	e.target.blur();
 			});
 		};
 
@@ -276,24 +334,25 @@ class dateDropDown {
 		};
 
 		this.input1.addEventListener('keydown', keydownX);
-		if (this.input2)
-			this.input2.addEventListener('keydown', keydownX);
-
-
-		this.input1.addEventListener('input', () => {
-			let len = this.flRange ? 10 : 15;
-			if (this.input1.value.length == len)
-				this.setRange();
-		});
-
 
 		if (this.flRange) {
+			this.input1.addEventListener('input', () => {
+				const validVal = this.input1.value.length == 10;
+				if (validVal)
+					this.setRange();
+			});
+
+			this.input2.addEventListener('keydown', keydownX);
+
 			this.input2.addEventListener('input', () => {
 				if (this.input2.value.length == 10)
 					this.setRange();
 			});
 			actionClick(this.input2, false);
+		} else {
+			this.#setActionsFilter();
 		}
+
 
 		this.clearButton.addEventListener('click',
 			(e) => {
@@ -303,21 +362,26 @@ class dateDropDown {
 					this.input1.value = '';
 					this.input1.placeholder = '';
 				}
+
+				if (!this.flRange) {
+					this.inputHidden.value = '';
+				}
+
 				this.#visibleClear();
 			});
-
-		document.addEventListener('click', (e) => this.#elementIsClicked(e));
 
 		this.acceptButton.addEventListener('click',
 			(e) => {
 				e.preventDefault();
 				this.#validationRange();
 			});
+
+		document.addEventListener('click', (e) => this.#elementIsClicked(e));
 	}
 }
 
 
-
+//==============================================================================
 
 function renderComponent(className) {
 	let components = document.querySelectorAll(className);
