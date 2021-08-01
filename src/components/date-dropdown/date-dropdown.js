@@ -6,6 +6,7 @@ import './date-dropdown.scss';
 указывать диапазон Даты.
 	Описание в readme.md
 */
+// "10/26/2020" - формат даты.
 
 
 class dateDropDown {
@@ -17,7 +18,6 @@ class dateDropDown {
 		this.#setDomElem(className, elem);
 		this.#createCalendar();
 		this.#setActions();
-
 
 		if (!this.flRange)
 			this.setRange();
@@ -151,7 +151,7 @@ class dateDropDown {
 
 		function getDate(date, fl = false) {
 			let mas = date.split('.');
-			const dateText = mas[1] + '.' + mas[0] + '.' + mas[2];
+			const dateText = mas[1] + '/' + mas[0] + '/' + mas[2];
 			return !fl ? new Date(dateText) : dateText;
 		}
 
@@ -188,7 +188,7 @@ class dateDropDown {
 			if (minOne > minTwo) {
 				let mas = dateTwo.split('.');
 				let num = Number(mas[2]) + 1;
-				dateTwo = mas[0] + '.' + mas[1] + '.' + num;
+				dateTwo = mas[0] + '/' + mas[1] + '/' + num;
 			}
 
 			this.#flInFilter = true;

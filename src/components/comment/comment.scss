@@ -33,9 +33,12 @@ $color-focus: $Dark-Shade-100;
 
 	&__header-wrap,
 	&__message-wrap {
-		display: flex;
+		//display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+	}
+	&__header-wrap {
+		max-width: 320px;
 	}
 
 	&__name {
@@ -44,6 +47,8 @@ $color-focus: $Dark-Shade-100;
 		font-size: 14px;
 		line-height: 25px;
 		color: $color-name;
+		overflow-wrap: break-word;
+		@include max-row(3);
 	}
 
 	&__name:focus {
@@ -62,5 +67,11 @@ $color-focus: $Dark-Shade-100;
 
 	&__message {
 		margin-top: 10px;
+		overflow-wrap: break-word;
+		max-width: 653px;
+
+		@include media-breakpoint-down($lg) {
+			max-width: 743px;
+		}
 	}
 }

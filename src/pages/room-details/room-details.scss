@@ -96,6 +96,9 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 		line-height: 23px;
 		color: #1f2041;
 		margin-bottom: 21px;
+		overflow-wrap: break-word;
+		@include max-row(3);
+		max-width: 320px;
 	}
 
 	&__feature-wrap {
@@ -273,5 +276,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 		font-size: 14px;
 		line-height: 24px;
 		color: rgba(31, 32, 65, 0.75);
+		overflow-wrap: break-word;
+		@include max-row(8);
 	}
 }
