@@ -1,9 +1,9 @@
-# MetaLamp_second_task
+# MetaLamp second task
 second test task from MetaLamp.
 
 
 ## Demo production version
-[start page on the server](https://thylacine.ru)
+[start page on the server](https://thylacine.ru) `https://thylacine.ru`
 
 ### File structure
 ```
