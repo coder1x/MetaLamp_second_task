@@ -206,6 +206,7 @@ $color-datepicker-shadow: $Dark-Shade-5;
 	&_filter .date-dropdown__datepicker {
 		.datepicker {
 			width: 264px;
+			margin: 0 auto;
 			&--cell,
 			&--day-name {
 				height: 35px;

@@ -129,8 +129,8 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 }
 
 .search-room-cards {
-	max-width: 834px;
-	overflow-wrap: break-word;
+	// max-width: 834px;
+	// overflow-wrap: break-word;
 
 	@include media-breakpoint-down($md) {
 		margin-top: 40px;
