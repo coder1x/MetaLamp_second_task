@@ -116,14 +116,21 @@ module.exports = {
       developerName: 'coder1',
       developerURL: 'https://coderr.ru/',
       icons: {
-        'android': true,
+        'android': [
+          'android-chrome-36x36.png',
+          'android-chrome-48x48.png',
+          'android-chrome-72x72.png',
+          'android-chrome-96x96.png',
+          'android-chrome-144x144.png',
+          'android-chrome-192x192.png',
+          'android-chrome-256x256.png'
+        ],
         'appleIcon': [
           'apple-touch-icon-114x114.png',
           'apple-touch-icon-120x120.png',
           'apple-touch-icon-144x144.png',
           'apple-touch-icon-152x152.png',
           'apple-touch-icon-167x167.png',
-          'apple-touch-icon-180x180.png',
           'apple-touch-icon-57x57.png',
           'apple-touch-icon-60x60.png',
           'apple-touch-icon-72x72.png',
@@ -132,13 +139,14 @@ module.exports = {
           'apple-touch-icon.png'
         ],
         'appleStartup': [
-          'apple-touch-startup-image-640x1136.png',
-          'apple-touch-startup-image-750x1334.png',
-          'apple-touch-startup-image-828x1792.png'
+          'apple-touch-startup-image-640x1136.png'
         ],
         'coast': true,                // Create Opera Coast icon. `boolean`
         'favicons': true,             // Create regular favicons. `boolean`
-        'firefox': true,              // Create Firefox OS icons. `boolean`
+        'firefox': [
+          'firefox_app_60x60.png',
+          'firefox_app_128x128.png',
+        ],
         'opengraph': true,            // Create Facebook OpenGraph image. `boolean`
         'twitter': true,              // Create Twitter Summary Card image. `boolean`
         'windows': true,              // Create Windows 8 tile icons. `boolean`
