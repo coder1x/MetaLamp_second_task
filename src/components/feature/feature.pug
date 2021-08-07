@@ -1,22 +1,20 @@
 mixin feature(options)
-	-
-		let header = options.header ?? ''
-		let src = options.src ?? ''
-		let alt = options.alt ?? ''
-		let text = options.text ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let classComp = 'feature'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	div(class=className)
-		div(class=classComp+'__wrap-icon')
-			img(class=classComp+'__icon' src=require('@com/feature/img/'+src).default alt=alt)
-		div(class=classComp+'__description')
-			span(class=classComp+'__header')=header
-			p(class=classComp+'__text')=text
-
-			
+  -
+    let header = options.header ?? ''
+    let src = options.src ?? ''
+    let alt = options.alt ?? ''
+    let text = options.text ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let classComp = 'feature'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  div(class=className)
+    div(class=classComp+'__wrap-icon')
+      img(class=classComp+'__icon' src=require('@com/feature/img/'+src).default alt=alt)
+    div(class=classComp+'__description')
+      span(class=classComp+'__header')=header
+      p(class=classComp+'__text')=text

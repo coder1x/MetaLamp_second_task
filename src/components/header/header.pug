@@ -2,74 +2,74 @@ include ../buttons/buttons.pug
 include ../logo/logo.pug
 
 mixin header(options)
-	-
-		let current = options.current ?? ''
-		let type = options.type ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let classComp = 'header'
-		let className = classComp
-		if(current){
-			current = classComp+'__link_current'}
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	header(class=className)
-		div(class=classComp+'__wrapper')
-			div(class=classComp+'__link-logo')
-				+logo({link:'https://test/test'})
-			button(class=classComp+'__toggle' aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
-				span(class=classComp+'__toggle-line')
-			nav(class=classComp+'__menu-wrap')
-				ul(class=classComp+'__items' role='navigation')
-					li(class=classComp+'__item')
-						a(class=classComp+'__link '+current href='https://test/test') О нас
-					li(class=classComp+'__item')
-						a(class=classComp+'__link-down' href='https://test/test') Услуги
-							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='угалок')
-						ul(class=classComp+'__items-down' role='navigation')
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Услуга 1
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Услуга 2
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Услуга 3
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Услуга 5
-					li(class=classComp+'__item')
-						a(class=classComp+'__link' href='https://test/test') Вакансии
-					li(class=classComp+'__item')
-						a(class=classComp+'__link' href='https://test/test') Новости
-					li(class=classComp+'__item')
-						a(class=classComp+'__link-down' href='https://test/test') Соглашения
-							img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='угалок')
-						ul(class=classComp+'__items-down' role='navigation')
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Соглашения 1
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Соглашения 2
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Соглашения 3
-							li(class=classComp+'__item-down')
-								a(class=classComp+'__link' href='https://test/test') Соглашения 5
-			-if (type == 'authorized'){
-				div(class=classComp+'__user')
-					a(class=classComp+'__nikname' href='https://test/test') Юлий Цезарь
-			-}
-			-else{
-				div(class=classComp+'__signin-wrap')
-					+buttons({
-						text:'Войти',
-						link:'https://test/test',
-						type:'link',
-						modif:['link-border','header']
-					})
-				div(class=classComp+'__registration-wrap')
-					+buttons({
-						text:'зарегистрироваться',
-						link:'https://test/test',
-						type:'link',
-						modif:['link','header']
-					})
-			-}
+  -
+    let current = options.current ?? ''
+    let type = options.type ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let classComp = 'header'
+    let className = classComp
+    if(current){
+      current = classComp+'__link_current'}
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  header(class=className)
+    div(class=classComp+'__wrapper')
+      div(class=classComp+'__link-logo')
+        +logo({link:'https://test/test'})
+      button(class=classComp+'__toggle' aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
+        span(class=classComp+'__toggle-line')
+      nav(class=classComp+'__menu-wrap')
+        ul(class=classComp+'__items' role='navigation')
+          li(class=classComp+'__item')
+            a(class=classComp+'__link '+current href='https://test/test') О нас
+          li(class=classComp+'__item')
+            a(class=classComp+'__link-down' href='https://test/test') Услуги
+              img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='угалок')
+            ul(class=classComp+'__items-down' role='navigation')
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Услуга 1
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Услуга 2
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Услуга 3
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Услуга 5
+          li(class=classComp+'__item')
+            a(class=classComp+'__link' href='https://test/test') Вакансии
+          li(class=classComp+'__item')
+            a(class=classComp+'__link' href='https://test/test') Новости
+          li(class=classComp+'__item')
+            a(class=classComp+'__link-down' href='https://test/test') Соглашения
+              img(class=classComp+'__tip' src=require('@com/header/img/tip.svg').default, alt='угалок')
+            ul(class=classComp+'__items-down' role='navigation')
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Соглашения 1
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Соглашения 2
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Соглашения 3
+              li(class=classComp+'__item-down')
+                a(class=classComp+'__link' href='https://test/test') Соглашения 5
+      -if (type == 'authorized'){
+        div(class=classComp+'__user')
+          a(class=classComp+'__nikname' href='https://test/test') Юлий Цезарь
+      -}
+      -else{
+        div(class=classComp+'__signin-wrap')
+          +buttons({
+            text:'Войти',
+            link:'https://test/test',
+            type:'link',
+            modif:['link-border','header']
+          })
+        div(class=classComp+'__registration-wrap')
+          +buttons({
+            text:'зарегистрироваться',
+            link:'https://test/test',
+            type:'link',
+            modif:['link','header']
+          })
+      -}

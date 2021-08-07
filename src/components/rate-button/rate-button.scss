@@ -3,79 +3,79 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-focus: $Dark-Shade-100;
 
 .rate-button {
-	&__group {
-		position: relative;
-		width: 116px;
-		height: 19px;
-		background-image: url("~comp/rate-button/img/star_border.svg");
-		background-size: 20px auto;
-		background-repeat: space;
-	}
+  &__group {
+    position: relative;
+    width: 116px;
+    height: 19px;
+    background-image: url("~comp/rate-button/img/star_border.svg");
+    background-size: 20px auto;
+    background-repeat: space;
+  }
 
-	&__header {
-		width: 100%;
-		margin-bottom: 19px;
-		padding: 0;
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 13px;
-		text-transform: uppercase;
-		color: $color-label;
-	}
+  &__header {
+    width: 100%;
+    margin-bottom: 19px;
+    padding: 0;
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: $color-label;
+  }
 
-	&__stars {
-		padding: 0;
-		margin: 0;
-		border: none;
-	}
+  &__stars {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
 
-	&__star {
-		position: absolute;
-		top: 0;
-		left: 0;
-		margin: 0;
-		width: 20px;
-		height: 19px;
-		appearance: none;
-		font-size: inherit;
-		background-size: 20px auto;
-		background-repeat: space;
-		cursor: pointer;
-	}
+  &__star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 20px;
+    height: 19px;
+    appearance: none;
+    font-size: inherit;
+    background-size: 20px auto;
+    background-repeat: space;
+    cursor: pointer;
+  }
 
-	&__star:focus {
-		outline-offset: 4px;
-		outline: 2px solid $color-focus;
-	}
+  &__star:focus {
+    outline-offset: 4px;
+    outline: 2px solid $color-focus;
+  }
 
-	&__star:checked,
-	&__star:hover {
-		background-image: url("~comp/rate-button/img/star.svg");
-	}
+  &__star:checked,
+  &__star:hover {
+    background-image: url("~comp/rate-button/img/star.svg");
+  }
 
-	&__star:hover ~ &__star {
-		opacity: 0;
-	}
+  &__star:hover ~ &__star {
+    opacity: 0;
+  }
 
-	&__star:nth-of-type(1) {
-		width: 20px;
-		z-index: 5;
-	}
-	&__star:nth-of-type(2) {
-		width: 44px;
-		z-index: 4;
-	}
-	&__star:nth-of-type(3) {
-		width: 68px;
-		z-index: 3;
-	}
-	&__star:nth-of-type(4) {
-		width: 92px;
-		z-index: 2;
-	}
-	&__star:nth-of-type(5) {
-		width: 116px;
-		z-index: 1;
-	}
+  &__star:nth-of-type(1) {
+    width: 20px;
+    z-index: 5;
+  }
+  &__star:nth-of-type(2) {
+    width: 44px;
+    z-index: 4;
+  }
+  &__star:nth-of-type(3) {
+    width: 68px;
+    z-index: 3;
+  }
+  &__star:nth-of-type(4) {
+    width: 92px;
+    z-index: 2;
+  }
+  &__star:nth-of-type(5) {
+    width: 116px;
+    z-index: 1;
+  }
 }

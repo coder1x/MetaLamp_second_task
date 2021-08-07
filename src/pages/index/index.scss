@@ -6,68 +6,68 @@ $color-link: $Dark-Shade-50;
 $color-link-focus: $Dark-Shade-100;
 
 .page {
-	&__wrap {
-		display: flex;
-		flex-direction: column;
-		min-height: 100px;
-		width: 100%;
-		flex: 1 0 auto;
-	}
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    width: 100%;
+    flex: 1 0 auto;
+  }
 
-	&__logo {
-		margin-left: 30px;
-		margin-top: 30px;
-	}
+  &__logo {
+    margin-left: 30px;
+    margin-top: 30px;
+  }
 }
 
 .home-content {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .toxin-links {
-	width: 100%;
-	max-width: $max-wraper;
-	margin: 0 auto;
-	padding-left: 20px;
-	box-sizing: border-box;
+  width: 100%;
+  max-width: $max-wraper;
+  margin: 0 auto;
+  padding-left: 20px;
+  box-sizing: border-box;
 
-	&__menu {
-		margin-top: 80px;
-	}
+  &__menu {
+    margin-top: 80px;
+  }
 
-	&__items {
-		display: flex;
-		flex-direction: column;
-	}
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
 
-	&__header {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 24px;
-		line-height: 29px;
-		color: $color-header;
-		margin-bottom: 30px;
-	}
+  &__header {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: $color-header;
+    margin-bottom: 30px;
+  }
 
-	&__item {
-		margin-bottom: 20px;
-	}
+  &__item {
+    margin-bottom: 20px;
+  }
 
-	&__link {
-		font-family: $font;
-		font-weight: normal;
-		font-size: 24px;
-		line-height: 17px;
-		color: $color-link;
-	}
+  &__link {
+    font-family: $font;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 17px;
+    color: $color-link;
+  }
 
-	&__link:hover {
-		opacity: 0.5;
-	}
+  &__link:hover {
+    opacity: 0.5;
+  }
 
-	&__link:focus {
-		outline-offset: 4px;
-		outline: 2px solid $color-link-focus;
-	}
+  &__link:focus {
+    outline-offset: 4px;
+    outline: 2px solid $color-link-focus;
+  }
 }

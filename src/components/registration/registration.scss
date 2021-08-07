@@ -7,115 +7,115 @@ $color-date-text: #1f2041;
 $color-text-in: #000;
 
 .registration {
-	background: $color-background;
-	border: 1px solid $color-bd-frame;
-	box-sizing: border-box;
-	box-shadow: 0px 0px 25px $color-shadow-frame;
-	border-radius: 4px;
-	padding: 40px 30px 30px 28px;
+  background: $color-background;
+  border: 1px solid $color-bd-frame;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px $color-shadow-frame;
+  border-radius: 4px;
+  padding: 40px 30px 30px 28px;
 
-	@include media-breakpoint-down($xxs) {
-		padding: 40px 15px 30px 15px;
-	}
+  @include media-breakpoint-down($xxs) {
+    padding: 40px 15px 30px 15px;
+  }
 
-	&__header-wrap {
-		@include media-breakpoint-down($xs) {
-			text-align: center;
-		}
-	}
+  &__header-wrap {
+    @include media-breakpoint-down($xs) {
+      text-align: center;
+    }
+  }
 
-	&__header {
-		margin-bottom: 20px;
-	}
+  &__header {
+    margin-bottom: 20px;
+  }
 
-	&__name-wrap {
-		margin-bottom: 10px;
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 20px;
-		}
-	}
+  &__name-wrap {
+    margin-bottom: 10px;
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
+    }
+  }
 
-	&__surname-wrap {
-		margin-bottom: 8px;
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 20px;
-		}
-	}
+  &__surname-wrap {
+    margin-bottom: 8px;
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
+    }
+  }
 
-	&__gender-wrap {
-		margin-bottom: 23px;
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 30px;
-		}
-	}
+  &__gender-wrap {
+    margin-bottom: 23px;
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 30px;
+    }
+  }
 
-	&__date-wrap {
-		margin-bottom: 21px;
-	}
+  &__date-wrap {
+    margin-bottom: 21px;
+  }
 
-	&__data-text {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $color-date-text;
-	}
+  &__data-text {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $color-date-text;
+  }
 
-	&__data-text {
-		margin-bottom: 5px;
-	}
+  &__data-text {
+    margin-bottom: 5px;
+  }
 
-	&__identification,
-	&__full-name {
-		padding: 0;
-		margin: 0;
-		border: 0;
-	}
+  &__identification,
+  &__full-name {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
 
-	&__email-wrap {
-		margin-bottom: 10px;
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 20px;
-		}
-	}
+  &__email-wrap {
+    margin-bottom: 10px;
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
+    }
+  }
 
-	&__pass-wrap {
-		margin-bottom: 9px;
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 30px;
-		}
-	}
+  &__pass-wrap {
+    margin-bottom: 9px;
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 30px;
+    }
+  }
 
-	&__toggle-wrap {
-		margin-bottom: 20px;
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 35px;
-		}
-	}
+  &__toggle-wrap {
+    margin-bottom: 20px;
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 35px;
+    }
+  }
 
-	&__submit-wrap {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-bottom: 30px;
-	}
+  &__submit-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
 
-	&__sign-in {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
+  &__sign-in {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-	&__text-in {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 18px;
-		color: $color-text-in;
-		margin-right: 10px;
-	}
+  &__text-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-text-in;
+    margin-right: 10px;
+  }
 }

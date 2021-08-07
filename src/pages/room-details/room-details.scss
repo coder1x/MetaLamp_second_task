@@ -3,282 +3,282 @@
 $font: "Montserrat", Helvetica, Arial, sans-serif;
 
 .room-details-content {
-	border-bottom: 1px solid rgba(31, 32, 65, 0.25);
-	&__wrap {
-		display: flex;
-		flex-direction: column;
-	}
+  border-bottom: 1px solid rgba(31, 32, 65, 0.25);
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .room-details-foto {
-	display: grid;
-	grid-template-rows: 1fr 1fr;
-	grid-template-columns: 2.68fr 1.25fr;
-	overflow: hidden;
-	width: 100%;
-	margin: 0 auto;
-	max-height: 485px;
-	max-width: $xxl;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 2.68fr 1.25fr;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  max-height: 485px;
+  max-width: $xxl;
 
-	@include media-breakpoint-down($xs) {
-		display: none;
-	}
+  @include media-breakpoint-down($xs) {
+    display: none;
+  }
 
-	&__image-big {
-		grid-row: 1/3;
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-		max-height: 485px;
-	}
+  &__image-big {
+    grid-row: 1/3;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-height: 485px;
+  }
 
-	&__image-min {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-		max-height: 243px;
-	}
+  &__image-min {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-height: 243px;
+  }
 }
 
 .room-details-info {
-	padding-top: 70px;
-	padding-bottom: 61px;
+  padding-top: 70px;
+  padding-bottom: 61px;
 
-	display: grid;
+  display: grid;
 
-	@include media-breakpoint-down($lg) {
-		padding-left: $min-size-padding;
-		padding-right: $min-size-padding;
-		padding-top: 40px;
-		box-sizing: border-box;
-		justify-content: space-around;
-	}
+  @include media-breakpoint-down($lg) {
+    padding-left: $min-size-padding;
+    padding-right: $min-size-padding;
+    padding-top: 40px;
+    box-sizing: border-box;
+    justify-content: space-around;
+  }
 
-	width: 100%;
-	max-width: $max-wraper;
-	margin: 0 auto;
+  width: 100%;
+  max-width: $max-wraper;
+  margin: 0 auto;
 
-	&__left-column {
-		width: 100%;
-	}
+  &__left-column {
+    width: 100%;
+  }
 
-	&__right-column {
-		width: 100%;
-		max-width: 380px;
-	}
+  &__right-column {
+    width: 100%;
+    max-width: 380px;
+  }
 
-	&__top-wrap {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
+  &__top-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-	&__bottom-wrap {
-		@include media-breakpoint-down($lg) {
-		}
-	}
+  &__bottom-wrap {
+    @include media-breakpoint-down($lg) {
+    }
+  }
 
-	&__comment-wrap {
-		margin-top: 12px;
-		width: 100%;
-		max-width: 710px;
+  &__comment-wrap {
+    margin-top: 12px;
+    width: 100%;
+    max-width: 710px;
 
-		@include media-breakpoint-down($lg) {
-			margin-top: 30px;
-			max-width: unset;
-		}
-	}
+    @include media-breakpoint-down($lg) {
+      margin-top: 30px;
+      max-width: unset;
+    }
+  }
 
-	&__feature-header,
-	&__comment-header {
-		font-family: $font;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 19px;
-		line-height: 23px;
-		color: #1f2041;
-		margin-bottom: 21px;
-		overflow-wrap: break-word;
-		@include max-row(3);
-		max-width: 320px;
-	}
+  &__feature-header,
+  &__comment-header {
+    font-family: $font;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 23px;
+    color: #1f2041;
+    margin-bottom: 21px;
+    overflow-wrap: break-word;
+    @include max-row(3);
+    max-width: 320px;
+  }
 
-	&__feature-wrap {
-		width: 100%;
-		max-width: 280px;
-		grid-row-start: 1;
-		grid-column-start: 1;
+  &__feature-wrap {
+    width: 100%;
+    max-width: 280px;
+    grid-row-start: 1;
+    grid-column-start: 1;
 
-		@include media-breakpoint-down($sm) {
-			grid-row-start: 2;
-		}
+    @include media-breakpoint-down($sm) {
+      grid-row-start: 2;
+    }
 
-		@include media-breakpoint-down($xs) {
-			max-width: unset;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      max-width: unset;
+    }
+  }
 
-	&__feature {
-		margin-bottom: 22px;
-	}
+  &__feature {
+    margin-bottom: 22px;
+  }
 
-	&__feature:last-child {
-		margin-bottom: 0px;
-	}
+  &__feature:last-child {
+    margin-bottom: 0px;
+  }
 
-	&__graph {
-		width: 100%;
-		max-width: 329px;
-		padding-right: 18px;
-		grid-row-start: 1;
-		grid-column-start: 2;
-		box-sizing: border-box;
+  &__graph {
+    width: 100%;
+    max-width: 329px;
+    padding-right: 18px;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    box-sizing: border-box;
 
-		@include media-breakpoint-down($lg) {
-			grid-row-start: 2;
-			grid-row-end: 3;
-			grid-column-start: 1;
-		}
+    @include media-breakpoint-down($lg) {
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+    }
 
-		@include media-breakpoint-down($md) {
-			padding-right: 0px;
-			max-width: 311px;
-		}
+    @include media-breakpoint-down($md) {
+      padding-right: 0px;
+      max-width: 311px;
+    }
 
-		@include media-breakpoint-down($sm) {
-			grid-column-start: 2;
-		}
+    @include media-breakpoint-down($sm) {
+      grid-column-start: 2;
+    }
 
-		@include media-breakpoint-down($xs) {
-			grid-row-start: 3;
-			grid-column-start: 1;
-			margin: 30px auto 0px auto;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      grid-row-start: 3;
+      grid-column-start: 1;
+      margin: 30px auto 0px auto;
+    }
+  }
 
-	&__bottom-wrap {
-		grid-column-start: 1;
-		grid-column-end: 3;
+  &__bottom-wrap {
+    grid-column-start: 1;
+    grid-column-end: 3;
 
-		@include media-breakpoint-down($lg) {
-			max-width: 800px;
-			grid-row-start: 3;
-		}
+    @include media-breakpoint-down($lg) {
+      max-width: 800px;
+      grid-row-start: 3;
+    }
 
-		@include media-breakpoint-down($xs) {
-			grid-row-start: 4;
-			grid-column-start: 1;
-			grid-column-end: 2;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      grid-row-start: 4;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
 
-	&__booking-wrap {
-		width: 100%;
-		max-width: 409px;
-		min-width: 315px;
-		padding-left: 29px;
-		grid-row-start: 1;
-		grid-column-start: 3;
-		grid-row-end: 3;
-		box-sizing: border-box;
+  &__booking-wrap {
+    width: 100%;
+    max-width: 409px;
+    min-width: 315px;
+    padding-left: 29px;
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-row-end: 3;
+    box-sizing: border-box;
 
-		@include media-breakpoint-down($lg) {
-			grid-row-start: 1;
-			grid-column-start: 2;
-			grid-column-end: 3;
-			margin-left: auto;
-		}
+    @include media-breakpoint-down($lg) {
+      grid-row-start: 1;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      margin-left: auto;
+    }
 
-		@include media-breakpoint-down($md) {
-			padding-left: 0px;
-			max-width: 380px;
-		}
+    @include media-breakpoint-down($md) {
+      padding-left: 0px;
+      max-width: 380px;
+    }
 
-		@include media-breakpoint-down($sm) {
-			grid-column-start: 1;
-			grid-column-end: 3;
-			grid-row-end: 2;
-			margin: 0px auto 40px auto;
-		}
+    @include media-breakpoint-down($sm) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-end: 2;
+      margin: 0px auto 40px auto;
+    }
 
-		@include media-breakpoint-down($xs) {
-			grid-column-end: 2;
-			min-width: unset;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      grid-column-end: 2;
+      min-width: unset;
+    }
+  }
 
-	&__comment-header-wrap {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
+  &__comment-header-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-	&__total-comments {
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 14px;
-		text-align: right;
-		color: rgba(31, 32, 65, 0.5);
-		margin-top: 7px;
-		@include media-breakpoint-down($xs) {
-			display: none;
-		}
-	}
+  &__total-comments {
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: right;
+    color: rgba(31, 32, 65, 0.5);
+    margin-top: 7px;
+    @include media-breakpoint-down($xs) {
+      display: none;
+    }
+  }
 
-	&__comment {
-		margin-bottom: 22px;
-	}
+  &__comment {
+    margin-bottom: 22px;
+  }
 
-	&__regulations-wrap {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		margin-top: 33px;
-		width: 100%;
-		max-width: 702px;
+  &__regulations-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 33px;
+    width: 100%;
+    max-width: 702px;
 
-		@include media-breakpoint-down($xs) {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 
-	&__bullet-list {
-		width: 100%;
-		max-width: 263px;
+  &__bullet-list {
+    width: 100%;
+    max-width: 263px;
 
-		@include media-breakpoint-down($xs) {
-			max-width: unset;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      max-width: unset;
+    }
+  }
 
-	&__cancellation {
-		width: 100%;
-		max-width: 341px;
-		@include media-breakpoint-down($xs) {
-			max-width: unset;
-			margin-top: 30px;
-		}
-	}
+  &__cancellation {
+    width: 100%;
+    max-width: 341px;
+    @include media-breakpoint-down($xs) {
+      max-width: unset;
+      margin-top: 30px;
+    }
+  }
 
-	&__cancellation-header {
-		font-family: $font;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 19px;
-		line-height: 23px;
-		color: #1f2041;
-		margin-bottom: 19px;
-	}
+  &__cancellation-header {
+    font-family: $font;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 23px;
+    color: #1f2041;
+    margin-bottom: 19px;
+  }
 
-	&__cancellation-text {
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		color: rgba(31, 32, 65, 0.75);
-		overflow-wrap: break-word;
-		@include max-row(8);
-	}
+  &__cancellation-text {
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(31, 32, 65, 0.75);
+    overflow-wrap: break-word;
+    @include max-row(8);
+  }
 }

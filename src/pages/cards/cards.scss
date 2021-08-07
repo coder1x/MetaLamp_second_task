@@ -1,56 +1,56 @@
 .cards-wrapper {
-	background: #f4f4f6;
-	padding-bottom: 100px;
+  background: #f4f4f6;
+  padding-bottom: 100px;
 
-	&__logo {
-		margin-top: 30px;
-		margin-left: 30px;
-	}
+  &__logo {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
 }
 
 .cards {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	padding-top: 69px;
-	padding-left: 141px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 69px;
+  padding-left: 141px;
 
-	&__search-room {
-		width: 100%;
-		max-width: 380px;
-	}
+  &__search-room {
+    width: 100%;
+    max-width: 380px;
+  }
 
-	&__registration {
-		margin-top: 40px;
-		width: 100%;
-		max-width: 380px;
-	}
+  &__registration {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 380px;
+  }
 }
 
 .cards__center {
-	margin-left: 40px;
-	width: 100%;
-	max-width: 390px;
+  margin-left: 40px;
+  width: 100%;
+  max-width: 390px;
 
-	&__booking {
-		margin-bottom: 40px;
-		width: 100%;
-		max-width: 380px;
-	}
+  &__booking {
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 380px;
+  }
 
-	&__sign-in {
-		margin-bottom: 40px;
-		width: 100%;
-		max-width: 380px;
-	}
+  &__sign-in {
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 380px;
+  }
 }
 
 .cards__right {
-	margin-left: 40px;
-	width: 100%;
-	max-width: 340px;
-	&__room-card {
-		width: 100%;
-		max-width: 270px;
-	}
+  margin-left: 40px;
+  width: 100%;
+  max-width: 340px;
+  &__room-card {
+    width: 100%;
+    max-width: 270px;
+  }
 }

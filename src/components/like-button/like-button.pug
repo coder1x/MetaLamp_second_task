@@ -1,19 +1,19 @@
 mixin like-button(options)
-	-
-		let label = options.label ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let flLabel = options.flLabel ?? false
-		let classComp = 'like-button'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	div(class=className)
-		- if(!flLabel){
-		p(class=classComp+'__header')= label
-		-}
-		button(class=classComp+'__like' aria-label='поставить лайк')
-			img(class=classComp+'__icon' src=require('@com/like-button/img/like.svg').default alt='like')
-			span(class=classComp+'__value') 2
+  -
+    let label = options.label ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let flLabel = options.flLabel ?? false
+    let classComp = 'like-button'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  div(class=className)
+    - if(!flLabel){
+    p(class=classComp+'__header')= label
+    -}
+    button(class=classComp+'__like' aria-label='поставить лайк')
+      img(class=classComp+'__icon' src=require('@com/like-button/img/like.svg').default alt='like')
+      span(class=classComp+'__value') 2

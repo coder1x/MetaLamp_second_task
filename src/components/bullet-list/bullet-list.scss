@@ -6,51 +6,51 @@ $color-dot: $Dark-Shade-25;
 $colot-header: $Dark-Shade-100;
 
 .bullet-list {
-	&__header {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $colot-header;
-		margin-bottom: 15px;
-	}
+  &__header {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $colot-header;
+    margin-bottom: 15px;
+  }
 
-	&_big &__header {
-		font-size: 19px;
-		line-height: 23px;
-		text-transform: none;
-		margin-bottom: 19px;
+  &_big &__header {
+    font-size: 19px;
+    line-height: 23px;
+    text-transform: none;
+    margin-bottom: 19px;
 
-		@include media-breakpoint-up($xs) {
-			margin-left: 19px;
-		}
-	}
+    @include media-breakpoint-up($xs) {
+      margin-left: 19px;
+    }
+  }
 
-	&__items {
-		display: flex;
-		flex-direction: column;
-	}
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
 
-	&__item {
-		position: relative;
-		padding-left: 21px;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		color: $color-text;
-		margin-bottom: 10px;
-	}
+  &__item {
+    position: relative;
+    padding-left: 21px;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-text;
+    margin-bottom: 10px;
+  }
 
-	&__item::before {
-		position: absolute;
-		top: 7px;
-		left: 1px;
-		content: "";
-		width: 10px;
-		height: 10px;
-		background-color: $color-dot;
-		border-radius: 50%;
-	}
+  &__item::before {
+    position: absolute;
+    top: 7px;
+    left: 1px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: $color-dot;
+    border-radius: 50%;
+  }
 }

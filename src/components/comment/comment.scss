@@ -6,72 +6,72 @@ $color-message: $Dark-Shade-75;
 $color-focus: $Dark-Shade-100;
 
 .comment {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-	&__avatar-wrap {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding-right: 9px;
-	}
+  &__avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 9px;
+  }
 
-	&__author {
-		margin: 0px;
-	}
+  &__author {
+    margin: 0px;
+  }
 
-	&__avatar {
-		border: 2px solid #fff;
-		border-radius: 50%;
-		filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
-		max-width: 44px;
-	}
+  &__avatar {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
+    max-width: 44px;
+  }
 
-	&__like-wrap {
-		margin-top: 9px;
-	}
+  &__like-wrap {
+    margin-top: 9px;
+  }
 
-	&__header-wrap,
-	&__message-wrap {
-		//display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	&__header-wrap {
-		max-width: 320px;
-	}
+  &__header-wrap,
+  &__message-wrap {
+    //display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__header-wrap {
+    max-width: 320px;
+  }
 
-	&__name {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 14px;
-		line-height: 25px;
-		color: $color-name;
-		overflow-wrap: break-word;
-		@include max-row(3);
-	}
+  &__name {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+    color: $color-name;
+    overflow-wrap: break-word;
+    @include max-row(3);
+  }
 
-	&__name:focus {
-		outline-offset: 4px;
-		outline: 2px solid $color-focus;
-	}
+  &__name:focus {
+    outline-offset: 4px;
+    outline: 2px solid $color-focus;
+  }
 
-	&__date,
-	&__message {
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		color: $color-message;
-	}
+  &__date,
+  &__message {
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-message;
+  }
 
-	&__message {
-		margin-top: 10px;
-		overflow-wrap: break-word;
-		max-width: 653px;
+  &__message {
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    max-width: 653px;
 
-		@include media-breakpoint-down($lg) {
-			max-width: 743px;
-		}
-	}
+    @include media-breakpoint-down($lg) {
+      max-width: 743px;
+    }
+  }
 }

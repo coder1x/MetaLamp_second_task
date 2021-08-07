@@ -5,86 +5,86 @@ $color-header: $Dark-Shade-100;
 $color-item: $Dark-Shade-75;
 
 .graph {
-	&__header {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 19px;
-		line-height: 23px;
-		color: $color-header;
-		margin-bottom: 21px;
-		overflow-wrap: break-word;
-		@include max-row(3);
+  &__header {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 23px;
+    color: $color-header;
+    margin-bottom: 21px;
+    overflow-wrap: break-word;
+    @include max-row(3);
 
-		@include media-breakpoint-down($sm) {
-			text-align: center;
-		}
-	}
+    @include media-breakpoint-down($sm) {
+      text-align: center;
+    }
+  }
 
-	&__wrapper {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: flex-end;
-		width: 100%;
-		max-width: 311px;
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 311px;
 
-		@include media-breakpoint-down($sm) {
-			flex-direction: column;
-			align-items: center;
-		}
-	}
+    @include media-breakpoint-down($sm) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 
-	&__convas {
-		width: 100%;
-		max-width: 120px;
+  &__convas {
+    width: 100%;
+    max-width: 120px;
 
-		@include media-breakpoint-down($sm) {
-			margin-bottom: 20px;
-		}
-	}
+    @include media-breakpoint-down($sm) {
+      margin-bottom: 20px;
+    }
+  }
 
-	&__colors {
-		display: flex;
-		flex-direction: column;
-		max-width: 160px;
-		overflow-wrap: break-word;
-	}
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    max-width: 160px;
+    overflow-wrap: break-word;
+  }
 
-	&__colors-item {
-		position: relative;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 18px;
-		color: $color-item;
-		margin-top: 6px;
-	}
+  &__colors-item {
+    position: relative;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-item;
+    margin-top: 6px;
+  }
 
-	&__colors-item::before {
-		position: absolute;
-		content: "";
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		top: 50%;
-		left: -10px;
-		transform: translate(-50%, -50%);
-		box-sizing: border-box;
-	}
+  &__colors-item::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    left: -10px;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+  }
 
-	&__colors-item:nth-child(1)::before {
-		background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
-	}
+  &__colors-item:nth-child(1)::before {
+    background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
+  }
 
-	&__colors-item:nth-child(2)::before {
-		background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-	}
+  &__colors-item:nth-child(2)::before {
+    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+  }
 
-	&__colors-item:nth-child(3)::before {
-		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-	}
+  &__colors-item:nth-child(3)::before {
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+  }
 
-	&__colors-item:nth-child(4)::before {
-		background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
-	}
+  &__colors-item:nth-child(4)::before {
+    background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
+  }
 }

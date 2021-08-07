@@ -3,47 +3,47 @@ include ../drop-down/drop-down.pug
 include ../buttons/buttons.pug
 
 mixin search-room(options)
-	-
-		let header = options.header ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let flLabel = options.flLabel ?? false
-		let classComp = 'search-room'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	article(class=className)
-		- if(!flLabel){
-		header(class=classComp+'__header-wrap')
-			h1(class=classComp+'__header')= header
-		-}
-		form(class=classComp+'__form' action='' method='post')
-			fieldset(class=classComp+'__date-wrap')
-				+date-dropdown({
-					label: ['прибытие','выезд'],
-					placeholder:'ДД.ММ.ГГГГ',
-					class: 'js-masked-date'
-					})
-			div(class=classComp+'__dropdown-wrap')
-				-
-					let masWord = [
-					['взрослые', 'дети', 'младенцы'], 
-					['гость,гостя,гостей', 
-					'гость,гостя,гостей', 
-					'младенец,младенца,младенцев']]
-				+drop-down({
-					label:'гости',
-					value: 'Сколько гостей',
-					name:'Guest',
-					masWord:masWord,
-					maxValue:['10','12','5'],
-					button:true
-					})
-			div(class=classComp+'__button-wrap')
-				+buttons({
-					text:'подобрать номер',
-					type:'submit',
-					modif:['submit']
-				})
+  -
+    let header = options.header ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let flLabel = options.flLabel ?? false
+    let classComp = 'search-room'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  article(class=className)
+    - if(!flLabel){
+    header(class=classComp+'__header-wrap')
+      h1(class=classComp+'__header')= header
+    -}
+    form(class=classComp+'__form' action='' method='post')
+      fieldset(class=classComp+'__date-wrap')
+        +date-dropdown({
+          label: ['прибытие','выезд'],
+          placeholder:'ДД.ММ.ГГГГ',
+          class: 'js-masked-date'
+          })
+      div(class=classComp+'__dropdown-wrap')
+        -
+          let masWord = [
+          ['взрослые', 'дети', 'младенцы'], 
+          ['гость,гостя,гостей', 
+          'гость,гостя,гостей', 
+          'младенец,младенца,младенцев']]
+        +drop-down({
+          label:'гости',
+          value: 'Сколько гостей',
+          name:'Guest',
+          masWord:masWord,
+          maxValue:['10','12','5'],
+          button:true
+          })
+      div(class=classComp+'__button-wrap')
+        +buttons({
+          text:'подобрать номер',
+          type:'submit',
+          modif:['submit']
+        })

@@ -3,69 +3,69 @@ include ../drop-down/drop-down.pug
 include ../buttons/buttons.pug
 
 mixin booking(options)
-	-
-		let number = options.number ?? ''
-		let price = options.price ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let lux = options.lux ?? false
-		let classComp = 'booking'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	article(class=className)
-		div(class=classComp+'__header-wrap')
-			div(class=classComp+'__number-wrap')
-				span(class=classComp+'__header-num') №
-				p(class=classComp+'__header')= number
-				- if(lux){
-				span(class=classComp+'__lux') люкс
-				-}
-			div(class=classComp+'__price-wrap')
-				span(class=classComp+'__price')= price+'₽'
-				span(class=classComp+'__price-text') в сутки
+  -
+    let number = options.number ?? ''
+    let price = options.price ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let lux = options.lux ?? false
+    let classComp = 'booking'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  article(class=className)
+    div(class=classComp+'__header-wrap')
+      div(class=classComp+'__number-wrap')
+        span(class=classComp+'__header-num') №
+        p(class=classComp+'__header')= number
+        - if(lux){
+        span(class=classComp+'__lux') люкс
+        -}
+      div(class=classComp+'__price-wrap')
+        span(class=classComp+'__price')= price+'₽'
+        span(class=classComp+'__price-text') в сутки
 
-		form(class=classComp+'__form' action='' method='post')
-			fieldset(class=classComp+'__date-wrap')
-				+date-dropdown({
-					label: ['прибытие','выезд'],
-					placeholder:'ДД.ММ.ГГГГ',
-					class: 'js-masked-date'
-					})
-			div(class=classComp+'__dropdown-wrap')
-				-
-					let masWord = [
-					['взрослые', 'дети', 'младенцы'], 
-					['гость,гостя,гостей', 
-					'гость,гостя,гостей', 
-					'младенец,младенца,младенцев']]
-				+drop-down({
-					label:'гости',
-					value: 'Сколько гостей',
-					name:'Guest',
-					masWord:masWord,
-					maxValue:['10','12','5'],
-					button:true
-					})
-			div(class=classComp+'__day-wrap')
-				p(class=classComp+'__day-calc') 9 990₽ х 4 суток
-				span(class=classComp+'__day-price') 39 960₽
-			div(class=classComp+'__services-wrap')
-				p(class=classComp+'__services') Сбор за услуги: скидка 2 179₽
-				span(class=classComp+'__services-price') 0₽
-			div(class=classComp+'__services-wrap')
-				p(class=classComp+'__services') Сбор за дополнительные услуги
-				span(class=classComp+'__services-price') 300₽
-			div(class=classComp+'__total-wrap')
-				span(class=classComp+'__total-text') Итого
-				div(class=classComp+'__total-dot')
-				span(class=classComp+'__total-price') 38 081₽
+    form(class=classComp+'__form' action='' method='post')
+      fieldset(class=classComp+'__date-wrap')
+        +date-dropdown({
+          label: ['прибытие','выезд'],
+          placeholder:'ДД.ММ.ГГГГ',
+          class: 'js-masked-date'
+          })
+      div(class=classComp+'__dropdown-wrap')
+        -
+          let masWord = [
+          ['взрослые', 'дети', 'младенцы'], 
+          ['гость,гостя,гостей', 
+          'гость,гостя,гостей', 
+          'младенец,младенца,младенцев']]
+        +drop-down({
+          label:'гости',
+          value: 'Сколько гостей',
+          name:'Guest',
+          masWord:masWord,
+          maxValue:['10','12','5'],
+          button:true
+          })
+      div(class=classComp+'__day-wrap')
+        p(class=classComp+'__day-calc') 9 990₽ х 4 суток
+        span(class=classComp+'__day-price') 39 960₽
+      div(class=classComp+'__services-wrap')
+        p(class=classComp+'__services') Сбор за услуги: скидка 2 179₽
+        span(class=classComp+'__services-price') 0₽
+      div(class=classComp+'__services-wrap')
+        p(class=classComp+'__services') Сбор за дополнительные услуги
+        span(class=classComp+'__services-price') 300₽
+      div(class=classComp+'__total-wrap')
+        span(class=classComp+'__total-text') Итого
+        div(class=classComp+'__total-dot')
+        span(class=classComp+'__total-price') 38 081₽
 
-			div(class=classComp+'__button-wrap')
-				+buttons({
-					text:'забронировать',
-					type:'submit',
-					modif:['submit']
-				})
+      div(class=classComp+'__button-wrap')
+        +buttons({
+          text:'забронировать',
+          type:'submit',
+          modif:['submit']
+        })

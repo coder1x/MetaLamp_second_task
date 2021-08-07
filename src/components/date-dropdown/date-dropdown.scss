@@ -5,242 +5,242 @@ $color-datepicker-border: $Dark-Shade-25;
 $color-datepicker-shadow: $Dark-Shade-5;
 
 .date-dropdown {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
 
-	&__label-text {
-		margin-bottom: 5px;
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $color-label;
-	}
+  &__label-text {
+    margin-bottom: 5px;
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $color-label;
+  }
 
-	&__label {
-		position: relative;
-	}
+  &__label {
+    position: relative;
+  }
 
-	&__tip {
-		position: absolute;
-		width: 13px;
-		right: 14px;
-		bottom: 3px;
-		cursor: pointer;
-		transform: rotate(0deg);
-		transition: transform 0.5s;
-	}
+  &__tip {
+    position: absolute;
+    width: 13px;
+    right: 14px;
+    bottom: 3px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+  }
 
-	&__text,
-	&__value {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-	}
+  &__text,
+  &__value {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
 
-	&__text {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-	&__value {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+  &__value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-	&__date-wrap {
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 20px;
-			width: 100%;
-		}
-	}
+  &__date-wrap {
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
 
-	&__input {
-		width: 100%;
-		max-width: 150px;
-		height: 44px;
-		padding-left: 15px;
-		padding-right: 44px;
-		outline: 0;
-		cursor: pointer;
-		border: 1px solid $color-border;
-		border-radius: 4px;
-		color: $color-input;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		box-sizing: border-box;
+  &__input {
+    width: 100%;
+    max-width: 150px;
+    height: 44px;
+    padding-left: 15px;
+    padding-right: 44px;
+    outline: 0;
+    cursor: pointer;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    color: $color-input;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    box-sizing: border-box;
 
-		@include media-breakpoint-down($xs) {
-			max-width: unset;
-		}
-	}
+    @include media-breakpoint-down($xs) {
+      max-width: unset;
+    }
+  }
 
-	&__input::placeholder {
-		color: $color-input;
-	}
+  &__input::placeholder {
+    color: $color-input;
+  }
 
-	&__input:hover,
-	&__input:focus {
-		border: 1px solid $color-border-hover;
-	}
+  &__input:hover,
+  &__input:focus {
+    border: 1px solid $color-border-hover;
+  }
 
-	&__datepicker-wrap {
-		display: none;
-		margin-top: 5.56px;
-		position: absolute;
-		top: 68px;
-		left: 50%;
-		transform: translate(-50%);
-		z-index: 5;
-		background: $color-background;
-		box-shadow: 0px 10px 20px $color-datepicker-shadow;
-		width: 100%;
-		min-width: 266px;
-		max-width: 320px;
-	}
+  &__datepicker-wrap {
+    display: none;
+    margin-top: 5.56px;
+    position: absolute;
+    top: 68px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 5;
+    background: $color-background;
+    box-shadow: 0px 10px 20px $color-datepicker-shadow;
+    width: 100%;
+    min-width: 266px;
+    max-width: 320px;
+  }
 
-	&__datepicker-buttons {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		background: $color-background;
-		height: 20px;
+  &__datepicker-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: $color-background;
+    height: 20px;
 
-		border-left: 1px solid $color-datepicker-border;
-		border-right: 1px solid $color-datepicker-border;
-		border-bottom: 1px solid $color-datepicker-border;
-		box-sizing: border-box;
-		box-shadow: 0px 10px 20px $color-datepicker-shadow;
-		border-radius: 4px;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-		height: 51px;
-	}
+    border-left: 1px solid $color-datepicker-border;
+    border-right: 1px solid $color-datepicker-border;
+    border-bottom: 1px solid $color-datepicker-border;
+    box-sizing: border-box;
+    box-shadow: 0px 10px 20px $color-datepicker-shadow;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 51px;
+  }
 
-	&_visible &__datepicker-wrap {
-		display: flex;
-		flex-direction: column;
-		background-color: $color-background;
-	}
+  &_visible &__datepicker-wrap {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-background;
+  }
 
-	&_visible &__tip {
-		transform: rotate(180deg);
-	}
+  &_visible &__tip {
+    transform: rotate(180deg);
+  }
 
-	&__clear {
-		margin-left: 20px;
-		visibility: hidden;
-	}
+  &__clear {
+    margin-left: 20px;
+    visibility: hidden;
+  }
 
-	&__apply {
-		margin-right: 20px;
-	}
+  &__apply {
+    margin-right: 20px;
+  }
 
-	.date-dropdown__datepicker {
-		border-top: 1px solid $color-datepicker-border;
-		border-left: 1px solid $color-datepicker-border;
-		border-right: 1px solid $color-datepicker-border;
+  .date-dropdown__datepicker {
+    border-top: 1px solid $color-datepicker-border;
+    border-left: 1px solid $color-datepicker-border;
+    border-right: 1px solid $color-datepicker-border;
 
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 
-		.datepicker {
-			width: calc(100% - 2px);
+    .datepicker {
+      width: calc(100% - 2px);
 
-			&--cell,
-			&--day-name {
-				max-width: 39.88px;
-				height: 40px;
-			}
+      &--cell,
+      &--day-name {
+        max-width: 39.88px;
+        height: 40px;
+      }
 
-			&--cell-month,
-			&--cell-year {
-				max-width: none;
-			}
-		}
-	}
+      &--cell-month,
+      &--cell-year {
+        max-width: none;
+      }
+    }
+  }
 
-	.datepicker--cell-day.-range-from-::after {
-		width: 39.88px;
-		height: 40px;
-	}
+  .datepicker--cell-day.-range-from-::after {
+    width: 39.88px;
+    height: 40px;
+  }
 
-	.datepicker--cell-day.-range-to-::before {
-		width: 39.88px;
-		height: 40px;
-	}
+  .datepicker--cell-day.-range-to-::before {
+    width: 39.88px;
+    height: 40px;
+  }
 
-	.datepicker--cell-day.-in-range-:hover::before {
-		width: 39.88px;
-		height: 40px;
-	}
+  .datepicker--cell-day.-in-range-:hover::before {
+    width: 39.88px;
+    height: 40px;
+  }
 
-	//----------------------------------------------- modif filter
+  //----------------------------------------------- modif filter
 
-	&_filter &__date-wrap {
-		position: relative;
-		width: 100%;
-	}
+  &_filter &__date-wrap {
+    position: relative;
+    width: 100%;
+  }
 
-	&_filter &__date-wrap {
-		width: 100%;
-		max-width: 266px;
-	}
+  &_filter &__date-wrap {
+    width: 100%;
+    max-width: 266px;
+  }
 
-	&_filter &__input {
-		width: 100%;
-		max-width: none;
-	}
+  &_filter &__input {
+    width: 100%;
+    max-width: none;
+  }
 
-	&_filter .date-dropdown__datepicker {
-		.datepicker {
-			width: 264px;
-			margin: 0 auto;
-			&--cell,
-			&--day-name {
-				height: 35px;
-			}
-		}
-	}
+  &_filter .date-dropdown__datepicker {
+    .datepicker {
+      width: 264px;
+      margin: 0 auto;
+      &--cell,
+      &--day-name {
+        height: 35px;
+      }
+    }
+  }
 
-	&_filter .date-dropdown__datepicker {
-		.-range-from-::after {
-			width: 35px;
-			height: 35px;
-		}
-	}
+  &_filter .date-dropdown__datepicker {
+    .-range-from-::after {
+      width: 35px;
+      height: 35px;
+    }
+  }
 
-	&_filter .date-dropdown__datepicker {
-		.-range-to-::before {
-			width: 35px;
-			height: 35px;
-		}
-	}
+  &_filter .date-dropdown__datepicker {
+    .-range-to-::before {
+      width: 35px;
+      height: 35px;
+    }
+  }
 
-	&_filter .date-dropdown__datepicker {
-		.-in-range-:hover::before {
-			width: 36px;
-			height: 35px;
-		}
-	}
+  &_filter .date-dropdown__datepicker {
+    .-in-range-:hover::before {
+      width: 36px;
+      height: 35px;
+    }
+  }
 
-	//----------------------------------------------- modif button
-	.date-dropdown__datepicker-buttons {
-		.date-dropdown__clear {
-			&_visible {
-				visibility: unset;
-			}
-		}
-	}
+  //----------------------------------------------- modif button
+  .date-dropdown__datepicker-buttons {
+    .date-dropdown__clear {
+      &_visible {
+        visibility: unset;
+      }
+    }
+  }
 }

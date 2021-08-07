@@ -4,22 +4,22 @@ include ../../components/footer/footer.pug
 
 doctype html
 html(lang='ru')
-	head
-		title= htmlWebpackPlugin.options.title
-	body.headersfooters-wrapper
-		.headersfooters-wrapper__logo
-			+logo-group({})
-		main.headersfooters-content
-			section.headers-footers 
-				.headers-footers__top
-					.headers-footers__authorization
-						+header({
-							current:true,
-						})
-					.headers-footers__authorized
-						+header({
-							type:'authorized',
-							current:true,
-						})
-				.headers-footers__bottom
-					+footer({})
+  head
+    title= htmlWebpackPlugin.options.title
+  body.headersfooters-wrapper
+    .headersfooters-wrapper__logo
+      +logo-group({})
+    main.headersfooters-content
+      section.headers-footers 
+        .headers-footers__top
+          .headers-footers__authorization
+            +header({
+              current:true,
+            })
+          .headers-footers__authorized
+            +header({
+              type:'authorized',
+              current:true,
+            })
+        .headers-footers__bottom
+          +footer({})

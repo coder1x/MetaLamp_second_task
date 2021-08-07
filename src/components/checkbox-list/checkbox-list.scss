@@ -8,140 +8,140 @@ $color-checkbox-rich: $Dark-Shade-75;
 $color-border-focus: $Dark-Shade-100;
 
 .checkbox-list {
-	&__header {
-		position: relative;
-		width: 100%;
-		margin-bottom: 17px;
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 16px;
-		text-transform: uppercase;
-		color: $color-label;
-		cursor: pointer;
-	}
-	&__header:focus {
-		outline-offset: 6px;
-		outline: 2px solid $color-border-focus;
-	}
+  &__header {
+    position: relative;
+    width: 100%;
+    margin-bottom: 17px;
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $color-label;
+    cursor: pointer;
+  }
+  &__header:focus {
+    outline-offset: 6px;
+    outline: 2px solid $color-border-focus;
+  }
 
-	&__wrap {
-		display: none;
-	}
+  &__wrap {
+    display: none;
+  }
 
-	&__items {
-		border: 0px;
-		padding: 0px;
-		margin: 0px;
-	}
+  &__items {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
 
-	&__label {
-		width: 100%;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 19px;
-		color: $color-checkbox;
-		cursor: pointer;
-		padding-left: 29px;
-		margin-bottom: 12px;
-	}
+  &__label {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: $color-checkbox;
+    cursor: pointer;
+    padding-left: 29px;
+    margin-bottom: 12px;
+  }
 
-	&__text {
-		font-family: $font;
-		font-weight: normal;
-		font-size: 12px;
-		line-height: 14px;
-		margin-top: 5px;
-		color: $color-checkbox;
-	}
+  &__text {
+    font-family: $font;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 5px;
+    color: $color-checkbox;
+  }
 
-	&__input {
-		position: absolute;
-		appearance: none;
-		border: 0;
-		padding: 0;
-		white-space: nowrap;
-		clip-path: inset(100%);
-		clip: rect(0 0 0 0);
-		overflow: hidden;
-	}
+  &__input {
+    position: absolute;
+    appearance: none;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 
-	&__bef {
-		width: 20px;
-		height: 20px;
-		background: $color-background;
-		border: 1px solid $color-checkbox-border;
-		box-sizing: border-box;
-		border-radius: 4px;
-		position: absolute;
-		left: 0;
-		top: -1px;
-		cursor: pointer;
-		&_border {
-			box-shadow: 0px 0px 0px 2px $color-border-focus;
-		}
-	}
+  &__bef {
+    width: 20px;
+    height: 20px;
+    background: $color-background;
+    border: 1px solid $color-checkbox-border;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: -1px;
+    cursor: pointer;
+    &_border {
+      box-shadow: 0px 0px 0px 2px $color-border-focus;
+    }
+  }
 
-	&__input:checked + &__bef {
-		display: block;
-		background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.46439 4.29245L5.70703 8.53509L4.29282 9.9493L0.0501771 5.70666L1.46439 4.29245Z' fill='url(%23paint0_linear)'/%3E%3Cpath d='M8.53546 2.87823L9.94967 4.29245L4.29282 9.9493L2.8786 8.53509L8.53546 2.87823Z' fill='url(%23paint1_linear)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x1='7.82835' y1='2.17112' x2='2.1715' y2='7.82798' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23BC9CFF'/%3E%3Cstop offset='1' stop-color='%238BA4F9'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x1='7.82835' y1='2.17112' x2='2.1715' y2='7.82798' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23BC9CFF'/%3E%3Cstop offset='1' stop-color='%238BA4F9'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
-		background-size: 10px 10px;
-		background-repeat: no-repeat;
-		background-position: 4px 3px;
-		border-color: $color-checkbox-hover;
-	}
+  &__input:checked + &__bef {
+    display: block;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.46439 4.29245L5.70703 8.53509L4.29282 9.9493L0.0501771 5.70666L1.46439 4.29245Z' fill='url(%23paint0_linear)'/%3E%3Cpath d='M8.53546 2.87823L9.94967 4.29245L4.29282 9.9493L2.8786 8.53509L8.53546 2.87823Z' fill='url(%23paint1_linear)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x1='7.82835' y1='2.17112' x2='2.1715' y2='7.82798' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23BC9CFF'/%3E%3Cstop offset='1' stop-color='%238BA4F9'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x1='7.82835' y1='2.17112' x2='2.1715' y2='7.82798' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23BC9CFF'/%3E%3Cstop offset='1' stop-color='%238BA4F9'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: 4px 3px;
+    border-color: $color-checkbox-hover;
+  }
 
-	&__wrap &__label &__bef_border {
-		border-color: $color-border-focus;
-	}
+  &__wrap &__label &__bef_border {
+    border-color: $color-border-focus;
+  }
 
-	&__input:disabled + &__bef {
-		border-color: $Dark-Shade-1;
-	}
+  &__input:disabled + &__bef {
+    border-color: $Dark-Shade-1;
+  }
 
-	&__input:checked:disabled + &__bef {
-		border-color: $Dark-Shade-1;
-	}
+  &__input:checked:disabled + &__bef {
+    border-color: $Dark-Shade-1;
+  }
 
-	&__tip {
-		position: absolute;
-		top: 4px;
-		right: 15px;
-		width: 13px;
-		cursor: pointer;
-		transform: rotate(0deg);
-		transition: transform 0.5s;
-	}
+  &__tip {
+    position: absolute;
+    top: 4px;
+    right: 15px;
+    width: 13px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+  }
 
-	// ---------------------------- modif
+  // ---------------------------- modif
 
-	&_visible &__wrap {
-		display: block;
-	}
+  &_visible &__wrap {
+    display: block;
+  }
 
-	&_visible &__tip {
-		transform: rotate(180deg);
-	}
+  &_visible &__tip {
+    transform: rotate(180deg);
+  }
 
-	// ---------------------------- modif Checkbox Buttons
+  // ---------------------------- modif Checkbox Buttons
 
-	&_visibleBut &__wrap {
-		display: block;
-	}
+  &_visibleBut &__wrap {
+    display: block;
+  }
 
-	&_visibleBut &__header {
-		cursor: default;
-	}
+  &_visibleBut &__header {
+    cursor: default;
+  }
 
-	// ---------------------------- modif RICH
+  // ---------------------------- modif RICH
 
-	&_rich &__label {
-		font-family: $font;
-		font-weight: bold;
-		color: $color-checkbox-rich;
-	}
+  &_rich &__label {
+    font-family: $font;
+    font-weight: bold;
+    color: $color-checkbox-rich;
+  }
 }

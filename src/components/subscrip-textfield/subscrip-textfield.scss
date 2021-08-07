@@ -4,96 +4,96 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-focus: $Dark-Shade-100;
 
 .subscrip-textfield {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-	&__label-text {
-		margin-bottom: 5px;
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $color-label;
-	}
+  &__label-text {
+    margin-bottom: 5px;
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $color-label;
+  }
 
-	&__wrap {
-		position: relative;
-		width: 100%;
-	}
+  &__wrap {
+    position: relative;
+    width: 100%;
+  }
 
-	&__tip {
-		width: 17px;
-	}
+  &__tip {
+    width: 17px;
+  }
 
-	&__link {
-		display: block;
-		width: 17px;
-		height: 18px;
-		position: absolute;
-		padding: 0px;
-		right: 14px;
-		bottom: 13px;
-		border: 0px;
-		background-color: $color-background;
-		cursor: pointer;
-		transform: rotate(0deg);
-		transition: transform 0.5s;
-	}
+  &__link {
+    display: block;
+    width: 17px;
+    height: 18px;
+    position: absolute;
+    padding: 0px;
+    right: 14px;
+    bottom: 13px;
+    border: 0px;
+    background-color: $color-background;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+  }
 
-	&__link:focus {
-		outline-offset: 5px;
-		outline: 2px solid $color-focus;
-	}
+  &__link:focus {
+    outline-offset: 5px;
+    outline: 2px solid $color-focus;
+  }
 
-	&__text,
-	&__value {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-	}
+  &__text,
+  &__value {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
 
-	&__text {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-	&__value {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+  &__value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-	&__input {
-		width: 100%;
+  &__input {
+    width: 100%;
 
-		height: 44px;
-		padding-left: 15px;
-		padding-right: 44px;
-		outline: 0;
-		cursor: pointer;
+    height: 44px;
+    padding-left: 15px;
+    padding-right: 44px;
+    outline: 0;
+    cursor: pointer;
 
-		border: 1px solid $color-border;
-		border-radius: 4px;
-		color: $color-input;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		box-sizing: border-box;
-	}
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    color: $color-input;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    box-sizing: border-box;
+  }
 
-	&__input::placeholder {
-		color: $style-text;
-	}
+  &__input::placeholder {
+    color: $style-text;
+  }
 
-	&__input:hover,
-	&__input:focus {
-		border: 1px solid $color-border-hover;
-	}
+  &__input:hover,
+  &__input:focus {
+    border: 1px solid $color-border-hover;
+  }
 }

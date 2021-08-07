@@ -7,177 +7,177 @@ $color-button-disable: $Dark-Shade-25;
 $color-focus: $Dark-Shade-100;
 
 .drop-down {
-	display: flex;
-	flex-direction: column;
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
-	&__text-header {
-		margin-bottom: 5px;
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $color-label;
-	}
+  &__text-header {
+    margin-bottom: 5px;
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $color-label;
+  }
 
-	&__wrap {
-		position: relative;
-	}
+  &__wrap {
+    position: relative;
+  }
 
-	&__tip {
-		position: absolute;
-		width: 13px;
-		right: 16px;
-		bottom: 17px;
-		cursor: pointer;
-		transform: rotate(0deg);
-		transition: transform 0.5s;
-	}
+  &__tip {
+    position: absolute;
+    width: 13px;
+    right: 16px;
+    bottom: 17px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+  }
 
-	&__minus,
-	&__plus {
-		cursor: pointer;
-		border: 0px;
-		background: $color-background;
-		padding: 0;
-		font-family: $font;
-		font-weight: normal;
-		color: $color-button-pm;
-		font-size: 18px;
-		line-height: 22px;
-		width: 30px;
-		height: 30px;
-		border: 1px solid $color-button-pm;
-		border-radius: 50%;
-		box-sizing: border-box;
+  &__minus,
+  &__plus {
+    cursor: pointer;
+    border: 0px;
+    background: $color-background;
+    padding: 0;
+    font-family: $font;
+    font-weight: normal;
+    color: $color-button-pm;
+    font-size: 18px;
+    line-height: 22px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $color-button-pm;
+    border-radius: 50%;
+    box-sizing: border-box;
 
-		&_disable {
-			border: 1px solid $color-button-disable;
-			color: $color-button-disable;
-		}
-	}
+    &_disable {
+      border: 1px solid $color-button-disable;
+      color: $color-button-disable;
+    }
+  }
 
-	&__minus:focus,
-	&__plus:focus {
-		outline-offset: 4px;
-		outline: 2px solid $color-focus;
-	}
+  &__minus:focus,
+  &__plus:focus {
+    outline-offset: 4px;
+    outline: 2px solid $color-focus;
+  }
 
-	&__text,
-	&__value {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-	}
+  &__text,
+  &__value {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
 
-	&__text {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-	&__value {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+  &__value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-	&__select {
-		width: calc(100% - 2px);
-		background: $color-background;
-		display: none;
-		border: 1px solid $color-border-hover;
-		border-bottom-left-radius: 4px;
-		border-bottom-right-radius: 4px;
-		z-index: 5;
-		position: absolute;
-		top: 43px;
-	}
+  &__select {
+    width: calc(100% - 2px);
+    background: $color-background;
+    display: none;
+    border: 1px solid $color-border-hover;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 5;
+    position: absolute;
+    top: 43px;
+  }
 
-	&__select-item:first-child {
-		padding-top: 7px;
-	}
+  &__select-item:first-child {
+    padding-top: 7px;
+  }
 
-	&__select-item {
-		padding-left: 15px;
-		padding-right: 7px;
-		padding-bottom: 7px;
+  &__select-item {
+    padding-left: 15px;
+    padding-right: 7px;
+    padding-bottom: 7px;
 
-		display: grid;
-		grid-template-columns: 1fr 30px 32px 30px;
-	}
+    display: grid;
+    grid-template-columns: 1fr 30px 32px 30px;
+  }
 
-	&__buttons {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: flex-end;
-		margin-bottom: 13px;
-		padding-left: 15px;
-		padding-right: 7px;
-		padding-top: 15px;
-	}
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 13px;
+    padding-left: 15px;
+    padding-right: 7px;
+    padding-top: 15px;
+  }
 
-	&__button-clear {
-		visibility: hidden;
-	}
+  &__button-clear {
+    visibility: hidden;
+  }
 
-	&__input {
-		width: 100%;
-		height: 44px;
-		padding-left: 15px;
-		padding-right: 44px;
-		outline: 0;
-		cursor: pointer;
-		text-overflow: ellipsis;
+  &__input {
+    width: 100%;
+    height: 44px;
+    padding-left: 15px;
+    padding-right: 44px;
+    outline: 0;
+    cursor: pointer;
+    text-overflow: ellipsis;
 
-		border: 1px solid $color-border;
-		border-radius: 4px;
-		color: $color-input;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		box-sizing: border-box;
-		&::placeholder {
-			color: $color-input;
-		}
-	}
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    color: $color-input;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    box-sizing: border-box;
+    &::placeholder {
+      color: $color-input;
+    }
+  }
 
-	&__input:hover,
-	&__input:focus {
-		border: 1px solid $color-border-hover;
-	}
+  &__input:hover,
+  &__input:focus {
+    border: 1px solid $color-border-hover;
+  }
 
-	// ---------------------------- modif
-	&_visible &__select {
-		display: block;
-	}
+  // ---------------------------- modif
+  &_visible &__select {
+    display: block;
+  }
 
-	&_visible &__tip {
-		transform: rotate(180deg);
-	}
+  &_visible &__tip {
+    transform: rotate(180deg);
+  }
 
-	&_visible &__input {
-		border-color: $color-border-show;
-		border-bottom-left-radius: 0px;
-		border-bottom-right-radius: 0px;
-	}
+  &_visible &__input {
+    border-color: $color-border-show;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
 
-	&_sharp &__input {
-		border-bottom-left-radius: 0px;
-		border-bottom-right-radius: 0px;
-	}
+  &_sharp &__input {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
 
-	&__button-clear {
-		&_visible {
-			visibility: unset;
-		}
-	}
+  &__button-clear {
+    &_visible {
+      visibility: unset;
+    }
+  }
 
-	// ---------------------------- modif buttons
+  // ---------------------------- modif buttons
 }

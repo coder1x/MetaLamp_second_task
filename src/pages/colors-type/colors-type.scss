@@ -1,28 +1,28 @@
 .colorstype-wrapper {
-	&__logo {
-		margin-top: 30px;
-		margin-left: 30px;
-	}
+  &__logo {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
 }
 
 .map-info {
-	display: flex;
-	flex-direction: row;
-	padding-left: 150px;
-	padding-top: 59px;
-	padding-bottom: 145px;
-	box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  padding-left: 150px;
+  padding-top: 59px;
+  padding-bottom: 145px;
+  box-sizing: border-box;
 
-	&__text {
-		width: 100%;
-		max-width: 852px;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-	}
+  &__text {
+    width: 100%;
+    max-width: 852px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 
-	&__square-color {
-		margin-bottom: 20px;
-		min-width: 236px;
-	}
+  &__square-color {
+    margin-bottom: 20px;
+    min-width: 236px;
+  }
 }

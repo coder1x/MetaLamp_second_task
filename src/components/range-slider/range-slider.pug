@@ -1,21 +1,21 @@
 mixin range-slider(options)
-	-
-		let label = options.label ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let flLabel = options.flLabel ?? false
-		let classComp = 'range-slider'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	div(class=className)
-		div(class=classComp+'__wrap') 
-			div(class=classComp+'__header')
-				- if(!flLabel){
-					p(class=classComp+'__label')= label
-				-}
-				span(class=classComp+'__value')
-			input(class=classComp+'__input' type='hidden' name='price' value='' data-min='1000' data-from='5000' data-to='10000' data-max='15000' tabindex='-1')
-			
+  -
+    let label = options.label ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let flLabel = options.flLabel ?? false
+    let classComp = 'range-slider'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  div(class=className)
+    div(class=classComp+'__wrap') 
+      div(class=classComp+'__header')
+        - if(!flLabel){
+          p(class=classComp+'__label')= label
+        -}
+        span(class=classComp+'__value')
+      input(class=classComp+'__input' type='hidden' name='price' value='' data-min='1000' data-from='5000' data-to='10000' data-max='15000' tabindex='-1')
+      

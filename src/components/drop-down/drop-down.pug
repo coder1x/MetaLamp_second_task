@@ -1,49 +1,49 @@
 include ../buttons/buttons.pug
 
 mixin drop-down(options)
-	-
-		let label = options.label ?? ''
-		let value = options.value ?? ''
-		let name = options.name ?? ''
-		let masWord = options.masWord ?? [[]]
-		let maxValue = options.maxValue ?? []
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let button = options.button ?? false
-		let flLabel = options.flLabel ?? false
-		let classComp = 'drop-down'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	div(class=className)
-		- if(!flLabel){
-		p(class=classComp+'__text-header')= label
-		-}
-		div(class=classComp+'__wrap')
-			input(class=classComp+'__input' type='text' placeholder=value value='' name=name readonly)
-			img(class=classComp+'__tip' src=require('@com/drop-down/img/tip.svg').default alt='угалок')
-			ul(class=classComp+'__select')
-				- for(let i=0; i<masWord[0].length; i++)	{
-					li(class=classComp+'__select-item' data-type= masWord[1][i])
-						p(class=classComp+'__text')= masWord[0][i] 
-						button(class=classComp+'__minus' aria-label='минус') -
-						span(class=classComp+'__value') 0
-						button(class=classComp+'__plus' data-max=maxValue[i] aria-label='плюс') +
-				-}
-				-if(button){
-				li(class=classComp+'__buttons')
-					div(class=classComp+'__button-clear') 
-						+buttons({
-							text:'очистить',
-							type:'button',
-							modif:['text']
-									})
-					div(class=classComp+'__button-apply') 
-						+buttons({
-							text:'применить',
-							type:'button',
-							modif:['text']
-									})
-				-}
+  -
+    let label = options.label ?? ''
+    let value = options.value ?? ''
+    let name = options.name ?? ''
+    let masWord = options.masWord ?? [[]]
+    let maxValue = options.maxValue ?? []
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let button = options.button ?? false
+    let flLabel = options.flLabel ?? false
+    let classComp = 'drop-down'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  div(class=className)
+    - if(!flLabel){
+    p(class=classComp+'__text-header')= label
+    -}
+    div(class=classComp+'__wrap')
+      input(class=classComp+'__input' type='text' placeholder=value value='' name=name readonly)
+      img(class=classComp+'__tip' src=require('@com/drop-down/img/tip.svg').default alt='угалок')
+      ul(class=classComp+'__select')
+        - for(let i=0; i<masWord[0].length; i++)  {
+          li(class=classComp+'__select-item' data-type= masWord[1][i])
+            p(class=classComp+'__text')= masWord[0][i] 
+            button(class=classComp+'__minus' aria-label='минус') -
+            span(class=classComp+'__value') 0
+            button(class=classComp+'__plus' data-max=maxValue[i] aria-label='плюс') +
+        -}
+        -if(button){
+        li(class=classComp+'__buttons')
+          div(class=classComp+'__button-clear') 
+            +buttons({
+              text:'очистить',
+              type:'button',
+              modif:['text']
+                  })
+          div(class=classComp+'__button-apply') 
+            +buttons({
+              text:'применить',
+              type:'button',
+              modif:['text']
+                  })
+        -}

@@ -1,6 +1,6 @@
 
 
 module.exports = {
-	isDev: process.env.NODE_ENV === 'development',
-	isProd: !this.isDev
+  isDev: process.env.NODE_ENV === 'development',
+  isProd: !this.isDev
 };

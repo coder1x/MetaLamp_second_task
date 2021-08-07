@@ -13,95 +13,95 @@ $color-current-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba4f9 1
 $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba4f9 100%);
 
 .pagination {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
-	&__text {
-		margin-top: 10px;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 24px;
-		color: $color-text;
-		text-align: center;
-	}
+  &__text {
+    margin-top: 10px;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-text;
+    text-align: center;
+  }
 
-	&__header {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		text-transform: uppercase;
-		color: $colot-header;
-		margin-bottom: 16px;
-	}
+  &__header {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $colot-header;
+    margin-bottom: 16px;
+  }
 
-	&__links {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
+  &__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-	&__next,
-	&__current,
-	&__prev {
-		display: flex;
-		border-radius: 50%;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 40px;
-		height: 40px;
-	}
+  &__next,
+  &__current,
+  &__prev {
+    display: flex;
+    border-radius: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+  }
 
-	&__prev-img {
-		transform: rotate(180deg);
-	}
+  &__prev-img {
+    transform: rotate(180deg);
+  }
 
-	&__next,
-	&__prev {
-		background: $color-button-backgr;
-	}
+  &__next,
+  &__prev {
+    background: $color-button-backgr;
+  }
 
-	&__next:focus,
-	&__prev:focus {
-		outline-offset: 4px;
-		outline: 2px solid $color-button-focus;
-	}
+  &__next:focus,
+  &__prev:focus {
+    outline-offset: 4px;
+    outline: 2px solid $color-button-focus;
+  }
 
-	&__page-numbers:focus {
-		outline: 2px solid $color-button-focus;
-	}
+  &__page-numbers:focus {
+    outline: 2px solid $color-button-focus;
+  }
 
-	&__current {
-		font-family: $font;
-		font-weight: bold;
-		font-size: 12px;
-		line-height: 15px;
-		color: $color-current;
-		background: $color-current-backgr;
-	}
+  &__current {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-current;
+    background: $color-current-backgr;
+  }
 
-	&__page-numbers:hover {
-		border-radius: 50%;
-		color: $color-current;
-		background: $color-page-numbers-backgr;
-	}
+  &__page-numbers:hover {
+    border-radius: 50%;
+    color: $color-current;
+    background: $color-page-numbers-backgr;
+  }
 
-	&__page-numbers,
-	&__dots {
-		width: 40px;
-		height: 40px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		font-family: $font;
-		font-weight: normal;
-		font-size: 12px;
-		line-height: 15px;
-		color: $color-numbers;
-	}
+  &__page-numbers,
+  &__dots {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $font;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-numbers;
+  }
 }

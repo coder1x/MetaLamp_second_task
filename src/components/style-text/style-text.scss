@@ -1,25 +1,25 @@
 @import "@styles/glob.scss";
 .style-text {
-	width: 100%;
-	max-width: 436px;
-	display: grid;
-	grid-template-columns: 37px 1fr;
+  width: 100%;
+  max-width: 436px;
+  display: grid;
+  grid-template-columns: 37px 1fr;
 
-	&__teg {
-		text-transform: uppercase;
-		font-family: "Montserrat", Helvetica, Arial, sans-serif;
-		font-weight: normal;
-		color: $style-text;
-		text-align: end;
-	}
+  &__teg {
+    text-transform: uppercase;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: $style-text;
+    text-align: end;
+  }
 
-	&__text {
-		margin-left: 30px;
-		margin-bottom: 51px;
-	}
+  &__text {
+    margin-left: 30px;
+    margin-bottom: 51px;
+  }
 
-	span {
-		text-transform: none;
-		color: $style-text;
-	}
+  span {
+    text-transform: none;
+    color: $style-text;
+  }
 }

@@ -5,43 +5,43 @@ $color-feature: $Dark-Shade-75;
 $color-feature-border: $Dark-Shade-1;
 
 .feature {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	width: 100%;
-	border-bottom: 1px solid $color-feature-border;
-	padding-bottom: 19px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid $color-feature-border;
+  padding-bottom: 19px;
 
-	&_none-border {
-		border-bottom: 0px;
-	}
+  &_none-border {
+    border-bottom: 0px;
+  }
 
-	&__wrap-icon {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		width: 48px;
-	}
+  &__wrap-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 48px;
+  }
 
-	&__description {
-		margin-left: 10px;
-		max-width: 300px;
-		overflow-wrap: break-word;
-	}
+  &__description {
+    margin-left: 10px;
+    max-width: 300px;
+    overflow-wrap: break-word;
+  }
 
-	&__header {
-		font-size: 14px;
-		line-height: 24px;
-		font-family: $font;
-		font-weight: bold;
-		color: $color-feature;
-	}
+  &__header {
+    font-size: 14px;
+    line-height: 24px;
+    font-family: $font;
+    font-weight: bold;
+    color: $color-feature;
+  }
 
-	&__text {
-		font-size: 14px;
-		line-height: 24px;
-		font-family: $font;
-		font-weight: normal;
-		color: $color-feature;
-	}
+  &__text {
+    font-size: 14px;
+    line-height: 24px;
+    font-family: $font;
+    font-weight: normal;
+    color: $color-feature;
+  }
 }

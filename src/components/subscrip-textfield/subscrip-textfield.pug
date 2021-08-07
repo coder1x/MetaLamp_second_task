@@ -1,21 +1,22 @@
 mixin subscrip-textfield(options)
-	-
-		let label = options.label ?? ''
-		let value = options.value ?? ''
-		let modif = options.modif ?? ''
-		let addClass = options.class ?? ''
-		let flLabel = options.flLabel ?? false
-		let classComp = 'subscrip-textfield'
-		let className = classComp
-		if(modif){
-		className += ' '+classComp+'_'+modif}
-		if(addClass){
-		className += ' '+addClass}
-	div(class=className)
-		div(class=classComp+'__wrap')
-			if !flLabel
-				p(class=classComp+'__label-text')= label
-			label(class=classComp+'__label')
-				input(class=classComp+'__input' type='text' placeholder=value value='' name='subscrip')
-			button(class=classComp+'__link' aria-label='подписаться' title='подписаться')
-				img(class=classComp+'__tip' src=require('@com/subscrip-textfield/img/arrow_forward.svg').default alt='стрелка - подписаться')
+  -
+    let label = options.label ?? ''
+    let value = options.value ?? ''
+    let modif = options.modif ?? ''
+    let addClass = options.class ?? ''
+    let flLabel = options.flLabel ?? false
+    let classComp = 'subscrip-textfield'
+    let className = classComp
+    if(modif){
+    className += ' '+classComp+'_'+modif}
+    if(addClass){
+    className += ' '+addClass}
+  div(class=className)
+    div(class=classComp+'__wrap')
+      if !flLabel
+        p(class=classComp+'__label-text')= label
+      label(class=classComp+'__label')
+        input(class=classComp+'__input' type='text' placeholder=value value='' name='subscrip')
+      button(class=classComp+'__link' aria-label='подписаться' title='подписаться')
+        img(class=classComp+'__tip' src=require('@com/subscrip-textfield/img/arrow_forward.svg').default alt='стрелка - подписаться')
+        
