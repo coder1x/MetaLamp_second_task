@@ -7,6 +7,7 @@ $color-subscrip-text: $Dark-Shade-75;
 $color-recommendation-text: $Dark-Shade-75;
 $color-copyright: $Dark-Shade-75;
 $color-focus: $Dark-Shade-100;
+$color-subscrip-header: $Dark-Shade-100;
 
 .footer {
   width: 100%;
@@ -127,6 +128,12 @@ $color-focus: $Dark-Shade-100;
 
   &__subscrip-header {
     margin-bottom: 19px;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $color-subscrip-header;
   }
 
   &__subscrip-text {
