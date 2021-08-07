@@ -114,7 +114,7 @@ module.exports = {
       appDescription: 'Лучшие номера для вашей работы,' +
         ' отдыха и просто вдохновения',
       developerName: 'coder1',
-      developerURL: 'https://coderr.ru/',
+      developerURL: 'https://github.com/coder1x/',
       icons: {
         'android': [
           'android-chrome-36x36.png',
