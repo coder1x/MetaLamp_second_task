@@ -77,7 +77,7 @@ module.exports = {
         },
         'twitter-title': {
           'name': 'twitter:title',
-          'content': 'TOXIN'
+          'content': 'booking rooms for TOXIN'
         },
         'twitter-description': {
           'name': 'twitter:description',
@@ -91,8 +91,24 @@ module.exports = {
         'twitter-image': {
           'name': 'twitter:image',
           'content': 'https://thylacine.ru/social.webp'
+        },
+        'og-type': {
+          'property': 'og:type',
+          'content': 'website'
+        },
+        'og-title': {
+          'property': 'og:title',
+          'content': 'booking rooms for TOXIN'
+        },
+        'og-description': {
+          'property': 'og:description',
+          'content': 'Лучшие номера для вашей работы,' +
+            ' отдыха и просто вдохновения'
+        },
+        'og-image': {
+          'property': 'og:image',
+          'content': 'https://thylacine.ru/social.webp'
         }
-
       },
     })),
 
