@@ -5,17 +5,17 @@ class slider {
 
   className: string;
   elem: Element;
-  slidesEl: any;
+  slidesEl: HTMLElement[];
   dotEl: Element;
-  prevEl: any;
-  nextEl: any;
+  prevEl: HTMLElement;
+  nextEl: HTMLElement;
   indexS: number;
   indexDot: number;
-  sliderWrap: Element;
+  sliderWrap: HTMLElement;
   flagSwipe: boolean;
   linkSlide: HTMLElement;
   swipe: boolean;
-  timeS: any;
+  timeS: number;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -23,7 +23,7 @@ class slider {
     this.startSlider();
   }
 
-  getElement(str: string): Element {
+  getElement(str: string): HTMLElement {
     const selector = this.className + '__' + str + '-wrap';
     return this.elem.querySelector(selector);
   }
@@ -31,9 +31,8 @@ class slider {
   startSlider() {
     this.indexS = 0;
     this.indexDot = 0;
-    this.timeS = 0;
     this.swipe = false;
-
+    this.timeS = 0;
     this.setDom();
     this.createDot();
     this.paintDot();
@@ -43,7 +42,7 @@ class slider {
 
   setDom() {
     const slide = this.className + '__slide';
-    this.slidesEl = this.elem.querySelectorAll(slide);
+    this.slidesEl = [...this.elem.querySelectorAll<HTMLElement>(slide)];
 
     this.dotEl = this.getElement('dot');
     this.prevEl = this.getElement('prev');
@@ -84,7 +83,7 @@ class slider {
   }
 
   setVisible(index: number) {
-    const date: any = new Date();
+    const date = Number(new Date());
     if (date - this.timeS > 150) {
       this.toggle(this.slidesEl[this.indexS], true); // удаляем класс с пред идущего слайда
       this.indexS = index;
@@ -114,7 +113,7 @@ class slider {
       else {
         this.setVisible(this.slidesEl.length - 1);
       }
-      this.timeS = new Date();
+      this.timeS = Number(new Date());
     });
 
     this.nextEl.addEventListener('click', () => {
@@ -125,19 +124,19 @@ class slider {
       else {
         this.setVisible(0);
       }
-      this.timeS = new Date();
+      this.timeS = Number(new Date());
     });
 
-    this.linkSlide.addEventListener('click', (e: any) => {
+    this.linkSlide.addEventListener('click', (e: Event) => {
       if (this.flagSwipe) {
         e.preventDefault();
       }
       this.flagSwipe = false;
     });
 
-    this.dotEl.addEventListener('click', (e: any) => {
-      const index = Number(e.target.getAttribute('data-index'));
-
+    this.dotEl.addEventListener('click', (e: Event) => {
+      const target = e.target as HTMLElement;
+      const index = Number(target.getAttribute('data-index'));
       if (this.indexS != index && !isNaN(index))
         this.setVisible(index);
     });
@@ -156,22 +155,24 @@ class slider {
       this.swipe = false;
     });
 
-    const handleSwipeStart = (ev: any) => {
+    const handleSwipeStart = (ev: MouseEvent | TouchEvent) => {
       this.swipe = true;
       xyDown = getCoordinatesXY(ev);
     };
 
-    function getCoordinatesXY(ev: any): number[] {
+    function getCoordinatesXY(ev: MouseEvent | TouchEvent): number[] {
+      const eventT = ev as TouchEvent;
+      const eventM = ev as MouseEvent;
       if (ev.type == 'touchstart' || ev.type == 'touchmove')
-        return [ev.touches[0].clientX, ev.touches[0].clientY];
+        return [eventT.touches[0].clientX, eventT.touches[0].clientY];
 
       if (ev.type == 'mousedown' || ev.type == 'mousemove')
-        return [ev.clientX, ev.clientY];
+        return [eventM.clientX, eventM.clientY];
 
       return [];
     }
 
-    const swipe = (xyDiff: any) => {
+    const swipe = (xyDiff: number[]) => {
       if (xyDiff[0] > 0) {
         this.nextEl.click();
       } else {
@@ -180,23 +181,23 @@ class slider {
       this.flagSwipe = true;
     };
 
-    const handleSwipeMove = (ev: any) => {
-
+    const handleSwipeMove = (ev: MouseEvent | TouchEvent) => {
       if (!xyDown) {
         return;
       }
 
+      const eventM = ev as MouseEvent;
       const touchmove = ev.type == 'touchmove';
       const mousemove = ev.type == 'mousemove';
 
-      const event = touchmove || mousemove && ev.buttons == 1;
+      const event = touchmove || mousemove && eventM.buttons == 1;
 
       if (event) {
         let xyUp: number[] = getCoordinatesXY(ev);
 
         if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
           let xyDiff = [xyDown[0] - xyUp[0], xyDown[1] - xyUp[1]];
-          const date: any = new Date();
+          const date = Number(new Date());
           if (date - this.timeS > 200)
             swipe(xyDiff);
           xyDown = [];

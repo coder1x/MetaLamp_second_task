@@ -24,11 +24,11 @@ class сheckboxList {
   }
 
   private getElem(param: optE) {
-    let elem: any;
+    let elem: HTMLElement[] | Element;
     let dom = param.dom ?? this.elem;
     let name = this.className + param.str;
     if (param.fl) {
-      elem = dom.querySelectorAll(name);
+      elem = [...dom.querySelectorAll<HTMLElement>(name)];
     }
     else {
       elem = dom.querySelector(name);
@@ -37,9 +37,9 @@ class сheckboxList {
   }
 
   private setDomElem() {
-    this.wrap = this.getElem({ str: '__wrap' });
-    this.headerEl = this.getElem({ str: '__header' });
-    this.imgEl = this.getElem({ str: '__tip' });
+    this.wrap = (this.getElem({ str: '__wrap' }) as HTMLElement);
+    this.headerEl = (this.getElem({ str: '__header' }) as HTMLElement);
+    this.imgEl = (this.getElem({ str: '__tip' }) as HTMLElement);
   }
 
   toggleVis() {
@@ -65,7 +65,7 @@ class сheckboxList {
 
 
       this.imgEl.addEventListener('click', () => { this.toggleVis(); });
-      this.headerEl.addEventListener('keydown', (e: any) => {
+      this.headerEl.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key == 'Enter' || e.key == ' ') {
           e.preventDefault();
           this.toggleVis();

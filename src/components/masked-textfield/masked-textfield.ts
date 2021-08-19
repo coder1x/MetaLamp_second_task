@@ -23,8 +23,8 @@ class maskedTextField {
   }
 
 
-  private inputProcessing(e: any) {
-    let elem = e.target;
+  private inputProcessing(e: Event) {
+    let elem = e.target as HTMLInputElement;
     let val = elem.value.replace(/[^.\d]/g, '');
 
     let strLen = val.length;
@@ -70,10 +70,10 @@ class maskedTextField {
     this.temp = elem.value;
   }
 
-  private dateValidation(e: any) {
-
+  private dateValidation(e: Event) {
+    const target = e.target as HTMLInputElement;
     let regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
-    let dateD = e.target.value;
+    let dateD = target.value;
 
     if (!regexp.test(dateD)) return;
 
@@ -94,11 +94,11 @@ class maskedTextField {
   }
 
   private setActions(elem: Element) {
-    elem.addEventListener('change', (e: any) => {
+    elem.addEventListener('change', (e: Event) => {
       this.dateValidation(e);
     });
 
-    elem.addEventListener('input', (e: any) => {
+    elem.addEventListener('input', (e: Event) => {
       this.inputProcessing(e);
     });
   }

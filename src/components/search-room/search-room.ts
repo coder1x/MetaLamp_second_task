@@ -4,7 +4,7 @@ import './search-room.scss';
 class searchRoom {
 
   className: string;
-  dateInputs: any;
+  dateInputs: HTMLInputElement[];
   guestsInput: HTMLInputElement;
   buttonEl: Element;
 
@@ -20,7 +20,7 @@ class searchRoom {
     const guests = this.className + '__dropdown-wrap input';
     const submit = this.className + '__button-wrap button';
 
-    this.dateInputs = elem.querySelectorAll(date);
+    this.dateInputs = [...elem.querySelectorAll<HTMLInputElement>(date)];
     this.guestsInput = elem.querySelector(guests);
     this.buttonEl = elem.querySelector(submit);
   }
@@ -61,7 +61,7 @@ class searchRoom {
   }
 
   setAction() {
-    this.buttonEl.addEventListener('click', (e: any) => {
+    this.buttonEl.addEventListener('click', (e: Event) => {
       if (!this.messageErr()) {
         e.preventDefault();
       }

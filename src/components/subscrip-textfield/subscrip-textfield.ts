@@ -6,7 +6,7 @@ class subscriptionTextField {
 
   constructor(className: string, wraper: Element) {
 
-    this.input = wraper.querySelector('input');
+    this.input = wraper.querySelector('input') as HTMLInputElement;
     this.link = wraper.querySelector(className + '__link');
 
     this.valid = new validationEmail({
@@ -16,7 +16,7 @@ class subscriptionTextField {
     this.setActions();
   }
 
-  input: Element;
+  input: HTMLInputElement;
   link: Element;
   valid: validationEmail;
 
@@ -29,19 +29,22 @@ class subscriptionTextField {
 
   private setActions() {
 
-    const action = (e: any, fl = false) => {
+    const action = (e: Event | KeyboardEvent, fl = false) => {
+      const eventK = e as KeyboardEvent;
       if (fl) {
         this.validEmail();
       }
       else {
-        if (e.key == 'Enter')
+        if (eventK.key == 'Enter')
           this.validEmail();
       }
     };
 
-    this.input.addEventListener('keydown', (e: any) => { action(e); });
-    this.link.addEventListener('click', (e: any) => { action(e); });
-    this.link.addEventListener('click', (e: any) => { action(e, true); });
+    this.input.addEventListener(
+      'keydown',
+      (e: KeyboardEvent) => { action(e); });
+    this.link.addEventListener('click', (e: Event) => { action(e); });
+    this.link.addEventListener('click', (e: Event) => { action(e, true); });
   }
 }
 

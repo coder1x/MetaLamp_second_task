@@ -75,19 +75,13 @@ class registration {
     return true;
   }
 
-
   setAction() {
-    this.buttonEl.addEventListener('click', (e: any) => {
-
+    this.buttonEl.addEventListener('click', (e: Event) => {
       if (!this.validation())
         e.preventDefault();
-
     });
   }
-
 }
-
-
 
 
 function renderRegistration(className: string) {

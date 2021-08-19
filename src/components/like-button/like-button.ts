@@ -11,7 +11,7 @@ class likeButton {
   private strKey: string;
 
   // eslint-disable-next-line no-unused-vars
-  constructor(public nameClass: string, elem: any) {
+  constructor(public nameClass: string, elem: HTMLElement) {
     this.strKey = String(elem.offsetLeft + elem.offsetTop);
     this.likeEl = elem;
     this.setDom();
@@ -70,7 +70,7 @@ class likeButton {
       this.toggleLike();
     });
 
-    this.linkEl.addEventListener('keydown', (e: any) => {
+    this.linkEl.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key == 'Enter' || e.key == ' ') {
         this.toggleLike();
         e.preventDefault();
@@ -86,7 +86,7 @@ function renderLikeButton(className: string) {
   let components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
-    objMas.push(new likeButton(className, elem));
+    objMas.push(new likeButton(className, elem as HTMLElement));
   }
   return objMas;
 }

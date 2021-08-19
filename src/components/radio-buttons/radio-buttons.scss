@@ -6,6 +6,7 @@ $color-radio: $Dark-Shade-25;
 $color-radio-select: $Dark-Shade-75;
 $color-radio-border: $Purple;
 $color-border-focus: $Dark-Shade-100;
+$color-focus: $Dark-Shade-100;
 
 .radio-buttons {
   &__header {
@@ -29,13 +30,18 @@ $color-border-focus: $Dark-Shade-100;
 
   &__input {
     position: absolute;
-    appearance: none;
+    top: 11px;
+    left: 7px;
+    height: 1px;
+    width: 6px;
+    z-index: 0;
     border: 0;
     padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  }
+
+  &__input:focus {
+    outline: 2px solid $color-focus;
+    outline-offset: 12px;
   }
 
   &__label {
@@ -64,6 +70,7 @@ $color-border-focus: $Dark-Shade-100;
     border-radius: 50%;
     box-sizing: border-box;
     cursor: pointer;
+    background-color: #fff;
   }
 
   &__bef::before {

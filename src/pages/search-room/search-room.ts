@@ -53,11 +53,10 @@ class sidebar {
 
     if (!this.block) return;
 
-    this.button.addEventListener('click', (e: any) => {
+    this.button.addEventListener('click', (e: MouseEvent) => {
       this.click = true;
       this.toggle();
-
-      const elem = e.target;
+      const elem = e.target as HTMLButtonElement;
       let expanded = elem.getAttribute('aria-expanded');
       expanded = expanded == 'true' ? 'false' : 'true';
       elem.setAttribute('aria-expanded', expanded);
@@ -68,19 +67,20 @@ class sidebar {
     });
 
 
-    this.block.addEventListener('keydown', (e: any) => {
+    this.block.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key == 'Escape') {
         e.preventDefault();
         this.toggle();
       }
     });
 
-    document.addEventListener('focusin', (e: any) => {
-      const linkEl = e.target.closest(this.blockClass) ?? false;
+    document.addEventListener('focusin', (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      const linkEl = target.closest(this.blockClass) ?? false;
       if (!linkEl && this.getVisible()) {
         const elem = this.button.querySelector('button');
-
-        if (!e.path.includes(elem, 0)) {
+        const path = (e.composedPath && e.composedPath());
+        if (!path.includes(elem, 0)) {
           this.toggle();
           elem.focus();
         }

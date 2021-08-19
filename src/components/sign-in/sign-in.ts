@@ -37,7 +37,7 @@ class signIn {
   }
 
   setAction() {
-    this.buttonEl.addEventListener('click', (e: any) => {
+    this.buttonEl.addEventListener('click', (e: Event) => {
       if (!this.validation())
         e.preventDefault();
     });

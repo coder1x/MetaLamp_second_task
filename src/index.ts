@@ -2,7 +2,8 @@ import '@styles/styles';
 import '@plugins/java-import';
 
 
-function requireAll(requireContext: any) {
+// eslint-disable-next-line no-undef
+function requireAll(requireContext: __WebpackModuleApi.RequireContext) {
   return requireContext.keys().map(requireContext);
 }
 

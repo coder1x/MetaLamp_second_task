@@ -6,6 +6,7 @@ $color-checkbox-border: $Dark-Shade-25;
 $color-checkbox-hover: $Purple;
 $color-checkbox-rich: $Dark-Shade-75;
 $color-border-focus: $Dark-Shade-100;
+$color-focus: $Dark-Shade-100;
 
 .checkbox-list {
   &__header {
@@ -61,13 +62,18 @@ $color-border-focus: $Dark-Shade-100;
 
   &__input {
     position: absolute;
-    appearance: none;
+    top: 8px;
+    left: 7px;
+    height: 1px;
+    width: 6px;
+    z-index: 0;
     border: 0;
     padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  }
+
+  &__input:focus {
+    outline: 2px solid $color-focus;
+    outline-offset: 12px;
   }
 
   &__bef {

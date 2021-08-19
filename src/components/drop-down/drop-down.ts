@@ -10,11 +10,11 @@ class dropDown {
 
   inputEl: HTMLInputElement;
   private imgClass: string;
-  private selectEl: Element;
+  private selectEl: HTMLInputElement;
   clearBut: Element;
   private applyClass: Element;
   elem: Element;
-  private items: any;
+  private items: HTMLElement[];
   defoultText: string;
   valMas: HTMLElement[];
   declensions: string[][];
@@ -37,11 +37,11 @@ class dropDown {
   }
 
   private getElem(param: optE) {
-    let elem: any;
+    let elem: HTMLElement[] | Element;
     let dom = param.dom ?? this.elem;
     let name = this.className + param.str;
     if (param.fl) {
-      elem = dom.querySelectorAll(name);
+      elem = [...dom.querySelectorAll<HTMLElement>(name)];
     }
     else {
       elem = dom.querySelector(name);
@@ -52,9 +52,12 @@ class dropDown {
   private setDomElem() {
     const valueClass = this.className + '__value';
 
-    this.applyClass = this.getElem({ str: '__button-apply' });
-    this.clearBut = this.getElem({ str: '__button-clear' });
-    this.items = this.getElem({ str: '__select-item', fl: true });
+    this.applyClass = this.getElem({ str: '__button-apply' }) as HTMLElement;
+    this.clearBut = this.getElem({ str: '__button-clear' }) as HTMLElement;
+    this.items = this.getElem({
+      str: '__select-item',
+      fl: true
+    }) as HTMLElement[];
 
     this.valMas = [];
     for (let item of this.items) {
@@ -63,16 +66,25 @@ class dropDown {
       this.readingAttributes(item);
     }
 
-    this.inputEl = this.getElem({ str: '__input' });
+    this.inputEl = this.getElem({ str: '__input' }) as HTMLInputElement;
     this.defoultText = this.inputEl.placeholder;
-    this.selectEl = this.getElem({ str: '__select' });
+    this.selectEl = this.getElem({ str: '__select' }) as HTMLInputElement;
   }
 
 
   getСheckVal(item: Element) {
-    let minus = this.getElem({ str: '__minus', dom: item });
-    let value = this.getElem({ str: '__value', dom: item });
-    let plus = this.getElem({ str: '__plus', dom: item });
+    let minus = (this.getElem({
+      str: '__minus',
+      dom: item
+    }) as HTMLInputElement);
+    let value = (this.getElem({
+      str: '__value',
+      dom: item
+    }) as HTMLInputElement);
+    let plus = (this.getElem({
+      str: '__plus',
+      dom: item
+    }) as HTMLInputElement);
 
     const getModif = (str: string, str2: string) => {
       return this.className.replace(/^\./, '') + str + str2;
@@ -123,7 +135,7 @@ class dropDown {
     });
 
 
-    const keydown = (e: any) => {
+    const inputKeydown = (e: KeyboardEvent) => {
       if (e.key == 'Escape') {
         e.preventDefault();
         this.toggle(true);
@@ -133,16 +145,18 @@ class dropDown {
       }
     };
 
-    this.selectEl.addEventListener('keydown', (e: any) => {
+    const selectKeydown = (e: KeyboardEvent) => {
       if (e.key == 'Escape') {
         e.preventDefault();
         this.toggle(true);
       }
-    });
-    this.inputEl.addEventListener('keydown', keydown);
+    };
+
+    this.selectEl.addEventListener('keydown', selectKeydown);
+    this.inputEl.addEventListener('keydown', inputKeydown);
 
     if (this.applyClass)
-      this.applyClass.addEventListener('click', (e: any) => {
+      this.applyClass.addEventListener('click', (e: Event) => {
         e.preventDefault();
         const defoultText = this.inputEl.value == this.defoultText;
         const inputClear = defoultText || !this.inputEl.value;
@@ -156,15 +170,16 @@ class dropDown {
       });
 
     if (this.clearBut)
-      this.clearBut.addEventListener('click', (e: any) => {
+      this.clearBut.addEventListener('click', (e: Event) => {
         e.preventDefault();
         this.resetValue();
       });
 
 
     const eventDoc = (event: string) => {
-      document.addEventListener(event, (e: any) => {
-        const domEl = e.target.closest(this.className);
+      document.addEventListener(event, (e: Event) => {
+        const target = e.target as HTMLElement;
+        const domEl = target.closest(this.className);
         if (domEl != this.elem)
           this.toggle(true);
       });
@@ -215,12 +230,13 @@ class dropDown {
 
   private setActionSelect() {
 
-    const funAct = (e: any) => {
+    const funAct = (e: Event) => {
       e.preventDefault();
-      let liEl = e.currentTarget;
-      let target = e.target;
+      let liEl = e.currentTarget as HTMLElement;
+      let target = e.target as HTMLElement;
 
-      const valueEl = liEl.querySelector(this.className + '__value');
+      const valueEl =
+        liEl.querySelector(this.className + '__value') as HTMLElement;
       const minusEl = target.closest(this.className + '__minus');
       const plusEl = target.closest(this.className + '__plus');
 
@@ -232,7 +248,7 @@ class dropDown {
         ++num;
       }
 
-      valueEl.innerText = num;
+      valueEl.innerText = String(num);
       this.getСheckVal(liEl);
       this.setInput();
     };

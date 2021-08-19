@@ -5,6 +5,7 @@ $color-toggle-label: $Dark-Shade-75;
 $color-toggle-bk: $Dark-Shade-25;
 $color-toggle-border: $Purple;
 $color-border-focus: $Dark-Shade-100;
+$color-focus: $Dark-Shade-100;
 
 .toggle-buttons {
   &__header {
@@ -27,13 +28,18 @@ $color-border-focus: $Dark-Shade-100;
 
   &__input {
     position: absolute;
-    appearance: none;
+    top: 10px;
+    left: 8px;
+    height: 1px;
+    width: 24px;
+    z-index: 0;
     border: 0;
     padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  }
+
+  &__input:focus {
+    outline: 2px solid $color-focus;
+    outline-offset: 12px;
   }
 
   &__tog {
