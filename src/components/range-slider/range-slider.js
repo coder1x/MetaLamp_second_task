@@ -15,7 +15,9 @@ class rangeSlider {
   setAttrDot(data, fl = false) {
     this.dotFrom = this.elem.getElementsByClassName('irs-handle from')[0];
     this.dotTo = this.elem.getElementsByClassName('irs-handle to')[0];
+    const lineEl = this.elem.getElementsByClassName('irs-line')[0];
 
+    lineEl.setAttribute('tabindex', '-2');
     this.dotFrom.setAttribute('tabindex', '0');
     this.dotTo.setAttribute('tabindex', '0');
 
