@@ -33,7 +33,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: `${PATHS.assets}fonts\\`,
-          publicPath: DP.isMulti ? 'assets/fonts/' : '/assets/fonts/',
+          publicPath: DP.isMulti ? '../fonts/' : '/assets/fonts/',
         },
       },
 
