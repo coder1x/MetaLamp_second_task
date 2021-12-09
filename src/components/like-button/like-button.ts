@@ -9,16 +9,37 @@ class likeButton {
   likes: number;
   private flag: boolean;
   private strKey: string;
+  nameClass: string;
 
-  // eslint-disable-next-line no-unused-vars
-  constructor(public nameClass: string, elem: HTMLElement) {
+
+  constructor(nameClass: string, elem: HTMLElement) {
+    this.nameClass = nameClass;
     this.strKey = String(elem.offsetLeft + elem.offsetTop);
     this.likeEl = elem;
-    this.setDom();
+    this.init();
+  }
 
+
+  getLikes() {
+    return Number(this.valueEl.innerText);
+  }
+
+  toggleLike() {
+    if (this.flag) { // ставили лайк
+      this.setLikes(--this.likes, '');
+      this.flag = false;
+    } else { // не ставили
+      this.setLikes(++this.likes);
+      this.flag = true;
+    }
+
+    this.toggleStyle();
+  }
+
+  private init() {
+    this.setDom();
     this.likes = this.getLikes() || 0; // получаем начальное значение
     this.flag = Boolean(localStorage.getItem(this.strKey)) || false; // проверяем ставили мы лайк или нет
-
     this.toggleStyle();
     this.setAction();
   }
@@ -27,10 +48,6 @@ class likeButton {
     this.iconEl = this.likeEl.querySelector(this.nameClass + '__icon');
     this.valueEl = this.likeEl.querySelector(this.nameClass + '__value');
     this.linkEl = this.likeEl.querySelector(this.nameClass + '__like');
-  }
-
-  getLikes() {
-    return Number(this.valueEl.innerText);
   }
 
   private setLikes(like: number, fl = 'true') {
@@ -51,18 +68,6 @@ class likeButton {
         require('@com/like-button/img/like.svg').default;
       this.likeEl.classList.remove(name);
     }
-  }
-
-  toggleLike() {
-    if (this.flag) { // ставили лайк
-      this.setLikes(--this.likes, '');
-      this.flag = false;
-    } else { // не ставили
-      this.setLikes(++this.likes);
-      this.flag = true;
-    }
-
-    this.toggleStyle();
   }
 
   private setAction() {

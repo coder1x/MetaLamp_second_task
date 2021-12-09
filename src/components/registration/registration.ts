@@ -24,13 +24,12 @@ class registration {
     return this.elem.querySelector(selector);
   }
 
-  setDom() {
+  private setDom() {
     const buttonS = this.className + '__submit-wrap button';
     this.buttonEl = this.elem.querySelector(buttonS);
   }
 
-  validation() {
-
+  private validation() {
     const messageErr = (str: string, len: number) => {
 
       function check(result: boolean, mess: string) {
@@ -75,7 +74,7 @@ class registration {
     return true;
   }
 
-  setAction() {
+  private setAction() {
     this.buttonEl.addEventListener('click', (e: Event) => {
       if (!this.validation())
         e.preventDefault();

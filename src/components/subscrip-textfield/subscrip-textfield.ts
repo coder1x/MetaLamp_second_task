@@ -1,26 +1,25 @@
 import './subscrip-textfield.scss';
-import { validationEmail } from '../validation-email/validation-email';
+import { ValidationEmail } from '../validation-email/validation-email';
 
 
-class subscriptionTextField {
+class SubscriptionTextField {
 
-  constructor(className: string, wraper: Element) {
+  input: HTMLInputElement;
+  link: Element;
+  private valid: ValidationEmail;
 
-    this.input = wraper.querySelector('input') as HTMLInputElement;
-    this.link = wraper.querySelector(className + '__link');
-
-    this.valid = new validationEmail({
+  constructor(className: string, wrapper: Element) {
+    this.input = wrapper.querySelector('input') as HTMLInputElement;
+    this.link = wrapper.querySelector(className + '__link');
+    this.valid = new ValidationEmail({
       elem: this.input
     });
 
     this.setActions();
   }
 
-  input: HTMLInputElement;
-  link: Element;
-  valid: validationEmail;
 
-  validEmail() {
+  private validEmail() {
     if (this.valid.validation()) { alert('Вы оформили подписку.'); }
     else {
       alert('Вы ввели неверный Email.');
@@ -53,7 +52,7 @@ function renderSubscrip(className: string) {
   let components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
-    objMas.push(new subscriptionTextField(className, elem));
+    objMas.push(new SubscriptionTextField(className, elem));
   }
   return objMas;
 }

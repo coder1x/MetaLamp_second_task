@@ -9,7 +9,15 @@ import './date-dropdown.scss';
 // "10/26/2020" - формат даты.
 
 
-class dateDropDown {
+class DateDropDown {
+
+  #clickElemFl = false;
+  #classClear = '';
+  #flag = false;
+  #flTog = false;
+  #flInFilter = false;
+  #masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
+    'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
   constructor(className, elem) {
 
@@ -23,14 +31,82 @@ class dateDropDown {
       this.setRange();
   }
 
-  #clickElemFl = false;
-  #classClear = '';
-  #flag = false;
-  #flTog = false;
-  #flInFilter = false;
-  #masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
-    'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
+
+  setRange() {
+    this.#flag = true;
+
+    function getDate(date, fl = false) {
+      let mas = date.split('.');
+      const dateText = mas[1] + '/' + mas[0] + '/' + mas[2];
+      return !fl ? new Date(dateText) : dateText;
+    }
+
+    function trimDate(dateText) {
+      return dateText.trim().split(' ')[0];
+    }
+
+    if (this.flRange) {
+      const date1 = this.input1.value;
+      const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+      if (!regexp.test(date1)) return;
+      let date2 = this.input2.value;
+      this.$calendarObj.clear();
+      if (date2 == '') {
+        this.$calendarObj.selectDate(getDate(date1));
+      } else {
+        this.$calendarObj.selectDate([getDate(date1), getDate(date2)]);
+      }
+    } else {
+      const date = this.inputHidden.value;
+      this.$calendarObj.clear();
+      let mas = date.split('-');
+
+      if (mas.length < 2) return;
+      const leftValue = trimDate(mas[0]);
+      const rightValue = trimDate(mas[1]);
+
+      let dateOne = getDate(leftValue, true);
+      let dateTwo = getDate(rightValue, true);
+
+      let minOne = Date.parse(dateOne) / 1000 / 60;
+      let minTwo = Date.parse(dateTwo) / 1000 / 60;
+
+      if (minOne > minTwo) {
+        let mas = dateTwo.split('.');
+        let num = Number(mas[2]) + 1;
+        dateTwo = mas[0] + '/' + mas[1] + '/' + num;
+      }
+
+      this.#flInFilter = true;
+      this.$calendarObj.selectDate([new Date(dateOne),
+      new Date(dateTwo)]);
+      this.#flInFilter = false;
+    }
+  }
+
+  getVisible(elem) {
+    let display = window.getComputedStyle(elem, null)
+      .getPropertyValue('display');
+    return display === 'none' ? false : true;
+  }
+
+  toggleCal(fl = false) {
+    const nameModify = this.className.replace(/^\./, '') + '_visible';
+    const visible = this.getVisible(this.calendarWrap);
+    const objElem = this.elem.classList;
+    if (this.#flTog == fl && visible) {
+      objElem.remove(nameModify);
+
+      if (!this.flRange) {
+        this.input1.value = '';
+      }
+    }
+    else {
+      objElem.add(nameModify);
+    }
+    this.#flTog = fl;
+  }
 
   #setDomElem(className, elem) {
 
@@ -144,83 +220,6 @@ class dateDropDown {
 
   }
 
-
-
-  setRange() {
-    this.#flag = true;
-
-    function getDate(date, fl = false) {
-      let mas = date.split('.');
-      const dateText = mas[1] + '/' + mas[0] + '/' + mas[2];
-      return !fl ? new Date(dateText) : dateText;
-    }
-
-    function trimDate(dateText) {
-      return dateText.trim().split(' ')[0];
-    }
-
-    if (this.flRange) {
-      const date1 = this.input1.value;
-      const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
-      if (!regexp.test(date1)) return;
-      let date2 = this.input2.value;
-      this.$calendarObj.clear();
-      if (date2 == '') {
-        this.$calendarObj.selectDate(getDate(date1));
-      } else {
-        this.$calendarObj.selectDate([getDate(date1), getDate(date2)]);
-      }
-    } else {
-      const date = this.inputHidden.value;
-      this.$calendarObj.clear();
-      let mas = date.split('-');
-
-      if (mas.length < 2) return;
-      const leftValue = trimDate(mas[0]);
-      const rightValue = trimDate(mas[1]);
-
-      let dateOne = getDate(leftValue, true);
-      let dateTwo = getDate(rightValue, true);
-
-      let minOne = Date.parse(dateOne) / 1000 / 60;
-      let minTwo = Date.parse(dateTwo) / 1000 / 60;
-
-      if (minOne > minTwo) {
-        let mas = dateTwo.split('.');
-        let num = Number(mas[2]) + 1;
-        dateTwo = mas[0] + '/' + mas[1] + '/' + num;
-      }
-
-      this.#flInFilter = true;
-      this.$calendarObj.selectDate([new Date(dateOne),
-      new Date(dateTwo)]);
-      this.#flInFilter = false;
-    }
-  }
-
-  getVisible(elem) {
-    let display = window.getComputedStyle(elem, null)
-      .getPropertyValue('display');
-    return display === 'none' ? false : true;
-  }
-
-  toggleCal(fl = false) {
-    const nameModif = this.className.replace(/^\./, '') + '_visible';
-    const visible = this.getVisible(this.calendarWrap);
-    const objElem = this.elem.classList;
-    if (this.#flTog == fl && visible) {
-      objElem.remove(nameModif);
-
-      if (!this.flRange) {
-        this.input1.value = '';
-      }
-    }
-    else {
-      objElem.add(nameModif);
-    }
-    this.#flTog = fl;
-  }
-
   #validationRange(flShow = false) {
 
     function trimDate(dateText) {
@@ -313,12 +312,8 @@ class dateDropDown {
 
     const actionClick = (elem, fl) => {
       elem.addEventListener('click', () => {
-
         this.flClick = true;
         this.toggleCal(fl);
-
-        // if (this.getVisible(this.calendarWrap))
-        // 	e.target.blur();
       });
     };
 
@@ -328,8 +323,8 @@ class dateDropDown {
     const keydownX = (e) => {
       if (e.key == 'Escape') {
         e.preventDefault();
-        const nameModif = this.className.replace(/^\./, '') + '_visible';
-        this.elem.classList.remove(nameModif);
+        const nameModify = this.className.replace(/^\./, '') + '_visible';
+        this.elem.classList.remove(nameModify);
       }
     };
 
@@ -387,7 +382,7 @@ function renderComponent(className) {
   let components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
-    objMas.push(new dateDropDown(className, elem));
+    objMas.push(new DateDropDown(className, elem));
   }
   return objMas;
 }

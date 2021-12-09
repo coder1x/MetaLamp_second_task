@@ -15,7 +15,7 @@ class dropDown {
   private applyClass: Element;
   elem: Element;
   private items: HTMLElement[];
-  defoultText: string;
+  defaultText: string;
   valMas: HTMLElement[];
   declensions: string[][];
   className: string;
@@ -23,11 +23,90 @@ class dropDown {
   private disPlus: boolean;
 
   constructor(className: string, component: Element) {
-
-    this.declensions = [];
     this.className = className;
     this.elem = component;
+    this.init();
+  }
 
+
+  getСheckVal(item: Element) {
+    let minus = (this.getElem({
+      str: '__minus',
+      dom: item
+    }) as HTMLInputElement);
+    let value = (this.getElem({
+      str: '__value',
+      dom: item
+    }) as HTMLInputElement);
+    let plus = (this.getElem({
+      str: '__plus',
+      dom: item
+    }) as HTMLInputElement);
+
+    const getModify = (str: string, str2: string) => {
+      return this.className.replace(/^\./, '') + str + str2;
+    };
+
+    let classM = getModify('__minus', '_disable');
+    let val = Number(value.innerText);
+
+    if (!val) {
+      minus.classList.add(classM);
+      minus.disabled = true;
+    } else {
+      minus.classList.remove(classM);
+      minus.disabled = false;
+    }
+
+    let maxVal = Number(plus.getAttribute('data-max'));
+    let classP = getModify('__plus', '_disable');
+    if (val >= maxVal) {
+      plus.classList.add(classP);
+      this.disPlus = true;
+      plus.disabled = true;
+    } else {
+      plus.classList.remove(classP);
+      this.disPlus = false;
+      plus.disabled = false;
+    }
+  }
+
+  resetValue() {
+    this.valMas.map((item: HTMLElement) => item.innerText = '0');
+    this.inputEl.value = this.defaultText;
+
+    for (let item of this.items) { this.getСheckVal(item); }
+
+    if (this.clearBut)
+      this.toggleModify(this.clearBut, '__button-clear_visible');
+  }
+
+  declOfNum(number: number, words: string[]) {
+    return words[(number % 100 > 4 &&
+      number % 100 < 20) ? 2 :
+      [2, 0, 1, 1, 1, 2][(number % 10 < 5) ?
+        number % 10 : 5]];
+  }
+
+  getMapValue() {
+    let fields = new Map();
+    for (let i = 0; i < this.valMas.length; i++) {
+      let typeText = this.declensions[i].join(',');
+      let value = Number(this.valMas[i].innerText);
+      if (fields.has(typeText)) {
+        let oldValue = fields.get(typeText);
+        let newValue = oldValue + value;
+        fields.set(typeText, newValue);
+      }
+      else {
+        fields.set(typeText, value);
+      }
+    }
+    return fields;
+  }
+
+  private init() {
+    this.declensions = [];
     this.flClick = false;
     this.disPlus = false;
 
@@ -67,51 +146,8 @@ class dropDown {
     }
 
     this.inputEl = this.getElem({ str: '__input' }) as HTMLInputElement;
-    this.defoultText = this.inputEl.placeholder;
+    this.defaultText = this.inputEl.placeholder;
     this.selectEl = this.getElem({ str: '__select' }) as HTMLInputElement;
-  }
-
-
-  getСheckVal(item: Element) {
-    let minus = (this.getElem({
-      str: '__minus',
-      dom: item
-    }) as HTMLInputElement);
-    let value = (this.getElem({
-      str: '__value',
-      dom: item
-    }) as HTMLInputElement);
-    let plus = (this.getElem({
-      str: '__plus',
-      dom: item
-    }) as HTMLInputElement);
-
-    const getModif = (str: string, str2: string) => {
-      return this.className.replace(/^\./, '') + str + str2;
-    };
-
-    let classM = getModif('__minus', '_disable');
-    let val = Number(value.innerText);
-
-    if (!val) {
-      minus.classList.add(classM);
-      minus.disabled = true;
-    } else {
-      minus.classList.remove(classM);
-      minus.disabled = false;
-    }
-
-    let maxVal = Number(plus.getAttribute('data-max'));
-    let classP = getModif('__plus', '_disable');
-    if (val >= maxVal) {
-      plus.classList.add(classP);
-      this.disPlus = true;
-      plus.disabled = true;
-    } else {
-      plus.classList.remove(classP);
-      this.disPlus = false;
-      plus.disabled = false;
-    }
   }
 
   private readingAttributes(elem: Element) {
@@ -158,8 +194,8 @@ class dropDown {
     if (this.applyClass)
       this.applyClass.addEventListener('click', (e: Event) => {
         e.preventDefault();
-        const defoultText = this.inputEl.value == this.defoultText;
-        const inputClear = defoultText || !this.inputEl.value;
+        const defaultText = this.inputEl.value == this.defaultText;
+        const inputClear = defaultText || !this.inputEl.value;
 
         if (inputClear) {
           alert('Выберите количество гостей.');
@@ -199,32 +235,14 @@ class dropDown {
   private toggle(flag = false) {
     const UlVisible: boolean = this.getVisible(this.selectEl);
     let flagVis = !UlVisible && !flag;
-    this.toggleModif(this.elem, '_visible', flagVis);
+    this.toggleModify(this.elem, '_visible', flagVis);
   }
 
 
-  private toggleModif(elem: Element, modif: string, flag = false) {
-    let clearName = this.className.replace(/^\./, '') + modif;
+  private toggleModify(elem: Element, modify: string, flag = false) {
+    let clearName = this.className.replace(/^\./, '') + modify;
     let objClass = elem.classList;
     flag ? objClass.add(clearName) : objClass.remove(clearName);
-  }
-
-
-  resetValue() {
-    this.valMas.map((item: HTMLElement) => item.innerText = '0');
-    this.inputEl.value = this.defoultText;
-
-    for (let item of this.items) { this.getСheckVal(item); }
-
-    if (this.clearBut)
-      this.toggleModif(this.clearBut, '__button-clear_visible');
-  }
-
-  declOfNum(number: number, words: string[]) {
-    return words[(number % 100 > 4 &&
-      number % 100 < 20) ? 2 :
-      [2, 0, 1, 1, 1, 2][(number % 10 < 5) ?
-        number % 10 : 5]];
   }
 
 
@@ -259,23 +277,6 @@ class dropDown {
   }
 
 
-  getMapValue() {
-    let fields = new Map();
-    for (let i = 0; i < this.valMas.length; i++) {
-      let typeText = this.declensions[i].join(',');
-      let value = Number(this.valMas[i].innerText);
-      if (fields.has(typeText)) {
-        let oldValue = fields.get(typeText);
-        let newValue = oldValue + value;
-        fields.set(typeText, newValue);
-      }
-      else {
-        fields.set(typeText, value);
-      }
-    }
-    return fields;
-  }
-
   private setInput() {
     let text = '';
     let mergeText = (
@@ -309,7 +310,7 @@ class dropDown {
       placeholder: string) => {
 
       if (this.clearBut) {
-        this.toggleModif(
+        this.toggleModify(
           this.clearBut,
           '__button-clear_visible',
           visibility);
@@ -323,7 +324,7 @@ class dropDown {
     if (text) {
       setData(true, text, text);
     } else {
-      setData(false, '', this.defoultText);
+      setData(false, '', this.defaultText);
     }
   }
 }

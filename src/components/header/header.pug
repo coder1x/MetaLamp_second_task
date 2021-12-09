@@ -5,14 +5,14 @@ mixin header(options)
   -
     let current = options.current ?? ''
     let type = options.type ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let classComp = 'header'
     let className = classComp
     if(current){
       current = classComp+'__link_current'}
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   header(class=className)
@@ -63,13 +63,13 @@ mixin header(options)
             text:'Войти',
             link:'https://test/test',
             type:'link',
-            modif:['link-border','header']
+            modify:['link-border','header']
           })
         div(class=classComp+'__registration-wrap')
           +buttons({
             text:'зарегистрироваться',
             link:'https://test/test',
             type:'link',
-            modif:['link','header']
+            modify:['link','header']
           })
       -}

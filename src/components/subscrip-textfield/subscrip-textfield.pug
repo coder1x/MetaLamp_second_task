@@ -2,13 +2,13 @@ mixin subscrip-textfield(options)
   -
     let label = options.label ?? ''
     let value = options.value ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let flLabel = options.flLabel ?? false
     let classComp = 'subscrip-textfield'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   div(class=className)

@@ -7,14 +7,14 @@ mixin drop-down(options)
     let name = options.name ?? ''
     let masWord = options.masWord ?? [[]]
     let maxValue = options.maxValue ?? []
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let button = options.button ?? false
     let flLabel = options.flLabel ?? false
     let classComp = 'drop-down'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   div(class=className)
@@ -38,12 +38,12 @@ mixin drop-down(options)
             +buttons({
               text:'очистить',
               type:'button',
-              modif:['text']
+              modify:['text']
                   })
           div(class=classComp+'__button-apply') 
             +buttons({
               text:'применить',
               type:'button',
-              modif:['text']
+              modify:['text']
                   })
         -}

@@ -16,7 +16,7 @@ block content
           +date-dropdown({
             label: ['даты пребывания в отеле'],
             value: '19.08.2021 - 23.08.2021',
-            modif: 'filter',
+            modify: 'filter',
             filter: true
           })
         .search-room-filter__guests-wrap
@@ -48,7 +48,7 @@ block content
             masWord:masWord,
             legend:'правила дома',
             click: true,
-            modif:'visibleBut'
+            modify:'visibleBut'
           })
         .search-room-filter__availability-wrap
           - 
@@ -63,7 +63,7 @@ block content
             masText:masText,
             legend:'доступность',
             click: true,
-            modif:'visibleBut',
+            modify:'visibleBut',
             class:'checkbox-list_rich'
           })
         .search-room-filter__facilities-wrap
@@ -79,7 +79,7 @@ block content
             name:'Rooms',
             masWord:masWord,
             maxValue:['5','8','4'],
-            modif:'sharp'
+            modify:'sharp'
           })
         .search-room-filter__additional-amenities-wrap
           - 
@@ -95,7 +95,7 @@ block content
         +buttons({
             text:'Фильтр номеров',
             type:'btn-popup',
-            modif:['link']
+            modify:['link']
           })
       section.search-room-cards
         h1.search-room-cards__header Номера, которые мы для вас подобрали

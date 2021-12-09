@@ -5,12 +5,12 @@ mixin comment(options)
     let name = options.name ?? ''
     let date = options.date ?? ''
     let message = options.message ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let classComp = 'comment'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   article(class=className)

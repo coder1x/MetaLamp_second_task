@@ -4,13 +4,13 @@ include ../buttons/buttons.pug
 mixin sign-in(options)
   -
     let header = options.header ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let flLabel = options.flLabel ?? false
     let classComp = 'sign-in'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   article(class=className)
@@ -38,7 +38,7 @@ mixin sign-in(options)
           +buttons({
             text:'войти',
             type:'submit',
-            modif:['submit']
+            modify:['submit']
           })
       div(class=classComp+'__registration-wrap')
         p(class=classComp+'__text-reg') Нет аккаунта на Toxin ?
@@ -46,5 +46,5 @@ mixin sign-in(options)
           text:'Создать',
           link:'https://test/test',
           type:'link',
-          modif:['link-border']
+          modify:['link-border']
         })

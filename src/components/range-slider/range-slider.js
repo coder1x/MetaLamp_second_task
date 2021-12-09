@@ -3,16 +3,18 @@ import './range-slider.scss';
 class rangeSlider {
 
   constructor(className, elem) {
-
     this.className = className;
     this.elem = elem;
-    this.dotFocus = '';
-
-    this.setDomElem();
-    this.createRangeSlider();
+    this.init();
   }
 
-  setAttrDot(data, fl = false) {
+  init() {
+    this.dotFocus = '';
+    this.#setDomElem();
+    this.#createRangeSlider();
+  }
+
+  #setAttrDot(data, fl = false) {
     this.dotFrom = this.elem.getElementsByClassName('irs-handle from')[0];
     this.dotTo = this.elem.getElementsByClassName('irs-handle to')[0];
     const lineEl = this.elem.getElementsByClassName('irs-line')[0];
@@ -29,10 +31,48 @@ class rangeSlider {
         this.dotTo.focus();
     }
 
-    this.setActionsDot(data);
+    this.#setActionsDot(data);
   }
 
-  setActionsDot({ from, to, min, max }) {
+  #setDomElem() {
+    const classVal = this.className + '__value';
+    this.valueEl = this.elem.querySelector(classVal);
+  }
+
+  #createRangeSlider() {
+    const setRange = ({ from, to }) => {
+      const numFrom = from.toLocaleString();
+      const numTo = to.toLocaleString();
+      const range = numFrom + '₽ - ' + numTo + '₽';
+      this.valueEl.innerText = range;
+    };
+
+    this.$myRange = $('.range-slider__input').ionRangeSlider({
+      type: 'double',
+      //min: 0,
+      step: 1,
+      // eslint-disable-next-line camelcase
+      hide_min_max: true,
+      // eslint-disable-next-line camelcase
+      hide_from_to: true,
+
+      onUpdate: (data) => {
+        setRange(data);
+        this.#setAttrDot(data, true);
+      },
+
+      onStart: (data) => {
+        setRange(data);
+        this.#setAttrDot(data);
+      },
+
+      onChange: (data) => {
+        setRange(data);
+      }
+    }).data('ionRangeSlider');
+  }
+
+  #setActionsDot({ from, to, min, max }) {
 
     this.dotFrom.addEventListener('focus', () => {
       this.dotFocus = 'from';
@@ -67,47 +107,9 @@ class rangeSlider {
       movement(e, true);
     });
   }
-
-  setDomElem() {
-    const classVal = this.className + '__value';
-    this.valueEl = this.elem.querySelector(classVal);
-
-  }
-
-  createRangeSlider() {
-
-    const setRange = ({ from, to }) => {
-      const numFrom = from.toLocaleString();
-      const numTo = to.toLocaleString();
-      const range = numFrom + '₽ - ' + numTo + '₽';
-      this.valueEl.innerText = range;
-    };
-
-    this.$myRange = $('.range-slider__input').ionRangeSlider({
-      type: 'double',
-      //min: 0,
-      step: 1,
-      // eslint-disable-next-line camelcase
-      hide_min_max: true,
-      // eslint-disable-next-line camelcase
-      hide_from_to: true,
-
-      onUpdate: (data) => {
-        setRange(data);
-        this.setAttrDot(data, true);
-      },
-
-      onStart: (data) => {
-        setRange(data);
-        this.setAttrDot(data);
-      },
-
-      onChange: (data) => {
-        setRange(data);
-      }
-    }).data('ionRangeSlider');
-  }
 }
+
+
 
 function renderRangeSlider(className) {
   let components = document.querySelectorAll(className);

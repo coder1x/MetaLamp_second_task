@@ -74,7 +74,7 @@ html(lang='ru')
             +date-dropdown({
               label: ['filter date dropdown'],
               value: '19.08.2021 - 23.08.2021',
-              modif: 'filter',
+              modify: 'filter',
               filter: true
             })
 
@@ -98,7 +98,7 @@ html(lang='ru')
               name:'Rooms',
               masWord:masWord,
               maxValue:['5','8','4'],
-              modif:'sharp'
+              modify:'sharp'
             })
           
           .colomn-left__checkbox-list
@@ -138,7 +138,7 @@ html(lang='ru')
                   masWord:masWord,
                   legend:'Checkbox Buttons',
                   click: true,
-                  modif:'visibleBut'
+                  modify:'visibleBut'
                 })
 
               .colomn-center__radio-buttons
@@ -174,7 +174,7 @@ html(lang='ru')
                   masText:masText,
                   legend:'rich Checkbox Buttons',
                   click: true,
-                  modif:'visibleBut',
+                  modify:'visibleBut',
                   class:'checkbox-list_rich'
                 })
 
@@ -189,26 +189,26 @@ html(lang='ru')
                   text:'CLICK ME',
                   link:'https://test/test',
                   type:'link',
-                  modif:['link']
+                  modify:['link']
                 })
               .colomn-right__link-border
                 +buttons({
                   text:'CLICK ME',
                   link:'https://test/test',
                   type:'link',
-                  modif:['link-border']
+                  modify:['link-border']
                 })
               .colomn-right__button-text
                 +buttons({
                   text:'CLICK ME',
                   type:'button',
-                  modif:['text']
+                  modify:['text']
                 })
               .colomn-right__submit
                 +buttons({
                   text:'перейти к оплате',
                   type:'submit',
-                  modif:['submit']
+                  modify:['submit']
                 })
               .colomn-right__pagination
                 +pagination({

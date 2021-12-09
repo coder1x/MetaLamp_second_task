@@ -6,21 +6,33 @@ interface optE {
   dom?: Element
 }
 
-class сheckboxList {
+class CheckBoxList {
 
   wrap: HTMLElement;
   headerEl: HTMLElement;
   imgEl: HTMLElement;
   keyF: boolean;
+  className: string;
+  elem: Element;
 
+  constructor(className: string, elem: Element) {
+    this.className = className;
+    this.elem = elem;
+    this.init();
+  }
 
-  // eslint-disable-next-line no-unused-vars
-  constructor(public className: string, public elem: Element) {
-
+  init() {
     this.keyF = false;
-
     this.setDomElem();
     this.setActions();
+  }
+
+  toggleVis() {
+    let display = window.getComputedStyle(this.wrap, null)
+      .getPropertyValue('display');
+    const flag = display == 'block' ? false : true;
+
+    this.toggleModify(this.elem, '_visible', flag);
   }
 
   private getElem(param: optE) {
@@ -42,16 +54,8 @@ class сheckboxList {
     this.imgEl = (this.getElem({ str: '__tip' }) as HTMLElement);
   }
 
-  toggleVis() {
-    let display = window.getComputedStyle(this.wrap, null)
-      .getPropertyValue('display');
-    const flag = display == 'block' ? false : true;
-
-    this.toggleModif(this.elem, '_visible', flag);
-  }
-
-  private toggleModif(elem: Element, modif: string, flag = false) {
-    let clearName = this.className.replace(/^\./, '') + modif;
+  private toggleModify(elem: Element, modify: string, flag = false) {
+    let clearName = this.className.replace(/^\./, '') + modify;
     let objClass = elem.classList;
     flag ? objClass.add(clearName) : objClass.remove(clearName);
   }
@@ -71,7 +75,7 @@ class сheckboxList {
           this.toggleVis();
         } else if (e.key == 'Escape') {
           e.preventDefault();
-          this.toggleModif(this.elem, '_visible', false);
+          this.toggleModify(this.elem, '_visible', false);
         }
       });
     }
@@ -84,7 +88,7 @@ function renderCheckboxList(className: string) {
   let components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
-    objMas.push(new сheckboxList(className, elem));
+    objMas.push(new CheckBoxList(className, elem));
   }
   return objMas;
 }

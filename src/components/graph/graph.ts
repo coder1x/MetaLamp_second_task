@@ -16,19 +16,7 @@ class Graph {
     }
   }
 
-  setDom() {
-
-    this.elem = document.querySelector(this.className);
-    if (!this.elem) return false;
-
-    this.canvas = this.elem.querySelector(this.className + '__convas');
-    this.ctx = this.canvas.getContext('2d');
-    return true;
-  }
-
-
   getColors() {
-
     let center = { 'x': this.canvas.width, 'y': this.canvas.height };
     let radiusQ = 180;
 
@@ -111,11 +99,6 @@ class Graph {
       if (number) {
         data.push(number);
         this.nameLine.push(name);
-
-        // item.setAttribute(
-        // 	'aria-label',
-        // 	'проголосовали ' + item.innerHTML + ' ' + String(number)
-        // );
       }
     }
 
@@ -123,7 +106,19 @@ class Graph {
     return data.reverse();
   }
 
-  buildGraph() {
+
+  private setDom() {
+
+    this.elem = document.querySelector(this.className);
+    if (!this.elem) return false;
+
+    this.canvas = this.elem.querySelector(this.className + '__canvas');
+    this.ctx = this.canvas.getContext('2d');
+    return true;
+  }
+
+
+  private buildGraph() {
 
     // ----------------- options ---------------------
     const scaling = 2;

@@ -6,13 +6,13 @@ mixin booking(options)
   -
     let number = options.number ?? ''
     let price = options.price ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let lux = options.lux ?? false
     let classComp = 'booking'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   article(class=className)
@@ -67,5 +67,5 @@ mixin booking(options)
         +buttons({
           text:'забронировать',
           type:'submit',
-          modif:['submit']
+          modify:['submit']
         })

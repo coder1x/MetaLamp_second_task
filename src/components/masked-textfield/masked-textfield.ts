@@ -13,7 +13,6 @@ class maskedTextField {
   private temp: string;
 
   constructor(options: opt) {
-
     this.className = options.className;
     this.message = options.message;
     this.temp = '';

@@ -3,14 +3,14 @@ mixin checkbox-list(options)
     let masWord = options.masWord ?? []
     let masText = options.masText ?? []
     let legend = options.legend ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let flLabel = options.flLabel ?? false
     let click = options.click ?? false
     let classComp = 'checkbox-list'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   div(class=className)

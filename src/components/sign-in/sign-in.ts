@@ -13,7 +13,7 @@ class signIn {
     this.setAction();
   }
 
-  setDom(elem: Element) {
+  private setDom(elem: Element) {
     const email = this.className + '__email-wrap input';
     const pass = this.className + '__pass-wrap input';
     const submit = this.className + '__button-wrap button';
@@ -23,7 +23,7 @@ class signIn {
     this.buttonEl = elem.querySelector(submit);
   }
 
-  validation() {
+  private validation() {
     if (!this.emailInputs.value) {
       alert('Введите Email');
       return false;
@@ -36,7 +36,7 @@ class signIn {
     return true;
   }
 
-  setAction() {
+  private setAction() {
     this.buttonEl.addEventListener('click', (e: Event) => {
       if (!this.validation())
         e.preventDefault();

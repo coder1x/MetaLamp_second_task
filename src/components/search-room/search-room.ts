@@ -9,13 +9,12 @@ class searchRoom {
   buttonEl: Element;
 
   constructor(className: string, elem: Element) {
-
     this.className = className;
     this.setDom(elem);
     this.setAction();
   }
 
-  setDom(elem: Element) {
+  private setDom(elem: Element) {
     const date = this.className + '__date-wrap input';
     const guests = this.className + '__dropdown-wrap input';
     const submit = this.className + '__button-wrap button';
@@ -25,7 +24,7 @@ class searchRoom {
     this.buttonEl = elem.querySelector(submit);
   }
 
-  validDate() {
+  private validDate() {
     let input1 = this.dateInputs[0].value.length;
     let input2 = this.dateInputs[1].value.length;
 
@@ -37,7 +36,7 @@ class searchRoom {
     return false;
   }
 
-  validGuests() {
+  private validGuests() {
     const value = this.guestsInput.value;
     const filled = value && value != 'Сколько гостей';
 
@@ -47,7 +46,7 @@ class searchRoom {
     return false;
   }
 
-  messageErr() {
+  private messageErr() {
     if (!this.validDate()) {
       alert('Выберите дату.');
       return false;
@@ -60,7 +59,7 @@ class searchRoom {
     return true;
   }
 
-  setAction() {
+  private setAction() {
     this.buttonEl.addEventListener('click', (e: Event) => {
       if (!this.messageErr()) {
         e.preventDefault();

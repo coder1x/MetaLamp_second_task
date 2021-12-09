@@ -20,66 +20,12 @@ class slider {
   constructor(className: string, elem: Element) {
     this.className = className;
     this.elem = elem;
-    this.startSlider();
+    this.init();
   }
 
   getElement(str: string): HTMLElement {
     const selector = this.className + '__' + str + '-wrap';
     return this.elem.querySelector(selector);
-  }
-
-  startSlider() {
-    this.indexS = 0;
-    this.indexDot = 0;
-    this.swipe = false;
-    this.timeS = 0;
-    this.setDom();
-    this.createDot();
-    this.paintDot();
-    this.setAction();
-    this.setActionSwipe();
-  }
-
-  setDom() {
-    const slide = this.className + '__slide';
-    this.slidesEl = [...this.elem.querySelectorAll<HTMLElement>(slide)];
-
-    this.dotEl = this.getElement('dot');
-    this.prevEl = this.getElement('prev');
-    this.nextEl = this.getElement('next');
-    this.sliderWrap = this.getElement('slider');
-    this.linkSlide = this.elem.querySelector(this.className + '__link');
-
-  }
-
-  private getVisible(elem: Element) {
-    let opacity = window.getComputedStyle(elem, null)
-      .getPropertyValue('opacity');
-    return opacity === '0' ? false : true;
-  }
-
-  private toggle(slide: Element, fl = false) {
-    //const fl: boolean = this.getVisible(slide);
-    const prefics = '__slide' + '_visible';
-    const clearName = this.className.replace(/^\./, '') + prefics;
-
-    let objClass = slide.classList;
-    !fl ? objClass.add(clearName) : objClass.remove(clearName);
-  }
-
-  paintDot() {
-    const dotCl = this.className + '__dot';
-    let modif = dotCl + '_paint';
-    modif = modif.replace(/^\./, '');
-    let dots = this.elem.querySelectorAll(dotCl);
-    this.indexDot;
-
-    let objClass = dots[this.indexDot].classList;
-    objClass.remove(modif); // удаляем модификатор с текущей точки
-
-    objClass = dots[this.indexS].classList;
-    objClass.add(modif); // ставим модификатор
-    this.indexDot = this.indexS;
   }
 
   setVisible(index: number) {
@@ -92,7 +38,58 @@ class slider {
     }
   }
 
-  createDot() {
+  private init() {
+    this.indexS = 0;
+    this.indexDot = 0;
+    this.swipe = false;
+    this.timeS = 0;
+    this.setDom();
+    this.createDot();
+    this.paintDot();
+    this.setAction();
+    this.setActionSwipe();
+  }
+
+  private setDom() {
+    const slide = this.className + '__slide';
+    this.slidesEl = [...this.elem.querySelectorAll<HTMLElement>(slide)];
+    this.dotEl = this.getElement('dot');
+    this.prevEl = this.getElement('prev');
+    this.nextEl = this.getElement('next');
+    this.sliderWrap = this.getElement('slider');
+    this.linkSlide = this.elem.querySelector(this.className + '__link');
+  }
+
+  private getVisible(elem: Element) {
+    let opacity = window.getComputedStyle(elem, null)
+      .getPropertyValue('opacity');
+    return opacity === '0' ? false : true;
+  }
+
+  private toggle(slide: Element, fl = false) {
+    const prefix = '__slide' + '_visible';
+    const clearName = this.className.replace(/^\./, '') + prefix;
+
+    let objClass = slide.classList;
+    !fl ? objClass.add(clearName) : objClass.remove(clearName);
+  }
+
+  private paintDot() {
+    const dotCl = this.className + '__dot';
+    let modify = dotCl + '_paint';
+    modify = modify.replace(/^\./, '');
+    let dots = this.elem.querySelectorAll(dotCl);
+    this.indexDot;
+
+    let objClass = dots[this.indexDot].classList;
+    objClass.remove(modify); // удаляем модификатор с текущей точки
+
+    objClass = dots[this.indexS].classList;
+    objClass.add(modify); // ставим модификатор
+    this.indexDot = this.indexS;
+  }
+
+  private createDot() {
     const classN = this.className.replace(/^\./, '') + '__dot';
 
     for (let i = 0; i < this.slidesEl.length; i++) {
@@ -104,7 +101,7 @@ class slider {
   }
 
 
-  setAction() {
+  private setAction() {
 
     this.prevEl.addEventListener('click', () => {
       if (this.indexS > 0) {
@@ -143,10 +140,8 @@ class slider {
   }
 
 
-  setActionSwipe() {
-
+  private setActionSwipe() {
     let xyDown: number[] = [];
-
     this.linkSlide.addEventListener('focus', () => {
 
       if (this.swipe) {

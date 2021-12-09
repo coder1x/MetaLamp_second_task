@@ -20,14 +20,6 @@ class headerMenu {
     this.startMenu();
   }
 
-  private startMenu() {
-    this.showElem = [];
-    this.showTip = [];
-    this.setDom();
-    this.setActions();
-  }
-
-
   getElements(str: string): HTMLElement[] {
     const selector = this.className + '__' + str + '-down';
     return [...this.elem.querySelectorAll<HTMLElement>(selector)];
@@ -36,6 +28,24 @@ class headerMenu {
   getElement(str: string): HTMLElement {
     const selector = this.className + '__' + str;
     return this.elem.querySelector(selector);
+  }
+
+  closeAll() {
+    if (this.showElem.length) {
+      this.showElem.map((elem) => {
+        this.closeUl(elem);
+      });
+    }
+    this.showElem = [];
+
+    this.closeTip();
+  }
+
+  private startMenu() {
+    this.showElem = [];
+    this.showTip = [];
+    this.setDom();
+    this.setActions();
   }
 
   private setDom() {
@@ -58,7 +68,7 @@ class headerMenu {
     return this.mapLinks.get(elem);
   }
 
-  private getModif() {
+  private getModify() {
     const selector = this.className + '__items-down_visible';
     return selector.replace(/^\./, '');
   }
@@ -85,7 +95,7 @@ class headerMenu {
     this.closeAll();
     const elem = this.items[index];
     this.rotateTip(this.tip[index], true);
-    elem.classList.add(this.getModif());
+    elem.classList.add(this.getModify());
     this.trackMouse(elem);
     this.showElem.push(elem);
   }
@@ -103,7 +113,7 @@ class headerMenu {
     elem.addEventListener('mouseout', (e: MouseEvent) => {
       const rel = e.relatedTarget as HTMLElement;
       const target = e.currentTarget as HTMLElement;
-      let domEl = rel.closest('.' + this.getModif()) ?? false;
+      let domEl = rel.closest('.' + this.getModify()) ?? false;
 
       if (!domEl) {
         {
@@ -115,18 +125,7 @@ class headerMenu {
   }
 
   private closeUl(elem: Element) {
-    elem.classList.remove(this.getModif());
-  }
-
-  closeAll() {
-    if (this.showElem.length) {
-      this.showElem.map((elem) => {
-        this.closeUl(elem);
-      });
-    }
-    this.showElem = [];
-
-    this.closeTip();
+    elem.classList.remove(this.getModify());
   }
 
   private getVisible(elem: Element) {
@@ -135,7 +134,7 @@ class headerMenu {
     return display === 'none' ? false : true;
   }
 
-  private setModif(elem: Element, mod: string, fl = false) {
+  private setModify(elem: Element, mod: string, fl = false) {
     const select = '__' + mod + '_visible';
     const clearName = this.className.replace(/^\./, '') + select;
     let objClass = elem.classList;
@@ -144,8 +143,8 @@ class headerMenu {
 
   private toggle() {
     const navVisible: boolean = this.getVisible(this.nav);
-    this.setModif(this.nav, 'menu-wrap', navVisible);
-    this.setModif(this.spanBut, 'toggle-line', navVisible);
+    this.setModify(this.nav, 'menu-wrap', navVisible);
+    this.setModify(this.spanBut, 'toggle-line', navVisible);
   }
 
   private setActions() {
@@ -183,7 +182,7 @@ class headerMenu {
           const index = this.getIndex(currentEl);
           const elem = this.items[index];
 
-          if (elem.classList.contains(this.getModif())) {
+          if (elem.classList.contains(this.getModify())) {
             this.closeAll();
           }
           else {
@@ -201,7 +200,7 @@ class headerMenu {
 
     document.addEventListener('click', (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const domEl = target.closest('.' + this.getModif()) ?? false;
+      const domEl = target.closest('.' + this.getModify()) ?? false;
       if (!domEl) {
         this.closeAll();
       }
@@ -213,7 +212,7 @@ class headerMenu {
       const linkEl = target.closest(
         this.className + '__link-down'
       ) ?? false;
-      const ulEl = target.closest('.' + this.getModif()) ?? false;
+      const ulEl = target.closest('.' + this.getModify()) ?? false;
       if (!linkEl && !ulEl) { this.closeAll(); }
     });
   }

@@ -1,13 +1,13 @@
 mixin graph(options)
   -
     let label = options.label ?? ''
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let flLabel = options.flLabel ?? false
     let classComp = 'graph'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   div(class=className)
@@ -15,7 +15,7 @@ mixin graph(options)
       h2(class=classComp+'__header')= label
     -}
     div(class=classComp+'__wrapper')
-      canvas(class=classComp+'__convas' width='240' height='240')
+      canvas(class=classComp+'__canvas' width='240' height='240')
       ul(class=classComp+'__colors')
         li(class=classComp+'__colors-item' date-grade='130' date-name='excellent') Великолепно
         li(class=classComp+'__colors-item' date-grade='65' date-name='good') Хорошо

@@ -7,12 +7,12 @@ mixin room-card(options)
     let price = options.price ?? ''
     let reviews = options.reviews ?? ''
     let lux = options.lux ?? false
-    let modif = options.modif ?? ''
+    let modify = options.modify ?? ''
     let addClass = options.class ?? ''
     let classComp = 'room-card'
     let className = classComp
-    if(modif){
-    className += ' '+classComp+'_'+modif}
+    if(modify){
+    className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
   article(class=className)
