@@ -1,12 +1,19 @@
+/* eslint no-unused-vars: off */
 import '@styles/styles';
-import '@plugins/java-import';
+import 'focus-visible/dist/focus-visible.min.js';
 
+interface RequireContext {
+  keys(): string[];
+  (id: string): any;
+  <T>(id: string): T;
+  resolve(id: string): string;
+  id: string;
+}
 
-// eslint-disable-next-line no-undef
-function requireAll(requireContext: __WebpackModuleApi.RequireContext) {
+function requireAll(requireContext: RequireContext) {
   return requireContext.keys().map(requireContext);
 }
 
-requireAll(require.context('./components/', true, /^\.\/(?!.*(?:__tests__)).*\.((jsx?)|(tsx?))$/));
-requireAll(require.context('./pages/', true, /^\.\/(?!.*(?:__tests__)).*\.((jsx?)|(tsx?))$/));
+requireAll(require.context('./components/', true, /^\.\/(?!.*((?:__tests__)|(?:\.d))).*\.((jsx?)|(tsx?))$/));
+requireAll(require.context('./pages/', true, /^\.\/(?!.*((?:__tests__)|(?:\.d))).*\.((jsx?)|(tsx?))$/));
 

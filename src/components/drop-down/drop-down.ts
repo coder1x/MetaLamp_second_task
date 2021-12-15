@@ -9,18 +9,19 @@ interface optE {
 class dropDown {
 
   inputEl: HTMLInputElement;
-  private imgClass: string;
-  private selectEl: HTMLInputElement;
   clearBut: Element;
-  private applyClass: Element;
   elem: Element;
-  private items: HTMLElement[];
   defaultText: string;
   valMas: HTMLElement[];
   declensions: string[][];
   className: string;
+  private imgClass: string;
+  private selectEl: HTMLInputElement;
+  private applyClass: Element;
+  private items: HTMLElement[];
   private flClick: boolean;
   private disPlus: boolean;
+  private tipImg: HTMLElement;
 
   constructor(className: string, component: Element) {
     this.className = className;
@@ -148,6 +149,8 @@ class dropDown {
     this.inputEl = this.getElem({ str: '__input' }) as HTMLInputElement;
     this.defaultText = this.inputEl.placeholder;
     this.selectEl = this.getElem({ str: '__select' }) as HTMLInputElement;
+
+    this.tipImg = this.getElem({ str: '__tip' }) as HTMLElement;
   }
 
   private readingAttributes(elem: Element) {
@@ -168,6 +171,10 @@ class dropDown {
     this.inputEl.addEventListener('focus', () => {
       if (!this.flClick)
         this.toggle();
+    });
+
+    this.tipImg.addEventListener('click', () => {
+      this.toggle();
     });
 
 

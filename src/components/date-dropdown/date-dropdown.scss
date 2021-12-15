@@ -105,6 +105,9 @@ $color-datepicker-shadow: $Dark-Shade-5;
     background: $color-background;
     box-shadow: 0px 10px 20px $color-datepicker-shadow;
     width: 100%;
+    @include media-breakpoint-down($xs) {
+      width: auto;
+    }
     min-width: 266px;
     max-width: 320px;
   }
@@ -155,38 +158,57 @@ $color-datepicker-shadow: $Dark-Shade-5;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 
-    .datepicker {
+    .air-datepicker {
       width: calc(100% - 2px);
 
-      &--cell,
-      &--day-name {
-        max-width: 39.88px;
+      &-cell,
+      &-body--day-name {
+        max-width: 40px;
         height: 40px;
-      }
 
-      &--cell-month,
-      &--cell-year {
+        @include media-breakpoint-down($xs) {
+          max-width: 35px;
+          height: 35px;
+        }
+      }
+      &-cell.-month-,
+      &-cell.-year- {
         max-width: none;
       }
     }
   }
 
-  .datepicker--cell-day.-range-from-::after {
-    width: 39.88px;
+  .air-datepicker-cell.-day-.-range-from-::after {
+    width: 40px;
     height: 40px;
+
+    @include media-breakpoint-down($xs) {
+      max-width: 35px;
+      height: 35px;
+    }
   }
 
-  .datepicker--cell-day.-range-to-::before {
-    width: 39.88px;
+  .air-datepicker-cell.-day-.-range-to-::before {
+    width: 40px;
     height: 40px;
+
+    @include media-breakpoint-down($xs) {
+      max-width: 35px;
+      height: 35px;
+    }
   }
 
-  .datepicker--cell-day.-in-range-:hover::before {
-    width: 39.88px;
+  .air-datepicker-cell.-day-.-in-range-:hover::before {
+    width: 40px;
     height: 40px;
+
+    @include media-breakpoint-down($xs) {
+      max-width: 35px;
+      height: 35px;
+    }
   }
 
-  //----------------------------------------------- modif filter
+  //----------------------------------------------- modify filter
 
   &_filter &__date-wrap {
     position: relative;
@@ -204,38 +226,45 @@ $color-datepicker-shadow: $Dark-Shade-5;
   }
 
   &_filter .date-dropdown__datepicker {
-    .datepicker {
+    .air-datepicker {
       width: 264px;
       margin: 0 auto;
-      &--cell,
-      &--day-name {
+
+      &--content {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      &-cell,
+      &-body--day-name {
         height: 35px;
+        width: 35px;
+      }
+      &-body--cells.-days- {
+        grid-auto-rows: 35px;
+        grid-auto-columns: 35px;
       }
     }
   }
 
-  &_filter .date-dropdown__datepicker {
-    .-range-from-::after {
+  &_filter {
+    .air-datepicker-cell.-day-.-range-from-::after {
       width: 35px;
       height: 35px;
     }
-  }
 
-  &_filter .date-dropdown__datepicker {
-    .-range-to-::before {
+    .air-datepicker-cell.-day-.-range-to-::before {
       width: 35px;
       height: 35px;
     }
-  }
 
-  &_filter .date-dropdown__datepicker {
-    .-in-range-:hover::before {
+    .air-datepicker-cell.-day-.-in-range-:hover::before {
       width: 36px;
       height: 35px;
     }
   }
 
-  //----------------------------------------------- modif button
+  //----------------------------------------------- modify button
   .date-dropdown__datepicker-buttons {
     .date-dropdown__clear {
       &_visible {

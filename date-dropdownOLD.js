@@ -1,5 +1,3 @@
-import AirDatepicker from 'air-datepicker';
-import 'air-datepicker/air-datepicker.css';
 import './datepicker.scss';
 import './date-dropdown.scss';
 /*
@@ -22,6 +20,7 @@ class DateDropDown {
     'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
   constructor(className, elem) {
+
     this.flClick = false;
     this.defaultText = 'ДД.ММ.ГГГГ';
     this.#setDomElem(className, elem);
@@ -52,15 +51,15 @@ class DateDropDown {
       const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
       if (!regexp.test(date1)) return;
       let date2 = this.input2.value;
-      this.calendarObj.clear();
+      this.$calendarObj.clear();
       if (date2 == '') {
-        this.calendarObj.selectDate(getDate(date1));
+        this.$calendarObj.selectDate(getDate(date1));
       } else {
-        this.calendarObj.selectDate([getDate(date1), getDate(date2)]);
+        this.$calendarObj.selectDate([getDate(date1), getDate(date2)]);
       }
     } else {
       const date = this.inputHidden.value;
-      this.calendarObj.clear();
+      this.$calendarObj.clear();
       let mas = date.split('-');
 
       if (mas.length < 2) return;
@@ -80,7 +79,7 @@ class DateDropDown {
       }
 
       this.#flInFilter = true;
-      this.calendarObj.selectDate([new Date(dateOne),
+      this.$calendarObj.selectDate([new Date(dateOne),
       new Date(dateTwo)]);
       this.#flInFilter = false;
     }
@@ -158,7 +157,8 @@ class DateDropDown {
       return mas[0] + ' ' + this.#masMonth[month - 1];
     };
 
-    const masDate = date.formattedDate;
+
+    let masDate = date.split(',');
 
     if (masDate.length == 2) {
       if (this.flRange) {
@@ -169,7 +169,9 @@ class DateDropDown {
           getDateFilter(masDate[0]) +
           ' - ' +
           getDateFilter(masDate[1]);
+
         this.inputHidden.value = masDate[0] + '-' + masDate[1];
+
         if (this.getVisible(this.calendarWrap)) {
           this.input1.value = masDate[0] + ' - ' + masDate[1];
         }
@@ -198,18 +200,15 @@ class DateDropDown {
     const imgNext = require(
       '@com/date-dropdown/img/arrow_forward.svg'
     ).default;
-
-    this.calendarObj = new AirDatepicker(this.calendar, {
+    this.$calendarObj = $(this.calendar).datepicker({
       range: true,
-      multipleDates: true,
-      disableNavWhenOutOfRange: false,
       minDate: new Date(),
       prevHtml:
         '<img src="' + imgPrev + '">',
       nextHtml:
         '<img src="' + imgNext + '">',
       navTitles: {
-        days: 'MMMM yyyy'
+        days: 'MM yyyy'
       },
       onSelect: (formattedDate) => {
         this.#inputDate(formattedDate);
@@ -217,7 +216,8 @@ class DateDropDown {
           this.#flag = false;
         this.#visibleClear(true);
       }
-    });
+    }).data('datepicker');
+
   }
 
   #validationRange(flShow = false) {
@@ -352,7 +352,7 @@ class DateDropDown {
     this.clearButton.addEventListener('click',
       (e) => {
         e.preventDefault();
-        this.calendarObj.clear();
+        this.$calendarObj.clear();
         if (!this.imgRight) {
           this.input1.value = '';
           this.input1.placeholder = '';

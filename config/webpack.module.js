@@ -33,7 +33,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: `${PATHS.assets}fonts\\`,
-          publicPath: DP.isMulti ? '../fonts/' : '/assets/fonts/',
+          publicPath: DP.isMulti ?
+            PATHS.public + '/assets/fonts/' : '/assets/fonts/',
         },
       },
 
@@ -53,7 +54,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: `${PATHS.assets}images/`,
-          publicPath: DP.isMulti ? 'assets/images/' : '/assets/images/',
+          publicPath: DP.isMulti ?
+            PATHS.public + '/assets/images/' : '/assets/images/',
         },
       },
 

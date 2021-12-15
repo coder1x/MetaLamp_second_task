@@ -6,7 +6,6 @@ module.exports = {
   cssLoaders: extra => {
     const loaders = [
       MiniCssExtractPlugin.loader,
-      //'cache-loader',
       {
         loader: 'css-loader',
         options: {

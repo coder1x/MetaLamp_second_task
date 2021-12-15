@@ -6,13 +6,12 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "buildM": "cross-env NODE_ENV=multisite webpack --mode production",
+    "buildA": "cross-env NODE_ENV=abspath webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
     "start": "cross-env NODE_ENV=development webpack serve --mode development"
   },
   "author": "coder1 <c.o.d.e.r.1@mail.ru>",
   "license": "ISC",
-  "browserslist": "> 0.5%, not dead",
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/eslint-parser": "^7.14.2",
@@ -77,9 +76,11 @@
     "@types/css-font-loading-module": "0.0.6",
     "@types/npm": "^2.0.32",
     "@types/webpack-env": "^1.16.2",
+    "air-datepicker": "^3.0.1",
     "focus-visible": "^5.2.0",
     "fox-favicon": "file:npm_plugins/fox-favicon",
     "fox-url-convertor": "file:npm_plugins/fox-url-convertor",
+    "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",

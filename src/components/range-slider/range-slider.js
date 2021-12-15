@@ -1,4 +1,6 @@
 import './range-slider.scss';
+import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 
 class rangeSlider {
 
@@ -49,23 +51,19 @@ class rangeSlider {
 
     this.$myRange = $('.range-slider__input').ionRangeSlider({
       type: 'double',
-      //min: 0,
       step: 1,
       // eslint-disable-next-line camelcase
       hide_min_max: true,
       // eslint-disable-next-line camelcase
       hide_from_to: true,
-
       onUpdate: (data) => {
         setRange(data);
         this.#setAttrDot(data, true);
       },
-
       onStart: (data) => {
         setRange(data);
         this.#setAttrDot(data);
       },
-
       onChange: (data) => {
         setRange(data);
       }

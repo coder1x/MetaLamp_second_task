@@ -8,12 +8,12 @@ interface optE {
 
 class CheckBoxList {
 
-  wrap: HTMLElement;
-  headerEl: HTMLElement;
-  imgEl: HTMLElement;
-  keyF: boolean;
   className: string;
   elem: Element;
+  private wrap: HTMLElement;
+  private headerEl: HTMLElement;
+  private imgEl: HTMLElement;
+  private keyF: boolean;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -64,11 +64,10 @@ class CheckBoxList {
 
     if (this.imgEl) {
       this.headerEl.addEventListener('click', () => {
+        console.log('headerEl');
         this.toggleVis();
       });
 
-
-      this.imgEl.addEventListener('click', () => { this.toggleVis(); });
       this.headerEl.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key == 'Enter' || e.key == ' ') {
           e.preventDefault();

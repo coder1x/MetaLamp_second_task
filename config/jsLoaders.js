@@ -8,16 +8,17 @@ module.exports = {
     let loaders = null;
     if (ext == 'js') {
       loaders = [
-        //'cache-loader', 
         {
           loader: 'babel-loader',
         }];
     }
     else {
       loaders = [
-        //'cache-loader',
         {
           loader: 'ts-loader',
+          options: {
+            configFile: "tsconfig.json"
+          }
         }
       ];
     }

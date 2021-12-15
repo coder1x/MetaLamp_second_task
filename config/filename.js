@@ -4,7 +4,6 @@
 const DP = require('./isDev');
 const PATHS = require('./paths');
 
-
 module.exports = {
   filename: function (ext) {
 
@@ -16,7 +15,6 @@ module.exports = {
       if (ext === 'js') {
         dir = `${PATHS.assets}js/`;
       }
-
     dir = dir.replace(/\//g, '\\');
 
     if (DP.isMulti)

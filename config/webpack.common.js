@@ -1,8 +1,5 @@
 
 
-
-//--------------------------------------------------------------------------
-
 const PATHS = require('./paths');
 const FL = require('./filename');
 const DP = require('./isDev');
@@ -11,24 +8,33 @@ const OPT = require('./optimization');
 const { merge } = require('webpack-merge');
 const devServ = require('./webpack.devServer.js');
 
+let demoM = [];
+
+if (DP.isProd) {
+  demoM.push('./index.ts');
+} else {
+  demoM.push('webpack/hot/dev-server');
+  demoM.push('./index.ts');
+}
+
+let pubPath;
+if (DP.isAbsPath) pubPath = PATHS.public;
+
 module.exports = merge(devServ, {
 
-  target: DP.isDev ? 'web' : 'browserslist',
+  target: 'web',
   //devtool: DP.isDev ? 'eval-cheap-module-source-map' : 'source-map', //  (карта для браузеров) 
   //devtool: false,
   devtool: DP.isDev ? 'eval-cheap-module-source-map' : false,
 
-  entry: [
-    "webpack/hot/dev-server",
-    './index.ts', // входной файл (их может быть несколько)
-  ],
+  entry: demoM,
 
   context: PATHS.src, // корень исходников
-  mode: 'development',   // собираем проект в режиме разработки
+  mode: DP.isDev ? 'development' : 'production',   // собираем проект в режиме разработки
   output: {
     filename: FL.filename('js'),
     path: PATHS.dist, // каталог в который будет выгружаться сборка.
-    //publicPath: '/',
+    publicPath: pubPath,
   },
 
 
