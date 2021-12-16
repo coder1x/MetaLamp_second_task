@@ -10,11 +10,11 @@ mixin range-slider(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
-  div(class=className)
+  div(class=className+' js-'+classComp)
     div(class=classComp+'__wrap') 
       div(class=classComp+'__header')
         - if(!flLabel){
           p(class=classComp+'__label')= label
         -}
-        span(class=classComp+'__value')
-      input(class=classComp+'__input' type='hidden' name='price' value='' data-min='1000' data-from='5000' data-to='10000' data-max='15000')
+        span(class=classComp+'__value'+' js-'+classComp+'__value')
+      input(class=classComp+'__input'+' js-'+classComp+'__input' type='hidden' name='price' value='' data-min='1000' data-from='5000' data-to='10000' data-max='15000')

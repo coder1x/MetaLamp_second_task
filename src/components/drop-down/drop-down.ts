@@ -8,13 +8,13 @@ interface optE {
 
 class dropDown {
 
-  inputEl: HTMLInputElement;
-  clearBut: Element;
   elem: Element;
   defaultText: string;
-  valMas: HTMLElement[];
-  declensions: string[][];
   className: string;
+  private inputEl: HTMLInputElement;
+  private clearBut: Element;
+  private valMas: HTMLElement[];
+  private declensions: string[][];
   private imgClass: string;
   private selectEl: HTMLInputElement;
   private applyClass: Element;
@@ -45,7 +45,7 @@ class dropDown {
     }) as HTMLInputElement);
 
     const getModify = (str: string, str2: string) => {
-      return this.className.replace(/^\./, '') + str + str2;
+      return this.className.replace(/^\.js-/, '') + str + str2;
     };
 
     let classM = getModify('__minus', '_disable');
@@ -247,7 +247,7 @@ class dropDown {
 
 
   private toggleModify(elem: Element, modify: string, flag = false) {
-    let clearName = this.className.replace(/^\./, '') + modify;
+    let clearName = this.className.replace(/^\.js-/, '') + modify;
     let objClass = elem.classList;
     flag ? objClass.add(clearName) : objClass.remove(clearName);
   }
@@ -348,7 +348,7 @@ function renderDropDown(className: string) {
   return objMas;
 }
 
-renderDropDown('.drop-down');
+renderDropDown('.js-drop-down');
 
 
 

@@ -57,6 +57,6 @@ function renderSubscrip(className: string) {
   return objMas;
 }
 
-renderSubscrip('.subscrip-textfield');
+renderSubscrip('.js-subscrip-textfield');
 
 

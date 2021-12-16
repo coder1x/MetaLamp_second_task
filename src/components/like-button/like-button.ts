@@ -2,14 +2,14 @@ import './like-button.scss';
 
 class likeButton {
 
+  likes: number;
+  nameClass: string;
   private likeEl: Element;
   private iconEl: HTMLImageElement;
-  valueEl: HTMLElement;
+  private valueEl: HTMLElement;
   private linkEl: HTMLElement;
-  likes: number;
   private flag: boolean;
   private strKey: string;
-  nameClass: string;
 
 
   constructor(nameClass: string, elem: HTMLElement) {
@@ -57,7 +57,7 @@ class likeButton {
 
   private toggleStyle() {
     // меняем стили в зависимости от события
-    const name = this.nameClass.replace(/^\./, '') + '_voted';
+    const name = this.nameClass.replace(/^\.js-/, '') + '_voted';
     if (this.flag) { // ставили лайк
       this.iconEl.src =
         require('@com/like-button/img/favorite.svg').default;
@@ -97,4 +97,4 @@ function renderLikeButton(className: string) {
 }
 
 
-renderLikeButton('.like-button');
+renderLikeButton('.js-like-button');

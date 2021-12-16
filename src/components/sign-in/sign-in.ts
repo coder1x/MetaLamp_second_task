@@ -2,10 +2,10 @@ import './sign-in.scss';
 
 class signIn {
 
-  emailInputs: HTMLInputElement;
-  passInput: HTMLInputElement;
-  buttonEl: HTMLInputElement;
   className: string;
+  private emailInputs: HTMLInputElement;
+  private passInput: HTMLInputElement;
+  private buttonEl: HTMLInputElement;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -54,4 +54,4 @@ function renderSignIn(className: string) {
 }
 
 
-renderSignIn('.sign-in');
+renderSignIn('.js-sign-in');

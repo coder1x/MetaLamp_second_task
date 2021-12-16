@@ -2,10 +2,10 @@ import './graph.scss';
 
 class Graph {
   className: string;
-  ctx: CanvasRenderingContext2D;
   canvas: HTMLCanvasElement;
   elem: Element;
-  nameLine: string[];
+  private ctx: CanvasRenderingContext2D;
+  private nameLine: string[];
 
   constructor(className: string) {
     this.className = className;
@@ -176,7 +176,7 @@ class Graph {
 }
 
 
-new Graph('.graph');
+new Graph('.js-graph');
 
 
 

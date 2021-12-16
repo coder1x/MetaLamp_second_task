@@ -4,9 +4,9 @@ import './search-room.scss';
 class searchRoom {
 
   className: string;
-  dateInputs: HTMLInputElement[];
-  guestsInput: HTMLInputElement;
-  buttonEl: Element;
+  private dateInputs: HTMLInputElement[];
+  private guestsInput: HTMLInputElement;
+  private buttonEl: Element;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -80,6 +80,5 @@ function renderSearchRoom(className: string) {
 }
 
 
-renderSearchRoom('.search-room');
-
-renderSearchRoom('.booking');
+renderSearchRoom('.js-search-room');
+renderSearchRoom('.js-booking');

@@ -25,13 +25,16 @@ class DateDropDown {
     this.flClick = false;
     this.defaultText = 'ДД.ММ.ГГГГ';
     this.#setDomElem(className, elem);
+    this.init();
+  }
+
+  init() {
     this.#createCalendar();
     this.#setActions();
 
     if (!this.flRange)
       this.setRange();
   }
-
 
 
   setRange() {
@@ -93,7 +96,7 @@ class DateDropDown {
   }
 
   toggleCal(fl = false) {
-    const nameModify = this.className.replace(/^\./, '') + '_visible';
+    const nameModify = this.className.replace(/^\.js-/, '') + '_visible';
     const visible = this.getVisible(this.calendarWrap);
     const objElem = this.elem.classList;
     if (this.#flTog == fl && visible) {
@@ -111,7 +114,7 @@ class DateDropDown {
 
   #setDomElem(className, elem) {
 
-    this.#classClear = className.replace(/^\./, '') + '__clear';
+    this.#classClear = className + '__clear';
 
     const getElem = (name) => {
       return elem.querySelector(className + '__' + name);
@@ -125,6 +128,7 @@ class DateDropDown {
     this.inputHidden = getElem('input-hidden');
 
     this.inputs = elem.querySelectorAll(className + '__input');
+
     this.flRange = this.inputs.length > 1 ? true : false;
 
     this.input1 = this.inputs[0];
@@ -140,6 +144,10 @@ class DateDropDown {
       this.input1.placeholder = this.defaultText;
       this.input2.placeholder = this.defaultText;
     }
+
+
+
+
   }
 
 
@@ -180,7 +188,7 @@ class DateDropDown {
   }
 
   #visibleClear(fl = false) {
-    const nameSelector = this.#classClear + '_visible';
+    const nameSelector = this.#classClear.replace(/^\.js-/, '') + '_visible';
     const objClear = this.clearButton.classList;
     if (fl) {
       objClear.add(nameSelector);
@@ -323,7 +331,7 @@ class DateDropDown {
     const keydownX = (e) => {
       if (e.key == 'Escape') {
         e.preventDefault();
-        const nameModify = this.className.replace(/^\./, '') + '_visible';
+        const nameModify = this.className.replace(/^\.js-/, '') + '_visible';
         this.elem.classList.remove(nameModify);
       }
     };
@@ -387,4 +395,4 @@ function renderComponent(className) {
   return objMas;
 }
 
-renderComponent('.date-dropdown');
+renderComponent('.js-date-dropdown');

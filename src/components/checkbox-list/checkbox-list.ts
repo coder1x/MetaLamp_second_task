@@ -55,7 +55,7 @@ class CheckBoxList {
   }
 
   private toggleModify(elem: Element, modify: string, flag = false) {
-    let clearName = this.className.replace(/^\./, '') + modify;
+    let clearName = this.className.replace(/^\.js-/, '') + modify;
     let objClass = elem.classList;
     flag ? objClass.add(clearName) : objClass.remove(clearName);
   }
@@ -64,7 +64,6 @@ class CheckBoxList {
 
     if (this.imgEl) {
       this.headerEl.addEventListener('click', () => {
-        console.log('headerEl');
         this.toggleVis();
       });
 
@@ -93,7 +92,7 @@ function renderCheckboxList(className: string) {
 }
 
 
-renderCheckboxList('.checkbox-list');
+renderCheckboxList('.js-checkbox-list');
 
 
 

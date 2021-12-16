@@ -8,8 +8,8 @@ interface opt {
 
 class maskedTextField {
 
-  private className: string;
   message: string;
+  className: string;
   private temp: string;
 
   constructor(options: opt) {

@@ -4,15 +4,15 @@ class headerMenu {
 
   className: string;
   elem: Element;
-  items: HTMLElement[];
-  mapLinks: Map<HTMLElement, number>;
-  showElem: Element[];
-  showTip: Element[];
-  button: HTMLElement;
-  nav: HTMLElement;
-  spanBut: Element;
-  linksDown: HTMLElement[];
-  tip: HTMLElement[];
+  private items: HTMLElement[];
+  private mapLinks: Map<HTMLElement, number>;
+  private showElem: Element[];
+  private showTip: Element[];
+  private button: HTMLElement;
+  private nav: HTMLElement;
+  private spanBut: Element;
+  private linksDown: HTMLElement[];
+  private tip: HTMLElement[];
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -70,7 +70,7 @@ class headerMenu {
 
   private getModify() {
     const selector = this.className + '__items-down_visible';
-    return selector.replace(/^\./, '');
+    return selector.replace(/^\.js-/, '');
   }
 
   private getVisButton(elem: Element) {
@@ -80,7 +80,7 @@ class headerMenu {
   }
 
   private rotateTip(elem: Element, fl = false) {
-    const name = (this.className + '__tip_rotate').replace(/^\./, '');
+    const name = (this.className + '__tip_rotate').replace(/^\.js-/, '');
     if (!fl) {
       elem.classList.remove(name);
     } else {
@@ -136,7 +136,7 @@ class headerMenu {
 
   private setModify(elem: Element, mod: string, fl = false) {
     const select = '__' + mod + '_visible';
-    const clearName = this.className.replace(/^\./, '') + select;
+    const clearName = this.className.replace(/^\.js-/, '') + select;
     let objClass = elem.classList;
     !fl ? objClass.add(clearName) : objClass.remove(clearName);
   }
@@ -229,4 +229,4 @@ function renderHeaderMenu(className: string) {
 }
 
 
-renderHeaderMenu('.header');
+renderHeaderMenu('.js-header');

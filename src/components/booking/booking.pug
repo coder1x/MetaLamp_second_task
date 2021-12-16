@@ -15,7 +15,7 @@ mixin booking(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
-  article(class=className)
+  article(class=className+' js-'+classComp)
     div(class=classComp+'__header-wrap')
       div(class=classComp+'__number-wrap')
         span(class=classComp+'__header-num') №
@@ -28,13 +28,13 @@ mixin booking(options)
         span(class=classComp+'__price-text') в сутки
 
     form(class=classComp+'__form' action='' method='post')
-      fieldset(class=classComp+'__date-wrap')
+      fieldset(class=classComp+'__date-wrap'+' js-'+classComp+'__date-wrap')
         +date-dropdown({
           label: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
           class: 'js-masked-date'
           })
-      div(class=classComp+'__dropdown-wrap')
+      div(class=classComp+'__dropdown-wrap'+' js-'+classComp+'__dropdown-wrap')
         -
           let masWord = [
           ['взрослые', 'дети', 'младенцы'], 
@@ -63,7 +63,7 @@ mixin booking(options)
         div(class=classComp+'__total-dot')
         span(class=classComp+'__total-price') 38 081₽
 
-      div(class=classComp+'__button-wrap')
+      div(class=classComp+'__button-wrap'+' js-'+classComp+'__button-wrap')
         +buttons({
           text:'забронировать',
           type:'submit',

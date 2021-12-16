@@ -4,12 +4,12 @@ class registration {
 
   className: string;
   elem: Element;
-  nameIn: HTMLInputElement;
-  surnameIn: HTMLInputElement;
-  dateIn: HTMLInputElement;
-  emailIn: HTMLInputElement;
-  passIn: HTMLInputElement;
-  buttonEl: Element;
+  private nameIn: HTMLInputElement;
+  private surnameIn: HTMLInputElement;
+  private dateIn: HTMLInputElement;
+  private emailIn: HTMLInputElement;
+  private passIn: HTMLInputElement;
+  private buttonEl: Element;
 
 
   constructor(className: string, elem: Element) {
@@ -93,4 +93,4 @@ function renderRegistration(className: string) {
 }
 
 
-renderRegistration('.registration');
+renderRegistration('.js-registration');

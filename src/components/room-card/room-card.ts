@@ -5,17 +5,17 @@ class slider {
 
   className: string;
   elem: Element;
-  slidesEl: HTMLElement[];
-  dotEl: Element;
-  prevEl: HTMLElement;
-  nextEl: HTMLElement;
-  indexS: number;
-  indexDot: number;
-  sliderWrap: HTMLElement;
-  flagSwipe: boolean;
-  linkSlide: HTMLElement;
-  swipe: boolean;
-  timeS: number;
+  private slidesEl: HTMLElement[];
+  private dotEl: Element;
+  private prevEl: HTMLElement;
+  private nextEl: HTMLElement;
+  private indexS: number;
+  private indexDot: number;
+  private sliderWrap: HTMLElement;
+  private flagSwipe: boolean;
+  private linkSlide: HTMLElement;
+  private swipe: boolean;
+  private timeS: number;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -31,9 +31,9 @@ class slider {
   setVisible(index: number) {
     const date = Number(new Date());
     if (date - this.timeS > 150) {
-      this.toggle(this.slidesEl[this.indexS], true); // удаляем класс с пред идущего слайда
+      this.toggle(this.slidesEl[this.indexS], true);
       this.indexS = index;
-      this.toggle(this.slidesEl[index]); // показываем новый
+      this.toggle(this.slidesEl[index]);
       this.paintDot();
     }
   }
@@ -68,7 +68,7 @@ class slider {
 
   private toggle(slide: Element, fl = false) {
     const prefix = '__slide' + '_visible';
-    const clearName = this.className.replace(/^\./, '') + prefix;
+    const clearName = this.className.replace(/^\.js-/, '') + prefix;
 
     let objClass = slide.classList;
     !fl ? objClass.add(clearName) : objClass.remove(clearName);
@@ -77,15 +77,15 @@ class slider {
   private paintDot() {
     const dotCl = this.className + '__dot';
     let modify = dotCl + '_paint';
-    modify = modify.replace(/^\./, '');
+    modify = modify.replace(/^\.js-/, '');
     let dots = this.elem.querySelectorAll(dotCl);
     this.indexDot;
 
     let objClass = dots[this.indexDot].classList;
-    objClass.remove(modify); // удаляем модификатор с текущей точки
+    objClass.remove(modify);
 
     objClass = dots[this.indexS].classList;
-    objClass.add(modify); // ставим модификатор
+    objClass.add(modify);
     this.indexDot = this.indexS;
   }
 
@@ -94,6 +94,7 @@ class slider {
 
     for (let i = 0; i < this.slidesEl.length; i++) {
       const dot = document.createElement('span');
+      dot.classList.add(classN.replace(/^js-/, ''));
       dot.classList.add(classN);
       dot.setAttribute('data-index', String(i));
       this.dotEl.appendChild(dot);
@@ -219,4 +220,4 @@ function renderSlider(className: string) {
 }
 
 
-renderSlider('.room-card');
+renderSlider('.js-room-card');

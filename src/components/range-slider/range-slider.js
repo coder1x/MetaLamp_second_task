@@ -49,7 +49,7 @@ class rangeSlider {
       this.valueEl.innerText = range;
     };
 
-    this.$myRange = $('.range-slider__input').ionRangeSlider({
+    this.$myRange = $('.js-range-slider__input').ionRangeSlider({
       type: 'double',
       step: 1,
       // eslint-disable-next-line camelcase
@@ -119,7 +119,7 @@ function renderRangeSlider(className) {
 }
 
 
-renderRangeSlider('.range-slider');
+renderRangeSlider('.js-range-slider');
 
 
 

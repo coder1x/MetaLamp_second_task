@@ -13,28 +13,28 @@ mixin sign-in(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
-  article(class=className)
+  article(class=className+' js-'+classComp)
     - if(!flLabel){
     header(class=classComp+'__header-wrap')
       h1(class=classComp+'__header')= header
     -}
     form(class=classComp+'__form' action='' method='post')
       fieldset(class=classComp+'__authorization')
-        div(class=classComp+'__email-wrap')
+        div(class=classComp+'__email-wrap'+' js-'+classComp+'__email-wrap')
           +text-field({
             flLabel:true,
             placeholder: 'Email',
             type: 'email',
             name: 'email'
           })
-        div(class=classComp+'__pass-wrap')
+        div(class=classComp+'__pass-wrap'+' js-'+classComp+'__pass-wrap')
           +text-field({
             flLabel:true,
             placeholder: 'Пароль',
             type: 'password',
             name: 'password'
           })
-        div(class=classComp+'__button-wrap')
+        div(class=classComp+'__button-wrap'+' js-'+classComp+'__button-wrap')
           +buttons({
             text:'войти',
             type:'submit',
