@@ -49,15 +49,14 @@ module.exports = {
       inject: 'body',
       hash: true,
       meta: {
+        'Content-Type': {
+          'http-equiv': 'Content-Type',
+          'content': 'text/html; charset=utf-8'
+        },
         'viewport': {
           'name': 'viewport',
           'content':
             'width=device-width, initial-scale=1',
-
-        },
-        'Content-Type': {
-          'http-equiv': 'Content-Type',
-          'content': 'text/html; charset=utf-8'
         },
         'compatible': {
           'http-equiv': 'x-ua-compatible',
