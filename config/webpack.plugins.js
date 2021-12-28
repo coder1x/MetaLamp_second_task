@@ -21,13 +21,11 @@ fs.readdirSync(PAGES_DIR).forEach((file) => {
 const description = 'Лучшие номера для вашей работы,' +
   ' отдыха и просто вдохновения';
 const keywords = 'Номера, Отель';
-const title = 'booking rooms for TOXIN';
 
 module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
-
 
     ...pages.map(fileName => new HTMLWebpackPlugin({
       getData: () => {
@@ -42,7 +40,6 @@ module.exports = {
           return {};
         }
       },
-      title: title,
       filename: `${fileName}.html`,
       template: `./pages/${fileName}/${fileName}.pug`,
       alwaysWriteToDisk: true,
@@ -51,7 +48,7 @@ module.exports = {
       meta: {
         'Content-Type': {
           'http-equiv': 'Content-Type',
-          'content': 'text/html; charset=utf-8'
+          'content': 'text/html'
         },
         'viewport': {
           'name': 'viewport',
