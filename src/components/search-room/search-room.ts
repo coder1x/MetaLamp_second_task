@@ -4,7 +4,7 @@ import './search-room.scss';
 class searchRoom {
 
   className: string;
-  private dateInputs: HTMLInputElement[];
+  private dateInputs: Element[];
   private guestsInput: HTMLInputElement;
   private buttonEl: Element;
 
@@ -14,21 +14,29 @@ class searchRoom {
     this.setAction();
   }
 
+
   private setDom(elem: Element) {
     const date = this.className + '__date-wrap input';
     const guests = this.className + '__dropdown-wrap input';
     const submit = this.className + '__button-wrap button';
 
-    this.dateInputs = [...elem.querySelectorAll<HTMLInputElement>(date)];
+    this.dateInputs = [...elem.querySelectorAll(date)];
     this.guestsInput = elem.querySelector(guests);
     this.buttonEl = elem.querySelector(submit);
   }
 
   private validDate() {
-    let input1 = this.dateInputs[0].value.length;
-    let input2 = this.dateInputs[1].value.length;
+    const input1 = this.dateInputs[0];
+    const input2 = this.dateInputs[1];
 
-    const filled = input1 == 10 && input2 == 10;
+    let valInput1: number, valInput2: number;
+    if (input1 instanceof HTMLInputElement)
+      valInput1 = input1.value.length;
+
+    if (input2 instanceof HTMLInputElement)
+      valInput2 = input2.value.length;
+
+    const filled = valInput1 == 10 && valInput2 == 10;
 
     if (filled) {
       return true;

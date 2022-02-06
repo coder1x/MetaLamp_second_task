@@ -9,7 +9,11 @@ class SubscriptionTextField {
   private valid: ValidationEmail;
 
   constructor(className: string, wrapper: Element) {
-    this.input = wrapper.querySelector('input') as HTMLInputElement;
+
+    const input = wrapper.querySelector('input');
+    if (input instanceof HTMLInputElement)
+      this.input = input;
+
     this.link = wrapper.querySelector(className + '__link');
     this.valid = new ValidationEmail({
       elem: this.input
@@ -29,13 +33,14 @@ class SubscriptionTextField {
   private setActions() {
 
     const action = (e: Event | KeyboardEvent, fl = false) => {
-      const eventK = e as KeyboardEvent;
+      const eventK = e;
       if (fl) {
         this.validEmail();
       }
       else {
-        if (eventK.key == 'Enter')
-          this.validEmail();
+        if (eventK instanceof KeyboardEvent)
+          if (eventK.key == 'Enter')
+            this.validEmail();
       }
     };
 

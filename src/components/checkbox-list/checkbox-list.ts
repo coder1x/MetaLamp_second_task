@@ -1,10 +1,5 @@
 import './checkbox-list.scss';
 
-interface optE {
-  str: string,
-  fl?: boolean,
-  dom?: Element
-}
 
 class CheckBoxList {
 
@@ -35,23 +30,23 @@ class CheckBoxList {
     this.toggleModify(this.elem, '_visible', flag);
   }
 
-  private getElem(param: optE) {
-    let elem: HTMLElement[] | Element;
-    let dom = param.dom ?? this.elem;
-    let name = this.className + param.str;
-    if (param.fl) {
-      elem = [...dom.querySelectorAll<HTMLElement>(name)];
-    }
-    else {
-      elem = dom.querySelector(name);
-    }
-    return elem;
+
+  private getElement(str: string, domBase?: Element): Function {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const elem: Element = dom.querySelector(selector);
+    if (elem instanceof HTMLElement)
+      return function (): HTMLElement { return elem; };
+    if (elem instanceof Element)
+      return function (): Element { return elem; };
+    return () => { return elem; };
   }
 
+
   private setDomElem() {
-    this.wrap = (this.getElem({ str: '__wrap' }) as HTMLElement);
-    this.headerEl = (this.getElem({ str: '__header' }) as HTMLElement);
-    this.imgEl = (this.getElem({ str: '__tip' }) as HTMLElement);
+    this.wrap = this.getElement('__wrap')();
+    this.headerEl = this.getElement('__header')();
+    this.imgEl = this.getElement('__tip')();
   }
 
   private toggleModify(elem: Element, modify: string, flag = false) {

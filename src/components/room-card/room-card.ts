@@ -5,7 +5,7 @@ class slider {
 
   className: string;
   elem: Element;
-  private slidesEl: HTMLElement[];
+  private slidesEl: Element[];
   private dotEl: Element;
   private prevEl: HTMLElement;
   private nextEl: HTMLElement;
@@ -52,7 +52,7 @@ class slider {
 
   private setDom() {
     const slide = this.className + '__slide';
-    this.slidesEl = [...this.elem.querySelectorAll<HTMLElement>(slide)];
+    this.slidesEl = [...this.elem.querySelectorAll(slide)];
     this.dotEl = this.getElement('dot');
     this.prevEl = this.getElement('prev');
     this.nextEl = this.getElement('next');
@@ -133,8 +133,10 @@ class slider {
     });
 
     this.dotEl.addEventListener('click', (e: Event) => {
-      const target = e.target as HTMLElement;
-      const index = Number(target.getAttribute('data-index'));
+      const target = e.target;
+      let index: number;
+      if (target instanceof Element)
+        index = Number(target.getAttribute('data-index'));
       if (this.indexS != index && !isNaN(index))
         this.setVisible(index);
     });
@@ -157,13 +159,16 @@ class slider {
     };
 
     function getCoordinatesXY(ev: MouseEvent | TouchEvent): number[] {
-      const eventT = ev as TouchEvent;
-      const eventM = ev as MouseEvent;
-      if (ev.type == 'touchstart' || ev.type == 'touchmove')
-        return [eventT.touches[0].clientX, eventT.touches[0].clientY];
+      const eventT = ev;
+      const eventM = ev;
 
-      if (ev.type == 'mousedown' || ev.type == 'mousemove')
-        return [eventM.clientX, eventM.clientY];
+      if (eventT instanceof TouchEvent)
+        if (ev.type == 'touchstart' || ev.type == 'touchmove')
+          return [eventT.touches[0].clientX, eventT.touches[0].clientY];
+
+      if (eventM instanceof MouseEvent)
+        if (ev.type == 'mousedown' || ev.type == 'mousemove')
+          return [eventM.clientX, eventM.clientY];
 
       return [];
     }
@@ -182,11 +187,15 @@ class slider {
         return;
       }
 
-      const eventM = ev as MouseEvent;
+      const eventM = ev;
+
       const touchmove = ev.type == 'touchmove';
       const mousemove = ev.type == 'mousemove';
 
-      const event = touchmove || mousemove && eventM.buttons == 1;
+      let event: boolean;
+
+      if (eventM instanceof MouseEvent)
+        event = touchmove || mousemove && eventM.buttons == 1;
 
       if (event) {
         let xyUp: number[] = getCoordinatesXY(ev);

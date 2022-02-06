@@ -4,15 +4,15 @@ class headerMenu {
 
   className: string;
   elem: Element;
-  private items: HTMLElement[];
+  private items: Element[];
   private mapLinks: Map<HTMLElement, number>;
   private showElem: Element[];
   private showTip: Element[];
   private button: HTMLElement;
   private nav: HTMLElement;
   private spanBut: Element;
-  private linksDown: HTMLElement[];
-  private tip: HTMLElement[];
+  private linksDown: Element[];
+  private tip: Element[];
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -20,15 +20,26 @@ class headerMenu {
     this.startMenu();
   }
 
-  getElements(str: string): HTMLElement[] {
-    const selector = this.className + '__' + str + '-down';
-    return [...this.elem.querySelectorAll<HTMLElement>(selector)];
+
+  private getElements(str: string, domBase?: Element): Element[] {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const doms = [...dom.querySelectorAll(selector)];
+    return doms;
   }
 
-  getElement(str: string): HTMLElement {
-    const selector = this.className + '__' + str;
-    return this.elem.querySelector(selector);
+
+  private getElement(str: string, domBase?: Element): Function {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const elem: Element = dom.querySelector(selector);
+    if (elem instanceof HTMLElement)
+      return function (): HTMLElement { return elem; };
+    if (elem instanceof Element)
+      return function (): Element { return elem; };
+    return () => { return elem; };
   }
+
 
   closeAll() {
     if (this.showElem.length) {
@@ -49,18 +60,18 @@ class headerMenu {
   }
 
   private setDom() {
-    this.linksDown = this.getElements('link');
-    this.items = this.getElements('items');
-    this.button = this.getElement('toggle');
-    this.spanBut = this.getElement('toggle-line');
-    this.nav = this.getElement('menu-wrap');
-
-    const selector = this.className + '__tip';
-    this.tip = [...this.elem.querySelectorAll<HTMLElement>(selector)];
+    this.linksDown = this.getElements('__link-down');
+    this.items = this.getElements('__items-down');
+    this.button = this.getElement('__toggle')();
+    this.spanBut = this.getElement('__toggle-line')();
+    this.nav = this.getElement('__menu-wrap')();
+    this.tip = this.getElements('__tip');
 
     this.mapLinks = new Map();
     for (let i = 0; i < this.linksDown.length; i++) {
-      this.mapLinks.set(this.linksDown[i], i);
+      const tt = this.linksDown[i];
+      if (tt instanceof HTMLElement)
+        this.mapLinks.set(tt, i);
     }
   }
 
@@ -96,7 +107,8 @@ class headerMenu {
     const elem = this.items[index];
     this.rotateTip(this.tip[index], true);
     elem.classList.add(this.getModify());
-    this.trackMouse(elem);
+    if (elem instanceof HTMLElement)
+      this.trackMouse(elem);
     this.showElem.push(elem);
   }
 
@@ -111,13 +123,17 @@ class headerMenu {
 
   private trackMouse(elem: HTMLElement) {  // следим за курсором когда он попадает на список
     elem.addEventListener('mouseout', (e: MouseEvent) => {
-      const rel = e.relatedTarget as HTMLElement;
-      const target = e.currentTarget as HTMLElement;
-      let domEl = rel.closest('.' + this.getModify()) ?? false;
+      const rel = e.relatedTarget;
+      const target = e.currentTarget;
+
+      let domEl: false | Element;
+      if (rel instanceof Element)
+        domEl = rel.closest('.' + this.getModify()) ?? false;
 
       if (!domEl) {
         {
-          this.closeUl(target);
+          if (target instanceof Element)
+            this.closeUl(target);
           this.closeTip();
         }
       }
@@ -150,12 +166,14 @@ class headerMenu {
   private setActions() {
 
     this.button.addEventListener('click', (e: Event) => {
-      const elem = e.currentTarget as HTMLElement;
-      let expanded = elem.getAttribute('aria-expanded');
-      expanded = expanded == 'true' ? 'false' : 'true';
-      elem.setAttribute('aria-expanded', expanded);
 
-      this.toggle();
+      const elem = e.currentTarget;
+      if (elem instanceof Element) {
+        let expanded = elem.getAttribute('aria-expanded');
+        expanded = expanded == 'true' ? 'false' : 'true';
+        elem.setAttribute('aria-expanded', expanded);
+        this.toggle();
+      }
     });
 
     const keydown = (e: KeyboardEvent) => {
@@ -170,23 +188,32 @@ class headerMenu {
 
 
     for (let item of this.linksDown) {
-      item.addEventListener('mouseover', (e: MouseEvent) => {
-        const elem = e.currentTarget as HTMLElement;
-        this.showUl(this.getIndex(elem));
-      });
+
+      const dom = item;
+      if (dom instanceof HTMLElement)
+        dom.addEventListener('mouseover', (e: MouseEvent) => {
+          const elem = e.currentTarget;
+          if (elem instanceof HTMLElement)
+            this.showUl(this.getIndex(elem));
+        });
 
       const showMenuFocus = (e: KeyboardEvent) => {
         if (e.key == ' ') {
           e.preventDefault();
-          const currentEl = e.currentTarget as HTMLElement;
-          const index = this.getIndex(currentEl);
+          const currentEl = e.currentTarget;
+
+          let index: number;
+          if (currentEl instanceof HTMLElement)
+            index = this.getIndex(currentEl);
+
           const elem = this.items[index];
 
           if (elem.classList.contains(this.getModify())) {
             this.closeAll();
           }
           else {
-            this.showUl(this.getIndex(currentEl));
+            if (currentEl instanceof HTMLElement)
+              this.showUl(this.getIndex(currentEl));
           }
         } else {
           if (e.key == 'Escape') {
@@ -195,12 +222,15 @@ class headerMenu {
         }
       };
 
-      item.addEventListener('keydown', showMenuFocus);
+      if (dom instanceof HTMLElement)
+        dom.addEventListener('keydown', showMenuFocus);
     }
 
     document.addEventListener('click', (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const domEl = target.closest('.' + this.getModify()) ?? false;
+      const target = e.target;
+      let domEl: false | Element;
+      if (target instanceof Element)
+        domEl = target.closest('.' + this.getModify()) ?? false;
       if (!domEl) {
         this.closeAll();
       }
@@ -208,13 +238,19 @@ class headerMenu {
 
 
     document.addEventListener('focusin', (e: FocusEvent) => {
-      const target = e.target as HTMLElement;
-      const linkEl = target.closest(
-        this.className + '__link-down'
-      ) ?? false;
-      const ulEl = target.closest('.' + this.getModify()) ?? false;
+      const target = e.target;
+      let linkEl: false | Element;
+      if (target instanceof Element)
+        linkEl = target.closest(
+          this.className + '__link-down'
+        ) ?? false;
+
+      let ulEl: false | Element;
+      if (target instanceof Element)
+        ulEl = target.closest('.' + this.getModify()) ?? false;
       if (!linkEl && !ulEl) { this.closeAll(); }
     });
+
   }
 }
 

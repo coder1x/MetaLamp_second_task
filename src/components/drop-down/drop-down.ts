@@ -1,10 +1,5 @@
 import './drop-down.scss';
 
-interface optE {
-  str: string,
-  fl?: boolean,
-  dom?: Element
-}
 
 class dropDown {
 
@@ -12,13 +7,12 @@ class dropDown {
   defaultText: string;
   className: string;
   private inputEl: HTMLInputElement;
-  private clearBut: Element;
-  private valMas: HTMLElement[];
+  private clearBut: HTMLElement;
+  private valMas: HTMLSpanElement[];
   private declensions: string[][];
-  private imgClass: string;
   private selectEl: HTMLInputElement;
-  private applyClass: Element;
-  private items: HTMLElement[];
+  private applyClass: HTMLElement;
+  private items: Element[];
   private flClick: boolean;
   private disPlus: boolean;
   private tipImg: HTMLElement;
@@ -30,19 +24,15 @@ class dropDown {
   }
 
 
-  getСheckVal(item: Element) {
-    let minus = (this.getElem({
-      str: '__minus',
-      dom: item
-    }) as HTMLInputElement);
-    let value = (this.getElem({
-      str: '__value',
-      dom: item
-    }) as HTMLInputElement);
-    let plus = (this.getElem({
-      str: '__plus',
-      dom: item
-    }) as HTMLInputElement);
+  getCheckVal(item: Element) {
+
+    let minus: HTMLInputElement;
+    let value: HTMLInputElement;
+    let plus: HTMLInputElement;
+
+    minus = this.getElement('__minus', item)();
+    value = this.getElement('__value', item)();
+    plus = this.getElement('__plus', item)();
 
     const getModify = (str: string, str2: string) => {
       return this.className.replace(/^\.js-/, '') + str + str2;
@@ -73,10 +63,10 @@ class dropDown {
   }
 
   resetValue() {
-    this.valMas.map((item: HTMLElement) => item.innerText = '0');
+    this.valMas.map((item: HTMLSpanElement) => item.innerText = '0');
     this.inputEl.value = this.defaultText;
 
-    for (let item of this.items) { this.getСheckVal(item); }
+    for (let item of this.items) { this.getCheckVal(item); }
 
     if (this.clearBut)
       this.toggleModify(this.clearBut, '__button-clear_visible');
@@ -116,41 +106,54 @@ class dropDown {
     this.setActionSelect();
   }
 
-  private getElem(param: optE) {
-    let elem: HTMLElement[] | Element;
-    let dom = param.dom ?? this.elem;
-    let name = this.className + param.str;
-    if (param.fl) {
-      elem = [...dom.querySelectorAll<HTMLElement>(name)];
-    }
-    else {
-      elem = dom.querySelector(name);
-    }
-    return elem;
+
+  private getElements(str: string, domBase?: Element): Element[] {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const doms = [...dom.querySelectorAll(selector)];
+    return doms;
   }
 
-  private setDomElem() {
-    const valueClass = this.className + '__value';
 
-    this.applyClass = this.getElem({ str: '__button-apply' }) as HTMLElement;
-    this.clearBut = this.getElem({ str: '__button-clear' }) as HTMLElement;
-    this.items = this.getElem({
-      str: '__select-item',
-      fl: true
-    }) as HTMLElement[];
+  private getElement(str: string, domBase?: Element): Function {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const elem: Element = dom.querySelector(selector);
+    if (elem instanceof HTMLElement)
+      return function (): HTMLElement { return elem; };
+    if (elem instanceof HTMLButtonElement)
+      return function (): HTMLButtonElement { return elem; };
+    if (elem instanceof HTMLInputElement)
+      return function (): HTMLInputElement { return elem; };
+    if (elem instanceof HTMLSpanElement)
+      return function (): HTMLSpanElement { return elem; };
+    if (elem instanceof Element)
+      return function (): Element { return elem; };
+    return () => { return elem; };
+  }
+
+
+
+  private setDomElem() {
+
+    this.applyClass = this.getElement('__button-apply')();
+    this.clearBut = this.getElement('__button-clear')();
+    this.items = this.getElements('__select-item');
+
 
     this.valMas = [];
     for (let item of this.items) {
-      this.getСheckVal(item);
-      this.valMas.push(item.querySelector(valueClass));
+      this.getCheckVal(item);
+      const dom: HTMLElement = this.getElement('__value', item)();
+      this.valMas.push(dom);
       this.readingAttributes(item);
     }
 
-    this.inputEl = this.getElem({ str: '__input' }) as HTMLInputElement;
-    this.defaultText = this.inputEl.placeholder;
-    this.selectEl = this.getElem({ str: '__select' }) as HTMLInputElement;
 
-    this.tipImg = this.getElem({ str: '__tip' }) as HTMLElement;
+    this.inputEl = this.getElement('__input')();
+    this.defaultText = this.inputEl.placeholder;
+    this.selectEl = this.getElement('__select')();
+    this.tipImg = this.getElement('__tip')();
   }
 
   private readingAttributes(elem: Element) {
@@ -221,7 +224,10 @@ class dropDown {
 
     const eventDoc = (event: string) => {
       document.addEventListener(event, (e: Event) => {
-        const target = e.target as HTMLElement;
+        let target: Element;
+        if (e.target instanceof Element)
+          target = e.target;
+
         const domEl = target.closest(this.className);
         if (domEl != this.elem)
           this.toggle(true);
@@ -257,11 +263,18 @@ class dropDown {
 
     const funAct = (e: Event) => {
       e.preventDefault();
-      let liEl = e.currentTarget as HTMLElement;
-      let target = e.target as HTMLElement;
+      let liEl: Element;
 
-      const valueEl =
-        liEl.querySelector(this.className + '__value') as HTMLElement;
+      if (e.currentTarget instanceof Element)
+        liEl = e.currentTarget;
+
+      let target: Element;
+      if (e.target instanceof Element)
+        target = e.target;
+
+      const valueEl: HTMLSpanElement =
+        this.getElement('__value', liEl)();
+
       const minusEl = target.closest(this.className + '__minus');
       const plusEl = target.closest(this.className + '__plus');
 
@@ -274,7 +287,7 @@ class dropDown {
       }
 
       valueEl.innerText = String(num);
-      this.getСheckVal(liEl);
+      this.getCheckVal(liEl);
       this.setInput();
     };
 

@@ -18,7 +18,7 @@
     "module": "esnext", // Определяет тип импорта кода в итоговом файле, прописанном в "outFile". Необходимо задавать при использовании опции "outFile".
     "moduleResolution": "node", // Определить способ поиска модулей в папках: как в Node.js или классический, как в TypeScript 1.5 и ниже. 
     "resolveJsonModule": true,
-    "strictNullChecks": false,
+    "strictNullChecks": false, // запрещает присваивать null или undefine - если эти типы не были явно указаны.
     "isolatedModules": false, // Обрабатывать каждый файл, как отдельный изолированный модуль.
     "downlevelIteration": true, // Обеспечьте полную поддержку итераций для for - in, ..., деструктуризации при настройке на ES5 или ES3?
     "noEmit": false, // Не создавать итоговый файл если есть проблемы в коде.

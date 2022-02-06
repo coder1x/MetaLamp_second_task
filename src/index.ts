@@ -4,7 +4,7 @@ import 'focus-visible/dist/focus-visible.min.js';
 
 interface RequireContext {
   keys(): string[];
-  (id: string): any;
+  (id: string): unknown;
   <T>(id: string): T;
   resolve(id: string): string;
   id: string;

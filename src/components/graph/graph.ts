@@ -90,9 +90,7 @@ class Graph {
       return Number(elem.getAttribute(attr)) ?? 0;
     };
 
-    const selector = this.className + '__colors-item';
-    const liItems = this.elem.querySelectorAll(selector);
-
+    const liItems = this.getElements('__colors-item');
     for (let item of liItems) {
       const number = getDataNum(item, 'date-grade');
       const name = item.getAttribute('date-name');
@@ -107,12 +105,29 @@ class Graph {
   }
 
 
+  private getElements(str: string, domBase?: Element): Element[] {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const doms = [...dom.querySelectorAll(selector)];
+    return doms;
+  }
+
+
+  private getElement(str: string, domBase?: Element): Function {
+    const dom = domBase ?? this.elem;
+    const selector = this.className + str;
+    const elem: Element = dom.querySelector(selector);
+    if (elem instanceof HTMLCanvasElement)
+      return function (): HTMLCanvasElement { return elem; };
+    return () => { return elem; };
+  }
+
   private setDom() {
 
     this.elem = document.querySelector(this.className);
     if (!this.elem) return false;
 
-    this.canvas = this.elem.querySelector(this.className + '__canvas');
+    this.canvas = this.getElement('__canvas')();
     this.ctx = this.canvas.getContext('2d');
     return true;
   }

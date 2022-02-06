@@ -37,8 +37,6 @@ class sidebar {
 
     let objClass = this.block.classList;
 
-    //	console.log(fl);
-
     if (!fl) {
       objClass.add(this.classVisible);
       let elem = this.block.querySelector('input');
@@ -56,7 +54,13 @@ class sidebar {
     this.button.addEventListener('click', (e: MouseEvent) => {
       this.click = true;
       this.toggle();
-      const elem = e.target as HTMLButtonElement;
+
+      const dom = e.target;
+      let elem: HTMLButtonElement;
+
+      if (dom instanceof HTMLButtonElement)
+        elem = dom;
+
       let expanded = elem.getAttribute('aria-expanded');
       expanded = expanded == 'true' ? 'false' : 'true';
       elem.setAttribute('aria-expanded', expanded);
@@ -75,8 +79,10 @@ class sidebar {
     });
 
     document.addEventListener('focusin', (e: FocusEvent) => {
-      const target = e.target as HTMLElement;
-      const linkEl = target.closest(this.blockClass) ?? false;
+      const target = e.target;
+      let linkEl: false | Element;
+      if (target instanceof Element)
+        linkEl = target.closest(this.blockClass) ?? false;
       if (!linkEl && this.getVisible()) {
         const elem = this.button.querySelector('button');
         const path = (e.composedPath && e.composedPath());

@@ -12,9 +12,10 @@ class likeButton {
   private strKey: string;
 
 
-  constructor(nameClass: string, elem: HTMLElement) {
+  constructor(nameClass: string, elem: Element) {
     this.nameClass = nameClass;
-    this.strKey = String(elem.offsetLeft + elem.offsetTop);
+    if (elem instanceof HTMLElement)
+      this.strKey = String(elem.offsetLeft + elem.offsetTop);
     this.likeEl = elem;
     this.init();
   }
@@ -91,7 +92,7 @@ function renderLikeButton(className: string) {
   let components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
-    objMas.push(new likeButton(className, elem as HTMLElement));
+    objMas.push(new likeButton(className, elem));
   }
   return objMas;
 }

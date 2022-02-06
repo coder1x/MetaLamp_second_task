@@ -4,11 +4,6 @@ class registration {
 
   className: string;
   elem: Element;
-  private nameIn: HTMLInputElement;
-  private surnameIn: HTMLInputElement;
-  private dateIn: HTMLInputElement;
-  private emailIn: HTMLInputElement;
-  private passIn: HTMLInputElement;
   private buttonEl: Element;
 
 
