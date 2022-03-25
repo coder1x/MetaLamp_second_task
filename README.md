@@ -92,6 +92,9 @@ pages
 
 
 ## How to work
+
+* Node version v14.18.1
+
 #### Install dependencies
 ```commandline
 npm i

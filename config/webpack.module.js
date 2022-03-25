@@ -4,7 +4,7 @@ const DP = require('./isDev');
 const CL = require('./cssLoaders');
 const JL = require('./jsLoaders');
 const PATHS = require('./paths');
-
+const path = require('path');
 
 module.exports = {
 
@@ -32,20 +32,19 @@ module.exports = {
         test: /\.(ttf|woff|woff2|eot)$/,
         loader: 'file-loader',
         options: {
-          outputPath: `${PATHS.assets}fonts\\`,
-          publicPath: DP.isMulti ?
-            PATHS.public + '/assets/fonts/' : '/assets/fonts/',
+          outputPath: path.join(PATHS.assets, 'fonts/'),
+          publicPath: '/assets/fonts/',
         },
       },
 
       { // работа с js файлами
         test: /\.(js)$/,
-        exclude: /node_modules/,  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
+        exclude: '/node_modules/',  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
         use: JL.jsLoaders('js')
       },
       { // работа с ts файлами
         test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
+        exclude: '/node_modules/',  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
         use: JL.jsLoaders(),
       },
 
@@ -53,9 +52,8 @@ module.exports = {
         test: /\.(png|jpg|svg|gif|webp|avif)$/,
         loader: 'file-loader',
         options: {
-          outputPath: `${PATHS.assets}images/`,
-          publicPath: DP.isMulti ?
-            PATHS.public + '/assets/images/' : '/assets/images/',
+          outputPath: path.join(PATHS.assets, 'images/'),
+          publicPath: '/assets/images/',
         },
       },
 

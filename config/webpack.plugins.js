@@ -10,7 +10,9 @@ const FoxUrlConvertor = require('fox-url-convertor');
 const DP = require('./isDev');
 const FL = require('./filename');
 const PATHS = require('./paths');
-const PAGES_DIR = `${PATHS.src}\\pages\\`; // каталог где располагаються PUG  файлы
+const path = require('path');
+
+const PAGES_DIR = path.join(PATHS.src, '/pages/'); // каталог где располагаються PUG  файлы
 
 
 const pages = [];
@@ -116,7 +118,7 @@ module.exports = {
 
 
     new FoxFavicon({
-      src: `${PATHS.src}${PATHS.assets}images/icon/favicon.png`,
+      src: path.join(PATHS.src, PATHS.assets, 'images/icon/favicon.png'),
       path: 'assets/favicons/',
       //pathManifest: '/assets/favicons/',
       // https://thylacine.ru/

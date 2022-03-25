@@ -4,7 +4,6 @@ module.exports = {
 
   src: path.join(__dirname, '../src'),
   dist: path.join(__dirname, '../dist'),
-  assets: '\\assets\\',
+  assets: path.join('/assets/'),
   components: path.join(__dirname, '../src/components'),
-  public: 'https://thylacine.ru'
 };

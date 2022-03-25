@@ -4,6 +4,7 @@ const PATHS = require('./paths');
 const FL = require('./filename');
 const DP = require('./isDev');
 const OPT = require('./optimization');
+const path = require('path');
 
 const { merge } = require('webpack-merge');
 const devServ = require('./webpack.devServer.js');
@@ -41,13 +42,13 @@ module.exports = merge(devServ, {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],  // когда мы прописываем тут расширения то при импуте в index.js их можно не прописывать 
     alias: {
-      '@plugins': `${PATHS.src}\\plugins`,
-      '@styles': `${PATHS.src}${PATHS.assets}styles`,
-      '@typescript': `${PATHS.src}${PATHS.assets}ts`,
-      '@img': `${PATHS.src}${PATHS.assets}images`,
-      '@pag': `${PATHS.src}\\pages`,
-      '@com': `${PATHS.src}\\components`,
-      '@': PATHS.src,
+      '@plugins': path.join(PATHS.src, 'plugins'),
+      '@styles': path.join(PATHS.src, PATHS.assets, 'styles'),
+      '@typescript': path.join(PATHS.src, PATHS.assets, 'ts'),
+      '@img': path.join(PATHS.src, 'images'),
+      '@pag': path.join(PATHS.src, 'pages'),
+      '@com': path.join(PATHS.src, 'components'),
+      '@': path.join(PATHS.src),
       comp: PATHS.components,
     }
   },
