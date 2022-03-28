@@ -1,14 +1,13 @@
 import './checkbox-list.scss';
 
-
 class CheckBoxList {
 
   className: string;
   elem: Element;
-  private wrap: HTMLElement;
-  private headerEl: HTMLElement;
-  private imgEl: HTMLElement;
-  private keyF: boolean;
+  private wrap: Element | null = null;
+  private headerEl: HTMLElement | null = null;
+  private imgEl: HTMLElement | null = null;
+  private keyF: boolean | null = null;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -23,25 +22,26 @@ class CheckBoxList {
   }
 
   toggleVis() {
-    let display = window.getComputedStyle(this.wrap, null)
-      .getPropertyValue('display');
+    let display: string = '';
+
+    if (this.wrap)
+      display = window.getComputedStyle(this.wrap, null)
+        .getPropertyValue('display');
     const flag = display == 'block' ? false : true;
 
     this.toggleModify(this.elem, '_visible', flag);
   }
 
-
   private getElement(str: string, domBase?: Element): Function {
     const dom = domBase ?? this.elem;
     const selector = this.className + str;
-    const elem: Element = dom.querySelector(selector);
+    const elem: Element | null = dom.querySelector(selector);
     if (elem instanceof HTMLElement)
       return function (): HTMLElement { return elem; };
     if (elem instanceof Element)
       return function (): Element { return elem; };
     return () => { return elem; };
   }
-
 
   private setDomElem() {
     this.wrap = this.getElement('__wrap')();
@@ -56,8 +56,7 @@ class CheckBoxList {
   }
 
   private setActions() {
-
-    if (this.imgEl) {
+    if (this.imgEl && this.headerEl) {
       this.headerEl.addEventListener('click', () => {
         this.toggleVis();
       });
@@ -75,8 +74,6 @@ class CheckBoxList {
   }
 }
 
-
-
 function renderCheckboxList(className: string) {
   let components = document.querySelectorAll(className);
   let objMas = [];
@@ -85,7 +82,6 @@ function renderCheckboxList(className: string) {
   }
   return objMas;
 }
-
 
 renderCheckboxList('.js-checkbox-list');
 

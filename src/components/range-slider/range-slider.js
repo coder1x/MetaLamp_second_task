@@ -71,7 +71,6 @@ class rangeSlider {
   }
 
   #setActionsDot({ from, to, min, max }) {
-
     this.dotFrom.addEventListener('focus', () => {
       this.dotFocus = 'from';
     });
@@ -107,8 +106,6 @@ class rangeSlider {
   }
 }
 
-
-
 function renderRangeSlider(className) {
   let components = document.querySelectorAll(className);
   let objMas = [];
@@ -117,7 +114,6 @@ function renderRangeSlider(className) {
   }
   return objMas;
 }
-
 
 renderRangeSlider('.js-range-slider');
 

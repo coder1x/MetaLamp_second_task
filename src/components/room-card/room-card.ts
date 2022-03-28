@@ -1,21 +1,20 @@
 import './room-card.scss';
 
-
 class slider {
 
   className: string;
   elem: Element;
-  private slidesEl: Element[];
-  private dotEl: Element;
-  private prevEl: HTMLElement;
-  private nextEl: HTMLElement;
-  private indexS: number;
-  private indexDot: number;
-  private sliderWrap: HTMLElement;
-  private flagSwipe: boolean;
-  private linkSlide: HTMLElement;
-  private swipe: boolean;
-  private timeS: number;
+  private slidesEl: Element[] | null = null;
+  private dotEl: Element | null = null;
+  private prevEl: HTMLElement | null = null;
+  private nextEl: HTMLElement | null = null;
+  private indexS: number = 0;
+  private indexDot: number = 0;
+  private sliderWrap: HTMLElement | null = null;
+  private flagSwipe: boolean = false;
+  private linkSlide: HTMLElement | null = null;
+  private swipe: boolean = false;
+  private timeS: number = 0;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -23,14 +22,14 @@ class slider {
     this.init();
   }
 
-  getElement(str: string): HTMLElement {
+  getElement(str: string): HTMLElement | null {
     const selector = this.className + '__' + str + '-wrap';
     return this.elem.querySelector(selector);
   }
 
   setVisible(index: number) {
     const date = Number(new Date());
-    if (date - this.timeS > 150) {
+    if ((date - this.timeS > 150) && Array.isArray(this.slidesEl)) {
       this.toggle(this.slidesEl[this.indexS], true);
       this.indexS = index;
       this.toggle(this.slidesEl[index]);
@@ -39,10 +38,6 @@ class slider {
   }
 
   private init() {
-    this.indexS = 0;
-    this.indexDot = 0;
-    this.swipe = false;
-    this.timeS = 0;
     this.setDom();
     this.createDot();
     this.paintDot();
@@ -92,66 +87,73 @@ class slider {
   private createDot() {
     const classN = this.className.replace(/^\./, '') + '__dot';
 
-    for (let i = 0; i < this.slidesEl.length; i++) {
-      const dot = document.createElement('span');
-      dot.classList.add(classN.replace(/^js-/, ''));
-      dot.classList.add(classN);
-      dot.setAttribute('data-index', String(i));
-      this.dotEl.appendChild(dot);
-    }
+    if (Array.isArray(this.slidesEl))
+      for (let i = 0; i < this.slidesEl.length; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add(classN.replace(/^js-/, ''));
+        dot.classList.add(classN);
+        dot.setAttribute('data-index', String(i));
+        if (this.dotEl)
+          this.dotEl.appendChild(dot);
+      }
   }
-
 
   private setAction() {
+    if (this.prevEl)
+      this.prevEl.addEventListener('click', () => {
+        if (this.indexS > 0) {
+          this.setVisible(this.indexS - 1);
+        }
+        else {
+          if (Array.isArray(this.slidesEl))
+            this.setVisible(this.slidesEl.length - 1);
+        }
+        this.timeS = Number(new Date());
+      });
 
-    this.prevEl.addEventListener('click', () => {
-      if (this.indexS > 0) {
-        this.setVisible(this.indexS - 1);
-      }
-      else {
-        this.setVisible(this.slidesEl.length - 1);
-      }
-      this.timeS = Number(new Date());
-    });
+    if (this.nextEl)
+      this.nextEl.addEventListener('click', () => {
+        if (Array.isArray(this.slidesEl)) {
+          const len = this.slidesEl.length - 1;
+          if (this.indexS < len) {
+            this.setVisible(this.indexS + 1);
+          }
+          else {
+            this.setVisible(0);
+          }
+          this.timeS = Number(new Date());
+        }
+      });
 
-    this.nextEl.addEventListener('click', () => {
-      const len = this.slidesEl.length - 1;
-      if (this.indexS < len) {
-        this.setVisible(this.indexS + 1);
-      }
-      else {
-        this.setVisible(0);
-      }
-      this.timeS = Number(new Date());
-    });
+    if (this.linkSlide)
+      this.linkSlide.addEventListener('click', (e: Event) => {
+        if (this.flagSwipe) {
+          e.preventDefault();
+        }
+        this.flagSwipe = false;
+      });
 
-    this.linkSlide.addEventListener('click', (e: Event) => {
-      if (this.flagSwipe) {
-        e.preventDefault();
-      }
-      this.flagSwipe = false;
-    });
+    if (this.dotEl)
+      this.dotEl.addEventListener('click', (e: Event) => {
+        const target = e.target;
 
-    this.dotEl.addEventListener('click', (e: Event) => {
-      const target = e.target;
-      let index: number;
-      if (target instanceof Element)
-        index = Number(target.getAttribute('data-index'));
-      if (this.indexS != index && !isNaN(index))
-        this.setVisible(index);
-    });
+        if (target instanceof Element) {
+          const index = Number(target.getAttribute('data-index'));
+          if (this.indexS != index && !isNaN(index))
+            this.setVisible(index);
+        }
+      });
   }
-
 
   private setActionSwipe() {
     let xyDown: number[] = [];
-    this.linkSlide.addEventListener('focus', () => {
-
-      if (this.swipe) {
-        this.linkSlide.blur();
-      }
-      this.swipe = false;
-    });
+    if (this.linkSlide)
+      this.linkSlide.addEventListener('focus', () => {
+        if (this.swipe && this.linkSlide) {
+          this.linkSlide.blur();
+        }
+        this.swipe = false;
+      });
 
     const handleSwipeStart = (ev: MouseEvent | TouchEvent) => {
       this.swipe = true;
@@ -174,11 +176,12 @@ class slider {
     }
 
     const swipe = (xyDiff: number[]) => {
-      if (xyDiff[0] > 0) {
-        this.nextEl.click();
-      } else {
-        this.prevEl.click();
-      }
+      if (this.nextEl && this.prevEl)
+        if (xyDiff[0] > 0) {
+          this.nextEl.click();
+        } else {
+          this.prevEl.click();
+        }
       this.flagSwipe = true;
     };
 
@@ -188,35 +191,32 @@ class slider {
       }
 
       const eventM = ev;
-
       const touchmove = ev.type == 'touchmove';
       const mousemove = ev.type == 'mousemove';
 
-      let event: boolean;
+      if (eventM instanceof MouseEvent) {
+        const event = touchmove || mousemove && eventM.buttons == 1;
+        if (event) {
+          let xyUp: number[] = getCoordinatesXY(ev);
 
-      if (eventM instanceof MouseEvent)
-        event = touchmove || mousemove && eventM.buttons == 1;
-
-      if (event) {
-        let xyUp: number[] = getCoordinatesXY(ev);
-
-        if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
-          let xyDiff = [xyDown[0] - xyUp[0], xyDown[1] - xyUp[1]];
-          const date = Number(new Date());
-          if (date - this.timeS > 200)
-            swipe(xyDiff);
-          xyDown = [];
+          if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
+            let xyDiff = [xyDown[0] - xyUp[0], xyDown[1] - xyUp[1]];
+            const date = Number(new Date());
+            if (date - this.timeS > 200)
+              swipe(xyDiff);
+            xyDown = [];
+          }
         }
       }
     };
 
-    this.sliderWrap.addEventListener('touchstart', handleSwipeStart);
-    this.sliderWrap.addEventListener('touchmove', handleSwipeMove);
-    this.sliderWrap.addEventListener('mousedown', handleSwipeStart);
-    this.sliderWrap.addEventListener('mousemove', handleSwipeMove);
+    if (this.sliderWrap) {
+      this.sliderWrap.addEventListener('touchstart', handleSwipeStart);
+      this.sliderWrap.addEventListener('touchmove', handleSwipeMove);
+      this.sliderWrap.addEventListener('mousedown', handleSwipeStart);
+      this.sliderWrap.addEventListener('mousemove', handleSwipeMove);
+    }
   }
-
-
 }
 
 function renderSlider(className: string) {
@@ -227,6 +227,5 @@ function renderSlider(className: string) {
   }
   return objMas;
 }
-
 
 renderSlider('.js-room-card');

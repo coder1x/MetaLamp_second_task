@@ -7,9 +7,11 @@ html(lang='ru')
   head
     meta(charset='utf-8')
     title headers footers
+
   body.headersfooters-wrapper
     .headersfooters-wrapper__logo
       +logo-group({})
+
     main.headersfooters-content
       section.headers-footers 
         .headers-footers__top
@@ -17,10 +19,12 @@ html(lang='ru')
             +header({
               current:true,
             })
+
           .headers-footers__authorized
             +header({
               type:'authorized',
               current:true,
             })
+            
         .headers-footers__bottom
           +footer({})

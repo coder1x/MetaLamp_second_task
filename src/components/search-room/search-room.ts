@@ -1,19 +1,17 @@
 import './search-room.scss';
 
-
 class searchRoom {
 
   className: string;
-  private dateInputs: Element[];
-  private guestsInput: HTMLInputElement;
-  private buttonEl: Element;
+  private dateInputs: Element[] | null = null;
+  private guestsInput: HTMLInputElement | null = null;
+  private buttonEl: Element | null = null;
 
   constructor(className: string, elem: Element) {
     this.className = className;
     this.setDom(elem);
     this.setAction();
   }
-
 
   private setDom(elem: Element) {
     const date = this.className + '__date-wrap input';
@@ -26,10 +24,16 @@ class searchRoom {
   }
 
   private validDate() {
-    const input1 = this.dateInputs[0];
-    const input2 = this.dateInputs[1];
+    let input1: Element | null = null;
+    let input2: Element | null = null;
 
-    let valInput1: number, valInput2: number;
+    if (this.dateInputs)
+      input1 = this.dateInputs[0];
+
+    if (this.dateInputs)
+      input2 = this.dateInputs[1];
+
+    let valInput1: number = 0, valInput2: number = 0;
     if (input1 instanceof HTMLInputElement)
       valInput1 = input1.value.length;
 
@@ -45,7 +49,10 @@ class searchRoom {
   }
 
   private validGuests() {
-    const value = this.guestsInput.value;
+    let value: string = '';
+
+    if (this.guestsInput instanceof HTMLInputElement)
+      value = this.guestsInput.value;
     const filled = value && value != 'Сколько гостей';
 
     if (filled) {
@@ -68,15 +75,14 @@ class searchRoom {
   }
 
   private setAction() {
-    this.buttonEl.addEventListener('click', (e: Event) => {
-      if (!this.messageErr()) {
-        e.preventDefault();
-      }
-    });
+    if (this.buttonEl)
+      this.buttonEl.addEventListener('click', (e: Event) => {
+        if (!this.messageErr()) {
+          e.preventDefault();
+        }
+      });
   }
 }
-
-
 
 function renderSearchRoom(className: string) {
   let components = document.querySelectorAll(className);
@@ -86,7 +92,6 @@ function renderSearchRoom(className: string) {
   }
   return objMas;
 }
-
 
 renderSearchRoom('.js-search-room');
 renderSearchRoom('.js-booking');

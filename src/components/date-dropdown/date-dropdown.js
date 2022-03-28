@@ -2,14 +2,6 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './datepicker.scss';
 import './date-dropdown.scss';
-/*
-Компонент dateDropDown использует плагин jQuery air-datepicker
-который позволяет осуществлять ввод Даты через календарь, а так же
-указывать диапазон Даты.
-  Описание в readme.md
-*/
-// "10/26/2020" - формат даты.
-
 
 class DateDropDown {
 
@@ -35,7 +27,6 @@ class DateDropDown {
     if (!this.flRange)
       this.setRange();
   }
-
 
   setRange() {
     this.#flag = true;
@@ -113,7 +104,6 @@ class DateDropDown {
   }
 
   #setDomElem(className, elem) {
-
     this.#classClear = className + '__clear';
 
     const getElem = (name) => {
@@ -124,9 +114,7 @@ class DateDropDown {
     this.elem = elem;
     this.calendar = getElem('datepicker');
     this.calendarWrap = getElem('datepicker-wrap');
-
     this.inputHidden = getElem('input-hidden');
-
     this.inputs = elem.querySelectorAll(className + '__input');
 
     this.flRange = this.inputs.length > 1 ? true : false;
@@ -144,12 +132,7 @@ class DateDropDown {
       this.input1.placeholder = this.defaultText;
       this.input2.placeholder = this.defaultText;
     }
-
-
-
-
   }
-
 
   #inputDate(date) {
     if (!date) {
@@ -181,10 +164,8 @@ class DateDropDown {
         if (this.getVisible(this.calendarWrap)) {
           this.input1.value = masDate[0] + ' - ' + masDate[1];
         }
-
       }
     }
-
   }
 
   #visibleClear(fl = false) {
@@ -197,7 +178,6 @@ class DateDropDown {
       objClear.remove(nameSelector);
     }
   }
-
 
   #createCalendar() {
     const imgPrev = require(
@@ -229,7 +209,6 @@ class DateDropDown {
   }
 
   #validationRange(flShow = false) {
-
     function trimDate(dateText) {
       return dateText.trim().split(' ')[0];
     }
@@ -243,7 +222,6 @@ class DateDropDown {
         alert('Выберите диапазон');
       }
     };
-
 
     if (this.flRange) {
       let twoMeanings = false;
@@ -273,7 +251,6 @@ class DateDropDown {
   }
 
   #elementIsClicked(e) {
-
     let inStock = Boolean(
       [this.input1,
       this.imgLeft,
@@ -313,7 +290,6 @@ class DateDropDown {
   }
 
   #setActions() {
-
     this.calendarWrap.addEventListener('click', () => {
       this.#clickElemFl = true;
     });
@@ -326,7 +302,6 @@ class DateDropDown {
     };
 
     actionClick(this.input1, true);
-
 
     const keydownX = (e) => {
       if (e.key == 'Escape') {
@@ -356,7 +331,6 @@ class DateDropDown {
       this.#setActionsFilter();
     }
 
-
     this.clearButton.addEventListener('click',
       (e) => {
         e.preventDefault();
@@ -382,7 +356,6 @@ class DateDropDown {
     document.addEventListener('click', (e) => this.#elementIsClicked(e));
   }
 }
-
 
 //==============================================================================
 

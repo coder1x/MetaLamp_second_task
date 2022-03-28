@@ -10,8 +10,10 @@ mixin range-slider(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   div(class=className+' js-'+classComp)
     div(class=classComp+'__wrap') 
+    
       div(class=classComp+'__header')
         - if(!flLabel){
           p(class=classComp+'__label')= label

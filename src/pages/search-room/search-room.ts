@@ -6,12 +6,12 @@ interface PT {
 }
 
 class sidebar {
-  blockClass: string;
-  buttonClass: string;
-  button: HTMLButtonElement;
-  block: HTMLElement;
-  classVisible: string;
-  private click: boolean;
+  blockClass: string = '';
+  buttonClass: string = '';
+  button: HTMLButtonElement | null = null;
+  block: HTMLElement | null = null;
+  classVisible: string = '';
+  private click: boolean = false;
 
   constructor(options: PT) {
     this.blockClass = options.block;
@@ -28,19 +28,21 @@ class sidebar {
   }
 
   private getVisible() {
+    if (!this.block) return false;
     let display = window.getComputedStyle(this.block, null)
       .getPropertyValue('display');
     return display === 'none' ? false : true;
   }
 
   private toggle(fl = this.getVisible()) {
-
+    if (!this.block) return;
     let objClass = this.block.classList;
 
     if (!fl) {
       objClass.add(this.classVisible);
-      let elem = this.block.querySelector('input');
-      elem.focus();
+      const elem = this.block.querySelector('input');
+      if (elem)
+        elem.focus();
     }
     else {
       objClass.remove(this.classVisible);
@@ -48,23 +50,20 @@ class sidebar {
   }
 
   private setActions() {
-
     if (!this.block) return;
 
-    this.button.addEventListener('click', (e: MouseEvent) => {
-      this.click = true;
-      this.toggle();
+    if (this.button)
+      this.button.addEventListener('click', (e: MouseEvent) => {
+        this.click = true;
+        this.toggle();
 
-      const dom = e.target;
-      let elem: HTMLButtonElement;
-
-      if (dom instanceof HTMLButtonElement)
-        elem = dom;
-
-      let expanded = elem.getAttribute('aria-expanded');
-      expanded = expanded == 'true' ? 'false' : 'true';
-      elem.setAttribute('aria-expanded', expanded);
-    });
+        const dom = e.target;
+        if (dom instanceof HTMLButtonElement) {
+          let expanded = dom.getAttribute('aria-expanded');
+          expanded = expanded == 'true' ? 'false' : 'true';
+          dom.setAttribute('aria-expanded', expanded);
+        }
+      });
 
     this.block.addEventListener('click', () => {
       this.click = true;
@@ -80,15 +79,17 @@ class sidebar {
 
     document.addEventListener('focusin', (e: FocusEvent) => {
       const target = e.target;
-      let linkEl: false | Element;
-      if (target instanceof Element)
-        linkEl = target.closest(this.blockClass) ?? false;
-      if (!linkEl && this.getVisible()) {
-        const elem = this.button.querySelector('button');
-        const path = (e.composedPath && e.composedPath());
-        if (!path.includes(elem, 0)) {
-          this.toggle();
-          elem.focus();
+
+      if (target instanceof Element) {
+        const linkEl = target.closest(this.blockClass);
+        if (!linkEl && this.getVisible() && this.button) {
+          const elem = this.button.querySelector('button');
+          const path = (e.composedPath && e.composedPath());
+          if (elem)
+            if (!path.includes(elem, 0)) {
+              this.toggle();
+              elem.focus();
+            }
         }
       }
     });

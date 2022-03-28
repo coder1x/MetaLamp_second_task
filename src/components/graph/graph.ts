@@ -2,9 +2,9 @@ import './graph.scss';
 
 class Graph {
   className: string;
-  canvas: HTMLCanvasElement;
-  elem: Element;
-  private ctx: CanvasRenderingContext2D;
+  canvas: HTMLCanvasElement | null = null;
+  elem: Element | null = null;
+  private ctx: CanvasRenderingContext2D | null = null;
   private nameLine: string[];
 
   constructor(className: string) {
@@ -17,7 +17,13 @@ class Graph {
   }
 
   getColors() {
-    let center = { 'x': this.canvas.width, 'y': this.canvas.height };
+    if (!this.canvas) return;
+
+    const center = {
+      'x': this.canvas.width,
+      'y': this.canvas.height
+    };
+
     let radiusQ = 180;
 
     let quadrants = [
@@ -69,16 +75,18 @@ class Graph {
 
     const color = new Map();
     for (let item of quadrants) {
-      let grad = this.ctx.createLinearGradient(
-        item.x1,
-        item.y1,
-        item.x2,
-        item.y2);
+      if (this.ctx instanceof CanvasRenderingContext2D) {
+        const grad = this.ctx.createLinearGradient(
+          item.x1,
+          item.y1,
+          item.x2,
+          item.y2);
 
-      for (let cs of item.colorStops) {
-        grad.addColorStop(cs.stop, cs.color);
+        for (let cs of item.colorStops) {
+          grad.addColorStop(cs.stop, cs.color);
+        }
+        color.set(item.name, grad);
       }
-      color.set(item.name, grad);
     }
 
     return color;
@@ -91,47 +99,48 @@ class Graph {
     };
 
     const liItems = this.getElements('__colors-item');
-    for (let item of liItems) {
-      const number = getDataNum(item, 'date-grade');
-      const name = item.getAttribute('date-name');
-      if (number) {
-        data.push(number);
-        this.nameLine.push(name);
+    if (Array.isArray(liItems))
+      for (let item of liItems) {
+        const number = getDataNum(item, 'date-grade');
+        const name = item.getAttribute('date-name');
+        if (number) {
+          data.push(number);
+          if (name)
+            this.nameLine.push(name);
+        }
       }
-    }
 
     this.nameLine = this.nameLine.reverse();
     return data.reverse();
   }
 
-
-  private getElements(str: string, domBase?: Element): Element[] {
+  private getElements(str: string, domBase?: Element): Element[] | null {
     const dom = domBase ?? this.elem;
     const selector = this.className + str;
-    const doms = [...dom.querySelectorAll(selector)];
-    return doms;
+    if (dom)
+      return [...dom.querySelectorAll(selector)];
+    else return null;
   }
-
 
   private getElement(str: string, domBase?: Element): Function {
     const dom = domBase ?? this.elem;
+    if (!dom) return () => { };
     const selector = this.className + str;
-    const elem: Element = dom.querySelector(selector);
+    const elem: Element | null = dom.querySelector(selector);
     if (elem instanceof HTMLCanvasElement)
       return function (): HTMLCanvasElement { return elem; };
     return () => { return elem; };
   }
 
   private setDom() {
-
     this.elem = document.querySelector(this.className);
     if (!this.elem) return false;
 
     this.canvas = this.getElement('__canvas')();
-    this.ctx = this.canvas.getContext('2d');
+    if (this.canvas)
+      this.ctx = this.canvas.getContext('2d');
     return true;
   }
-
 
   private buildGraph() {
 
@@ -143,7 +152,8 @@ class Graph {
     let space = 0.022;
     const fontNum = 24 * scaling;
     const fontText = 15 * scaling;
-    this.ctx.lineWidth = 4 * scaling;
+    if (this.ctx instanceof CanvasRenderingContext2D)
+      this.ctx.lineWidth = 4 * scaling;
     // ----------------- end options ------------------
 
     let vote = this.getAttr();
@@ -158,38 +168,38 @@ class Graph {
     let startLine = 0;
     let dot = (Math.PI / 180) * 270;
 
-    for (let i = 0; i < ugol.length; i++) {
+    if (this.ctx instanceof CanvasRenderingContext2D)
+      for (let i = 0; i < ugol.length; i++) {
 
-      endLine = 2 * Math.PI * ugol[i];
-      const start = startLine + dot + space;
-      const end = startLine + endLine + dot - space;
+        endLine = 2 * Math.PI * ugol[i];
+        const start = startLine + dot + space;
+        const end = startLine + endLine + dot - space;
 
-      this.ctx.beginPath();
-      this.ctx.arc(cordX, cordY, radius, start, end);
+        this.ctx.beginPath();
+        this.ctx.arc(cordX, cordY, radius, start, end);
 
-      this.ctx.strokeStyle = color.get(this.nameLine[i]);
-      this.ctx.stroke();
-      this.ctx.closePath();
+        if (color)
+          this.ctx.strokeStyle = color.get(this.nameLine[i]);
+        this.ctx.stroke();
+        this.ctx.closePath();
 
-      startLine += endLine;
-    }
+        startLine += endLine;
+      }
 
     document.fonts.ready.then(() => {
+      if (this.ctx instanceof CanvasRenderingContext2D) {
+        this.ctx.fillStyle = '#BC9CFF';
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'middle';
+        this.ctx.font = 'bold ' + fontNum + 'px Montserrat';
+        this.ctx.fillText(String(percent), 60 * scaling, 50 * scaling);
 
-      this.ctx.fillStyle = '#BC9CFF';
-      this.ctx.textAlign = 'center';
-      this.ctx.textBaseline = 'middle';
-      this.ctx.font = 'bold ' + fontNum + 'px Montserrat';
-      this.ctx.fillText(String(percent), 60 * scaling, 50 * scaling);
-
-      this.ctx.font = 'normal ' + fontText + 'px Montserrat';
-      this.ctx.fillText('голосов', 60 * scaling, 73 * scaling);
-
+        this.ctx.font = 'normal ' + fontText + 'px Montserrat';
+        this.ctx.fillText('голосов', 60 * scaling, 73 * scaling);
+      }
     });
   }
-
 }
-
 
 new Graph('.js-graph');
 

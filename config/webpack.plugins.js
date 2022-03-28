@@ -1,19 +1,16 @@
-const HTMLWebpackPlugin = require('html-webpack-plugin'); // упрощает создаение HTML файлов, добавления хеша в имена файлов
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // удаляет все ненужные файлы при перестройке проекта
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
-
 const FoxFavicon = require('fox-favicon');
 const FoxUrlConvertor = require('fox-url-convertor');
-
 const DP = require('./isDev');
 const FL = require('./filename');
 const PATHS = require('./paths');
 const path = require('path');
 
 const PAGES_DIR = path.join(PATHS.src, '/pages/'); // каталог где располагаються PUG  файлы
-
 
 const pages = [];
 fs.readdirSync(PAGES_DIR).forEach((file) => {
@@ -25,9 +22,8 @@ const description = 'Лучшие номера для вашей работы,' 
 const keywords = 'Номера, Отель';
 
 module.exports = {
-
   plugins: [
-    new CleanWebpackPlugin(),   // очищаем от лишних файлов в папке дист
+    new CleanWebpackPlugin(),
 
     ...pages.map(fileName => new HTMLWebpackPlugin({
       getData: () => {
@@ -110,12 +106,10 @@ module.exports = {
       },
     })),
 
-
     new FoxUrlConvertor({
       URLchange: '%5C',
       URLto: '/',
     }),
-
 
     new FoxFavicon({
       src: path.join(PATHS.src, PATHS.assets, 'images/icon/favicon.png'),
@@ -167,13 +161,11 @@ module.exports = {
       }
     }),
 
-
-
     new MiniCssExtractPlugin({
       filename: FL.filename('css')
     }),
 
-    new webpack.ProvidePlugin({  // подключаем jquery плагином, самый нормальный способ ..
+    new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
@@ -181,5 +173,4 @@ module.exports = {
 
     new webpack.HotModuleReplacementPlugin({ multiStep: true }),
   ],
-
 };

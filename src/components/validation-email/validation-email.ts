@@ -1,5 +1,3 @@
-
-
 interface optV {
   message?: string,
   event?: string,
@@ -16,25 +14,26 @@ interface opt {
 
 class ValidationEmail {
 
-  inputElem: HTMLInputElement;
-  private regExpEmail: RegExp;
+  inputElem: HTMLInputElement | null = null;
+  private regExpEmail: RegExp | null = null;
 
   constructor(options: optV) {
     this.init(options);
   }
 
   validation() {
-    if (this.regExpEmail.test(this.inputElem.value)) {
-      return true;
-    }
+    if (this.regExpEmail && this.inputElem)
+      if (this.regExpEmail.test(this.inputElem.value)) {
+        return true;
+      }
     return false;
   }
 
   private init(options: optV) {
     let event = options.event ?? '';
     let message = options.message ?? 'Вы ввели неверный Email.';
-
     const elem = options.elem;
+
     if (elem instanceof HTMLInputElement)
       this.inputElem = elem;
     // eslint-disable-next-line no-control-regex
@@ -44,25 +43,22 @@ class ValidationEmail {
       this.setEvent(event, message);
   }
 
-
   private setEvent(event: string, message: string) {
-    this.inputElem.addEventListener(event, () => {
-      if (!this.validation())
-        alert(message);
-    });
+    if (this.inputElem)
+      this.inputElem.addEventListener(event, () => {
+        if (!this.validation())
+          alert(message);
+      });
   }
-
 }
 
-
 function renderValidationEmail(options: opt) {
-
   const className = options.className;
   const name = options.inputName ?? '';
   const input = className + '__input[name="' + name + '"]';
-
   let components = document.querySelectorAll(input);
   let objMas = [];
+
   for (let elem of components) {
     options.elem = elem;
     objMas.push(new ValidationEmail({
@@ -74,15 +70,10 @@ function renderValidationEmail(options: opt) {
   return objMas;
 }
 
-
-
 renderValidationEmail({
   className: '.text-field',
   inputName: 'email',
   event: 'change',
 });
-
-
-
 
 export { renderValidationEmail, ValidationEmail };

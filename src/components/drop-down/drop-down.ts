@@ -1,21 +1,20 @@
 import './drop-down.scss';
 
-
 class dropDown {
 
   elem: Element;
-  defaultText: string;
+  defaultText: string = '';
   className: string;
-  private inputEl: HTMLInputElement;
-  private clearBut: HTMLElement;
-  private valMas: HTMLSpanElement[];
-  private declensions: string[][];
-  private selectEl: HTMLInputElement;
-  private applyClass: HTMLElement;
-  private items: Element[];
-  private flClick: boolean;
-  private disPlus: boolean;
-  private tipImg: HTMLElement;
+  private inputEl: HTMLInputElement | null = null;
+  private clearBut: HTMLElement | null = null;
+  private valMas: HTMLSpanElement[] | null = null;
+  private declensions: string[][] = [];
+  private selectEl: HTMLInputElement | null = null;
+  private applyClass: HTMLElement | null = null;
+  private items: Element[] | null = null;
+  private flClick: boolean = false;
+  private disPlus: boolean = false;
+  private tipImg: HTMLElement | null = null;
 
   constructor(className: string, component: Element) {
     this.className = className;
@@ -23,9 +22,7 @@ class dropDown {
     this.init();
   }
 
-
   getCheckVal(item: Element) {
-
     let minus: HTMLInputElement;
     let value: HTMLInputElement;
     let plus: HTMLInputElement;
@@ -63,10 +60,15 @@ class dropDown {
   }
 
   resetValue() {
-    this.valMas.map((item: HTMLSpanElement) => item.innerText = '0');
-    this.inputEl.value = this.defaultText;
 
-    for (let item of this.items) { this.getCheckVal(item); }
+    if (this.valMas)
+      this.valMas.map((item: HTMLSpanElement) => item.innerText = '0');
+
+    if (this.inputEl instanceof HTMLInputElement)
+      this.inputEl.value = this.defaultText;
+
+    if (this.items)
+      this.items.map((item: Element) => this.getCheckVal(item));
 
     if (this.clearBut)
       this.toggleModify(this.clearBut, '__button-clear_visible');
@@ -81,31 +83,27 @@ class dropDown {
 
   getMapValue() {
     let fields = new Map();
-    for (let i = 0; i < this.valMas.length; i++) {
-      let typeText = this.declensions[i].join(',');
-      let value = Number(this.valMas[i].innerText);
-      if (fields.has(typeText)) {
-        let oldValue = fields.get(typeText);
-        let newValue = oldValue + value;
-        fields.set(typeText, newValue);
+    if (Array.isArray(this.valMas))
+      for (let i = 0; i < this.valMas.length; i++) {
+        let typeText = this.declensions[i].join(',');
+        let value = Number(this.valMas[i].innerText);
+        if (fields.has(typeText)) {
+          let oldValue = fields.get(typeText);
+          let newValue = oldValue + value;
+          fields.set(typeText, newValue);
+        }
+        else {
+          fields.set(typeText, value);
+        }
       }
-      else {
-        fields.set(typeText, value);
-      }
-    }
     return fields;
   }
 
   private init() {
-    this.declensions = [];
-    this.flClick = false;
-    this.disPlus = false;
-
     this.setDomElem();
     this.setActions();
     this.setActionSelect();
   }
-
 
   private getElements(str: string, domBase?: Element): Element[] {
     const dom = domBase ?? this.elem;
@@ -114,11 +112,10 @@ class dropDown {
     return doms;
   }
 
-
   private getElement(str: string, domBase?: Element): Function {
     const dom = domBase ?? this.elem;
     const selector = this.className + str;
-    const elem: Element = dom.querySelector(selector);
+    const elem: Element | null = dom.querySelector(selector);
     if (elem instanceof HTMLElement)
       return function (): HTMLElement { return elem; };
     if (elem instanceof HTMLButtonElement)
@@ -132,14 +129,10 @@ class dropDown {
     return () => { return elem; };
   }
 
-
-
   private setDomElem() {
-
     this.applyClass = this.getElement('__button-apply')();
     this.clearBut = this.getElement('__button-clear')();
     this.items = this.getElements('__select-item');
-
 
     this.valMas = [];
     for (let item of this.items) {
@@ -149,18 +142,24 @@ class dropDown {
       this.readingAttributes(item);
     }
 
-
     this.inputEl = this.getElement('__input')();
-    this.defaultText = this.inputEl.placeholder;
+
+    if (this.inputEl instanceof HTMLInputElement)
+      this.defaultText = this.inputEl.placeholder;
     this.selectEl = this.getElement('__select')();
     this.tipImg = this.getElement('__tip')();
   }
 
   private readingAttributes(elem: Element) {
-    this.declensions.push(elem.getAttribute('data-type').split(','));
+    if (elem) {
+      const type = elem.getAttribute('data-type') ?? '';
+      this.declensions.push(type.split(','));
+    }
   }
 
   private setActions() {
+
+    if (!this.inputEl || !this.tipImg) return;
 
     this.inputEl.addEventListener('mouseup', () => {
       this.toggle();
@@ -180,7 +179,6 @@ class dropDown {
       this.toggle();
     });
 
-
     const inputKeydown = (e: KeyboardEvent) => {
       if (e.key == 'Escape') {
         e.preventDefault();
@@ -198,20 +196,24 @@ class dropDown {
       }
     };
 
-    this.selectEl.addEventListener('keydown', selectKeydown);
+    if (this.selectEl)
+      this.selectEl.addEventListener('keydown', selectKeydown);
     this.inputEl.addEventListener('keydown', inputKeydown);
 
     if (this.applyClass)
       this.applyClass.addEventListener('click', (e: Event) => {
         e.preventDefault();
-        const defaultText = this.inputEl.value == this.defaultText;
-        const inputClear = defaultText || !this.inputEl.value;
 
-        if (inputClear) {
-          alert('Выберите количество гостей.');
-        }
-        else {
-          this.toggle();
+        if (this.inputEl instanceof HTMLInputElement) {
+          const defaultText = this.inputEl.value == this.defaultText;
+          const inputClear = defaultText || !this.inputEl.value;
+
+          if (inputClear) {
+            alert('Выберите количество гостей.');
+          }
+          else {
+            this.toggle();
+          }
         }
       });
 
@@ -221,16 +223,14 @@ class dropDown {
         this.resetValue();
       });
 
-
     const eventDoc = (event: string) => {
       document.addEventListener(event, (e: Event) => {
-        let target: Element;
-        if (e.target instanceof Element)
-          target = e.target;
-
-        const domEl = target.closest(this.className);
-        if (domEl != this.elem)
-          this.toggle(true);
+        if (e.target instanceof Element) {
+          const target = e.target;
+          const domEl = target.closest(this.className);
+          if (domEl != this.elem)
+            this.toggle(true);
+        }
       });
     };
 
@@ -244,13 +244,12 @@ class dropDown {
     return display === 'none' ? false : true;
   }
 
-
   private toggle(flag = false) {
+    if (!this.selectEl) return;
     const UlVisible: boolean = this.getVisible(this.selectEl);
     let flagVis = !UlVisible && !flag;
     this.toggleModify(this.elem, '_visible', flagVis);
   }
-
 
   private toggleModify(elem: Element, modify: string, flag = false) {
     let clearName = this.className.replace(/^\.js-/, '') + modify;
@@ -258,44 +257,43 @@ class dropDown {
     flag ? objClass.add(clearName) : objClass.remove(clearName);
   }
 
-
   private setActionSelect() {
-
     const funAct = (e: Event) => {
       e.preventDefault();
-      let liEl: Element;
 
-      if (e.currentTarget instanceof Element)
-        liEl = e.currentTarget;
+      if (e.target instanceof Element) {
+        const target = e.target;
 
-      let target: Element;
-      if (e.target instanceof Element)
-        target = e.target;
+        let liEl: Element | null = null;
+        if (e.currentTarget instanceof Element)
+          liEl = e.currentTarget;
+        else return;
 
-      const valueEl: HTMLSpanElement =
-        this.getElement('__value', liEl)();
+        const valueEl: HTMLSpanElement =
+          this.getElement('__value', liEl)();
 
-      const minusEl = target.closest(this.className + '__minus');
-      const plusEl = target.closest(this.className + '__plus');
+        const minusEl = target.closest(this.className + '__minus');
+        const plusEl = target.closest(this.className + '__plus');
 
-      let num = Number(valueEl.innerText);
-      if (minusEl && num) {
-        --num;
+        let num = Number(valueEl.innerText);
+        if (minusEl && num) {
+          --num;
+        }
+        else if (plusEl && !this.disPlus) {
+          ++num;
+        }
+
+        valueEl.innerText = String(num);
+        this.getCheckVal(liEl);
+        this.setInput();
       }
-      else if (plusEl && !this.disPlus) {
-        ++num;
-      }
-
-      valueEl.innerText = String(num);
-      this.getCheckVal(liEl);
-      this.setInput();
     };
 
-    for (let item of this.items) {
-      item.addEventListener('click', funAct);
-    }
+    if (Array.isArray(this.items))
+      for (let item of this.items) {
+        item.addEventListener('click', funAct);
+      }
   }
-
 
   private setInput() {
     let text = '';
@@ -316,13 +314,11 @@ class dropDown {
       }
     };
 
-
     let kl = false;
     for (let item of this.getMapValue()) {
       mergeText(item[1], item[0].split(','), Boolean(kl));
       kl = true;
     }
-
 
     let setData = (
       visibility: boolean,
@@ -336,10 +332,11 @@ class dropDown {
           visibility);
       }
 
-      this.inputEl.value = value;
-      this.inputEl.placeholder = placeholder;
+      if (this.inputEl instanceof HTMLInputElement) {
+        this.inputEl.value = value;
+        this.inputEl.placeholder = placeholder;
+      }
     };
-
 
     if (text) {
       setData(true, text, text);
@@ -348,7 +345,6 @@ class dropDown {
     }
   }
 }
-
 
 //==========================================================================
 
@@ -362,6 +358,3 @@ function renderDropDown(className: string) {
 }
 
 renderDropDown('.js-drop-down');
-
-
-

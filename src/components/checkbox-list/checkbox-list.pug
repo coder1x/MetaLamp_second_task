@@ -13,8 +13,10 @@ mixin checkbox-list(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+    
   div(class=className+' js-'+classComp)
     fieldset(class=classComp+'__items')
+
       -if(!flLabel){
         -if(!click){
           legend(class=classComp+'__header'+' js-'+classComp+'__header' tabindex='0' aria-label='раскрывающийся список')= legend
@@ -23,6 +25,7 @@ mixin checkbox-list(options)
           legend(class=classComp+'__header'+' js-'+classComp+'__header')= legend
         -}  
       -}
+      
       div(class=classComp+'__wrap'+' js-'+classComp+'__wrap')
         each value, index in masWord
           label(class=classComp+'__label')= value

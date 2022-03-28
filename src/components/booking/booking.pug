@@ -15,14 +15,17 @@ mixin booking(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   article(class=className+' js-'+classComp)
     div(class=classComp+'__header-wrap')
+
       div(class=classComp+'__number-wrap')
         span(class=classComp+'__header-num') №
         p(class=classComp+'__header')= number
         - if(lux){
         span(class=classComp+'__lux') люкс
         -}
+
       div(class=classComp+'__price-wrap')
         span(class=classComp+'__price')= price+'₽'
         span(class=classComp+'__price-text') в сутки
@@ -34,6 +37,7 @@ mixin booking(options)
           placeholder:'ДД.ММ.ГГГГ',
           class: 'js-masked-date'
           })
+
       div(class=classComp+'__dropdown-wrap'+' js-'+classComp+'__dropdown-wrap')
         -
           let masWord = [
@@ -49,15 +53,19 @@ mixin booking(options)
           maxValue:['10','12','5'],
           button:true
           })
+
       div(class=classComp+'__day-wrap')
         p(class=classComp+'__day-calc') 9 990₽ х 4 суток
         span(class=classComp+'__day-price') 39 960₽
+
       div(class=classComp+'__services-wrap')
         p(class=classComp+'__services') Сбор за услуги: скидка 2 179₽
         span(class=classComp+'__services-price') 0₽
+
       div(class=classComp+'__services-wrap')
         p(class=classComp+'__services') Сбор за дополнительные услуги
         span(class=classComp+'__services-price') 300₽
+        
       div(class=classComp+'__total-wrap')
         span(class=classComp+'__total-text') Итого
         div(class=classComp+'__total-dot')

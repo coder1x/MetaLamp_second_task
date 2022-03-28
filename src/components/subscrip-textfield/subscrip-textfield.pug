@@ -11,11 +11,14 @@ mixin subscrip-textfield(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   div(class=className+' js-'+classComp)
     div(class=classComp+'__wrap')
       if !flLabel
         p(class=classComp+'__label-text')= label
+
       label(class=classComp+'__label')
         input(class=classComp+'__input' type='text' placeholder=value value='' name='subscrip')
+        
       button(class=classComp+'__link'+' js-'+classComp+'__link' aria-label='подписаться' title='подписаться')
         img(class=classComp+'__tip' src=require('@com/subscrip-textfield/img/arrow_forward.svg').default alt='стрелка - подписаться')

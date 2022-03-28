@@ -13,6 +13,7 @@ block content
   main.search-room-content
     .search-room-content__wrap
       section.search-room-filter
+      
         .search-room-filter__date-wrap
           +date-dropdown({
             label: ['даты пребывания в отеле'],
@@ -20,6 +21,7 @@ block content
             modify: 'filter',
             filter: true
           })
+
         .search-room-filter__guests-wrap
           -
             let masWord = [
@@ -35,11 +37,13 @@ block content
             maxValue:['10','12','5'],
             button:true
           })
+
         .search-room-filter__price-wrap
           +range-slider({
             label:'диапазон цены'
           })
           p.search-room-filter__price-text Стоимость за сутки пребывания в номере
+
         .search-room-filter__regulations-wrap
           - 
             masWord = [
@@ -51,6 +55,7 @@ block content
             click: true,
             modify:'visibleBut'
           })
+
         .search-room-filter__availability-wrap
           - 
             masWord = [
@@ -67,6 +72,7 @@ block content
             modify:'visibleBut',
             class:'checkbox-list_rich'
           })
+
         .search-room-filter__facilities-wrap
           - 
             masWord = [
@@ -82,6 +88,7 @@ block content
             maxValue:['5','8','4'],
             modify:'sharp'
           })
+
         .search-room-filter__additional-amenities-wrap
           - 
             masWord = [
@@ -92,12 +99,14 @@ block content
             masWord:masWord,
             legend:'дополнительные удобства',
           })
+
       .search-room-content__button-wrap
         +buttons({
             text:'Фильтр номеров',
             type:'btn-popup',
             modify:['link']
           })
+
       section.search-room-cards
         h1.search-room-cards__header Номера, которые мы для вас подобрали
         ul.search-room-cards__cards
@@ -111,6 +120,7 @@ block content
                 reviews:'145'
               })
           -}
+
         .search-room-cards__pagination
           +pagination({
             flLabel:true

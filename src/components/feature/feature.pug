@@ -12,9 +12,11 @@ mixin feature(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   div(class=className)
     div(class=classComp+'__wrap-icon')
       img(class=classComp+'__icon' src=require('@com/feature/img/'+src).default alt=alt)
+      
     div(class=classComp+'__description')
       span(class=classComp+'__header')=header
       p(class=classComp+'__text')=text

@@ -5,14 +5,17 @@ block title
   title landing page
 block content
   main.landing-content
+
     section.landing-content__search-room
       .landing-content__relation-ratio
-      img(class='landing-content__background' src=require('@pag/landing-page/img/image 3.webp').default, alt='Лучшие номера для вашей работы, отдыха и просто вдохновения')
+      img(class='landing-content__background' src=require('@pag/landing-page/img/image_3.webp').default, alt='Лучшие номера для вашей работы, отдыха и просто вдохновения')
+
       .landing-content__search-room-wrap
         .landing-content__top
           .landing-content__top-wrap
             +search-room({
               header:'Найдём номера под ваши пожелания'
             })
+            
         .landing-content__bottom
           p(class='landing-content__bottom-text') Лучшие номера для вашей работы, отдыха и просто вдохновения

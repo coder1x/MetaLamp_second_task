@@ -21,11 +21,14 @@ html(lang='ru')
   head
     meta(charset='utf-8')
     title form elements
+
   body.elements-wrapper
     .elements-wrapper__logo
       +logo-group({})
+
     main.elements-content
       section.map-elements 
+
         .colomn-left 
           .colomn-left__text-field
             +text-field({
@@ -34,6 +37,7 @@ html(lang='ru')
               type: 'email',
               name: 'email'
             })
+
           .colomn-left__text-field
             +text-field({
               label: 'text field',
@@ -56,6 +60,7 @@ html(lang='ru')
               maxValue:['10','12','5'],
               button:true
             })
+
           .colomn-left__text-field
             +text-field({
               label: 'masked text field',
@@ -78,7 +83,6 @@ html(lang='ru')
               modify: 'filter',
               filter: true
             })
-
 
           .colomn-left__subscrip-textfield
             +subscrip-textfield({
@@ -112,6 +116,7 @@ html(lang='ru')
               masWord:masWord,
               legend:'expandable checkbox list',
             })
+
           .colomn-left__feature
             +feature({
               header:'Комфорт',
@@ -119,6 +124,7 @@ html(lang='ru')
               alt:'Комфорт',
               text:'Шумопоглощающие стены'
             })
+
           .colomn-left__feature
             +feature({
               header:'Удобство',
@@ -185,6 +191,7 @@ html(lang='ru')
                   label:'Range Slider'
                 })
               span.colomn-right__logo buttons
+
               .colomn-right__link
                 +buttons({
                   text:'CLICK ME',
@@ -192,6 +199,7 @@ html(lang='ru')
                   type:'link',
                   modify:['link']
                 })
+
               .colomn-right__link-border
                 +buttons({
                   text:'CLICK ME',
@@ -199,22 +207,26 @@ html(lang='ru')
                   type:'link',
                   modify:['link-border']
                 })
+
               .colomn-right__button-text
                 +buttons({
                   text:'CLICK ME',
                   type:'button',
                   modify:['text']
                 })
+
               .colomn-right__submit
                 +buttons({
                   text:'перейти к оплате',
                   type:'submit',
                   modify:['submit']
                 })
+
               .colomn-right__pagination
                 +pagination({
                   label:'pagination'
                 })
+
               .colomn-right__bullet-list
                 -
                   masText= [
@@ -226,6 +238,7 @@ html(lang='ru')
                   label:'bullet list',
                   text:masText
                 })
+                
           .colomn-bottom
             .colomn-bottom__comment
               +comment({

@@ -1,37 +1,35 @@
 import './subscrip-textfield.scss';
 import { ValidationEmail } from '../validation-email/validation-email';
 
-
 class SubscriptionTextField {
 
-  input: HTMLInputElement;
-  link: Element;
-  private valid: ValidationEmail;
+  input: HTMLInputElement | null = null;
+  link: Element | null = null;
+  private valid: ValidationEmail | null = null;
 
   constructor(className: string, wrapper: Element) {
-
     const input = wrapper.querySelector('input');
-    if (input instanceof HTMLInputElement)
+    if (input instanceof HTMLInputElement) {
       this.input = input;
 
-    this.link = wrapper.querySelector(className + '__link');
-    this.valid = new ValidationEmail({
-      elem: this.input
-    });
+      this.link = wrapper.querySelector(className + '__link');
+      this.valid = new ValidationEmail({
+        elem: this.input
+      });
+    }
 
     this.setActions();
   }
 
-
   private validEmail() {
-    if (this.valid.validation()) { alert('Вы оформили подписку.'); }
-    else {
-      alert('Вы ввели неверный Email.');
-    }
+    if (this.valid)
+      if (this.valid.validation()) { alert('Вы оформили подписку.'); }
+      else {
+        alert('Вы ввели неверный Email.');
+      }
   }
 
   private setActions() {
-
     const action = (e: Event | KeyboardEvent, fl = false) => {
       const eventK = e;
       if (fl) {
@@ -44,14 +42,17 @@ class SubscriptionTextField {
       }
     };
 
-    this.input.addEventListener(
-      'keydown',
-      (e: KeyboardEvent) => { action(e); });
-    this.link.addEventListener('click', (e: Event) => { action(e); });
-    this.link.addEventListener('click', (e: Event) => { action(e, true); });
+    if (this.input)
+      this.input.addEventListener(
+        'keydown',
+        (e: KeyboardEvent) => { action(e); });
+
+    if (this.link) {
+      this.link.addEventListener('click', (e: Event) => { action(e); });
+      this.link.addEventListener('click', (e: Event) => { action(e, true); });
+    }
   }
 }
-
 
 function renderSubscrip(className: string) {
   let components = document.querySelectorAll(className);
@@ -63,5 +64,3 @@ function renderSubscrip(className: string) {
 }
 
 renderSubscrip('.js-subscrip-textfield');
-
-

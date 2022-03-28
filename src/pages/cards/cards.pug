@@ -10,16 +10,20 @@ html(lang='ru')
   head
     meta(charset='utf-8')
     title cards
+
   body.cards-wrapper
     .cards-wrapper__logo
       +logo-group({})
+
     main.cards-content
       section.cards 
+
         .cards__left
           .cards__search-room
             +search-room({
               header:'Найдём номера под ваши пожелания'
             })
+
           .cards__registration
             +registration({
               header:'Регистрация аккаунта'
@@ -32,6 +36,7 @@ html(lang='ru')
               lux:true,
               price: '9 990'
             })
+            
           .cards__center__sign-in
             +sign-in({
               header:'Войти',

@@ -14,13 +14,16 @@ mixin footer(options)
     }
     if(addClass){
     className += ' '+addClass}
+
   footer(class=className role='contentinfo')
     div(class=classComp+'__top')
       div(class=classComp+'__top-wrap')
+
         div(class=classComp+'__recommendation-wrap')
           div(class=classComp+'__logo-wrap')
             +logo({})
           p(class=classComp+'__recommendation-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+
         div(class=classComp+'__navigation-wrap')
           -
             let masText = [
@@ -33,6 +36,7 @@ mixin footer(options)
               header:'навигация',
               masText: masText
             })
+
         div(class=classComp+'__about-us-wrap')
           -
             masText = [
@@ -45,6 +49,7 @@ mixin footer(options)
               header:'о нас',
               masText: masText
             })
+
         div(class=classComp+'__support-wrap')
           -
             masText = [
@@ -56,6 +61,7 @@ mixin footer(options)
               header:'Служба поддержки',
               masText: masText
             })
+
         div(class=classComp+'__subscrip-wrap')
           p(class=classComp+'__subscrip-header') Подписка
           p(class=classComp+'__subscrip-text') Получайте специальные предложения и новости сервиса
@@ -63,9 +69,11 @@ mixin footer(options)
             flLabel:true,
             value:'Email'
           })
+
     div(class=classComp+'__bottom')
       div(class=classComp+'__bottom-wrap')
         p(class=classComp+'__copyright') Copyright © 2018 Toxin отель. Все права защищены.
+
         ul(class=classComp+'__social')
           li(class=classComp+'__social-item')
             a(class=classComp+'__social-link' href='https://test/test')
@@ -76,5 +84,3 @@ mixin footer(options)
           li(class=classComp+'__social-item')
             a(class=classComp+'__social-link' href='https://test/test')
               img(class=classComp+'__social-icon' src=require('@com/footer/img/instagram.svg').default alt='instagram' title='instagram')
-
-              

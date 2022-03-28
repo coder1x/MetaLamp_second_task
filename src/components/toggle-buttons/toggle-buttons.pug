@@ -11,10 +11,12 @@ mixin toggle-buttons(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   div(class=className)
     - if(!flLabel){
     p(class=classComp+'__header')= header
     -}
+    
     div(class=classComp+'__tog')
       label(class=classComp+'__label')= label
         input(class=classComp+'__input' type='checkbox' name='toggle')

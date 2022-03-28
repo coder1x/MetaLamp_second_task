@@ -14,6 +14,7 @@ mixin date-dropdown(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   div(class=className+' js-'+classComp)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
@@ -31,15 +32,18 @@ mixin date-dropdown(options)
           
           img(class=classComp+'__tip' src=require('@com/date-dropdown/img/tip.svg').default alt='уголок')
     -}
+
     div(class=classComp+'__datepicker-wrap'+' js-'+classComp+'__datepicker-wrap')
       div(class=classComp+'__datepicker'+' js-'+classComp+'__datepicker')
       div(class=classComp+'__datepicker-buttons')
+      
         div(class=classComp+'__clear'+' js-'+classComp+'__clear')
           +buttons({
             text:'очистить',
             type:'button',
             modify:['text']
           })
+
         div(class=classComp+'__apply'+' js-'+classComp+'__apply')
           +buttons({
             text:'применить',

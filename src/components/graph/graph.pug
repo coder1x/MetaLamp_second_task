@@ -10,10 +10,12 @@ mixin graph(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   div(class=className+' js-'+classComp)
     - if(!flLabel){
       h2(class=classComp+'__header')= label
     -}
+    
     div(class=classComp+'__wrapper')
       canvas(class=classComp+'__canvas'+' js-'+classComp+'__canvas' width='240' height='240')
       ul(class=classComp+'__colors')

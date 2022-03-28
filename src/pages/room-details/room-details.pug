@@ -10,14 +10,17 @@ block title
 block content
   main.room-details-content
     .room-details-content__wrap
+
       section.room-details-foto
           img.room-details-foto__image-big(src=require('@pag/room-details/img/image.webp').default, alt='Номер люкс - спальня')
           img.room-details-foto__image-min(src=require('@pag/room-details/img/image2.webp').default, alt='Номер люкс - вторая комната')
           img.room-details-foto__image-min(src=require('@pag/room-details/img/Mask_Group.webp').default, alt='Номер люкс - гостиная')
+
       section.room-details-info 
         h1.visually-hidden подробная информация о люкс номере
         .room-details-info__feature-wrap
           h2.room-details-info__feature-header Сведения о номере
+
           .room-details-info__feature
             +feature({
               header:'Комфорт',
@@ -25,6 +28,7 @@ block content
               alt:'Комфорт',
               text:'Шумопоглощающие стены'
               })
+
           .room-details-info__feature
             +feature({
             header:'Удобство',
@@ -32,6 +36,7 @@ block content
             alt:'Удобство',
             text:'Окно в каждой из спален'
             })
+
           .room-details-info__feature
             +feature({
             header:'Уют',
@@ -40,21 +45,25 @@ block content
             text:'Номер оснащён камином',
             modify:'none-border'
             })
+
         .room-details-info__graph
           +graph({
             label:'Впечатления от номера'
           })
+
         .room-details-info__booking-wrap
           +booking({
             number:'888',
             lux:true,
             price: '9 990'
           })
+
         .room-details-info__bottom-wrap
           .room-details-info__comment-wrap
             .room-details-info__comment-header-wrap
               h2.room-details-info__comment-header Отзывы посетителей номера
               span.room-details-info__total-comments 2 отзыва
+
             .room-details-info__comment
               +comment({
                 name:'Мурад Сарафанов',
@@ -65,16 +74,18 @@ block content
                 А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. 
                 Выкрикивал комплименты повару — никто не жаловался из соседей.`
               })
+
             .room-details-info__comment
               +comment({
                 name:'Патрисия Стёклышкова',
                 date:'Неделю назад',
-                src:'image 4.png',
+                src:'image_4.png',
                 message: 
                 `Обслуживание на высоте! Всё аккуратно, чисто. 
                 Завтраки в номер советую заказать, каждый день новое блюдо и 
                 десерт как комплимент`
               })
+
           .room-details-info__regulations-wrap
             .room-details-info__bullet-list
               -
@@ -88,6 +99,7 @@ block content
                 text:masText,
                 modify:'big'
               })
+              
             .room-details-info__cancellation
               p.room-details-info__cancellation-header Отмена
               p.room-details-info__cancellation-text 

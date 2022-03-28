@@ -4,8 +4,7 @@ class registration {
 
   className: string;
   elem: Element;
-  private buttonEl: Element;
-
+  private buttonEl: Element | null = null;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -14,7 +13,7 @@ class registration {
     this.setAction();
   }
 
-  getElement(str: string): HTMLInputElement {
+  getElement(str: string): HTMLInputElement | null {
     const selector = this.className + '__' + str + '-wrap input';
     return this.elem.querySelector(selector);
   }
@@ -61,22 +60,25 @@ class registration {
     const fields = ['name', 'surname', 'date', 'email', 'pass'];
 
     for (let item of fields) {
-      const len = this.getElement(item).value.length;
-      if (!messageErr(item, len))
-        return false;
-    }
+      const dom = this.getElement(item);
 
+      if (dom) {
+        const len = dom.value.length;
+        if (!messageErr(item, len))
+          return false;
+      }
+    }
     return true;
   }
 
   private setAction() {
-    this.buttonEl.addEventListener('click', (e: Event) => {
-      if (!this.validation())
-        e.preventDefault();
-    });
+    if (this.buttonEl)
+      this.buttonEl.addEventListener('click', (e: Event) => {
+        if (!this.validation())
+          e.preventDefault();
+      });
   }
 }
-
 
 function renderRegistration(className: string) {
   let components = document.querySelectorAll(className);
@@ -86,6 +88,5 @@ function renderRegistration(className: string) {
   }
   return objMas;
 }
-
 
 renderRegistration('.js-registration');

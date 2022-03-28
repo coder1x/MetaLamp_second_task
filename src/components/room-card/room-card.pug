@@ -15,7 +15,9 @@ mixin room-card(options)
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
   article(class=className+' js-'+classComp)
+
     div(class=classComp+'__slider-wrap'+' js-'+classComp+'__slider-wrap')
       div(class=classComp+'__relation-ratio')
       a(class=classComp+'__link'+' js-'+classComp+'__link' href='https://test/test' aria-label='карточка номера')
@@ -28,6 +30,7 @@ mixin room-card(options)
         img(class=classComp+'__prev' src=require('@com/room-card/img/expand_more.svg').default, alt='стрелка в лево')
       button(class=classComp+'__next-wrap'+' js-'+classComp+'__next-wrap' aria-label='следующий слайд')
         img(class=classComp+'__next' src=require('@com/room-card/img/expand_more.svg').default, alt='стрелка в право')
+
     a(class=classComp+'__header-wrap' href='https://test/test')
       div(class=classComp+'__number-wrap')
         span(class=classComp+'__header-num') №
@@ -38,6 +41,7 @@ mixin room-card(options)
       div(class=classComp+'__price-wrap')
         span(class=classComp+'__price')= price+'₽'
         span(class=classComp+'__price-text') в сутки
+        
     div(class=classComp+'__rate-wrap')
       +rate-button({
         flLabel:true,
