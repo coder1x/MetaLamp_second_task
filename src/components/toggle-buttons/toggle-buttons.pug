@@ -1,11 +1,11 @@
 mixin toggle-buttons(options)
   -
-    let header = options.header ?? ''
-    let label = options.label ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'toggle-buttons'
+    const header = options.header ?? ''
+    const label = options.label ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'toggle-buttons'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

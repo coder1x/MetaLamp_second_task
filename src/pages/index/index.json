@@ -1,0 +1,13 @@
+{
+  "menuData": {
+    "colors-type": "colors-type.html",
+    "form-elements": "form-elements.html",
+    "cards": "cards.html",
+    "headers-footers": "headers-footers.html",
+    "landing-page": "landing-page.html",
+    "search-room": "search-room.html",
+    "room-details": "room-details.html",
+    "registration": "registration.html",
+    "sign-in": "sign-in.html"
+  }
+}

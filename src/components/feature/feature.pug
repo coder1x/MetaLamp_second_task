@@ -1,12 +1,12 @@
 mixin feature(options)
   -
-    let header = options.header ?? ''
-    let src = options.src ?? ''
-    let alt = options.alt ?? ''
-    let text = options.text ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let classComp = 'feature'
+    const header = options.header ?? ''
+    const src = options.src ?? ''
+    const alt = options.alt ?? ''
+    const text = options.text ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const classComp = 'feature'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

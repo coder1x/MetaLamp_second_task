@@ -1,11 +1,11 @@
 mixin bullet-list(options)
   -
-    let label = options.label ?? ''
-    let text = options.text ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'bullet-list'
+    const label = options.label ?? ''
+    const text = options.text ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'bullet-list'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

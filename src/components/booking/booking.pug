@@ -4,12 +4,12 @@ include ../buttons/buttons.pug
 
 mixin booking(options)
   -
-    let number = options.number ?? ''
-    let price = options.price ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let lux = options.lux ?? false
-    let classComp = 'booking'
+    const number = options.number ?? ''
+    const price = options.price ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const lux = options.lux ?? false
+    const classComp = 'booking'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

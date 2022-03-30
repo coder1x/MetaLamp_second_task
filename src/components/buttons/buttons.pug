@@ -1,12 +1,11 @@
 mixin buttons(options)
   -
-    let text = options.text ?? ''
-    let atrr = options.atrr ?? ''
-    let link = options.link ?? ''
-    let type = options.type ?? ''
-    let modify = options.modify ?? []
-    let addClass = options.class ?? ''
-    let classComp = 'buttons'
+    const text = options.text ?? ''
+    const link = options.link ?? ''
+    const type = options.type ?? ''
+    const modify = options.modify ?? []
+    const addClass = options.class ?? ''
+    const classComp = 'buttons'
     let className = classComp
     if(modify){
       for(let item of modify)

@@ -1,0 +1,56 @@
+{
+  "textField": {
+    "name": {
+      "flLabel": true,
+      "placeholder": "Имя",
+      "type": "text",
+      "name": "name"
+    },
+    "surname": {
+      "flLabel": true,
+      "placeholder": "Фамилия",
+      "type": "text",
+      "name": "surname"
+    },
+    "date": {
+      "label": "дата рождения",
+      "placeholder": "ДД.ММ.ГГГГ",
+      "type": "text",
+      "name": "date",
+      "class": "js-masked-date"
+    },
+    "email": {
+      "flLabel": true,
+      "placeholder": "Email",
+      "type": "email",
+      "name": "email"
+    },
+    "password": {
+      "flLabel": true,
+      "placeholder": "Пароль",
+      "type": "password",
+      "name": "password"
+    }
+  },
+  "toggleButtons": {
+    "flLabel": true,
+    "label": "Получать спецпредложения"
+  },
+  "buttons": {
+    "submit": {
+      "text": "зарегистрироваться",
+      "type": "submit",
+      "modify": [
+        "submit"
+      ]
+    },
+    "link": {
+      "text": "Войти",
+      "link": "https://test/test",
+      "type": "link",
+      "modify": [
+        "link-border"
+      ]
+    }
+  }
+}

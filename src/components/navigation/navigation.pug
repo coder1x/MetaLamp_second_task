@@ -1,10 +1,10 @@
 mixin navigation(options)
   -
-    let header = options.header ?? ''
-    let masText = options.masText ?? []
-    let modify = options.modify ?? []
-    let addClass = options.class ?? ''
-    let classComp = 'navigation'
+    const header = options.header ?? ''
+    const masText = options.masText ?? []
+    const modify = options.modify ?? []
+    const addClass = options.class ?? ''
+    const classComp = 'navigation'
     let className = classComp
     if(modify){
       for(let item of modify)

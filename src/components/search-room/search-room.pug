@@ -4,12 +4,19 @@ include ../buttons/buttons.pug
 
 mixin search-room(options)
   -
-    let header = options.header ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'search-room'
+    const header = options.header ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'search-room'
     let className = classComp
+
+    const path = '/components/search-room/search-room.json' 
+    const data = htmlWebpackPlugin.options.getData(path)
+    const dateDropdown = data.dateDropdown
+    const dropDown = data.dropDown
+    const buttons = data.buttons
+
     if(modify){
     className += ' '+classComp+'_'+modify}
     if(addClass){
@@ -23,31 +30,10 @@ mixin search-room(options)
 
     form(class=classComp+'__form' action='' method='post')
       fieldset(class=classComp+'__date-wrap'+' js-'+classComp+'__date-wrap')
-        +date-dropdown({
-          label: ['прибытие','выезд'],
-          placeholder:'ДД.ММ.ГГГГ',
-          class: 'js-masked-date'
-          })
+        +date-dropdown(dateDropdown)
 
       div(class=classComp+'__dropdown-wrap'+' js-'+classComp+'__dropdown-wrap')
-        -
-          let masWord = [
-          ['взрослые', 'дети', 'младенцы'], 
-          ['гость,гостя,гостей', 
-          'гость,гостя,гостей', 
-          'младенец,младенца,младенцев']]
-        +drop-down({
-          label:'гости',
-          value: 'Сколько гостей',
-          name:'Guest',
-          masWord:masWord,
-          maxValue:['10','12','5'],
-          button:true
-          })
+        +drop-down(dropDown)
           
       div(class=classComp+'__button-wrap'+' js-'+classComp+'__button-wrap')
-        +buttons({
-          text:'подобрать номер',
-          type:'submit',
-          modify:['submit']
-        })
+        +buttons(buttons)

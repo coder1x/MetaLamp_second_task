@@ -1,0 +1,39 @@
+{
+  "socialData": {
+    "twitter": "twitter.svg",
+    "facebook": "facebook.svg",
+    "instagram": "instagram.svg"
+  },
+  "navigation": {
+    "different": {
+      "header": "навигация",
+      "masText": [
+        "О нас",
+        "Новости",
+        "Служба поддержки",
+        "Услуги"
+      ]
+    },
+    "about": {
+      "header": "о нас",
+      "masText": [
+        "О сервисе",
+        "Наша команда",
+        "Вакансии",
+        "Инвесторы"
+      ]
+    },
+    "support": {
+      "header": "Служба поддержки",
+      "masText": [
+        "Соглашения",
+        "Сообщества",
+        "Связь с нами"
+      ]
+    }
+  },
+  "subscrip": {
+    "flLabel": true,
+    "value": "Email"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "squareColor": {
+    "darkShade100": [
+      "Dark Shade 100%",
+      "#1F2041",
+      "dark-shade-100"
+    ],
+    "darkShade75": [
+      "Dark Shade 75%",
+      "#1F2041",
+      "dark-shade-75"
+    ],
+    "darkShade50": [
+      "Dark Shade 50%",
+      "#1F2041",
+      "dark-shade-50"
+    ],
+    "darkShade25": [
+      "Dark Shade 25%",
+      "#1F2041",
+      "dark-shade-25"
+    ],
+    "darkShade5": [
+      "Dark Shade 5%",
+      "#1F2041",
+      "dark-shade-5"
+    ],
+    "purple": [
+      "Purple",
+      "#BC9CFF",
+      "purple"
+    ],
+    "green": [
+      "Green",
+      "#6FCF97",
+      "green"
+    ]
+  }
+}

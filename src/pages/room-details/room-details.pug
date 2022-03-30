@@ -8,6 +8,13 @@ include ../../components/bullet-list/bullet-list.pug
 block title 
   title room details
 block content
+  - const path = '/pages/room-details/room-details.json' 
+  - const data = htmlWebpackPlugin.options.getData(path)
+  - const feature = data.feature
+  - const booking = data.booking
+  - const comment = data.comment
+  - const bulletList = data.bulletList
+  - const cancellationText = data.cancellationText
   main.room-details-content
     .room-details-content__wrap
 
@@ -22,29 +29,13 @@ block content
           h2.room-details-info__feature-header Сведения о номере
 
           .room-details-info__feature
-            +feature({
-              header:'Комфорт',
-              src:'insert_emoticon.svg',
-              alt:'Комфорт',
-              text:'Шумопоглощающие стены'
-              })
+            +feature(feature.comfort)
 
           .room-details-info__feature
-            +feature({
-            header:'Удобство',
-            src:'location_city.svg',
-            alt:'Удобство',
-            text:'Окно в каждой из спален'
-            })
+            +feature(feature.convenience)
 
           .room-details-info__feature
-            +feature({
-            header:'Уют',
-            src:'whatshot.svg',
-            alt:'Уют',
-            text:'Номер оснащён камином',
-            modify:'none-border'
-            })
+            +feature(feature.cosiness)
 
         .room-details-info__graph
           +graph({
@@ -52,11 +43,7 @@ block content
           })
 
         .room-details-info__booking-wrap
-          +booking({
-            number:'888',
-            lux:true,
-            price: '9 990'
-          })
+          +booking(booking)
 
         .room-details-info__bottom-wrap
           .room-details-info__comment-wrap
@@ -65,47 +52,18 @@ block content
               span.room-details-info__total-comments 2 отзыва
 
             .room-details-info__comment
-              +comment({
-                name:'Мурад Сарафанов',
-                date:'5 дней назад',
-                src:'foto.jpg',
-                message: 
-                `Великолепный матрас на кровати в основной спальне!
-                А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. 
-                Выкрикивал комплименты повару — никто не жаловался из соседей.`
-              })
+              +comment(comment.muradSarafanov)
 
             .room-details-info__comment
-              +comment({
-                name:'Патрисия Стёклышкова',
-                date:'Неделю назад',
-                src:'image_4.png',
-                message: 
-                `Обслуживание на высоте! Всё аккуратно, чисто. 
-                Завтраки в номер советую заказать, каждый день новое блюдо и 
-                десерт как комплимент`
-              })
+              +comment(comment.patriciaSteklyshkova)
 
           .room-details-info__regulations-wrap
             .room-details-info__bullet-list
-              -
-                masText= [
-                'Нельзя с питомцами',
-                'Без вечеринок и мероприятий',
-                'Время прибытия — после 13:00, а выезд до 12:00'
-                ];
-              +bullet-list({
-                label:'Правила',
-                text:masText,
-                modify:'big'
-              })
+              +bullet-list(bulletList)
               
             .room-details-info__cancellation
               p.room-details-info__cancellation-header Отмена
-              p.room-details-info__cancellation-text 
-                | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее 
-                | чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора 
-                | за услуги.
+              p.room-details-info__cancellation-text=cancellationText
 
 
 

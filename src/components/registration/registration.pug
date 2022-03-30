@@ -5,12 +5,19 @@ include ../buttons/buttons.pug
 
 mixin registration(options)
   -
-    let header = options.header ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'registration'
+    const header = options.header ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'registration'
     let className = classComp
+
+    const path = '/components/registration/registration.json' 
+    const data = htmlWebpackPlugin.options.getData(path)
+    const textField = data.textField
+    const toggleButtons = data.toggleButtons
+    const buttons = data.buttons
+
     if(modify){
     className += ' '+classComp+'_'+modify}
     if(addClass){
@@ -26,20 +33,10 @@ mixin registration(options)
       fieldset(class=classComp+'__full-name')
 
         div(class=classComp+'__name-wrap'+' js-'+classComp+'__name-wrap')
-          +text-field({
-            flLabel:true,
-            placeholder: 'Имя',
-            type: 'text',
-            name: 'name'
-          })
+          +text-field(textField.name)
 
         div(class=classComp+'__surname-wrap'+' js-'+classComp+'__surname-wrap')
-          +text-field({
-            flLabel:true,
-            placeholder: 'Фамилия',
-            type: 'text',
-            name: 'surname'
-          })
+          +text-field(textField.surname)
 
       div(class=classComp+'__gender-wrap')
         +radio-buttons({
@@ -47,52 +44,23 @@ mixin registration(options)
         })
 
       div(class=classComp+'__date-wrap'+' js-'+classComp+'__date-wrap')
-          +text-field({
-            label: 'дата рождения',
-            placeholder: 'ДД.ММ.ГГГГ',
-            type: 'text',
-            name: 'date',
-            class: 'js-masked-date'
-          })
+          +text-field(textField.date)
 
       fieldset(class=classComp+'__identification')
         legend(class=classComp+'__data-text') данные для входа в сервис
 
         div(class=classComp+'__email-wrap'+' js-'+classComp+'__email-wrap')
-          +text-field({
-            flLabel:true,
-            placeholder: 'Email',
-            type: 'email',
-            name: 'email'
-          })
+          +text-field(textField.email)
 
         div(class=classComp+'__pass-wrap'+' js-'+classComp+'__pass-wrap')
-          +text-field({
-            flLabel:true,
-            placeholder: 'Пароль',
-            type: 'password',
-            name: 'password'
-          })
+          +text-field(textField.password)
 
       div(class=classComp+'__toggle-wrap')
-        +toggle-buttons({
-          flLabel:true,
-          label:'Получать спецпредложения'
-        })
+        +toggle-buttons(toggleButtons)
 
       div(class=classComp+'__submit-wrap'+' js-'+classComp+'__submit-wrap')
-        +buttons({
-          text:'зарегистрироваться',
-          type:'submit',
-          modify:['submit']
-        })
+        +buttons(buttons.submit)
         
       div(class=classComp+'__sign-in')
         p(class=classComp+'__text-in') Уже есть аккаунт на Toxin
-        +buttons({
-          text:'Войти',
-          link:'https://test/test',
-          type:'link',
-          modify:['link-border']
-        })
-  
+        +buttons(buttons.link)

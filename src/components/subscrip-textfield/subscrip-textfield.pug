@@ -1,11 +1,11 @@
 mixin subscrip-textfield(options)
   -
-    let label = options.label ?? ''
-    let value = options.value ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'subscrip-textfield'
+    const label = options.label ?? ''
+    const value = options.value ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'subscrip-textfield'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

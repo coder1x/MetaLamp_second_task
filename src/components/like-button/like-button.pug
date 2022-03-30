@@ -1,10 +1,10 @@
 mixin like-button(options)
   -
-    let label = options.label ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'like-button'
+    const label = options.label ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'like-button'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

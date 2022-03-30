@@ -4,10 +4,16 @@ include ../navigation/navigation.pug
 
 mixin footer(options)
   -
-    let modify = options.modify ?? []
-    let addClass = options.class ?? ''
-    let classComp = 'footer'
+    const modify = options.modify ?? []
+    const addClass = options.class ?? ''
+    const classComp = 'footer'
     let className = classComp
+    const path = '/components/footer/footer.json' 
+    const data = htmlWebpackPlugin.options.getData(path)
+    const socialData = data.socialData
+    const navigation = data.navigation
+    const subscrip = data.subscrip
+
     if(modify){
       for(let item of modify)
     className += ' '+classComp+'_'+item
@@ -25,62 +31,25 @@ mixin footer(options)
           p(class=classComp+'__recommendation-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
 
         div(class=classComp+'__navigation-wrap')
-          -
-            let masText = [
-            'О нас',
-            'Новости',
-            'Служба поддержки',
-            'Услуги'
-            ];
-          +navigation({
-              header:'навигация',
-              masText: masText
-            })
+          +navigation(navigation.different)
 
         div(class=classComp+'__about-us-wrap')
-          -
-            masText = [
-            'О сервисе',
-            'Наша команда',
-            'Вакансии',
-            'Инвесторы'
-            ];
-          +navigation({
-              header:'о нас',
-              masText: masText
-            })
+          +navigation(navigation.about)
 
         div(class=classComp+'__support-wrap')
-          -
-            masText = [
-            'Соглашения',
-            'Сообщества',
-            'Связь с нами'
-            ];
-          +navigation({
-              header:'Служба поддержки',
-              masText: masText
-            })
+          +navigation(navigation.support)
 
         div(class=classComp+'__subscrip-wrap')
           p(class=classComp+'__subscrip-header') Подписка
           p(class=classComp+'__subscrip-text') Получайте специальные предложения и новости сервиса
-          +subscrip-textfield({
-            flLabel:true,
-            value:'Email'
-          })
+          +subscrip-textfield(subscrip)
 
     div(class=classComp+'__bottom')
       div(class=classComp+'__bottom-wrap')
         p(class=classComp+'__copyright') Copyright © 2018 Toxin отель. Все права защищены.
 
         ul(class=classComp+'__social')
-          li(class=classComp+'__social-item')
-            a(class=classComp+'__social-link' href='https://test/test')
-              img(class=classComp+'__social-icon' src=require('@com/footer/img/twitter.svg').default alt='twitter' title='twitter')
-          li(class=classComp+'__social-item')
-            a(class=classComp+'__social-link' href='https://test/test')
-              img(class=classComp+'__social-icon' src=require('@com/footer/img/facebook.svg').default alt='facebook' title='facebook')
-          li(class=classComp+'__social-item')
-            a(class=classComp+'__social-link' href='https://test/test')
-              img(class=classComp+'__social-icon' src=require('@com/footer/img/instagram.svg').default alt='instagram' title='instagram')
+          each icon, text in socialData
+            li(class=classComp+'__social-item')
+              a(class=classComp+'__social-link' href='https://test/test')
+                img(class=classComp+'__social-icon' src=require('@com/footer/img/'+icon).default alt=text title=text)

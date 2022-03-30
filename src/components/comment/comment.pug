@@ -1,13 +1,13 @@
 include ../like-button/like-button.pug
 mixin comment(options)
   -
-    let src = options.src ?? ''
-    let name = options.name ?? ''
-    let date = options.date ?? ''
-    let message = options.message ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let classComp = 'comment'
+    const src = options.src ?? ''
+    const name = options.name ?? ''
+    const date = options.date ?? ''
+    const message = options.message ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const classComp = 'comment'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

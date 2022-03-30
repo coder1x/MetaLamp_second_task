@@ -1,16 +1,24 @@
 mixin rate-button(options)
   -
-    let label = options.label ?? ''
-    let name = options.name ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'rate-button'
+    const label = options.label ?? ''
+    const name = options.name ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'rate-button'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}
     if(addClass){
     className += ' '+addClass}
+
+    labels = [
+    'Ужасно',
+    'Плохо', 
+    'Нормально', 
+    'Хорошо', 
+    'Отлично', 
+    ]
 
   div(class=className)
     fieldset(class=classComp+'__stars') 
@@ -19,8 +27,6 @@ mixin rate-button(options)
       -}
       
       div(class=classComp+'__group')
-        input(class=classComp+'__star' type='radio' name=name value='1' aria-label='Ужасно')
-        input(class=classComp+'__star' type='radio' name=name value='2' aria-label='Плохо')
-        input(class=classComp+'__star' type='radio' name=name value='3' aria-label='Нормально')
-        input(class=classComp+'__star' type='radio' name=name value='4' aria-label='Хорошо')
-        input(class=classComp+'__star' type='radio' name=name value='5' aria-label='Отлично')
+        - for(let i=0; i<labels.length; i++)  {
+          input(class=classComp+'__star' type='radio' name=name value=i+1 aria-label=labels[i])
+        -}

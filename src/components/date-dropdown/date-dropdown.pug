@@ -2,13 +2,13 @@ include ../buttons/buttons.pug
 
 mixin date-dropdown(options)
   -
-    let label = options.label ?? ''
-    let value = options.value ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let filter = options.filter ?? false
-    let classComp = 'date-dropdown'
+    const label = options.label ?? ''
+    const value = options.value ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const filter = options.filter ?? false
+    const classComp = 'date-dropdown'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}
@@ -19,10 +19,13 @@ mixin date-dropdown(options)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
       div(class=classComp+'__date-wrap')
+
         - if(!flLabel){
         p(class=classComp+'__label-text')= label[i]
         -}
+
         label(class=classComp+'__label')
+
           -if(filter){
             input(class=classComp+'__input'+' js-'+classComp+'__input' type='text' placeholder=''  autocomplete='off')
             input(class=classComp+'__input-hidden'+' js-'+classComp+'__input-hidden' type='hidden' value=value name='date-filter')

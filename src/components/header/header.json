@@ -1,0 +1,36 @@
+{
+  "service": [
+    "Услуга 1",
+    "Услуга 2",
+    "Услуга 3",
+    "Услуга 4",
+    "Услуга 5"
+  ],
+  "agreements": [
+    "Соглашения 1",
+    "Соглашения 2",
+    "Соглашения 3",
+    "Соглашения 4",
+    "Соглашения 5"
+  ],
+  "buttons": {
+    "signIn": {
+      "text": "Войти",
+      "link": "https://test/test",
+      "type": "link",
+      "modify": [
+        "link-border",
+        "header"
+      ]
+    },
+    "registration": {
+      "text": "зарегистрироваться",
+      "link": "https://test/test",
+      "type": "link",
+      "modify": [
+        "link",
+        "header"
+      ]
+    }
+  }
+}

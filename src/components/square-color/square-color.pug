@@ -1,7 +1,13 @@
-mixin square-color(color,textTop,textBot)
-  - let className = 'square-color'
+mixin square-color(textTop,textBot,modify)
+  - 
+    const className = 'square-color'
+    let classSquare = className+'__square'
+    const modifySquare = modify ?? ''
+    if(modifySquare){
+    classSquare += ' '+classSquare+'_'+modifySquare}
+
   div(class=className)
-    div(class=className+'__square' style='background:'+color)
+    div(class=classSquare)
     
     div.squareColor__text
       p(class=className+'__color')= textTop

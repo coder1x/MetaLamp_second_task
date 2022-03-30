@@ -1,13 +1,13 @@
 mixin checkbox-list(options)
   -
-    let masWord = options.masWord ?? []
-    let masText = options.masText ?? []
-    let legend = options.legend ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let click = options.click ?? false
-    let classComp = 'checkbox-list'
+    const masWord = options.masWord ?? []
+    const masText = options.masText ?? []
+    const legend = options.legend ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const click = options.click ?? false
+    const classComp = 'checkbox-list'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

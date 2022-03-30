@@ -64,7 +64,7 @@ pages
 | |  landing-page.ts
 | |  landing-page.scss
 | └─── img
-| | |  image 3.webp
+| | |  image_3.webp
 |
 └─── room-details
 | |  room-details.pug

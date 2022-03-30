@@ -3,12 +3,17 @@ include ../buttons/buttons.pug
 
 mixin sign-in(options)
   -
-    let header = options.header ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'sign-in'
+    const header = options.header ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'sign-in'
     let className = classComp
+    const path = '/components/sign-in/sign-in.json' 
+    const data = htmlWebpackPlugin.options.getData(path)
+    const textField = data.textField
+    const buttons = data.buttons
+
     if(modify){
     className += ' '+classComp+'_'+modify}
     if(addClass){
@@ -24,33 +29,14 @@ mixin sign-in(options)
       fieldset(class=classComp+'__authorization')
 
         div(class=classComp+'__email-wrap'+' js-'+classComp+'__email-wrap')
-          +text-field({
-            flLabel:true,
-            placeholder: 'Email',
-            type: 'email',
-            name: 'email'
-          })
+          +text-field(textField.email)
 
         div(class=classComp+'__pass-wrap'+' js-'+classComp+'__pass-wrap')
-          +text-field({
-            flLabel:true,
-            placeholder: 'Пароль',
-            type: 'password',
-            name: 'password'
-          })
+          +text-field(textField.password)
 
         div(class=classComp+'__button-wrap'+' js-'+classComp+'__button-wrap')
-          +buttons({
-            text:'войти',
-            type:'submit',
-            modify:['submit']
-          })
+          +buttons(buttons.submit)
           
       div(class=classComp+'__registration-wrap')
         p(class=classComp+'__text-reg') Нет аккаунта на Toxin ?
-        +buttons({
-          text:'Создать',
-          link:'https://test/test',
-          type:'link',
-          modify:['link-border']
-        })
+        +buttons(buttons.link)

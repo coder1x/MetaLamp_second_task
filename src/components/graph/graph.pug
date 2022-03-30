@@ -6,6 +6,12 @@ mixin graph(options)
     let flLabel = options.flLabel ?? false
     let classComp = 'graph'
     let className = classComp
+    const graphData = [
+      ['130','excellent','Великолепно'],
+      ['65','good','Хорошо'],
+      ['65','satisfactorily','Удовлетворительно'],
+      ['0','disappointed','Разочарован'],
+    ]
     if(modify){
     className += ' '+classComp+'_'+modify}
     if(addClass){
@@ -19,7 +25,5 @@ mixin graph(options)
     div(class=classComp+'__wrapper')
       canvas(class=classComp+'__canvas'+' js-'+classComp+'__canvas' width='240' height='240')
       ul(class=classComp+'__colors')
-        li(class=classComp+'__colors-item'+' js-'+classComp+'__colors-item' date-grade='130' date-name='excellent') Великолепно
-        li(class=classComp+'__colors-item'+' js-'+classComp+'__colors-item' date-grade='65' date-name='good') Хорошо
-        li(class=classComp+'__colors-item'+' js-'+classComp+'__colors-item' date-grade='65' date-name='satisfactorily') Удовлетворительно
-        li(class=classComp+'__colors-item'+' js-'+classComp+'__colors-item' date-grade='0' date-name='disappointed') Разочарован
+        each data in graphData
+          li(class=classComp+'__colors-item'+' js-'+classComp+'__colors-item' date-grade=data[0] date-name=data[1])=data[2]

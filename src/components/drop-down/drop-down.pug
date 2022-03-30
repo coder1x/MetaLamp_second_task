@@ -2,16 +2,16 @@ include ../buttons/buttons.pug
 
 mixin drop-down(options)
   -
-    let label = options.label ?? ''
-    let value = options.value ?? ''
-    let name = options.name ?? ''
-    let masWord = options.masWord ?? [[]]
-    let maxValue = options.maxValue ?? []
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let button = options.button ?? false
-    let flLabel = options.flLabel ?? false
-    let classComp = 'drop-down'
+    const label = options.label ?? ''
+    const value = options.value ?? ''
+    const name = options.name ?? ''
+    const masWord = options.masWord ?? [[]]
+    const maxValue = options.maxValue ?? []
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const button = options.button ?? false
+    const flLabel = options.flLabel ?? false
+    const classComp = 'drop-down'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

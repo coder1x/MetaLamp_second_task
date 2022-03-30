@@ -1,10 +1,10 @@
 mixin radio-buttons(options)
   -
-    let label = options.label ?? ''
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let flLabel = options.flLabel ?? false
-    let classComp = 'radio-buttons'
+    const label = options.label ?? ''
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const flLabel = options.flLabel ?? false
+    const classComp = 'radio-buttons'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

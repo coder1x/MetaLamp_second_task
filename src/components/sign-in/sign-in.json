@@ -1,0 +1,33 @@
+{
+  "textField": {
+    "email": {
+      "flLabel": true,
+      "placeholder": "Email",
+      "type": "email",
+      "name": "email"
+    },
+    "password": {
+      "flLabel": true,
+      "placeholder": "Пароль",
+      "type": "password",
+      "name": "password"
+    }
+  },
+  "buttons": {
+    "submit": {
+      "text": "войти",
+      "type": "submit",
+      "modify": [
+        "submit"
+      ]
+    },
+    "link": {
+      "text": "Создать",
+      "link": "https://test/test",
+      "type": "link",
+      "modify": [
+        "link-border"
+      ]
+    }
+  }
+}

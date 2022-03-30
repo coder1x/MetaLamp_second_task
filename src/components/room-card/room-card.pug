@@ -2,14 +2,14 @@ include ../rate-button/rate-button.pug
 
 mixin room-card(options)
   -
-    let rateName = options.rateName ?? 'room-1'
-    let number = options.number ?? ''
-    let price = options.price ?? ''
-    let reviews = options.reviews ?? ''
-    let lux = options.lux ?? false
-    let modify = options.modify ?? ''
-    let addClass = options.class ?? ''
-    let classComp = 'room-card'
+    const rateName = options.rateName ?? 'room-1'
+    const number = options.number ?? ''
+    const price = options.price ?? ''
+    const reviews = options.reviews ?? ''
+    const lux = options.lux ?? false
+    const modify = options.modify ?? ''
+    const addClass = options.class ?? ''
+    const classComp = 'room-card'
     let className = classComp
     if(modify){
     className += ' '+classComp+'_'+modify}

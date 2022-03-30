@@ -15,6 +15,21 @@ include ../../components/pagination/pagination.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/comment/comment.pug
 
+- const path = '/pages/form-elements/form-elements.json' 
+- const data = htmlWebpackPlugin.options.getData(path)
+- const textField = data.textField
+- const dropDown = data.dropDown
+- const dateDropdown = data.dateDropdown
+- const filterDate = data.filterDate
+- const subscrip = data.subscrip
+- const checkboxList = data.checkboxList
+- const feature = data.feature
+- const radioButtons = data.radioButtons
+- const toggleButtons = data.toggleButtons
+- const rateButton = data.rateButton
+- const buttons = data.buttons
+- const bulletList = data.bulletList
+- const comment = data.comment
 
 doctype html
 html(lang='ru')
@@ -31,159 +46,58 @@ html(lang='ru')
 
         .colomn-left 
           .colomn-left__text-field
-            +text-field({
-              label: 'text field',
-              placeholder: 'Email',
-              type: 'email',
-              name: 'email'
-            })
+            +text-field(textField.email)
 
           .colomn-left__text-field
-            +text-field({
-              label: 'text field',
-              type: 'text',
-              name: 'Name'
-            })
+            +text-field(textField.name)
           
           .colomn-left__guest
-            -
-              let masWord = [
-              ['взрослые', 'дети', 'младенцы'], 
-              ['гость,гостя,гостей', 
-              'гость,гостя,гостей', 
-              'младенец,младенца,младенцев']]
-            +drop-down({
-              label:'dropdown',
-              value: 'Сколько гостей',
-              name:'Guest',
-              masWord:masWord,
-              maxValue:['10','12','5'],
-              button:true
-            })
+            +drop-down(dropDown.guest)
 
           .colomn-left__text-field
-            +text-field({
-              label: 'masked text field',
-              placeholder: 'ДД.ММ.ГГГГ',
-              type: 'text',
-              name: 'Date',
-              class: 'js-masked-date'
-            })
+            +text-field(textField)
 
           .colomn-left__date-dropdown
-            +date-dropdown({
-              label: ['date Dropdown','date Dropdown'],
-              class: 'js-masked-date'
-            })
+            +date-dropdown(dateDropdown)
 
           .colomn-left__filter-date
-            +date-dropdown({
-              label: ['filter date dropdown'],
-              value: '19.08.2022 - 23.08.2022',
-              modify: 'filter',
-              filter: true
-            })
+            +date-dropdown(filterDate)
 
           .colomn-left__subscrip-textfield
-            +subscrip-textfield({
-              label:'subscription text field',
-              value:'Email'
-            })
+            +subscrip-textfield(subscrip)
 
           .colomn-left__rooms
-            - 
-              masWord = [
-              ['спальни', 'кровати', 'ванные комнаты'], 
-              ['спальня,спальни,спален', 
-              'кровать,кровати,кроватей', 
-              'ванная комната,ванные комнаты,ванных комнат'] ]
-            +drop-down({
-              label:'dropdown',
-              value:'Сколько спален',
-              name:'Rooms',
-              masWord:masWord,
-              maxValue:['5','8','4'],
-              modify:'sharp'
-            })
+            +drop-down(dropDown.rooms)
           
           .colomn-left__checkbox-list
-            - 
-              masWord = [
-              'Завтрак', 'Письменный стол', 
-              'Стул для кормления','Кроватка','Телевизор',
-              'Шампунь','Телевизор','Шампунь']
-            +checkbox-list({
-              masWord:masWord,
-              legend:'expandable checkbox list',
-            })
+            +checkbox-list(checkboxList.expandable)
 
           .colomn-left__feature
-            +feature({
-              header:'Комфорт',
-              src:'insert_emoticon.svg',
-              alt:'Комфорт',
-              text:'Шумопоглощающие стены'
-            })
+            +feature(feature.comfort)
 
           .colomn-left__feature
-            +feature({
-              header:'Удобство',
-              src:'location_city.svg',
-              alt:'Удобство',
-              text:'Окно в каждой из спален'
-            })
+            +feature(feature.convenience)
 
         .map-elements__wrap-right
           .map-elements__column
             .colomn-center 
               .colomn-center__checkbox-list
-                - 
-                  masWord = [
-                  'Можно курить', 'Можно с питомцами', 
-                  'Можно пригласить гостей (до 10 человек)']
-                +checkbox-list({
-                  masWord:masWord,
-                  legend:'Checkbox Buttons',
-                  click: true,
-                  modify:'visibleBut'
-                })
+                +checkbox-list(checkboxList.buttons)
 
               .colomn-center__radio-buttons
-                +radio-buttons({
-                  label:'Radio Buttons',
-                })
+                +radio-buttons(radioButtons)
 
               .colomn-center__toggle-buttons
-                +toggle-buttons({
-                  header:'Toggle',
-                  label:'Получать спецпредложения'
-                })
+                +toggle-buttons(toggleButtons)
 
               .colomn-center__like-button
                 +like-button({label:'like button'})
 
               .colomn-center__rate-button
-                +rate-button({
-                  label:'rate button',
-                  name:'rating'
-                })
+                +rate-button(rateButton)
 
               .colomn-center__checkbox-listRich
-                - 
-                  masWord = [
-                  'Широкий коридор', 
-                  'Помощник для инвалидов']
-                  masText = [
-                  'Ширина коридоров в номере не менее 91 см.',
-                  'На 1 этаже вас встретит специалист  и проводит до номера.']
-                +checkbox-list({
-                  masWord:masWord,
-                  masText:masText,
-                  legend:'rich Checkbox Buttons',
-                  click: true,
-                  modify:'visibleBut',
-                  class:'checkbox-list_rich'
-                })
+                +checkbox-list(checkboxList.richCheckbox)
 
             .colomn-right
               .colomn-right__range-slider
@@ -193,34 +107,16 @@ html(lang='ru')
               span.colomn-right__logo buttons
 
               .colomn-right__link
-                +buttons({
-                  text:'CLICK ME',
-                  link:'https://test/test',
-                  type:'link',
-                  modify:['link']
-                })
+                +buttons(buttons.link)
 
               .colomn-right__link-border
-                +buttons({
-                  text:'CLICK ME',
-                  link:'https://test/test',
-                  type:'link',
-                  modify:['link-border']
-                })
+                +buttons(buttons.linkBorder)
 
               .colomn-right__button-text
-                +buttons({
-                  text:'CLICK ME',
-                  type:'button',
-                  modify:['text']
-                })
+                +buttons(buttons.text)
 
               .colomn-right__submit
-                +buttons({
-                  text:'перейти к оплате',
-                  type:'submit',
-                  modify:['submit']
-                })
+                +buttons(buttons.submit)
 
               .colomn-right__pagination
                 +pagination({
@@ -228,25 +124,8 @@ html(lang='ru')
                 })
 
               .colomn-right__bullet-list
-                -
-                  masText= [
-                  'Нельзя с питомцами',
-                  'Без вечеринок и мероприятий',
-                  'Время прибытия — после 13:00, а выезд до 12:00'
-                  ];
-                +bullet-list({
-                  label:'bullet list',
-                  text:masText
-                })
+                +bullet-list(bulletList)
                 
           .colomn-bottom
             .colomn-bottom__comment
-              +comment({
-                name:'Мурад Сарафанов',
-                date:'5 дней назад',
-                src:'foto.jpg',
-                message: 
-                `Великолепный матрас на кровати в основной спальне!
-                А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. 
-                Выкрикивал комплименты повару — никто не жаловался из соседей.`
-              })
+              +comment(comment)
