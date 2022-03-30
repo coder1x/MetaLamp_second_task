@@ -1,6 +1,6 @@
 import './search-room.scss';
 
-interface PT {
+interface Options {
   block: string,
   button: string
 }
@@ -13,7 +13,7 @@ class sidebar {
   classVisible: string = '';
   private click: boolean = false;
 
-  constructor(options: PT) {
+  constructor(options: Options) {
     this.blockClass = options.block;
     this.buttonClass = options.button;
     this.click = false;

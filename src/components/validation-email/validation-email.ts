@@ -1,10 +1,10 @@
-interface optV {
+interface Options {
   message?: string,
   event?: string,
   elem: Element
 }
 
-interface opt {
+interface RenderOptions {
   className: string,
   inputName: string,
   message?: string,
@@ -17,7 +17,7 @@ class ValidationEmail {
   inputElem: HTMLInputElement | null = null;
   private regExpEmail: RegExp | null = null;
 
-  constructor(options: optV) {
+  constructor(options: Options) {
     this.init(options);
   }
 
@@ -29,7 +29,7 @@ class ValidationEmail {
     return false;
   }
 
-  private init(options: optV) {
+  private init(options: Options) {
     let event = options.event ?? '';
     let message = options.message ?? 'Вы ввели неверный Email.';
     const elem = options.elem;
@@ -52,7 +52,7 @@ class ValidationEmail {
   }
 }
 
-function renderValidationEmail(options: opt) {
+function renderValidationEmail(options: RenderOptions) {
   const className = options.className;
   const name = options.inputName ?? '';
   const input = className + '__input[name="' + name + '"]';

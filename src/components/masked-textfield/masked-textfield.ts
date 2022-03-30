@@ -1,4 +1,4 @@
-interface opt {
+interface Options {
   className: string,
   message: string,
   elem?: Element
@@ -10,7 +10,7 @@ class maskedTextField {
   className: string = '';
   private temp: string = '';
 
-  constructor(options: opt) {
+  constructor(options: Options) {
     this.className = options.className;
     this.message = options.message;
     this.temp = '';
@@ -106,7 +106,7 @@ class maskedTextField {
   }
 }
 
-function renderMasked(options: opt) {
+function renderMasked(options: Options) {
   let components = document.querySelectorAll(options.className);
   let objMas = [];
   for (let elem of components) {
