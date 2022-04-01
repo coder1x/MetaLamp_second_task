@@ -127,11 +127,6 @@ module.exports = {
       developerURL: 'https://github.com/coder1x/',
       icons: {
         'android': [
-          'android-chrome-36x36.png',
-          'android-chrome-48x48.png',
-          'android-chrome-72x72.png',
-          'android-chrome-96x96.png',
-          'android-chrome-144x144.png',
           'android-chrome-192x192.png',
           'android-chrome-256x256.png'
         ],
@@ -139,10 +134,6 @@ module.exports = {
           'apple-touch-icon-114x114.png',
           'apple-touch-icon-120x120.png',
           'apple-touch-icon-167x167.png',
-          'apple-touch-icon-57x57.png',
-          'apple-touch-icon-60x60.png',
-          'apple-touch-icon-72x72.png',
-          'apple-touch-icon-76x76.png',
           'apple-touch-icon-precomposed.png',
           'apple-touch-icon.png'
         ],

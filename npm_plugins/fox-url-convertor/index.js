@@ -22,7 +22,7 @@ class FoxUrlConvertor {
     }, compiler, true);
   }
 
-  buildFiles(callback, compiler, fl = false) {
+  buildFiles(callback, compiler, flag = false) {
     compiler.hooks.thisCompilation.tap(
       { name: 'FoxUrlConvertor' },
       (compilation) => {
@@ -31,8 +31,8 @@ class FoxUrlConvertor {
         compilation.hooks.processAssets.tap(
           {
             name: 'FoxUrlConvertor',
-            stage: fl ? process : additional,
-            additionalAssets: fl
+            stage: flag ? process : additional,
+            additionalAssets: flag
           },
           callback
         );

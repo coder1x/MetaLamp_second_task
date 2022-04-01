@@ -7,7 +7,6 @@ class CheckBoxList {
   private wrap: Element | null = null;
   private headerEl: HTMLElement | null = null;
   private imgEl: HTMLElement | null = null;
-  private keyF: boolean | null = null;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -16,12 +15,11 @@ class CheckBoxList {
   }
 
   init() {
-    this.keyF = false;
     this.setDomElem();
     this.setActions();
   }
 
-  toggleVis() {
+  toggleVis = () => {
     let display: string = '';
 
     if (this.wrap)
@@ -32,50 +30,44 @@ class CheckBoxList {
     this.toggleModify(this.elem, '_visible', flag);
   }
 
-  private getElement(str: string, domBase?: Element): Function {
+  private getElement(str: string, domBase?: Element) {
     const dom = domBase ?? this.elem;
-    const selector = this.className + str;
-    const elem: Element | null = dom.querySelector(selector);
-    if (elem instanceof HTMLElement)
-      return function (): HTMLElement { return elem; };
-    if (elem instanceof Element)
-      return function (): Element { return elem; };
-    return () => { return elem; };
+    const selector = `${this.className}${str}`;
+    return dom.querySelector(selector);
   }
 
   private setDomElem() {
-    this.wrap = this.getElement('__wrap')();
-    this.headerEl = this.getElement('__header')();
-    this.imgEl = this.getElement('__tip')();
+    this.wrap = this.getElement('__wrap');
+    this.headerEl = this.getElement('__header') as HTMLElement;
+    this.imgEl = this.getElement('__tip') as HTMLElement;
   }
 
   private toggleModify(elem: Element, modify: string, flag = false) {
-    let clearName = this.className.replace(/^\.js-/, '') + modify;
-    let objClass = elem.classList;
+    const clearName = `${this.className.replace(/^\.js-/, '')}${modify}`;
+    const objClass = elem.classList;
     flag ? objClass.add(clearName) : objClass.remove(clearName);
+  }
+
+  private handleKeydown = (e: KeyboardEvent) => {
+    if (e.key == 'Enter' || e.key == ' ') {
+      e.preventDefault();
+      this.toggleVis();
+    } else if (e.key == 'Escape') {
+      e.preventDefault();
+      this.toggleModify(this.elem, '_visible', false);
+    }
   }
 
   private setActions() {
     if (this.imgEl && this.headerEl) {
-      this.headerEl.addEventListener('click', () => {
-        this.toggleVis();
-      });
-
-      this.headerEl.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (e.key == 'Enter' || e.key == ' ') {
-          e.preventDefault();
-          this.toggleVis();
-        } else if (e.key == 'Escape') {
-          e.preventDefault();
-          this.toggleModify(this.elem, '_visible', false);
-        }
-      });
+      this.headerEl.addEventListener('click', this.toggleVis);
+      this.headerEl.addEventListener('keydown', this.handleKeydown);
     }
   }
 }
 
 function renderCheckboxList(className: string) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new CheckBoxList(className, elem));

@@ -14,12 +14,12 @@ class registration {
   }
 
   getElement(str: string): HTMLInputElement | null {
-    const selector = this.className + '__' + str + '-wrap input';
+    const selector = `${this.className}__${str}-wrap input`;
     return this.elem.querySelector(selector);
   }
 
   private setDom() {
-    const buttonS = this.className + '__submit-wrap button';
+    const buttonS = `${this.className}__submit-wrap button`;
     this.buttonEl = this.elem.querySelector(buttonS);
   }
 
@@ -28,33 +28,33 @@ class registration {
 
       function check(result: boolean, mess: string) {
         if (result) {
-          alert('Введите ' + mess);
+          alert(`Введите ${mess}`);
           return false;
         }
         return true;
       }
 
-      let fl = true;
+      let flag = true;
       switch (str) {
         case 'name':
-          fl = check(len < 3, 'Имя');
+          flag = check(len < 3, 'Имя');
           break;
         case 'surname':
-          fl = check(len < 3, 'Фамилию');
+          flag = check(len < 3, 'Фамилию');
           break;
         case 'date':
-          fl = check(len != 10, 'дату рождения');
+          flag = check(len != 10, 'дату рождения');
           break;
         case 'email':
-          fl = check(len < 5, 'Email');
+          flag = check(len < 5, 'Email');
           break;
         case 'pass':
-          fl = check(len < 6, 'Пароль');
+          flag = check(len < 6, 'Пароль');
           break;
         default:
           break;
       }
-      return fl;
+      return flag;
     };
 
     const fields = ['name', 'surname', 'date', 'email', 'pass'];
@@ -71,17 +71,19 @@ class registration {
     return true;
   }
 
+  private handleButton = (event: Event) => {
+    if (!this.validation())
+      event.preventDefault();
+  }
+
   private setAction() {
     if (this.buttonEl)
-      this.buttonEl.addEventListener('click', (e: Event) => {
-        if (!this.validation())
-          e.preventDefault();
-      });
+      this.buttonEl.addEventListener('click', this.handleButton);
   }
 }
 
 function renderRegistration(className: string) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new registration(className, elem));

@@ -16,7 +16,7 @@ class rangeSlider {
     this.#createRangeSlider();
   }
 
-  #setAttrDot(data, fl = false) {
+  #setAttrDot(data, flag = false) {
     this.dotFrom = this.elem.getElementsByClassName('irs-handle from')[0];
     this.dotTo = this.elem.getElementsByClassName('irs-handle to')[0];
     const lineEl = this.elem.getElementsByClassName('irs-line')[0];
@@ -25,7 +25,7 @@ class rangeSlider {
     this.dotFrom.setAttribute('tabindex', '0');
     this.dotTo.setAttribute('tabindex', '0');
 
-    if (fl) {
+    if (flag) {
       if (this.dotFocus == 'from')
         this.dotFrom.focus();
 
@@ -37,7 +37,7 @@ class rangeSlider {
   }
 
   #setDomElem() {
-    const classVal = this.className + '__value';
+    const classVal = `${this.className}__value`;
     this.valueEl = this.elem.querySelector(classVal);
   }
 
@@ -45,7 +45,7 @@ class rangeSlider {
     const setRange = ({ from, to }) => {
       const numFrom = from.toLocaleString();
       const numTo = to.toLocaleString();
-      const range = numFrom + '₽ - ' + numTo + '₽';
+      const range = `${numFrom}₽ - ${numTo}₽`;
       this.valueEl.innerText = range;
     };
 
@@ -70,44 +70,49 @@ class rangeSlider {
     }).data('ionRangeSlider');
   }
 
+
+  #handleFromFocus = () => {
+    this.dotFocus = 'from';
+  }
+
+  #handleDotFocus = () => {
+    this.dotFocus = 'to';
+  }
+
+
   #setActionsDot({ from, to, min, max }) {
-    this.dotFrom.addEventListener('focus', () => {
-      this.dotFocus = 'from';
-    });
 
-    this.dotTo.addEventListener('focus', () => {
-      this.dotFocus = 'to';
-    });
+    const movement = (event, flag = false) => {
+      const val = flag ? to : from;
+      const name = flag ? 'to' : 'from';
 
-    const movement = (e, fl = false) => {
-      const val = fl ? to : from;
-      const name = fl ? 'to' : 'from';
-      if (e.key == 'ArrowLeft') {
-        e.preventDefault();
+      if (event.key == 'ArrowLeft') {
+        event.preventDefault();
         this.$myRange.update({
           [name]: val >= min ? val - 50 : val,
         });
 
-      } else if (e.key == 'ArrowRight') {
-        e.preventDefault();
+      } else if (event.key == 'ArrowRight') {
+        event.preventDefault();
         this.$myRange.update({
           [name]: val <= max ? val + 50 : val,
         });
       }
     };
 
-    this.dotFrom.addEventListener('keydown', (e) => {
-      movement(e);
-    });
+    const handleDotKeydown = (event) => {
+      movement(event, true);
+    };
 
-    this.dotTo.addEventListener('keydown', (e) => {
-      movement(e, true);
-    });
+    this.dotFrom.addEventListener('focus', this.#handleFromFocus);
+    this.dotTo.addEventListener('focus', this.#handleDotFocus);
+    this.dotFrom.addEventListener('keydown', movement);
+    this.dotTo.addEventListener('keydown', handleDotKeydown);
   }
 }
 
 function renderRangeSlider(className) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new rangeSlider(className, elem));

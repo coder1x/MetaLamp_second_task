@@ -5,7 +5,7 @@ class signIn {
   className: string;
   private emailInputs: HTMLInputElement | null = null;
   private passInput: HTMLInputElement | null = null;
-  private buttonEl: HTMLInputElement | null = null;
+  private buttonEl: HTMLElement | null = null;
 
   constructor(className: string, elem: Element) {
     this.className = className;
@@ -14,42 +14,43 @@ class signIn {
   }
 
   private setDom(elem: Element) {
-    const email = this.className + '__email-wrap input';
-    const pass = this.className + '__pass-wrap input';
-    const submit = this.className + '__button-wrap button';
+    const email = `${this.className}__email-wrap input`;
+    const pass = `${this.className}__pass-wrap input`;
+    const submit = `${this.className}__button-wrap button`;
 
-    this.emailInputs = elem.querySelector(email);
-    this.passInput = elem.querySelector(pass);
+    this.emailInputs = elem.querySelector(email) as HTMLInputElement;
+    this.passInput = elem.querySelector(pass) as HTMLInputElement;
     this.buttonEl = elem.querySelector(submit);
   }
 
   private validation() {
+    if (!this.emailInputs || !this.passInput) return false;
 
-    if (this.emailInputs instanceof HTMLInputElement)
-      if (!this.emailInputs.value) {
-        alert('Введите Email');
-        return false;
-      }
+    if (!this.emailInputs.value) {
+      alert('Введите Email');
+      return false;
+    }
 
-    if (this.passInput instanceof HTMLInputElement)
-      if (!this.passInput.value) {
-        alert('Введите пароль');
-        return false;
-      }
+    if (!this.passInput.value) {
+      alert('Введите пароль');
+      return false;
+    }
     return true;
+  }
+
+  private handleButtonClick = (e: Event) => {
+    if (!this.validation())
+      e.preventDefault();
   }
 
   private setAction() {
     if (this.buttonEl)
-      this.buttonEl.addEventListener('click', (e: Event) => {
-        if (!this.validation())
-          e.preventDefault();
-      });
+      this.buttonEl.addEventListener('click', this.handleButtonClick);
   }
 }
 
 function renderSignIn(className: string) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new signIn(className, elem));

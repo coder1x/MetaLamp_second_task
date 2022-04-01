@@ -14,9 +14,9 @@ class searchRoom {
   }
 
   private setDom(elem: Element) {
-    const date = this.className + '__date-wrap input';
-    const guests = this.className + '__dropdown-wrap input';
-    const submit = this.className + '__button-wrap button';
+    const date = `${this.className}__date-wrap input`;
+    const guests = `${this.className}__dropdown-wrap input`;
+    const submit = `${this.className}__button-wrap button`;
 
     this.dateInputs = [...elem.querySelectorAll(date)];
     this.guestsInput = elem.querySelector(guests);
@@ -74,18 +74,20 @@ class searchRoom {
     return true;
   }
 
+  private handleButtonClick = (event: Event) => {
+    if (!this.messageErr()) {
+      event.preventDefault();
+    }
+  }
+
   private setAction() {
     if (this.buttonEl)
-      this.buttonEl.addEventListener('click', (e: Event) => {
-        if (!this.messageErr()) {
-          e.preventDefault();
-        }
-      });
+      this.buttonEl.addEventListener('click', this.handleButtonClick);
   }
 }
 
 function renderSearchRoom(className: string) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new searchRoom(className, elem));

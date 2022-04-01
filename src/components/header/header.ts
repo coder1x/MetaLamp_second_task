@@ -22,20 +22,15 @@ class headerMenu {
 
   private getElements(str: string, domBase?: Element): Element[] {
     const dom = domBase ?? this.elem;
-    const selector = this.className + str;
+    const selector = `${this.className}${str}`;
     const doms = [...dom.querySelectorAll(selector)];
     return doms;
   }
 
-  private getElement(str: string, domBase?: Element): Function {
+  private getElement(str: string, domBase?: Element) {
     const dom = domBase ?? this.elem;
-    const selector = this.className + str;
-    const elem: Element | null = dom.querySelector(selector);
-    if (elem instanceof HTMLElement)
-      return function (): HTMLElement { return elem; };
-    if (elem instanceof Element)
-      return function (): Element { return elem; };
-    return () => { return elem; };
+    const selector = `${this.className}${str}`;
+    return dom.querySelector(selector);
   }
 
   closeAll() {
@@ -60,9 +55,9 @@ class headerMenu {
   private setDom() {
     this.linksDown = this.getElements('__link-down');
     this.items = this.getElements('__items-down');
-    this.button = this.getElement('__toggle')();
-    this.spanBut = this.getElement('__toggle-line')();
-    this.nav = this.getElement('__menu-wrap')();
+    this.button = this.getElement('__toggle') as HTMLElement;
+    this.spanBut = this.getElement('__toggle-line');
+    this.nav = this.getElement('__menu-wrap') as HTMLElement;
     this.tip = this.getElements('__tip');
 
     this.mapLinks = new Map();
@@ -79,19 +74,19 @@ class headerMenu {
   }
 
   private getModify() {
-    const selector = this.className + '__items-down_visible';
+    const selector = `${this.className}__items-down_visible`;
     return selector.replace(/^\.js-/, '');
   }
 
   private getVisButton(elem: Element) {
-    let display = window.getComputedStyle(elem, null)
+    const display = window.getComputedStyle(elem, null)
       .getPropertyValue('visibility');
     return display === 'hidden' ? false : true;
   }
 
-  private rotateTip(elem: Element, fl = false) {
-    const name = (this.className + '__tip_rotate').replace(/^\.js-/, '');
-    if (!fl) {
+  private rotateTip(elem: Element, flag = false) {
+    const name = (`${this.className}__tip_rotate`).replace(/^\.js-/, '');
+    if (!flag) {
       elem.classList.remove(name);
     } else {
       elem.classList.add(name);
@@ -102,48 +97,51 @@ class headerMenu {
 
   private showUl(index: number) {
     if (this.button)
-      if (this.getVisButton(this.button)) return;
+      if (this.getVisButton(this.button)) return false;
 
     this.closeAll();
 
     if (Array.isArray(this.items)) {
       const elem = this.items[index];
+
       if (Array.isArray(this.tip))
         this.rotateTip(this.tip[index], true);
       elem.classList.add(this.getModify());
+
       if (elem instanceof HTMLElement)
         this.trackMouse(elem);
+
       if (Array.isArray(this.showElem))
         this.showElem.push(elem);
     }
   }
 
   private closeTip() {
-    if (Array.isArray(this.showTip))
-      if (this.showTip.length) {
-        this.showTip.map((elem) => {
-          this.rotateTip(elem);
-        });
-      }
+    if (!Array.isArray(this.showTip)) return false;
+
+    if (this.showTip.length) {
+      this.showTip.map((elem) => {
+        this.rotateTip(elem);
+      });
+    }
     this.showTip = [];
   }
 
-  private trackMouse(elem: HTMLElement) {  // следим за курсором когда он попадает на список
-    elem.addEventListener('mouseout', (e: MouseEvent) => {
-      const rel = e.relatedTarget;
-      const target = e.currentTarget;
+  private handleTrackMouse = (event: MouseEvent) => {
+    const rel = event.relatedTarget as Element;
+    const target = event.currentTarget as Element;
 
-      if (rel instanceof Element) {
-        const domEl = rel.closest('.' + this.getModify()) ?? false;
-        if (!domEl) {
-          {
-            if (target instanceof Element)
-              this.closeUl(target);
-            this.closeTip();
-          }
-        }
+    const domEl = rel.closest(`.${this.getModify()}`) ?? false;
+    if (!domEl) {
+      {
+        this.closeUl(target);
+        this.closeTip();
       }
-    });
+    }
+  }
+
+  private trackMouse(elem: HTMLElement) {  // следим за курсором когда он попадает на список
+    elem.addEventListener('mouseout', this.handleTrackMouse);
   }
 
   private closeUl(elem: Element) {
@@ -151,128 +149,115 @@ class headerMenu {
   }
 
   private getVisible(elem: Element) {
-    let display = window.getComputedStyle(elem, null)
+    const display = window.getComputedStyle(elem, null)
       .getPropertyValue('display');
     return display === 'none' ? false : true;
   }
 
-  private setModify(elem: Element, mod: string, fl = false) {
-    const select = '__' + mod + '_visible';
-    const clearName = this.className.replace(/^\.js-/, '') + select;
-    let objClass = elem.classList;
-    !fl ? objClass.add(clearName) : objClass.remove(clearName);
+  private setModify(elem: Element, mod: string, flag = false) {
+    const select = `__${mod}_visible`;
+    const clearName = `${this.className.replace(/^\.js-/, '')}${select}`;
+    const objClass = elem.classList;
+    !flag ? objClass.add(clearName) : objClass.remove(clearName);
   }
 
   private toggle() {
     if (this.nav && this.spanBut) {
-      const navVisible: boolean = this.getVisible(this.nav);
+      const navVisible = this.getVisible(this.nav);
       this.setModify(this.nav, 'menu-wrap', navVisible);
       this.setModify(this.spanBut, 'toggle-line', navVisible);
     }
   }
 
-  private setActions() {
-    if (this.button)
-      this.button.addEventListener('click', (e: Event) => {
-        const elem = e.currentTarget;
-        if (elem instanceof Element) {
-          let expanded = elem.getAttribute('aria-expanded');
-          expanded = expanded == 'true' ? 'false' : 'true';
-          elem.setAttribute('aria-expanded', expanded);
-          this.toggle();
+  private handleButtonClick = (event: Event) => {
+    const elem = event.currentTarget as Element;
+
+    let expanded = elem.getAttribute('aria-expanded');
+    expanded = expanded == 'true' ? 'false' : 'true';
+    elem.setAttribute('aria-expanded', expanded);
+    this.toggle();
+  }
+
+  private handleButtonKeydown = (event: KeyboardEvent) => {
+    if (event.key == 'Escape') {
+      event.preventDefault();
+      this.toggle();
+    }
+  }
+
+  private handleMenuMouseover = (event: MouseEvent) => {
+    const elem = event.currentTarget as HTMLElement;
+
+    const index = this.getIndex(elem);
+    if (index != null)
+      this.showUl(index);
+  }
+
+  private handleMenuKeydown = (event: KeyboardEvent) => {
+    if (event.key == ' ') {
+      event.preventDefault();
+      const currentEl = event.currentTarget as HTMLElement;
+
+      const index = this.getIndex(currentEl);
+      if (index == null) return false;
+      let elem: Element | null = null;
+      if (Array.isArray(this.items))
+        elem = this.items[index];
+
+      if (elem)
+        if (elem.classList.contains(this.getModify())) {
+          this.closeAll();
         }
-      });
-
-    const keydown = (e: KeyboardEvent) => {
-      if (e.key == 'Escape') {
-        e.preventDefault();
-        this.toggle();
+        else {
+          const index = this.getIndex(currentEl);
+          if (index != null)
+            this.showUl(index);
+        }
+    } else {
+      if (event.key == 'Escape') {
+        this.closeAll();
       }
-    };
+    }
+  }
 
-    if (this.button)
-      this.button.addEventListener('keydown', keydown);
-    if (this.nav)
-      this.nav.addEventListener('keydown', keydown);
+  private handleDocumentMouse = (event: MouseEvent) => {
+    const target = event.target as Element;
+
+    const domEl = target.closest(`.${this.getModify()}`) ?? false;
+    if (!domEl) {
+      this.closeAll();
+    }
+  }
+
+  private handleDocumentFocus = (event: FocusEvent) => {
+    const target = event.target as Element;
+
+    const linkEl = target.closest(`${this.className}__link-down`) ?? false;
+    const ulEl = target.closest(`.${this.getModify()}`) ?? false;
+    if (!linkEl && !ulEl) { this.closeAll(); }
+  }
+
+  private setActions() {
+    if (!this.button || !this.nav) return false;
+
+    this.button.addEventListener('click', this.handleButtonClick);
+    this.button.addEventListener('keydown', this.handleButtonKeydown);
+    this.nav.addEventListener('keydown', this.handleButtonKeydown);
 
     if (Array.isArray(this.linksDown))
       for (let item of this.linksDown) {
-        const dom = item;
-        if (dom instanceof HTMLElement)
-          dom.addEventListener('mouseover', (e: MouseEvent) => {
-            const elem = e.currentTarget;
-            if (elem instanceof HTMLElement) {
-              const index = this.getIndex(elem);
-              if (index != null)
-                this.showUl(index);
-            }
-
-          });
-
-        const showMenuFocus = (e: KeyboardEvent) => {
-          if (e.key == ' ') {
-            e.preventDefault();
-            const currentEl = e.currentTarget;
-
-            if (currentEl instanceof HTMLElement) {
-              const index = this.getIndex(currentEl);
-              if (index == null) return;
-              let elem: Element | null = null;
-              if (Array.isArray(this.items))
-                elem = this.items[index];
-
-              if (elem)
-                if (elem.classList.contains(this.getModify())) {
-                  this.closeAll();
-                }
-                else {
-                  if (currentEl instanceof HTMLElement) {
-                    const index = this.getIndex(currentEl);
-                    if (index != null)
-                      this.showUl(index);
-                  }
-                }
-            }
-          } else {
-            if (e.key == 'Escape') {
-              this.closeAll();
-            }
-          }
-        };
-
-        if (dom instanceof HTMLElement)
-          dom.addEventListener('keydown', showMenuFocus);
+        const dom = item as HTMLElement;
+        dom.addEventListener('mouseover', this.handleMenuMouseover);
+        dom.addEventListener('keydown', this.handleMenuKeydown);
       }
 
-    document.addEventListener('click', (e: MouseEvent) => {
-      const target = e.target;
-
-      if (target instanceof Element) {
-        const domEl = target.closest('.' + this.getModify()) ?? false;
-        if (!domEl) {
-          this.closeAll();
-        }
-      }
-    });
-
-    document.addEventListener('focusin', (e: FocusEvent) => {
-      const target = e.target;
-
-      if (target instanceof Element) {
-        const linkEl = target.closest(
-          this.className + '__link-down'
-        ) ?? false;
-
-        const ulEl = target.closest('.' + this.getModify()) ?? false;
-        if (!linkEl && !ulEl) { this.closeAll(); }
-      }
-
-    });
+    document.addEventListener('click', this.handleDocumentMouse);
+    document.addEventListener('focusin', this.handleDocumentFocus);
   }
 }
 
 function renderHeaderMenu(className: string) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new headerMenu(className, elem));

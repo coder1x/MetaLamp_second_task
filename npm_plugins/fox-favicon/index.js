@@ -54,7 +54,7 @@ class FoxFavicon {
     let callback = (error, response) => {
       if (error) {
         console.log(error.message);
-        return;
+        return false;
       }
       this.html = response.html;
       this.files = response.files;
@@ -162,7 +162,7 @@ class FoxFavicon {
     }, compiler);
   }
 
-  buildFiles(callback, compiler, fl = false) {
+  buildFiles(callback, compiler, flag = false) {
     compiler.hooks.thisCompilation.tap(
       { name: 'FoxFavicon' },
       (compilation) => {
@@ -171,8 +171,8 @@ class FoxFavicon {
         compilation.hooks.processAssets.tap(
           {
             name: 'FoxFavicon',
-            stage: fl ? process : additional,
-            additionalAssets: fl
+            stage: flag ? process : additional,
+            additionalAssets: flag
           },
           callback
         );
@@ -180,7 +180,7 @@ class FoxFavicon {
   }
 
   apply(compiler) {
-    if (this.options.devMode) return;
+    if (this.options.devMode) return false;
     let { output } = compiler.options;
 
     if (!fs.existsSync(output.path)) { // проверяем есть ли адрес до папки dist

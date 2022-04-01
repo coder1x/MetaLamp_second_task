@@ -17,16 +17,16 @@ class Graph {
   }
 
   getColors() {
-    if (!this.canvas) return;
+    if (!this.canvas) return false;
 
     const center = {
       'x': this.canvas.width,
       'y': this.canvas.height
     };
 
-    let radiusQ = 180;
+    const radiusQ = 180;
 
-    let quadrants = [
+    const quadrants = [
       {
         'name': 'excellent',
         'x1': center.x + radiusQ,
@@ -116,27 +116,24 @@ class Graph {
 
   private getElements(str: string, domBase?: Element): Element[] | null {
     const dom = domBase ?? this.elem;
-    const selector = this.className + str;
+    const selector = `${this.className}${str}`;
     if (dom)
       return [...dom.querySelectorAll(selector)];
     else return null;
   }
 
-  private getElement(str: string, domBase?: Element): Function {
+  private getElement(str: string, domBase?: Element) {
     const dom = domBase ?? this.elem;
-    if (!dom) return () => { };
-    const selector = this.className + str;
-    const elem: Element | null = dom.querySelector(selector);
-    if (elem instanceof HTMLCanvasElement)
-      return function (): HTMLCanvasElement { return elem; };
-    return () => { return elem; };
+    if (!dom) return null;
+    const selector = `${this.className}${str}`;
+    return dom.querySelector(selector);
   }
 
   private setDom() {
     this.elem = document.querySelector(this.className);
     if (!this.elem) return false;
 
-    this.canvas = this.getElement('__canvas')();
+    this.canvas = this.getElement('__canvas') as HTMLCanvasElement;
     if (this.canvas)
       this.ctx = this.canvas.getContext('2d');
     return true;
@@ -149,14 +146,14 @@ class Graph {
     const cordX = 60 * scaling;
     const cordY = 60 * scaling;
     const radius = 57 * scaling;
-    let space = 0.022;
+    const space = 0.022;
     const fontNum = 24 * scaling;
     const fontText = 15 * scaling;
     if (this.ctx instanceof CanvasRenderingContext2D)
       this.ctx.lineWidth = 4 * scaling;
     // ----------------- end options ------------------
 
-    let vote = this.getAttr();
+    const vote = this.getAttr();
 
     const reducer = (a: number, b: number) => a + b;
     const percent = vote.reduce(reducer);
@@ -166,7 +163,7 @@ class Graph {
 
     let endLine = 0;
     let startLine = 0;
-    let dot = (Math.PI / 180) * 270;
+    const dot = (Math.PI / 180) * 270;
 
     if (this.ctx instanceof CanvasRenderingContext2D)
       for (let i = 0; i < ugol.length; i++) {
@@ -191,10 +188,10 @@ class Graph {
         this.ctx.fillStyle = '#BC9CFF';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
-        this.ctx.font = 'bold ' + fontNum + 'px Montserrat';
+        this.ctx.font = `bold ${fontNum}px Montserrat`;
         this.ctx.fillText(String(percent), 60 * scaling, 50 * scaling);
 
-        this.ctx.font = 'normal ' + fontText + 'px Montserrat';
+        this.ctx.font = `normal ${fontText}px Montserrat`;
         this.ctx.fillText('голосов', 60 * scaling, 73 * scaling);
       }
     });
@@ -202,8 +199,3 @@ class Graph {
 }
 
 new Graph('.js-graph');
-
-
-
-
-

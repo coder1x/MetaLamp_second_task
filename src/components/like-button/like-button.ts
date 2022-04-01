@@ -1,7 +1,6 @@
 import './like-button.scss';
 
 class likeButton {
-
   likes: number = 0;
   nameClass: string = '';
   private likeEl: Element | null = null;
@@ -14,7 +13,7 @@ class likeButton {
   constructor(nameClass: string, elem: Element) {
     this.nameClass = nameClass;
     if (elem instanceof HTMLElement)
-      this.strKey = String(elem.offsetLeft + elem.offsetTop);
+      this.strKey = String(`${elem.offsetLeft}${elem.offsetTop}`);
     this.likeEl = elem;
     this.init();
   }
@@ -44,21 +43,21 @@ class likeButton {
   }
 
   private setDom() {
-    if (!this.likeEl) return;
-    this.iconEl = this.likeEl.querySelector(this.nameClass + '__icon');
-    this.valueEl = this.likeEl.querySelector(this.nameClass + '__value');
-    this.linkEl = this.likeEl.querySelector(this.nameClass + '__like');
+    if (!this.likeEl) return false;
+    this.iconEl = this.likeEl.querySelector(`${this.nameClass}__icon`);
+    this.valueEl = this.likeEl.querySelector(`${this.nameClass}__value`);
+    this.linkEl = this.likeEl.querySelector(`${this.nameClass}__like`);
   }
 
-  private setLikes(like: number, fl = 'true') {
+  private setLikes(like: number, flag = 'true') {
     if (this.valueEl)
       this.valueEl.innerText = String(like);
-    localStorage.setItem(this.strKey, String(fl));
+    localStorage.setItem(this.strKey, String(flag));
   }
 
   private toggleStyle() {
     // меняем стили в зависимости от события
-    const name = this.nameClass.replace(/^\.js-/, '') + '_voted';
+    const name = `${this.nameClass.replace(/^\.js-/, '')}_voted`;
     if (this.flag) { // ставили лайк
       if (this.iconEl && this.likeEl) {
         this.iconEl.src =
@@ -74,23 +73,27 @@ class likeButton {
     }
   }
 
-  private setAction() {
-    if (!this.linkEl) return;
-    this.linkEl.addEventListener('click', () => {
-      this.toggleLike();
-    });
+  private handleLinkClick = () => {
+    this.toggleLike();
+  }
 
-    this.linkEl.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.key == 'Enter' || e.key == ' ') {
-        this.toggleLike();
-        e.preventDefault();
-      }
-    });
+  private handleLinkKeydown = (event: KeyboardEvent) => {
+    if (event.key == 'Enter' || event.key == ' ') {
+      this.toggleLike();
+      event.preventDefault();
+    }
+  }
+
+  private setAction() {
+    if (!this.linkEl) return false;
+
+    this.linkEl.addEventListener('click', this.handleLinkClick);
+    this.linkEl.addEventListener('keydown', this.handleLinkKeydown);
   }
 }
 
 function renderLikeButton(className: string) {
-  let components = document.querySelectorAll(className);
+  const components = document.querySelectorAll(className);
   let objMas = [];
   for (let elem of components) {
     objMas.push(new likeButton(className, elem));
