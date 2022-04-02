@@ -18,52 +18,52 @@ mixin header(options)
     const buttons = data.buttons
 
     if(current){
-      current = classComp+'__link_current'}
+      current =`${classComp}__link_current`}
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className +=` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className +=` ${addClass}`}
 
-  header(class=className+' js-'+classComp)
-    div(class=classComp+'__wrapper')
-      div(class=classComp+'__link-logo')
+  header(class=`${className} js-${classComp}`)
+    div(class=`${classComp}__wrapper`)
+      div(class=`${classComp}__link-logo`)
         +logo({link:'https://test/test'})
 
-      button(class=classComp+'__toggle'+' js-'+classComp+'__toggle' aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
-        span(class=classComp+'__toggle-line'+' js-'+classComp+'__toggle-line')
+      button(class=`${classComp}__toggle js-${classComp}__toggle` aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
+        span(class=`${classComp}__toggle-line js-${classComp}__toggle-line`)
 
-      nav(class=classComp+'__menu-wrap'+' js-'+classComp+'__menu-wrap')
-        ul(class=classComp+'__items' role='navigation')
-          li(class=classComp+'__item')
-            a(class=classComp+'__link '+current href='https://test/test') О нас
-          li(class=classComp+'__item')
-            a(class=classComp+'__link-down'+' js-'+classComp+'__link-down' href='https://test/test') Услуги
-              img(class=classComp+'__tip'+' js-'+classComp+'__tip' src=tipSvg, alt='угалок')
-            ul(class=classComp+'__items-down'+' js-'+classComp+'__items-down' role='navigation')
+      nav(class=`${classComp}__menu-wrap js-${classComp}__menu-wrap`)
+        ul(class=`${classComp}__items` role='navigation')
+          li(class=`${classComp}__item`)
+            a(class=`${classComp}__link ${current}` href='https://test/test') О нас
+          li(class=`${classComp}__item`)
+            a(class=`${classComp}__link-down js-${classComp}__link-down` href='https://test/test') Услуги
+              img(class=`${classComp}__tip js-${classComp}__tip` src=tipSvg, alt='угалок')
+            ul(class=`${classComp}__items-down js-${classComp}__items-down` role='navigation')
               each text in service
-                li(class=classComp+'__item-down')
-                  a(class=classComp+'__link' href='https://test/test')=text
+                li(class=`${classComp}__item-down`)
+                  a(class=`${classComp}__link` href='https://test/test')=text
 
-          li(class=classComp+'__item')
-            a(class=classComp+'__link' href='https://test/test') Вакансии
-          li(class=classComp+'__item')
-            a(class=classComp+'__link' href='https://test/test') Новости
-          li(class=classComp+'__item')
-            a(class=classComp+'__link-down'+' js-'+classComp+'__link-down' href='https://test/test') Соглашения
-              img(class=classComp+'__tip'+' js-'+classComp+'__tip' src=tipSvg, alt='угалок')
-            ul(class=classComp+'__items-down'+' js-'+classComp+'__items-down' role='navigation')
+          li(class=`${classComp}__item`)
+            a(class=`${classComp}__link` href='https://test/test') Вакансии
+          li(class=`${classComp}__item`)
+            a(class=`${classComp}__link` href='https://test/test') Новости
+          li(class=`${classComp}__item`)
+            a(class=`${classComp}__link-down js-${classComp}__link-down` href='https://test/test') Соглашения
+              img(class=`${classComp}__tip js-${classComp}__tip` src=tipSvg, alt='угалок')
+            ul(class=`${classComp}__items-down js-${classComp}__items-down` role='navigation')
               each text in agreements
-                li(class=classComp+'__item-down')
-                  a(class=classComp+'__link' href='https://test/test')=text
+                li(class=`${classComp}__item-down`) 
+                  a(class=`${classComp}__link` href='https://test/test')=text
 
       -if (type == 'authorized'){
-        div(class=classComp+'__user')
-          a(class=classComp+'__nikname' href='https://test/test') Юлий Цезарь
+        div(class=`${classComp}__user`)
+          a(class=`${classComp}__nikname` href='https://test/test') Юлий Цезарь
       -}
       -else{
-        div(class=classComp+'__signin-wrap')
+        div(class=`${classComp}__signin-wrap`)
           +buttons(buttons.signIn)
           
-        div(class=classComp+'__registration-wrap')
+        div(class=`${classComp}__registration-wrap`)
           +buttons(buttons.registration)
       -}

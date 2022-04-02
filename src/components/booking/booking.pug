@@ -12,66 +12,64 @@ mixin booking(options)
     const classComp = 'booking'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
-  article(class=className+' js-'+classComp)
-    div(class=classComp+'__header-wrap')
+  article(class=`${className} js-${classComp}`)
+    div(class=`${classComp}__header-wrap`)
 
-      div(class=classComp+'__number-wrap')
-        span(class=classComp+'__header-num') №
-        p(class=classComp+'__header')= number
+      div(class=`${classComp}__number-wrap`)
+        span(class=`${classComp}__header-num`) №
+        p(class=`${classComp}__header`)= number
         - if(lux){
-        span(class=classComp+'__lux') люкс
+        span(class=`${classComp}__lux`) люкс
         -}
 
       div(class=`${classComp}__price-wrap`)
-        span(class=classComp+'__price')= price+'₽'
-        span(class=classComp+'__price-text') в сутки
+        span(class=`${classComp}__price`)= price+'₽'
+        span(class=`${classComp}__price-text`) в сутки
 
-    form(class=classComp+'__form' action='' method='post')
-      fieldset(class=classComp+'__date-wrap'+' js-'+classComp+'__date-wrap')
+    form(class=`${classComp}__form` action='' method='post')
+      fieldset(class=`${classComp}__date-wrap js-${classComp}__date-wrap`)
         +date-dropdown({
           label: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
           class: 'js-masked-date'
           })
 
-      div(class=classComp+'__dropdown-wrap'+' js-'+classComp+'__dropdown-wrap')
-        -
-          let masWord = [
-          ['взрослые', 'дети', 'младенцы'], 
-          ['гость,гостя,гостей', 
-          'гость,гостя,гостей', 
-          'младенец,младенца,младенцев']]
+      div(class=`${classComp}__dropdown-wrap js-${classComp}__dropdown-wrap`)
         +drop-down({
           label:'гости',
           value: 'Сколько гостей',
           name:'Guest',
-          masWord:masWord,
+          masWord:[
+          ['взрослые', 'дети', 'младенцы'], 
+          ['гость,гостя,гостей', 
+          'гость,гостя,гостей', 
+          'младенец,младенца,младенцев']],
           maxValue:['10','12','5'],
           button:true
           })
 
-      div(class=classComp+'__day-wrap')
-        p(class=classComp+'__day-calc') 9 990₽ х 4 суток
-        span(class=classComp+'__day-price') 39 960₽
+      div(class=`${classComp}__day-wrap`)
+        p(class=`${classComp}__day-calc`) 9 990₽ х 4 суток
+        span(class=`${classComp}__day-price`) 39 960₽
 
-      div(class=classComp+'__services-wrap')
-        p(class=classComp+'__services') Сбор за услуги: скидка 2 179₽
-        span(class=classComp+'__services-price') 0₽
+      div(class=`${classComp}__services-wrap`)
+        p(class=`${classComp}__services`) Сбор за услуги: скидка 2 179₽
+        span(class=`${classComp}__services-price`) 0₽
 
-      div(class=classComp+'__services-wrap')
-        p(class=classComp+'__services') Сбор за дополнительные услуги
-        span(class=classComp+'__services-price') 300₽
+      div(class=`${classComp}__services-wrap`)
+        p(class=`${classComp}__services`) Сбор за дополнительные услуги
+        span(class=`${classComp}__services-price`) 300₽
         
-      div(class=classComp+'__total-wrap')
-        span(class=classComp+'__total-text') Итого
-        div(class=classComp+'__total-dot')
-        span(class=classComp+'__total-price') 38 081₽
+      div(class=`${classComp}__total-wrap`)
+        span(class=`${classComp}__total-text`) Итого
+        div(class=`${classComp}__total-dot`)
+        span(class=`${classComp}__total-price`) 38 081₽
 
-      div(class=classComp+'__button-wrap'+' js-'+classComp+'__button-wrap')
+      div(class=`${classComp}__button-wrap js-${classComp}__button-wrap`)
         +buttons({
           text:'забронировать',
           type:'submit',

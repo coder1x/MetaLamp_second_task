@@ -9,10 +9,10 @@ mixin buttons(options)
     let className = classComp
     if(modify){
       for(let item of modify)
-    className += ' '+classComp+'_'+item
+    className += ` ${classComp}_${item}`
     }
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
     
   case type
     when 'link'
@@ -23,5 +23,5 @@ mixin buttons(options)
       button(class=className aria-haspopup aria-expanded='false')=text
     when 'submit'
       button(class=className type='submit')=text
-        img(class=classComp+'__icon' src=require('@com/buttons/img/arrow_forward.svg').default)
+        img(class=`${classComp}__icon` src=require('@com/buttons/img/arrow_forward.svg').default)
     

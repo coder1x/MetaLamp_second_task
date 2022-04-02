@@ -16,40 +16,40 @@ mixin footer(options)
 
     if(modify){
       for(let item of modify)
-    className += ' '+classComp+'_'+item
+    className += ` ${classComp}_${item}`
     }
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
   footer(class=className role='contentinfo')
-    div(class=classComp+'__top')
-      div(class=classComp+'__top-wrap')
+    div(class=`${classComp}__top`)
+      div(class=`${classComp}__top-wrap`)
 
-        div(class=classComp+'__recommendation-wrap')
-          div(class=classComp+'__logo-wrap')
+        div(class=`${classComp}__recommendation-wrap`)
+          div(class=`${classComp}__logo-wrap`)
             +logo({})
-          p(class=classComp+'__recommendation-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+          p(class=`${classComp}__recommendation-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
 
-        div(class=classComp+'__navigation-wrap')
+        div(class=`${classComp}__navigation-wrap`)
           +navigation(navigation.different)
 
-        div(class=classComp+'__about-us-wrap')
+        div(class=`${classComp}__about-us-wrap`)
           +navigation(navigation.about)
 
-        div(class=classComp+'__support-wrap')
+        div(class=`${classComp}__support-wrap`)
           +navigation(navigation.support)
 
-        div(class=classComp+'__subscrip-wrap')
-          p(class=classComp+'__subscrip-header') Подписка
-          p(class=classComp+'__subscrip-text') Получайте специальные предложения и новости сервиса
+        div(class=`${classComp}__subscrip-wrap`)
+          p(class=`${classComp}__subscrip-header`) Подписка
+          p(class=`${classComp}__subscrip-text`) Получайте специальные предложения и новости сервиса
           +subscrip-textfield(subscrip)
 
-    div(class=classComp+'__bottom')
-      div(class=classComp+'__bottom-wrap')
-        p(class=classComp+'__copyright') Copyright © 2018 Toxin отель. Все права защищены.
+    div(class=`${classComp}__bottom`)
+      div(class=`${classComp}__bottom-wrap`)
+        p(class=`${classComp}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
 
-        ul(class=classComp+'__social')
+        ul(class=`${classComp}__social`)
           each icon, text in socialData
-            li(class=classComp+'__social-item')
-              a(class=classComp+'__social-link' href='https://test/test')
-                img(class=classComp+'__social-icon' src=require('@com/footer/img/'+icon).default alt=text title=text)
+            li(class=`${classComp}__social-item`)
+              a(class=`${classComp}__social-link` href='https://test/test')
+                img(class=`${classComp}__social-icon` src=require('@com/footer/img/'+icon).default alt=text title=text)

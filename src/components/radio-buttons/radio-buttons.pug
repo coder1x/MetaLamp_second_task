@@ -7,21 +7,21 @@ mixin radio-buttons(options)
     const classComp = 'radio-buttons'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
   div(class=className)
-    fieldset(class=classComp+'__items') 
+    fieldset(class=`${classComp}__items`)
       - if(!flLabel){
-        legend(class=classComp+'__header')= label
+        legend(class=`${classComp}__header`)= label
       -}
 
-        label(class=classComp+'__label') Мужчина
-          input(class=classComp+'__input' type='radio' name='gender' checked)
-          span(class=classComp+'__bef')
+        label(class=`${classComp}__label`) Мужчина
+          input(class=`${classComp}__input` type='radio' name='gender' checked)
+          span(class=`${classComp}__bef`)
           
-        label(class=classComp+'__label') Женщина
-          input(class=classComp+'__input' type='radio' name='gender')
-          span(class=classComp+'__bef')
+        label(class=`${classComp}__label`) Женщина
+          input(class=`${classComp}__input` type='radio' name='gender')
+          span(class=`${classComp}__bef`)
 

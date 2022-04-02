@@ -12,41 +12,41 @@ mixin room-card(options)
     const classComp = 'room-card'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
-  article(class=className+' js-'+classComp)
+  article(class=`${className} js-${classComp}`)
 
-    div(class=classComp+'__slider-wrap'+' js-'+classComp+'__slider-wrap')
-      div(class=classComp+'__relation-ratio')
-      a(class=classComp+'__link'+' js-'+classComp+'__link' href='https://test/test' aria-label='карточка номера')
-        img(class=classComp+'__slide '+classComp+'__slide_visible'+' js-'+classComp+'__slide' src=require('@com/room-card/img/image1.webp').default, alt='номер люкс')
-        img(class=classComp+'__slide'+' js-'+classComp+'__slide' src=require('@com/room-card/img/image2.webp').default, alt='номер люкс')
-        img(class=classComp+'__slide'+' js-'+classComp+'__slide' src=require('@com/room-card/img/image3.webp').default, alt='номер люкс')
-        img(class=classComp+'__slide'+' js-'+classComp+'__slide' src=require('@com/room-card/img/image4.webp').default, alt='номер люкс')
-      div(class=classComp+'__dot-wrap'+' js-'+classComp+'__dot-wrap')
-      button(class=classComp+'__prev-wrap'+' js-'+classComp+'__prev-wrap' aria-label='предыдущий слайд')
-        img(class=classComp+'__prev' src=require('@com/room-card/img/expand_more.svg').default, alt='стрелка в лево')
-      button(class=classComp+'__next-wrap'+' js-'+classComp+'__next-wrap' aria-label='следующий слайд')
-        img(class=classComp+'__next' src=require('@com/room-card/img/expand_more.svg').default, alt='стрелка в право')
+    div(class=`${classComp}__slider-wrap js-${classComp}__slider-wrap`)
+      div(class=`${classComp}__relation-ratio`)
+      a(class=`${classComp}__link js-${classComp}__link` href='https://test/test' aria-label='карточка номера')
+        img(class=`${classComp}__slide ${classComp}__slide_visible js-${classComp}__slide` src=require('@com/room-card/img/image1.webp').default, alt='номер люкс')
+        img(class=`${classComp}__slide js-${classComp}__slide` src=require('@com/room-card/img/image2.webp').default, alt='номер люкс')
+        img(class=`${classComp}__slide js-${classComp}__slide` src=require('@com/room-card/img/image3.webp').default, alt='номер люкс')
+        img(class=`${classComp}__slide js-${classComp}__slide` src=require('@com/room-card/img/image4.webp').default, alt='номер люкс')
+      div(class=`${classComp}__dot-wrap js-${classComp}__dot-wrap`)
+      button(class=`${classComp}__prev-wrap js-${classComp}__prev-wrap` aria-label='предыдущий слайд')
+        img(class=`${classComp}__prev` src=require('@com/room-card/img/expand_more.svg').default, alt='стрелка в лево')
+      button(class=`${classComp}__next-wrap js-${classComp}__next-wrap` aria-label='следующий слайд')
+        img(class=`${classComp}__next` src=require('@com/room-card/img/expand_more.svg').default, alt='стрелка в право')
 
-    a(class=classComp+'__header-wrap' href='https://test/test')
-      div(class=classComp+'__number-wrap')
-        span(class=classComp+'__header-num') №
-        p(class=classComp+'__header')= number
+    a(class=`${classComp}__header-wrap` href='https://test/test')
+      div(class=`${classComp}__number-wrap`)
+        span(class=`${classComp}__header-num`) №
+        p(class=`${classComp}__header`)= number
         - if(lux){
-        span(class=classComp+'__lux') люкс
+        span(class=`${classComp}__lux`) люкс
         -}
-      div(class=classComp+'__price-wrap')
-        span(class=classComp+'__price')= price+'₽'
-        span(class=classComp+'__price-text') в сутки
+      div(class=`${classComp}__price-wrap`)
+        span(class=`${classComp}__price`)= price+'₽'
+        span(class=`${classComp}__price-text`) в сутки
         
-    div(class=classComp+'__rate-wrap')
+    div(class=`${classComp}__rate-wrap`)
       +rate-button({
         flLabel:true,
         name:rateName
         })
-      div(class=classComp+'__reviews-wrap')
-        span(class=classComp+'__reviews')= reviews
-        span(class=classComp+'__reviews-text') Отзывов
+      div(class=`${classComp}__reviews-wrap`)
+        span(class=`${classComp}__reviews`)= reviews
+        span(class=`${classComp}__reviews-text`) Отзывов

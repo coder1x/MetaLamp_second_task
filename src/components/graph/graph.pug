@@ -13,17 +13,17 @@ mixin graph(options)
       ['0','disappointed','Разочарован'],
     ]
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
-  div(class=className+' js-'+classComp)
+  div(class=`${classComp} js-${classComp}`)
     - if(!flLabel){
-      h2(class=classComp+'__header')= label
+      h2(class=`${classComp}__header`)= label
     -}
     
-    div(class=classComp+'__wrapper')
-      canvas(class=classComp+'__canvas'+' js-'+classComp+'__canvas' width='240' height='240')
-      ul(class=classComp+'__colors')
+    div(class=`${classComp}__wrapper`)
+      canvas(class=`${classComp}__canvas js-${classComp}__canvas` width='240' height='240')
+      ul(class=`${classComp}__colors`)
         each data in graphData
-          li(class=classComp+'__colors-item'+' js-'+classComp+'__colors-item' date-grade=data[0] date-name=data[1])=data[2]
+          li(class=`${classComp}__colors-item js-${classComp}__colors-item` date-grade=data[0] date-name=data[1])=data[2]

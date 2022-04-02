@@ -7,17 +7,18 @@ mixin bullet-list(options)
     const flLabel = options.flLabel ?? false
     const classComp = 'bullet-list'
     let className = classComp
+
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
   div(class=className)
     - if(!flLabel){
-    p(class=classComp+'__header')= label
+    p(class=`${classComp}__header`)= label
     -}
     
-    ul(class=classComp+'__items')
+    ul(class=`${classComp}__items`)
       -for(let item of text){
-      li(class=classComp+'__item')= item
+      li(class=`${classComp}__item`)= item
       -}  

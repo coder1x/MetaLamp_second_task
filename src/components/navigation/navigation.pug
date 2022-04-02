@@ -8,15 +8,15 @@ mixin navigation(options)
     let className = classComp
     if(modify){
       for(let item of modify)
-    className += ' '+classComp+'_'+item
+    className += ` ${classComp}_${item}` 
     }
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
     
   div(class=className)
-    ul(class=classComp+'__items' role='navigation')
-      lh(class=classComp+'__header')= header
+    ul(class=`${classComp}__items` role='navigation')
+      lh(class=`${classComp}__header`)= header
       -for(let i=0; i<masText.length; i++){
-      li(class=classComp+'__item')
-        a(class=classComp+'__link' href='https://test/test')= masText[i]
+      li(class=`${classComp}__item`)
+        a(class=`${classComp}__link` href='https://test/test')= masText[i]
       -}

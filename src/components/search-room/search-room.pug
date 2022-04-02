@@ -18,22 +18,22 @@ mixin search-room(options)
     const buttons = data.buttons
 
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
-  article(class=className+' js-'+classComp)
+  article(class=`${className} js-${classComp}`)
     - if(!flLabel){
-    header(class=classComp+'__header-wrap')
-      h1(class=classComp+'__header')= header
+    header(class=`${classComp}__header-wrap`)
+      h1(class=`${classComp}__header`)= header
     -}
 
-    form(class=classComp+'__form' action='' method='post')
-      fieldset(class=classComp+'__date-wrap'+' js-'+classComp+'__date-wrap')
+    form(class=`${classComp}__form` action='' method='post')
+      fieldset(class=`${classComp}__date-wrap js-${classComp}__date-wrap`)
         +date-dropdown(dateDropdown)
 
-      div(class=classComp+'__dropdown-wrap'+' js-'+classComp+'__dropdown-wrap')
+      div(class=`${classComp}__dropdown-wrap js-${classComp}__dropdown-wrap`)
         +drop-down(dropDown)
           
-      div(class=classComp+'__button-wrap'+' js-'+classComp+'__button-wrap')
+      div(class=`${classComp}__button-wrap js-${classComp}__button-wrap`)
         +buttons(buttons)

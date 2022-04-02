@@ -8,17 +8,17 @@ mixin subscrip-textfield(options)
     const classComp = 'subscrip-textfield'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
-  div(class=className+' js-'+classComp)
-    div(class=classComp+'__wrap')
+  div(class=`${className} js-${classComp}`)
+    div(class=`${classComp}__wrap`)
       if !flLabel
-        p(class=classComp+'__label-text')= label
+        p(class=`${classComp}__label-text`)= label
 
-      label(class=classComp+'__label')
-        input(class=classComp+'__input' type='text' placeholder=value value='' name='subscrip')
+      label(class=`${classComp}__label`)
+        input(class=`${classComp}__input` type='text' placeholder=value value='' name='subscrip')
         
-      button(class=classComp+'__link'+' js-'+classComp+'__link' aria-label='подписаться' title='подписаться')
-        img(class=classComp+'__tip' src=require('@com/subscrip-textfield/img/arrow_forward.svg').default alt='стрелка - подписаться')
+      button(class=`${classComp}__link js-${classComp}__link` aria-label='подписаться' title='подписаться')
+        img(class=`${classComp}__tip` src=require('@com/subscrip-textfield/img/arrow_forward.svg').default alt='стрелка - подписаться')

@@ -5,9 +5,9 @@ mixin logo-group(options)
     const classComp = 'logo-group'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
     
   div(class=className)
     svg(width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg')

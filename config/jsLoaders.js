@@ -20,9 +20,9 @@ module.exports = {
       ];
     }
 
-    if (DP.isDev) {
-      loaders.push('eslint-loader');
-    }
+    // if (DP.isDev) {
+    //   loaders.push('eslint-loader');
+    // }
 
     return loaders;
   }

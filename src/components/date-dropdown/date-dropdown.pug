@@ -10,44 +10,45 @@ mixin date-dropdown(options)
     const filter = options.filter ?? false
     const classComp = 'date-dropdown'
     let className = classComp
-    if(modify){
-    className += ' '+classComp+'_'+modify}
-    if(addClass){
-    className += ' '+addClass}
 
-  div(class=className+' js-'+classComp)
+    if(modify){
+    className += ` ${classComp}_${modify}`}
+    if(addClass){
+    className += ` ${addClass}`}
+
+  div(class=`${className} js-${classComp}`)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
-      div(class=classComp+'__date-wrap')
+      div(class=`${classComp}__date-wrap`)
 
         - if(!flLabel){
-        p(class=classComp+'__label-text')= label[i]
+        p(class=`${classComp}__label-text`)= label[i]
         -}
 
-        label(class=classComp+'__label')
+        label(class=`${classComp}__label`)
 
           -if(filter){
-            input(class=classComp+'__input'+' js-'+classComp+'__input' type='text' placeholder=''  autocomplete='off')
-            input(class=classComp+'__input-hidden'+' js-'+classComp+'__input-hidden' type='hidden' value=value name='date-filter')
+            input(class=`${classComp}__input js-${classComp}__input` type='text' placeholder=''  autocomplete='off')
+            input(class=`${classComp}__input-hidden js-${classComp}__input-hidden` type='hidden' value=value name='date-filter')
           -}else{
-            input(class=classComp+'__input'+' js-'+classComp+'__input' type='text' placeholder='' value=value name='date-'+i autocomplete='off')
+            input(class=`${classComp}__input js-${classComp}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
           -}
           
-          img(class=classComp+'__tip' src=require('@com/date-dropdown/img/tip.svg').default alt='уголок')
+          img(class=`${classComp}__tip` src=require('@com/date-dropdown/img/tip.svg').default alt='уголок')
     -}
 
-    div(class=classComp+'__datepicker-wrap'+' js-'+classComp+'__datepicker-wrap')
-      div(class=classComp+'__datepicker'+' js-'+classComp+'__datepicker')
-      div(class=classComp+'__datepicker-buttons')
+    div(class=`${classComp}__datepicker-wrap js-${classComp}__datepicker-wrap`)
+      div(class=`${classComp}__datepicker js-${classComp}__datepicker`)
+      div(class=`${classComp}__datepicker-buttons`)
       
-        div(class=classComp+'__clear'+' js-'+classComp+'__clear')
+        div(class=`${classComp}__clear js-${classComp}__clear`)
           +buttons({
             text:'очистить',
             type:'button',
             modify:['text']
           })
 
-        div(class=classComp+'__apply'+' js-'+classComp+'__apply')
+        div(class=`${classComp}__apply js-${classComp}__apply`)
           +buttons({
             text:'применить',
             type:'button',

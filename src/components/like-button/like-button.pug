@@ -7,15 +7,15 @@ mixin like-button(options)
     const classComp = 'like-button'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
-  div(class=className+' js-'+classComp)
+  div(class=`${className} js-${classComp}`)
     - if(!flLabel){
-    p(class=classComp+'__header')= label
+    p(class=`${classComp}__label`)= label
     -}
     
-    button(class=classComp+'__like'+' js-'+classComp+'__like' aria-label='поставить лайк')
-      img(class=classComp+'__icon'+' js-'+classComp+'__icon' src=require('@com/like-button/img/like.svg').default alt='like')
-      span(class=classComp+'__value'+' js-'+classComp+'__value') 2
+    button(class=`${classComp}__like js-${classComp}__like` aria-label='поставить лайк')
+      img(class=`${classComp}__icon js-${classComp}__icon` src=require('@com/like-button/img/like.svg').default alt='like')
+      span(class=`${classComp}__value js-${classComp}__value`) 2

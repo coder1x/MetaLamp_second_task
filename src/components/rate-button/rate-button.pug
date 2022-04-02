@@ -8,9 +8,9 @@ mixin rate-button(options)
     const classComp = 'rate-button'
     let className = classComp
     if(modify){
-    className += ' '+classComp+'_'+modify}
+    className += ` ${classComp}_${modify}`}
     if(addClass){
-    className += ' '+addClass}
+    className += ` ${addClass}`}
 
     labels = [
     'Ужасно',
@@ -21,12 +21,12 @@ mixin rate-button(options)
     ]
 
   div(class=className)
-    fieldset(class=classComp+'__stars') 
+    fieldset(class=`${classComp}__stars`)
       - if(!flLabel){
-      legend(class=classComp+'__header')= label
+      legend(class=`${classComp}__header`)= label
       -}
       
-      div(class=classComp+'__group')
+      div(class=`${classComp}__group`)
         - for(let i=0; i<labels.length; i++)  {
-          input(class=classComp+'__star' type='radio' name=name value=i+1 aria-label=labels[i])
+          input(class=`${classComp}__star` type='radio' name=name value=i+1 aria-label=labels[i])
         -}
