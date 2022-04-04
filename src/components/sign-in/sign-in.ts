@@ -1,13 +1,17 @@
+import autoBind from 'auto-bind';
 import './sign-in.scss';
 
-class signIn {
-
+class SignIn {
   className: string;
+
   private emailInputs: HTMLInputElement | null = null;
+
   private passInput: HTMLInputElement | null = null;
+
   private buttonEl: HTMLElement | null = null;
 
   constructor(className: string, elem: Element) {
+    autoBind(this);
     this.className = className;
     this.setDom(elem);
     this.setAction();
@@ -27,34 +31,36 @@ class signIn {
     if (!this.emailInputs || !this.passInput) return false;
 
     if (!this.emailInputs.value) {
+      // eslint-disable-next-line no-alert
       alert('Введите Email');
       return false;
     }
 
     if (!this.passInput.value) {
+      // eslint-disable-next-line no-alert
       alert('Введите пароль');
       return false;
     }
     return true;
   }
 
-  private handleButtonClick = (e: Event) => {
-    if (!this.validation())
-      e.preventDefault();
+  private handleButtonClick(event: Event) {
+    if (!this.validation()) { event.preventDefault(); }
   }
 
   private setAction() {
-    if (this.buttonEl)
+    if (this.buttonEl) {
       this.buttonEl.addEventListener('click', this.handleButtonClick);
+    }
   }
 }
 
 function renderSignIn(className: string) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
-    objMas.push(new signIn(className, elem));
-  }
+  const objMas: SignIn[] = [];
+  components.forEach((elem) => {
+    objMas.push(new SignIn(className, elem));
+  });
   return objMas;
 }
 

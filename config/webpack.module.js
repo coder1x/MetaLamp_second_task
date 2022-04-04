@@ -1,8 +1,8 @@
+const path = require('path');
 const DP = require('./isDev');
 const CL = require('./cssLoaders');
 const JL = require('./jsLoaders');
 const PATHS = require('./paths');
-const path = require('path');
 
 module.exports = {
   module: {
@@ -15,12 +15,12 @@ module.exports = {
         test: /\.pug$/,
         loader: 'pug-loader',
         options: {
-          pretty: DP.isDev  // минифицировать или нет в зависемости от типа зборки. 
-        }
+          pretty: DP.isDev, // минифицировать или нет в зависемости от типа зборки.
+        },
       },
       {
         test: /\.s[ac]ss$/,
-        use: CL.cssLoaders('sass-loader')
+        use: CL.cssLoaders('sass-loader'),
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
@@ -32,8 +32,8 @@ module.exports = {
       },
       {
         test: /\.(js)$/,
-        exclude: '/node_modules/',  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
-        use: JL.jsLoaders('js')
+        exclude: '/node_modules/', // игнорируем эту папку. что бы не обрабатывать файлы от туда.
+        use: JL.jsLoaders('js'),
       },
       {
         test: /\.(ts|tsx)$/,
@@ -50,11 +50,11 @@ module.exports = {
       },
       {
         test: /\.xml$/,
-        use: ['xml-loader']
+        use: ['xml-loader'],
       },
       {
         test: /\.csv$/,
-        use: ['csv-loader']
+        use: ['csv-loader'],
       },
     ],
   },

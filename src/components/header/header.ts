@@ -1,20 +1,31 @@
+import autoBind from 'auto-bind';
 import './header.scss';
 
-class headerMenu {
-
+class HeaderMenu {
   className: string;
+
   elem: Element;
+
   private items: Element[] | null = null;
+
   private mapLinks: Map<HTMLElement, number> | null = null;
+
   private showElem: Element[] | null = null;
+
   private showTip: Element[] | null = null;
+
   private button: HTMLElement | null = null;
+
   private nav: HTMLElement | null = null;
+
   private spanBut: Element | null = null;
+
   private linksDown: Element[] | null = null;
+
   private tip: Element[] | null = null;
 
   constructor(className: string, elem: Element) {
+    autoBind(this);
     this.className = className;
     this.elem = elem;
     this.startMenu();
@@ -34,12 +45,13 @@ class headerMenu {
   }
 
   closeAll() {
-    if (this.showElem)
+    if (this.showElem) {
       if (this.showElem.length) {
-        this.showElem.map((elem) => {
+        this.showElem.forEach((elem) => {
           this.closeUl(elem);
         });
       }
+    }
     this.showElem = [];
 
     this.closeTip();
@@ -61,10 +73,9 @@ class headerMenu {
     this.tip = this.getElements('__tip');
 
     this.mapLinks = new Map();
-    for (let i = 0; i < this.linksDown.length; i++) {
+    for (let i = 0; i < this.linksDown.length; i += 1) {
       const tt = this.linksDown[i];
-      if (tt instanceof HTMLElement)
-        this.mapLinks.set(tt, i);
+      if (tt instanceof HTMLElement) { this.mapLinks.set(tt, i); }
     }
   }
 
@@ -78,10 +89,10 @@ class headerMenu {
     return selector.replace(/^\.js-/, '');
   }
 
-  private getVisButton(elem: Element) {
+  private static getVisButton(elem: Element) {
     const display = window.getComputedStyle(elem, null)
       .getPropertyValue('visibility');
-    return display === 'hidden' ? false : true;
+    return display !== 'hidden';
   }
 
   private rotateTip(elem: Element, flag = false) {
@@ -90,57 +101,54 @@ class headerMenu {
       elem.classList.remove(name);
     } else {
       elem.classList.add(name);
-      if (Array.isArray(this.showTip))
-        this.showTip.push(elem);
+      if (Array.isArray(this.showTip)) { this.showTip.push(elem); }
     }
   }
 
   private showUl(index: number) {
-    if (this.button)
-      if (this.getVisButton(this.button)) return false;
+    if (this.button) { if (HeaderMenu.getVisButton(this.button)) return false; }
 
     this.closeAll();
 
     if (Array.isArray(this.items)) {
       const elem = this.items[index];
 
-      if (Array.isArray(this.tip))
-        this.rotateTip(this.tip[index], true);
+      if (Array.isArray(this.tip)) { this.rotateTip(this.tip[index], true); }
       elem.classList.add(this.getModify());
 
-      if (elem instanceof HTMLElement)
-        this.trackMouse(elem);
+      if (elem instanceof HTMLElement) { this.trackMouse(elem); }
 
-      if (Array.isArray(this.showElem))
-        this.showElem.push(elem);
+      if (Array.isArray(this.showElem)) { this.showElem.push(elem); }
     }
+
+    return true;
   }
 
   private closeTip() {
     if (!Array.isArray(this.showTip)) return false;
 
     if (this.showTip.length) {
-      this.showTip.map((elem) => {
+      this.showTip.forEach((elem) => {
         this.rotateTip(elem);
       });
     }
     this.showTip = [];
+
+    return true;
   }
 
-  private handleTrackMouse = (event: MouseEvent) => {
+  private handleTrackMouse(event: MouseEvent) {
     const rel = event.relatedTarget as Element;
     const target = event.currentTarget as Element;
 
     const domEl = rel.closest(`.${this.getModify()}`) ?? false;
     if (!domEl) {
-      {
-        this.closeUl(target);
-        this.closeTip();
-      }
+      this.closeUl(target);
+      this.closeTip();
     }
   }
 
-  private trackMouse(elem: HTMLElement) {  // следим за курсором когда он попадает на список
+  private trackMouse(elem: HTMLElement) { // следим за курсором когда он попадает на список
     elem.addEventListener('mouseout', this.handleTrackMouse);
   }
 
@@ -148,79 +156,83 @@ class headerMenu {
     elem.classList.remove(this.getModify());
   }
 
-  private getVisible(elem: Element) {
+  private static getVisible(elem: Element) {
     const display = window.getComputedStyle(elem, null)
       .getPropertyValue('display');
-    return display === 'none' ? false : true;
+    return display !== 'none';
   }
 
   private setModify(elem: Element, mod: string, flag = false) {
     const select = `__${mod}_visible`;
     const clearName = `${this.className.replace(/^\.js-/, '')}${select}`;
     const objClass = elem.classList;
-    !flag ? objClass.add(clearName) : objClass.remove(clearName);
+
+    if (!flag) {
+      objClass.add(clearName);
+    } else {
+      objClass.remove(clearName);
+    }
   }
 
   private toggle() {
     if (this.nav && this.spanBut) {
-      const navVisible = this.getVisible(this.nav);
+      const navVisible = HeaderMenu.getVisible(this.nav);
       this.setModify(this.nav, 'menu-wrap', navVisible);
       this.setModify(this.spanBut, 'toggle-line', navVisible);
     }
   }
 
-  private handleButtonClick = (event: Event) => {
+  private handleButtonClick(event: Event) {
     const elem = event.currentTarget as Element;
 
     let expanded = elem.getAttribute('aria-expanded');
-    expanded = expanded == 'true' ? 'false' : 'true';
+    expanded = expanded === 'true' ? 'false' : 'true';
     elem.setAttribute('aria-expanded', expanded);
     this.toggle();
   }
 
-  private handleButtonKeydown = (event: KeyboardEvent) => {
-    if (event.key == 'Escape') {
+  private handleButtonKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
       event.preventDefault();
       this.toggle();
     }
   }
 
-  private handleMenuMouseover = (event: MouseEvent) => {
+  private handleMenuMouseover(event: MouseEvent) {
     const elem = event.currentTarget as HTMLElement;
 
     const index = this.getIndex(elem);
-    if (index != null)
-      this.showUl(index);
+    if (index != null) { this.showUl(index); }
   }
 
-  private handleMenuKeydown = (event: KeyboardEvent) => {
-    if (event.key == ' ') {
+  private handleMenuKeydown(event: KeyboardEvent) {
+    if (event.key === ' ') {
       event.preventDefault();
       const currentEl = event.currentTarget as HTMLElement;
 
-      const index = this.getIndex(currentEl);
-      if (index == null) return false;
-      let elem: Element | null = null;
-      if (Array.isArray(this.items))
-        elem = this.items[index];
+      let index = this.getIndex(currentEl);
 
-      if (elem)
+      if (index == null) return false;
+
+      let elem: Element | null = null;
+      if (Array.isArray(this.items)) { elem = this.items[index]; }
+
+      if (elem) {
         if (elem.classList.contains(this.getModify())) {
           this.closeAll();
+        } else {
+          index = this.getIndex(currentEl);
+          if (index != null) this.showUl(index);
         }
-        else {
-          const index = this.getIndex(currentEl);
-          if (index != null)
-            this.showUl(index);
-        }
-    } else {
-      if (event.key == 'Escape') {
-        this.closeAll();
       }
+    } else if (event.key === 'Escape') {
+      this.closeAll();
     }
+
+    return true;
   }
 
-  private handleDocumentMouse = (event: MouseEvent) => {
+  private handleDocumentMouse(event: MouseEvent) {
     const target = event.target as Element;
 
     const domEl = target.closest(`.${this.getModify()}`) ?? false;
@@ -229,7 +241,7 @@ class headerMenu {
     }
   }
 
-  private handleDocumentFocus = (event: FocusEvent) => {
+  private handleDocumentFocus(event: FocusEvent) {
     const target = event.target as Element;
 
     const linkEl = target.closest(`${this.className}__link-down`) ?? false;
@@ -244,24 +256,27 @@ class headerMenu {
     this.button.addEventListener('keydown', this.handleButtonKeydown);
     this.nav.addEventListener('keydown', this.handleButtonKeydown);
 
-    if (Array.isArray(this.linksDown))
-      for (let item of this.linksDown) {
+    if (Array.isArray(this.linksDown)) {
+      this.linksDown.forEach((item) => {
         const dom = item as HTMLElement;
         dom.addEventListener('mouseover', this.handleMenuMouseover);
         dom.addEventListener('keydown', this.handleMenuKeydown);
-      }
+      });
+    }
 
     document.addEventListener('click', this.handleDocumentMouse);
     document.addEventListener('focusin', this.handleDocumentFocus);
+
+    return true;
   }
 }
 
 function renderHeaderMenu(className: string) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
-    objMas.push(new headerMenu(className, elem));
-  }
+  const objMas: HeaderMenu[] = [];
+  components.forEach((elem) => {
+    objMas.push(new HeaderMenu(className, elem));
+  });
   return objMas;
 }
 

@@ -1,2 +1,1 @@
 import './room-details.scss';
-

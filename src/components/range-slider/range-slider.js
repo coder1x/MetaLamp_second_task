@@ -1,10 +1,13 @@
-import './range-slider.scss';
+import autoBind from 'auto-bind';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+// eslint-disable-next-line import/extensions
 import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 
-class rangeSlider {
+import './range-slider.scss';
 
+class RangeSlider {
   constructor(className, elem) {
+    autoBind(this);
     this.className = className;
     this.elem = elem;
     this.init();
@@ -16,9 +19,17 @@ class rangeSlider {
     this.#createRangeSlider();
   }
 
+  handleFromFocus() {
+    this.dotFocus = 'from';
+  }
+
+  handleDotFocus() {
+    this.dotFocus = 'to';
+  }
+
   #setAttrDot(data, flag = false) {
-    this.dotFrom = this.elem.getElementsByClassName('irs-handle from')[0];
-    this.dotTo = this.elem.getElementsByClassName('irs-handle to')[0];
+    [this.dotFrom] = this.elem.getElementsByClassName('irs-handle from');
+    [this.dotTo] = this.elem.getElementsByClassName('irs-handle to');
     const lineEl = this.elem.getElementsByClassName('irs-line')[0];
 
     lineEl.setAttribute('tabindex', '-2');
@@ -26,11 +37,9 @@ class rangeSlider {
     this.dotTo.setAttribute('tabindex', '0');
 
     if (flag) {
-      if (this.dotFocus == 'from')
-        this.dotFrom.focus();
+      if (this.dotFocus === 'from') { this.dotFrom.focus(); }
 
-      if (this.dotFocus == 'to')
-        this.dotTo.focus();
+      if (this.dotFocus === 'to') { this.dotTo.focus(); }
     }
 
     this.#setActionsDot(data);
@@ -66,33 +75,23 @@ class rangeSlider {
       },
       onChange: (data) => {
         setRange(data);
-      }
+      },
     }).data('ionRangeSlider');
   }
 
-
-  #handleFromFocus = () => {
-    this.dotFocus = 'from';
-  }
-
-  #handleDotFocus = () => {
-    this.dotFocus = 'to';
-  }
-
-
-  #setActionsDot({ from, to, min, max }) {
-
+  #setActionsDot({
+    from, to, min, max,
+  }) {
     const movement = (event, flag = false) => {
       const val = flag ? to : from;
       const name = flag ? 'to' : 'from';
 
-      if (event.key == 'ArrowLeft') {
+      if (event.key === 'ArrowLeft') {
         event.preventDefault();
         this.$myRange.update({
           [name]: val >= min ? val - 50 : val,
         });
-
-      } else if (event.key == 'ArrowRight') {
+      } else if (event.key === 'ArrowRight') {
         event.preventDefault();
         this.$myRange.update({
           [name]: val <= max ? val + 50 : val,
@@ -104,8 +103,8 @@ class rangeSlider {
       movement(event, true);
     };
 
-    this.dotFrom.addEventListener('focus', this.#handleFromFocus);
-    this.dotTo.addEventListener('focus', this.#handleDotFocus);
+    this.dotFrom.addEventListener('focus', this.handleFromFocus);
+    this.dotTo.addEventListener('focus', this.handleDotFocus);
     this.dotFrom.addEventListener('keydown', movement);
     this.dotTo.addEventListener('keydown', handleDotKeydown);
   }
@@ -113,14 +112,13 @@ class rangeSlider {
 
 function renderRangeSlider(className) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
-    objMas.push(new rangeSlider(className, elem));
-  }
+
+  const objMas = [];
+  components.forEach((elem) => {
+    objMas.push(new RangeSlider(className, elem));
+  });
+
   return objMas;
 }
 
 renderRangeSlider('.js-range-slider');
-
-
-

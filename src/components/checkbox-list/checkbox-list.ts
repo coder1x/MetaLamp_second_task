@@ -1,14 +1,20 @@
+import autoBind from 'auto-bind';
+
 import './checkbox-list.scss';
 
 class CheckBoxList {
-
   className: string;
+
   elem: Element;
+
   private wrap: Element | null = null;
+
   private headerEl: HTMLElement | null = null;
+
   private imgEl: HTMLElement | null = null;
 
   constructor(className: string, elem: Element) {
+    autoBind(this);
     this.className = className;
     this.elem = elem;
     this.init();
@@ -19,13 +25,14 @@ class CheckBoxList {
     this.setActions();
   }
 
-  toggleVis = () => {
+  toggleVis() {
     let display: string = '';
 
-    if (this.wrap)
+    if (this.wrap) {
       display = window.getComputedStyle(this.wrap, null)
         .getPropertyValue('display');
-    const flag = display == 'block' ? false : true;
+    }
+    const flag = display !== 'block';
 
     this.toggleModify(this.elem, '_visible', flag);
   }
@@ -45,15 +52,20 @@ class CheckBoxList {
   private toggleModify(elem: Element, modify: string, flag = false) {
     const clearName = `${this.className.replace(/^\.js-/, '')}${modify}`;
     const objClass = elem.classList;
-    flag ? objClass.add(clearName) : objClass.remove(clearName);
+
+    if (flag) {
+      objClass.add(clearName);
+    } else {
+      objClass.remove(clearName);
+    }
   }
 
-  private handleKeydown = (e: KeyboardEvent) => {
-    if (e.key == 'Enter' || e.key == ' ') {
-      e.preventDefault();
+  private handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
       this.toggleVis();
-    } else if (e.key == 'Escape') {
-      e.preventDefault();
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
       this.toggleModify(this.elem, '_visible', false);
     }
   }
@@ -68,14 +80,11 @@ class CheckBoxList {
 
 function renderCheckboxList(className: string) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
+  const objMas: CheckBoxList[] = [];
+  components.forEach((elem) => {
     objMas.push(new CheckBoxList(className, elem));
-  }
+  });
   return objMas;
 }
 
 renderCheckboxList('.js-checkbox-list');
-
-
-

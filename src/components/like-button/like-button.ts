@@ -1,34 +1,52 @@
+import autoBind from 'auto-bind';
 import './like-button.scss';
 
-class likeButton {
+// eslint-disable-next-line import/no-unresolved
+const favorite = require('@com/like-button/img/favorite.svg').default;
+// eslint-disable-next-line import/no-unresolved
+const like = require('@com/like-button/img/like.svg').default;
+
+class LikeButton {
   likes: number = 0;
+
   nameClass: string = '';
+
   private likeEl: Element | null = null;
+
   private iconEl: HTMLImageElement | null = null;
+
   private valueEl: HTMLElement | null = null;
+
   private linkEl: HTMLElement | null = null;
+
   private flag: boolean = false;
+
   private strKey: string = '';
 
   constructor(nameClass: string, elem: Element) {
+    autoBind(this);
     this.nameClass = nameClass;
-    if (elem instanceof HTMLElement)
+    if (elem instanceof HTMLElement) {
       this.strKey = String(`${elem.offsetLeft}${elem.offsetTop}`);
+    }
     this.likeEl = elem;
     this.init();
   }
 
   getLikes() {
-    if (this.valueEl)
-      return Number(this.valueEl.innerText);
+    let number = 0;
+    if (this.valueEl) {
+      number = Number(this.valueEl.innerText);
+    }
+    return number;
   }
 
   toggleLike() {
     if (this.flag) { // ставили лайк
-      this.setLikes(--this.likes, '');
+      this.setLikes(this.likes -= 1, '');
       this.flag = false;
     } else { // не ставили
-      this.setLikes(++this.likes);
+      this.setLikes(this.likes += 1);
       this.flag = true;
     }
     this.toggleStyle();
@@ -47,11 +65,12 @@ class likeButton {
     this.iconEl = this.likeEl.querySelector(`${this.nameClass}__icon`);
     this.valueEl = this.likeEl.querySelector(`${this.nameClass}__value`);
     this.linkEl = this.likeEl.querySelector(`${this.nameClass}__like`);
+
+    return true;
   }
 
-  private setLikes(like: number, flag = 'true') {
-    if (this.valueEl)
-      this.valueEl.innerText = String(like);
+  private setLikes(likeNumber: number, flag = 'true') {
+    if (this.valueEl) { this.valueEl.innerText = String(likeNumber); }
     localStorage.setItem(this.strKey, String(flag));
   }
 
@@ -60,25 +79,21 @@ class likeButton {
     const name = `${this.nameClass.replace(/^\.js-/, '')}_voted`;
     if (this.flag) { // ставили лайк
       if (this.iconEl && this.likeEl) {
-        this.iconEl.src =
-          require('@com/like-button/img/favorite.svg').default;
+        this.iconEl.src = favorite;
         this.likeEl.classList.add(name);
       }
-    } else { // не ставили
-      if (this.iconEl && this.likeEl) {
-        this.iconEl.src =
-          require('@com/like-button/img/like.svg').default;
-        this.likeEl.classList.remove(name);
-      }
+    } else if (this.iconEl && this.likeEl) {
+      this.iconEl.src = like;
+      this.likeEl.classList.remove(name);
     }
   }
 
-  private handleLinkClick = () => {
+  private handleLinkClick() {
     this.toggleLike();
   }
 
-  private handleLinkKeydown = (event: KeyboardEvent) => {
-    if (event.key == 'Enter' || event.key == ' ') {
+  private handleLinkKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
       this.toggleLike();
       event.preventDefault();
     }
@@ -89,15 +104,17 @@ class likeButton {
 
     this.linkEl.addEventListener('click', this.handleLinkClick);
     this.linkEl.addEventListener('keydown', this.handleLinkKeydown);
+
+    return true;
   }
 }
 
 function renderLikeButton(className: string) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
-    objMas.push(new likeButton(className, elem));
-  }
+  const objMas: LikeButton[] = [];
+  components.forEach((elem) => {
+    objMas.push(new LikeButton(className, elem));
+  });
   return objMas;
 }
 

@@ -1,12 +1,15 @@
+import autoBind from 'auto-bind';
 import './registration.scss';
 
-class registration {
-
+class Registration {
   className: string;
+
   elem: Element;
+
   private buttonEl: Element | null = null;
 
   constructor(className: string, elem: Element) {
+    autoBind(this);
     this.className = className;
     this.elem = elem;
     this.setDom();
@@ -25,9 +28,9 @@ class registration {
 
   private validation() {
     const messageErr = (str: string, len: number) => {
-
       function check(result: boolean, mess: string) {
         if (result) {
+          // eslint-disable-next-line no-alert
           alert(`Введите ${mess}`);
           return false;
         }
@@ -43,7 +46,7 @@ class registration {
           flag = check(len < 3, 'Фамилию');
           break;
         case 'date':
-          flag = check(len != 10, 'дату рождения');
+          flag = check(len !== 10, 'дату рождения');
           break;
         case 'email':
           flag = check(len < 5, 'Email');
@@ -59,35 +62,36 @@ class registration {
 
     const fields = ['name', 'surname', 'date', 'email', 'pass'];
 
-    for (let item of fields) {
+    for (let i = 0; i < fields.length; i += 1) {
+      const item = fields[i];
       const dom = this.getElement(item);
 
       if (dom) {
         const len = dom.value.length;
-        if (!messageErr(item, len))
-          return false;
+        if (!messageErr(item, len)) { return false; }
       }
     }
     return true;
   }
 
-  private handleButton = (event: Event) => {
-    if (!this.validation())
-      event.preventDefault();
+  private handleButton(event: Event) {
+    if (!this.validation()) { event.preventDefault(); }
   }
 
   private setAction() {
-    if (this.buttonEl)
+    if (this.buttonEl) {
       this.buttonEl.addEventListener('click', this.handleButton);
+    }
   }
 }
 
 function renderRegistration(className: string) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
-    objMas.push(new registration(className, elem));
-  }
+
+  const objMas: Registration[] = [];
+  components.forEach((elem) => {
+    objMas.push(new Registration(className, elem));
+  });
   return objMas;
 }
 

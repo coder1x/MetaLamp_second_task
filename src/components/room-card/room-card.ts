@@ -1,22 +1,35 @@
+import autoBind from 'auto-bind';
 import './room-card.scss';
 
-class slider {
-
+class Slider {
   className: string;
+
   elem: Element;
+
   private slidesEl: Element[] | null = null;
+
   private dotEl: Element | null = null;
+
   private prevEl: HTMLElement | null = null;
+
   private nextEl: HTMLElement | null = null;
+
   private indexS: number = 0;
+
   private indexDot: number = 0;
+
   private sliderWrap: HTMLElement | null = null;
+
   private flagSwipe: boolean = false;
+
   private linkSlide: HTMLElement | null = null;
+
   private swipe: boolean = false;
+
   private timeS: number = 0;
 
   constructor(className: string, elem: Element) {
+    autoBind(this);
     this.className = className;
     this.elem = elem;
     this.init();
@@ -62,7 +75,12 @@ class slider {
     const clearName = `${this.className.replace(/^\.js-/, '')}${prefix}`;
 
     const objClass = slide.classList;
-    !flag ? objClass.add(clearName) : objClass.remove(clearName);
+
+    if (!flag) {
+      objClass.add(clearName);
+    } else {
+      objClass.remove(clearName);
+    }
   }
 
   private paintDot() {
@@ -70,7 +88,6 @@ class slider {
     let modify = `${dotCl}_paint`;
     modify = modify.replace(/^\.js-/, '');
     const dots = this.elem.querySelectorAll(dotCl);
-    this.indexDot;
 
     let objClass = dots[this.indexDot].classList;
     objClass.remove(modify);
@@ -83,56 +100,55 @@ class slider {
   private createDot() {
     const classN = `${this.className.replace(/^\./, '')}__dot`;
 
-    if (Array.isArray(this.slidesEl))
-      for (let i = 0; i < this.slidesEl.length; i++) {
+    if (Array.isArray(this.slidesEl)) {
+      for (let i = 0; i < this.slidesEl.length; i += 1) {
         const dot = document.createElement('span');
 
         dot.classList.add(classN.replace(/^js-/, ''));
         dot.classList.add(classN);
         dot.setAttribute('data-index', String(i));
 
-        if (this.dotEl)
-          this.dotEl.appendChild(dot);
+        if (this.dotEl) this.dotEl.appendChild(dot);
       }
+    }
   }
 
-  private handlePrevClick = () => {
+  private handlePrevClick() {
     if (this.indexS > 0) {
       this.setVisible(this.indexS - 1);
-    }
-    else {
-      if (Array.isArray(this.slidesEl))
-        this.setVisible(this.slidesEl.length - 1);
+    } else if (Array.isArray(this.slidesEl)) {
+      this.setVisible(this.slidesEl.length - 1);
     }
     this.timeS = Number(new Date());
   }
 
-  private handleNextClick = () => {
+  private handleNextClick() {
     if (!Array.isArray(this.slidesEl)) return false;
 
     const len = this.slidesEl.length - 1;
     if (this.indexS < len) {
       this.setVisible(this.indexS + 1);
-    }
-    else {
+    } else {
       this.setVisible(0);
     }
     this.timeS = Number(new Date());
+    return true;
   }
 
-  private handleLinkSlideClick = (event: Event) => {
+  private handleLinkSlideClick(event: Event) {
     if (this.flagSwipe) {
       event.preventDefault();
     }
     this.flagSwipe = false;
   }
 
-  private handleDotClick = (event: Event) => {
+  private handleDotClick(event: Event) {
     const target = event.target as Element;
     const index = Number(target.getAttribute('data-index'));
 
-    if (this.indexS != index && !isNaN(index))
+    if (this.indexS !== index && !Number.isNaN(index)) {
       this.setVisible(index);
+    }
   }
 
   private setAction() {
@@ -145,9 +161,11 @@ class slider {
 
     this.linkSlide.addEventListener('click', this.handleLinkSlideClick);
     this.dotEl.addEventListener('click', this.handleDotClick);
+
+    return true;
   }
 
-  private handleLinkSlideFocus = () => {
+  private handleLinkSlideFocus() {
     if (this.swipe && this.linkSlide) {
       this.linkSlide.blur();
     }
@@ -157,29 +175,33 @@ class slider {
   private setActionSwipe() {
     let xyDown: number[] = [];
 
-    if (this.linkSlide)
+    if (this.linkSlide) {
       this.linkSlide.addEventListener('focus', this.handleLinkSlideFocus);
+    }
 
     function getCoordinatesXY(event: MouseEvent | TouchEvent): number[] {
       const eventT = event as TouchEvent;
       const eventM = event as MouseEvent;
 
-      if (event.type == 'touchstart' || event.type == 'touchmove')
+      if (event.type === 'touchstart' || event.type === 'touchmove') {
         return [eventT.touches[0].clientX, eventT.touches[0].clientY];
+      }
 
-      if (event.type == 'mousedown' || event.type == 'mousemove')
+      if (event.type === 'mousedown' || event.type === 'mousemove') {
         return [eventM.clientX, eventM.clientY];
+      }
 
       return [];
     }
 
     const swipe = (xyDiff: number[]) => {
-      if (this.nextEl && this.prevEl)
+      if (this.nextEl && this.prevEl) {
         if (xyDiff[0] > 0) {
           this.nextEl.click();
         } else {
           this.prevEl.click();
         }
+      }
       this.flagSwipe = true;
     };
 
@@ -194,23 +216,23 @@ class slider {
       }
 
       const eventM = ev;
-      const touchmove = ev.type == 'touchmove';
-      const mousemove = ev.type == 'mousemove';
+      const touchmove = ev.type === 'touchmove';
+      const mousemove = ev.type === 'mousemove';
 
       if (eventM instanceof MouseEvent) {
-        const event = touchmove || mousemove && eventM.buttons == 1;
+        const event = (touchmove || mousemove) && eventM.buttons === 1;
         if (event) {
           const xyUp: number[] = getCoordinatesXY(ev);
 
           if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
             const xyDiff = [xyDown[0] - xyUp[0], xyDown[1] - xyUp[1]];
             const date = Number(new Date());
-            if (date - this.timeS > 200)
-              swipe(xyDiff);
+            if (date - this.timeS > 200) { swipe(xyDiff); }
             xyDown = [];
           }
         }
       }
+      return true;
     };
 
     if (this.sliderWrap) {
@@ -224,10 +246,10 @@ class slider {
 
 function renderSlider(className: string) {
   const components = document.querySelectorAll(className);
-  let objMas = [];
-  for (let elem of components) {
-    objMas.push(new slider(className, elem));
-  }
+  const objMas: Slider[] = [];
+  components.forEach((elem) => {
+    objMas.push(new Slider(className, elem));
+  });
   return objMas;
 }
 

@@ -13,7 +13,7 @@ mixin like-button(options)
 
   div(class=`${className} js-${classComp}`)
     - if(!flLabel){
-    p(class=`${classComp}__label`)= label
+    p(class=`${classComp}__header`)= label
     -}
     
     button(class=`${classComp}__like js-${classComp}__like` aria-label='поставить лайк')

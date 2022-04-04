@@ -1,5 +1,7 @@
 /* eslint no-unused-vars: off */
+// eslint-disable-next-line import/no-unresolved
 import '@styles/styles';
+// eslint-disable-next-line import/extensions
 import 'focus-visible/dist/focus-visible.min.js';
 
 interface RequireContext {
@@ -16,4 +18,3 @@ function requireAll(requireContext: RequireContext) {
 
 requireAll(require.context('./components/', true, /^\.\/(?!.*((?:__tests__)|(?:\.d))).*\.((jsx?)|(tsx?))$/));
 requireAll(require.context('./pages/', true, /^\.\/(?!.*((?:__tests__)|(?:\.d))).*\.((jsx?)|(tsx?))$/));
-
