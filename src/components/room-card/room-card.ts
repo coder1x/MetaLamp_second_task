@@ -84,28 +84,28 @@ class Slider {
   }
 
   private paintDot() {
-    const dotCl = `${this.className}__dot`;
-    let modify = `${dotCl}_paint`;
-    modify = modify.replace(/^\.js-/, '');
-    const dots = this.elem.querySelectorAll(dotCl);
+    const dotSelector = `${this.className}__dot`;
+    let modifier = `${dotSelector}_paint`;
+    modifier = modifier.replace(/^\.js-/, '');
+    const dots = this.elem.querySelectorAll(dotSelector);
 
     let objClass = dots[this.indexDot].classList;
-    objClass.remove(modify);
+    objClass.remove(modifier);
 
     objClass = dots[this.indexS].classList;
-    objClass.add(modify);
+    objClass.add(modifier);
     this.indexDot = this.indexS;
   }
 
   private createDot() {
-    const classN = `${this.className.replace(/^\./, '')}__dot`;
+    const dotSelector = `${this.className.replace(/^\./, '')}__dot`;
 
     if (Array.isArray(this.slidesEl)) {
       for (let i = 0; i < this.slidesEl.length; i += 1) {
         const dot = document.createElement('span');
 
-        dot.classList.add(classN.replace(/^js-/, ''));
-        dot.classList.add(classN);
+        dot.classList.add(dotSelector.replace(/^js-/, ''));
+        dot.classList.add(dotSelector);
         dot.setAttribute('data-index', String(i));
 
         if (this.dotEl) this.dotEl.appendChild(dot);
@@ -125,8 +125,8 @@ class Slider {
   private handleNextClick() {
     if (!Array.isArray(this.slidesEl)) return false;
 
-    const len = this.slidesEl.length - 1;
-    if (this.indexS < len) {
+    const length = this.slidesEl.length - 1;
+    if (this.indexS < length) {
       this.setVisible(this.indexS + 1);
     } else {
       this.setVisible(0);

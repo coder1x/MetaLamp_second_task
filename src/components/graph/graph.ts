@@ -7,7 +7,7 @@ class Graph {
 
   elem: Element | null = null;
 
-  private ctx: CanvasRenderingContext2D | null = null;
+  private сanvasContext: CanvasRenderingContext2D | null = null;
 
   private nameLine: string[];
 
@@ -80,8 +80,8 @@ class Graph {
     const color = new Map();
 
     quadrants.forEach((item) => {
-      if (this.ctx instanceof CanvasRenderingContext2D) {
-        const grad = this.ctx.createLinearGradient(
+      if (this.сanvasContext instanceof CanvasRenderingContext2D) {
+        const grad = this.сanvasContext.createLinearGradient(
           item.x1,
           item.y1,
           item.x2,
@@ -140,7 +140,7 @@ class Graph {
     if (!this.elem) return false;
 
     this.canvas = this.getElement('__canvas') as HTMLCanvasElement;
-    if (this.canvas) { this.ctx = this.canvas.getContext('2d'); }
+    if (this.canvas) { this.сanvasContext = this.canvas.getContext('2d'); }
     return true;
   }
 
@@ -154,8 +154,8 @@ class Graph {
     const fontNum = 24 * scaling;
     const fontText = 15 * scaling;
 
-    if (this.ctx instanceof CanvasRenderingContext2D) {
-      this.ctx.lineWidth = 4 * scaling;
+    if (this.сanvasContext instanceof CanvasRenderingContext2D) {
+      this.сanvasContext.lineWidth = 4 * scaling;
     }
     // ----------------- end options ------------------
 
@@ -171,33 +171,37 @@ class Graph {
     let startLine = 0;
     const dot = (Math.PI / 180) * 270;
 
-    if (this.ctx instanceof CanvasRenderingContext2D) {
+    if (this.сanvasContext instanceof CanvasRenderingContext2D) {
       for (let i = 0; i < ugol.length; i += 1) {
         endLine = 2 * Math.PI * ugol[i];
         const start = startLine + dot + space;
         const end = startLine + endLine + dot - space;
 
-        this.ctx.beginPath();
-        this.ctx.arc(cordX, cordY, radius, start, end);
+        this.сanvasContext.beginPath();
+        this.сanvasContext.arc(cordX, cordY, radius, start, end);
 
-        if (color) this.ctx.strokeStyle = color.get(this.nameLine[i]);
-        this.ctx.stroke();
-        this.ctx.closePath();
+        if (color) this.сanvasContext.strokeStyle = color.get(this.nameLine[i]);
+        this.сanvasContext.stroke();
+        this.сanvasContext.closePath();
 
         startLine += endLine;
       }
     }
 
     document.fonts.ready.then(() => {
-      if (this.ctx instanceof CanvasRenderingContext2D) {
-        this.ctx.fillStyle = '#BC9CFF';
-        this.ctx.textAlign = 'center';
-        this.ctx.textBaseline = 'middle';
-        this.ctx.font = `bold ${fontNum}px Montserrat`;
-        this.ctx.fillText(String(percent), 60 * scaling, 50 * scaling);
+      if (this.сanvasContext instanceof CanvasRenderingContext2D) {
+        this.сanvasContext.fillStyle = '#BC9CFF';
+        this.сanvasContext.textAlign = 'center';
+        this.сanvasContext.textBaseline = 'middle';
+        this.сanvasContext.font = `bold ${fontNum}px Montserrat`;
+        this.сanvasContext.fillText(
+          String(percent),
+          60 * scaling,
+          50 * scaling,
+        );
 
-        this.ctx.font = `normal ${fontText}px Montserrat`;
-        this.ctx.fillText('голосов', 60 * scaling, 73 * scaling);
+        this.сanvasContext.font = `normal ${fontText}px Montserrat`;
+        this.сanvasContext.fillText('голосов', 60 * scaling, 73 * scaling);
       }
     });
   }

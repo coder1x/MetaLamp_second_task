@@ -83,18 +83,18 @@ class RangeSlider {
     from, to, min, max,
   }) {
     const movement = (event, flag = false) => {
-      const val = flag ? to : from;
+      const value = flag ? to : from;
       const name = flag ? 'to' : 'from';
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         this.$myRange.update({
-          [name]: val >= min ? val - 50 : val,
+          [name]: value >= min ? value - 50 : value,
         });
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
         this.$myRange.update({
-          [name]: val <= max ? val + 50 : val,
+          [name]: value <= max ? value + 50 : value,
         });
       }
     };

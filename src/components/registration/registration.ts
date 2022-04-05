@@ -64,10 +64,10 @@ class Registration {
 
     for (let i = 0; i < fields.length; i += 1) {
       const item = fields[i];
-      const dom = this.getElement(item);
+      const domElement = this.getElement(item);
 
-      if (dom) {
-        const len = dom.value.length;
+      if (domElement) {
+        const len = domElement.value.length;
         if (!messageErr(item, len)) { return false; }
       }
     }

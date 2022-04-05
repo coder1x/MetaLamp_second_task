@@ -138,10 +138,10 @@ class HeaderMenu {
   }
 
   private handleTrackMouse(event: MouseEvent) {
-    const rel = event.relatedTarget as Element;
+    const domElement = event.relatedTarget as Element;
     const target = event.currentTarget as Element;
 
-    const domEl = rel.closest(`.${this.getModify()}`) ?? false;
+    const domEl = domElement.closest(`.${this.getModify()}`) ?? false;
     if (!domEl) {
       this.closeUl(target);
       this.closeTip();
@@ -162,8 +162,8 @@ class HeaderMenu {
     return display !== 'none';
   }
 
-  private setModify(elem: Element, mod: string, flag = false) {
-    const select = `__${mod}_visible`;
+  private setModify(elem: Element, modifier: string, flag = false) {
+    const select = `__${modifier}_visible`;
     const clearName = `${this.className.replace(/^\.js-/, '')}${select}`;
     const objClass = elem.classList;
 
@@ -244,9 +244,9 @@ class HeaderMenu {
   private handleDocumentFocus(event: FocusEvent) {
     const target = event.target as Element;
 
-    const linkEl = target.closest(`${this.className}__link-down`) ?? false;
-    const ulEl = target.closest(`.${this.getModify()}`) ?? false;
-    if (!linkEl && !ulEl) { this.closeAll(); }
+    const linkElement = target.closest(`${this.className}__link-down`) ?? false;
+    const ulElement = target.closest(`.${this.getModify()}`) ?? false;
+    if (!linkElement && !ulElement) { this.closeAll(); }
   }
 
   private setActions() {

@@ -19,9 +19,9 @@ class MaskedTextField {
   }
 
   private inputProcessing(event: Event) {
-    const dom = event.target as HTMLInputElement;
+    const domElement = event.target as HTMLInputElement;
 
-    let value = dom.value.replace(/[^.\d]/g, '');
+    let value = domElement.value.replace(/[^.\d]/g, '');
 
     const strLen = value.length;
     if (strLen === 1) {
@@ -42,36 +42,36 @@ class MaskedTextField {
     const last = point !== this.tempValue;
 
     if (value.match(new RegExp(`${day}\\.?$`))) {
-      dom.value = value.length === 2 && last ? point : value;
+      domElement.value = value.length === 2 && last ? point : value;
     } else if (value.match(new RegExp(`${month}\\.?$`))) {
-      dom.value = value.length === 5 && last ? point : value;
+      domElement.value = value.length === 5 && last ? point : value;
     } else if (value.match(new RegExp(year))) {
-      dom.value = value;
+      domElement.value = value;
     } else if (this.tempValue.length === 1) {
-      dom.value = value.substr(0, value.length - 1);
+      domElement.value = value.substr(0, value.length - 1);
     } else if (this.tempValue.length > value.length) {
-      dom.value = value;
+      domElement.value = value;
     } else {
-      dom.value = this.tempValue;
+      domElement.value = this.tempValue;
     }
 
-    this.tempValue = dom.value;
+    this.tempValue = domElement.value;
   }
 
   private dateValidation(event: Event) {
     const target = event.target as HTMLInputElement;
     const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
-    const dateD = target.value;
+    const dateTarget = target.value;
 
-    if (!regexp.test(dateD)) return false;
+    if (!regexp.test(dateTarget)) return false;
 
-    const masD = dateD.split('.').map((item: string) => Number(item.replace(/^0/, '')));
-    masD[1] -= 1;
-    const date = new Date(masD[2], masD[1], masD[0]);
+    const masDate = dateTarget.split('.').map((item: string) => Number(item.replace(/^0/, '')));
+    masDate[1] -= 1;
+    const date = new Date(masDate[2], masDate[1], masDate[0]);
 
-    const day = date.getDate() === masD[0];
-    const month = date.getMonth() === masD[1];
-    const year = date.getFullYear() === masD[2];
+    const day = date.getDate() === masDate[0];
+    const month = date.getMonth() === masDate[1];
+    const year = date.getFullYear() === masDate[2];
 
     if (year && month && day) {
       return true;

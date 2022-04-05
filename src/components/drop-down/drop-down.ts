@@ -12,7 +12,7 @@ class DropDown {
 
   private clearBut: HTMLElement | null = null;
 
-  private valMas: HTMLSpanElement[] | null = null;
+  private valueMas: HTMLSpanElement[] | null = null;
 
   private declensions: string[][] = [];
 
@@ -67,9 +67,9 @@ class DropDown {
   }
 
   resetValue() {
-    if (!this.valMas || !this.inputEl) return false;
+    if (!this.valueMas || !this.inputEl) return false;
 
-    this.valMas.forEach((item: HTMLSpanElement) => {
+    this.valueMas.forEach((item: HTMLSpanElement) => {
       const span = item;
       span.innerText = '0';
     });
@@ -93,10 +93,10 @@ class DropDown {
 
   getMapValue() {
     const fields = new Map();
-    if (Array.isArray(this.valMas)) {
-      for (let i = 0; i < this.valMas.length; i += 1) {
+    if (Array.isArray(this.valueMas)) {
+      for (let i = 0; i < this.valueMas.length; i += 1) {
         const typeText = this.declensions[i].join(',');
-        const value = Number(this.valMas[i].innerText);
+        const value = Number(this.valueMas[i].innerText);
 
         if (fields.has(typeText)) {
           const oldValue = fields.get(typeText);
@@ -134,12 +134,12 @@ class DropDown {
     this.clearBut = this.getElement('__button-clear') as HTMLElement;
     this.items = this.getElements('__select-item');
 
-    this.valMas = [];
+    this.valueMas = [];
 
     this.items.forEach((item) => {
       this.getCheckVal(item);
       const dom = this.getElement('__value', item) as HTMLElement;
-      if (this.valMas) { this.valMas.push(dom); }
+      if (this.valueMas) { this.valueMas.push(dom); }
       this.readingAttributes(item);
     });
 
@@ -214,8 +214,8 @@ class DropDown {
 
   private handleDocumentEvent(event: Event) {
     const target = event.target as Element;
-    const domEl = target.closest(this.className);
-    if (domEl !== this.elem) { this.toggle(true); }
+    const domElement = target.closest(this.className);
+    if (domElement !== this.elem) { this.toggle(true); }
   }
 
   private setActions() {
@@ -283,14 +283,14 @@ class DropDown {
     const minusEl = target.closest(`${this.className}__minus`);
     const plusEl = target.closest(`${this.className}__plus`);
 
-    let num = Number(valueEl.innerText);
-    if (minusEl && num) {
-      num -= 1;
+    let number = Number(valueEl.innerText);
+    if (minusEl && number) {
+      number -= 1;
     } else if (plusEl && !this.disPlus) {
-      num += 1;
+      number += 1;
     }
 
-    valueEl.innerText = String(num);
+    valueEl.innerText = String(number);
     this.getCheckVal(liEl);
     this.setInput();
   }
@@ -308,12 +308,12 @@ class DropDown {
     const mergeText = (
       num: number,
       strMas: string[],
-      fl = false,
+      flag = false,
     ) => {
       const number = Number(num);
       if (!number) return;
 
-      if (!fl) {
+      if (!flag) {
         text += `${number} ${DropDown.declOfNum(number, strMas)}`;
       } else {
         const comma = text ? ', ' : '';
@@ -321,11 +321,11 @@ class DropDown {
       }
     };
 
-    let kl = false;
+    let lock = false;
 
     this.getMapValue().forEach((value, key) => {
-      mergeText(value, key.split(','), Boolean(kl));
-      kl = true;
+      mergeText(value, key.split(','), Boolean(lock));
+      lock = true;
     });
 
     const setData = (
