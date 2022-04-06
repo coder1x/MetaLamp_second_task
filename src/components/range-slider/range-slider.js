@@ -1,6 +1,5 @@
 import autoBind from 'auto-bind';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
-// eslint-disable-next-line import/extensions
 import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 
 import './range-slider.scss';

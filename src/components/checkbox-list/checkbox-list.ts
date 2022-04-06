@@ -1,5 +1,4 @@
 import autoBind from 'auto-bind';
-
 import './checkbox-list.scss';
 
 class CheckBoxList {

@@ -1,9 +1,7 @@
 import autoBind from 'auto-bind';
 import './like-button.scss';
 
-// eslint-disable-next-line import/no-unresolved
 const favorite = require('@com/like-button/img/favorite.svg').default;
-// eslint-disable-next-line import/no-unresolved
 const like = require('@com/like-button/img/like.svg').default;
 
 class LikeButton {

@@ -1,6 +1,6 @@
 import autoBind from 'auto-bind';
 import './subscrip-textfield.scss';
-// eslint-disable-next-line import/extensions
+
 import { ValidationEmail } from '../validation-email/validation-email';
 
 class SubscriptionTextField {

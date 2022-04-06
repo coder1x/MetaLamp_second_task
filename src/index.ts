@@ -1,7 +1,5 @@
 /* eslint no-unused-vars: off */
-// eslint-disable-next-line import/no-unresolved
 import '@styles/styles';
-// eslint-disable-next-line import/extensions
 import 'focus-visible/dist/focus-visible.min.js';
 
 interface RequireContext {

@@ -19,6 +19,8 @@
     "no-nested-ternary": 1,
     "no-template-curly-in-string": 1,
     "no-self-compare": 1,
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
     "semi": [
       1
     ],
