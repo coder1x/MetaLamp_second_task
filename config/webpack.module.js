@@ -26,7 +26,7 @@ module.exports = {
         test: /\.(ttf|woff|woff2|eot)$/,
         loader: 'file-loader',
         options: {
-          outputPath: path.join(PATHS.assets, 'fonts/'),
+          outputPath: path.join('.', PATHS.assets, 'fonts/'),
           publicPath: '/assets/fonts/',
         },
       },
@@ -44,7 +44,7 @@ module.exports = {
         test: /\.(png|jpg|svg|gif|webp|avif)$/,
         loader: 'file-loader',
         options: {
-          outputPath: path.join(PATHS.assets, 'images/'),
+          outputPath: path.join('.', PATHS.assets, 'images/'),
           publicPath: '/assets/images/',
         },
       },

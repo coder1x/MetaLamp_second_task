@@ -8,9 +8,9 @@ module.exports = {
     let dir = '';
 
     if (ext === 'css') {
-      dir = path.join(PATHS.assets, 'css/');
+      dir = path.join('.', PATHS.assets, 'css/');
     } else if (ext === 'js') {
-      dir = path.join(PATHS.assets, 'js/');
+      dir = path.join('.', PATHS.assets, 'js/');
     }
 
     return DP.isDev ? `${dir}[name].${ext}` : `${dir}[name].[hash].${ext}`;

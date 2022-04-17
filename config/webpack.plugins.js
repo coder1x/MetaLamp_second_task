@@ -43,7 +43,7 @@ module.exports = {
           return {};
         }
       },
-      filename: `${fileName}.html`,
+      filename: `./${fileName}.html`,
       template: `./pages/${fileName}/${fileName}.pug`,
       alwaysWriteToDisk: true,
       inject: 'body',
