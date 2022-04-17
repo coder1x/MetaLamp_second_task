@@ -1,15 +1,8 @@
 {
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "ecmaFeatures": {
-      "ts": true
-    },
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "rules": {
     "no-unused-vars": "warn",
     "no-debugger": "off",
@@ -21,6 +14,7 @@
     "no-self-compare": 1,
     "import/no-unresolved": "off",
     "import/extensions": "off",
+    "no-underscore-dangle": "off",
     "semi": [
       1
     ],
@@ -48,23 +42,13 @@
   "settings": {
     "import/extensions": [
       ".js",
-      ".jsx",
-      ".ts",
-      ".tsx"
+      ".jsx"
     ],
-    "import/parsers": {
-      "@typescript-eslint/parser": [
-        ".ts",
-        ".tsx"
-      ]
-    },
     "import/resolver": {
       "node": {
         "extensions": [
           ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
+          ".jsx"
         ]
       }
     }

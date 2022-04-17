@@ -14,8 +14,8 @@ class RangeSlider {
 
   init() {
     this.dotFocus = '';
-    this.#setDomElem();
-    this.#createRangeSlider();
+    this._setDomElem();
+    this._createRangeSlider();
   }
 
   handleFromFocus() {
@@ -26,7 +26,7 @@ class RangeSlider {
     this.dotFocus = 'to';
   }
 
-  #setAttrDot(data, flag = false) {
+  _setAttrDot(data, flag = false) {
     [this.dotFrom] = this.elem.getElementsByClassName('irs-handle from');
     [this.dotTo] = this.elem.getElementsByClassName('irs-handle to');
     const lineEl = this.elem.getElementsByClassName('irs-line')[0];
@@ -41,15 +41,15 @@ class RangeSlider {
       if (this.dotFocus === 'to') { this.dotTo.focus(); }
     }
 
-    this.#setActionsDot(data);
+    this._setActionsDot(data);
   }
 
-  #setDomElem() {
+  _setDomElem() {
     const classVal = `${this.className}__value`;
     this.valueEl = this.elem.querySelector(classVal);
   }
 
-  #createRangeSlider() {
+  _createRangeSlider() {
     const setRange = ({ from, to }) => {
       const numFrom = from.toLocaleString();
       const numTo = to.toLocaleString();
@@ -66,11 +66,11 @@ class RangeSlider {
       hide_from_to: true,
       onUpdate: (data) => {
         setRange(data);
-        this.#setAttrDot(data, true);
+        this._setAttrDot(data, true);
       },
       onStart: (data) => {
         setRange(data);
-        this.#setAttrDot(data);
+        this._setAttrDot(data);
       },
       onChange: (data) => {
         setRange(data);
@@ -78,7 +78,7 @@ class RangeSlider {
     }).data('ionRangeSlider');
   }
 
-  #setActionsDot({
+  _setActionsDot({
     from, to, min, max,
   }) {
     const movement = (event, flag = false) => {

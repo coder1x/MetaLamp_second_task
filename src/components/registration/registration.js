@@ -2,33 +2,27 @@ import autoBind from 'auto-bind';
 import './registration.scss';
 
 class Registration {
-  className: string;
-
-  elem: Element;
-
-  private buttonEl: Element | null = null;
-
-  constructor(className: string, elem: Element) {
+  constructor(className, elem) {
     autoBind(this);
     this.className = className;
     this.elem = elem;
-    this.setDom();
-    this.setAction();
+    this._setDom();
+    this._setAction();
   }
 
-  getElement(str: string): HTMLInputElement | null {
+  getElement(str) {
     const selector = `${this.className}__${str}-wrap input`;
     return this.elem.querySelector(selector);
   }
 
-  private setDom() {
+  _setDom() {
     const buttonS = `${this.className}__submit-wrap button`;
-    this.buttonEl = this.elem.querySelector(buttonS);
+    this._buttonEl = this.elem.querySelector(buttonS);
   }
 
-  private validation() {
-    const messageErr = (str: string, len: number) => {
-      function check(result: boolean, mess: string) {
+  _validation() {
+    const messageErr = (str, len) => {
+      function check(result, mess) {
         if (result) {
           // eslint-disable-next-line no-alert
           alert(`Введите ${mess}`);
@@ -74,21 +68,21 @@ class Registration {
     return true;
   }
 
-  private handleButton(event: Event) {
-    if (!this.validation()) { event.preventDefault(); }
+  _handleButton(event) {
+    if (!this._validation()) { event.preventDefault(); }
   }
 
-  private setAction() {
-    if (this.buttonEl) {
-      this.buttonEl.addEventListener('click', this.handleButton);
+  _setAction() {
+    if (this._buttonEl) {
+      this._buttonEl.addEventListener('click', this._handleButton);
     }
   }
 }
 
-function renderRegistration(className: string) {
+function renderRegistration(className) {
   const components = document.querySelectorAll(className);
 
-  const objMas: Registration[] = [];
+  const objMas = [];
   components.forEach((elem) => {
     objMas.push(new Registration(className, elem));
   });

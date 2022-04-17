@@ -2,41 +2,33 @@ import autoBind from 'auto-bind';
 import './search-room.scss';
 
 class SearchRoom {
-  className: string;
-
-  private dateInputs: Element[] | null = null;
-
-  private guestsInput: HTMLInputElement | null = null;
-
-  private buttonEl: Element | null = null;
-
-  constructor(className: string, elem: Element) {
+  constructor(className, elem) {
     autoBind(this);
     this.className = className;
-    this.setDom(elem);
-    this.setAction();
+    this._setDom(elem);
+    this._setAction();
   }
 
-  private setDom(elem: Element) {
+  _setDom(elem) {
     const date = `${this.className}__date-wrap input`;
     const guests = `${this.className}__dropdown-wrap input`;
     const submit = `${this.className}__button-wrap button`;
 
-    this.dateInputs = [...elem.querySelectorAll(date)];
-    this.guestsInput = elem.querySelector(guests);
-    this.buttonEl = elem.querySelector(submit);
+    this._dateInputs = [...elem.querySelectorAll(date)];
+    this._guestsInput = elem.querySelector(guests);
+    this._buttonEl = elem.querySelector(submit);
   }
 
-  private validDate() {
-    let input1: Element | null = null;
-    let input2: Element | null = null;
+  _validDate() {
+    let input1 = null;
+    let input2 = null;
 
-    if (this.dateInputs) { [input1] = this.dateInputs; }
+    if (this._dateInputs) { [input1] = this._dateInputs; }
 
-    if (this.dateInputs) { [, input2] = this.dateInputs; }
+    if (this._dateInputs) { [, input2] = this._dateInputs; }
 
-    let valInput1: number = 0; let
-      valInput2: number = 0;
+    let valInput1 = 0; let
+      valInput2 = 0;
     if (input1 instanceof HTMLInputElement) { valInput1 = input1.value.length; }
 
     if (input2 instanceof HTMLInputElement) { valInput2 = input2.value.length; }
@@ -49,11 +41,11 @@ class SearchRoom {
     return false;
   }
 
-  private validGuests() {
-    let value: string = '';
+  _validGuests() {
+    let value = '';
 
-    if (this.guestsInput instanceof HTMLInputElement) {
-      value = this.guestsInput.value;
+    if (this._guestsInput instanceof HTMLInputElement) {
+      value = this._guestsInput.value;
     }
     const filled = value && value !== 'Сколько гостей';
 
@@ -63,14 +55,14 @@ class SearchRoom {
     return false;
   }
 
-  private messageErr() {
-    if (!this.validDate()) {
+  _messageErr() {
+    if (!this._validDate()) {
       // eslint-disable-next-line no-alert
       alert('Выберите дату.');
       return false;
     }
 
-    if (!this.validGuests()) {
+    if (!this._validGuests()) {
       // eslint-disable-next-line no-alert
       alert('Сколько гостей ?');
       return false;
@@ -78,22 +70,22 @@ class SearchRoom {
     return true;
   }
 
-  private handleButtonClick(event: Event) {
-    if (!this.messageErr()) {
+  _handleButtonClick(event) {
+    if (!this._messageErr()) {
       event.preventDefault();
     }
   }
 
-  private setAction() {
-    if (this.buttonEl) {
-      this.buttonEl.addEventListener('click', this.handleButtonClick);
+  _setAction() {
+    if (this._buttonEl) {
+      this._buttonEl.addEventListener('click', this._handleButtonClick);
     }
   }
 }
 
-function renderSearchRoom(className: string) {
+function renderSearchRoom(className) {
   const components = document.querySelectorAll(className);
-  const objMas: SearchRoom[] = [];
+  const objMas = [];
   components.forEach((elem) => {
     objMas.push(new SearchRoom(className, elem));
   });

@@ -4,28 +4,22 @@ import './subscrip-textfield.scss';
 import { ValidationEmail } from '../validation-email/validation-email';
 
 class SubscriptionTextField {
-  input: HTMLInputElement | null = null;
-
-  link: Element | null = null;
-
-  private valid: ValidationEmail | null = null;
-
-  constructor(className: string, wrapper: Element) {
+  constructor(className, wrapper) {
     autoBind(this);
-    const input = wrapper.querySelector('input') as HTMLInputElement;
+    const input = wrapper.querySelector('input');
     this.input = input;
 
     this.link = wrapper.querySelector(`${className}__link`);
-    this.valid = new ValidationEmail({
+    this._valid = new ValidationEmail({
       elem: this.input,
     });
 
-    this.setActions();
+    this._setActions();
   }
 
-  private validEmail() {
-    if (this.valid) {
-      if (this.valid.validation()) {
+  _validEmail() {
+    if (this._valid) {
+      if (this._valid.validation()) {
         // eslint-disable-next-line no-alert
         alert('Вы оформили подписку.');
       } else {
@@ -35,28 +29,28 @@ class SubscriptionTextField {
     }
   }
 
-  private handleDomKeydown(event: KeyboardEvent) {
-    if (event.key === 'Enter') { this.validEmail(); }
+  _handleDomKeydown(event) {
+    if (event.key === 'Enter') { this._validEmail(); }
   }
 
-  private handleLinkClick() {
-    this.validEmail();
+  _handleLinkClick() {
+    this._validEmail();
   }
 
-  private setActions() {
+  _setActions() {
     if (!this.input || !this.link) return false;
 
-    this.input.addEventListener('keydown', this.handleDomKeydown);
-    this.link.addEventListener('click', this.handleLinkClick);
+    this.input.addEventListener('keydown', this._handleDomKeydown);
+    this.link.addEventListener('click', this._handleLinkClick);
 
     return true;
   }
 }
 
-function renderSubscrip(className: string) {
+function renderSubscrip(className) {
   const components = document.querySelectorAll(className);
 
-  const objMas: SubscriptionTextField[] = [];
+  const objMas = [];
   components.forEach((elem) => {
     objMas.push(new SubscriptionTextField(className, elem));
   });

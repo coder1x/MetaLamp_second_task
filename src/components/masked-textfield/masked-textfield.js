@@ -1,25 +1,16 @@
 import autoBind from 'auto-bind';
 
-interface Options {
-  className: string,
-  message: string,
-  elem?: Element
-}
 class MaskedTextField {
-  message: string = '';
-
-  private tempValue: string = '';
-
-  constructor(options: Options) {
+  constructor(options) {
     autoBind(this);
     this.message = options.message;
-    this.tempValue = '';
+    this._tempValue = '';
     const { elem } = options;
-    if (elem) { this.setActions(elem); }
+    if (elem) { this._setActions(elem); }
   }
 
-  private inputProcessing(event: Event) {
-    const domElement = event.target as HTMLInputElement;
+  _inputProcessing(event) {
+    const domElement = event.target;
 
     let value = domElement.value.replace(/[^.\d]/g, '');
 
@@ -39,7 +30,7 @@ class MaskedTextField {
     const year = `${month}\\.([1-2]|19|20|19\\d|20\\d|19\\d\\d|20\\d\\d)$`;
 
     const point = `${value}.`;
-    const last = point !== this.tempValue;
+    const last = point !== this._tempValue;
 
     if (value.match(new RegExp(`${day}\\.?$`))) {
       domElement.value = value.length === 2 && last ? point : value;
@@ -47,25 +38,25 @@ class MaskedTextField {
       domElement.value = value.length === 5 && last ? point : value;
     } else if (value.match(new RegExp(year))) {
       domElement.value = value;
-    } else if (this.tempValue.length === 1) {
+    } else if (this._tempValue.length === 1) {
       domElement.value = value.substr(0, value.length - 1);
-    } else if (this.tempValue.length > value.length) {
+    } else if (this._tempValue.length > value.length) {
       domElement.value = value;
     } else {
-      domElement.value = this.tempValue;
+      domElement.value = this._tempValue;
     }
 
-    this.tempValue = domElement.value;
+    this._tempValue = domElement.value;
   }
 
-  private dateValidation(event: Event) {
-    const target = event.target as HTMLInputElement;
+  _dateValidation(event) {
+    const { target } = event;
     const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
     const dateTarget = target.value;
 
     if (!regexp.test(dateTarget)) return false;
 
-    const masDate = dateTarget.split('.').map((item: string) => Number(item.replace(/^0/, '')));
+    const masDate = dateTarget.split('.').map((item) => Number(item.replace(/^0/, '')));
     masDate[1] -= 1;
     const date = new Date(masDate[2], masDate[1], masDate[0]);
 
@@ -82,15 +73,15 @@ class MaskedTextField {
     return false;
   }
 
-  private setActions(elem: Element) {
-    elem.addEventListener('change', this.dateValidation);
-    elem.addEventListener('input', this.inputProcessing);
+  _setActions(elem) {
+    elem.addEventListener('change', this._dateValidation);
+    elem.addEventListener('input', this._inputProcessing);
   }
 }
 
-function renderMasked(options: Options) {
+function renderMasked(options) {
   const components = document.querySelectorAll(options.className);
-  const objMas: MaskedTextField[] = [];
+  const objMas = [];
   components.forEach((elem) => {
     objMas.push(new MaskedTextField({
       className: options.className,

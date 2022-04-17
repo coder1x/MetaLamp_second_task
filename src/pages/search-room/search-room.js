@@ -1,40 +1,23 @@
 import autoBind from 'auto-bind';
 import './search-room.scss';
 
-interface Options {
-  block: string,
-  button: string
-}
-
 class Sidebar {
-  blockClass: string = '';
-
-  buttonClass: string = '';
-
-  button: HTMLButtonElement | null = null;
-
-  block: HTMLElement | null = null;
-
-  classVisible: string = '';
-
-  private click: boolean = false;
-
-  constructor(options: Options) {
+  constructor(options) {
     autoBind(this);
     this.blockClass = options.block;
     this.buttonClass = options.button;
-    this.click = false;
-    this.setDom();
-    this.setActions();
+    this._click = false;
+    this._setDom();
+    this._setActions();
   }
 
-  private setDom() {
+  _setDom() {
     this.button = document.querySelector(this.buttonClass);
     this.block = document.querySelector(this.blockClass);
     this.classVisible = `${this.blockClass.replace(/^\./, '')}_visible`;
   }
 
-  private getVisible() {
+  _getVisible() {
     if (!this.block) return false;
 
     const display = window.getComputedStyle(this.block, null)
@@ -42,7 +25,7 @@ class Sidebar {
     return display !== 'none';
   }
 
-  private toggle(flag = this.getVisible()) {
+  _toggle(flag = this._getVisible()) {
     if (!this.block) return false;
 
     const objClass = this.block.classList;
@@ -57,57 +40,57 @@ class Sidebar {
     return true;
   }
 
-  private handleButtonClick(event: MouseEvent) {
-    this.click = true;
-    this.toggle();
+  _handleButtonClick(event) {
+    this._click = true;
+    this._toggle();
 
-    const dom = event.currentTarget as HTMLButtonElement;
+    const dom = event.currentTarget;
     let expanded = dom.getAttribute('aria-expanded');
     expanded = expanded === 'true' ? 'false' : 'true';
     dom.setAttribute('aria-expanded', expanded);
   }
 
-  private handleBlockClick() {
-    this.click = true;
+  _handleBlockClick() {
+    this._click = true;
   }
 
-  private handleBlockKeydown(event: KeyboardEvent) {
+  _handleBlockKeydown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
-      this.toggle();
+      this._toggle();
     }
   }
 
-  private handleDocumentFocusin(event: FocusEvent) {
-    const target = event.target as Element;
+  _handleDocumentFocusin(event) {
+    const { target } = event;
     const linkEl = target.closest(this.blockClass);
 
-    if (!linkEl && this.getVisible() && this.button) {
-      const elem = this.button.querySelector('button') as HTMLButtonElement;
+    if (!linkEl && this._getVisible() && this.button) {
+      const elem = this.button.querySelector('button');
       const path = (event.composedPath && event.composedPath());
 
       if (!path.includes(elem, 0)) {
-        this.toggle();
+        this._toggle();
         elem.focus();
       }
     }
   }
 
-  private handleDocumentClick() {
-    const flag = this.getVisible() && !this.click;
+  _handleDocumentClick() {
+    const flag = this._getVisible() && !this._click;
 
-    if (flag) { this.toggle(true); }
-    this.click = false;
+    if (flag) { this._toggle(true); }
+    this._click = false;
   }
 
-  private setActions() {
+  _setActions() {
     if (!this.block || !this.button) return false;
 
-    this.button.addEventListener('click', this.handleButtonClick);
-    this.block.addEventListener('click', this.handleBlockClick);
-    this.block.addEventListener('keydown', this.handleBlockKeydown);
-    document.addEventListener('focusin', this.handleDocumentFocusin);
-    document.addEventListener('click', this.handleDocumentClick);
+    this.button.addEventListener('click', this._handleButtonClick);
+    this.block.addEventListener('click', this._handleBlockClick);
+    this.block.addEventListener('keydown', this._handleBlockKeydown);
+    document.addEventListener('focusin', this._handleDocumentFocusin);
+    document.addEventListener('click', this._handleDocumentClick);
 
     return true;
   }

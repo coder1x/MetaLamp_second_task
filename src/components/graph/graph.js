@@ -1,23 +1,9 @@
 import './graph.scss';
 
 class Graph {
-  className: string;
-
-  canvas: HTMLCanvasElement | null = null;
-
-  elem: Element | null = null;
-
-  private сanvasContext: CanvasRenderingContext2D | null = null;
-
-  private nameLine: string[];
-
-  constructor(className: string) {
+  constructor(className) {
     this.className = className;
-    this.nameLine = [];
-
-    if (this.setDom()) {
-      this.buildGraph();
-    }
+    this._init();
   }
 
   getColors() {
@@ -80,8 +66,8 @@ class Graph {
     const color = new Map();
 
     quadrants.forEach((item) => {
-      if (this.сanvasContext instanceof CanvasRenderingContext2D) {
-        const grad = this.сanvasContext.createLinearGradient(
+      if (this._canvasContext instanceof CanvasRenderingContext2D) {
+        const grad = this._canvasContext.createLinearGradient(
           item.x1,
           item.y1,
           item.x2,
@@ -99,52 +85,59 @@ class Graph {
   }
 
   getAttr() {
-    const data: number[] = [];
+    const data = [];
     const getDataNum = (
-      elem: Element,
-      attr: string,
+      elem,
+      attr,
     ) => Number(elem.getAttribute(attr)) ?? 0;
 
-    const liItems = this.getElements('__colors-item');
+    const liItems = this._getElements('__colors-item');
     if (Array.isArray(liItems)) {
       liItems.forEach((item) => {
         const number = getDataNum(item, 'date-grade');
         const name = item.getAttribute('date-name');
         if (number) {
           data.push(number);
-          if (name) this.nameLine.push(name);
+          if (name) this._nameLine.push(name);
         }
       });
     }
 
-    this.nameLine = this.nameLine.reverse();
+    this._nameLine = this._nameLine.reverse();
     return data.reverse();
   }
 
-  private getElements(str: string, domBase?: Element): Element[] | null {
+  _init() {
+    this._nameLine = [];
+    if (this._setDom()) {
+      this._buildGraph();
+    }
+  }
+
+  _getElements(str, domBase) {
     const dom = domBase ?? this.elem;
     const selector = `${this.className}${str}`;
     if (dom) return [...dom.querySelectorAll(selector)];
     return null;
   }
 
-  private getElement(str: string, domBase?: Element) {
+  _getElement(str, domBase) {
     const dom = domBase ?? this.elem;
     if (!dom) return null;
     const selector = `${this.className}${str}`;
     return dom.querySelector(selector);
   }
 
-  private setDom() {
+  _setDom() {
     this.elem = document.querySelector(this.className);
     if (!this.elem) return false;
 
-    this.canvas = this.getElement('__canvas') as HTMLCanvasElement;
-    if (this.canvas) { this.сanvasContext = this.canvas.getContext('2d'); }
+    this.canvas = this._getElement('__canvas');
+    if (this.canvas) { this._canvasContext = this.canvas.getContext('2d'); }
     return true;
   }
 
-  private buildGraph() {
+  _buildGraph() {
     // ----------------- options ---------------------
     const scaling = 2;
     const cordX = 60 * scaling;
@@ -154,14 +147,14 @@ class Graph {
     const fontNum = 24 * scaling;
     const fontText = 15 * scaling;
 
-    if (this.сanvasContext instanceof CanvasRenderingContext2D) {
-      this.сanvasContext.lineWidth = 4 * scaling;
+    if (this._canvasContext instanceof CanvasRenderingContext2D) {
+      this._canvasContext.lineWidth = 4 * scaling;
     }
     // ----------------- end options ------------------
 
     const vote = this.getAttr();
 
-    const reducer = (a: number, b: number) => a + b;
+    const reducer = (a, b) => a + b;
     const percent = vote.reduce(reducer);
     const ugol = vote.map((item) => Number((item / percent).toFixed(2)));
 
@@ -171,37 +164,39 @@ class Graph {
     let startLine = 0;
     const dot = (Math.PI / 180) * 270;
 
-    if (this.сanvasContext instanceof CanvasRenderingContext2D) {
+    if (this._canvasContext instanceof CanvasRenderingContext2D) {
       for (let i = 0; i < ugol.length; i += 1) {
         endLine = 2 * Math.PI * ugol[i];
         const start = startLine + dot + space;
         const end = startLine + endLine + dot - space;
 
-        this.сanvasContext.beginPath();
-        this.сanvasContext.arc(cordX, cordY, radius, start, end);
+        this._canvasContext.beginPath();
+        this._canvasContext.arc(cordX, cordY, radius, start, end);
 
-        if (color) this.сanvasContext.strokeStyle = color.get(this.nameLine[i]);
-        this.сanvasContext.stroke();
-        this.сanvasContext.closePath();
+        if (color) {
+          this._canvasContext.strokeStyle = color.get(this._nameLine[i]);
+        }
+        this._canvasContext.stroke();
+        this._canvasContext.closePath();
 
         startLine += endLine;
       }
     }
 
     document.fonts.ready.then(() => {
-      if (this.сanvasContext instanceof CanvasRenderingContext2D) {
-        this.сanvasContext.fillStyle = '#BC9CFF';
-        this.сanvasContext.textAlign = 'center';
-        this.сanvasContext.textBaseline = 'middle';
-        this.сanvasContext.font = `bold ${fontNum}px Montserrat`;
-        this.сanvasContext.fillText(
+      if (this._canvasContext instanceof CanvasRenderingContext2D) {
+        this._canvasContext.fillStyle = '#BC9CFF';
+        this._canvasContext.textAlign = 'center';
+        this._canvasContext.textBaseline = 'middle';
+        this._canvasContext.font = `bold ${fontNum}px Montserrat`;
+        this._canvasContext.fillText(
           String(percent),
           60 * scaling,
           50 * scaling,
         );
 
-        this.сanvasContext.font = `normal ${fontText}px Montserrat`;
-        this.сanvasContext.fillText('голосов', 60 * scaling, 73 * scaling);
+        this._canvasContext.font = `normal ${fontText}px Montserrat`;
+        this._canvasContext.fillText('голосов', 60 * scaling, 73 * scaling);
       }
     });
   }

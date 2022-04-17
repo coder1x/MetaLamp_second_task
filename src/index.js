@@ -1,16 +1,7 @@
-/* eslint no-unused-vars: off */
 import '@styles/styles';
 import 'focus-visible/dist/focus-visible.min.js';
 
-interface RequireContext {
-  keys(): string[];
-  (id: string): unknown;
-  <T>(id: string): T;
-  resolve(id: string): string;
-  id: string;
-}
-
-function requireAll(requireContext: RequireContext) {
+function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }
 

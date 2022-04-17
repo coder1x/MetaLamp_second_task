@@ -14,12 +14,12 @@ Contains all webpack configs, they are imported in the webpack.config.js from th
 #### `src`
 ```
 src
-| index.ts
+| index.js
 └─── components
 └─── pages
 
 ```
-`index.ts` is a main file that import every `.ts | .js` file in the `src` directory. So when you create new `.ts | .js` file it will be automatically added to the bundle.
+`index.js` is a main file that import every `.js | .js` file in the `src` directory. So when you create new `.js | .js` file it will be automatically added to the bundle.
 
 `components` is a folder with all possible components shared between all pages.
 
@@ -42,14 +42,14 @@ components
 |
 └─── drop-down
 | |  drop-down.pug
-| |  drop-down.ts
+| |  drop-down.js
 | |  drop-down.scss
 | └─── img
 | | |  tip.svg
 ```
 * `components` contains only directories per component. 
-* Each component contains main `.pug` file with the template, `.ts | .js` that is dynamically loaded in the `index.ts` and contains all scripts for the component (and only the component) and `.scss` file.
-* `.scss` should be imported in the `.ts | .js` and contains **one BEM block** in the root of the files and all possible elements and modificators inside this block's definition.
+* Each component contains main `.pug` file with the template, `.js | .js` that is dynamically loaded in the `index.js` and contains all scripts for the component (and only the component) and `.scss` file.
+* `.scss` should be imported in the `.js | .js` and contains **one BEM block** in the root of the files and all possible elements and modificators inside this block's definition.
 
 
 
@@ -60,14 +60,14 @@ components
 pages
 └─── landing-page
 | |  landing-page.pug
-| |  landing-page.ts
+| |  landing-page.js
 | |  landing-page.scss
 | └─── img
 | | |  room.webp
 |
 └─── room-details
 | |  room-details.pug
-| |  room-details.ts
+| |  room-details.js
 | |  room-details.scss
 | └─── img
 | | |  small-room.webp

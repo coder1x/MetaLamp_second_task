@@ -11,10 +11,10 @@ const devServ = require('./webpack.devServer.js');
 const demoM = [];
 
 if (DP.isProd) {
-  demoM.push('./index.ts');
+  demoM.push('./index.js');
 } else {
   demoM.push('webpack/hot/dev-server');
-  demoM.push('./index.ts');
+  demoM.push('./index.js');
 }
 
 let pubPath;

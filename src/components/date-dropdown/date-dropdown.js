@@ -15,36 +15,26 @@ const imgNext = require(
 ).default;
 
 class DateDropDown {
-  #clickElemFl = false;
-
-  #classClear = '';
-
-  #flag = false;
-
-  #flTog = false;
-
-  #flInFilter = false;
-
-  #masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
-    'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
-
   constructor(className, elem) {
     autoBind(this);
     this.flClick = false;
     this.defaultText = 'ДД.ММ.ГГГГ';
-    this.#setDomElem(className, elem);
+    this._setDomElem(className, elem);
     this.init();
   }
 
   init() {
-    this.#createCalendar();
-    this.#setActions();
+    this._masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
+      'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+
+    this._createCalendar();
+    this._setActions();
 
     if (!this.flRange) { this.setRange(); }
   }
 
   setRange() {
-    this.#flag = true;
+    this._flag = true;
 
     function getDate(date, flag = false) {
       const masDate = date.split('.');
@@ -91,12 +81,12 @@ class DateDropDown {
         dateTwo = `${dateForm[0]}/${dateForm[1]}/${number}`;
       }
 
-      this.#flInFilter = true;
+      this._flInFilter = true;
       this.calendarObj.selectDate([
         new Date(dateOne),
         new Date(dateTwo),
       ]);
-      this.#flInFilter = false;
+      this._flInFilter = false;
     }
 
     return true;
@@ -112,7 +102,7 @@ class DateDropDown {
     const nameModify = `${this.className.replace(/^\.js-/, '')}_visible`;
     const visible = DateDropDown.getVisible(this.calendarWrap);
     const objElem = this.elem.classList;
-    if (this.#flTog === flag && visible) {
+    if (this._flTog === flag && visible) {
       objElem.remove(nameModify);
 
       if (!this.flRange) {
@@ -121,7 +111,7 @@ class DateDropDown {
     } else {
       objElem.add(nameModify);
     }
-    this.#flTog = flag;
+    this._flTog = flag;
   }
 
   elementIsClicked(event) {
@@ -131,13 +121,13 @@ class DateDropDown {
         this.imgLeft,
         this.imgRight,
         this.input2,
-      ].find((item) => item === event.target) ?? this.#clickElemFl,
+      ].find((item) => item === event.target) ?? this._clickElemFl,
     );
-    this.#clickElemFl = false;
+    this._clickElemFl = false;
     const visible = DateDropDown.getVisible(this.calendarWrap);
 
     if (!inStock && visible) {
-      this.toggleCal(this.#flTog);
+      this.toggleCal(this._flTog);
     }
   }
 
@@ -156,7 +146,7 @@ class DateDropDown {
   handleFilterChange(event) {
     const elem = event.currentTarget;
     this.inputHidden.value = elem.value;
-    this.#validationRange(true);
+    this._validationRange(true);
     this.setRange();
   }
 
@@ -167,7 +157,7 @@ class DateDropDown {
   }
 
   handleCalendarWrapClick() {
-    this.#clickElemFl = true;
+    this._clickElemFl = true;
   }
 
   handleKeydownX(event) {
@@ -201,12 +191,12 @@ class DateDropDown {
       this.inputHidden.value = '';
     }
 
-    this.#visibleClear();
+    this._visibleClear();
   }
 
   handleAcceptButton(event) {
     event.preventDefault();
-    this.#validationRange();
+    this._validationRange();
   }
 
   handleInput1Click() {
@@ -219,8 +209,8 @@ class DateDropDown {
     this.toggleCal(false);
   }
 
-  #setDomElem(className, elem) {
-    this.#classClear = `${className}__clear`;
+  _setDomElem(className, elem) {
+    this._classClear = `${className}__clear`;
 
     const getElem = (name) => elem.querySelector(`${className}__${name}`);
 
@@ -247,7 +237,7 @@ class DateDropDown {
     }
   }
 
-  #inputDate(date) {
+  _inputDate(date) {
     if (!date) {
       this.input1.value = '';
       if (this.flRange) { this.input2.value = ''; }
@@ -259,7 +249,7 @@ class DateDropDown {
 
       const masDate = dateFilter.split('.');
       const month = Number(masDate[1]);
-      return `${masDate[0]} ${this.#masMonth[month - 1]}`;
+      return `${masDate[0]} ${this._masMonth[month - 1]}`;
     };
 
     const masDate = date.formattedDate;
@@ -283,8 +273,8 @@ class DateDropDown {
     return true;
   }
 
-  #visibleClear(flag = false) {
-    const nameSelector = `${this.#classClear.replace(/^\.js-/, '')}_visible`;
+  _visibleClear(flag = false) {
+    const nameSelector = `${this._classClear.replace(/^\.js-/, '')}_visible`;
     const objClear = this.clearButton.classList;
     if (flag) {
       objClear.add(nameSelector);
@@ -293,7 +283,7 @@ class DateDropDown {
     }
   }
 
-  #createCalendar() {
+  _createCalendar() {
     this.calendarObj = new AirDatepicker(this.calendar, {
       range: true,
       multipleDates: true,
@@ -305,21 +295,21 @@ class DateDropDown {
         days: 'MMMM yyyy',
       },
       onSelect: (formattedDate) => {
-        this.#inputDate(formattedDate);
-        if (!this.#flInFilter) { this.#flag = false; }
-        this.#visibleClear(true);
+        this._inputDate(formattedDate);
+        if (!this._flInFilter) { this._flag = false; }
+        this._visibleClear(true);
       },
     });
   }
 
-  #validationRange(flShow = false) {
+  _validationRange(flShow = false) {
     function trimDate(dateText) {
       return dateText.trim().split(' ')[0];
     }
 
     const validCheck = (flag) => {
       if (flag) {
-        if (!flShow) { this.toggleCal(this.#flTog); }
+        if (!flShow) { this.toggleCal(this._flTog); }
       } else {
         // eslint-disable-next-line no-alert
         alert('Выберите диапазон');
@@ -352,14 +342,14 @@ class DateDropDown {
     }
   }
 
-  #setActionsFilter() {
+  _setActionsFilter() {
     this.input1.addEventListener('focus', this.handleFilterFocus);
     this.input1.addEventListener('focusout', this.handleFilterFocusout);
     this.input1.addEventListener('change', this.handleFilterChange);
     this.input1.addEventListener('input', DateDropDown.handleFilterInput);
   }
 
-  #setActions() {
+  _setActions() {
     this.calendarWrap.addEventListener('click', this.handleCalendarWrapClick);
     this.input1.addEventListener('click', this.handleInput1Click);
     this.input1.addEventListener('keydown', this.handleKeydownX);
@@ -370,7 +360,7 @@ class DateDropDown {
       this.input2.addEventListener('input', this.handleInput2);
       this.input2.addEventListener('click', this.handleInput2Click);
     } else {
-      this.#setActionsFilter();
+      this._setActionsFilter();
     }
 
     this.clearButton.addEventListener('click', this.handleClearButton);
