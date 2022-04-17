@@ -7,11 +7,11 @@ import './date-dropdown.scss';
 
 const imgPrev = require(
   // eslint-disable-next-line import/no-unresolved
-  '@com/date-dropdown/img/arrow_back.svg',
+  '@com/date-dropdown/img/arrow-back.svg',
 ).default;
 const imgNext = require(
   // eslint-disable-next-line import/no-unresolved
-  '@com/date-dropdown/img/arrow_forward.svg',
+  '@com/date-dropdown/img/arrow-forward.svg',
 ).default;
 
 class DateDropDown {

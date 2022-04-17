@@ -128,13 +128,13 @@
   "feature": {
     "comfort": {
       "header": "Комфорт",
-      "src": "insert_emoticon.svg",
+      "src": "insert-emoticon.svg",
       "alt": "Комфорт",
       "text": "Шумопоглощающие стены"
     },
     "convenience": {
       "header": "Удобство",
-      "src": "location_city.svg",
+      "src": "location-city.svg",
       "alt": "Удобство",
       "text": "Окно в каждой из спален"
     }

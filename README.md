@@ -35,10 +35,9 @@ components
 | |  date-dropdown.js
 | |  date-dropdown.scss
 | |  datepicker.scss
-| |  readme.md
 | └─── img
-| | |  arrow_back.svg
-| | |  arrow_forward.svg
+| | |  arrow-back.svg
+| | |  arrow-forward.svg
 | | |  tip.svg
 |
 └─── drop-down
@@ -64,16 +63,16 @@ pages
 | |  landing-page.ts
 | |  landing-page.scss
 | └─── img
-| | |  image_3.webp
+| | |  room.webp
 |
 └─── room-details
 | |  room-details.pug
 | |  room-details.ts
 | |  room-details.scss
 | └─── img
-| | |  image.webp
-| | |  image2.webp
-| | |  Mask_Group.webp
+| | |  small-room.webp
+| | |  room.webp
+| | |  mask-group.webp
 ```
 
 * `landing-page.pug`, `room-details.pug` are independent separated pages, extended from `pages/index/index.pug`, so they have `<html>`, `<head>`, `<body>` tags. 
