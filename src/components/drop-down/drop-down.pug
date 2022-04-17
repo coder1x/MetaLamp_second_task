@@ -9,8 +9,8 @@ mixin drop-down(options)
     const maxValue = options.maxValue ?? []
     const modify = options.modify ?? ''
     const addClass = options.class ?? ''
-    const button = options.button ?? false
-    const flLabel = options.flLabel ?? false
+    const button = options.button
+    const flLabel = options.flLabel
     const classComp = 'drop-down'
     let className = classComp
     if(modify){

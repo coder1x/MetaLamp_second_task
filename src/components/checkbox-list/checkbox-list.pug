@@ -5,8 +5,8 @@ mixin checkbox-list(options)
     const legend = options.legend ?? ''
     const modify = options.modify ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel ?? false
-    const click = options.click ?? false
+    const flLabel = options.flLabel
+    const click = options.click
     const classComp = 'checkbox-list'
     let className = classComp
     if(modify){
