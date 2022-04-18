@@ -29,9 +29,9 @@ class RangeSlider {
   _setAttrDot(data, flag = false) {
     [this.dotFrom] = this.elem.getElementsByClassName('irs-handle from');
     [this.dotTo] = this.elem.getElementsByClassName('irs-handle to');
-    const lineEl = this.elem.getElementsByClassName('irs-line')[0];
 
-    lineEl.setAttribute('tabindex', '-2');
+    this.elem.getElementsByClassName('irs-line')[0]
+      .setAttribute('tabindex', '-2');
     this.dotFrom.setAttribute('tabindex', '0');
     this.dotTo.setAttribute('tabindex', '0');
 
@@ -45,16 +45,13 @@ class RangeSlider {
   }
 
   _setDomElem() {
-    const classVal = `${this.className}__value`;
-    this.valueEl = this.elem.querySelector(classVal);
+    this.valueEl = this.elem.querySelector(`${this.className}__value`);
   }
 
   _createRangeSlider() {
     const setRange = ({ from, to }) => {
-      const numFrom = from.toLocaleString();
-      const numTo = to.toLocaleString();
-      const range = `${numFrom}₽ - ${numTo}₽`;
-      this.valueEl.innerText = range;
+      this.valueEl
+        .innerText = `${from.toLocaleString()}₽ - ${to.toLocaleString()}₽`;
     };
 
     this.$myRange = $('.js-range-slider__input').ionRangeSlider({
@@ -109,15 +106,4 @@ class RangeSlider {
   }
 }
 
-function renderRangeSlider(className) {
-  const components = document.querySelectorAll(className);
-
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new RangeSlider(className, elem));
-  });
-
-  return objMas;
-}
-
-renderRangeSlider('.js-range-slider');
+export default RangeSlider;

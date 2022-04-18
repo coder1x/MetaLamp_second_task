@@ -11,13 +11,12 @@ class DropDown {
 
   getCheckVal(item) {
     const minus = this._getElement('__minus', item);
-    const value = this._getElement('__value', item);
     const plus = this._getElement('__plus', item);
 
     const getModify = (str, str2) => this.className.replace(/^\.js-/, '') + str + str2;
 
     const classM = getModify('__minus', '_disable');
-    const val = Number(value.innerText);
+    const val = Number(this._getElement('__value', item).innerText);
 
     if (!val) {
       minus.classList.add(classM);
@@ -92,16 +91,13 @@ class DropDown {
   }
 
   _getElements(str, domBase) {
-    const dom = domBase ?? this.elem;
-    const selector = this.className + str;
-    const doms = [...dom.querySelectorAll(selector)];
-    return doms;
+    return [
+      ...(domBase ?? this.elem).querySelectorAll(this.className + str),
+    ];
   }
 
   _getElement(str, domBase) {
-    const dom = domBase ?? this.elem;
-    const selector = this.className + str;
-    return dom.querySelector(selector);
+    return (domBase ?? this.elem).querySelector(this.className + str);
   }
 
   _setDomElem() {
@@ -113,8 +109,10 @@ class DropDown {
 
     this._items.forEach((item) => {
       this.getCheckVal(item);
-      const dom = this._getElement('__value', item);
-      if (this._valueMas) { this._valueMas.push(dom); }
+
+      if (this._valueMas) {
+        this._valueMas.push(this._getElement('__value', item));
+      }
       this._readingAttributes(item);
     });
 
@@ -127,8 +125,7 @@ class DropDown {
 
   _readingAttributes(elem) {
     if (elem) {
-      const type = elem.getAttribute('data-type') ?? '';
-      this._declensions.push(type.split(','));
+      this._declensions.push((elem.getAttribute('data-type') ?? '').split(','));
     }
   }
 
@@ -189,8 +186,10 @@ class DropDown {
 
   _handleDocumentEvent(event) {
     const { target } = event;
-    const domElement = target.closest(this.className);
-    if (domElement !== this.elem) { this._toggle(true); }
+
+    if (target.closest(this.className) !== this.elem) {
+      this._toggle(true);
+    }
   }
 
   _setActions() {
@@ -225,26 +224,28 @@ class DropDown {
   }
 
   static _getVisible(elem) {
-    const display = window.getComputedStyle(elem, null)
-      .getPropertyValue('display');
-    return display !== 'none';
+    return window.getComputedStyle(elem, null)
+      .getPropertyValue('display') !== 'none';
   }
 
   _toggle(flag = false) {
     if (!this._selectEl) return;
-    const UlVisible = DropDown._getVisible(this._selectEl);
-    const flagVis = !UlVisible && !flag;
-    this._toggleModify(this.elem, '_visible', flagVis);
+
+    this._toggleModify(
+      this.elem,
+      '_visible',
+      !DropDown._getVisible(this._selectEl) && !flag,
+    );
   }
 
   _toggleModify(elem, modify, flag = false) {
     const clearName = this.className.replace(/^\.js-/, '') + modify;
-    const objClass = elem.classList;
+    const { classList } = elem;
 
     if (flag) {
-      objClass.add(clearName);
+      classList.add(clearName);
     } else {
-      objClass.remove(clearName);
+      classList.remove(clearName);
     }
   }
 
@@ -278,6 +279,21 @@ class DropDown {
     }
   }
 
+  _setData(visibility, value, placeholder) {
+    if (this._clearBut) {
+      this._toggleModify(
+        this._clearBut,
+        '__button-clear_visible',
+        visibility,
+      );
+    }
+
+    if (this._inputEl instanceof HTMLInputElement) {
+      this._inputEl.value = value;
+      this._inputEl.placeholder = placeholder;
+    }
+  }
+
   _setInput() {
     let text = '';
     const mergeText = (
@@ -303,42 +319,12 @@ class DropDown {
       lock = true;
     });
 
-    const setData = (
-      visibility,
-      value,
-      placeholder,
-    ) => {
-      if (this._clearBut) {
-        this._toggleModify(
-          this._clearBut,
-          '__button-clear_visible',
-          visibility,
-        );
-      }
-
-      if (this._inputEl instanceof HTMLInputElement) {
-        this._inputEl.value = value;
-        this._inputEl.placeholder = placeholder;
-      }
-    };
-
     if (text) {
-      setData(true, text, text);
+      this._setData(true, text, text);
     } else {
-      setData(false, '', this.defaultText);
+      this._setData(false, '', this.defaultText);
     }
   }
 }
 
-//= =========================================================================
-
-function renderDropDown(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new DropDown(className, elem));
-  });
-  return objMas;
-}
-
-renderDropDown('.js-drop-down');
+export default DropDown;

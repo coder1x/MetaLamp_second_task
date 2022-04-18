@@ -10,13 +10,15 @@ class SignIn {
   }
 
   _setDom(elem) {
-    const email = `${this.className}__email-wrap input`;
-    const pass = `${this.className}__pass-wrap input`;
-    const submit = `${this.className}__button-wrap button`;
-
-    this._emailInputs = elem.querySelector(email);
-    this._passInput = elem.querySelector(pass);
-    this._buttonEl = elem.querySelector(submit);
+    this._emailInputs = elem.querySelector(
+      `${this.className}__email-wrap input`,
+    );
+    this._passInput = elem.querySelector(
+      `${this.className}__pass-wrap input`,
+    );
+    this._buttonEl = elem.querySelector(
+      `${this.className}__button-wrap button`,
+    );
   }
 
   _validation() {
@@ -47,13 +49,4 @@ class SignIn {
   }
 }
 
-function renderSignIn(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new SignIn(className, elem));
-  });
-  return objMas;
-}
-
-renderSignIn('.js-sign-in');
+export default SignIn;

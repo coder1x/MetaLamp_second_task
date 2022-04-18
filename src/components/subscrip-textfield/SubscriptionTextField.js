@@ -1,13 +1,12 @@
 import autoBind from 'auto-bind';
 import './subscrip-textfield.scss';
 
-import { ValidationEmail } from '../validation-email/validation-email';
+import ValidationEmail from '../validation-email/ValidationEmail';
 
 class SubscriptionTextField {
   constructor(className, wrapper) {
     autoBind(this);
-    const input = wrapper.querySelector('input');
-    this.input = input;
+    this.input = wrapper.querySelector('input');
 
     this.link = wrapper.querySelector(`${className}__link`);
     this._valid = new ValidationEmail({
@@ -47,14 +46,4 @@ class SubscriptionTextField {
   }
 }
 
-function renderSubscrip(className) {
-  const components = document.querySelectorAll(className);
-
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new SubscriptionTextField(className, elem));
-  });
-  return objMas;
-}
-
-renderSubscrip('.js-subscrip-textfield');
+export default SubscriptionTextField;

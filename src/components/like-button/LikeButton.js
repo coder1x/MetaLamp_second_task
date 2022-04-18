@@ -91,13 +91,4 @@ class LikeButton {
   }
 }
 
-function renderLikeButton(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new LikeButton(className, elem));
-  });
-  return objMas;
-}
-
-renderLikeButton('.js-like-button');
+export default LikeButton;

@@ -11,16 +11,13 @@ class HeaderMenu {
   }
 
   _getElements(str, domBase) {
-    const dom = domBase ?? this.elem;
-    const selector = `${this.className}${str}`;
-    const doms = [...dom.querySelectorAll(selector)];
-    return doms;
+    return [
+      ...(domBase ?? this.elem).querySelectorAll(`${this.className}${str}`),
+    ];
   }
 
   _getElement(str, domBase) {
-    const dom = domBase ?? this.elem;
-    const selector = `${this.className}${str}`;
-    return dom.querySelector(selector);
+    return (domBase ?? this.elem).querySelector(`${this.className}${str}`);
   }
 
   closeAll() {
@@ -64,14 +61,12 @@ class HeaderMenu {
   }
 
   _getModify() {
-    const selector = `${this.className}__items-down_visible`;
-    return selector.replace(/^\.js-/, '');
+    return `${this.className}__items-down_visible`.replace(/^\.js-/, '');
   }
 
   static _getVisButton(elem) {
-    const display = window.getComputedStyle(elem, null)
-      .getPropertyValue('visibility');
-    return display !== 'hidden';
+    return window.getComputedStyle(elem, null)
+      .getPropertyValue('visibility') !== 'hidden';
   }
 
   _rotateTip(elem, flag = false) {
@@ -120,11 +115,9 @@ class HeaderMenu {
 
   _handleTrackMouse(event) {
     const domElement = event.relatedTarget;
-    const target = event.currentTarget;
-
     const domEl = domElement.closest(`.${this._getModify()}`) ?? false;
     if (!domEl) {
-      this._closeUl(target);
+      this._closeUl(event.currentTarget);
       this._closeTip();
     }
   }
@@ -138,20 +131,18 @@ class HeaderMenu {
   }
 
   static _getVisible(elem) {
-    const display = window.getComputedStyle(elem, null)
-      .getPropertyValue('display');
-    return display !== 'none';
+    return window.getComputedStyle(elem, null)
+      .getPropertyValue('display') !== 'none';
   }
 
   _setModify(elem, modifier, flag = false) {
-    const select = `__${modifier}_visible`;
-    const clearName = `${this.className.replace(/^\.js-/, '')}${select}`;
-    const objClass = elem.classList;
+    const clearName = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
+    const { classList } = elem;
 
     if (!flag) {
-      objClass.add(clearName);
+      classList.add(clearName);
     } else {
-      objClass.remove(clearName);
+      classList.remove(clearName);
     }
   }
 
@@ -252,13 +243,4 @@ class HeaderMenu {
   }
 }
 
-function renderHeaderMenu(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new HeaderMenu(className, elem));
-  });
-  return objMas;
-}
-
-renderHeaderMenu('.js-header');
+export default HeaderMenu;

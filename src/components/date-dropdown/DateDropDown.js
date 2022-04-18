@@ -33,18 +33,18 @@ class DateDropDown {
     if (!this.flRange) { this.setRange(); }
   }
 
+  static getDate(date, flag = false) {
+    const masDate = date.split('.');
+    const dateText = `${masDate[1]}/${masDate[0]}/${masDate[2]}`;
+    return !flag ? new Date(dateText) : dateText;
+  }
+
+  static trimDate(dateText) {
+    return dateText.trim().split(' ')[0];
+  }
+
   setRange() {
     this._flag = true;
-
-    function getDate(date, flag = false) {
-      const masDate = date.split('.');
-      const dateText = `${masDate[1]}/${masDate[0]}/${masDate[2]}`;
-      return !flag ? new Date(dateText) : dateText;
-    }
-
-    function trimDate(dateText) {
-      return dateText.trim().split(' ')[0];
-    }
 
     if (this.flRange) {
       const date1 = this.input1.value;
@@ -55,30 +55,31 @@ class DateDropDown {
       const date2 = this.input2.value;
       this.calendarObj.clear();
 
-      const date = date2 === '' ? getDate(date1)
-        : [getDate(date1), getDate(date2)];
-
-      this.calendarObj.selectDate(date);
+      this.calendarObj.selectDate(
+        date2 === '' ? DateDropDown.getDate(date1)
+          : [DateDropDown.getDate(date1), DateDropDown.getDate(date2)],
+      );
     } else {
-      const dateInput = this.inputHidden.value;
       this.calendarObj.clear();
-      const masDate = dateInput.split('-');
+      const masDate = this.inputHidden.value.split('-');
 
       if (masDate.length < 2) return false;
 
-      const leftValue = trimDate(masDate[0]);
-      const rightValue = trimDate(masDate[1]);
-
-      const dateOne = getDate(leftValue, true);
-      let dateTwo = getDate(rightValue, true);
+      const dateOne = DateDropDown.getDate(
+        DateDropDown.trimDate(masDate[0]),
+        true,
+      );
+      let dateTwo = DateDropDown.getDate(
+        DateDropDown.trimDate(masDate[1]),
+        true,
+      );
 
       const minOne = Date.parse(dateOne) / 1000 / 60;
       const minTwo = Date.parse(dateTwo) / 1000 / 60;
 
       if (minOne > minTwo) {
         const dateForm = dateTwo.split('.');
-        const number = Number(dateForm[2]) + 1;
-        dateTwo = `${dateForm[0]}/${dateForm[1]}/${number}`;
+        dateTwo = `${dateForm[0]}/${dateForm[1]}/${Number(dateForm[2]) + 1}`;
       }
 
       this._flInFilter = true;
@@ -93,23 +94,22 @@ class DateDropDown {
   }
 
   static getVisible(elem) {
-    const display = window.getComputedStyle(elem, null)
-      .getPropertyValue('display');
-    return display !== 'none';
+    return window.getComputedStyle(elem, null)
+      .getPropertyValue('display') !== 'none';
   }
 
   toggleCal(flag = false) {
     const nameModify = `${this.className.replace(/^\.js-/, '')}_visible`;
     const visible = DateDropDown.getVisible(this.calendarWrap);
-    const objElem = this.elem.classList;
+    const { classList } = this.elem;
     if (this._flTog === flag && visible) {
-      objElem.remove(nameModify);
+      classList.remove(nameModify);
 
       if (!this.flRange) {
         this.input1.value = '';
       }
     } else {
-      objElem.add(nameModify);
+      classList.add(nameModify);
     }
     this._flTog = flag;
   }
@@ -133,8 +133,7 @@ class DateDropDown {
 
   handleFilterFocus(event) {
     const elem = event.currentTarget;
-    const value = this.inputHidden.value.replace('-', ' - ');
-    elem.value = value;
+    elem.value = this.inputHidden.value.replace('-', ' - ');
   }
 
   handleFilterFocusout(event) {
@@ -152,8 +151,7 @@ class DateDropDown {
 
   static handleFilterInput(event) {
     const elem = event.currentTarget;
-    const value = elem.value.replace(/[^.-\d\s]/g, '');
-    elem.value = value;
+    elem.value = elem.value.replace(/[^.-\d\s]/g, '');
   }
 
   handleCalendarWrapClick() {
@@ -163,15 +161,13 @@ class DateDropDown {
   handleKeydownX(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
-      const nameModify = `${this.className.replace(/^\.js-/, '')}_visible`;
-      this.elem.classList.remove(nameModify);
+      this.elem.classList.remove(`${this.className.replace(/^\.js-/, '')}_visible`);
     }
   }
 
   handleInput1(event) {
     const elem = event.currentTarget;
-    const validVal = elem.value.length === 10;
-    if (validVal) { this.setRange(); }
+    if (elem.value.length === 10) { this.setRange(); }
   }
 
   handleInput2(event) {
@@ -237,20 +233,19 @@ class DateDropDown {
     }
   }
 
+  _getDateFilter(dateFilter) {
+    if (!dateFilter) return '';
+
+    const masDate = dateFilter.split('.');
+    return `${masDate[0]} ${this._masMonth[Number(masDate[1]) - 1]}`;
+  }
+
   _inputDate(date) {
     if (!date) {
       this.input1.value = '';
       if (this.flRange) { this.input2.value = ''; }
       return false;
     }
-
-    const getDateFilter = (dateFilter) => {
-      if (!dateFilter) return '';
-
-      const masDate = dateFilter.split('.');
-      const month = Number(masDate[1]);
-      return `${masDate[0]} ${this._masMonth[month - 1]}`;
-    };
 
     const masDate = date.formattedDate;
 
@@ -259,8 +254,8 @@ class DateDropDown {
         [this.input1.value] = masDate;
         [, this.input2.value] = masDate;
       } else {
-        const date1 = getDateFilter(masDate[0]);
-        const date2 = getDateFilter(masDate[1]);
+        const date1 = this._getDateFilter(masDate[0]);
+        const date2 = this._getDateFilter(masDate[1]);
 
         this.input1.placeholder = `${date1} - ${date2}`;
         this.inputHidden.value = `${masDate[0]}-${masDate[1]}`;
@@ -275,11 +270,11 @@ class DateDropDown {
 
   _visibleClear(flag = false) {
     const nameSelector = `${this._classClear.replace(/^\.js-/, '')}_visible`;
-    const objClear = this.clearButton.classList;
+    const { classList } = this.clearButton;
     if (flag) {
-      objClear.add(nameSelector);
+      classList.add(nameSelector);
     } else {
-      objClear.remove(nameSelector);
+      classList.remove(nameSelector);
     }
   }
 
@@ -317,22 +312,17 @@ class DateDropDown {
     };
 
     if (this.flRange) {
-      let twoMeanings = false;
-      twoMeanings = Boolean(
+      validCheck(Boolean(
         this.input1.value
         && this.input2.value,
-      );
-
-      validCheck(twoMeanings);
+      ));
     } else {
       let oneMeaning = true;
-      const date = this.inputHidden.value;
-      const masDate = date.split('-');
+      const masDate = this.inputHidden.value.split('-');
       const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
       for (let i = 0; i < masDate.length; i += 1) {
-        const value = trimDate(masDate[i]);
-        if (!regexp.test(value)) {
+        if (!regexp.test(trimDate(masDate[i]))) {
           oneMeaning = false;
           break;
         }
@@ -369,15 +359,4 @@ class DateDropDown {
   }
 }
 
-//= =============================================================================
-
-function renderComponent(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new DateDropDown(className, elem));
-  });
-  return objMas;
-}
-
-renderComponent('.js-date-dropdown');
+export default DateDropDown;

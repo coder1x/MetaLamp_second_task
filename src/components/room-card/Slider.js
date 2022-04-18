@@ -10,13 +10,11 @@ class Slider {
   }
 
   getElement(str) {
-    const selector = `${this.className}__${str}-wrap`;
-    return this.elem.querySelector(selector);
+    return this.elem.querySelector(`${this.className}__${str}-wrap`);
   }
 
   setVisible(index) {
-    const date = Number(new Date());
-    const delay = date - this._timeS > 150;
+    const delay = Number(new Date()) - this._timeS > 150;
 
     if (delay && Array.isArray(this._slidesEl)) {
       this._toggle(this._slidesEl[this._indexS], true);
@@ -41,8 +39,9 @@ class Slider {
   }
 
   _setDom() {
-    const slide = `${this.className}__slide`;
-    this._slidesEl = [...this.elem.querySelectorAll(slide)];
+    this._slidesEl = [
+      ...this.elem.querySelectorAll(`${this.className}__slide`),
+    ];
     this._dotEl = this.getElement('dot');
     this._prevEl = this.getElement('prev');
     this._nextEl = this.getElement('next');
@@ -54,12 +53,12 @@ class Slider {
     const prefix = '__slide_visible';
     const clearName = `${this.className.replace(/^\.js-/, '')}${prefix}`;
 
-    const objClass = slide.classList;
+    const { classList } = slide;
 
     if (!flag) {
-      objClass.add(clearName);
+      classList.add(clearName);
     } else {
-      objClass.remove(clearName);
+      classList.remove(clearName);
     }
   }
 
@@ -152,6 +151,17 @@ class Slider {
     this._swipe = false;
   }
 
+  _swipeDirection(xyDiff) {
+    if (this._nextEl && this._prevEl) {
+      if (xyDiff[0] > 0) {
+        this._nextEl.click();
+      } else {
+        this._prevEl.click();
+      }
+    }
+    this._flagSwipe = true;
+  }
+
   _setActionSwipe() {
     let xyDown = [];
 
@@ -160,30 +170,16 @@ class Slider {
     }
 
     function getCoordinatesXY(event) {
-      const eventT = event;
-      const eventM = event;
-
       if (event.type === 'touchstart' || event.type === 'touchmove') {
-        return [eventT.touches[0].clientX, eventT.touches[0].clientY];
+        return [event.touches[0].clientX, event.touches[0].clientY];
       }
 
       if (event.type === 'mousedown' || event.type === 'mousemove') {
-        return [eventM.clientX, eventM.clientY];
+        return [event.clientX, event.clientY];
       }
 
       return [];
     }
-
-    const swipe = (xyDiff) => {
-      if (this._nextEl && this._prevEl) {
-        if (xyDiff[0] > 0) {
-          this._nextEl.click();
-        } else {
-          this._prevEl.click();
-        }
-      }
-      this._flagSwipe = true;
-    };
 
     const handleSwipeStart = (ev) => {
       this._swipe = true;
@@ -205,9 +201,12 @@ class Slider {
           const xyUp = getCoordinatesXY(ev);
 
           if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
-            const xyDiff = [xyDown[0] - xyUp[0], xyDown[1] - xyUp[1]];
-            const date = Number(new Date());
-            if (date - this._timeS > 200) { swipe(xyDiff); }
+            if (Number(new Date()) - this._timeS > 200) {
+              this._swipeDirection([
+                xyDown[0] - xyUp[0],
+                xyDown[1] - xyUp[1],
+              ]);
+            }
             xyDown = [];
           }
         }
@@ -224,13 +223,4 @@ class Slider {
   }
 }
 
-function renderSlider(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new Slider(className, elem));
-  });
-  return objMas;
-}
-
-renderSlider('.js-room-card');
+export default Slider;

@@ -20,22 +20,21 @@ class Sidebar {
   _getVisible() {
     if (!this.block) return false;
 
-    const display = window.getComputedStyle(this.block, null)
-      .getPropertyValue('display');
-    return display !== 'none';
+    return window.getComputedStyle(this.block, null)
+      .getPropertyValue('display') !== 'none';
   }
 
   _toggle(flag = this._getVisible()) {
     if (!this.block) return false;
 
-    const objClass = this.block.classList;
+    const { classList } = this.block;
 
     if (!flag) {
-      objClass.add(this.classVisible);
+      classList.add(this.classVisible);
       const elem = this.block.querySelector('input');
       if (elem) { elem.focus(); }
     } else {
-      objClass.remove(this.classVisible);
+      classList.remove(this.classVisible);
     }
     return true;
   }
@@ -77,9 +76,7 @@ class Sidebar {
   }
 
   _handleDocumentClick() {
-    const flag = this._getVisible() && !this._click;
-
-    if (flag) { this._toggle(true); }
+    if (this._getVisible() && !this._click) { this._toggle(true); }
     this._click = false;
   }
 
@@ -96,9 +93,4 @@ class Sidebar {
   }
 }
 
-const obj = new Sidebar({
-  block: '.search-room-filter',
-  button: '.search-room-content__button-wrap',
-});
-
-export default obj;
+export default Sidebar;

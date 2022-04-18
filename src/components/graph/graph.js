@@ -116,16 +116,14 @@ class Graph {
 
   _getElements(str, domBase) {
     const dom = domBase ?? this.elem;
-    const selector = `${this.className}${str}`;
-    if (dom) return [...dom.querySelectorAll(selector)];
+    if (dom) return [...dom.querySelectorAll(`${this.className}${str}`)];
     return null;
   }
 
   _getElement(str, domBase) {
     const dom = domBase ?? this.elem;
     if (!dom) return null;
-    const selector = `${this.className}${str}`;
-    return dom.querySelector(selector);
+    return dom.querySelector(`${this.className}${str}`);
   }
 
   _setDom() {
@@ -154,8 +152,7 @@ class Graph {
 
     const vote = this.getAttr();
 
-    const reducer = (a, b) => a + b;
-    const percent = vote.reduce(reducer);
+    const percent = vote.reduce((a, b) => a + b);
     const ugol = vote.map((item) => Number((item / percent).toFixed(2)));
 
     const color = this.getColors();
@@ -202,5 +199,4 @@ class Graph {
   }
 }
 
-const obj = new Graph('.js-graph');
-export default obj;
+export default Graph;

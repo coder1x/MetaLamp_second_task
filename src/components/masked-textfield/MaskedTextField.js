@@ -79,20 +79,4 @@ class MaskedTextField {
   }
 }
 
-function renderMasked(options) {
-  const components = document.querySelectorAll(options.className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new MaskedTextField({
-      className: options.className,
-      message: options.message,
-      elem,
-    }));
-  });
-  return objMas;
-}
-
-renderMasked({
-  className: '.js-masked-date',
-  message: 'Введена некорректная дата!',
-});
+export default MaskedTextField;

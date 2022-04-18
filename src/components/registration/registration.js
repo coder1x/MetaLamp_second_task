@@ -11,49 +11,49 @@ class Registration {
   }
 
   getElement(str) {
-    const selector = `${this.className}__${str}-wrap input`;
-    return this.elem.querySelector(selector);
+    return this.elem.querySelector(`${this.className}__${str}-wrap input`);
   }
 
   _setDom() {
-    const buttonS = `${this.className}__submit-wrap button`;
-    this._buttonEl = this.elem.querySelector(buttonS);
+    this._buttonEl = this.elem.querySelector(
+      `${this.className}__submit-wrap button`,
+    );
+  }
+
+  static _checkLen(result, mess) {
+    if (result) {
+      // eslint-disable-next-line no-alert
+      alert(`Введите ${mess}`);
+      return false;
+    }
+    return true;
+  }
+
+  static _messageErr(str, len) {
+    let flag = true;
+    switch (str) {
+      case 'name':
+        flag = Registration._checkLen(len < 3, 'Имя');
+        break;
+      case 'surname':
+        flag = Registration._checkLen(len < 3, 'Фамилию');
+        break;
+      case 'date':
+        flag = Registration._checkLen(len !== 10, 'дату рождения');
+        break;
+      case 'email':
+        flag = Registration._checkLen(len < 5, 'Email');
+        break;
+      case 'pass':
+        flag = Registration._checkLen(len < 6, 'Пароль');
+        break;
+      default:
+        break;
+    }
+    return flag;
   }
 
   _validation() {
-    const messageErr = (str, len) => {
-      function check(result, mess) {
-        if (result) {
-          // eslint-disable-next-line no-alert
-          alert(`Введите ${mess}`);
-          return false;
-        }
-        return true;
-      }
-
-      let flag = true;
-      switch (str) {
-        case 'name':
-          flag = check(len < 3, 'Имя');
-          break;
-        case 'surname':
-          flag = check(len < 3, 'Фамилию');
-          break;
-        case 'date':
-          flag = check(len !== 10, 'дату рождения');
-          break;
-        case 'email':
-          flag = check(len < 5, 'Email');
-          break;
-        case 'pass':
-          flag = check(len < 6, 'Пароль');
-          break;
-        default:
-          break;
-      }
-      return flag;
-    };
-
     const fields = ['name', 'surname', 'date', 'email', 'pass'];
 
     for (let i = 0; i < fields.length; i += 1) {
@@ -61,8 +61,9 @@ class Registration {
       const domElement = this.getElement(item);
 
       if (domElement) {
-        const len = domElement.value.length;
-        if (!messageErr(item, len)) { return false; }
+        if (!Registration._messageErr(item, domElement.value.length)) {
+          return false;
+        }
       }
     }
     return true;
@@ -79,14 +80,4 @@ class Registration {
   }
 }
 
-function renderRegistration(className) {
-  const components = document.querySelectorAll(className);
-
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new Registration(className, elem));
-  });
-  return objMas;
-}
-
-renderRegistration('.js-registration');
+export default Registration;

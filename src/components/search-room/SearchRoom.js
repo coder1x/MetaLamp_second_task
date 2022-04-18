@@ -10,13 +10,15 @@ class SearchRoom {
   }
 
   _setDom(elem) {
-    const date = `${this.className}__date-wrap input`;
-    const guests = `${this.className}__dropdown-wrap input`;
-    const submit = `${this.className}__button-wrap button`;
-
-    this._dateInputs = [...elem.querySelectorAll(date)];
-    this._guestsInput = elem.querySelector(guests);
-    this._buttonEl = elem.querySelector(submit);
+    this._dateInputs = [
+      ...elem.querySelectorAll(`${this.className}__date-wrap input`),
+    ];
+    this._guestsInput = elem.querySelector(
+      `${this.className}__dropdown-wrap input`,
+    );
+    this._buttonEl = elem.querySelector(
+      `${this.className}__button-wrap button`,
+    );
   }
 
   _validDate() {
@@ -27,8 +29,8 @@ class SearchRoom {
 
     if (this._dateInputs) { [, input2] = this._dateInputs; }
 
-    let valInput1 = 0; let
-      valInput2 = 0;
+    let valInput1 = 0;
+    let valInput2 = 0;
     if (input1 instanceof HTMLInputElement) { valInput1 = input1.value.length; }
 
     if (input2 instanceof HTMLInputElement) { valInput2 = input2.value.length; }
@@ -83,14 +85,4 @@ class SearchRoom {
   }
 }
 
-function renderSearchRoom(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new SearchRoom(className, elem));
-  });
-  return objMas;
-}
-
-renderSearchRoom('.js-search-room');
-renderSearchRoom('.js-booking');
+export default SearchRoom;

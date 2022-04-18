@@ -21,15 +21,13 @@ class CheckBoxList {
       display = window.getComputedStyle(this._wrap, null)
         .getPropertyValue('display');
     }
-    const flag = display !== 'block';
 
-    this._toggleModify(this.elem, '_visible', flag);
+    this._toggleModify(this.elem, '_visible', display !== 'block');
   }
 
   _getElement(str, domBase) {
-    const dom = domBase ?? this.elem;
     const selector = `${this.className}${str}`;
-    return dom.querySelector(selector);
+    return (domBase ?? this.elem).querySelector(selector);
   }
 
   _setDomElem() {
@@ -40,12 +38,12 @@ class CheckBoxList {
 
   _toggleModify(elem, modify, flag = false) {
     const clearName = `${this.className.replace(/^\.js-/, '')}${modify}`;
-    const objClass = elem.classList;
+    const { classList } = elem.classList;
 
     if (flag) {
-      objClass.add(clearName);
+      classList.add(clearName);
     } else {
-      objClass.remove(clearName);
+      classList.remove(clearName);
     }
   }
 
@@ -69,13 +67,4 @@ class CheckBoxList {
   }
 }
 
-function renderCheckboxList(className) {
-  const components = document.querySelectorAll(className);
-  const objMas = [];
-  components.forEach((elem) => {
-    objMas.push(new CheckBoxList(className, elem));
-  });
-  return objMas;
-}
-
-renderCheckboxList('.js-checkbox-list');
+export default CheckBoxList;
