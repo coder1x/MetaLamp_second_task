@@ -30,7 +30,7 @@ mixin header(options)
   header(class=`${className} js-${classComp}`)
     div(class=`${classComp}__wrapper`)
       div(class=`${classComp}__link-logo`)
-        +logo({link:'https://test/test'})
+        +logo({link:'https://change-me'})
 
       button(class=`${classComp}__toggle js-${classComp}__toggle` aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
         span(class=`${classComp}__toggle-line js-${classComp}__toggle-line`)
@@ -38,30 +38,30 @@ mixin header(options)
       nav(class=`${classComp}__menu-wrap js-${classComp}__menu-wrap`)
         ul(class=`${classComp}__items` role='navigation')
           li(class=`${classComp}__item`)
-            a(class=`${classComp}__link ${current}` href='https://test/test') О нас
+            a(class=`${classComp}__link ${current}` href='https://change-me') О нас
           li(class=`${classComp}__item`)
-            a(class=`${classComp}__link-down js-${classComp}__link-down` href='https://test/test') Услуги
+            a(class=`${classComp}__link-down js-${classComp}__link-down` href='https://change-me') Услуги
               img(class=`${classComp}__tip js-${classComp}__tip` src=tipSvg, alt='угалок')
             ul(class=`${classComp}__items-down js-${classComp}__items-down` role='navigation')
               each text in service
                 li(class=`${classComp}__item-down`)
-                  a(class=`${classComp}__link` href='https://test/test')=text
+                  a(class=`${classComp}__link` href='https://change-me')=text
 
           li(class=`${classComp}__item`)
-            a(class=`${classComp}__link` href='https://test/test') Вакансии
+            a(class=`${classComp}__link` href='https://change-me') Вакансии
           li(class=`${classComp}__item`)
-            a(class=`${classComp}__link` href='https://test/test') Новости
+            a(class=`${classComp}__link` href='https://change-me') Новости
           li(class=`${classComp}__item`)
-            a(class=`${classComp}__link-down js-${classComp}__link-down` href='https://test/test') Соглашения
+            a(class=`${classComp}__link-down js-${classComp}__link-down` href='https://change-me') Соглашения
               img(class=`${classComp}__tip js-${classComp}__tip` src=tipSvg, alt='угалок')
             ul(class=`${classComp}__items-down js-${classComp}__items-down` role='navigation')
               each text in agreements
                 li(class=`${classComp}__item-down`) 
-                  a(class=`${classComp}__link` href='https://test/test')=text
+                  a(class=`${classComp}__link` href='https://change-me')=text
 
       -if (type == 'authorized'){
         div(class=`${classComp}__user`)
-          a(class=`${classComp}__nikname` href='https://test/test') Юлий Цезарь
+          a(class=`${classComp}__nikname` href='https://change-me') Юлий Цезарь
       -}
       -else{
         div(class=`${classComp}__signin-wrap`)

@@ -23,7 +23,7 @@
     },
     "link": {
       "text": "Создать",
-      "link": "https://test/test",
+      "link": "https://change-me",
       "type": "link",
       "modify": [
         "link-border"
