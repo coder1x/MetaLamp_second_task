@@ -10,8 +10,11 @@ include ../../components/buttons/buttons.pug
 block title 
   title search room
 block content
-  - const path = '/pages/search-room/search-room.json' 
-  - const data = htmlWebpackPlugin.options.getData(path)
+  - const path = require('path').resolve(
+  - 'src/pages/search-room/','search-room.json'
+  - )
+  - const data = JSON.parse(require('fs').readFileSync(path)); 
+
   - const dateDropdown = data.dateDropdown
   - const dropDown = data.dropDown
   - const checkboxList = data.checkboxList

@@ -11,8 +11,11 @@ mixin search-room(options)
     const classComp = 'search-room'
     let className = classComp
 
-    const path = '/components/search-room/search-room.json' 
-    const data = htmlWebpackPlugin.options.getData(path)
+    const path = require('path').resolve(
+    'src/components/search-room/','search-room.json'
+    )
+    const data = JSON.parse(require('fs').readFileSync(path)); 
+
     const dateDropdown = data.dateDropdown
     const dropDown = data.dropDown
     const buttons = data.buttons

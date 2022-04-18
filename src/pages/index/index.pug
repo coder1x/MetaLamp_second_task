@@ -1,7 +1,10 @@
 include ../../components/logo-group/logo-group.pug
 
-- const path = '/pages/index/index.json' 
-- const data = htmlWebpackPlugin.options.getData(path)
+- const path = require('path').resolve(
+- 'src/pages/index/','index.json'
+- )
+- const data = JSON.parse(require('fs').readFileSync(path)); 
+
 - const menu = data.menuData
 
 doctype html

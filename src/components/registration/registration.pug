@@ -12,8 +12,11 @@ mixin registration(options)
     const classComp = 'registration'
     let className = classComp
 
-    const path = '/components/registration/registration.json' 
-    const data = htmlWebpackPlugin.options.getData(path)
+    const path = require('path').resolve(
+    'src/components/registration/','registration.json'
+    )
+    const data = JSON.parse(require('fs').readFileSync(path)); 
+
     const textField = data.textField
     const toggleButtons = data.toggleButtons
     const buttons = data.buttons

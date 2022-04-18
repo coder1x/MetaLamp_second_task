@@ -2,8 +2,11 @@ include ../../components/logo-group/logo-group.pug
 include ../../components/square-color/square-color.pug
 include ../../components/style-text/style-text.pug
 
-- const path = '/pages/colors-type/colors-type.json'
-- const data = htmlWebpackPlugin.options.getData(path)
+- const path = require('path').resolve(
+- 'src/pages/colors-type/','colors-type.json'
+- )
+- const data = JSON.parse(require('fs').readFileSync(path)); 
+
 - const squareColor = data.squareColor
 
 doctype html

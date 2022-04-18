@@ -50,10 +50,12 @@ class CheckBoxList {
   }
 
   _handleKeydown(event) {
-    if (event.key === 'Enter' || event.key === ' ') {
+    const { key } = event;
+
+    if (key === 'Enter' || key === ' ') {
       event.preventDefault();
       this.toggleVis();
-    } else if (event.key === 'Escape') {
+    } else if (key === 'Escape') {
       event.preventDefault();
       this._toggleModify(this.elem, '_visible', false);
     }

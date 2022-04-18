@@ -9,8 +9,12 @@ mixin sign-in(options)
     const flLabel = options.flLabel
     const classComp = 'sign-in'
     let className = classComp
-    const path = '/components/sign-in/sign-in.json' 
-    const data = htmlWebpackPlugin.options.getData(path)
+
+    const path = require('path').resolve(
+    'src/components/sign-in/','sign-in.json'
+    )
+    const data = JSON.parse(require('fs').readFileSync(path)); 
+
     const textField = data.textField
     const buttons = data.buttons
 
