@@ -38,7 +38,7 @@ class CheckBoxList {
 
   _toggleModify(elem, modify, flag = false) {
     const clearName = `${this.className.replace(/^\.js-/, '')}${modify}`;
-    const { classList } = elem.classList;
+    const { classList } = elem;
 
     if (flag) {
       classList.add(clearName);

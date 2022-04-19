@@ -144,82 +144,75 @@ class Slider {
     return true;
   }
 
-  _handleLinkSlideFocus() {
-    if (this._swipe && this._linkSlide) {
-      this._linkSlide.blur();
+  static _getCoordinatesXY(ev) {
+    const eventT = ev;
+    const eventM = ev;
+
+    if (eventT instanceof TouchEvent) {
+      if (ev.type === 'touchstart' || ev.type === 'touchmove') {
+        return [eventT.touches[0].clientX, eventT.touches[0].clientY];
+      }
     }
-    this._swipe = false;
+
+    if (eventM instanceof MouseEvent) {
+      if (ev.type === 'mousedown' || ev.type === 'mousemove') {
+        return [eventM.clientX, eventM.clientY];
+      }
+    }
+
+    return [];
   }
 
-  _swipeDirection(xyDiff) {
-    if (this._nextEl && this._prevEl) {
-      if (xyDiff[0] > 0) {
-        this._nextEl.click();
-      } else {
-        this._prevEl.click();
-      }
+  _swipeMove(xyDiff) {
+    if (xyDiff[0] > 0) {
+      this._nextEl.click();
+    } else {
+      this._prevEl.click();
     }
     this._flagSwipe = true;
   }
 
   _setActionSwipe() {
     let xyDown = [];
-
-    if (this._linkSlide) {
-      this._linkSlide.addEventListener('focus', this._handleLinkSlideFocus);
-    }
-
-    function getCoordinatesXY(event) {
-      if (event.type === 'touchstart' || event.type === 'touchmove') {
-        return [event.touches[0].clientX, event.touches[0].clientY];
+    this._linkSlide.addEventListener('focus', () => {
+      if (this._swipe) {
+        this._linkSlide.blur();
       }
+      this._swipe = false;
+    });
 
-      if (event.type === 'mousedown' || event.type === 'mousemove') {
-        return [event.clientX, event.clientY];
-      }
-
-      return [];
-    }
-
-    const handleSwipeStart = (ev) => {
+    const handleSwipeStart = (event) => {
       this._swipe = true;
-      xyDown = getCoordinatesXY(ev);
+      xyDown = Slider._getCoordinatesXY(event);
     };
 
     const handleSwipeMove = (ev) => {
       if (!xyDown) {
-        return false;
+        return;
       }
 
-      const eventM = ev;
       const touchmove = ev.type === 'touchmove';
       const mousemove = ev.type === 'mousemove';
 
-      if (eventM instanceof MouseEvent) {
-        const event = (touchmove || mousemove) && eventM.buttons === 1;
-        if (event) {
-          const xyUp = getCoordinatesXY(ev);
+      if (touchmove || (mousemove && ev.buttons === 1)) {
+        const xyUp = Slider._getCoordinatesXY(ev);
 
-          if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
-            if (Number(new Date()) - this._timeS > 200) {
-              this._swipeDirection([
-                xyDown[0] - xyUp[0],
-                xyDown[1] - xyUp[1],
-              ]);
-            }
-            xyDown = [];
+        if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
+          if (Number(new Date()) - this._timeS > 200) {
+            this._swipeMove([
+              xyDown[0] - xyUp[0],
+              xyDown[1] - xyUp[1],
+            ]);
           }
+          xyDown = [];
         }
       }
-      return true;
     };
 
-    if (this._sliderWrap) {
-      this._sliderWrap.addEventListener('touchstart', handleSwipeStart);
-      this._sliderWrap.addEventListener('touchmove', handleSwipeMove);
-      this._sliderWrap.addEventListener('mousedown', handleSwipeStart);
-      this._sliderWrap.addEventListener('mousemove', handleSwipeMove);
-    }
+    this._sliderWrap.addEventListener('touchstart', handleSwipeStart);
+    this._sliderWrap.addEventListener('touchmove', handleSwipeMove);
+    this._sliderWrap.addEventListener('mousedown', handleSwipeStart);
+    this._sliderWrap.addEventListener('mousemove', handleSwipeMove);
   }
 }
 
