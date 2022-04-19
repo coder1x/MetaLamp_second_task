@@ -1,4 +1,7 @@
 import autoBind from 'auto-bind';
+
+import message from '@com/message/message';
+
 import './search-room.scss';
 
 class SearchRoom {
@@ -59,14 +62,12 @@ class SearchRoom {
 
   _messageErr() {
     if (!this._validDate()) {
-      // eslint-disable-next-line no-alert
-      alert('Выберите дату.');
+      message('Выберите дату.');
       return false;
     }
 
     if (!this._validGuests()) {
-      // eslint-disable-next-line no-alert
-      alert('Сколько гостей ?');
+      message('Сколько гостей ?');
       return false;
     }
     return true;

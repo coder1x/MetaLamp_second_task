@@ -41,6 +41,17 @@ $color-focus: $Dark-Shade-100;
     outline: 2px solid $color-focus;
   }
 
+  &__icon{
+    width: 10px;
+    height: 8px;
+    background-image: url("~comp/like-button/img/like.svg");
+    color: transparent;
+
+    &_favorite{
+      background-image: url("~comp/like-button/img/favorite.svg");
+    }
+  }
+
   &_voted &__like {
     border-color: $color-like-voted;
   }

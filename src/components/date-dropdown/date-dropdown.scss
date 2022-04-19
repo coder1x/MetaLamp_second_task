@@ -112,6 +112,20 @@ $color-datepicker-shadow: $Dark-Shade-5;
     max-width: 320px;
   }
 
+  &__back{
+    width: 17px;
+    height: 18px;
+    background-image: url("~comp/date-dropdown/img/arrow-back.svg");
+    color: transparent;
+  }
+
+  &__forward{
+    width: 17px;
+    height: 18px;
+    background-image: url("~comp/date-dropdown/img/arrow-forward.svg");
+    color: transparent;
+  }
+
   &__datepicker-buttons {
     display: flex;
     flex-direction: row;

@@ -1,5 +1,7 @@
 import autoBind from 'auto-bind';
 
+import message from '@com/message/message';
+
 class MaskedTextField {
   constructor(options) {
     autoBind(this);
@@ -67,8 +69,8 @@ class MaskedTextField {
     if (year && month && day) {
       return true;
     }
-    // eslint-disable-next-line no-alert
-    alert(this.message);
+
+    message(this.message);
 
     return false;
   }

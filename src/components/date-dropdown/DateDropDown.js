@@ -1,18 +1,12 @@
 import autoBind from 'auto-bind';
 import AirDatepicker from 'air-datepicker';
+
+import message from '@com/message/message';
+
 import 'air-datepicker/air-datepicker.css';
 
 import './datepicker.scss';
 import './date-dropdown.scss';
-
-const imgPrev = require(
-  // eslint-disable-next-line import/no-unresolved
-  '@com/date-dropdown/img/arrow-back.svg',
-).default;
-const imgNext = require(
-  // eslint-disable-next-line import/no-unresolved
-  '@com/date-dropdown/img/arrow-forward.svg',
-).default;
 
 class DateDropDown {
   constructor(className, elem) {
@@ -284,8 +278,8 @@ class DateDropDown {
       multipleDates: true,
       disableNavWhenOutOfRange: false,
       minDate: new Date(),
-      prevHtml: `<img src="${imgPrev}">`,
-      nextHtml: `<img src="${imgNext}">`,
+      prevHtml: '<span class="date-dropdown__back">arrow_back</span>',
+      nextHtml: '<span class="date-dropdown__forward">arrow_forward</span>',
       navTitles: {
         days: 'MMMM yyyy',
       },
@@ -306,8 +300,7 @@ class DateDropDown {
       if (flag) {
         if (!flShow) { this.toggleCal(this._flTog); }
       } else {
-        // eslint-disable-next-line no-alert
-        alert('Выберите диапазон');
+        message('Выберите диапазон');
       }
     };
 

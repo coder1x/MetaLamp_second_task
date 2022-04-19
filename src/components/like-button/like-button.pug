@@ -17,5 +17,5 @@ mixin like-button(options)
     -}
     
     button(class=`${classComp}__like js-${classComp}__like` aria-label='поставить лайк')
-      img(class=`${classComp}__icon js-${classComp}__icon` src=require('@com/like-button/img/like.svg').default alt='like')
+      span(class=`${classComp}__icon js-${classComp}__icon`) heart
       span(class=`${classComp}__value js-${classComp}__value`) 2

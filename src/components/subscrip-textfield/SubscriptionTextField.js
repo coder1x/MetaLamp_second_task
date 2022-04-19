@@ -1,4 +1,7 @@
 import autoBind from 'auto-bind';
+
+import message from '@com/message/message';
+
 import './subscrip-textfield.scss';
 
 import ValidationEmail from '../validation-email/ValidationEmail';
@@ -19,11 +22,9 @@ class SubscriptionTextField {
   _validEmail() {
     if (this._valid) {
       if (this._valid.validation()) {
-        // eslint-disable-next-line no-alert
-        alert('Вы оформили подписку.');
+        message('Вы оформили подписку.');
       } else {
-        // eslint-disable-next-line no-alert
-        alert('Вы ввели неверный Email.');
+        message('Вы ввели неверный Email.');
       }
     }
   }

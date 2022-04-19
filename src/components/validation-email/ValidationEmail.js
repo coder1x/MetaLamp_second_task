@@ -1,5 +1,7 @@
 import autoBind from 'auto-bind';
 
+import message from '@com/message/message';
+
 class ValidationEmail {
   constructor(options) {
     autoBind(this);
@@ -24,8 +26,7 @@ class ValidationEmail {
 
   _handleInputElement() {
     if (!this.validation()) {
-      // eslint-disable-next-line no-alert
-      alert(this._message);
+      message(this._message);
     }
   }
 

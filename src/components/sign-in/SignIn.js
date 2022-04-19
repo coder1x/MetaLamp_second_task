@@ -1,4 +1,7 @@
 import autoBind from 'auto-bind';
+
+import message from '@com/message/message';
+
 import './sign-in.scss';
 
 class SignIn {
@@ -25,14 +28,12 @@ class SignIn {
     if (!this._emailInputs || !this._passInput) return false;
 
     if (!this._emailInputs.value) {
-      // eslint-disable-next-line no-alert
-      alert('Введите Email');
+      message('Введите Email');
       return false;
     }
 
     if (!this._passInput.value) {
-      // eslint-disable-next-line no-alert
-      alert('Введите пароль');
+      message('Введите пароль');
       return false;
     }
     return true;

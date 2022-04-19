@@ -1,9 +1,6 @@
 import autoBind from 'auto-bind';
 import './like-button.scss';
 
-const favorite = require('@com/like-button/img/favorite.svg').default;
-const like = require('@com/like-button/img/like.svg').default;
-
 class LikeButton {
   constructor(nameClass, elem) {
     autoBind(this);
@@ -57,15 +54,17 @@ class LikeButton {
   }
 
   _toggleStyle() {
-    // меняем стили в зависимости от события
-    const name = `${this.nameClass.replace(/^\.js-/, '')}_voted`;
-    if (this._flag) { // ставили лайк
+    const selector = this.nameClass.replace(/^\.js-/, '');
+    const name = `${selector}_voted`;
+    const favorite = `${selector}__icon_favorite`;
+
+    if (this._flag) {
       if (this._iconEl && this._likeEl) {
-        this._iconEl.src = favorite;
+        this._iconEl.classList.add(favorite);
         this._likeEl.classList.add(name);
       }
     } else if (this._iconEl && this._likeEl) {
-      this._iconEl.src = like;
+      this._iconEl.classList.remove(favorite);
       this._likeEl.classList.remove(name);
     }
   }

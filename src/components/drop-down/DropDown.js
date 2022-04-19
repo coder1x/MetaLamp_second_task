@@ -1,5 +1,6 @@
 import autoBind from 'auto-bind';
 import './drop-down.scss';
+import message from '@com/message/message';
 
 class DropDown {
   constructor(className, component) {
@@ -171,8 +172,7 @@ class DropDown {
       const inputClear = defaultText || !this._inputEl.value;
 
       if (inputClear) {
-        // eslint-disable-next-line no-alert
-        alert('Выберите количество гостей.');
+        message('Выберите количество гостей.');
       } else {
         this._toggle();
       }

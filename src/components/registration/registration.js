@@ -1,4 +1,7 @@
 import autoBind from 'auto-bind';
+
+import message from '@com/message/message';
+
 import './registration.scss';
 
 class Registration {
@@ -22,8 +25,7 @@ class Registration {
 
   static _checkLen(result, mess) {
     if (result) {
-      // eslint-disable-next-line no-alert
-      alert(`Введите ${mess}`);
+      message(`Введите ${mess}`);
       return false;
     }
     return true;
