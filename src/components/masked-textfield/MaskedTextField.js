@@ -7,23 +7,23 @@ class MaskedTextField {
     autoBind(this);
     this.message = options.message;
     this._tempValue = '';
-    const { elem } = options;
-    if (elem) { this._setActions(elem); }
+    const { element } = options;
+    if (element) { this._setActions(element); }
   }
 
-  _inputProcessing(event) {
+  _handleInput(event) {
     const domElement = event.target;
 
     let value = domElement.value.replace(/[^.\d]/g, '');
 
-    const strLen = value.length;
-    if (strLen === 1) {
+    const stringLength = value.length;
+    if (stringLength === 1) {
       if (Number(value) > 3) {
         value = `0${value}`;
       }
-    } else if (strLen === 4) {
-      if (Number(value[strLen - 1]) > 1) {
-        value = `${value.substr(0, strLen - 1)}0${value[strLen - 1]}`;
+    } else if (stringLength === 4) {
+      if (Number(value[stringLength - 1]) > 1) {
+        value = `${value.substr(0, stringLength - 1)}0${value[stringLength - 1]}`;
       }
     }
 
@@ -32,12 +32,12 @@ class MaskedTextField {
     const year = `${month}\\.([1-2]|19|20|19\\d|20\\d|19\\d\\d|20\\d\\d)$`;
 
     const point = `${value}.`;
-    const last = point !== this._tempValue;
+    const lastDate = point !== this._tempValue;
 
     if (value.match(new RegExp(`${day}\\.?$`))) {
-      domElement.value = value.length === 2 && last ? point : value;
+      domElement.value = value.length === 2 && lastDate ? point : value;
     } else if (value.match(new RegExp(`${month}\\.?$`))) {
-      domElement.value = value.length === 5 && last ? point : value;
+      domElement.value = value.length === 5 && lastDate ? point : value;
     } else if (value.match(new RegExp(year))) {
       domElement.value = value;
     } else if (this._tempValue.length === 1) {
@@ -51,20 +51,20 @@ class MaskedTextField {
     this._tempValue = domElement.value;
   }
 
-  _dateValidation(event) {
+  _handleInputChange(event) {
     const { target } = event;
     const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
     const dateTarget = target.value;
 
     if (!regexp.test(dateTarget)) return false;
 
-    const masDate = dateTarget.split('.').map((item) => Number(item.replace(/^0/, '')));
-    masDate[1] -= 1;
-    const date = new Date(masDate[2], masDate[1], masDate[0]);
+    const dates = dateTarget.split('.').map((item) => Number(item.replace(/^0/, '')));
+    dates[1] -= 1;
+    const date = new Date(dates[2], dates[1], dates[0]);
 
-    const day = date.getDate() === masDate[0];
-    const month = date.getMonth() === masDate[1];
-    const year = date.getFullYear() === masDate[2];
+    const day = date.getDate() === dates[0];
+    const month = date.getMonth() === dates[1];
+    const year = date.getFullYear() === dates[2];
 
     if (year && month && day) {
       return true;
@@ -76,8 +76,8 @@ class MaskedTextField {
   }
 
   _setActions(elem) {
-    elem.addEventListener('change', this._dateValidation);
-    elem.addEventListener('input', this._inputProcessing);
+    elem.addEventListener('change', this._handleInputChange);
+    elem.addEventListener('input', this._handleInput);
   }
 }
 

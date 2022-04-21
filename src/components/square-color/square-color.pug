@@ -1,10 +1,10 @@
-mixin square-color(textTop,textBot,modify)
+mixin square-color(textTop,textBot,modifier)
   - 
     const className = 'square-color'
     let classSquare = `${className}__square`
-    const modifySquare = modify ?? ''
-    if(modifySquare){
-    classSquare += ` ${classSquare}_${modifySquare}`}
+    const modifierSquare = modifier ?? ''
+    if(modifierSquare){
+    classSquare += ` ${classSquare}_${modifierSquare}`}
 
   div(class=className)
     div(class=classSquare)

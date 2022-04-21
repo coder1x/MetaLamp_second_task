@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const TerserPlugin = require('terser-webpack-plugin');
-const DP = require('./isDev');
+const env = require('./isDev');
 
 module.exports = {
   optimization: () => {
@@ -11,7 +11,7 @@ module.exports = {
       },
     };
 
-    if (DP.isProd) { // минимизируем код если собираем в продакшен
+    if (env.isProd) { // минимизируем код если собираем в продакшен
       config.minimizer = [
         new TerserPlugin({
           parallel: true,

@@ -1,11 +1,11 @@
 import SignIn from './SignIn.js';
 
 function renderSignIn(className) {
-  const objMas = [];
-  document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new SignIn(className, elem));
+  const components = [];
+  document.querySelectorAll(className).forEach((element) => {
+    components.push(new SignIn(className, element));
   });
-  return objMas;
+  return components;
 }
 
 renderSignIn('.js-sign-in');

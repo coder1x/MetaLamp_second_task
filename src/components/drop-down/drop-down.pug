@@ -5,49 +5,49 @@ mixin drop-down(options)
     const label = options.label ?? ''
     const value = options.value ?? ''
     const name = options.name ?? ''
-    const masWord = options.masWord ?? [[]]
+    const words = options.words ?? [[]]
     const maxValue = options.maxValue ?? []
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
     const button = options.button
-    const flLabel = options.flLabel
-    const classComp = 'drop-down'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const isLabeled = options.isLabeled
+    const classComponent = 'drop-down'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  div(class=`${className} js-${classComp}`)
-    - if(!flLabel){
-    p(class=`${classComp}__text-header`)= label
+  div(class=`${className} js-${classComponent}`)
+    - if(!isLabeled){
+    p(class=`${classComponent}__text-header`)= label
     -}
 
-    div(class=`${classComp}__wrap`)
-      input(class=`${classComp}__input js-${classComp}__input` type='text' placeholder=value value='' name=name readonly)
-      img(class=`${classComp}__tip js-${classComp}__tip` src=require('@com/drop-down/img/tip.svg').default alt='угалок')
+    div(class=`${classComponent}__wrap`)
+      input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder=value value='' name=name readonly)
+      img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('@com/drop-down/img/tip.svg').default alt='угалок')
 
-      ul(class=`${classComp}__select js-${classComp}__select`)
-        - for(let i=0; i<masWord[0].length; i++)  {
-          li(class=`${classComp}__select-item js-${classComp}__select-item` data-type= masWord[1][i])
-            p(class=`${classComp}__text`)= masWord[0][i]
-            button(class=`${classComp}__minus js-${classComp}__minus` aria-label='минус') -
-            span(class=`${classComp}__value js-${classComp}__value`) 0
-            button(class=`${classComp}__plus js-${classComp}__plus` data-max=maxValue[i] aria-label='плюс') +
+      ul(class=`${classComponent}__select js-${classComponent}__select`)
+        - for(let i=0; i<words[0].length; i++)  {
+          li(class=`${classComponent}__select-item js-${classComponent}__select-item` data-type= words[1][i])
+            p(class=`${classComponent}__text`)= words[0][i]
+            button(class=`${classComponent}__minus js-${classComponent}__minus` aria-label='минус') -
+            span(class=`${classComponent}__value js-${classComponent}__value`) 0
+            button(class=`${classComponent}__plus js-${classComponent}__plus` data-max=maxValue[i] aria-label='плюс') +
         -}
         
         -if(button){
-        li(class=`${classComp}__buttons`)
-          div(class=`${classComp}__button-clear js-${classComp}__button-clear`)
+        li(class=`${classComponent}__buttons`)
+          div(class=`${classComponent}__button-clear js-${classComponent}__button-clear`)
             +buttons({
               text:'очистить',
               type:'button',
-              modify:['text']
+              modifier:['text']
                   })
-          div(class=`${classComp}__button-apply js-${classComp}__button-apply`)
+          div(class=`${classComponent}__button-apply js-${classComponent}__button-apply`)
             +buttons({
               text:'применить',
               type:'button',
-              modify:['text']
+              modifier:['text']
                   })
         -}

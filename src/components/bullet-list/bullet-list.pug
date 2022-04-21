@@ -2,23 +2,23 @@ mixin bullet-list(options)
   -
     const label = options.label ?? ''
     const text = options.text ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'bullet-list'
-    let className = classComp
+    const isLabeled = options.isLabeled
+    const classComponent = 'bullet-list'
+    let className = classComponent
 
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
   div(class=className)
-    - if(!flLabel){
-    p(class=`${classComp}__header`)= label
+    - if(!isLabeled){
+    p(class=`${classComponent}__header`)= label
     -}
     
-    ul(class=`${classComp}__items`)
+    ul(class=`${classComponent}__items`)
       -for(let item of text){
-      li(class=`${classComp}__item`)= item
+      li(class=`${classComponent}__item`)= item
       -}  

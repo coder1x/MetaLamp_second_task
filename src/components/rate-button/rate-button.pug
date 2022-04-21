@@ -2,13 +2,13 @@ mixin rate-button(options)
   -
     const label = options.label ?? ''
     const name = options.name ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'rate-button'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const isLabeled = options.isLabeled
+    const classComponent = 'rate-button'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
@@ -21,12 +21,12 @@ mixin rate-button(options)
     ]
 
   div(class=className)
-    fieldset(class=`${classComp}__stars`)
-      - if(!flLabel){
-      legend(class=`${classComp}__header`)= label
+    fieldset(class=`${classComponent}__stars`)
+      - if(!isLabeled){
+      legend(class=`${classComponent}__header`)= label
       -}
       
-      div(class=`${classComp}__group`)
+      div(class=`${classComponent}__group`)
         - for(let i=0; i<labels.length; i++)  {
-          input(class=`${classComp}__star` type='radio' name=name value=i+1 aria-label=labels[i])
+          input(class=`${classComponent}__star` type='radio' name=name value=i+1 aria-label=labels[i])
         -}

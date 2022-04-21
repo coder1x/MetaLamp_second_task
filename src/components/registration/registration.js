@@ -5,54 +5,54 @@ import message from '@com/message/message';
 import './registration.scss';
 
 class Registration {
-  constructor(className, elem) {
+  constructor(className, element) {
     autoBind(this);
     this.className = className;
-    this.elem = elem;
-    this._setDom();
-    this._setAction();
+    this.element = element;
+    this._setDomElement();
+    this._bindEvent();
   }
 
-  getElement(str) {
-    return this.elem.querySelector(`${this.className}__${str}-wrap input`);
+  getElement(string) {
+    return this.element.querySelector(`${this.className}__${string}-wrap input`);
   }
 
-  _setDom() {
-    this._buttonEl = this.elem.querySelector(
+  _setDomElement() {
+    this._buttonElement = this.element.querySelector(
       `${this.className}__submit-wrap button`,
     );
   }
 
-  static _checkLen(result, mess) {
+  static _checkLength(result, text) {
     if (result) {
-      message(`Введите ${mess}`);
+      message(`Введите ${text}`);
       return false;
     }
     return true;
   }
 
-  static _messageErr(str, len) {
-    let flag = true;
-    switch (str) {
+  static _messageError(string, length) {
+    let isValid = true;
+    switch (string) {
       case 'name':
-        flag = Registration._checkLen(len < 3, 'Имя');
+        isValid = Registration._checkLength(length < 3, 'Имя');
         break;
       case 'surname':
-        flag = Registration._checkLen(len < 3, 'Фамилию');
+        isValid = Registration._checkLength(length < 3, 'Фамилию');
         break;
       case 'date':
-        flag = Registration._checkLen(len !== 10, 'дату рождения');
+        isValid = Registration._checkLength(length !== 10, 'дату рождения');
         break;
       case 'email':
-        flag = Registration._checkLen(len < 5, 'Email');
+        isValid = Registration._checkLength(length < 5, 'Email');
         break;
       case 'pass':
-        flag = Registration._checkLen(len < 6, 'Пароль');
+        isValid = Registration._checkLength(length < 6, 'Пароль');
         break;
       default:
         break;
     }
-    return flag;
+    return isValid;
   }
 
   _validation() {
@@ -63,7 +63,7 @@ class Registration {
       const domElement = this.getElement(item);
 
       if (domElement) {
-        if (!Registration._messageErr(item, domElement.value.length)) {
+        if (!Registration._messageError(item, domElement.value.length)) {
           return false;
         }
       }
@@ -71,13 +71,13 @@ class Registration {
     return true;
   }
 
-  _handleButton(event) {
+  _handleButtonClick(event) {
     if (!this._validation()) { event.preventDefault(); }
   }
 
-  _setAction() {
-    if (this._buttonEl) {
-      this._buttonEl.addEventListener('click', this._handleButton);
+  _bindEvent() {
+    if (this._buttonElement) {
+      this._buttonElement.addEventListener('click', this._handleButtonClick);
     }
   }
 }

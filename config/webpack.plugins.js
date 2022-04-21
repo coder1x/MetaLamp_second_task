@@ -10,14 +10,14 @@ const fs = require('fs');
 const FoxFavicon = require('fox-favicon');
 const FoxUrlConvertor = require('fox-url-convertor');
 const path = require('path');
-const DP = require('./isDev');
-const FL = require('./filename');
-const PATHS = require('./paths');
+const env = require('./isDev');
+const fileName = require('./filename');
+const paths = require('./paths');
 
-const PAGES_DIR = path.join(PATHS.src, '/pages/'); // каталог где располагаються PUG  файлы
+const pagesDir = path.join(paths.src, '/pages/'); // каталог где располагаються PUG  файлы
 
 const pages = [];
-fs.readdirSync(PAGES_DIR).forEach((file) => {
+fs.readdirSync(pagesDir).forEach((file) => {
   pages.push(file.split('/', 2));
 });
 
@@ -29,9 +29,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
 
-    ...pages.map((fileName) => new HTMLWebpackPlugin({
-      filename: `./${fileName}.html`,
-      template: `./pages/${fileName}/${fileName}.pug`,
+    ...pages.map((item) => new HTMLWebpackPlugin({
+      filename: `./${item}.html`,
+      template: `./pages/${item}/${item}.pug`,
       alwaysWriteToDisk: true,
       inject: 'body',
       hash: true,
@@ -104,12 +104,12 @@ module.exports = {
     }),
 
     new FoxFavicon({
-      src: path.join(PATHS.src, PATHS.assets, 'images/icon/favicon.png'),
+      src: path.join(paths.src, paths.assets, 'images/icon/favicon.png'),
       path: 'assets/favicons/',
       // pathManifest: '/assets/favicons/',
       // https://thylacine.ru/
       urlIcon: 'assets/favicons/',
-      devMode: DP.isDev,
+      devMode: env.isDev,
       appName: 'бронирование номеров в TOXIN отель.',
       appShortName: 'TOXIN',
       appDescription: 'Лучшие номера для вашей работы,'
@@ -145,7 +145,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: FL.filename('css'),
+      filename: fileName.filename('css'),
     }),
 
     new webpack.ProvidePlugin({

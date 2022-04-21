@@ -1,19 +1,19 @@
 import ValidationEmail from './ValidationEmail.js';
 
 function renderValidationEmail(options) {
-  const name = options.inputName ?? '';
-  const input = `${options.className}__input[name="${name}"]`;
-  const objMas = [];
+  const inputName = options.inputName ?? '';
+  const selector = `${options.className}__input[name="${inputName}"]`;
+  const components = [];
 
-  document.querySelectorAll(input).forEach((elem) => {
-    objMas.push(new ValidationEmail({
+  document.querySelectorAll(selector).forEach((element) => {
+    components.push(new ValidationEmail({
       message: options.message,
       event: options.event,
-      elem,
+      element,
     }));
   });
 
-  return objMas;
+  return components;
 }
 
 renderValidationEmail({

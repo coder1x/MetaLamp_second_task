@@ -1,13 +1,13 @@
 {
   "textField": {
     "name": {
-      "flLabel": true,
+      "isLabeled": true,
       "placeholder": "Имя",
       "type": "text",
       "name": "name"
     },
     "surname": {
-      "flLabel": true,
+      "isLabeled": true,
       "placeholder": "Фамилия",
       "type": "text",
       "name": "surname"
@@ -20,27 +20,27 @@
       "class": "js-masked-date"
     },
     "email": {
-      "flLabel": true,
+      "isLabeled": true,
       "placeholder": "Email",
       "type": "email",
       "name": "email"
     },
     "password": {
-      "flLabel": true,
+      "isLabeled": true,
       "placeholder": "Пароль",
       "type": "password",
       "name": "password"
     }
   },
   "toggleButtons": {
-    "flLabel": true,
+    "isLabeled": true,
     "label": "Получать спецпредложения"
   },
   "buttons": {
     "submit": {
       "text": "зарегистрироваться",
       "type": "submit",
-      "modify": [
+      "modifier": [
         "submit"
       ]
     },
@@ -48,7 +48,7 @@
       "text": "Войти",
       "link": "https://change-me",
       "type": "link",
-      "modify": [
+      "modifier": [
         "link-border"
       ]
     }

@@ -1,0 +1,29 @@
+mixin diagram(options)
+  -
+    let label = options.label ?? ''
+    let modifier = options.modifier ?? ''
+    let addClass = options.class ?? ''
+    let isLabeled = options.isLabeled
+    let classComponent = 'diagram'
+    let className = classComponent
+    const data = [
+      ['130','excellent','Великолепно'],
+      ['65','good','Хорошо'],
+      ['65','satisfactorily','Удовлетворительно'],
+      ['0','disappointed','Разочарован'],
+    ]
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
+    if(addClass){
+    className += ` ${addClass}`}
+
+  div(class=`${classComponent} js-${classComponent}`)
+    - if(!isLabeled){
+      h2(class=`${classComponent}__header`)= label
+    -}
+    
+    div(class=`${classComponent}__wrapper`)
+      canvas(class=`${classComponent}__canvas js-${classComponent}__canvas` width='240' height='240')
+      ul(class=`${classComponent}__colors`)
+        each item in data
+          li(class=`${classComponent}__colors-item js-${classComponent}__colors-item` date-grade=item[0] date-name=item[1])=item[2]

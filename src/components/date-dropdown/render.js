@@ -1,11 +1,11 @@
 import DateDropDown from './DateDropDown.js';
 
 function renderComponent(className) {
-  const objMas = [];
+  const components = [];
   document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new DateDropDown(className, elem));
+    components.push(new DateDropDown(className, elem));
   });
-  return objMas;
+  return components;
 }
 
 renderComponent('.js-date-dropdown');

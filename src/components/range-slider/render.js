@@ -1,12 +1,12 @@
 import RangeSlider from './RangeSlider.js';
 
 function renderRangeSlider(className) {
-  const objMas = [];
-  document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new RangeSlider(className, elem));
+  const components = [];
+  document.querySelectorAll(className).forEach((element) => {
+    components.push(new RangeSlider(className, element));
   });
 
-  return objMas;
+  return components;
 }
 
 renderRangeSlider('.js-range-slider');

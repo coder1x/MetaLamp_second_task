@@ -15,29 +15,28 @@ function handleKeydownClose(event) {
 function message(text) {
   const selector = 'message-toxin';
 
-  const popunder = document.querySelector(`.${selector}`);
+  const popUp = document.querySelector(`.${selector}`);
+  if (popUp) return false;
 
-  if (popunder) return false;
-
-  const wrap = document.createElement('article');
-  wrap.classList.add(selector);
-  const close = document.createElement('button');
-  close.innerText = '✖';
-  close.classList.add(`${selector}__close`);
+  const wrapper = document.createElement('article');
+  wrapper.classList.add(selector);
+  const buttonClose = document.createElement('button');
+  buttonClose.innerText = '✖';
+  buttonClose.classList.add(`${selector}__close`);
   const paragraph = document.createElement('p');
   paragraph.innerText = text;
   paragraph.classList.add(`${selector}__text`);
 
-  wrap.appendChild(close);
-  wrap.appendChild(paragraph);
+  wrapper.appendChild(buttonClose);
+  wrapper.appendChild(paragraph);
 
-  const body = document.querySelector('body');
-  body.appendChild(wrap);
+  const bodyElement = document.querySelector('body');
+  bodyElement.appendChild(wrapper);
 
-  close.focus();
+  buttonClose.addEventListener('click', handleClose);
+  buttonClose.addEventListener('keydown', handleKeydownClose);
 
-  close.addEventListener('click', handleClose);
-  close.addEventListener('keydown', handleKeydownClose);
+  // buttonClose.focus();
 
   return true;
 }

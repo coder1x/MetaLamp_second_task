@@ -2,48 +2,48 @@ import autoBind from 'auto-bind';
 import './checkbox-list.scss';
 
 class CheckBoxList {
-  constructor(className, elem) {
+  constructor(className, element) {
     autoBind(this);
     this.className = className;
-    this.elem = elem;
+    this.element = element;
     this.init();
   }
 
   init() {
-    this._setDomElem();
-    this._setActions();
+    this._setDomElement();
+    this._bindEvent();
   }
 
-  toggleVis() {
+  toggleVisible() {
     let display = '';
 
-    if (this._wrap) {
-      display = window.getComputedStyle(this._wrap, null)
+    if (this._wrapper) {
+      display = window.getComputedStyle(this._wrapper, null)
         .getPropertyValue('display');
     }
 
-    this._toggleModify(this.elem, '_visible', display !== 'block');
+    this._toggleModifier(this.element, '_visible', display !== 'block');
   }
 
-  _getElement(str, domBase) {
-    const selector = `${this.className}${str}`;
-    return (domBase ?? this.elem).querySelector(selector);
+  _getElement(string, parentElement) {
+    const selector = `${this.className}${string}`;
+    return (parentElement ?? this.element).querySelector(selector);
   }
 
-  _setDomElem() {
-    this._wrap = this._getElement('__wrap');
-    this._headerEl = this._getElement('__header');
-    this._imgEl = this._getElement('__tip');
+  _setDomElement() {
+    this._wrapper = this._getElement('__wrap');
+    this._headerElem = this._getElement('__header');
+    this._imgElem = this._getElement('__tip');
   }
 
-  _toggleModify(elem, modify, flag = false) {
-    const clearName = `${this.className.replace(/^\.js-/, '')}${modify}`;
-    const { classList } = elem;
+  _toggleModifier(element, modifier, isVisible = false) {
+    const classWithModif = `${this.className.replace(/^\.js-/, '')}${modifier}`;
+    const { classList } = element;
 
-    if (flag) {
-      classList.add(clearName);
+    if (isVisible) {
+      classList.add(classWithModif);
     } else {
-      classList.remove(clearName);
+      classList.remove(classWithModif);
     }
   }
 
@@ -52,17 +52,17 @@ class CheckBoxList {
 
     if (key === 'Enter' || key === ' ') {
       event.preventDefault();
-      this.toggleVis();
+      this.toggleVisible();
     } else if (key === 'Escape') {
       event.preventDefault();
-      this._toggleModify(this.elem, '_visible', false);
+      this._toggleModifier(this.element, '_visible', false);
     }
   }
 
-  _setActions() {
-    if (this._imgEl && this._headerEl) {
-      this._headerEl.addEventListener('click', this.toggleVis);
-      this._headerEl.addEventListener('keydown', this._handleKeydown);
+  _bindEvent() {
+    if (this._imgElem && this._headerElem) {
+      this._headerElem.addEventListener('click', this.toggleVisible);
+      this._headerElem.addEventListener('keydown', this._handleKeydown);
     }
   }
 }

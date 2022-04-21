@@ -5,11 +5,11 @@ include ../buttons/buttons.pug
 mixin search-room(options)
   -
     const header = options.header ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'search-room'
-    let className = classComp
+    const isLabeled = options.isLabeled
+    const classComponent = 'search-room'
+    let className = classComponent
 
     const path = require('path').resolve(
     'src/components/search-room/','search-room.json'
@@ -20,23 +20,23 @@ mixin search-room(options)
     const dropDown = data.dropDown
     const buttons = data.buttons
 
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  article(class=`${className} js-${classComp}`)
-    - if(!flLabel){
-    header(class=`${classComp}__header-wrap`)
-      h1(class=`${classComp}__header`)= header
+  article(class=`${className} js-${classComponent}`)
+    - if(!isLabeled){
+    header(class=`${classComponent}__header-wrap`)
+      h1(class=`${classComponent}__header`)= header
     -}
 
-    form(class=`${classComp}__form` action='' method='post')
-      fieldset(class=`${classComp}__date-wrap js-${classComp}__date-wrap`)
+    form(class=`${classComponent}__form` action='' method='post')
+      fieldset(class=`${classComponent}__date-wrap js-${classComponent}__date-wrap`)
         +date-dropdown(dateDropdown)
 
-      div(class=`${classComp}__dropdown-wrap js-${classComp}__dropdown-wrap`)
+      div(class=`${classComponent}__dropdown-wrap js-${classComponent}__dropdown-wrap`)
         +drop-down(dropDown)
           
-      div(class=`${classComp}__button-wrap js-${classComp}__button-wrap`)
+      div(class=`${classComponent}__button-wrap js-${classComponent}__button-wrap`)
         +buttons(buttons)

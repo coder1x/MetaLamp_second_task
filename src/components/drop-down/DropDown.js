@@ -6,71 +6,71 @@ class DropDown {
   constructor(className, component) {
     autoBind(this);
     this.className = className;
-    this.elem = component;
+    this.element = component;
     this._init();
   }
 
-  getCheckVal(item) {
-    const minus = this._getElement('__minus', item);
-    const plus = this._getElement('__plus', item);
+  checkValue(item) {
+    const buttonMinus = this._getElement('__minus', item);
+    const buttonPlus = this._getElement('__plus', item);
 
-    const getModify = (str, str2) => this.className.replace(/^\.js-/, '') + str + str2;
+    const getModifier = (selectorElement, modifier) => this.className.replace(/^\.js-/, '') + selectorElement + modifier;
 
-    const classM = getModify('__minus', '_disable');
-    const val = Number(this._getElement('__value', item).innerText);
+    let classWithModifier = getModifier('__minus', '_disable');
+    const value = Number(this._getElement('__value', item).innerText);
 
-    if (!val) {
-      minus.classList.add(classM);
-      minus.disabled = true;
+    if (!value) {
+      buttonMinus.classList.add(classWithModifier);
+      buttonMinus.disabled = true;
     } else {
-      minus.classList.remove(classM);
-      minus.disabled = false;
+      buttonMinus.classList.remove(classWithModifier);
+      buttonMinus.disabled = false;
     }
 
-    const maxVal = Number(plus.getAttribute('data-max'));
-    const classP = getModify('__plus', '_disable');
-    if (val >= maxVal) {
-      plus.classList.add(classP);
-      this._disPlus = true;
-      plus.disabled = true;
+    const maxValue = Number(buttonPlus.getAttribute('data-max'));
+    classWithModifier = getModifier('__plus', '_disable');
+    if (value >= maxValue) {
+      buttonPlus.classList.add(classWithModifier);
+      this._isButtonPlus = true;
+      buttonPlus.disabled = true;
     } else {
-      plus.classList.remove(classP);
-      this._disPlus = false;
-      plus.disabled = false;
+      buttonPlus.classList.remove(classWithModifier);
+      this._isButtonPlus = false;
+      buttonPlus.disabled = false;
     }
   }
 
   resetValue() {
-    if (!this._valueMas || !this._inputEl) return false;
+    if (!this._values || !this._inputElement) return false;
 
-    this._valueMas.forEach((item) => {
-      const span = item;
-      span.innerText = '0';
+    this._values.forEach((item) => {
+      const spanElement = item;
+      spanElement.innerText = '0';
     });
 
-    this._inputEl.value = this.defaultText;
+    this._inputElement.value = this.defaultText;
 
-    if (!this._items || !this._clearBut) return false;
+    if (!this._items || !this._clearButton) return false;
 
-    this._items.map((item) => this.getCheckVal(item));
-    this._toggleModify(this._clearBut, '__button-clear_visible');
+    this._items.map((item) => this.checkValue(item));
+    this._toggleModifier(this._clearButton, '__button-clear_visible');
 
     return true;
   }
 
-  static declOfNum(number, words) {
+  static declineWords(number, words) {
     return words[(number % 100 > 4
       && number % 100 < 20) ? 2
       : [2, 0, 1, 1, 1, 2][(number % 10 < 5)
         ? number % 10 : 5]];
   }
 
-  getMapValue() {
+  getCategories() {
     const fields = new Map();
-    if (Array.isArray(this._valueMas)) {
-      for (let i = 0; i < this._valueMas.length; i += 1) {
+    if (Array.isArray(this._values)) {
+      for (let i = 0; i < this._values.length; i += 1) {
         const typeText = this._declensions[i].join(',');
-        const value = Number(this._valueMas[i].innerText);
+        const value = Number(this._values[i].innerText);
 
         if (fields.has(typeText)) {
           const oldValue = fields.get(typeText);
@@ -86,95 +86,99 @@ class DropDown {
 
   _init() {
     this._declensions = [];
-    this._setDomElem();
-    this._setActions();
-    this._setActionSelect();
+    this._setDomElement();
+    this._bindEvent();
+    this._bindEventSelect();
   }
 
-  _getElements(str, domBase) {
+  _getElements(string, parentElement) {
     return [
-      ...(domBase ?? this.elem).querySelectorAll(this.className + str),
+      ...(parentElement ?? this.element)
+        .querySelectorAll(this.className + string),
     ];
   }
 
-  _getElement(str, domBase) {
-    return (domBase ?? this.elem).querySelector(this.className + str);
+  _getElement(string, parentElement) {
+    return (parentElement ?? this.element)
+      .querySelector(this.className + string);
   }
 
-  _setDomElem() {
-    this._applyClass = this._getElement('__button-apply');
-    this._clearBut = this._getElement('__button-clear');
+  _setDomElement() {
+    this._applyButton = this._getElement('__button-apply');
+    this._clearButton = this._getElement('__button-clear');
     this._items = this._getElements('__select-item');
 
-    this._valueMas = [];
+    this._values = [];
 
     this._items.forEach((item) => {
-      this.getCheckVal(item);
+      this.checkValue(item);
 
-      if (this._valueMas) {
-        this._valueMas.push(this._getElement('__value', item));
+      if (this._values) {
+        this._values.push(this._getElement('__value', item));
       }
       this._readingAttributes(item);
     });
 
-    this._inputEl = this._getElement('__input');
+    this._inputElement = this._getElement('__input');
 
-    this.defaultText = this._inputEl.placeholder;
-    this._selectEl = this._getElement('__select');
-    this._tipImg = this._getElement('__tip');
+    this.defaultText = this._inputElement.placeholder;
+    this._selectElement = this._getElement('__select');
+    this._tipElement = this._getElement('__tip');
   }
 
-  _readingAttributes(elem) {
-    if (elem) {
-      this._declensions.push((elem.getAttribute('data-type') ?? '').split(','));
+  _readingAttributes(element) {
+    if (element) {
+      this._declensions.push(
+        (element.getAttribute('data-type') ?? '').split(','),
+      );
     }
   }
 
   _handleInputMouseup() {
-    this._toggle();
-    this._flClick = false;
+    this._toggleVisibility();
+    this._isClicked = false;
   }
 
   _handleInputMousedown() {
-    this._flClick = true;
+    this._isClicked = true;
   }
 
   _handleInputFocus() {
-    if (!this._flClick) { this._toggle(); }
+    if (!this._isClicked) { this._toggleVisibility(); }
   }
 
   _handleInputKeydown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
-      this._toggle(true);
+      this._toggleVisibility(true);
     } else if (event.key === ' ') {
       event.preventDefault();
-      this._toggle();
+      this._toggleVisibility();
     }
   }
 
   _handleTipClick() {
-    this._toggle();
+    this._toggleVisibility();
   }
 
   _handleSelectKeydown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
-      this._toggle(true);
+      this._toggleVisibility(true);
     }
   }
 
   _handleApplyClick(event) {
     event.preventDefault();
 
-    if (this._inputEl instanceof HTMLInputElement) {
-      const defaultText = this._inputEl.value === this.defaultText;
-      const inputClear = defaultText || !this._inputEl.value;
+    if (this._inputElement instanceof HTMLInputElement) {
+      const defaultText = this._inputElement.value === this.defaultText;
+      const isInputClear = defaultText || !this._inputElement.value;
 
-      if (inputClear) {
+      if (isInputClear) {
         message('Выберите количество гостей.');
       } else {
-        this._toggle();
+        this._toggleVisibility();
       }
     }
   }
@@ -187,62 +191,68 @@ class DropDown {
   _handleDocumentEvent(event) {
     const { target } = event;
 
-    if (target.closest(this.className) !== this.elem) {
-      this._toggle(true);
+    if (target.closest(this.className) !== this.element) {
+      this._toggleVisibility(true);
     }
   }
 
-  _setActions() {
-    if (!this._inputEl || !this._tipImg) return false;
+  _bindEvent() {
+    if (!this._inputElement || !this._tipElement) return false;
 
-    this._inputEl.addEventListener('mouseup', this._handleInputMouseup);
-    this._inputEl.addEventListener('mousedown', this._handleInputMousedown);
-    this._inputEl.addEventListener('focus', this._handleInputFocus);
-    this._inputEl.addEventListener('keydown', this._handleInputKeydown);
-    this._tipImg.addEventListener('click', this._handleTipClick);
+    this._inputElement.addEventListener('mouseup', this._handleInputMouseup);
+    this._inputElement.addEventListener(
+      'mousedown',
+      this._handleInputMousedown,
+    );
+    this._inputElement.addEventListener('focus', this._handleInputFocus);
+    this._inputElement.addEventListener('keydown', this._handleInputKeydown);
+    this._tipElement.addEventListener('click', this._handleTipClick);
 
-    if (this._selectEl) {
-      this._selectEl.addEventListener('keydown', this._handleSelectKeydown);
+    if (this._selectElement) {
+      this._selectElement.addEventListener(
+        'keydown',
+        this._handleSelectKeydown,
+      );
     }
 
-    if (this._applyClass) {
-      this._applyClass.addEventListener('click', this._handleApplyClick);
+    if (this._applyButton) {
+      this._applyButton.addEventListener('click', this._handleApplyClick);
     }
 
-    if (this._clearBut) {
-      this._clearBut.addEventListener('click', this._handleClearClick);
+    if (this._clearButton) {
+      this._clearButton.addEventListener('click', this._handleClearClick);
     }
 
-    const eventDoc = (event) => {
+    const _bindEventDocument = (event) => {
       document.addEventListener(event, this._handleDocumentEvent);
     };
 
-    eventDoc('click');
-    eventDoc('focusin');
+    _bindEventDocument('click');
+    _bindEventDocument('focusin');
 
     return true;
   }
 
-  static _getVisible(elem) {
-    return window.getComputedStyle(elem, null)
+  static _getVisibility(element) {
+    return window.getComputedStyle(element, null)
       .getPropertyValue('display') !== 'none';
   }
 
-  _toggle(flag = false) {
-    if (!this._selectEl) return;
+  _toggleVisibility(isVisible = false) {
+    if (!this._selectElement) return;
 
-    this._toggleModify(
-      this.elem,
+    this._toggleModifier(
+      this.element,
       '_visible',
-      !DropDown._getVisible(this._selectEl) && !flag,
+      !DropDown._getVisibility(this._selectElement) && !isVisible,
     );
   }
 
-  _toggleModify(elem, modify, flag = false) {
-    const clearName = this.className.replace(/^\.js-/, '') + modify;
-    const { classList } = elem;
+  _toggleModifier(element, modifier, isVisible = false) {
+    const clearName = this.className.replace(/^\.js-/, '') + modifier;
+    const { classList } = element;
 
-    if (flag) {
+    if (isVisible) {
       classList.add(clearName);
     } else {
       classList.remove(clearName);
@@ -253,25 +263,25 @@ class DropDown {
     event.preventDefault();
 
     const { target } = event;
-    const liEl = event.currentTarget;
+    const spanElement = event.currentTarget;
 
-    const valueEl = this._getElement('__value', liEl);
-    const minusEl = target.closest(`${this.className}__minus`);
-    const plusEl = target.closest(`${this.className}__plus`);
+    const value = this._getElement('__value', spanElement);
+    const isButtonMinus = target.closest(`${this.className}__minus`);
+    const isButtonPlus = target.closest(`${this.className}__plus`);
 
-    let number = Number(valueEl.innerText);
-    if (minusEl && number) {
+    let number = Number(value.innerText);
+    if (isButtonMinus && number) {
       number -= 1;
-    } else if (plusEl && !this._disPlus) {
+    } else if (isButtonPlus && !this._isButtonPlus) {
       number += 1;
     }
 
-    valueEl.innerText = String(number);
-    this.getCheckVal(liEl);
-    this._setInput();
+    value.innerText = String(number);
+    this.checkValue(spanElement);
+    this._createInputText();
   }
 
-  _setActionSelect() {
+  _bindEventSelect() {
     if (Array.isArray(this._items)) {
       this._items.forEach((item) => {
         item.addEventListener('click', this._handleItemClick);
@@ -279,50 +289,50 @@ class DropDown {
     }
   }
 
-  _setData(visibility, value, placeholder) {
-    if (this._clearBut) {
-      this._toggleModify(
-        this._clearBut,
+  _setInputData(visibility, value, placeholder) {
+    if (this._clearButton) {
+      this._toggleModifier(
+        this._clearButton,
         '__button-clear_visible',
         visibility,
       );
     }
 
-    if (this._inputEl instanceof HTMLInputElement) {
-      this._inputEl.value = value;
-      this._inputEl.placeholder = placeholder;
+    if (this._inputElement instanceof HTMLInputElement) {
+      this._inputElement.value = value;
+      this._inputElement.placeholder = placeholder;
     }
   }
 
-  _setInput() {
+  _createInputText() {
     let text = '';
     const mergeText = (
-      num,
-      strMas,
-      flag = false,
+      value,
+      strings,
+      isMultiString = false,
     ) => {
-      const number = Number(num);
+      const number = Number(value);
       if (!number) return;
 
-      if (!flag) {
-        text += `${number} ${DropDown.declOfNum(number, strMas)}`;
+      if (!isMultiString) {
+        text += `${number} ${DropDown.declineWords(number, strings)}`;
       } else {
         const comma = text ? ', ' : '';
-        text += `${comma + number} ${DropDown.declOfNum(number, strMas)}`;
+        text += `${comma + number} ${DropDown.declineWords(number, strings)}`;
       }
     };
 
-    let lock = false;
+    let isMultiStringLock = false;
 
-    this.getMapValue().forEach((value, key) => {
-      mergeText(value, key.split(','), Boolean(lock));
-      lock = true;
+    this.getCategories().forEach((value, key) => {
+      mergeText(value, key.split(','), Boolean(isMultiStringLock));
+      isMultiStringLock = true;
     });
 
     if (text) {
-      this._setData(true, text, text);
+      this._setInputData(true, text, text);
     } else {
-      this._setData(false, '', this.defaultText);
+      this._setInputData(false, '', this.defaultText);
     }
   }
 }

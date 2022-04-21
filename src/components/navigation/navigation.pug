@@ -1,22 +1,22 @@
 mixin navigation(options)
   -
     const header = options.header ?? ''
-    const masText = options.masText ?? []
-    const modify = options.modify ?? []
+    const strings = options.strings ?? []
+    const modifier = options.modifier ?? []
     const addClass = options.class ?? ''
-    const classComp = 'navigation'
-    let className = classComp
-    if(modify){
-      for(let item of modify)
-    className += ` ${classComp}_${item}` 
+    const classComponent = 'navigation'
+    let className = classComponent
+    if(modifier){
+      for(let item of modifier)
+    className += ` ${classComponent}_${item}` 
     }
     if(addClass){
     className += ` ${addClass}`}
     
   div(class=className)
-    ul(class=`${classComp}__items` role='navigation')
-      lh(class=`${classComp}__header`)= header
-      -for(let i=0; i<masText.length; i++){
-      li(class=`${classComp}__item`)
-        a(class=`${classComp}__link` href='https://change-me')= masText[i]
+    ul(class=`${classComponent}__items` role='navigation')
+      lh(class=`${classComponent}__header`)= header
+      -for(let i=0; i<strings.length; i++){
+      li(class=`${classComponent}__item`)
+        a(class=`${classComponent}__link` href='https://change-me')= strings[i]
       -}

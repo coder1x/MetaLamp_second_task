@@ -12,16 +12,16 @@ class SubscriptionTextField {
     this.input = wrapper.querySelector('input');
 
     this.link = wrapper.querySelector(`${className}__link`);
-    this._valid = new ValidationEmail({
-      elem: this.input,
+    this._validationEmail = new ValidationEmail({
+      element: this.input,
     });
 
-    this._setActions();
+    this._bindEvent();
   }
 
-  _validEmail() {
-    if (this._valid) {
-      if (this._valid.validation()) {
+  _checkEmail() {
+    if (this._validationEmail) {
+      if (this._validationEmail.validateField()) {
         message('Вы оформили подписку.');
       } else {
         message('Вы ввели неверный Email.');
@@ -29,18 +29,20 @@ class SubscriptionTextField {
     }
   }
 
-  _handleDomKeydown(event) {
-    if (event.key === 'Enter') { this._validEmail(); }
+  _handleInputKeydown(event) {
+    if (event.key === 'Enter') {
+      this._checkEmail();
+    }
   }
 
   _handleLinkClick() {
-    this._validEmail();
+    this._checkEmail();
   }
 
-  _setActions() {
+  _bindEvent() {
     if (!this.input || !this.link) return false;
 
-    this.input.addEventListener('keydown', this._handleDomKeydown);
+    this.input.addEventListener('keydown', this._handleInputKeydown);
     this.link.addEventListener('click', this._handleLinkClick);
 
     return true;

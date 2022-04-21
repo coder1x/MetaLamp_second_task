@@ -2,23 +2,23 @@ mixin subscrip-textfield(options)
   -
     const label = options.label ?? ''
     const value = options.value ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'subscrip-textfield'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const isLabeled = options.isLabeled
+    const classComponent = 'subscrip-textfield'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  div(class=`${className} js-${classComp}`)
-    div(class=`${classComp}__wrap`)
-      if !flLabel
-        p(class=`${classComp}__label-text`)= label
+  div(class=`${className} js-${classComponent}`)
+    div(class=`${classComponent}__wrap`)
+      if !isLabeled
+        p(class=`${classComponent}__label-text`)= label
 
-      label(class=`${classComp}__label`)
-        input(class=`${classComp}__input` type='text' placeholder=value value='' name='subscrip')
+      label(class=`${classComponent}__label`)
+        input(class=`${classComponent}__input` type='text' placeholder=value value='' name='subscrip')
         
-      button(class=`${classComp}__link js-${classComp}__link` aria-label='подписаться' title='подписаться')
-        img(class=`${classComp}__tip` src=require('@com/subscrip-textfield/img/arrow-forward.svg').default alt='стрелка - подписаться')
+      button(class=`${classComponent}__link js-${classComponent}__link` aria-label='подписаться' title='подписаться')
+        img(class=`${classComponent}__tip` src=require('@com/subscrip-textfield/img/arrow-forward.svg').default alt='стрелка - подписаться')

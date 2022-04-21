@@ -4,11 +4,11 @@ include ../buttons/buttons.pug
 mixin sign-in(options)
   -
     const header = options.header ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'sign-in'
-    let className = classComp
+    const isLabeled = options.isLabeled
+    const classComponent = 'sign-in'
+    let className = classComponent
 
     const path = require('path').resolve(
     'src/components/sign-in/','sign-in.json'
@@ -18,29 +18,29 @@ mixin sign-in(options)
     const textField = data.textField
     const buttons = data.buttons
 
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  article(class=`${className} js-${classComp}`)
-    - if(!flLabel){
-    header(class=`${classComp}__header-wrap`)
-      h1(class=`${classComp}__header`)= header
+  article(class=`${className} js-${classComponent}`)
+    - if(!isLabeled){
+    header(class=`${classComponent}__header-wrap`)
+      h1(class=`${classComponent}__header`)= header
     -}
 
-    form(class=`${classComp}__form` action='' method='post')
-      fieldset(class=`${classComp}__authorization`)
+    form(class=`${classComponent}__form` action='' method='post')
+      fieldset(class=`${classComponent}__authorization`)
 
-        div(class=`${classComp}__email-wrap js-${classComp}__email-wrap`)
+        div(class=`${classComponent}__email-wrap js-${classComponent}__email-wrap`)
           +text-field(textField.email)
 
-        div(class=`${classComp}__pass-wrap js-${classComp}__pass-wrap`)
+        div(class=`${classComponent}__pass-wrap js-${classComponent}__pass-wrap`)
           +text-field(textField.password)
 
-        div(class=`${classComp}__button-wrap js-${classComp}__button-wrap`)
+        div(class=`${classComponent}__button-wrap js-${classComponent}__button-wrap`)
           +buttons(buttons.submit)
           
-      div(class=`${classComp}__registration-wrap`)
-        p(class=`${classComp}__text-reg`) Нет аккаунта на Toxin ?
+      div(class=`${classComponent}__registration-wrap`)
+        p(class=`${classComponent}__text-reg`) Нет аккаунта на Toxin ?
         +buttons(buttons.link)

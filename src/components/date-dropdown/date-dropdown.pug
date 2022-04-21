@@ -4,53 +4,53 @@ mixin date-dropdown(options)
   -
     const label = options.label ?? ''
     const value = options.value ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
+    const isLabeled = options.isLabeled
     const filter = options.filter
-    const classComp = 'date-dropdown'
-    let className = classComp
+    const classComponent = 'date-dropdown'
+    let className = classComponent
 
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  div(class=`${className} js-${classComp}`)
+  div(class=`${className} js-${classComponent}`)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
-      div(class=`${classComp}__date-wrap`)
+      div(class=`${classComponent}__date-wrap`)
 
-        - if(!flLabel){
-        p(class=`${classComp}__label-text`)= label[i]
+        - if(!isLabeled){
+        p(class=`${classComponent}__label-text`)= label[i]
         -}
 
-        label(class=`${classComp}__label`)
+        label(class=`${classComponent}__label`)
 
           -if(filter){
-            input(class=`${classComp}__input js-${classComp}__input` type='text' placeholder=''  autocomplete='off')
-            input(class=`${classComp}__input-hidden js-${classComp}__input-hidden` type='hidden' value=value name='date-filter')
+            input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder=''  autocomplete='off')
+            input(class=`${classComponent}__input-hidden js-${classComponent}__input-hidden` type='hidden' value=value name='date-filter')
           -}else{
-            input(class=`${classComp}__input js-${classComp}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
+            input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
           -}
           
-          img(class=`${classComp}__tip` src=require('@com/date-dropdown/img/tip.svg').default alt='уголок')
+          img(class=`${classComponent}__tip` src=require('@com/date-dropdown/img/tip.svg').default alt='уголок')
     -}
 
-    div(class=`${classComp}__datepicker-wrap js-${classComp}__datepicker-wrap`)
-      div(class=`${classComp}__datepicker js-${classComp}__datepicker`)
-      div(class=`${classComp}__datepicker-buttons`)
+    div(class=`${classComponent}__datepicker-wrap js-${classComponent}__datepicker-wrap`)
+      div(class=`${classComponent}__datepicker js-${classComponent}__datepicker`)
+      div(class=`${classComponent}__datepicker-buttons`)
       
-        div(class=`${classComp}__clear js-${classComp}__clear`)
+        div(class=`${classComponent}__clear js-${classComponent}__clear`)
           +buttons({
             text:'очистить',
             type:'button',
-            modify:['text']
+            modifier:['text']
           })
 
-        div(class=`${classComp}__apply js-${classComp}__apply`)
+        div(class=`${classComponent}__apply js-${classComponent}__apply`)
           +buttons({
             text:'применить',
             type:'button',
-            modify:['text']
+            modifier:['text']
           })

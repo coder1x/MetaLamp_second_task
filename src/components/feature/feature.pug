@@ -4,19 +4,19 @@ mixin feature(options)
     const src = options.src ?? ''
     const alt = options.alt ?? ''
     const text = options.text ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const classComp = 'feature'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const classComponent = 'feature'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
   div(class=className)
-    div(class=`${classComp}__wrap-icon`)
-      img(class=`${classComp}__icon` src=require('@com/feature/img/'+src).default alt=alt)
+    div(class=`${classComponent}__wrap-icon`)
+      img(class=`${classComponent}__icon` src=require('@com/feature/img/'+src).default alt=alt)
       
-    div(class=`${classComp}__description`)
-      span(class=`${classComp}__header`)=header
-      p(class=`${classComp}__text`)=text
+    div(class=`${classComponent}__description`)
+      span(class=`${classComponent}__header`)=header
+      p(class=`${classComponent}__text`)=text

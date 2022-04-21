@@ -18,7 +18,7 @@
       "text": "Войти",
       "link": "https://change-me",
       "type": "link",
-      "modify": [
+      "modifier": [
         "link-border",
         "header"
       ]
@@ -27,7 +27,7 @@
       "text": "зарегистрироваться",
       "link": "https://change-me",
       "type": "link",
-      "modify": [
+      "modifier": [
         "link",
         "header"
       ]

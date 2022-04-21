@@ -1,11 +1,11 @@
 import Slider from './Slider.js';
 
 function renderSlider(className) {
-  const objMas = [];
-  document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new Slider(className, elem));
+  const components = [];
+  document.querySelectorAll(className).forEach((element) => {
+    components.push(new Slider(className, element));
   });
-  return objMas;
+  return components;
 }
 
 renderSlider('.js-room-card');

@@ -1,30 +1,30 @@
 mixin pagination(options)
   -
     const label = options.label ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'pagination'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const isLabeled = options.isLabeled
+    const classComponent = 'pagination'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
   div(class=className)
-    - if(!flLabel){
-    p(class=`${classComp}__header`)= label
+    - if(!isLabeled){
+    p(class=`${classComponent}__header`)= label
     -}
     
-    div(class=`${classComp}__links`)
-      //- a(class=`${classComp}__prev` href='https://change-me' aria-label='пагинация страницы - стрелка назад' title='предыдущая страница')
-      //-   img(class=`${classComp}__prev-img` src='assets/images/pagination/img/arrow-forward.svg', alt='prev')
-      span(class=`${classComp}__current`) 1
-      a(class=`${classComp}__page-numbers` href='https://change-me' aria-label='пагинация страницы 2') 2
-      a(class=`${classComp}__page-numbers` href='https://change-me' aria-label='пагинация страницы 3') 3
-      span(class=`${classComp}__dots`) ...
-      a(class=`${classComp}__page-numbers` href='https://change-me' aria-label='пагинация страницы 15') 15
-      a(class=`${classComp}__next` href='https://change-me' aria-label='пагинация страницы - стрелка дальше' title='следующая страница')
-        img(class=`${classComp}__next-img` src=require('@com/pagination/img/arrow-forward.svg').default, alt='next')
-    p(class=`${classComp}__text`) 1 – 12 из 100+ вариантов аренды
+    div(class=`${classComponent}__links`)
+      //- a(class=`${classComponent}__prev` href='https://change-me' aria-label='пагинация страницы - стрелка назад' title='предыдущая страница')
+      //-   img(class=`${classComponent}__prev-img` src='assets/images/pagination/img/arrow-forward.svg', alt='prev')
+      span(class=`${classComponent}__current`) 1
+      a(class=`${classComponent}__page-numbers` href='https://change-me' aria-label='пагинация страницы 2') 2
+      a(class=`${classComponent}__page-numbers` href='https://change-me' aria-label='пагинация страницы 3') 3
+      span(class=`${classComponent}__dots`) ...
+      a(class=`${classComponent}__page-numbers` href='https://change-me' aria-label='пагинация страницы 15') 15
+      a(class=`${classComponent}__next` href='https://change-me' aria-label='пагинация страницы - стрелка дальше' title='следующая страница')
+        img(class=`${classComponent}__next-img` src=require('@com/pagination/img/arrow-forward.svg').default, alt='next')
+    p(class=`${classComponent}__text`) 1 – 12 из 100+ вариантов аренды
     

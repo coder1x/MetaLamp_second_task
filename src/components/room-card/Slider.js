@@ -2,63 +2,63 @@ import autoBind from 'auto-bind';
 import './room-card.scss';
 
 class Slider {
-  constructor(className, elem) {
+  constructor(className, element) {
     autoBind(this);
     this.className = className;
-    this.elem = elem;
+    this.element = element;
     this._init();
   }
 
-  getElement(str) {
-    return this.elem.querySelector(`${this.className}__${str}-wrap`);
+  getElement(string) {
+    return this.element.querySelector(`${this.className}__${string}-wrap`);
   }
 
   setVisible(index) {
-    const delay = Number(new Date()) - this._timeS > 150;
+    const delay = Number(new Date()) - this._timePress > 150;
 
-    if (delay && Array.isArray(this._slidesEl)) {
-      this._toggle(this._slidesEl[this._indexS], true);
-      this._indexS = index;
-      this._toggle(this._slidesEl[index]);
+    if (delay && Array.isArray(this._slidesElement)) {
+      this._toggle(this._slidesElement[this._indexSlide], true);
+      this._indexSlide = index;
+      this._toggle(this._slidesElement[index]);
       this._paintDot();
     }
   }
 
   _init() {
-    this._indexS = 0;
+    this._indexSlide = 0;
     this._indexDot = 0;
-    this._flagSwipe = false;
-    this._swipe = false;
-    this._timeS = 0;
+    this._isSwipedMove = false;
+    this._isSwipe = false;
+    this._timePress = 0;
 
-    this._setDom();
+    this._setDomElement();
     this._createDot();
     this._paintDot();
-    this._setAction();
-    this._setActionSwipe();
+    this._bindEvent();
+    this._bindEventSwipe();
   }
 
-  _setDom() {
-    this._slidesEl = [
-      ...this.elem.querySelectorAll(`${this.className}__slide`),
+  _setDomElement() {
+    this._slidesElement = [
+      ...this.element.querySelectorAll(`${this.className}__slide`),
     ];
-    this._dotEl = this.getElement('dot');
-    this._prevEl = this.getElement('prev');
-    this._nextEl = this.getElement('next');
+    this._dotElement = this.getElement('dot');
+    this._prevElement = this.getElement('prev');
+    this._nextElement = this.getElement('next');
     this._sliderWrap = this.getElement('slider');
-    this._linkSlide = this.elem.querySelector(`${this.className}__link`);
+    this._linkSlide = this.element.querySelector(`${this.className}__link`);
   }
 
-  _toggle(slide, flag = false) {
+  _toggle(slide, isVisible = false) {
     const prefix = '__slide_visible';
-    const clearName = `${this.className.replace(/^\.js-/, '')}${prefix}`;
+    const selector = `${this.className.replace(/^\.js-/, '')}${prefix}`;
 
     const { classList } = slide;
 
-    if (!flag) {
-      classList.add(clearName);
+    if (!isVisible) {
+      classList.add(selector);
     } else {
-      classList.remove(clearName);
+      classList.remove(selector);
     }
   }
 
@@ -66,140 +66,132 @@ class Slider {
     const dotSelector = `${this.className}__dot`;
     let modifier = `${dotSelector}_paint`;
     modifier = modifier.replace(/^\.js-/, '');
-    const dots = this.elem.querySelectorAll(dotSelector);
+    const dots = this.element.querySelectorAll(dotSelector);
 
-    let objClass = dots[this._indexDot].classList;
-    objClass.remove(modifier);
+    let classListDot = dots[this._indexDot].classList;
+    classListDot.remove(modifier);
 
-    objClass = dots[this._indexS].classList;
-    objClass.add(modifier);
-    this._indexDot = this._indexS;
+    classListDot = dots[this._indexSlide].classList;
+    classListDot.add(modifier);
+    this._indexDot = this._indexSlide;
   }
 
   _createDot() {
     const dotSelector = `${this.className.replace(/^\./, '')}__dot`;
 
-    if (Array.isArray(this._slidesEl)) {
-      for (let i = 0; i < this._slidesEl.length; i += 1) {
+    if (Array.isArray(this._slidesElement)) {
+      for (let i = 0; i < this._slidesElement.length; i += 1) {
         const dot = document.createElement('span');
 
         dot.classList.add(dotSelector.replace(/^js-/, ''));
         dot.classList.add(dotSelector);
         dot.setAttribute('data-index', String(i));
 
-        if (this._dotEl) this._dotEl.appendChild(dot);
+        if (this._dotElement) this._dotElement.appendChild(dot);
       }
     }
   }
 
   _handlePrevClick() {
-    if (this._indexS > 0) {
-      this.setVisible(this._indexS - 1);
-    } else if (Array.isArray(this._slidesEl)) {
-      this.setVisible(this._slidesEl.length - 1);
+    if (this._indexSlide > 0) {
+      this.setVisible(this._indexSlide - 1);
+    } else if (Array.isArray(this._slidesElement)) {
+      this.setVisible(this._slidesElement.length - 1);
     }
-    this._timeS = Number(new Date());
+    this._timePress = Number(new Date());
   }
 
   _handleNextClick() {
-    if (!Array.isArray(this._slidesEl)) return false;
+    if (!Array.isArray(this._slidesElement)) return false;
 
-    const length = this._slidesEl.length - 1;
-    if (this._indexS < length) {
-      this.setVisible(this._indexS + 1);
+    const length = this._slidesElement.length - 1;
+    if (this._indexSlide < length) {
+      this.setVisible(this._indexSlide + 1);
     } else {
       this.setVisible(0);
     }
-    this._timeS = Number(new Date());
+    this._timePress = Number(new Date());
     return true;
   }
 
   _handleLinkSlideClick(event) {
-    if (this._flagSwipe) {
+    if (this._isSwipedMove) {
       event.preventDefault();
     }
-    this._flagSwipe = false;
+    this._isSwipedMove = false;
   }
 
   _handleDotClick(event) {
     const { target } = event;
     const index = Number(target.getAttribute('data-index'));
 
-    if (this._indexS !== index && !Number.isNaN(index)) {
+    if (this._indexSlide !== index && !Number.isNaN(index)) {
       this.setVisible(index);
     }
   }
 
-  _setAction() {
-    if (!this._prevEl || !this._nextEl) return false;
+  _bindEvent() {
+    if (!this._prevElement || !this._nextElement) return false;
 
-    this._prevEl.addEventListener('click', this._handlePrevClick);
-    this._nextEl.addEventListener('click', this._handleNextClick);
+    this._prevElement.addEventListener('click', this._handlePrevClick);
+    this._nextElement.addEventListener('click', this._handleNextClick);
 
-    if (!this._linkSlide || !this._dotEl) return false;
+    if (!this._linkSlide || !this._dotElement) return false;
 
     this._linkSlide.addEventListener('click', this._handleLinkSlideClick);
-    this._dotEl.addEventListener('click', this._handleDotClick);
+    this._dotElement.addEventListener('click', this._handleDotClick);
 
     return true;
   }
 
-  static _getCoordinatesXY(ev) {
-    const eventT = ev;
-    const eventM = ev;
-
-    if (eventT instanceof TouchEvent) {
-      if (ev.type === 'touchstart' || ev.type === 'touchmove') {
-        return [eventT.touches[0].clientX, eventT.touches[0].clientY];
-      }
+  static _getCoordinatesXY(event) {
+    if (event.type === 'touchstart' || event.type === 'touchmove') {
+      return [event.touches[0].clientX, event.touches[0].clientY];
     }
 
-    if (eventM instanceof MouseEvent) {
-      if (ev.type === 'mousedown' || ev.type === 'mousemove') {
-        return [eventM.clientX, eventM.clientY];
-      }
+    if (event.type === 'mousedown' || event.type === 'mousemove') {
+      return [event.clientX, event.clientY];
     }
-
     return [];
   }
 
-  _swipeMove(xyDiff) {
-    if (xyDiff[0] > 0) {
-      this._nextEl.click();
+  _swipeDirection(deltaXY) {
+    if (deltaXY[0] > 0) {
+      this._nextElement.click();
     } else {
-      this._prevEl.click();
+      this._prevElement.click();
     }
-    this._flagSwipe = true;
+    this._isSwipedMove = true;
   }
 
-  _setActionSwipe() {
+  _bindEventSwipe() {
     let xyDown = [];
     this._linkSlide.addEventListener('focus', () => {
-      if (this._swipe) {
+      if (this._isSwipe) {
         this._linkSlide.blur();
       }
-      this._swipe = false;
+      this._isSwipe = false;
     });
 
     const handleSwipeStart = (event) => {
-      this._swipe = true;
+      this._isSwipe = true;
       xyDown = Slider._getCoordinatesXY(event);
     };
 
-    const handleSwipeMove = (ev) => {
+    const handleSwipeMove = (event) => {
       if (!xyDown) {
         return;
       }
 
-      const touchmove = ev.type === 'touchmove';
-      const mousemove = ev.type === 'mousemove';
+      const touchmove = event.type === 'touchmove';
+      const mousemove = event.type === 'mousemove';
 
-      if (touchmove || (mousemove && ev.buttons === 1)) {
-        const xyUp = Slider._getCoordinatesXY(ev);
+      if (touchmove || (mousemove && event.buttons === 1)) {
+        const xyUp = Slider._getCoordinatesXY(event);
 
         if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
-          if (Number(new Date()) - this._timeS > 200) {
-            this._swipeMove([
+          if (Number(new Date()) - this._timePress > 200) {
+            this._swipeDirection([
               xyDown[0] - xyUp[0],
               xyDown[1] - xyUp[1],
             ]);

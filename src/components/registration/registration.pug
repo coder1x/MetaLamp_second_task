@@ -6,11 +6,11 @@ include ../buttons/buttons.pug
 mixin registration(options)
   -
     const header = options.header ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'registration'
-    let className = classComp
+    const isLabeled = options.isLabeled
+    const classComponent = 'registration'
+    let className = classComponent
 
     const path = require('path').resolve(
     'src/components/registration/','registration.json'
@@ -21,49 +21,49 @@ mixin registration(options)
     const toggleButtons = data.toggleButtons
     const buttons = data.buttons
 
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  article(class=`${className} js-${classComp}`)
-    - if(!flLabel){
-    header(class=`${classComp}__header-wrap`)
-      h1(class=`${classComp}__header`)= header
+  article(class=`${className} js-${classComponent}`)
+    - if(!isLabeled){
+    header(class=`${classComponent}__header-wrap`)
+      h1(class=`${classComponent}__header`)= header
     -}
 
-    form(class=`${classComp}__form` action='' method='post')
-      fieldset(class=`${classComp}__full-name`)
+    form(class=`${classComponent}__form` action='' method='post')
+      fieldset(class=`${classComponent}__full-name`)
 
-        div(class=`${classComp}__name-wrap js-${classComp}__name-wrap`)
+        div(class=`${classComponent}__name-wrap js-${classComponent}__name-wrap`)
           +text-field(textField.name)
 
-        div(class=`${classComp}__surname-wrap js-${classComp}__surname-wrap`)
+        div(class=`${classComponent}__surname-wrap js-${classComponent}__surname-wrap`)
           +text-field(textField.surname)
 
-      div(class=`${classComp}__gender-wrap`)
+      div(class=`${classComponent}__gender-wrap`)
         +radio-buttons({
-          flLabel:true
+          isLabeled:true
         })
 
-      div(class=`${classComp}__date-wrap js-${classComp}__date-wrap`)
+      div(class=`${classComponent}__date-wrap js-${classComponent}__date-wrap`)
           +text-field(textField.date)
 
-      fieldset(class=`${classComp}__identification`)
-        legend(class=`${classComp}__data-text`) данные для входа в сервис
+      fieldset(class=`${classComponent}__identification`)
+        legend(class=`${classComponent}__data-text`) данные для входа в сервис
 
-        div(class=`${classComp}__email-wrap js-${classComp}__email-wrap`)
+        div(class=`${classComponent}__email-wrap js-${classComponent}__email-wrap`)
           +text-field(textField.email)
 
-        div(class=`${classComp}__pass-wrap js-${classComp}__pass-wrap`)
+        div(class=`${classComponent}__pass-wrap js-${classComponent}__pass-wrap`)
           +text-field(textField.password)
 
-      div(class=`${classComp}__toggle-wrap`)
+      div(class=`${classComponent}__toggle-wrap`)
         +toggle-buttons(toggleButtons)
 
-      div(class=`${classComp}__submit-wrap js-${classComp}__submit-wrap`)
+      div(class=`${classComponent}__submit-wrap js-${classComponent}__submit-wrap`)
         +buttons(buttons.submit)
         
-      div(class=`${classComp}__sign-in`)
-        p(class=`${classComp}__sign-in`) Уже есть аккаунт на Toxin
+      div(class=`${classComponent}__sign-in`)
+        p(class=`${classComponent}__sign-in`) Уже есть аккаунт на Toxin
         +buttons(buttons.link)

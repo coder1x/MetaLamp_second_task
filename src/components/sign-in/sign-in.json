@@ -1,13 +1,13 @@
 {
   "textField": {
     "email": {
-      "flLabel": true,
+      "isLabeled": true,
       "placeholder": "Email",
       "type": "email",
       "name": "email"
     },
     "password": {
-      "flLabel": true,
+      "isLabeled": true,
       "placeholder": "Пароль",
       "type": "password",
       "name": "password"
@@ -17,7 +17,7 @@
     "submit": {
       "text": "войти",
       "type": "submit",
-      "modify": [
+      "modifier": [
         "submit"
       ]
     },
@@ -25,7 +25,7 @@
       "text": "Создать",
       "link": "https://change-me",
       "type": "link",
-      "modify": [
+      "modifier": [
         "link-border"
       ]
     }

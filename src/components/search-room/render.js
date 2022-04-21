@@ -1,11 +1,11 @@
 import SearchRoom from './SearchRoom.js';
 
 function renderSearchRoom(className) {
-  const objMas = [];
-  document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new SearchRoom(className, elem));
+  const components = [];
+  document.querySelectorAll(className).forEach((element) => {
+    components.push(new SearchRoom(className, element));
   });
-  return objMas;
+  return components;
 }
 
 renderSearchRoom('.js-search-room');

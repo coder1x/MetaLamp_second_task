@@ -1,6 +1,6 @@
-import './graph.scss';
+import './diagram.scss';
 
-class Graph {
+class Diagram {
   constructor(className) {
     this.className = className;
     this._init();
@@ -14,15 +14,15 @@ class Graph {
       y: this.canvas.height,
     };
 
-    const radiusQ = 180;
+    const radiusGradient = 180;
 
-    const quadrants = [
+    const gradientColor = [
       {
         name: 'excellent',
-        x1: center.x + radiusQ,
+        x1: center.x + radiusGradient,
         y1: center.y,
         x2: center.x,
-        y2: center.y + radiusQ,
+        y2: center.y + radiusGradient,
         colorStops: [
           { stop: 0, color: '#FFE39C' },
           { stop: 1, color: '#FFBA9C' },
@@ -31,8 +31,8 @@ class Graph {
       {
         name: 'good',
         x1: center.x,
-        y1: center.y - radiusQ,
-        x2: center.x + radiusQ,
+        y1: center.y - radiusGradient,
+        x2: center.x + radiusGradient,
         y2: center.y,
         colorStops: [
           { stop: 0, color: '#6FCF97' },
@@ -42,8 +42,8 @@ class Graph {
       {
         name: 'satisfactorily',
         x1: center.x,
-        y1: center.y - radiusQ,
-        x2: center.x + radiusQ,
+        y1: center.y - radiusGradient,
+        x2: center.x + radiusGradient,
         y2: center.y,
         colorStops: [
           { stop: 0, color: '#BC9CFF' },
@@ -52,10 +52,10 @@ class Graph {
       },
       {
         name: 'disappointed',
-        x1: center.x - radiusQ,
+        x1: center.x - radiusGradient,
         y1: center.y,
         x2: center.x,
-        y2: center.y - radiusQ,
+        y2: center.y - radiusGradient,
         colorStops: [
           { stop: 0, color: '#909090' },
           { stop: 1, color: '#3D4975' },
@@ -65,36 +65,36 @@ class Graph {
 
     const color = new Map();
 
-    quadrants.forEach((item) => {
+    gradientColor.forEach((item) => {
       if (this._canvasContext instanceof CanvasRenderingContext2D) {
-        const grad = this._canvasContext.createLinearGradient(
+        const gradient = this._canvasContext.createLinearGradient(
           item.x1,
           item.y1,
           item.x2,
           item.y2,
         );
 
-        item.colorStops.forEach((cs) => {
-          grad.addColorStop(cs.stop, cs.color);
+        item.colorStops.forEach((colorStop) => {
+          gradient.addColorStop(colorStop.stop, colorStop.color);
         });
-        color.set(item.name, grad);
+        color.set(item.name, gradient);
       }
     });
 
     return color;
   }
 
-  getAttr() {
+  getAttribute() {
     const data = [];
-    const getDataNum = (
+    const getDataNumber = (
       elem,
-      attr,
-    ) => Number(elem.getAttribute(attr)) ?? 0;
+      attribute,
+    ) => Number(elem.getAttribute(attribute)) ?? 0;
 
-    const liItems = this._getElements('__colors-item');
-    if (Array.isArray(liItems)) {
-      liItems.forEach((item) => {
-        const number = getDataNum(item, 'date-grade');
+    const listItems = this._getElements('__colors-item');
+    if (Array.isArray(listItems)) {
+      listItems.forEach((item) => {
+        const number = getDataNumber(item, 'date-grade');
         const name = item.getAttribute('date-name');
         if (number) {
           data.push(number);
@@ -109,40 +109,44 @@ class Graph {
 
   _init() {
     this._nameLine = [];
-    if (this._setDom()) {
-      this._buildGraph();
+    if (this._setDomElement()) {
+      this._buildDiagram();
     }
   }
 
-  _getElements(str, domBase) {
-    const dom = domBase ?? this.elem;
-    if (dom) return [...dom.querySelectorAll(`${this.className}${str}`)];
+  _getElements(string, parentElement) {
+    const element = parentElement ?? this.element;
+    if (element) {
+      return [
+        ...element.querySelectorAll(`${this.className}${string}`),
+      ];
+    }
     return null;
   }
 
-  _getElement(str, domBase) {
-    const dom = domBase ?? this.elem;
-    if (!dom) return null;
-    return dom.querySelector(`${this.className}${str}`);
+  _getElement(string, parentElement) {
+    const element = parentElement ?? this.element;
+    if (!element) return null;
+    return element.querySelector(`${this.className}${string}`);
   }
 
-  _setDom() {
-    this.elem = document.querySelector(this.className);
-    if (!this.elem) return false;
+  _setDomElement() {
+    this.element = document.querySelector(this.className);
+    if (!this.element) return false;
 
     this.canvas = this._getElement('__canvas');
     if (this.canvas) { this._canvasContext = this.canvas.getContext('2d'); }
     return true;
   }
 
-  _buildGraph() {
+  _buildDiagram() {
     // ----------------- options ---------------------
     const scaling = 2;
-    const cordX = 60 * scaling;
-    const cordY = 60 * scaling;
+    const coordinatesX = 60 * scaling;
+    const coordinatesY = 60 * scaling;
     const radius = 57 * scaling;
     const space = 0.022;
-    const fontNum = 24 * scaling;
+    const fontSize = 24 * scaling;
     const fontText = 15 * scaling;
 
     if (this._canvasContext instanceof CanvasRenderingContext2D) {
@@ -150,10 +154,10 @@ class Graph {
     }
     // ----------------- end options ------------------
 
-    const vote = this.getAttr();
+    const rating = this.getAttribute();
 
-    const percent = vote.reduce((a, b) => a + b);
-    const ugol = vote.map((item) => Number((item / percent).toFixed(2)));
+    const percent = rating.reduce((a, b) => a + b);
+    const angle = rating.map((item) => Number((item / percent).toFixed(2)));
 
     const color = this.getColors();
 
@@ -162,13 +166,13 @@ class Graph {
     const dot = (Math.PI / 180) * 270;
 
     if (this._canvasContext instanceof CanvasRenderingContext2D) {
-      for (let i = 0; i < ugol.length; i += 1) {
-        endLine = 2 * Math.PI * ugol[i];
+      for (let i = 0; i < angle.length; i += 1) {
+        endLine = 2 * Math.PI * angle[i];
         const start = startLine + dot + space;
         const end = startLine + endLine + dot - space;
 
         this._canvasContext.beginPath();
-        this._canvasContext.arc(cordX, cordY, radius, start, end);
+        this._canvasContext.arc(coordinatesX, coordinatesY, radius, start, end);
 
         if (color) {
           this._canvasContext.strokeStyle = color.get(this._nameLine[i]);
@@ -185,7 +189,7 @@ class Graph {
         this._canvasContext.fillStyle = '#BC9CFF';
         this._canvasContext.textAlign = 'center';
         this._canvasContext.textBaseline = 'middle';
-        this._canvasContext.font = `bold ${fontNum}px Montserrat`;
+        this._canvasContext.font = `bold ${fontSize}px Montserrat`;
         this._canvasContext.fillText(
           String(percent),
           60 * scaling,
@@ -199,4 +203,4 @@ class Graph {
   }
 }
 
-export default Graph;
+export default Diagram;

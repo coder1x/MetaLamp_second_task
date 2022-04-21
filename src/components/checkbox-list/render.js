@@ -1,11 +1,11 @@
 import CheckBoxList from './CheckBoxList.js';
 
 function renderCheckboxList(className) {
-  const objMas = [];
+  const components = [];
   document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new CheckBoxList(className, elem));
+    components.push(new CheckBoxList(className, elem));
   });
-  return objMas;
+  return components;
 }
 
 renderCheckboxList('.js-checkbox-list');

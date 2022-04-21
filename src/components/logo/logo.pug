@@ -1,13 +1,13 @@
 mixin logo(options)
   -
     const link = options.link ?? ''
-    const modify = options.modify ?? []
+    const modifier = options.modifier ?? []
     const addClass = options.class ?? ''
-    const classComp = 'logo'
-    let className = classComp
-    if(modify){
-      for(let item of modify)
-    className += ` ${classComp}_${item}`
+    const classComponent = 'logo'
+    let className = classComponent
+    if(modifier){
+      for(let item of modifier)
+    className += ` ${classComponent}_${item}`
     }
     if(addClass){
     className += ` ${addClass}`}

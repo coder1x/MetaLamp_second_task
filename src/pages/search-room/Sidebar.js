@@ -6,33 +6,33 @@ class Sidebar {
     autoBind(this);
     this.blockClass = options.block;
     this.buttonClass = options.button;
-    this._click = false;
-    this._setDom();
-    this._setActions();
+    this._isClicked = false;
+    this._setDomElement();
+    this._bindEvent();
   }
 
-  _setDom() {
+  _setDomElement() {
     this.button = document.querySelector(this.buttonClass);
     this.block = document.querySelector(this.blockClass);
     this.classVisible = `${this.blockClass.replace(/^\./, '')}_visible`;
   }
 
-  _getVisible() {
+  _getVisibility() {
     if (!this.block) return false;
 
     return window.getComputedStyle(this.block, null)
       .getPropertyValue('display') !== 'none';
   }
 
-  _toggle(flag = this._getVisible()) {
+  _toggle(isVisible = this._getVisibility()) {
     if (!this.block) return false;
 
     const { classList } = this.block;
 
-    if (!flag) {
+    if (!isVisible) {
       classList.add(this.classVisible);
-      const elem = this.block.querySelector('input');
-      if (elem) { elem.focus(); }
+      const element = this.block.querySelector('input');
+      if (element) { element.focus(); }
     } else {
       classList.remove(this.classVisible);
     }
@@ -40,17 +40,17 @@ class Sidebar {
   }
 
   _handleButtonClick(event) {
-    this._click = true;
+    this._isClicked = true;
     this._toggle();
 
-    const dom = event.currentTarget;
-    let expanded = dom.getAttribute('aria-expanded');
+    const domElement = event.currentTarget;
+    let expanded = domElement.getAttribute('aria-expanded');
     expanded = expanded === 'true' ? 'false' : 'true';
-    dom.setAttribute('aria-expanded', expanded);
+    domElement.setAttribute('aria-expanded', expanded);
   }
 
   _handleBlockClick() {
-    this._click = true;
+    this._isClicked = true;
   }
 
   _handleBlockKeydown(event) {
@@ -62,25 +62,25 @@ class Sidebar {
 
   _handleDocumentFocusin(event) {
     const { target } = event;
-    const linkEl = target.closest(this.blockClass);
+    const linkElement = target.closest(this.blockClass);
 
-    if (!linkEl && this._getVisible() && this.button) {
-      const elem = this.button.querySelector('button');
+    if (!linkElement && this._getVisibility() && this.button) {
+      const element = this.button.querySelector('button');
       const path = (event.composedPath && event.composedPath());
 
-      if (!path.includes(elem, 0)) {
+      if (!path.includes(element, 0)) {
         this._toggle();
-        elem.focus();
+        element.focus();
       }
     }
   }
 
   _handleDocumentClick() {
-    if (this._getVisible() && !this._click) { this._toggle(true); }
-    this._click = false;
+    if (this._getVisibility() && !this._isClicked) { this._toggle(true); }
+    this._isClicked = false;
   }
 
-  _setActions() {
+  _bindEvent() {
     if (!this.block || !this.button) return false;
 
     this.button.addEventListener('click', this._handleButtonClick);

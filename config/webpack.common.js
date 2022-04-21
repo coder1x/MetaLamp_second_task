@@ -1,54 +1,54 @@
 const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { merge } = require('webpack-merge');
-const PATHS = require('./paths');
-const FL = require('./filename');
-const DP = require('./isDev');
-const OPT = require('./optimization');
+const paths = require('./paths');
+const fileName = require('./filename');
+const env = require('./isDev');
+const optimization = require('./optimization');
 // eslint-disable-next-line import/extensions
-const devServ = require('./webpack.devServer.js');
+const devServer = require('./webpack.devServer.js');
 
-const demoM = [];
+const points = [];
 
-if (DP.isProd) {
-  demoM.push('./index.js');
+if (env.isProd) {
+  points.push('./index.js');
 } else {
-  demoM.push('webpack/hot/dev-server');
-  demoM.push('./index.js');
+  points.push('webpack/hot/dev-server');
+  points.push('./index.js');
 }
 
 let pubPath;
-if (DP.isAbsPath) pubPath = PATHS.public;
+if (env.isAbsPath) pubPath = paths.public;
 
-module.exports = merge(devServ, {
+module.exports = merge(devServer, {
   target: 'web',
   // devtool: DP.isDev ? 'eval-cheap-module-source-map' : 'source-map', //  (карта для браузеров)
   // devtool: false,
-  devtool: DP.isDev ? 'eval-cheap-module-source-map' : false,
+  devtool: env.isDev ? 'eval-cheap-module-source-map' : false,
 
-  entry: demoM,
+  entry: points,
 
-  context: PATHS.src, // корень исходников
-  mode: DP.isDev ? 'development' : 'production',
+  context: paths.src, // корень исходников
+  mode: env.isDev ? 'development' : 'production',
   output: {
-    filename: FL.filename('js'),
-    path: PATHS.dist, // каталог в который будет выгружаться сборка.
+    filename: fileName.filename('js'),
+    path: paths.dist, // каталог в который будет выгружаться сборка.
     publicPath: pubPath,
   },
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
     alias: {
-      '@plugins': path.join(PATHS.src, 'plugins'),
-      '@styles': path.join(PATHS.src, PATHS.assets, 'styles'),
-      '@typescript': path.join(PATHS.src, PATHS.assets, 'ts'),
-      '@img': path.join(PATHS.src, 'images'),
-      '@pag': path.join(PATHS.src, 'pages'),
-      '@com': path.join(PATHS.src, 'components'),
-      '@': PATHS.src,
-      comp: PATHS.components,
+      '@plugins': path.join(paths.src, 'plugins'),
+      '@styles': path.join(paths.src, paths.assets, 'styles'),
+      '@typescript': path.join(paths.src, paths.assets, 'ts'),
+      '@img': path.join(paths.src, 'images'),
+      '@pag': path.join(paths.src, 'pages'),
+      '@com': path.join(paths.src, 'components'),
+      '@': paths.src,
+      comp: paths.components,
     },
   },
 
-  optimization: OPT.optimization(), // минификация и оптимизация файлов на выходе  (если это Продакшен)
+  optimization: optimization.optimization(), // минификация и оптимизация файлов на выходе  (если это Продакшен)
 });

@@ -1,11 +1,11 @@
 import HeaderMenu from './HeaderMenu.js';
 
 function renderHeaderMenu(className) {
-  const objMas = [];
+  const components = [];
   document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new HeaderMenu(className, elem));
+    components.push(new HeaderMenu(className, elem));
   });
-  return objMas;
+  return components;
 }
 
 renderHeaderMenu('.js-header');

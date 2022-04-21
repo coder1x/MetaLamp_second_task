@@ -5,27 +5,27 @@ mixin comment(options)
     const name = options.name ?? ''
     const date = options.date ?? ''
     const message = options.message ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const classComp = 'comment'
-    let className = classComp
+    const classComponent = 'comment'
+    let className = classComponent
     
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
   article(class=className)
   
-    div(class=`${classComp}__avatar-wrap`)
-      figure(class=`${classComp}__author`)
-        img(class=`${classComp}__avatar` src=require('@com/comment/img/'+src).default, alt=name)
-      div(class=`${classComp}__like-wrap`)
-        +like-button({flLabel:true})
+    div(class=`${classComponent}__avatar-wrap`)
+      figure(class=`${classComponent}__author`)
+        img(class=`${classComponent}__avatar` src=require('@com/comment/img/'+src).default, alt=name)
+      div(class=`${classComponent}__like-wrap`)
+        +like-button({isLabeled:true})
 
-    div(class=`${classComp}__message-wrap`)
-      header(class=`${classComp}__header-wrap`)
-        a(class=`${classComp}__name` href='https://change-me')= name
-        p(class=`${classComp}__date`)= date
-      p(class=`${classComp}__message`)= message
+    div(class=`${classComponent}__message-wrap`)
+      header(class=`${classComponent}__header-wrap`)
+        a(class=`${classComponent}__name` href='https://change-me')= name
+        p(class=`${classComponent}__date`)= date
+      p(class=`${classComponent}__message`)= message
       

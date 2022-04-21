@@ -1,11 +1,11 @@
 mixin logo-group(options)
   -
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const classComp = 'logo-group'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const classComponent = 'logo-group'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
     

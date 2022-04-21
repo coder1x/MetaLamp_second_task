@@ -1,21 +1,21 @@
 mixin like-button(options)
   -
     const label = options.label ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const classComp = 'like-button'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const isLabeled = options.isLabeled
+    const classComponent = 'like-button'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
 
-  div(class=`${className} js-${classComp}`)
-    - if(!flLabel){
-    p(class=`${classComp}__header`)= label
+  div(class=`${className} js-${classComponent}`)
+    - if(!isLabeled){
+    p(class=`${classComponent}__header`)= label
     -}
     
-    button(class=`${classComp}__like js-${classComp}__like` aria-label='поставить лайк')
-      span(class=`${classComp}__icon js-${classComp}__icon`) heart
-      span(class=`${classComp}__value js-${classComp}__value`) 2
+    button(class=`${classComponent}__like js-${classComponent}__like` aria-label='поставить лайк')
+      span(class=`${classComponent}__icon js-${classComponent}__icon`) heart
+      span(class=`${classComponent}__value js-${classComponent}__value`) 2

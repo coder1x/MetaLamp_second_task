@@ -7,7 +7,7 @@
   "navigation": {
     "different": {
       "header": "навигация",
-      "masText": [
+      "strings": [
         "О нас",
         "Новости",
         "Служба поддержки",
@@ -16,7 +16,7 @@
     },
     "about": {
       "header": "о нас",
-      "masText": [
+      "strings": [
         "О сервисе",
         "Наша команда",
         "Вакансии",
@@ -25,7 +25,7 @@
     },
     "support": {
       "header": "Служба поддержки",
-      "masText": [
+      "strings": [
         "Соглашения",
         "Сообщества",
         "Связь с нами"
@@ -33,7 +33,7 @@
     }
   },
   "subscrip": {
-    "flLabel": true,
+    "isLabeled": true,
     "value": "Email"
   }
 }

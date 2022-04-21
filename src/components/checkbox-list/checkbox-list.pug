@@ -1,35 +1,35 @@
 mixin checkbox-list(options)
   -
-    const masWord = options.masWord ?? []
-    const masText = options.masText ?? []
+    const words = options.words ?? []
+    const strings = options.strings ?? []
     const legend = options.legend ?? ''
-    const modify = options.modify ?? ''
+    const modifier = options.modifier ?? ''
     const addClass = options.class ?? ''
-    const flLabel = options.flLabel
-    const click = options.click
-    const classComp = 'checkbox-list'
-    let className = classComp
-    if(modify){
-    className += ` ${classComp}_${modify}`}
+    const isLabeled = options.isLabeled
+    const isClicked = options.isClicked
+    const classComponent = 'checkbox-list'
+    let className = classComponent
+    if(modifier){
+    className += ` ${classComponent}_${modifier}`}
     if(addClass){
     className += ` ${addClass}`}
     
-  div(class=`${className} js-${classComp}`)
-    fieldset(class=`${classComp}__items`)
+  div(class=`${className} js-${classComponent}`)
+    fieldset(class=`${classComponent}__items`)
 
-      -if(!flLabel){
-        -if(!click){
-          legend(class=`${classComp}__header js-${classComp}__header` tabindex='0' aria-label='раскрывающийся список')= legend
-              img(class=`${classComp}__tip js-${classComp}__tip` src=require('@com/checkbox-list/img/tip.svg').default alt='угалок')
+      -if(!isLabeled){
+        -if(!isClicked){
+          legend(class=`${classComponent}__header js-${classComponent}__header` tabindex='0' aria-label='раскрывающийся список')= legend
+              img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('@com/checkbox-list/img/tip.svg').default alt='угалок')
         -} else {
-          legend(class=`${classComp}__header js-${classComp}__header`)= legend
+          legend(class=`${classComponent}__header js-${classComponent}__header`)= legend
         -}  
       -}
       
-      div(class=`${classComp}__wrap js-${classComp}__wrap`)
-        each value, index in masWord
-          label(class=`${classComp}__label`)= value
-            input(class=`${classComp}__input` type='checkbox' name=value)
-            span(class=`${classComp}__bef`)
-            -if(masText.length)
-              span(class=`${classComp}__text`)=masText[index]
+      div(class=`${classComponent}__wrap js-${classComponent}__wrap`)
+        each value, index in words
+          label(class=`${classComponent}__label`)= value
+            input(class=`${classComponent}__input` type='checkbox' name=value)
+            span(class=`${classComponent}__bef`)
+            -if(strings.length)
+              span(class=`${classComponent}__text`)=strings[index]

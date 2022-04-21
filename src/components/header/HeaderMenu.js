@@ -2,99 +2,101 @@ import autoBind from 'auto-bind';
 import './header.scss';
 
 class HeaderMenu {
-  constructor(className, elem) {
+  constructor(className, element) {
     autoBind(this);
     this.className = className;
-    this.elem = elem;
+    this.element = element;
 
     this._startMenu();
   }
 
-  _getElements(str, domBase) {
+  _getElements(string, parentElement) {
     return [
-      ...(domBase ?? this.elem).querySelectorAll(`${this.className}${str}`),
+      ...(parentElement ?? this.element)
+        .querySelectorAll(`${this.className}${string}`),
     ];
   }
 
-  _getElement(str, domBase) {
-    return (domBase ?? this.elem).querySelector(`${this.className}${str}`);
+  _getElement(string, parentElement) {
+    return (parentElement ?? this.element)
+      .querySelector(`${this.className}${string}`);
   }
 
   closeAll() {
-    if (this._showElem) {
-      if (this._showElem.length) {
-        this._showElem.forEach((elem) => {
-          this._closeUl(elem);
+    if (this._showElement) {
+      if (this._showElement.length) {
+        this._showElement.forEach((element) => {
+          this._closeList(element);
         });
       }
     }
-    this._showElem = [];
+    this._showElement = [];
 
     this._closeTip();
   }
 
   _startMenu() {
-    this._showElem = [];
+    this._showElement = [];
     this._showTip = [];
-    this._setDom();
-    this._setActions();
+    this._setDomElement();
+    this._bindEvent();
   }
 
-  _setDom() {
+  _setDomElement() {
     this._linksDown = this._getElements('__link-down');
     this._items = this._getElements('__items-down');
     this._button = this._getElement('__toggle');
-    this._spanBut = this._getElement('__toggle-line');
+    this._hamburger = this._getElement('__toggle-line');
     this._nav = this._getElement('__menu-wrap');
     this._tip = this._getElements('__tip');
 
-    this._mapLinks = new Map();
+    this._links = new Map();
     for (let i = 0; i < this._linksDown.length; i += 1) {
-      const tt = this._linksDown[i];
-      if (tt instanceof HTMLElement) { this._mapLinks.set(tt, i); }
+      const link = this._linksDown[i];
+      if (link instanceof HTMLElement) { this._links.set(link, i); }
     }
   }
 
-  _getIndex(elem) {
-    if (!this._mapLinks) return null;
-    return this._mapLinks.get(elem);
+  _getIndex(element) {
+    if (!this._links) return null;
+    return this._links.get(element);
   }
 
-  _getModify() {
+  _getModifier() {
     return `${this.className}__items-down_visible`.replace(/^\.js-/, '');
   }
 
-  static _getVisButton(elem) {
-    return window.getComputedStyle(elem, null)
+  static _isButtonVisible(element) {
+    return window.getComputedStyle(element, null)
       .getPropertyValue('visibility') !== 'hidden';
   }
 
-  _rotateTip(elem, flag = false) {
-    const name = (`${this.className}__tip_rotate`).replace(/^\.js-/, '');
-    if (!flag) {
-      elem.classList.remove(name);
+  _rotateTip(element, isRotate = false) {
+    const selector = (`${this.className}__tip_rotate`).replace(/^\.js-/, '');
+    if (!isRotate) {
+      element.classList.remove(selector);
     } else {
-      elem.classList.add(name);
-      if (Array.isArray(this._showTip)) { this._showTip.push(elem); }
+      element.classList.add(selector);
+      if (Array.isArray(this._showTip)) { this._showTip.push(element); }
     }
   }
 
-  _showUl(index) {
+  _showList(index) {
     if (this._button) {
-      if (HeaderMenu._getVisButton(this._button)) return false;
+      if (HeaderMenu._isButtonVisible(this._button)) return false;
     }
 
     this.closeAll();
 
     if (Array.isArray(this._items)) {
-      const elem = this._items[index];
+      const element = this._items[index];
 
       if (Array.isArray(this._tip)) { this._rotateTip(this._tip[index], true); }
-      elem.classList.add(this._getModify());
+      element.classList.add(this._getModifier());
 
-      if (elem instanceof HTMLElement) { this._trackMouse(elem); }
+      if (element instanceof HTMLElement) { this._trackMouse(element); }
 
-      if (Array.isArray(this._showElem)) { this._showElem.push(elem); }
+      if (Array.isArray(this._showElement)) { this._showElement.push(element); }
     }
 
     return true;
@@ -115,51 +117,51 @@ class HeaderMenu {
 
   _handleTrackMouse(event) {
     const domElement = event.relatedTarget;
-    const domEl = domElement.closest(`.${this._getModify()}`) ?? false;
-    if (!domEl) {
-      this._closeUl(event.currentTarget);
+    const isElement = domElement.closest(`.${this._getModifier()}`) ?? false;
+    if (!isElement) {
+      this._closeList(event.currentTarget);
       this._closeTip();
     }
   }
 
-  _trackMouse(elem) { // следим за курсором когда он попадает на список
-    elem.addEventListener('mouseout', this._handleTrackMouse);
+  _trackMouse(element) { // следим за курсором когда он попадает на список
+    element.addEventListener('mouseout', this._handleTrackMouse);
   }
 
-  _closeUl(elem) {
-    elem.classList.remove(this._getModify());
+  _closeList(element) {
+    element.classList.remove(this._getModifier());
   }
 
-  static _getVisible(elem) {
-    return window.getComputedStyle(elem, null)
+  static _getVisible(element) {
+    return window.getComputedStyle(element, null)
       .getPropertyValue('display') !== 'none';
   }
 
-  _setModify(elem, modifier, flag = false) {
-    const clearName = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
-    const { classList } = elem;
+  _setModifier(element, modifier, isVisible = false) {
+    const selector = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
+    const { classList } = element;
 
-    if (!flag) {
-      classList.add(clearName);
+    if (!isVisible) {
+      classList.add(selector);
     } else {
-      classList.remove(clearName);
+      classList.remove(selector);
     }
   }
 
   _toggle() {
-    if (this._nav && this._spanBut) {
+    if (this._nav && this._hamburger) {
       const navVisible = HeaderMenu._getVisible(this._nav);
-      this._setModify(this._nav, 'menu-wrap', navVisible);
-      this._setModify(this._spanBut, 'toggle-line', navVisible);
+      this._setModifier(this._nav, 'menu-wrap', navVisible);
+      this._setModifier(this._hamburger, 'toggle-line', navVisible);
     }
   }
 
   _handleButtonClick(event) {
-    const elem = event.currentTarget;
+    const element = event.currentTarget;
 
-    let expanded = elem.getAttribute('aria-expanded');
+    let expanded = element.getAttribute('aria-expanded');
     expanded = expanded === 'true' ? 'false' : 'true';
-    elem.setAttribute('aria-expanded', expanded);
+    element.setAttribute('aria-expanded', expanded);
     this._toggle();
   }
 
@@ -171,30 +173,30 @@ class HeaderMenu {
   }
 
   _handleMenuMouseover(event) {
-    const elem = event.currentTarget;
+    const element = event.currentTarget;
 
-    const index = this._getIndex(elem);
-    if (index != null) { this._showUl(index); }
+    const index = this._getIndex(element);
+    if (index != null) { this._showList(index); }
   }
 
   _handleMenuKeydown(event) {
     if (event.key === ' ') {
       event.preventDefault();
-      const currentEl = event.currentTarget;
+      const currentElement = event.currentTarget;
 
-      let index = this._getIndex(currentEl);
+      let index = this._getIndex(currentElement);
 
       if (index == null) return false;
 
-      let elem = null;
-      if (Array.isArray(this._items)) { elem = this._items[index]; }
+      let element = null;
+      if (Array.isArray(this._items)) { element = this._items[index]; }
 
-      if (elem) {
-        if (elem.classList.contains(this._getModify())) {
+      if (element) {
+        if (element.classList.contains(this._getModifier())) {
           this.closeAll();
         } else {
-          index = this._getIndex(currentEl);
-          if (index != null) this._showUl(index);
+          index = this._getIndex(currentElement);
+          if (index != null) this._showList(index);
         }
       }
     } else if (event.key === 'Escape') {
@@ -207,8 +209,8 @@ class HeaderMenu {
   _handleDocumentMouse(event) {
     const { target } = event;
 
-    const domEl = target.closest(`.${this._getModify()}`) ?? false;
-    if (!domEl) {
+    const isElement = target.closest(`.${this._getModifier()}`) ?? false;
+    if (!isElement) {
       this.closeAll();
     }
   }
@@ -216,12 +218,14 @@ class HeaderMenu {
   _handleDocumentFocus(event) {
     const { target } = event;
 
-    const linkElement = target.closest(`${this.className}__link-down`) ?? false;
-    const ulElement = target.closest(`.${this._getModify()}`) ?? false;
-    if (!linkElement && !ulElement) { this.closeAll(); }
+    const isLinkElement = target.closest(
+      `${this.className}__link-down`,
+    ) ?? false;
+    const isListElement = target.closest(`.${this._getModifier()}`) ?? false;
+    if (!isLinkElement && !isListElement) { this.closeAll(); }
   }
 
-  _setActions() {
+  _bindEvent() {
     if (!this._button || !this._nav) return false;
 
     this._button.addEventListener('click', this._handleButtonClick);
@@ -230,9 +234,8 @@ class HeaderMenu {
 
     if (Array.isArray(this._linksDown)) {
       this._linksDown.forEach((item) => {
-        const dom = item;
-        dom.addEventListener('mouseover', this._handleMenuMouseover);
-        dom.addEventListener('keydown', this._handleMenuKeydown);
+        item.addEventListener('mouseover', this._handleMenuMouseover);
+        item.addEventListener('keydown', this._handleMenuKeydown);
       });
     }
 

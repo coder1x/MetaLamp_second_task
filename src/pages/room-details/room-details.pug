@@ -1,5 +1,5 @@
 extends ../layout/layout.pug
-include ../../components/graph/graph.pug
+include ../../components/diagram/diagram.pug
 include ../../components/booking/booking.pug
 include ../../components/feature/feature.pug
 include ../../components/comment/comment.pug
@@ -42,7 +42,7 @@ block content
             +feature(feature.cosiness)
 
         .room-details-info__graph
-          +graph({
+          +diagram({
             label:'Впечатления от номера'
           })
 

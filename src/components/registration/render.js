@@ -1,11 +1,11 @@
 import Registration from './Registration.js';
 
 function renderRegistration(className) {
-  const objMas = [];
-  document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new Registration(className, elem));
+  const components = [];
+  document.querySelectorAll(className).forEach((element) => {
+    components.push(new Registration(className, element));
   });
-  return objMas;
+  return components;
 }
 
 renderRegistration('.js-registration');

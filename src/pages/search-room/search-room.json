@@ -4,7 +4,7 @@
       "даты пребывания в отеле"
     ],
     "value": "19.08.2022 - 23.08.2022",
-    "modify": "filter",
+    "modifier": "filter",
     "filter": true
   },
   "dropDown": {
@@ -12,7 +12,7 @@
       "label": "гости",
       "value": "Сколько гостей",
       "name": "Guest",
-      "masWord": [
+      "words": [
         [
           "взрослые",
           "дети",
@@ -35,7 +35,7 @@
       "label": "удобства номера",
       "value": "Сколько спален",
       "name": "Rooms",
-      "masWord": [
+      "words": [
         [
           "спальни",
           "кровати",
@@ -52,36 +52,36 @@
         "8",
         "4"
       ],
-      "modify": "sharp"
+      "modifier": "sharp"
     }
   },
   "checkboxList": {
     "houseRules": {
-      "masWord": [
+      "words": [
         "Можно курить",
         "Можно с питомцами",
         "Можно пригласить гостей (до 10 человек)"
       ],
       "legend": "правила дома",
-      "click": true,
-      "modify": "visibleBut"
+      "isClicked": true,
+      "modifier": "visibleBut"
     },
     "availability": {
-      "masWord": [
+      "words": [
         "Широкий коридор",
         "Помощник для инвалидов"
       ],
-      "masText": [
+      "strings": [
         "Ширина коридоров в номере не менее 91 см.",
         "На 1 этаже вас встретит специалист  и проводит до номера."
       ],
       "legend": "доступность",
-      "click": true,
-      "modify": "visibleBut",
+      "isClicked": true,
+      "modifier": "visibleBut",
       "class": "checkbox-list_rich"
     },
     "additionalAmenities": {
-      "masWord": [
+      "words": [
         "Завтрак",
         "Письменный стол",
         "Стул для кормления",
@@ -97,7 +97,7 @@
   "buttons": {
     "text": "Фильтр номеров",
     "type": "btn-popup",
-    "modify": [
+    "modifier": [
       "link"
     ]
   }

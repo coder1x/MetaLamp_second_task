@@ -1,11 +1,11 @@
 import DropDown from './DropDown.js';
 
 function renderDropDown(className) {
-  const objMas = [];
+  const components = [];
   document.querySelectorAll(className).forEach((elem) => {
-    objMas.push(new DropDown(className, elem));
+    components.push(new DropDown(className, elem));
   });
-  return objMas;
+  return components;
 }
 
 renderDropDown('.js-drop-down');

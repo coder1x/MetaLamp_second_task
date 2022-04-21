@@ -11,7 +11,7 @@
     "label": "гости",
     "value": "Сколько гостей",
     "name": "Guest",
-    "masWord": [
+    "words": [
       [
         "взрослые",
         "дети",
@@ -33,7 +33,7 @@
   "buttons": {
     "text": "подобрать номер",
     "type": "submit",
-    "modify": [
+    "modifier": [
       "submit"
     ]
   }

@@ -5,16 +5,16 @@ import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 import './range-slider.scss';
 
 class RangeSlider {
-  constructor(className, elem) {
+  constructor(className, element) {
     autoBind(this);
     this.className = className;
-    this.elem = elem;
+    this.element = element;
     this.init();
   }
 
   init() {
     this.dotFocus = '';
-    this._setDomElem();
+    this._setDomElement();
     this._createRangeSlider();
   }
 
@@ -26,31 +26,31 @@ class RangeSlider {
     this.dotFocus = 'to';
   }
 
-  _setAttrDot(data, flag = false) {
-    [this.dotFrom] = this.elem.getElementsByClassName('irs-handle from');
-    [this.dotTo] = this.elem.getElementsByClassName('irs-handle to');
+  _setAttributeDot(data, isDotFocused = false) {
+    [this.dotFrom] = this.element.getElementsByClassName('irs-handle from');
+    [this.dotTo] = this.element.getElementsByClassName('irs-handle to');
 
-    this.elem.getElementsByClassName('irs-line')[0]
+    this.element.getElementsByClassName('irs-line')[0]
       .setAttribute('tabindex', '-2');
     this.dotFrom.setAttribute('tabindex', '0');
     this.dotTo.setAttribute('tabindex', '0');
 
-    if (flag) {
+    if (isDotFocused) {
       if (this.dotFocus === 'from') { this.dotFrom.focus(); }
 
       if (this.dotFocus === 'to') { this.dotTo.focus(); }
     }
 
-    this._setActionsDot(data);
+    this._bindEventDot(data);
   }
 
-  _setDomElem() {
-    this.valueEl = this.elem.querySelector(`${this.className}__value`);
+  _setDomElement() {
+    this.valueElement = this.element.querySelector(`${this.className}__value`);
   }
 
   _createRangeSlider() {
     const setRange = ({ from, to }) => {
-      this.valueEl
+      this.valueElement
         .innerText = `${from.toLocaleString()}₽ - ${to.toLocaleString()}₽`;
     };
 
@@ -63,11 +63,11 @@ class RangeSlider {
       hide_from_to: true,
       onUpdate: (data) => {
         setRange(data);
-        this._setAttrDot(data, true);
+        this._setAttributeDot(data, true);
       },
       onStart: (data) => {
         setRange(data);
-        this._setAttrDot(data);
+        this._setAttributeDot(data);
       },
       onChange: (data) => {
         setRange(data);
@@ -75,33 +75,33 @@ class RangeSlider {
     }).data('ionRangeSlider');
   }
 
-  _setActionsDot({
+  _bindEventDot({
     from, to, min, max,
   }) {
-    const movement = (event, flag = false) => {
+    const handleMovement = (event, flag = false) => {
       const value = flag ? to : from;
-      const name = flag ? 'to' : 'from';
+      const dotName = flag ? 'to' : 'from';
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         this.$myRange.update({
-          [name]: value >= min ? value - 50 : value,
+          [dotName]: value >= min ? value - 50 : value,
         });
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
         this.$myRange.update({
-          [name]: value <= max ? value + 50 : value,
+          [dotName]: value <= max ? value + 50 : value,
         });
       }
     };
 
     const handleDotKeydown = (event) => {
-      movement(event, true);
+      handleMovement(event, true);
     };
 
     this.dotFrom.addEventListener('focus', this.handleFromFocus);
     this.dotTo.addEventListener('focus', this.handleDotFocus);
-    this.dotFrom.addEventListener('keydown', movement);
+    this.dotFrom.addEventListener('keydown', handleMovement);
     this.dotTo.addEventListener('keydown', handleDotKeydown);
   }
 }

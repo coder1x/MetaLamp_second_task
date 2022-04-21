@@ -24,7 +24,7 @@
       "label": "dropdown",
       "value": "Сколько гостей",
       "name": "Guest",
-      "masWord": [
+      "words": [
         [
           "взрослые",
           "дети",
@@ -47,7 +47,7 @@
       "label": "dropdown",
       "value": "Сколько спален",
       "name": "Rooms",
-      "masWord": [
+      "words": [
         [
           "спальни",
           "кровати",
@@ -64,7 +64,7 @@
         "8",
         "4"
       ],
-      "modify": "sharp"
+      "modifier": "sharp"
     }
   },
   "dateDropdown": {
@@ -79,7 +79,7 @@
       "filter date dropdown"
     ],
     "value": "19.08.2022 - 23.08.2022",
-    "modify": "filter",
+    "modifier": "filter",
     "filter": true
   },
   "subscrip": {
@@ -88,7 +88,7 @@
   },
   "checkboxList": {
     "expandable": {
-      "masWord": [
+      "words": [
         "Завтрак",
         "Письменный стол",
         "Стул для кормления",
@@ -101,27 +101,27 @@
       "legend": "expandable checkbox list"
     },
     "buttons": {
-      "masWord": [
+      "words": [
         "Можно курить",
         "Можно с питомцами",
         "Можно пригласить гостей (до 10 человек)"
       ],
       "legend": "Checkbox Buttons",
-      "click": true,
-      "modify": "visibleBut"
+      "isClicked": true,
+      "modifier": "visibleBut"
     },
     "richCheckbox": {
-      "masWord": [
+      "words": [
         "Широкий коридор",
         "Помощник для инвалидов"
       ],
-      "masText": [
+      "strings": [
         "Ширина коридоров в номере не менее 91 см.",
         "На 1 этаже вас встретит специалист  и проводит до номера."
       ],
       "legend": "rich Checkbox Buttons",
-      "click": true,
-      "modify": "visibleBut",
+      "isClicked": true,
+      "modifier": "visibleBut",
       "class": "checkbox-list_rich"
     }
   },
@@ -155,7 +155,7 @@
       "text": "CLICK ME",
       "link": "https://change-me",
       "type": "link",
-      "modify": [
+      "modifier": [
         "link"
       ]
     },
@@ -163,21 +163,21 @@
       "text": "CLICK ME",
       "link": "https://change-me",
       "type": "link",
-      "modify": [
+      "modifier": [
         "link-border"
       ]
     },
     "text": {
       "text": "CLICK ME",
       "type": "button",
-      "modify": [
+      "modifier": [
         "text"
       ]
     },
     "submit": {
       "text": "перейти к оплате",
       "type": "submit",
-      "modify": [
+      "modifier": [
         "submit"
       ]
     }

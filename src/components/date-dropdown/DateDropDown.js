@@ -9,27 +9,27 @@ import './datepicker.scss';
 import './date-dropdown.scss';
 
 class DateDropDown {
-  constructor(className, elem) {
+  constructor(className, element) {
     autoBind(this);
-    this.flClick = false;
+    this.isClicked = false;
     this.defaultText = 'ДД.ММ.ГГГГ';
-    this._setDomElem(className, elem);
+    this._setElement(className, element);
     this.init();
   }
 
   init() {
-    this._masMonth = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
+    this._months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн',
       'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
     this._createCalendar();
-    this._setActions();
+    this._bindEvent();
 
-    if (!this.flRange) { this.setRange(); }
+    if (!this.isRange) { this.setRange(); }
   }
 
   static getDate(date, flag = false) {
-    const masDate = date.split('.');
-    const dateText = `${masDate[1]}/${masDate[0]}/${masDate[2]}`;
+    const dates = date.split('.');
+    const dateText = `${dates[1]}/${dates[0]}/${dates[2]}`;
     return !flag ? new Date(dateText) : dateText;
   }
 
@@ -38,242 +38,238 @@ class DateDropDown {
   }
 
   setRange() {
-    this._flag = true;
-
-    if (this.flRange) {
-      const date1 = this.input1.value;
+    if (this.isRange) {
+      const dateFrom = this.inputFrom.value;
       const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
-      if (!regexp.test(date1)) return false;
+      if (!regexp.test(dateFrom)) return false;
 
-      const date2 = this.input2.value;
-      this.calendarObj.clear();
+      const dateTo = this.inputTo.value;
+      this.calendar.clear();
 
-      this.calendarObj.selectDate(
-        date2 === '' ? DateDropDown.getDate(date1)
-          : [DateDropDown.getDate(date1), DateDropDown.getDate(date2)],
+      this.calendar.selectDate(
+        dateTo === '' ? DateDropDown.getDate(dateFrom)
+          : [DateDropDown.getDate(dateFrom), DateDropDown.getDate(dateTo)],
       );
     } else {
-      this.calendarObj.clear();
-      const masDate = this.inputHidden.value.split('-');
+      this.calendar.clear();
+      const dates = this.inputHidden.value.split('-');
 
-      if (masDate.length < 2) return false;
+      if (dates.length < 2) return false;
 
-      const dateOne = DateDropDown.getDate(
-        DateDropDown.trimDate(masDate[0]),
+      const dateFrom = DateDropDown.getDate(
+        DateDropDown.trimDate(dates[0]),
         true,
       );
-      let dateTwo = DateDropDown.getDate(
-        DateDropDown.trimDate(masDate[1]),
+      let dateTo = DateDropDown.getDate(
+        DateDropDown.trimDate(dates[1]),
         true,
       );
 
-      const minOne = Date.parse(dateOne) / 1000 / 60;
-      const minTwo = Date.parse(dateTwo) / 1000 / 60;
+      const timestampFrom = Date.parse(dateFrom) / 1000 / 60;
+      const timestampTo = Date.parse(dateTo) / 1000 / 60;
 
-      if (minOne > minTwo) {
-        const dateForm = dateTwo.split('.');
-        dateTwo = `${dateForm[0]}/${dateForm[1]}/${Number(dateForm[2]) + 1}`;
+      if (timestampFrom > timestampTo) {
+        const datesStr = dateTo.split('.');
+        dateTo = `${datesStr[0]}/${datesStr[1]}/${Number(datesStr[2]) + 1}`;
       }
 
-      this._flInFilter = true;
-      this.calendarObj.selectDate([
-        new Date(dateOne),
-        new Date(dateTwo),
+      this.calendar.selectDate([
+        new Date(dateFrom),
+        new Date(dateTo),
       ]);
-      this._flInFilter = false;
     }
 
     return true;
   }
 
-  static getVisible(elem) {
-    return window.getComputedStyle(elem, null)
+  static getVisible(element) {
+    return window.getComputedStyle(element, null)
       .getPropertyValue('display') !== 'none';
   }
 
-  toggleCal(flag = false) {
-    const nameModify = `${this.className.replace(/^\.js-/, '')}_visible`;
-    const visible = DateDropDown.getVisible(this.calendarWrap);
-    const { classList } = this.elem;
-    if (this._flTog === flag && visible) {
-      classList.remove(nameModify);
+  toggleVisibility(isVisible = false) {
+    const nameModif = `${this.className.replace(/^\.js-/, '')}_visible`;
+    const visible = DateDropDown.getVisible(this.calendarWrapper);
+    const { classList } = this.element;
+    if (this._isToggle === isVisible && visible) {
+      classList.remove(nameModif);
 
-      if (!this.flRange) {
-        this.input1.value = '';
+      if (!this.isRange) {
+        this.inputFrom.value = '';
       }
     } else {
-      classList.add(nameModify);
+      classList.add(nameModif);
     }
-    this._flTog = flag;
+    this._isToggle = isVisible;
   }
 
-  elementIsClicked(event) {
-    const inStock = Boolean(
+  handleDocumentClick(event) {
+    const isClicked = Boolean(
       [
-        this.input1,
+        this.inputFrom,
         this.imgLeft,
         this.imgRight,
-        this.input2,
-      ].find((item) => item === event.target) ?? this._clickElemFl,
+        this.inputTo,
+      ].find((item) => item === event.target) ?? this._isElemClicked,
     );
-    this._clickElemFl = false;
-    const visible = DateDropDown.getVisible(this.calendarWrap);
+    this._isElemClicked = false;
+    const visible = DateDropDown.getVisible(this.calendarWrapper);
 
-    if (!inStock && visible) {
-      this.toggleCal(this._flTog);
+    if (!isClicked && visible) {
+      this.toggleVisibility(this._isToggle);
     }
   }
 
   handleFilterFocus(event) {
-    const elem = event.currentTarget;
-    elem.value = this.inputHidden.value.replace('-', ' - ');
+    const element = event.currentTarget;
+    element.value = this.inputHidden.value.replace('-', ' - ');
   }
 
   handleFilterFocusout(event) {
-    const elem = event.currentTarget;
-    if (!this.flClick) { elem.value = ''; }
-    this.flClick = false;
+    const element = event.currentTarget;
+    if (!this.isClicked) { element.value = ''; }
+    this.isClicked = false;
   }
 
   handleFilterChange(event) {
-    const elem = event.currentTarget;
-    this.inputHidden.value = elem.value;
-    this._validationRange(true);
+    const element = event.currentTarget;
+    this.inputHidden.value = element.value;
+    this._validateRange(true);
     this.setRange();
   }
 
   static handleFilterInput(event) {
-    const elem = event.currentTarget;
-    elem.value = elem.value.replace(/[^.-\d\s]/g, '');
+    const element = event.currentTarget;
+    element.value = element.value.replace(/[^.-\d\s]/g, '');
   }
 
   handleCalendarWrapClick() {
-    this._clickElemFl = true;
+    this._isElemClicked = true;
   }
 
-  handleKeydownX(event) {
+  handleInputKeydown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
-      this.elem.classList.remove(`${this.className.replace(/^\.js-/, '')}_visible`);
+      this.element.classList.remove(`${this.className.replace(/^\.js-/, '')}_visible`);
     }
   }
 
-  handleInput1(event) {
-    const elem = event.currentTarget;
-    if (elem.value.length === 10) { this.setRange(); }
+  handleInputFromInput(event) {
+    const element = event.currentTarget;
+    if (element.value.length === 10) { this.setRange(); }
   }
 
-  handleInput2(event) {
-    const elem = event.currentTarget;
-    if (elem.value.length === 10) { this.setRange(); }
+  handleInputToInput(event) {
+    const element = event.currentTarget;
+    if (element.value.length === 10) { this.setRange(); }
   }
 
-  handleClearButton(event) {
+  handleClearButtonClick(event) {
     event.preventDefault();
-    this.calendarObj.clear();
+    this.calendar.clear();
     if (!this.imgRight) {
-      this.input1.value = '';
-      this.input1.placeholder = '';
+      this.inputFrom.value = '';
+      this.inputFrom.placeholder = '';
     }
 
-    if (!this.flRange) {
+    if (!this.isRange) {
       this.inputHidden.value = '';
     }
 
-    this._visibleClear();
+    this._toggleClearButton();
   }
 
-  handleAcceptButton(event) {
+  handleAcceptButtonClick(event) {
     event.preventDefault();
-    this._validationRange();
+    this._validateRange();
   }
 
-  handleInput1Click() {
-    this.flClick = true;
-    this.toggleCal(true);
+  handleInputFromClick() {
+    this.isClicked = true;
+    this.toggleVisibility(true);
   }
 
-  handleInput2Click() {
-    this.flClick = true;
-    this.toggleCal(false);
+  handleInputToClick() {
+    this.isClicked = true;
+    this.toggleVisibility(false);
   }
 
-  _setDomElem(className, elem) {
-    this._classClear = `${className}__clear`;
+  _setElement(className, element) {
+    this._selectorClear = `${className}__clear`;
 
-    const getElem = (name) => elem.querySelector(`${className}__${name}`);
+    const getElement = (name) => element.querySelector(`${className}__${name}`);
 
     this.className = className;
-    this.elem = elem;
-    this.calendar = getElem('datepicker');
-    this.calendarWrap = getElem('datepicker-wrap');
-    this.inputHidden = getElem('input-hidden');
-    this.inputs = elem.querySelectorAll(`${className}__input`);
-    this.flRange = this.inputs.length > 1;
+    this.element = element;
+    this.calendar = getElement('datepicker');
+    this.calendarWrapper = getElement('datepicker-wrap');
+    this.inputHidden = getElement('input-hidden');
+    this.inputs = element.querySelectorAll(`${className}__input`);
+    this.isRange = this.inputs.length > 1;
 
-    [this.input1] = this.inputs;
-    this.imgLeft = this.input1.nextSibling;
+    [this.inputFrom] = this.inputs;
+    this.imgLeft = this.inputFrom.nextSibling;
 
-    this.clearButton = getElem('clear');
-    this.acceptButton = getElem('apply');
+    this.clearButton = getElement('clear');
+    this.acceptButton = getElement('apply');
 
-    if (this.flRange) {
-      [, this.input2] = this.inputs;
-      this.imgRight = this.input2.nextSibling;
+    if (this.isRange) {
+      [, this.inputTo] = this.inputs;
+      this.imgRight = this.inputTo.nextSibling;
 
-      this.input1.placeholder = this.defaultText;
-      this.input2.placeholder = this.defaultText;
+      this.inputFrom.placeholder = this.defaultText;
+      this.inputTo.placeholder = this.defaultText;
     }
   }
 
   _getDateFilter(dateFilter) {
     if (!dateFilter) return '';
 
-    const masDate = dateFilter.split('.');
-    return `${masDate[0]} ${this._masMonth[Number(masDate[1]) - 1]}`;
+    const dates = dateFilter.split('.');
+    return `${dates[0]} ${this._months[Number(dates[1]) - 1]}`;
   }
 
   _inputDate(date) {
     if (!date) {
-      this.input1.value = '';
-      if (this.flRange) { this.input2.value = ''; }
+      this.inputFrom.value = '';
+      if (this.isRange) { this.inputTo.value = ''; }
       return false;
     }
 
-    const masDate = date.formattedDate;
+    const dates = date.formattedDate;
 
-    if (masDate.length === 2) {
-      if (this.flRange) {
-        [this.input1.value] = masDate;
-        [, this.input2.value] = masDate;
+    if (dates.length === 2) {
+      if (this.isRange) {
+        [this.inputFrom.value] = dates;
+        [, this.inputTo.value] = dates;
       } else {
-        const date1 = this._getDateFilter(masDate[0]);
-        const date2 = this._getDateFilter(masDate[1]);
+        const dateFrom = this._getDateFilter(dates[0]);
+        const dateTo = this._getDateFilter(dates[1]);
 
-        this.input1.placeholder = `${date1} - ${date2}`;
-        this.inputHidden.value = `${masDate[0]}-${masDate[1]}`;
+        this.inputFrom.placeholder = `${dateFrom} - ${dateTo}`;
+        this.inputHidden.value = `${dates[0]}-${dates[1]}`;
 
-        if (DateDropDown.getVisible(this.calendarWrap)) {
-          this.input1.value = `${masDate[0]} - ${masDate[1]}`;
+        if (DateDropDown.getVisible(this.calendarWrapper)) {
+          this.inputFrom.value = `${dates[0]} - ${dates[1]}`;
         }
       }
     }
     return true;
   }
 
-  _visibleClear(flag = false) {
-    const nameSelector = `${this._classClear.replace(/^\.js-/, '')}_visible`;
+  _toggleClearButton(isVisible = false) {
+    const selector = `${this._selectorClear.replace(/^\.js-/, '')}_visible`;
     const { classList } = this.clearButton;
-    if (flag) {
-      classList.add(nameSelector);
+    if (isVisible) {
+      classList.add(selector);
     } else {
-      classList.remove(nameSelector);
+      classList.remove(selector);
     }
   }
 
   _createCalendar() {
-    this.calendarObj = new AirDatepicker(this.calendar, {
+    this.calendar = new AirDatepicker(this.calendar, {
       range: true,
       multipleDates: true,
       disableNavWhenOutOfRange: false,
@@ -285,70 +281,72 @@ class DateDropDown {
       },
       onSelect: (formattedDate) => {
         this._inputDate(formattedDate);
-        if (!this._flInFilter) { this._flag = false; }
-        this._visibleClear(true);
+        this._toggleClearButton(true);
       },
     });
   }
 
-  _validationRange(flShow = false) {
+  _validateRange(isShown = false) {
     function trimDate(dateText) {
       return dateText.trim().split(' ')[0];
     }
 
-    const validCheck = (flag) => {
-      if (flag) {
-        if (!flShow) { this.toggleCal(this._flTog); }
+    const checkValidity = (isValid) => {
+      if (isValid) {
+        if (!isShown) { this.toggleVisibility(this._isToggle); }
       } else {
         message('Выберите диапазон');
       }
     };
 
-    if (this.flRange) {
-      validCheck(Boolean(
-        this.input1.value
-        && this.input2.value,
+    if (this.isRange) {
+      checkValidity(Boolean(
+        this.inputFrom.value
+        && this.inputTo.value,
       ));
     } else {
-      let oneMeaning = true;
-      const masDate = this.inputHidden.value.split('-');
+      let isValidDate = true;
+      const dates = this.inputHidden.value.split('-');
       const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
-      for (let i = 0; i < masDate.length; i += 1) {
-        if (!regexp.test(trimDate(masDate[i]))) {
-          oneMeaning = false;
+      for (let i = 0; i < dates.length; i += 1) {
+        if (!regexp.test(trimDate(dates[i]))) {
+          isValidDate = false;
           break;
         }
       }
 
-      validCheck(oneMeaning);
+      checkValidity(isValidDate);
     }
   }
 
-  _setActionsFilter() {
-    this.input1.addEventListener('focus', this.handleFilterFocus);
-    this.input1.addEventListener('focusout', this.handleFilterFocusout);
-    this.input1.addEventListener('change', this.handleFilterChange);
-    this.input1.addEventListener('input', DateDropDown.handleFilterInput);
+  _bindEventFilter() {
+    this.inputFrom.addEventListener('focus', this.handleFilterFocus);
+    this.inputFrom.addEventListener('focusout', this.handleFilterFocusout);
+    this.inputFrom.addEventListener('change', this.handleFilterChange);
+    this.inputFrom.addEventListener('input', DateDropDown.handleFilterInput);
   }
 
-  _setActions() {
-    this.calendarWrap.addEventListener('click', this.handleCalendarWrapClick);
-    this.input1.addEventListener('click', this.handleInput1Click);
-    this.input1.addEventListener('keydown', this.handleKeydownX);
+  _bindEvent() {
+    this.calendarWrapper.addEventListener(
+      'click',
+      this.handleCalendarWrapClick,
+    );
+    this.inputFrom.addEventListener('click', this.handleInputFromClick);
+    this.inputFrom.addEventListener('keydown', this.handleInputKeydown);
 
-    if (this.flRange) {
-      this.input1.addEventListener('input', this.handleInput1);
-      this.input2.addEventListener('keydown', this.handleKeydownX);
-      this.input2.addEventListener('input', this.handleInput2);
-      this.input2.addEventListener('click', this.handleInput2Click);
+    if (this.isRange) {
+      this.inputFrom.addEventListener('input', this.handleInputFromInput);
+      this.inputTo.addEventListener('keydown', this.handleInputKeydown);
+      this.inputTo.addEventListener('input', this.handleInputToInput);
+      this.inputTo.addEventListener('click', this.handleInputToClick);
     } else {
-      this._setActionsFilter();
+      this._bindEventFilter();
     }
 
-    this.clearButton.addEventListener('click', this.handleClearButton);
-    this.acceptButton.addEventListener('click', this.handleAcceptButton);
-    document.addEventListener('click', this.elementIsClicked);
+    this.clearButton.addEventListener('click', this.handleClearButtonClick);
+    this.acceptButton.addEventListener('click', this.handleAcceptButtonClick);
+    document.addEventListener('click', this.handleDocumentClick);
   }
 }
 

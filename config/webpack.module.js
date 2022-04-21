@@ -1,50 +1,50 @@
 const path = require('path');
-const DP = require('./isDev');
-const CL = require('./cssLoaders');
-const JL = require('./jsLoaders');
-const PATHS = require('./paths');
+const env = require('./isDev');
+const cssLoaders = require('./cssLoaders');
+const jsLoaders = require('./jsLoaders');
+const paths = require('./paths');
 
 module.exports = {
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: CL.cssLoaders(),
+        use: cssLoaders.cssLoaders(),
       },
       {
         test: /\.pug$/,
         loader: 'pug-loader',
         options: {
-          pretty: DP.isDev, // минифицировать или нет в зависемости от типа зборки.
+          pretty: env.isDev, // минифицировать или нет в зависемости от типа зборки.
         },
       },
       {
         test: /\.s[ac]ss$/,
-        use: CL.cssLoaders('sass-loader'),
+        use: cssLoaders.cssLoaders('sass-loader'),
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
         loader: 'file-loader',
         options: {
-          outputPath: path.join('.', PATHS.assets, 'fonts/'),
+          outputPath: path.join('.', paths.assets, 'fonts/'),
           publicPath: '/assets/fonts/',
         },
       },
       {
         test: /\.(js)$/,
         exclude: '/node_modules/', // игнорируем эту папку. что бы не обрабатывать файлы от туда.
-        use: JL.jsLoaders('js'),
+        use: jsLoaders.jsLoaders('js'),
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: '/node_modules/',
-        use: JL.jsLoaders(),
+        use: jsLoaders.jsLoaders(),
       },
       {
         test: /\.(png|jpg|svg|gif|webp|avif)$/,
         loader: 'file-loader',
         options: {
-          outputPath: path.join('.', PATHS.assets, 'images/'),
+          outputPath: path.join('.', paths.assets, 'images/'),
           publicPath: '/assets/images/',
         },
       },

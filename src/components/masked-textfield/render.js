@@ -1,15 +1,15 @@
 import MaskedTextField from './MaskedTextField.js';
 
 function renderMasked(options) {
-  const objMas = [];
-  document.querySelectorAll(options.className).forEach((elem) => {
-    objMas.push(new MaskedTextField({
+  const components = [];
+  document.querySelectorAll(options.className).forEach((element) => {
+    components.push(new MaskedTextField({
       className: options.className,
       message: options.message,
-      elem,
+      element,
     }));
   });
-  return objMas;
+  return components;
 }
 
 renderMasked({
