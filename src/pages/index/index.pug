@@ -1,10 +1,6 @@
 include ../../components/logo-group/logo-group.pug
 
-- const path = require('path').resolve(
-- 'src/pages/index/','index.json'
-- )
-- const data = JSON.parse(require('fs').readFileSync(path)); 
-
+- const data = require('./index.json'); 
 - const menu = data.menuData
 
 doctype html

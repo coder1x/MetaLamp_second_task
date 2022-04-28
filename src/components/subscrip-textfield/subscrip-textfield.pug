@@ -1,10 +1,13 @@
-mixin subscrip-textfield(options)
+mixin subscrip-textfield(options = {})
   -
-    const label = options.label ?? ''
-    const value = options.value ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      label = '',
+      value = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'subscrip-textfield'
     let className = classComponent
     if(modifier){
@@ -21,4 +24,4 @@ mixin subscrip-textfield(options)
         input(class=`${classComponent}__input` type='text' placeholder=value value='' name='subscrip')
         
       button(class=`${classComponent}__link js-${classComponent}__link` aria-label='подписаться' title='подписаться')
-        img(class=`${classComponent}__tip` src=require('@com/subscrip-textfield/img/arrow-forward.svg').default alt='стрелка - подписаться')
+        img(class=`${classComponent}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')

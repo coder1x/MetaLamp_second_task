@@ -1,10 +1,9 @@
-const path = require('path');
-const env = require('./isDev');
 const cssLoaders = require('./cssLoaders');
-const jsLoaders = require('./jsLoaders');
+const path = require('path');
 const paths = require('./paths');
 
 module.exports = {
+
   module: {
     rules: [
       {
@@ -13,10 +12,7 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        loader: 'pug-loader',
-        options: {
-          pretty: env.isDev, // минифицировать или нет в зависемости от типа зборки.
-        },
+        loader: '@webdiscus/pug-loader',
       },
       {
         test: /\.s[ac]ss$/,
@@ -24,37 +20,29 @@ module.exports = {
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: path.join('.', paths.assets, 'fonts/'),
-          publicPath: '/assets/fonts/',
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name].[hash][ext]',
         },
       },
       {
-        test: /\.(js)$/,
-        exclude: '/node_modules/', // игнорируем эту папку. что бы не обрабатывать файлы от туда.
-        use: jsLoaders.jsLoaders('js'),
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: '/node_modules/',
-        use: jsLoaders.jsLoaders(),
+        test: /\.(ts|tsx|js)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.web.json',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|svg|gif|webp|avif)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: path.join('.', paths.assets, 'images/'),
-          publicPath: '/assets/images/',
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name].[hash][ext]',
         },
-      },
-      {
-        test: /\.xml$/,
-        use: ['xml-loader'],
-      },
-      {
-        test: /\.csv$/,
-        use: ['csv-loader'],
       },
     ],
   },

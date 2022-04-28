@@ -1,5 +1,4 @@
 import autoBind from 'auto-bind';
-import './header.scss';
 
 class HeaderMenu {
   constructor(className, element) {

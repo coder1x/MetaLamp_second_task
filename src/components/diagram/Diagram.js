@@ -1,5 +1,3 @@
-import './diagram.scss';
-
 class Diagram {
   constructor(className) {
     this.className = className;

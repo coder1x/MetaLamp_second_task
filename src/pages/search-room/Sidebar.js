@@ -1,5 +1,4 @@
 import autoBind from 'auto-bind';
-import './search-room.scss';
 
 class Sidebar {
   constructor(options) {

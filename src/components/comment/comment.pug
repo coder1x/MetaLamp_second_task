@@ -1,12 +1,15 @@
 include ../like-button/like-button.pug
-mixin comment(options)
+mixin comment(options = {})
   -
-    const src = options.src ?? ''
-    const name = options.name ?? ''
-    const date = options.date ?? ''
-    const message = options.message ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
+    const {
+      src = '',
+      name = '',
+      date = '',
+      message = '',
+      modifier = '',
+      addClass = '',
+    } = options;
+
     const classComponent = 'comment'
     let className = classComponent
     
@@ -19,7 +22,7 @@ mixin comment(options)
   
     div(class=`${classComponent}__avatar-wrap`)
       figure(class=`${classComponent}__author`)
-        img(class=`${classComponent}__avatar` src=require('@com/comment/img/'+src).default, alt=name)
+        img(class=`${classComponent}__avatar` src=require('./img/'+src), alt=name)
       div(class=`${classComponent}__like-wrap`)
         +like-button({isLabeled:true})
 

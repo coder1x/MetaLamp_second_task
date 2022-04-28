@@ -1,9 +1,12 @@
-mixin like-button(options)
+mixin like-button(options = {})
   -
-    const label = options.label ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      label = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'like-button'
     let className = classComponent
     if(modifier){

@@ -1,1 +1,2 @@
-src/plugins/*
+npm_plugins/*
+config/*

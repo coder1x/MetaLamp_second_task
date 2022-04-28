@@ -1,14 +1,17 @@
 include ../rate-button/rate-button.pug
 
-mixin room-card(options)
+mixin room-card(options = {})
   -
-    const rateName = options.rateName ?? 'room-1'
-    const number = options.number ?? ''
-    const price = options.price ?? ''
-    const reviews = options.reviews ?? ''
-    const lux = options.lux
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
+    const {
+      rateName = 'room-1',
+      number = '',
+      price = '',
+      reviews = '',
+      lux,
+      modifier = '',
+      addClass = '',
+    } = options;
+
     const classComponent = 'room-card'
     let className = classComponent
     if(modifier){
@@ -21,15 +24,15 @@ mixin room-card(options)
     div(class=`${classComponent}__slider-wrap js-${classComponent}__slider-wrap`)
       div(class=`${classComponent}__relation-ratio`)
       a(class=`${classComponent}__link js-${classComponent}__link` href='https://change-me' aria-label='карточка номера')
-        img(class=`${classComponent}__slide ${classComponent}__slide_visible js-${classComponent}__slide` src=require('@com/room-card/img/beige-room.webp').default, alt='номер люкс')
-        img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('@com/room-card/img/crimson-room.webp').default, alt='номер люкс')
-        img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('@com/room-card/img/red-room.webp').default, alt='номер люкс')
-        img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('@com/room-card/img/blue-room.webp').default, alt='номер люкс')
+        img(class=`${classComponent}__slide ${classComponent}__slide_visible js-${classComponent}__slide` src=require('./img/beige-room.webp'), alt='номер люкс')
+        img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/crimson-room.webp'), alt='номер люкс')
+        img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/red-room.webp'), alt='номер люкс')
+        img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/blue-room.webp'), alt='номер люкс')
       div(class=`${classComponent}__dot-wrap js-${classComponent}__dot-wrap`)
       button(class=`${classComponent}__prev-wrap js-${classComponent}__prev-wrap` aria-label='предыдущий слайд')
-        img(class=`${classComponent}__prev` src=require('@com/room-card/img/expand-more.svg').default, alt='стрелка в лево')
+        img(class=`${classComponent}__prev` src=require('./img/expand-more.svg'), alt='стрелка в лево')
       button(class=`${classComponent}__next-wrap js-${classComponent}__next-wrap` aria-label='следующий слайд')
-        img(class=`${classComponent}__next` src=require('@com/room-card/img/expand-more.svg').default, alt='стрелка в право')
+        img(class=`${classComponent}__next` src=require('./img/expand-more.svg'), alt='стрелка в право')
 
     a(class=`${classComponent}__header-wrap` href='https://change-me')
       div(class=`${classComponent}__number-wrap`)

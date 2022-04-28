@@ -1,12 +1,14 @@
 const path = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 const { merge } = require('webpack-merge');
 const paths = require('./paths');
-const fileName = require('./filename');
+const FL = require('./filename');
 const env = require('./isDev');
 const optimization = require('./optimization');
-// eslint-disable-next-line import/extensions
+
 const devServer = require('./webpack.devServer.js');
+
+let config = null;
 
 const points = [];
 
@@ -17,23 +19,20 @@ if (env.isProd) {
   points.push('./index.js');
 }
 
-let pubPath;
-if (env.isAbsPath) pubPath = paths.public;
-
 module.exports = merge(devServer, {
+
+  // target: DP.isDev ? 'web' : 'browserslist',
   target: 'web',
   // devtool: DP.isDev ? 'eval-cheap-module-source-map' : 'source-map', //  (карта для браузеров)
-  // devtool: false,
-  devtool: env.isDev ? 'eval-cheap-module-source-map' : false,
+  devtool: false,
 
   entry: points,
-
   context: paths.src, // корень исходников
   mode: env.isDev ? 'development' : 'production',
   output: {
-    filename: fileName.filename('js'),
+    filename: FL.filename('js'),
     path: paths.dist, // каталог в который будет выгружаться сборка.
-    publicPath: pubPath,
+    publicPath: 'auto',
   },
 
   resolve: {
@@ -50,5 +49,5 @@ module.exports = merge(devServer, {
     },
   },
 
-  optimization: optimization.optimization(), // минификация и оптимизация файлов на выходе  (если это Продакшен)
+  optimization: optimization.optimization(),
 });

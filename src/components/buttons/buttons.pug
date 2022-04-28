@@ -1,10 +1,13 @@
 mixin buttons(options)
   -
-    const text = options.text ?? ''
-    const link = options.link ?? ''
-    const type = options.type ?? ''
-    const modifier = options.modifier ?? []
-    const addClass = options.class ?? ''
+    const {
+      text = '',
+      link = '',
+      type = '',
+      modifier = [],
+      addClass = '',
+    } = options;
+
     const classComponent = 'buttons'
     let className = classComponent
     if(modifier){
@@ -23,5 +26,5 @@ mixin buttons(options)
       button(class=className aria-haspopup aria-expanded='false')=text
     when 'submit'
       button(class=className type='submit')=text
-        img(class=`${classComponent}__icon` src=require('@com/buttons/img/arrow-forward.svg').default)
+        img(class=`${classComponent}__icon` src=require('./img/arrow-forward.svg'))
     

@@ -1,10 +1,13 @@
-mixin bullet-list(options)
+mixin bullet-list(options = {})
   -
-    const label = options.label ?? ''
-    const text = options.text ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      label = '',
+      text = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'bullet-list'
     let className = classComponent
 

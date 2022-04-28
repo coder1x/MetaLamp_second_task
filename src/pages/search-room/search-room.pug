@@ -10,10 +10,8 @@ include ../../components/buttons/buttons.pug
 block title 
   title search room
 block content
-  - const path = require('path').resolve(
-  - 'src/pages/search-room/','search-room.json'
-  - )
-  - const data = JSON.parse(require('fs').readFileSync(path)); 
+
+  - const data = require('./search-room.json'); 
 
   - const dateDropdown = data.dateDropdown
   - const dropDown = data.dropDown

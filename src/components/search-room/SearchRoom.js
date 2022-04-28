@@ -2,8 +2,6 @@ import autoBind from 'auto-bind';
 
 import message from '@com/message/message';
 
-import './search-room.scss';
-
 class SearchRoom {
   constructor(className, element) {
     autoBind(this);

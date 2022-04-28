@@ -15,10 +15,7 @@ include ../../components/pagination/pagination.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/comment/comment.pug
 
-- const path = require('path').resolve(
-- 'src/pages/form-elements/','form-elements.json'
-- )
-- const data = JSON.parse(require('fs').readFileSync(path)); 
+- const data = require('./form-elements.json'); 
 
 - const textField = data.textField
 - const dropDown = data.dropDown

@@ -1,9 +1,12 @@
-mixin navigation(options)
+mixin navigation(options = {})
   -
-    const header = options.header ?? ''
-    const strings = options.strings ?? []
-    const modifier = options.modifier ?? []
-    const addClass = options.class ?? ''
+    const {
+      header = '',
+      strings = [],
+      modifier = [],
+      addClass = ''
+    } = options;
+
     const classComponent = 'navigation'
     let className = classComponent
     if(modifier){

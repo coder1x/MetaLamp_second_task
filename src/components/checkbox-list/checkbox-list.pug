@@ -1,12 +1,15 @@
-mixin checkbox-list(options)
+mixin checkbox-list(options = {})
   -
-    const words = options.words ?? []
-    const strings = options.strings ?? []
-    const legend = options.legend ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
-    const isClicked = options.isClicked
+    const {
+      words = [],
+      strings = [],
+      legend = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+      isClicked,
+    } = options;
+
     const classComponent = 'checkbox-list'
     let className = classComponent
     if(modifier){
@@ -20,7 +23,7 @@ mixin checkbox-list(options)
       -if(!isLabeled){
         -if(!isClicked){
           legend(class=`${classComponent}__header js-${classComponent}__header` tabindex='0' aria-label='раскрывающийся список')= legend
-              img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('@com/checkbox-list/img/tip.svg').default alt='угалок')
+              img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('./img/tip.svg') alt='угалок')
         -} else {
           legend(class=`${classComponent}__header js-${classComponent}__header`)= legend
         -}  

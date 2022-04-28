@@ -3,19 +3,19 @@ include ../radio-buttons/radio-buttons.pug
 include ../toggle-buttons/toggle-buttons.pug
 include ../buttons/buttons.pug
 
-mixin registration(options)
+mixin registration(options = {})
   -
-    const header = options.header ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      header = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'registration'
     let className = classComponent
 
-    const path = require('path').resolve(
-    'src/components/registration/','registration.json'
-    )
-    const data = JSON.parse(require('fs').readFileSync(path)); 
+    const data = require('./registration.json'); 
 
     const textField = data.textField
     const toggleButtons = data.toggleButtons

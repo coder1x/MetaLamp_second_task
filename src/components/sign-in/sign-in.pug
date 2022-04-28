@@ -1,19 +1,19 @@
 include ../text-field/text-field.pug
 include ../buttons/buttons.pug
 
-mixin sign-in(options)
+mixin sign-in(options = {})
   -
-    const header = options.header ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      header = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'sign-in'
     let className = classComponent
 
-    const path = require('path').resolve(
-    'src/components/sign-in/','sign-in.json'
-    )
-    const data = JSON.parse(require('fs').readFileSync(path)); 
+    const data = require('./sign-in.json'); 
 
     const textField = data.textField
     const buttons = data.buttons

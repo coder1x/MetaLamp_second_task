@@ -2,8 +2,6 @@ import autoBind from 'auto-bind';
 
 import message from '@com/message/message';
 
-import './subscrip-textfield.scss';
-
 import ValidationEmail from '../validation-email/ValidationEmail';
 
 class SubscriptionTextField {

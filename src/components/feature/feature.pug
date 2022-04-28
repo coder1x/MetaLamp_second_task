@@ -1,11 +1,14 @@
-mixin feature(options)
+mixin feature(options = {})
   -
-    const header = options.header ?? ''
-    const src = options.src ?? ''
-    const alt = options.alt ?? ''
-    const text = options.text ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
+    const {
+      header = '',
+      src = '',
+      alt = '',
+      text = '',
+      modifier = '',
+      addClass = '',
+    } = options;
+
     const classComponent = 'feature'
     let className = classComponent
     if(modifier){
@@ -15,7 +18,7 @@ mixin feature(options)
 
   div(class=className)
     div(class=`${classComponent}__wrap-icon`)
-      img(class=`${classComponent}__icon` src=require('@com/feature/img/'+src).default alt=alt)
+      img(class=`${classComponent}__icon` src=require('./img/'+src) alt=alt)
       
     div(class=`${classComponent}__description`)
       span(class=`${classComponent}__header`)=header

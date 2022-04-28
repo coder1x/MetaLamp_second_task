@@ -32,9 +32,8 @@ src
 components
 └─── date-dropdown
 | |  date-dropdown.pug
-| |  date-dropdown.js
+| |  DateDropDown.js
 | |  date-dropdown.scss
-| |  datepicker.scss
 | └─── img
 | | |  arrow-back.svg
 | | |  arrow-forward.svg
@@ -42,7 +41,7 @@ components
 |
 └─── drop-down
 | |  drop-down.pug
-| |  drop-down.js
+| |  DropDown.js
 | |  drop-down.scss
 | └─── img
 | | |  tip.svg
@@ -60,14 +59,12 @@ components
 pages
 └─── landing-page
 | |  landing-page.pug
-| |  landing-page.js
 | |  landing-page.scss
 | └─── img
 | | |  room.webp
 |
 └─── room-details
 | |  room-details.pug
-| |  room-details.js
 | |  room-details.scss
 | └─── img
 | | |  small-room.webp

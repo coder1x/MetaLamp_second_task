@@ -2,8 +2,6 @@ import autoBind from 'auto-bind';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 
-import './range-slider.scss';
-
 class RangeSlider {
   constructor(className, element) {
     autoBind(this);

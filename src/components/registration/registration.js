@@ -2,8 +2,6 @@ import autoBind from 'auto-bind';
 
 import message from '@com/message/message';
 
-import './registration.scss';
-
 class Registration {
   constructor(className, element) {
     autoBind(this);

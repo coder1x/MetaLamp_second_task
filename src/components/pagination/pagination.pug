@@ -1,9 +1,12 @@
-mixin pagination(options)
+mixin pagination(options = {})
   -
-    const label = options.label ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      label = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'pagination'
     let className = classComponent
     if(modifier){
@@ -25,6 +28,6 @@ mixin pagination(options)
       span(class=`${classComponent}__dots`) ...
       a(class=`${classComponent}__page-numbers` href='https://change-me' aria-label='пагинация страницы 15') 15
       a(class=`${classComponent}__next` href='https://change-me' aria-label='пагинация страницы - стрелка дальше' title='следующая страница')
-        img(class=`${classComponent}__next-img` src=require('@com/pagination/img/arrow-forward.svg').default, alt='next')
+        img(class=`${classComponent}__next-img` src=require('./img/arrow-forward.svg'), alt='next')
     p(class=`${classComponent}__text`) 1 – 12 из 100+ вариантов аренды
     

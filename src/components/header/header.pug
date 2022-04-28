@@ -1,20 +1,20 @@
 include ../buttons/buttons.pug
 include ../logo/logo.pug
 
-mixin header(options)
+mixin header(options = {})
   -
-    let current = options.current ?? ''
-    const type = options.type ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
+    let { current } = options; 
+    const {
+      type = '',
+      modifier = '',
+      addClass = '',
+    } = options;
+
     const classComponent = 'header'
-    const tipSvg = require('@com/header/img/tip.svg').default
+    const tipSvg = require('./img/tip.svg')
     let className = classComponent
 
-    const path = require('path').resolve(
-    'src/components/header/','header.json'
-    )
-    const data = JSON.parse(require('fs').readFileSync(path)); 
+    const data = require('./header.json'); 
 
     const service = data.service
     const agreements = data.agreements

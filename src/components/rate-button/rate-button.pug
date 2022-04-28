@@ -1,10 +1,13 @@
-mixin rate-button(options)
+mixin rate-button(options = {})
   -
-    const label = options.label ?? ''
-    const name = options.name ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      label = '',
+      name = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'rate-button'
     let className = classComponent
     if(modifier){

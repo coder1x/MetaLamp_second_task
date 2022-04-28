@@ -1,7 +1,10 @@
-mixin logo-group(options)
+mixin logo-group(options = {})
   -
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
+    const {
+      modifier = '',
+      addClass = '',
+    } = options;
+
     const classComponent = 'logo-group'
     let className = classComponent
     if(modifier){

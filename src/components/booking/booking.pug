@@ -2,13 +2,16 @@ include ../date-dropdown/date-dropdown.pug
 include ../drop-down/drop-down.pug
 include ../buttons/buttons.pug
 
-mixin booking(options)
+mixin booking(options = {})
   -
-    const number = options.number ?? ''
-    const price = options.price ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const lux = options.lux
+    const {
+      number = '',
+      price = '',
+      modifier = '',
+      addClass = '',
+      lux,
+    } = options;
+
     const classComponent = 'booking'
     let className = classComponent
     if(modifier){

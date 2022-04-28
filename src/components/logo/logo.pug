@@ -1,8 +1,11 @@
-mixin logo(options)
+mixin logo(options = {})
   -
-    const link = options.link ?? ''
-    const modifier = options.modifier ?? []
-    const addClass = options.class ?? ''
+    const {
+      link = '',
+      modifier = [],
+      addClass = '',
+    } = options;
+
     const classComponent = 'logo'
     let className = classComponent
     if(modifier){

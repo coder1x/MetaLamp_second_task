@@ -1,9 +1,12 @@
-mixin diagram(options)
+mixin diagram(options = {})
   -
-    let label = options.label ?? ''
-    let modifier = options.modifier ?? ''
-    let addClass = options.class ?? ''
-    let isLabeled = options.isLabeled
+    const {
+      label = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     let classComponent = 'diagram'
     let className = classComponent
     const data = [

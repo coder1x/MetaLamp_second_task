@@ -1,5 +1,5 @@
 import autoBind from 'auto-bind';
-import './drop-down.scss';
+
 import message from '@com/message/message';
 
 class DropDown {

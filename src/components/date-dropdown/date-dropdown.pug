@@ -1,13 +1,16 @@
 include ../buttons/buttons.pug
 
-mixin date-dropdown(options)
+mixin date-dropdown(options = {})
   -
-    const label = options.label ?? ''
-    const value = options.value ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
-    const filter = options.filter
+    const {
+      label = '',
+      value = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+      filter,
+    } = options;
+
     const classComponent = 'date-dropdown'
     let className = classComponent
 
@@ -34,7 +37,7 @@ mixin date-dropdown(options)
             input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
           -}
           
-          img(class=`${classComponent}__tip` src=require('@com/date-dropdown/img/tip.svg').default alt='уголок')
+          img(class=`${classComponent}__tip` src=require('./img/tip.svg') alt='уголок')
     -}
 
     div(class=`${classComponent}__datepicker-wrap js-${classComponent}__datepicker-wrap`)

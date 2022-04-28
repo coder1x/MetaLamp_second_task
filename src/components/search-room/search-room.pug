@@ -2,19 +2,19 @@ include ../date-dropdown/date-dropdown.pug
 include ../drop-down/drop-down.pug
 include ../buttons/buttons.pug
 
-mixin search-room(options)
+mixin search-room(options = {})
   -
-    const header = options.header ?? ''
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const isLabeled = options.isLabeled
+    const {
+      header = '',
+      modifier = '',
+      addClass = '',
+      isLabeled,
+    } = options;
+
     const classComponent = 'search-room'
     let className = classComponent
 
-    const path = require('path').resolve(
-    'src/components/search-room/','search-room.json'
-    )
-    const data = JSON.parse(require('fs').readFileSync(path)); 
+    const data = require('./search-room.json'); 
 
     const dateDropdown = data.dateDropdown
     const dropDown = data.dropDown

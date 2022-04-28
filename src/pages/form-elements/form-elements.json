@@ -16,7 +16,7 @@
       "placeholder": "ДД.ММ.ГГГГ",
       "type": "text",
       "name": "Date",
-      "class": "js-masked-date"
+      "addClass": "js-masked-date"
     }
   },
   "dropDown": {
@@ -72,7 +72,7 @@
       "date Dropdown",
       "date Dropdown"
     ],
-    "class": "js-masked-date"
+    "addClass": "js-masked-date"
   },
   "filterDate": {
     "label": [
@@ -122,7 +122,7 @@
       "legend": "rich Checkbox Buttons",
       "isClicked": true,
       "modifier": "visibleBut",
-      "class": "checkbox-list_rich"
+      "addClass": "checkbox-list_rich"
     }
   },
   "feature": {

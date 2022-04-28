@@ -2,17 +2,17 @@ include ../subscrip-textfield/subscrip-textfield.pug
 include ../logo/logo.pug
 include ../navigation/navigation.pug
 
-mixin footer(options)
+mixin footer(options = {})
   -
-    const modifier = options.modifier ?? []
-    const addClass = options.class ?? ''
+    const {
+      modifier = [],
+      addClass = '',
+    } = options;
+
     const classComponent = 'footer'
     let className = classComponent
 
-    const path = require('path').resolve(
-    'src/components/footer/','footer.json'
-    )
-    const data = JSON.parse(require('fs').readFileSync(path)); 
+    const data = require('./footer.json'); 
 
     const socialData = data.socialData
     const navigation = data.navigation
@@ -56,4 +56,4 @@ mixin footer(options)
           each icon, text in socialData
             li(class=`${classComponent}__social-item`)
               a(class=`${classComponent}__social-link` href='https://change-me')
-                img(class=`${classComponent}__social-icon` src=require('@com/footer/img/'+icon).default alt=text title=text)
+                img(class=`${classComponent}__social-icon` src=require('./img/'+icon) alt=text title=text)

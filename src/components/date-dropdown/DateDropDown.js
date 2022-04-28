@@ -5,9 +5,6 @@ import message from '@com/message/message';
 
 import 'air-datepicker/air-datepicker.css';
 
-import './datepicker.scss';
-import './date-dropdown.scss';
-
 class DateDropDown {
   constructor(className, element) {
     autoBind(this);

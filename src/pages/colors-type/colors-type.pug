@@ -2,11 +2,7 @@ include ../../components/logo-group/logo-group.pug
 include ../../components/square-color/square-color.pug
 include ../../components/style-text/style-text.pug
 
-- const path = require('path').resolve(
-- 'src/pages/colors-type/','colors-type.json'
-- )
-- const data = JSON.parse(require('fs').readFileSync(path)); 
-
+- const data = require('./colors-type.json'); 
 - const squareColor = data.squareColor
 
 doctype html

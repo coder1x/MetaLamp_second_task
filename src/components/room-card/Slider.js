@@ -1,5 +1,4 @@
 import autoBind from 'auto-bind';
-import './room-card.scss';
 
 class Slider {
   constructor(className, element) {

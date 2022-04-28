@@ -1,5 +1,3 @@
-import './message.scss';
-
 function handleClose(event) {
   event.target.parentElement.remove();
 }

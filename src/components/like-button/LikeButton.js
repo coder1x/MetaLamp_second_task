@@ -1,5 +1,4 @@
 import autoBind from 'auto-bind';
-import './like-button.scss';
 
 class LikeButton {
   constructor(nameClass, element) {

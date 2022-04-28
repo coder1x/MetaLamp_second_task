@@ -78,7 +78,7 @@
       "legend": "доступность",
       "isClicked": true,
       "modifier": "visibleBut",
-      "class": "checkbox-list_rich"
+      "addClass": "checkbox-list_rich"
     },
     "additionalAmenities": {
       "words": [

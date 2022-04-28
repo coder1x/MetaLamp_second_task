@@ -1,16 +1,19 @@
 include ../buttons/buttons.pug
 
-mixin drop-down(options)
+mixin drop-down(options = {})
   -
-    const label = options.label ?? ''
-    const value = options.value ?? ''
-    const name = options.name ?? ''
-    const words = options.words ?? [[]]
-    const maxValue = options.maxValue ?? []
-    const modifier = options.modifier ?? ''
-    const addClass = options.class ?? ''
-    const button = options.button
-    const isLabeled = options.isLabeled
+    const {
+      label = '',
+      value = '',
+      name = '',
+      words = [[]],
+      maxValue = [],
+      modifier = '',
+      addClass = '',
+      button,
+      isLabeled,
+    } = options;
+
     const classComponent = 'drop-down'
     let className = classComponent
     if(modifier){
@@ -25,7 +28,7 @@ mixin drop-down(options)
 
     div(class=`${classComponent}__wrap`)
       input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder=value value='' name=name readonly)
-      img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('@com/drop-down/img/tip.svg').default alt='угалок')
+      img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('./img/tip.svg') alt='угалок')
 
       ul(class=`${classComponent}__select js-${classComponent}__select`)
         - for(let i=0; i<words[0].length; i++)  {
