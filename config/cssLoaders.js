@@ -10,8 +10,6 @@ module.exports = {
         loader: 'css-loader',
         options: {
           sourceMap: false,
-          // url: false,
-          // importLoaders: 1,
         },
       },
       {
@@ -46,7 +44,10 @@ module.exports = {
       loaders.push({
         loader: 'sass-resources-loader',
         options: {
-          resources: path.join(paths.src, 'assets/styles/glob.scss'),
+          resources: [
+            path.join(paths.src, 'assets/styles/variables.scss'),
+            path.join(paths.src, 'assets/styles/mixins.scss'),
+          ]
         },
       });
     }

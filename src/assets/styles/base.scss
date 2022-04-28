@@ -1,8 +1,8 @@
 $font: "Montserrat", Helvetica, Arial, sans-serif;
 
 html {
-  height: 100%; /* растягиваем страницу на весь экран */
-  width: 100%; /* растягиваем страницу на весь экран */
+  height: 100%;
+  width: 100%;
   font-size: #{$font-size}px;
   font-family: $font;
   font-weight: normal;
@@ -14,8 +14,8 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  min-height: 100%; /* растягиваем тело сайта на весь экран */
-  width: 100%; /* растягиваем тело сайта на весь экран */
+  min-height: 100%;
+  width: 100%;
   background: $color-background;
   color: $color-body;
 }
@@ -68,21 +68,6 @@ p {
 }
 
 //-----------------------------------
-
-.visually-hidden:not(:focus):not(:active),
-input[type="checkbox"].visually-hidden,
-input[type="radio"].visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
 
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
