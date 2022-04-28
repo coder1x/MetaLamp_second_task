@@ -15,9 +15,11 @@ mixin room-card(options = {})
     const classComponent = 'room-card'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   article(class=`${className} js-${classComponent}`)
 
@@ -39,7 +41,7 @@ mixin room-card(options = {})
         span(class=`${classComponent}__header-num`) №
         p(class=`${classComponent}__header`)= number
         - if(lux){
-        span(class=`${classComponent}__lux`) люкс
+            span(class=`${classComponent}__lux`) люкс
         -}
       div(class=`${classComponent}__price-wrap`)
         span(class=`${classComponent}__price`)= price+'₽'

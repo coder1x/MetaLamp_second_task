@@ -17,13 +17,15 @@ mixin drop-down(options = {})
     const classComponent = 'drop-down'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-    p(class=`${classComponent}__text-header`)= label
+        p(class=`${classComponent}__text-header`)= label
     -}
 
     div(class=`${classComponent}__wrap`)
@@ -32,25 +34,25 @@ mixin drop-down(options = {})
 
       ul(class=`${classComponent}__select js-${classComponent}__select`)
         - for(let i=0; i<words[0].length; i++)  {
-          li(class=`${classComponent}__select-item js-${classComponent}__select-item` data-type= words[1][i])
-            p(class=`${classComponent}__text`)= words[0][i]
-            button(class=`${classComponent}__minus js-${classComponent}__minus` aria-label='минус') -
-            span(class=`${classComponent}__value js-${classComponent}__value`) 0
-            button(class=`${classComponent}__plus js-${classComponent}__plus` data-max=maxValue[i] aria-label='плюс') +
+            li(class=`${classComponent}__select-item js-${classComponent}__select-item` data-type= words[1][i])
+              p(class=`${classComponent}__text`)= words[0][i]
+              button(class=`${classComponent}__minus js-${classComponent}__minus` aria-label='минус') -
+              span(class=`${classComponent}__value js-${classComponent}__value`) 0
+              button(class=`${classComponent}__plus js-${classComponent}__plus` data-max=maxValue[i] aria-label='плюс') +
         -}
         
         -if(button){
-        li(class=`${classComponent}__buttons`)
-          div(class=`${classComponent}__button-clear js-${classComponent}__button-clear`)
-            +buttons({
-              text:'очистить',
-              type:'button',
-              modifier:['text']
-                  })
-          div(class=`${classComponent}__button-apply js-${classComponent}__button-apply`)
-            +buttons({
-              text:'применить',
-              type:'button',
-              modifier:['text']
-                  })
+            li(class=`${classComponent}__buttons`)
+              div(class=`${classComponent}__button-clear js-${classComponent}__button-clear`)
+                +buttons({
+                  text:'очистить',
+                  type:'button',
+                  modifier:['text']
+                      })
+              div(class=`${classComponent}__button-apply js-${classComponent}__button-apply`)
+                +buttons({
+                  text:'применить',
+                  type:'button',
+                  modifier:['text']
+                      })
         -}

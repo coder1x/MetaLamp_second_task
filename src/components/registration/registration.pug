@@ -15,21 +15,23 @@ mixin registration(options = {})
     const classComponent = 'registration'
     let className = classComponent
 
-    const data = require('./registration.json'); 
-
-    const textField = data.textField
-    const toggleButtons = data.toggleButtons
-    const buttons = data.buttons
+    const {
+      textField,
+      toggleButtons,
+      buttons,
+    } = require('./registration.json');
 
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   article(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-    header(class=`${classComponent}__header-wrap`)
-      h1(class=`${classComponent}__header`)= header
+        header(class=`${classComponent}__header-wrap`)
+          h1(class=`${classComponent}__header`)= header
     -}
 
     form(class=`${classComponent}__form` action='' method='post')

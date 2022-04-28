@@ -4,7 +4,8 @@ mixin square-color(textTop,textBot,modifier)
     let classSquare = `${className}__square`
     const modifierSquare = modifier ?? ''
     if(modifierSquare){
-    classSquare += ` ${classSquare}_${modifierSquare}`}
+      classSquare += ` ${classSquare}_${modifierSquare}`
+    }
 
   div(class=className)
     div(class=classSquare)

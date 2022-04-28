@@ -12,10 +12,11 @@ mixin buttons(options)
     let className = classComponent
     if(modifier){
       for(let item of modifier)
-    className += ` ${classComponent}_${item}`
+        className += ` ${classComponent}_${item}`
     }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
     
   case type
     when 'link'

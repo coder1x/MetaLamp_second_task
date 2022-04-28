@@ -16,13 +16,15 @@ mixin diagram(options = {})
       ['0','disappointed','Разочарован'],
     ]
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=`${classComponent} js-${classComponent}`)
     - if(!isLabeled){
-      h2(class=`${classComponent}__header`)= label
+        h2(class=`${classComponent}__header`)= label
     -}
     
     div(class=`${classComponent}__wrapper`)

@@ -11,12 +11,14 @@ block title
   title search room
 block content
 
-  - const data = require('./search-room.json'); 
+  -
+    const {
+      dateDropdown,
+      dropDown,
+      checkboxList,
+      buttons,
+      } = require('./search-room.json'); 
 
-  - const dateDropdown = data.dateDropdown
-  - const dropDown = data.dropDown
-  - const checkboxList = data.checkboxList
-  - const buttons = data.buttons
   main.search-room-content
     .search-room-content__wrap
       section.search-room-filter

@@ -11,9 +11,11 @@ mixin rate-button(options = {})
     const classComponent = 'rate-button'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
     labels = [
     'Ужасно',
@@ -26,10 +28,10 @@ mixin rate-button(options = {})
   div(class=className)
     fieldset(class=`${classComponent}__stars`)
       - if(!isLabeled){
-      legend(class=`${classComponent}__header`)= label
+          legend(class=`${classComponent}__header`)= label
       -}
       
       div(class=`${classComponent}__group`)
         - for(let i=0; i<labels.length; i++)  {
-          input(class=`${classComponent}__star` type='radio' name=name value=i+1 aria-label=labels[i])
+            input(class=`${classComponent}__star` type='radio' name=name value=i+1 aria-label=labels[i])
         -}

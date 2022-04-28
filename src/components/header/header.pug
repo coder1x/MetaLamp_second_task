@@ -14,18 +14,21 @@ mixin header(options = {})
     const tipSvg = require('./img/tip.svg')
     let className = classComponent
 
-    const data = require('./header.json'); 
-
-    const service = data.service
-    const agreements = data.agreements
-    const buttons = data.buttons
+    const {
+      service,
+      agreements,
+      buttons,
+    } = require('./header.json');
 
     if(current){
-      current =`${classComponent}__link_current`}
+      current =`${classComponent}__link_current`
+    }
     if(modifier){
-    className +=` ${classComponent}_${modifier}`}
+      className +=` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className +=` ${addClass}`}
+      className +=` ${addClass}`
+    }
 
   header(class=`${className} js-${classComponent}`)
     div(class=`${classComponent}__wrapper`)
@@ -60,13 +63,13 @@ mixin header(options = {})
                   a(class=`${classComponent}__link` href='https://change-me')=text
 
       -if (type == 'authorized'){
-        div(class=`${classComponent}__user`)
-          a(class=`${classComponent}__nikname` href='https://change-me') Юлий Цезарь
+          div(class=`${classComponent}__user`)
+            a(class=`${classComponent}__nikname` href='https://change-me') Юлий Цезарь
       -}
       -else{
-        div(class=`${classComponent}__signin-wrap`)
-          +buttons(buttons.signIn)
-          
-        div(class=`${classComponent}__registration-wrap`)
-          +buttons(buttons.registration)
+          div(class=`${classComponent}__signin-wrap`)
+            +buttons(buttons.signIn)
+            
+          div(class=`${classComponent}__registration-wrap`)
+            +buttons(buttons.registration)
       -}

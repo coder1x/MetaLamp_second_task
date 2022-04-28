@@ -10,13 +10,15 @@ mixin like-button(options = {})
     const classComponent = 'like-button'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-    p(class=`${classComponent}__header`)= label
+        p(class=`${classComponent}__header`)= label
     -}
     
     button(class=`${classComponent}__like js-${classComponent}__like` aria-label='поставить лайк')

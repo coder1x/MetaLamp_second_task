@@ -15,29 +15,31 @@ mixin date-dropdown(options = {})
     let className = classComponent
 
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=`${className} js-${classComponent}`)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
-      div(class=`${classComponent}__date-wrap`)
+        div(class=`${classComponent}__date-wrap`)
 
-        - if(!isLabeled){
-        p(class=`${classComponent}__label-text`)= label[i]
-        -}
-
-        label(class=`${classComponent}__label`)
-
-          -if(filter){
-            input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder=''  autocomplete='off')
-            input(class=`${classComponent}__input-hidden js-${classComponent}__input-hidden` type='hidden' value=value name='date-filter')
-          -}else{
-            input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
+          - if(!isLabeled){
+              p(class=`${classComponent}__label-text`)= label[i]
           -}
-          
-          img(class=`${classComponent}__tip` src=require('./img/tip.svg') alt='уголок')
+
+          label(class=`${classComponent}__label`)
+
+            -if(filter){
+                input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder=''  autocomplete='off')
+                input(class=`${classComponent}__input-hidden js-${classComponent}__input-hidden` type='hidden' value=value name='date-filter')
+            -}else{
+                input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
+            -}
+            
+            img(class=`${classComponent}__tip` src=require('./img/tip.svg') alt='уголок')
     -}
 
     div(class=`${classComponent}__datepicker-wrap js-${classComponent}__datepicker-wrap`)

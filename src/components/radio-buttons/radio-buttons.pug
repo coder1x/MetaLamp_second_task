@@ -10,14 +10,16 @@ mixin radio-buttons(options = {})
     const classComponent = 'radio-buttons'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=className)
     fieldset(class=`${classComponent}__items`)
       - if(!isLabeled){
-        legend(class=`${classComponent}__header`)= label
+          legend(class=`${classComponent}__header`)= label
       -}
 
         label(class=`${classComponent}__label`) Мужчина

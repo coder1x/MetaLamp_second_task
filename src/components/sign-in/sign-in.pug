@@ -13,20 +13,22 @@ mixin sign-in(options = {})
     const classComponent = 'sign-in'
     let className = classComponent
 
-    const data = require('./sign-in.json'); 
-
-    const textField = data.textField
-    const buttons = data.buttons
+    const {
+      textField,
+      buttons,
+    } = require('./sign-in.json'); 
 
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   article(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-    header(class=`${classComponent}__header-wrap`)
-      h1(class=`${classComponent}__header`)= header
+        header(class=`${classComponent}__header-wrap`)
+          h1(class=`${classComponent}__header`)= header
     -}
 
     form(class=`${classComponent}__form` action='' method='post')

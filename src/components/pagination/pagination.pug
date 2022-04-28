@@ -10,13 +10,15 @@ mixin pagination(options = {})
     const classComponent = 'pagination'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=className)
     - if(!isLabeled){
-    p(class=`${classComponent}__header`)= label
+        p(class=`${classComponent}__header`)= label
     -}
     
     div(class=`${classComponent}__links`)

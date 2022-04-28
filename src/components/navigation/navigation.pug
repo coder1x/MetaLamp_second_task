@@ -11,15 +11,16 @@ mixin navigation(options = {})
     let className = classComponent
     if(modifier){
       for(let item of modifier)
-    className += ` ${classComponent}_${item}` 
+        className += ` ${classComponent}_${item}`
     }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
     
   div(class=className)
     ul(class=`${classComponent}__items` role='navigation')
       lh(class=`${classComponent}__header`)= header
       -for(let i=0; i<strings.length; i++){
-      li(class=`${classComponent}__item`)
-        a(class=`${classComponent}__link` href='https://change-me')= strings[i]
+          li(class=`${classComponent}__item`)
+            a(class=`${classComponent}__link` href='https://change-me')= strings[i]
       -}

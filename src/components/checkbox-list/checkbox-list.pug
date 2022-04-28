@@ -13,9 +13,11 @@ mixin checkbox-list(options = {})
     const classComponent = 'checkbox-list'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
     
   div(class=`${className} js-${classComponent}`)
     fieldset(class=`${classComponent}__items`)

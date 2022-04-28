@@ -14,21 +14,23 @@ mixin search-room(options = {})
     const classComponent = 'search-room'
     let className = classComponent
 
-    const data = require('./search-room.json'); 
-
-    const dateDropdown = data.dateDropdown
-    const dropDown = data.dropDown
-    const buttons = data.buttons
+    const {
+      dateDropdown,
+      dropDown,
+      buttons,
+    } = require('./search-room.json'); 
 
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   article(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-    header(class=`${classComponent}__header-wrap`)
-      h1(class=`${classComponent}__header`)= header
+        header(class=`${classComponent}__header-wrap`)
+          h1(class=`${classComponent}__header`)= header
     -}
 
     form(class=`${classComponent}__form` action='' method='post')

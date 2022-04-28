@@ -1,7 +1,9 @@
 include ../../components/logo-group/logo-group.pug
 
-- const data = require('./index.json'); 
-- const menu = data.menuData
+-
+  const {
+    menuData,
+  } = require('./index.json');
 
 doctype html
 html(lang='ru')
@@ -18,6 +20,6 @@ html(lang='ru')
           nav.toxin-links__menu 
             ul.toxin-links__items(role='navigation')
               lh.toxin-links__header Меню страниц - TOXIN
-              each link, title in menu
+              each link, title in menuData
                 li.toxin-links__item
                   a(class='toxin-links__link' href='/'+link target='_blank' rel='noopener noreferrer')=title

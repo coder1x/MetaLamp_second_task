@@ -10,10 +10,11 @@ mixin logo(options = {})
     let className = classComponent
     if(modifier){
       for(let item of modifier)
-    className += ` ${classComponent}_${item}`
+        className += ` ${classComponent}_${item}`
     }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
     
   a(class=className href=link aria-label='На главную страницу')
     svg(width='106' height='40' fill='none' xmlns='http://www.w3.org/2000/svg')

@@ -15,21 +15,22 @@ include ../../components/pagination/pagination.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/comment/comment.pug
 
-- const data = require('./form-elements.json'); 
-
-- const textField = data.textField
-- const dropDown = data.dropDown
-- const dateDropdown = data.dateDropdown
-- const filterDate = data.filterDate
-- const subscrip = data.subscrip
-- const checkboxList = data.checkboxList
-- const feature = data.feature
-- const radioButtons = data.radioButtons
-- const toggleButtons = data.toggleButtons
-- const rateButton = data.rateButton
-- const buttons = data.buttons
-- const bulletList = data.bulletList
-- const comment = data.comment
+-
+  const {
+    textField,
+    dropDown,
+    dateDropdown,
+    filterDate,
+    subscrip,
+    checkboxList,
+    feature,
+    radioButtons,
+    toggleButtons,
+    rateButton,
+    buttons,
+    bulletList,
+    comment,
+  } = require('./form-elements.json');
 
 doctype html
 html(lang='ru')

@@ -11,9 +11,11 @@ mixin subscrip-textfield(options = {})
     const classComponent = 'subscrip-textfield'
     let className = classComponent
     if(modifier){
-    className += ` ${classComponent}_${modifier}`}
+      className += ` ${classComponent}_${modifier}`
+    }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   div(class=`${className} js-${classComponent}`)
     div(class=`${classComponent}__wrap`)

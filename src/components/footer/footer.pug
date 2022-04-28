@@ -12,18 +12,19 @@ mixin footer(options = {})
     const classComponent = 'footer'
     let className = classComponent
 
-    const data = require('./footer.json'); 
-
-    const socialData = data.socialData
-    const navigation = data.navigation
-    const subscrip = data.subscrip
+    const {
+      socialData,
+      navigation,
+      subscrip,
+    } = require('./footer.json'); 
 
     if(modifier){
       for(let item of modifier)
-    className += ` ${classComponent}_${item}`
+        className += ` ${classComponent}_${item}`
     }
     if(addClass){
-    className += ` ${addClass}`}
+      className += ` ${addClass}`
+    }
 
   footer(class=className role='contentinfo')
     div(class=`${classComponent}__top`)
