@@ -62,16 +62,18 @@ class Sidebar {
   _handleDocumentFocusin(event) {
     const { target } = event;
     const linkElement = target.closest(this.blockClass);
+    const isVisible = this._getVisibility() && this.button;
 
-    if (!linkElement && this._getVisibility() && this.button) {
-      const element = this.button.querySelector('button');
-      const path = (event.composedPath && event.composedPath());
+    if (!(!linkElement && isVisible)) return false;
 
-      if (!path.includes(element, 0)) {
-        this._toggle();
-        element.focus();
-      }
+    const element = this.button.querySelector('button');
+    const path = (event.composedPath && event.composedPath());
+
+    if (!path.includes(element, 0)) {
+      this._toggle();
+      element.focus();
     }
+    return false;
   }
 
   _handleDocumentClick() {

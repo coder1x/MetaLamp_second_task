@@ -17,14 +17,10 @@ class MaskedTextField {
     let value = domElement.value.replace(/[^.\d]/g, '');
 
     const stringLength = value.length;
-    if (stringLength === 1) {
-      if (Number(value) > 3) {
-        value = `0${value}`;
-      }
-    } else if (stringLength === 4) {
-      if (Number(value[stringLength - 1]) > 1) {
-        value = `${value.substr(0, stringLength - 1)}0${value[stringLength - 1]}`;
-      }
+    if (stringLength === 1 && Number(value) > 3) {
+      value = `0${value}`;
+    } else if (stringLength === 4 && Number(value[stringLength - 1]) > 1) {
+      value = `${value.substr(0, stringLength - 1)}0${value[stringLength - 1]}`;
     }
 
     const day = '^(0|[1-9]|0[1-9]|[12][0-9]|3[01])';

@@ -60,10 +60,8 @@ class Registration {
       const item = fields[i];
       const domElement = this.getElement(item);
 
-      if (domElement) {
-        if (!Registration._messageError(item, domElement.value.length)) {
-          return false;
-        }
+      if (domElement && !Registration._messageError(item, domElement.value.length)) {
+        return false;
       }
     }
     return true;

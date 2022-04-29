@@ -22,16 +22,18 @@ class HeaderMenu {
   }
 
   closeAll() {
-    if (this._showElement) {
-      if (this._showElement.length) {
-        this._showElement.forEach((element) => {
-          this._closeList(element);
-        });
-      }
+    if (!this._showElement) return false;
+
+    if (this._showElement.length) {
+      this._showElement.forEach((element) => {
+        this._closeList(element);
+      });
     }
+
     this._showElement = [];
 
     this._closeTip();
+    return true;
   }
 
   _startMenu() {
@@ -81,22 +83,20 @@ class HeaderMenu {
   }
 
   _showList(index) {
-    if (this._button) {
-      if (HeaderMenu._isButtonVisible(this._button)) return false;
-    }
+    if (this._button && HeaderMenu._isButtonVisible(this._button)) return false;
 
     this.closeAll();
 
-    if (Array.isArray(this._items)) {
-      const element = this._items[index];
+    if (!Array.isArray(this._items)) return false;
 
-      if (Array.isArray(this._tip)) { this._rotateTip(this._tip[index], true); }
-      element.classList.add(this._getModifier());
+    const element = this._items[index];
 
-      if (element instanceof HTMLElement) { this._trackMouse(element); }
+    if (Array.isArray(this._tip)) { this._rotateTip(this._tip[index], true); }
+    element.classList.add(this._getModifier());
 
-      if (Array.isArray(this._showElement)) { this._showElement.push(element); }
-    }
+    if (element instanceof HTMLElement) { this._trackMouse(element); }
+
+    if (Array.isArray(this._showElement)) { this._showElement.push(element); }
 
     return true;
   }
@@ -190,13 +190,11 @@ class HeaderMenu {
       let element = null;
       if (Array.isArray(this._items)) { element = this._items[index]; }
 
-      if (element) {
-        if (element.classList.contains(this._getModifier())) {
-          this.closeAll();
-        } else {
-          index = this._getIndex(currentElement);
-          if (index != null) this._showList(index);
-        }
+      if (element && element.classList.contains(this._getModifier())) {
+        this.closeAll();
+      } else {
+        index = this._getIndex(currentElement);
+        if (index != null) this._showList(index);
       }
     } else if (event.key === 'Escape') {
       this.closeAll();

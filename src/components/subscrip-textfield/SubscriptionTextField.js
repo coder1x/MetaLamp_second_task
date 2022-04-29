@@ -18,12 +18,10 @@ class SubscriptionTextField {
   }
 
   _checkEmail() {
-    if (this._validationEmail) {
-      if (this._validationEmail.validateField()) {
-        message('Вы оформили подписку.');
-      } else {
-        message('Вы ввели неверный Email.');
-      }
+    if (this._validationEmail && this._validationEmail.validateField()) {
+      message('Вы оформили подписку.');
+    } else {
+      message('Вы ввели неверный Email.');
     }
   }
 

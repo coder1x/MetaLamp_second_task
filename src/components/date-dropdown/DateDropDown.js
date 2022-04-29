@@ -236,22 +236,23 @@ class DateDropDown {
 
     const dates = date.formattedDate;
 
-    if (dates.length === 2) {
-      if (this.isRange) {
-        [this.inputFrom.value] = dates;
-        [, this.inputTo.value] = dates;
-      } else {
-        const dateFrom = this._getDateFilter(dates[0]);
-        const dateTo = this._getDateFilter(dates[1]);
+    if (dates.length !== 2) return false;
 
-        this.inputFrom.placeholder = `${dateFrom} - ${dateTo}`;
-        this.inputHidden.value = `${dates[0]}-${dates[1]}`;
+    if (this.isRange) {
+      [this.inputFrom.value] = dates;
+      [, this.inputTo.value] = dates;
+    } else {
+      const dateFrom = this._getDateFilter(dates[0]);
+      const dateTo = this._getDateFilter(dates[1]);
 
-        if (DateDropDown.getVisible(this.calendarWrapper)) {
-          this.inputFrom.value = `${dates[0]} - ${dates[1]}`;
-        }
+      this.inputFrom.placeholder = `${dateFrom} - ${dateTo}`;
+      this.inputHidden.value = `${dates[0]}-${dates[1]}`;
+
+      if (DateDropDown.getVisible(this.calendarWrapper)) {
+        this.inputFrom.value = `${dates[0]} - ${dates[1]}`;
       }
     }
+
     return true;
   }
 
@@ -289,11 +290,13 @@ class DateDropDown {
     }
 
     const checkValidity = (isValid) => {
-      if (isValid) {
-        if (!isShown) { this.toggleVisibility(this._isToggle); }
-      } else {
+      if (!isValid) {
         message('Выберите диапазон');
+        return false;
       }
+
+      if (!isShown) { this.toggleVisibility(this._isToggle); }
+      return true;
     };
 
     if (this.isRange) {

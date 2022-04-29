@@ -188,13 +188,14 @@ class Slider {
       if (touchmove || (mousemove && event.buttons === 1)) {
         const xyUp = Slider._getCoordinatesXY(event);
 
-        if (Math.abs((xyUp[0] - xyDown[0])) > 20) {
-          if (Number(new Date()) - this._timePress > 200) {
-            this._swipeDirection([
-              xyDown[0] - xyUp[0],
-              xyDown[1] - xyUp[1],
-            ]);
-          }
+        const isShift = Math.abs((xyUp[0] - xyDown[0])) > 20;
+        const isTimeInterval = (Number(new Date()) - this._timePress) > 200;
+
+        if (isShift && isTimeInterval) {
+          this._swipeDirection([
+            xyDown[0] - xyUp[0],
+            xyDown[1] - xyUp[1],
+          ]);
           xyDown = [];
         }
       }

@@ -29,15 +29,18 @@ class DropDown {
 
     const maxValue = Number(buttonPlus.getAttribute('data-max'));
     classWithModifier = getModifier('__plus', '_disable');
+
+    let isDisabled = false;
+    const { classList } = buttonPlus;
     if (value >= maxValue) {
-      buttonPlus.classList.add(classWithModifier);
-      this._isButtonPlus = true;
-      buttonPlus.disabled = true;
+      classList.add(classWithModifier);
+      isDisabled = true;
     } else {
-      buttonPlus.classList.remove(classWithModifier);
-      this._isButtonPlus = false;
-      buttonPlus.disabled = false;
+      classList.remove(classWithModifier);
     }
+
+    this._isButtonPlus = isDisabled;
+    buttonPlus.disabled = isDisabled;
   }
 
   resetValue() {
@@ -67,20 +70,21 @@ class DropDown {
 
   getCategories() {
     const fields = new Map();
-    if (Array.isArray(this._values)) {
-      for (let i = 0; i < this._values.length; i += 1) {
-        const typeText = this._declensions[i].join(',');
-        const value = Number(this._values[i].innerText);
+    if (!Array.isArray(this._values)) return false;
 
-        if (fields.has(typeText)) {
-          const oldValue = fields.get(typeText);
-          const newValue = oldValue + value;
-          fields.set(typeText, newValue);
-        } else {
-          fields.set(typeText, value);
-        }
+    for (let i = 0; i < this._values.length; i += 1) {
+      const typeText = this._declensions[i].join(',');
+      const value = Number(this._values[i].innerText);
+
+      if (fields.has(typeText)) {
+        const oldValue = fields.get(typeText);
+        const newValue = oldValue + value;
+        fields.set(typeText, newValue);
+      } else {
+        fields.set(typeText, value);
       }
     }
+
     return fields;
   }
 
@@ -171,16 +175,16 @@ class DropDown {
   _handleApplyClick(event) {
     event.preventDefault();
 
-    if (this._inputElement instanceof HTMLInputElement) {
-      const defaultText = this._inputElement.value === this.defaultText;
-      const isInputClear = defaultText || !this._inputElement.value;
+    if (!(this._inputElement instanceof HTMLInputElement)) return false;
+    const defaultText = this._inputElement.value === this.defaultText;
+    const isInputClear = defaultText || !this._inputElement.value;
 
-      if (isInputClear) {
-        message('Выберите количество гостей.');
-      } else {
-        this._toggleVisibility();
-      }
+    if (isInputClear) {
+      message('Выберите количество гостей.');
+    } else {
+      this._toggleVisibility();
     }
+    return true;
   }
 
   _handleClearClick(event) {

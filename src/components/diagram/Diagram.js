@@ -90,16 +90,17 @@ class Diagram {
     ) => Number(elem.getAttribute(attribute)) ?? 0;
 
     const listItems = this._getElements('__colors-item');
-    if (Array.isArray(listItems)) {
-      listItems.forEach((item) => {
-        const number = getDataNumber(item, 'date-grade');
-        const name = item.getAttribute('date-name');
-        if (number) {
-          data.push(number);
-          if (name) this._nameLine.push(name);
-        }
-      });
-    }
+    if (!Array.isArray(listItems)) return [];
+
+    listItems.forEach((item) => {
+      const number = getDataNumber(item, 'date-grade');
+      const name = item.getAttribute('date-name');
+
+      if (number && name) {
+        data.push(number);
+        this._nameLine.push(name);
+      }
+    });
 
     this._nameLine = this._nameLine.reverse();
     return data.reverse();
@@ -163,23 +164,23 @@ class Diagram {
     let startLine = 0;
     const dot = (Math.PI / 180) * 270;
 
-    if (this._canvasContext instanceof CanvasRenderingContext2D) {
-      for (let i = 0; i < angle.length; i += 1) {
-        endLine = 2 * Math.PI * angle[i];
-        const start = startLine + dot + space;
-        const end = startLine + endLine + dot - space;
+    if (!(this._canvasContext instanceof CanvasRenderingContext2D)) return false;
 
-        this._canvasContext.beginPath();
-        this._canvasContext.arc(coordinatesX, coordinatesY, radius, start, end);
+    for (let i = 0; i < angle.length; i += 1) {
+      endLine = 2 * Math.PI * angle[i];
+      const start = startLine + dot + space;
+      const end = startLine + endLine + dot - space;
 
-        if (color) {
-          this._canvasContext.strokeStyle = color.get(this._nameLine[i]);
-        }
-        this._canvasContext.stroke();
-        this._canvasContext.closePath();
+      this._canvasContext.beginPath();
+      this._canvasContext.arc(coordinatesX, coordinatesY, radius, start, end);
 
-        startLine += endLine;
+      if (color) {
+        this._canvasContext.strokeStyle = color.get(this._nameLine[i]);
       }
+      this._canvasContext.stroke();
+      this._canvasContext.closePath();
+
+      startLine += endLine;
     }
 
     document.fonts.ready.then(() => {
@@ -198,6 +199,7 @@ class Diagram {
         this._canvasContext.fillText('голосов', 60 * scaling, 73 * scaling);
       }
     });
+    return true;
   }
 }
 

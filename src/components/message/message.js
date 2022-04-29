@@ -34,8 +34,6 @@ function message(text) {
   buttonClose.addEventListener('click', handleClose);
   buttonClose.addEventListener('keydown', handleKeydownClose);
 
-  // buttonClose.focus();
-
   return true;
 }
 
