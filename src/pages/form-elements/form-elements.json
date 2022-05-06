@@ -3,18 +3,18 @@
     "email": {
       "label": "text field",
       "placeholder": "Email",
-      "type": "email",
+      "typeField": "email",
       "name": "email"
     },
     "name": {
       "label": "text field",
-      "type": "text",
+      "typeField": "text",
       "name": "Name"
     },
     "date": {
       "label": "masked text field",
       "placeholder": "ДД.ММ.ГГГГ",
-      "type": "text",
+      "typeField": "text",
       "name": "Date",
       "addClass": "js-masked-date"
     }

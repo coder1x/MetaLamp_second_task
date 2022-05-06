@@ -3,13 +3,13 @@
     "email": {
       "isLabeled": true,
       "placeholder": "Email",
-      "type": "email",
+      "typeField": "email",
       "name": "email"
     },
     "password": {
       "isLabeled": true,
       "placeholder": "Пароль",
-      "type": "password",
+      "typeField": "password",
       "name": "password"
     }
   },

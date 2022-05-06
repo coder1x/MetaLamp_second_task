@@ -3,32 +3,32 @@
     "name": {
       "isLabeled": true,
       "placeholder": "Имя",
-      "type": "text",
+      "typeField": "text",
       "name": "name"
     },
     "surname": {
       "isLabeled": true,
       "placeholder": "Фамилия",
-      "type": "text",
+      "typeField": "text",
       "name": "surname"
     },
     "date": {
       "label": "дата рождения",
       "placeholder": "ДД.ММ.ГГГГ",
-      "type": "text",
+      "typeField": "text",
       "name": "date",
       "addClass": "js-masked-date"
     },
     "email": {
       "isLabeled": true,
       "placeholder": "Email",
-      "type": "email",
+      "typeField": "email",
       "name": "email"
     },
     "password": {
       "isLabeled": true,
       "placeholder": "Пароль",
-      "type": "password",
+      "typeField": "password",
       "name": "password"
     }
   },
