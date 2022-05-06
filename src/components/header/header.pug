@@ -38,7 +38,7 @@ mixin header(options = {})
       button(class=`${classComponent}__toggle js-${classComponent}__toggle` aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
         span(class=`${classComponent}__toggle-line js-${classComponent}__toggle-line`)
 
-      nav(class=`${classComponent}__menu-wrap js-${classComponent}__menu-wrap`)
+      nav(class=`${classComponent}__menu-wrapper js-${classComponent}__menu-wrapper`)
         ul(class=`${classComponent}__items` role='navigation')
           li(class=`${classComponent}__item`)
             a(class=`${classComponent}__link ${current}` href='https://change-me') О нас
@@ -67,9 +67,9 @@ mixin header(options = {})
             a(class=`${classComponent}__nikname` href='https://change-me') Юлий Цезарь
       -}
       -else{
-          div(class=`${classComponent}__signin-wrap`)
+          div(class=`${classComponent}__signin-wrapper`)
             +buttons(buttons.signIn)
             
-          div(class=`${classComponent}__registration-wrap`)
+          div(class=`${classComponent}__registration-wrapper`)
             +buttons(buttons.registration)
       -}

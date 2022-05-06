@@ -12,13 +12,13 @@ class SignIn {
 
   _setDomElement(element) {
     this._emailInputs = element.querySelector(
-      `${this.className}__email-wrap input`,
+      `${this.className}__email-wrapper input`,
     );
     this._passwordInput = element.querySelector(
-      `${this.className}__pass-wrap input`,
+      `${this.className}__password-wrapper input`,
     );
     this._buttonElement = element.querySelector(
-      `${this.className}__button-wrap button`,
+      `${this.className}__button-wrapper button`,
     );
   }
 

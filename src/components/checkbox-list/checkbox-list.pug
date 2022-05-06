@@ -31,10 +31,10 @@ mixin checkbox-list(options = {})
         -}  
       -}
       
-      div(class=`${classComponent}__wrap js-${classComponent}__wrap`)
+      div(class=`${classComponent}__wrapper js-${classComponent}__wrapper`)
         each value, index in words
           label(class=`${classComponent}__label`)= value
             input(class=`${classComponent}__input` type='checkbox' name=value)
-            span(class=`${classComponent}__bef`)
+            span(class=`${classComponent}__before`)
             -if(strings.length)
               span(class=`${classComponent}__text`)=strings[index]

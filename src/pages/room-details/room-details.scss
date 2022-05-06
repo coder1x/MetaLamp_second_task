@@ -2,13 +2,13 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 
 .room-details-content {
   border-bottom: 1px solid rgba(31, 32, 65, 0.25);
-  &__wrap {
+  &__wrapper {
     display: flex;
     flex-direction: column;
   }
 }
 
-.room-details-foto {
+.room-details-photo {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 2.68fr 1.25fr;
@@ -38,7 +38,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
   }
 }
 
-.room-details-info {
+.room-details-information {
   padding-top: 70px;
   padding-bottom: 61px;
 
@@ -65,18 +65,18 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     max-width: 380px;
   }
 
-  &__top-wrap {
+  &__top-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  &__bottom-wrap {
+  &__bottom-wrapper {
     @include media-breakpoint-down($lg) {
     }
   }
 
-  &__comment-wrap {
+  &__comment-wrapper {
     margin-top: 12px;
     width: 100%;
     max-width: 710px;
@@ -96,12 +96,12 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     line-height: 23px;
     color: #1f2041;
     margin-bottom: 21px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     @include max-row(3);
     max-width: 320px;
   }
 
-  &__feature-wrap {
+  &__feature-wrapper {
     width: 100%;
     max-width: 280px;
     grid-row-start: 1;
@@ -154,7 +154,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     }
   }
 
-  &__bottom-wrap {
+  &__bottom-wrapper {
     grid-column-start: 1;
     grid-column-end: 3;
 
@@ -170,7 +170,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     }
   }
 
-  &__booking-wrap {
+  &__booking-wrapper {
     width: 100%;
     max-width: 409px;
     min-width: 315px;
@@ -205,7 +205,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     }
   }
 
-  &__comment-header-wrap {
+  &__comment-header-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -228,7 +228,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     margin-bottom: 22px;
   }
 
-  &__regulations-wrap {
+  &__regulations-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -276,7 +276,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 24px;
     color: rgba(31, 32, 65, 0.75);
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     @include max-row(8);
   }
 }

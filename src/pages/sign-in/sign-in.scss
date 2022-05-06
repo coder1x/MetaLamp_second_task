@@ -1,6 +1,6 @@
 .sign-in-content {
   width: 100%;
-  word-wrap: break-word;
+  word-wrapper: break-word;
   flex: 1 0 auto;
 
   @include media-breakpoint-down($sm) {
@@ -53,7 +53,7 @@
     box-sizing: border-box;
   }
 
-  &__sign-in-wrap {
+  &__sign-in-wrapper {
     margin: auto;
     width: 100%;
     max-width: 380px;

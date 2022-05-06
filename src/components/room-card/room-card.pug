@@ -23,35 +23,35 @@ mixin room-card(options = {})
 
   article(class=`${className} js-${classComponent}`)
 
-    div(class=`${classComponent}__slider-wrap js-${classComponent}__slider-wrap`)
+    div(class=`${classComponent}__slider-wrapper js-${classComponent}__slider-wrapper`)
       div(class=`${classComponent}__relation-ratio`)
       a(class=`${classComponent}__link js-${classComponent}__link` href='https://change-me' aria-label='карточка номера')
         img(class=`${classComponent}__slide ${classComponent}__slide_visible js-${classComponent}__slide` src=require('./img/beige-room.webp'), alt='номер люкс')
         img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/crimson-room.webp'), alt='номер люкс')
         img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/red-room.webp'), alt='номер люкс')
         img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/blue-room.webp'), alt='номер люкс')
-      div(class=`${classComponent}__dot-wrap js-${classComponent}__dot-wrap`)
-      button(class=`${classComponent}__prev-wrap js-${classComponent}__prev-wrap` aria-label='предыдущий слайд')
+      div(class=`${classComponent}__dot-wrapper js-${classComponent}__dot-wrapper`)
+      button(class=`${classComponent}__prev-wrapper js-${classComponent}__prev-wrapper` aria-label='предыдущий слайд')
         img(class=`${classComponent}__prev` src=require('./img/expand-more.svg'), alt='стрелка в лево')
-      button(class=`${classComponent}__next-wrap js-${classComponent}__next-wrap` aria-label='следующий слайд')
+      button(class=`${classComponent}__next-wrapper js-${classComponent}__next-wrapper` aria-label='следующий слайд')
         img(class=`${classComponent}__next` src=require('./img/expand-more.svg'), alt='стрелка в право')
 
-    a(class=`${classComponent}__header-wrap` href='https://change-me')
-      div(class=`${classComponent}__number-wrap`)
+    a(class=`${classComponent}__header-wrapper` href='https://change-me')
+      div(class=`${classComponent}__number-wrapper`)
         span(class=`${classComponent}__header-num`) №
         p(class=`${classComponent}__header`)= number
         - if(lux){
             span(class=`${classComponent}__lux`) люкс
         -}
-      div(class=`${classComponent}__price-wrap`)
+      div(class=`${classComponent}__price-wrapper`)
         span(class=`${classComponent}__price`)= price+'₽'
         span(class=`${classComponent}__price-text`) в сутки
         
-    div(class=`${classComponent}__rate-wrap`)
+    div(class=`${classComponent}__rate-wrapper`)
       +rate-button({
         isLabeled:true,
         name:rateName
         })
-      div(class=`${classComponent}__reviews-wrap`)
+      div(class=`${classComponent}__reviews-wrapper`)
         span(class=`${classComponent}__reviews`)= reviews
         span(class=`${classComponent}__reviews-text`) Отзывов

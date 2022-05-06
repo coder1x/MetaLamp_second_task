@@ -4,7 +4,7 @@ $color-link: $Dark-Shade-50;
 $color-link-focus: $Dark-Shade-100;
 
 .page {
-  &__wrap {
+  &__wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100px;

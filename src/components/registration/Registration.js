@@ -12,12 +12,12 @@ class Registration {
   }
 
   getElement(string) {
-    return this.element.querySelector(`${this.className}__${string}-wrap input`);
+    return this.element.querySelector(`${this.className}__${string}-wrapper input`);
   }
 
   _setDomElement() {
     this._buttonElement = this.element.querySelector(
-      `${this.className}__submit-wrap button`,
+      `${this.className}__submit-wrapper button`,
     );
   }
 

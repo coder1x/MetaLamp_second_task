@@ -7,7 +7,7 @@ $color-focus: $Dark-Shade-100;
   display: flex;
   flex-direction: row;
 
-  &__avatar-wrap {
+  &__avatar-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,17 +25,17 @@ $color-focus: $Dark-Shade-100;
     max-width: 44px;
   }
 
-  &__like-wrap {
+  &__like-wrapper {
     margin-top: 9px;
   }
 
-  &__header-wrap,
-  &__message-wrap {
+  &__header-wrapper,
+  &__message-wrapper {
     //display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  &__header-wrap {
+  &__header-wrapper {
     max-width: 320px;
   }
 
@@ -45,7 +45,7 @@ $color-focus: $Dark-Shade-100;
     font-size: 14px;
     line-height: 25px;
     color: $color-name;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     @include max-row(3);
   }
 
@@ -65,7 +65,7 @@ $color-focus: $Dark-Shade-100;
 
   &__message {
     margin-top: 10px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     max-width: 653px;
 
     @include media-breakpoint-down($lg) {

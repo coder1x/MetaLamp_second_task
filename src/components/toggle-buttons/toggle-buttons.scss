@@ -40,7 +40,7 @@ $color-focus: $Dark-Shade-100;
     outline-offset: 12px;
   }
 
-  &__tog {
+  &__wrapper {
     position: relative;
   }
 
@@ -49,7 +49,7 @@ $color-focus: $Dark-Shade-100;
     cursor: pointer;
   }
 
-  &__bef {
+  &__before {
     position: absolute;
     top: 1px;
     left: 0;
@@ -65,7 +65,7 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-  &__bef:after {
+  &__before:after {
     content: "";
     position: absolute;
     top: 3px;
@@ -78,15 +78,15 @@ $color-focus: $Dark-Shade-100;
     transition: 0.2s;
   }
 
-  &__input:checked + &__bef {
+  &__input:checked + &__before {
     border-color: $color-toggle-border;
   }
-  &__input:checked + &__bef:after {
+  &__input:checked + &__before:after {
     left: 22px;
     background: linear-gradient(180deg, $color-toggle-border 0%, #8ba4f9 100%);
   }
 
-  &__tog &__label &__bef_border {
+  &__wrapper &__label &__bef_border {
     border-color: $color-border-focus;
   }
 }

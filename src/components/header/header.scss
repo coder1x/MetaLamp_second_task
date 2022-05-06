@@ -151,7 +151,7 @@ $color-focus: $Dark-Shade-100;
     margin-left: 0;
   }
 
-  &__menu-wrap {
+  &__menu-wrapper {
     margin-left: auto;
     margin-right: 26px;
 
@@ -172,7 +172,7 @@ $color-focus: $Dark-Shade-100;
 
   &__items {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrapper: wrap;
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
@@ -241,7 +241,7 @@ $color-focus: $Dark-Shade-100;
     outline-offset: 4px;
   }
 
-  &__registration-wrap {
+  &__registration-wrapper {
     margin-left: 20px;
     @include media-breakpoint-down($xs) {
       margin-left: 0px;
@@ -249,7 +249,7 @@ $color-focus: $Dark-Shade-100;
   }
 }
 
-.header .header__menu-wrap {
+.header .header__menu-wrapper {
   &_visible {
     display: block;
   }

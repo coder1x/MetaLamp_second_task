@@ -199,7 +199,7 @@ class DateDropDown {
     this.className = className;
     this.element = element;
     this.calendar = getElement('datepicker');
-    this.calendarWrapper = getElement('datepicker-wrap');
+    this.calendarWrapper = getElement('datepicker-wrapper');
     this.inputHidden = getElement('input-hidden');
     this.inputs = element.querySelectorAll(`${className}__input`);
     this.isRange = this.inputs.length > 1;

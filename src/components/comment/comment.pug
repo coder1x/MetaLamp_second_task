@@ -22,14 +22,14 @@ mixin comment(options = {})
 
   article(class=className)
   
-    div(class=`${classComponent}__avatar-wrap`)
+    div(class=`${classComponent}__avatar-wrapper`)
       figure(class=`${classComponent}__author`)
         img(class=`${classComponent}__avatar` src=require('./img/'+src), alt=name)
-      div(class=`${classComponent}__like-wrap`)
+      div(class=`${classComponent}__like-wrapper`)
         +like-button({isLabeled:true})
 
-    div(class=`${classComponent}__message-wrap`)
-      header(class=`${classComponent}__header-wrap`)
+    div(class=`${classComponent}__message-wrapper`)
+      header(class=`${classComponent}__header-wrapper`)
         a(class=`${classComponent}__name` href='https://change-me')= name
         p(class=`${classComponent}__date`)= date
       p(class=`${classComponent}__message`)= message

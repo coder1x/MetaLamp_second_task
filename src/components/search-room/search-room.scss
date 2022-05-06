@@ -18,7 +18,7 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
     @include max-row(3);
   }
 
-  &__date-wrap {
+  &__date-wrapper {
     margin-bottom: 22px;
     border: 0px;
     padding: 0;
@@ -26,11 +26,11 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
     margin-right: 0;
   }
 
-  &__dropdown-wrap {
+  &__dropdown-wrapper {
     margin-bottom: 31px;
   }
 
-  &__button-wrap {
+  &__button-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;

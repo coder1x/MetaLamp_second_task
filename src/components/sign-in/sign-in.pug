@@ -27,22 +27,22 @@ mixin sign-in(options = {})
 
   article(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-        header(class=`${classComponent}__header-wrap`)
+        header(class=`${classComponent}__header-wrapper`)
           h1(class=`${classComponent}__header`)= header
     -}
 
     form(class=`${classComponent}__form` action='' method='post')
       fieldset(class=`${classComponent}__authorization`)
 
-        div(class=`${classComponent}__email-wrap js-${classComponent}__email-wrap`)
+        div(class=`${classComponent}__email-wrapper js-${classComponent}__email-wrapper`)
           +text-field(textField.email)
 
-        div(class=`${classComponent}__pass-wrap js-${classComponent}__pass-wrap`)
+        div(class=`${classComponent}__password-wrapper js-${classComponent}__password-wrapper`)
           +text-field(textField.password)
 
-        div(class=`${classComponent}__button-wrap js-${classComponent}__button-wrap`)
+        div(class=`${classComponent}__button-wrapper js-${classComponent}__button-wrapper`)
           +buttons(buttons.submit)
           
-      div(class=`${classComponent}__registration-wrap`)
-        p(class=`${classComponent}__text-reg`) Нет аккаунта на Toxin ?
+      div(class=`${classComponent}__registration-wrapper`)
+        p(class=`${classComponent}__text-registration`) Нет аккаунта на Toxin ?
         +buttons(buttons.link)

@@ -24,7 +24,7 @@ mixin date-dropdown(options = {})
   div(class=`${className} js-${classComponent}`)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
-        div(class=`${classComponent}__date-wrap`)
+        div(class=`${classComponent}__date-wrapper`)
 
           - if(!isLabeled){
               p(class=`${classComponent}__label-text`)= label[i]
@@ -42,7 +42,7 @@ mixin date-dropdown(options = {})
             img(class=`${classComponent}__tip` src=require('./img/tip.svg') alt='уголок')
     -}
 
-    div(class=`${classComponent}__datepicker-wrap js-${classComponent}__datepicker-wrap`)
+    div(class=`${classComponent}__datepicker-wrapper js-${classComponent}__datepicker-wrapper`)
       div(class=`${classComponent}__datepicker js-${classComponent}__datepicker`)
       div(class=`${classComponent}__datepicker-buttons`)
       

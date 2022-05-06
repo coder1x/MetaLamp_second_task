@@ -28,29 +28,29 @@ mixin footer(options = {})
 
   footer(class=className role='contentinfo')
     div(class=`${classComponent}__top`)
-      div(class=`${classComponent}__top-wrap`)
+      div(class=`${classComponent}__top-wrapper`)
 
-        div(class=`${classComponent}__recommendation-wrap`)
-          div(class=`${classComponent}__logo-wrap`)
+        div(class=`${classComponent}__recommendation-wrapper`)
+          div(class=`${classComponent}__logo-wrapper`)
             +logo({})
           p(class=`${classComponent}__recommendation-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
 
-        div(class=`${classComponent}__navigation-wrap`)
+        div(class=`${classComponent}__navigation-wrapper`)
           +navigation(navigation.different)
 
-        div(class=`${classComponent}__about-us-wrap`)
+        div(class=`${classComponent}__about-us-wrapper`)
           +navigation(navigation.about)
 
-        div(class=`${classComponent}__support-wrap`)
+        div(class=`${classComponent}__support-wrapper`)
           +navigation(navigation.support)
 
-        div(class=`${classComponent}__subscrip-wrap`)
+        div(class=`${classComponent}__subscrip-wrapper`)
           p(class=`${classComponent}__subscrip-header`) Подписка
           p(class=`${classComponent}__subscrip-text`) Получайте специальные предложения и новости сервиса
           +subscrip-textfield(subscrip)
 
     div(class=`${classComponent}__bottom`)
-      div(class=`${classComponent}__bottom-wrap`)
+      div(class=`${classComponent}__bottom-wrapper`)
         p(class=`${classComponent}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
 
         ul(class=`${classComponent}__social`)

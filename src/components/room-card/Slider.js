@@ -9,7 +9,7 @@ class Slider {
   }
 
   getElement(string) {
-    return this.element.querySelector(`${this.className}__${string}-wrap`);
+    return this.element.querySelector(`${this.className}__${string}-wrapper`);
   }
 
   setVisible(index) {

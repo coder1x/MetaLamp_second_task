@@ -30,40 +30,40 @@ mixin registration(options = {})
 
   article(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-        header(class=`${classComponent}__header-wrap`)
+        header(class=`${classComponent}__header-wrapper`)
           h1(class=`${classComponent}__header`)= header
     -}
 
     form(class=`${classComponent}__form` action='' method='post')
       fieldset(class=`${classComponent}__full-name`)
 
-        div(class=`${classComponent}__name-wrap js-${classComponent}__name-wrap`)
+        div(class=`${classComponent}__name-wrapper js-${classComponent}__name-wrapper`)
           +text-field(textField.name)
 
-        div(class=`${classComponent}__surname-wrap js-${classComponent}__surname-wrap`)
+        div(class=`${classComponent}__surname-wrapper js-${classComponent}__surname-wrapper`)
           +text-field(textField.surname)
 
-      div(class=`${classComponent}__gender-wrap`)
+      div(class=`${classComponent}__gender-wrapper`)
         +radio-buttons({
           isLabeled:true
         })
 
-      div(class=`${classComponent}__date-wrap js-${classComponent}__date-wrap`)
+      div(class=`${classComponent}__date-wrapper js-${classComponent}__date-wrapper`)
           +text-field(textField.date)
 
       fieldset(class=`${classComponent}__identification`)
         legend(class=`${classComponent}__data-text`) данные для входа в сервис
 
-        div(class=`${classComponent}__email-wrap js-${classComponent}__email-wrap`)
+        div(class=`${classComponent}__email-wrapper js-${classComponent}__email-wrapper`)
           +text-field(textField.email)
 
-        div(class=`${classComponent}__pass-wrap js-${classComponent}__pass-wrap`)
+        div(class=`${classComponent}__password-wrapper js-${classComponent}__password-wrapper`)
           +text-field(textField.password)
 
-      div(class=`${classComponent}__toggle-wrap`)
+      div(class=`${classComponent}__toggle-wrapper`)
         +toggle-buttons(toggleButtons)
 
-      div(class=`${classComponent}__submit-wrap js-${classComponent}__submit-wrap`)
+      div(class=`${classComponent}__submit-wrapper js-${classComponent}__submit-wrapper`)
         +buttons(buttons.submit)
         
       div(class=`${classComponent}__sign-in`)

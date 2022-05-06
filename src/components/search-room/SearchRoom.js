@@ -12,13 +12,13 @@ class SearchRoom {
 
   _setDomElement(element) {
     this._dateInputs = [
-      ...element.querySelectorAll(`${this.className}__date-wrap input`),
+      ...element.querySelectorAll(`${this.className}__date-wrapper input`),
     ];
     this._guestsInput = element.querySelector(
-      `${this.className}__dropdown-wrap input`,
+      `${this.className}__dropdown-wrapper input`,
     );
     this._buttonElement = element.querySelector(
-      `${this.className}__button-wrap button`,
+      `${this.className}__button-wrapper button`,
     );
   }
 

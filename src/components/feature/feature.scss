@@ -14,7 +14,7 @@ $color-feature-border: $Dark-Shade-1;
     border-bottom: 0px;
   }
 
-  &__wrap-icon {
+  &__wrapper-icon {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -24,7 +24,7 @@ $color-feature-border: $Dark-Shade-1;
   &__description {
     margin-left: 10px;
     max-width: 300px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
   }
 
   &__header {

@@ -58,7 +58,7 @@ $color-focus: $Dark-Shade-100;
     color: $color-radio-label;
   }
 
-  &__bef {
+  &__before {
     width: 20px;
     height: 20px;
     position: absolute;
@@ -71,7 +71,7 @@ $color-focus: $Dark-Shade-100;
     background-color: #fff;
   }
 
-  &__bef::before {
+  &__before::before {
     content: "";
     width: 26px;
     height: 25px;
@@ -81,13 +81,13 @@ $color-focus: $Dark-Shade-100;
     box-sizing: border-box;
   }
 
-  &__input:checked + &__bef {
+  &__input:checked + &__before {
     border-color: $color-radio-border;
     background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
     box-shadow: inset 0px 0px 0px 3.5px $color-background;
   }
 
-  &__input:focus + &__bef {
+  &__input:focus + &__before {
     border: 1px solid $color-radio;
   }
 

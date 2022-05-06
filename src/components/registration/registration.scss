@@ -16,7 +16,7 @@ $color-text-in: #000;
     padding: 40px 15px 30px 15px;
   }
 
-  &__header-wrap {
+  &__header-wrapper {
     @include media-breakpoint-down($xs) {
       text-align: center;
     }
@@ -26,28 +26,28 @@ $color-text-in: #000;
     margin-bottom: 20px;
   }
 
-  &__name-wrap {
+  &__name-wrapper {
     margin-bottom: 10px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
   }
 
-  &__surname-wrap {
+  &__surname-wrapper {
     margin-bottom: 8px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
   }
 
-  &__gender-wrap {
+  &__gender-wrapper {
     margin-bottom: 23px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 30px;
     }
   }
 
-  &__date-wrap {
+  &__date-wrapper {
     margin-bottom: 21px;
   }
 
@@ -71,28 +71,28 @@ $color-text-in: #000;
     border: 0;
   }
 
-  &__email-wrap {
+  &__email-wrapper {
     margin-bottom: 10px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
   }
 
-  &__pass-wrap {
+  &__password-wrapper {
     margin-bottom: 9px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 30px;
     }
   }
 
-  &__toggle-wrap {
+  &__toggle-wrapper {
     margin-bottom: 20px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 35px;
     }
   }
 
-  &__submit-wrap {
+  &__submit-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;

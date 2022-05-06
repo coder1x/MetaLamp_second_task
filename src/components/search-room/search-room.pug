@@ -29,16 +29,16 @@ mixin search-room(options = {})
 
   article(class=`${className} js-${classComponent}`)
     - if(!isLabeled){
-        header(class=`${classComponent}__header-wrap`)
+        header(class=`${classComponent}__header-wrapper`)
           h1(class=`${classComponent}__header`)= header
     -}
 
     form(class=`${classComponent}__form` action='' method='post')
-      fieldset(class=`${classComponent}__date-wrap js-${classComponent}__date-wrap`)
+      fieldset(class=`${classComponent}__date-wrapper js-${classComponent}__date-wrapper`)
         +date-dropdown(dateDropdown)
 
-      div(class=`${classComponent}__dropdown-wrap js-${classComponent}__dropdown-wrap`)
+      div(class=`${classComponent}__dropdown-wrapper js-${classComponent}__dropdown-wrapper`)
         +drop-down(dropDown)
           
-      div(class=`${classComponent}__button-wrap js-${classComponent}__button-wrap`)
+      div(class=`${classComponent}__button-wrapper js-${classComponent}__button-wrapper`)
         +buttons(buttons)

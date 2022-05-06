@@ -24,7 +24,7 @@ $color-focus: $Dark-Shade-100;
     outline: 2px solid $color-border-focus;
   }
 
-  &__wrap {
+  &__wrapper {
     display: none;
   }
 
@@ -74,7 +74,7 @@ $color-focus: $Dark-Shade-100;
     outline-offset: 12px;
   }
 
-  &__bef {
+  &__before {
     width: 20px;
     height: 20px;
     background: $color-background;
@@ -90,7 +90,7 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-  &__input:checked + &__bef {
+  &__input:checked + &__before {
     display: block;
     background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.46439 4.29245L5.70703 8.53509L4.29282 9.9493L0.0501771 5.70666L1.46439 4.29245Z' fill='url(%23paint0_linear)'/%3E%3Cpath d='M8.53546 2.87823L9.94967 4.29245L4.29282 9.9493L2.8786 8.53509L8.53546 2.87823Z' fill='url(%23paint1_linear)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x1='7.82835' y1='2.17112' x2='2.1715' y2='7.82798' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23BC9CFF'/%3E%3Cstop offset='1' stop-color='%238BA4F9'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x1='7.82835' y1='2.17112' x2='2.1715' y2='7.82798' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23BC9CFF'/%3E%3Cstop offset='1' stop-color='%238BA4F9'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
     background-size: 10px 10px;
@@ -99,15 +99,15 @@ $color-focus: $Dark-Shade-100;
     border-color: $color-checkbox-hover;
   }
 
-  &__wrap &__label &__bef_border {
+  &__wrapper &__label &__bef_border {
     border-color: $color-border-focus;
   }
 
-  &__input:disabled + &__bef {
+  &__input:disabled + &__before {
     border-color: $Dark-Shade-1;
   }
 
-  &__input:checked:disabled + &__bef {
+  &__input:checked:disabled + &__before {
     border-color: $Dark-Shade-1;
   }
 
@@ -123,7 +123,7 @@ $color-focus: $Dark-Shade-100;
 
   // ---------------------------- modif
 
-  &_visible &__wrap {
+  &_visible &__wrapper {
     display: block;
   }
 
@@ -133,7 +133,7 @@ $color-focus: $Dark-Shade-100;
 
   // ---------------------------- modif Checkbox Buttons
 
-  &_visibleBut &__wrap {
+  &_visibleBut &__wrapper {
     display: block;
   }
 

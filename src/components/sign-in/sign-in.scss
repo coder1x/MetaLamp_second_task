@@ -20,34 +20,34 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
     border: 0;
   }
 
-  &__email-wrap {
+  &__email-wrapper {
     margin-bottom: 10px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
   }
 
-  &__pass-wrap {
+  &__password-wrapper {
     margin-bottom: 20px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 30px;
     }
   }
 
-  &__button-wrap {
+  &__button-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 29px;
   }
 
-  &__registration-wrap {
+  &__registration-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  &__text-reg {
+  &__text-registration {
     display: flex;
     flex-direction: column;
     justify-content: center;

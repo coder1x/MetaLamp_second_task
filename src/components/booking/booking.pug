@@ -22,28 +22,28 @@ mixin booking(options = {})
     }
 
   article(class=`${className} js-${classComponent}`)
-    div(class=`${classComponent}__header-wrap`)
+    div(class=`${classComponent}__header-wrapper`)
 
-      div(class=`${classComponent}__number-wrap`)
+      div(class=`${classComponent}__number-wrapper`)
         span(class=`${classComponent}__header-num`) №
         p(class=`${classComponent}__header`)= number
         - if(lux){
             span(class=`${classComponent}__lux`) люкс
         -}
 
-      div(class=`${classComponent}__price-wrap`)
+      div(class=`${classComponent}__price-wrapper`)
         span(class=`${classComponent}__price`)= price+'₽'
         span(class=`${classComponent}__price-text`) в сутки
 
     form(class=`${classComponent}__form` action='' method='post')
-      fieldset(class=`${classComponent}__date-wrap js-${classComponent}__date-wrap`)
+      fieldset(class=`${classComponent}__date-wrapper js-${classComponent}__date-wrapper`)
         +date-dropdown({
           label: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
           class: 'js-masked-date'
           })
 
-      div(class=`${classComponent}__dropdown-wrap js-${classComponent}__dropdown-wrap`)
+      div(class=`${classComponent}__dropdown-wrapper js-${classComponent}__dropdown-wrapper`)
         +drop-down({
           label:'гости',
           value: 'Сколько гостей',
@@ -57,24 +57,24 @@ mixin booking(options = {})
           button:true
           })
 
-      div(class=`${classComponent}__day-wrap`)
+      div(class=`${classComponent}__day-wrapper`)
         p(class=`${classComponent}__day-calc`) 9 990₽ х 4 суток
         span(class=`${classComponent}__day-price`) 39 960₽
 
-      div(class=`${classComponent}__services-wrap`)
+      div(class=`${classComponent}__services-wrapper`)
         p(class=`${classComponent}__services`) Сбор за услуги: скидка 2 179₽
         span(class=`${classComponent}__services-price`) 0₽
 
-      div(class=`${classComponent}__services-wrap`)
+      div(class=`${classComponent}__services-wrapper`)
         p(class=`${classComponent}__services`) Сбор за дополнительные услуги
         span(class=`${classComponent}__services-price`) 300₽
         
-      div(class=`${classComponent}__total-wrap`)
+      div(class=`${classComponent}__total-wrapper`)
         span(class=`${classComponent}__total-text`) Итого
         div(class=`${classComponent}__total-dot`)
         span(class=`${classComponent}__total-price`) 38 081₽
 
-      div(class=`${classComponent}__button-wrap js-${classComponent}__button-wrap`)
+      div(class=`${classComponent}__button-wrapper js-${classComponent}__button-wrapper`)
         +buttons({
           text:'забронировать',
           type:'submit',

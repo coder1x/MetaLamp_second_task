@@ -18,54 +18,54 @@ block content
   - const cancellationText = data.cancellationText
   
   main.room-details-content
-    .room-details-content__wrap
+    .room-details-content__wrapper
 
-      section.room-details-foto
-          img.room-details-foto__image-big(src=require('./img/small-room.webp'), alt='Номер люкс - спальня')
-          img.room-details-foto__image-min(src=require('./img/room.webp'), alt='Номер люкс - вторая комната')
-          img.room-details-foto__image-min(src=require('./img/mask-group.webp'), alt='Номер люкс - гостиная')
+      section.room-details-photo
+          img.room-details-photo__image-big(src=require('./img/small-room.webp'), alt='Номер люкс - спальня')
+          img.room-details-photo__image-min(src=require('./img/room.webp'), alt='Номер люкс - вторая комната')
+          img.room-details-photo__image-min(src=require('./img/mask-group.webp'), alt='Номер люкс - гостиная')
 
-      section.room-details-info 
+      section.room-details-information 
         h1.visually-hidden подробная информация о люкс номере
-        .room-details-info__feature-wrap
-          h2.room-details-info__feature-header Сведения о номере
+        .room-details-information__feature-wrapper
+          h2.room-details-information__feature-header Сведения о номере
 
-          .room-details-info__feature
+          .room-details-information__feature
             +feature(feature.comfort)
 
-          .room-details-info__feature
+          .room-details-information__feature
             +feature(feature.convenience)
 
-          .room-details-info__feature
+          .room-details-information__feature
             +feature(feature.cosiness)
 
-        .room-details-info__graph
+        .room-details-information__graph
           +diagram({
             label:'Впечатления от номера'
           })
 
-        .room-details-info__booking-wrap
+        .room-details-information__booking-wrapper
           +booking(booking)
 
-        .room-details-info__bottom-wrap
-          .room-details-info__comment-wrap
-            .room-details-info__comment-header-wrap
-              h2.room-details-info__comment-header Отзывы посетителей номера
-              span.room-details-info__total-comments 2 отзыва
+        .room-details-information__bottom-wrapper
+          .room-details-information__comment-wrapper
+            .room-details-information__comment-header-wrapper
+              h2.room-details-information__comment-header Отзывы посетителей номера
+              span.room-details-information__total-comments 2 отзыва
 
-            .room-details-info__comment
+            .room-details-information__comment
               +comment(comment.muradSarafanov)
 
-            .room-details-info__comment
+            .room-details-information__comment
               +comment(comment.patriciaSteklyshkova)
 
-          .room-details-info__regulations-wrap
-            .room-details-info__bullet-list
+          .room-details-information__regulations-wrapper
+            .room-details-information__bullet-list
               +bullet-list(bulletList)
               
-            .room-details-info__cancellation
-              p.room-details-info__cancellation-header Отмена
-              p.room-details-info__cancellation-text=cancellationText
+            .room-details-information__cancellation
+              p.room-details-information__cancellation-header Отмена
+              p.room-details-information__cancellation-text=cancellationText
 
 
 

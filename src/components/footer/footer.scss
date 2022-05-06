@@ -24,13 +24,13 @@ $color-subscrip-header: $Dark-Shade-100;
     }
   }
 
-  &__recommendation-wrap {
+  &__recommendation-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 260px;
     margin-top: 100px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     @include media-breakpoint-down($sm) {
       margin-top: 120px;
     }
@@ -50,14 +50,14 @@ $color-subscrip-header: $Dark-Shade-100;
     }
   }
 
-  &__logo-wrap {
+  &__logo-wrapper {
     margin-bottom: 13px;
     @include media-breakpoint-down($sm) {
       text-align: center;
     }
   }
 
-  &__navigation-wrap {
+  &__navigation-wrapper {
     margin-top: 104px;
     width: 100%;
     max-width: 239px;
@@ -68,7 +68,7 @@ $color-subscrip-header: $Dark-Shade-100;
     }
   }
 
-  &__about-us-wrap {
+  &__about-us-wrapper {
     margin-top: 104px;
     width: 100%;
     max-width: 201px;
@@ -78,7 +78,7 @@ $color-subscrip-header: $Dark-Shade-100;
     }
   }
 
-  &__support-wrap {
+  &__support-wrapper {
     margin-top: 104px;
     width: 100%;
     max-width: 200px;
@@ -95,7 +95,7 @@ $color-subscrip-header: $Dark-Shade-100;
     box-sizing: border-box;
   }
 
-  &__top-wrap {
+  &__top-wrapper {
     display: flex;
     flex-direction: row;
     @include media-breakpoint-down($md) {
@@ -103,8 +103,8 @@ $color-subscrip-header: $Dark-Shade-100;
     }
   }
 
-  &__top-wrap,
-  &__bottom-wrap {
+  &__top-wrapper,
+  &__bottom-wrapper {
     margin: 0 auto;
     max-width: $max-wraper;
 
@@ -114,11 +114,11 @@ $color-subscrip-header: $Dark-Shade-100;
     }
   }
 
-  &__subscrip-wrap {
+  &__subscrip-wrapper {
     width: 100%;
     max-width: 260px;
     margin-top: 104px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     @include media-breakpoint-down($md) {
       display: none;
     }
@@ -144,7 +144,7 @@ $color-subscrip-header: $Dark-Shade-100;
     @include max-row(6);
   }
 
-  &__bottom-wrap {
+  &__bottom-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -198,8 +198,8 @@ $color-subscrip-header: $Dark-Shade-100;
   }
 }
 
-.footer .footer__top-wrap,
-.footer .footer__bottom-wrap {
+.footer .footer__top-wrapper,
+.footer .footer__bottom-wrapper {
   @include media-breakpoint-down($sm) {
     flex-direction: column;
     align-items: center;

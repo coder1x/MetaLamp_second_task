@@ -30,7 +30,7 @@ class CheckBoxList {
   }
 
   _setDomElement() {
-    this._wrapper = this._getElement('__wrap');
+    this._wrapper = this._getElement('__wrapper');
     this._headerElem = this._getElement('__header');
     this._imgElem = this._getElement('__tip');
   }

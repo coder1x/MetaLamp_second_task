@@ -10,7 +10,7 @@ $color-item: $Dark-Shade-75;
     line-height: 23px;
     color: $color-header;
     margin-bottom: 21px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
     @include max-row(3);
 
     @include media-breakpoint-down($sm) {
@@ -45,7 +45,7 @@ $color-item: $Dark-Shade-75;
     display: flex;
     flex-direction: column;
     max-width: 160px;
-    overflow-wrap: break-word;
+    overflow-wrapper: break-word;
   }
 
   &__colors-item {

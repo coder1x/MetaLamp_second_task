@@ -14,7 +14,7 @@ $color-days-names: $Purple;
 
 
 .date-dropdown {
-  .date-dropdown__datepicker-wrap {
+  .date-dropdown__datepicker-wrapper {
     .air-datepicker {
       border: 0;
       &--content {
@@ -202,7 +202,7 @@ $color-days-names: $Purple;
 
 .date-dropdown {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrapper: wrap;
   justify-content: space-between;
   position: relative;
 
@@ -252,7 +252,7 @@ $color-days-names: $Purple;
     align-items: center;
   }
 
-  &__date-wrap {
+  &__date-wrapper {
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
       width: 100%;
@@ -290,7 +290,7 @@ $color-days-names: $Purple;
     border: 1px solid $color-border-hover;
   }
 
-  &__datepicker-wrap {
+  &__datepicker-wrapper {
     display: none;
     margin-top: 5.56px;
     position: absolute;
@@ -341,7 +341,7 @@ $color-days-names: $Purple;
     height: 51px;
   }
 
-  &_visible &__datepicker-wrap {
+  &_visible &__datepicker-wrapper {
     display: flex;
     flex-direction: column;
     background-color: $color-background;
@@ -421,12 +421,12 @@ $color-days-names: $Purple;
 
   //----------------------------------------------- modifier filter
 
-  &_filter &__date-wrap {
+  &_filter &__date-wrapper {
     position: relative;
     width: 100%;
   }
 
-  &_filter &__date-wrap {
+  &_filter &__date-wrapper {
     width: 100%;
     max-width: 266px;
   }

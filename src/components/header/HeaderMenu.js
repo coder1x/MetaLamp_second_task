@@ -48,7 +48,7 @@ class HeaderMenu {
     this._items = this._getElements('__items-down');
     this._button = this._getElement('__toggle');
     this._hamburger = this._getElement('__toggle-line');
-    this._nav = this._getElement('__menu-wrap');
+    this._nav = this._getElement('__menu-wrapper');
     this._tip = this._getElements('__tip');
 
     this._links = new Map();
@@ -150,7 +150,7 @@ class HeaderMenu {
   _toggle() {
     if (this._nav && this._hamburger) {
       const navVisible = HeaderMenu._getVisible(this._nav);
-      this._setModifier(this._nav, 'menu-wrap', navVisible);
+      this._setModifier(this._nav, 'menu-wrapper', navVisible);
       this._setModifier(this._hamburger, 'toggle-line', navVisible);
     }
   }

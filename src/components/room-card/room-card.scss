@@ -25,7 +25,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     padding-top: 55.97%;
   }
 
-  &__slider-wrap {
+  &__slider-wrapper {
     position: relative;
     min-height: 152px;
     overflow: hidden;
@@ -51,7 +51,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     filter: blur(1px) grayscale(1);
   }
 
-  &__dot-wrap {
+  &__dot-wrapper {
     position: absolute;
     right: 0px;
     bottom: 0px;
@@ -85,8 +85,8 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     }
   }
 
-  &__prev-wrap,
-  &__next-wrap {
+  &__prev-wrapper,
+  &__next-wrapper {
     cursor: pointer;
     position: absolute;
     width: 42px;
@@ -98,39 +98,39 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     padding: 0;
   }
 
-  &__prev-wrap:hover,
-  &__prev-wrap:focus {
+  &__prev-wrapper:hover,
+  &__prev-wrapper:focus {
     border-top-left-radius: 4px;
     background: $color-background-prev-next;
   }
 
-  &__next-wrap:hover,
-  &__next-wrap:focus {
+  &__next-wrapper:hover,
+  &__next-wrapper:focus {
     border-top-left-radius: 4px;
     background: $color-background-prev-next;
     transform: matrix(-1, 0, 0, 1, 0, 0);
   }
 
-  &__next-wrap:focus,
-  &__prev-wrap:focus {
+  &__next-wrapper:focus,
+  &__prev-wrapper:focus {
     outline: 2px solid $color-focus;
   }
 
-  &__prev-wrap:hover > &__prev,
-  &__prev-wrap:focus > &__prev {
+  &__prev-wrapper:hover > &__prev,
+  &__prev-wrapper:focus > &__prev {
     display: inline;
   }
 
-  &__next-wrap:hover > &__next,
-  &__next-wrap:focus > &__next {
+  &__next-wrapper:hover > &__next,
+  &__next-wrapper:focus > &__next {
     display: inline;
   }
 
-  &__prev-wrap {
+  &__prev-wrapper {
     left: 0;
   }
 
-  &__next-wrap {
+  &__next-wrapper {
     right: 0;
   }
 
@@ -139,22 +139,22 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     display: none;
   }
 
-  &__header-wrap,
-  &__number-wrap,
-  &__price-wrap {
+  &__header-wrapper,
+  &__number-wrapper,
+  &__price-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrapper: wrap;
     align-items: flex-end;
   }
 
-  &__header-wrap {
+  &__header-wrapper {
     position: relative;
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 21px;
   }
 
-  &__header-wrap::before {
+  &__header-wrapper::before {
     position: absolute;
     bottom: -12px;
     content: "";
@@ -163,7 +163,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     height: 1px;
   }
 
-  &__header-wrap:focus {
+  &__header-wrapper:focus {
     outline: 2px solid $color-focus;
     outline-offset: 4px;
   }
@@ -221,21 +221,21 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     margin-left: 8px;
   }
 
-  &__header-wrap {
+  &__header-wrapper {
     padding-left: 21px;
     padding-right: 17px;
   }
 
-  &__rate-wrap {
+  &__rate-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrapper: wrap;
     justify-content: space-between;
     margin-bottom: 17px;
     padding-left: 22px;
     padding-right: 17px;
   }
 
-  &__reviews-wrap {
+  &__reviews-wrapper {
     display: flex;
     flex-direction: row;
     margin-left: 5px;

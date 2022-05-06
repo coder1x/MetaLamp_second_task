@@ -4,7 +4,7 @@ $color-bottom-text: $Dark-Shade-75;
 .landing-content {
   width: 100%;
   position: relative;
-  word-wrap: break-word;
+  word-wrapper: break-word;
   flex: 1 0 auto;
 
   &__relation-ratio {
@@ -41,7 +41,7 @@ $color-bottom-text: $Dark-Shade-75;
     }
   }
 
-  &__search-room-wrap {
+  &__search-room-wrapper {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -73,7 +73,7 @@ $color-bottom-text: $Dark-Shade-75;
     }
   }
 
-  &__top-wrap {
+  &__top-wrapper {
     width: 100%;
     max-width: 380px;
     margin-top: 70px;
