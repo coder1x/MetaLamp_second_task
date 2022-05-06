@@ -1,11 +1,10 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-text: $Dark-Shade-75;
 $color-dot: $Dark-Shade-25;
 $colot-header: $Dark-Shade-100;
 
 .bullet-list {
   &__header {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
@@ -33,7 +32,7 @@ $colot-header: $Dark-Shade-100;
   &__item {
     position: relative;
     padding-left: 21px;
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;

@@ -1,4 +1,3 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-focus: $Dark-Shade-100;
 $color-submit-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $color-text-hover: $Dark-Shade-50;
@@ -8,7 +7,7 @@ $color-text: $Purple;
 $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 0px 0px 0px 2px rgba(139, 164, 249, 0.5);
 
 .buttons {
-  font-family: $font;
+  @include font-family("Montserrat");
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;

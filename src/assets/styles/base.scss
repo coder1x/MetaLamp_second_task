@@ -1,10 +1,8 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
-
 html {
   height: 100%;
   width: 100%;
   font-size: #{$font-size}px;
-  font-family: $font;
+  @include font-family("Montserrat");
   font-weight: normal;
   min-width: $min-wraper;
 }
@@ -25,7 +23,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: $font;
+  @include font-family("Montserrat");
   font-weight: bold;
   color: $color-h;
 }

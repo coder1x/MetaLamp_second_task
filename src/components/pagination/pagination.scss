@@ -1,5 +1,3 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
-
 $colot-header: $Dark-Shade-100;
 $color-text: $Dark-Shade-75;
 $color-backgroundLG: $Purple;
@@ -17,7 +15,7 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
 
   &__text {
     margin-top: 10px;
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;
@@ -26,7 +24,7 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
   }
 
   &__header {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
@@ -74,7 +72,7 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
   }
 
   &__current {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
@@ -96,7 +94,7 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;

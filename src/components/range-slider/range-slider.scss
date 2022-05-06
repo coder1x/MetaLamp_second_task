@@ -1,4 +1,3 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-focus: $Dark-Shade-100;
 
 .range-slider {
@@ -8,7 +7,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__label {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
@@ -27,7 +26,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__value {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     margin-left: auto;
     font-size: 12px;

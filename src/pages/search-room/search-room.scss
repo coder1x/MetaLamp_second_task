@@ -1,5 +1,3 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
-
 .search-room-content {
   width: 100%;
   border-bottom: 1px solid rgba(31, 32, 65, 0.25);
@@ -85,7 +83,7 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 
   &__price-text {
     margin-top: 5px;
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
@@ -127,9 +125,6 @@ $font: "Montserrat", Helvetica, Arial, sans-serif;
 }
 
 .search-room-cards {
-  // max-width: 834px;
-  // overflow-wrapper: break-word;
-
   @include media-breakpoint-down($md) {
     margin-top: 40px;
   }

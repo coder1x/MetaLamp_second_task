@@ -1,4 +1,3 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-name: $Dark-Shade-75;
 $color-message: $Dark-Shade-75;
 $color-focus: $Dark-Shade-100;
@@ -31,7 +30,6 @@ $color-focus: $Dark-Shade-100;
 
   &__header-wrapper,
   &__message-wrapper {
-    //display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -40,7 +38,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__name {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: bold;
     font-size: 14px;
     line-height: 25px;
@@ -56,7 +54,7 @@ $color-focus: $Dark-Shade-100;
 
   &__date,
   &__message {
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;

@@ -1,4 +1,3 @@
-$font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-box-shadow: $Dark-Shade-5;
 $color-user-border: $Dark-Shade-1;
 $color-nikname: $Dark-Shade-50;
@@ -103,7 +102,7 @@ $color-focus: $Dark-Shade-100;
   &__link-down {
     display: inline-block;
     white-space: nowrap;
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
@@ -224,7 +223,7 @@ $color-focus: $Dark-Shade-100;
 
   &__nikname {
     margin-left: 20px;
-    font-family: $font;
+    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
