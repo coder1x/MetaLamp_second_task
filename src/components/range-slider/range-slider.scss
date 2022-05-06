@@ -58,7 +58,13 @@ $color-focus: $Dark-Shade-100;
       border: 2px solid #fff;
       border-radius: 50%;
       box-sizing: unset;
+      cursor: pointer;
     }
+
+    .irs-line, .irs-bar{
+      cursor: pointer;
+    }
+
   }
 
   .irs-handle:focus {
