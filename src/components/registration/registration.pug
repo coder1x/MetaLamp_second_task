@@ -1,6 +1,6 @@
 include ../text-field/text-field.pug
 include ../radio-buttons/radio-buttons.pug
-include ../toggle-buttons/toggle-buttons.pug
+include ../toggle/toggle.pug
 include ../buttons/buttons.pug
 
 mixin registration(options = {})
@@ -61,7 +61,7 @@ mixin registration(options = {})
           +text-field(textField.password)
 
       div(class=`${classComponent}__toggle-wrapper`)
-        +toggle-buttons(toggleButtons)
+        +toggle(toggleButtons)
 
       div(class=`${classComponent}__submit-wrapper js-${classComponent}__submit-wrapper`)
         +buttons(buttons.submit)

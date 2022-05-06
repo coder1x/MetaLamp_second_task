@@ -1,12 +1,12 @@
 $font: "Montserrat", Helvetica, Arial, sans-serif;
 $color-focus: $Dark-Shade-100;
 
-.rate-button {
+.star-rating {
   &__group {
     position: relative;
     width: 116px;
     height: 19px;
-    background-image: url("~comp/rate-button/img/star-border.svg");
+    background-image: url("~comp/star-rating/img/star-border.svg");
     background-size: 20px auto;
     background-repeat: space;
   }
@@ -50,7 +50,7 @@ $color-focus: $Dark-Shade-100;
 
   &__star:checked,
   &__star:hover {
-    background-image: url("~comp/rate-button/img/star.svg");
+    background-image: url("~comp/star-rating/img/star.svg");
   }
 
   &__star:hover ~ &__star {

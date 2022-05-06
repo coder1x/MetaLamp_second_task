@@ -1,4 +1,4 @@
-include ../rate-button/rate-button.pug
+include ../star-rating/star-rating.pug
 
 mixin room-card(options = {})
   -
@@ -48,7 +48,7 @@ mixin room-card(options = {})
         span(class=`${classComponent}__price-text`) в сутки
         
     div(class=`${classComponent}__rate-wrapper`)
-      +rate-button({
+      +star-rating({
         isLabeled:true,
         name:rateName
         })
