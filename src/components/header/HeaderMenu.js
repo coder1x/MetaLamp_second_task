@@ -179,26 +179,29 @@ class HeaderMenu {
   }
 
   _handleMenuKeydown(event) {
-    if (event.key === ' ') {
-      event.preventDefault();
-      const currentElement = event.currentTarget;
-
-      let index = this._getIndex(currentElement);
-
-      if (index == null) return false;
-
-      let element = null;
-      if (Array.isArray(this._items)) { element = this._items[index]; }
-
-      if (element && element.classList.contains(this._getModifier())) {
-        this.closeAll();
-      } else {
-        index = this._getIndex(currentElement);
-        if (index != null) this._showList(index);
-      }
-    } else if (event.key === 'Escape') {
+    if (event.key === 'Escape') {
       this.closeAll();
+      return true;
     }
+
+    if (event.key !== ' ') return false;
+
+    event.preventDefault();
+    const currentElement = event.currentTarget;
+
+    let index = this._getIndex(currentElement);
+
+    if (index == null) return false;
+
+    let element = null;
+    if (Array.isArray(this._items)) { element = this._items[index]; }
+
+    if (element && element.classList.contains(this._getModifier())) {
+      this.closeAll();
+      return true;
+    }
+    index = this._getIndex(currentElement);
+    if (index != null) this._showList(index);
 
     return true;
   }
@@ -215,9 +218,7 @@ class HeaderMenu {
   _handleDocumentFocus(event) {
     const { target } = event;
 
-    const isLinkElement = target.closest(
-      `${this.className}__link-down`,
-    ) ?? false;
+    const isLinkElement = target.closest(`${this.className}__link-down`) ?? false;
     const isListElement = target.closest(`.${this._getModifier()}`) ?? false;
     if (!isLinkElement && !isListElement) { this.closeAll(); }
   }

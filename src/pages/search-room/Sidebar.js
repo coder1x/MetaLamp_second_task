@@ -63,8 +63,9 @@ class Sidebar {
     const { target } = event;
     const linkElement = target.closest(this.blockClass);
     const isVisible = this._getVisibility() && this.button;
+    const isFocusDocument = (!linkElement && isVisible);
 
-    if (!(!linkElement && isVisible)) return false;
+    if (!isFocusDocument) return false;
 
     const element = this.button.querySelector('button');
     const path = (event.composedPath && event.composedPath());

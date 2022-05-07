@@ -31,25 +31,28 @@ class CheckBoxList {
 
   _setDomElement() {
     this._wrapper = this._getElement('__wrapper');
-    this._headerElem = this._getElement('__header');
-    this._imgElem = this._getElement('__tip');
+    this._headerElement = this._getElement('__header');
+    this._imageElement = this._getElement('__tip');
   }
 
   _toggleModifier(element, modifier, isVisible = false) {
-    const classWithModif = `${this.className.replace(/^\.js-/, '')}${modifier}`;
+    const classWithModifier = `${this.className.replace(/^\.js-/, '')}${modifier}`;
     const { classList } = element;
 
     if (isVisible) {
-      classList.add(classWithModif);
+      classList.add(classWithModifier);
     } else {
-      classList.remove(classWithModif);
+      classList.remove(classWithModifier);
     }
   }
 
   _handleKeydown(event) {
     const { key } = event;
 
-    if (key === 'Enter' || key === ' ') {
+    const isEnter = key === 'Enter';
+    const isSpace = key === ' ';
+
+    if (isEnter || isSpace) {
       event.preventDefault();
       this.toggleVisible();
     } else if (key === 'Escape') {
@@ -59,9 +62,9 @@ class CheckBoxList {
   }
 
   _bindEvent() {
-    if (this._imgElem && this._headerElem) {
-      this._headerElem.addEventListener('click', this.toggleVisible);
-      this._headerElem.addEventListener('keydown', this._handleKeydown);
+    if (this._imageElement && this._headerElement) {
+      this._headerElement.addEventListener('click', this.toggleVisible);
+      this._headerElement.addEventListener('keydown', this._handleKeydown);
     }
   }
 }

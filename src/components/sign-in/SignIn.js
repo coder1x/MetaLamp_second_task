@@ -11,15 +11,9 @@ class SignIn {
   }
 
   _setDomElement(element) {
-    this._emailInputs = element.querySelector(
-      `${this.className}__email-wrapper input`,
-    );
-    this._passwordInput = element.querySelector(
-      `${this.className}__password-wrapper input`,
-    );
-    this._buttonElement = element.querySelector(
-      `${this.className}__button-wrapper button`,
-    );
+    this._emailInputs = element.querySelector(`${this.className}__email-wrapper input`);
+    this._passwordInput = element.querySelector(`${this.className}__password-wrapper input`);
+    this._buttonElement = element.querySelector(`${this.className}__button-wrapper button`);
   }
 
   _checkField() {

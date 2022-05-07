@@ -32,6 +32,7 @@ class SearchRoom {
 
     let valueInputFrom = 0;
     let valueInputTo = 0;
+
     if (inputFrom instanceof HTMLInputElement) {
       valueInputFrom = inputFrom.value.length;
     }

@@ -11,15 +11,53 @@ class MaskedTextField {
     if (element) { this._setActions(element); }
   }
 
+  _validateData(data) {
+    const {
+      value,
+      day,
+      lastDate,
+      point,
+      month,
+      year,
+    } = data;
+
+    if (value.match(new RegExp(`${day}\\.?$`))) {
+      return (value.length === 2 && lastDate ? point : value);
+    }
+
+    if (value.match(new RegExp(`${month}\\.?$`))) {
+      return (value.length === 5 && lastDate ? point : value);
+    }
+
+    if (value.match(new RegExp(year))) {
+      return value;
+    }
+
+    if (this._tempValue.length === 1) {
+      return (value.substr(0, value.length - 1));
+    }
+
+    if (this._tempValue.length > value.length) {
+      return value;
+    }
+    return this._tempValue;
+  }
+
   _handleInput(event) {
     const domElement = event.target;
 
     let value = domElement.value.replace(/[^.\d]/g, '');
 
     const stringLength = value.length;
-    if (stringLength === 1 && Number(value) > 3) {
+
+    const isDay = stringLength === 1;
+    const isMonth = stringLength === 4;
+    const isValidNumberDay = Number(value) > 3;
+    const isValidNumberMonth = Number(value[stringLength - 1]) > 1;
+
+    if (isDay && isValidNumberDay) {
       value = `0${value}`;
-    } else if (stringLength === 4 && Number(value[stringLength - 1]) > 1) {
+    } else if (isMonth && isValidNumberMonth) {
       value = `${value.substr(0, stringLength - 1)}0${value[stringLength - 1]}`;
     }
 
@@ -30,21 +68,18 @@ class MaskedTextField {
     const point = `${value}.`;
     const lastDate = point !== this._tempValue;
 
-    if (value.match(new RegExp(`${day}\\.?$`))) {
-      domElement.value = value.length === 2 && lastDate ? point : value;
-    } else if (value.match(new RegExp(`${month}\\.?$`))) {
-      domElement.value = value.length === 5 && lastDate ? point : value;
-    } else if (value.match(new RegExp(year))) {
-      domElement.value = value;
-    } else if (this._tempValue.length === 1) {
-      domElement.value = value.substr(0, value.length - 1);
-    } else if (this._tempValue.length > value.length) {
-      domElement.value = value;
-    } else {
-      domElement.value = this._tempValue;
-    }
+    domElement.value = this._validateData({
+      value,
+      day,
+      lastDate,
+      point,
+      month,
+      year,
+    });
 
     this._tempValue = domElement.value;
+
+    return true;
   }
 
   _handleInputChange(event) {

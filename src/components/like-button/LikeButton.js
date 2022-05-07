@@ -20,10 +20,10 @@ class LikeButton {
   }
 
   toggleLike() {
-    if (this._isLiked) { // ставили лайк
+    if (this._isLiked) {
       this._setLikes(this.likes -= 1, '');
       this._isLiked = false;
-    } else { // не ставили
+    } else {
       this._setLikes(this.likes += 1);
       this._isLiked = true;
     }
@@ -32,7 +32,7 @@ class LikeButton {
 
   _init() {
     this._setDomElement();
-    this.likes = this.getLikes() ?? 0; // получаем начальное значение
+    this.likes = this.getLikes() ?? 0;
     this._isLiked = Boolean(localStorage.getItem(this._stringKey)) ?? false; // проверяем ставили мы лайк или нет
     this._toggleStyle();
     this._bindEvent();
@@ -40,12 +40,9 @@ class LikeButton {
 
   _setDomElement() {
     if (!this._likeElement) return false;
-    this._iconElement = this._likeElement
-      .querySelector(`${this.nameClass}__icon`);
-    this._valueElement = this._likeElement
-      .querySelector(`${this.nameClass}__value`);
-    this._linkElement = this._likeElement
-      .querySelector(`${this.nameClass}__like`);
+    this._iconElement = this._likeElement.querySelector(`${this.nameClass}__icon`);
+    this._valueElement = this._likeElement.querySelector(`${this.nameClass}__value`);
+    this._linkElement = this._likeElement.querySelector(`${this.nameClass}__like`);
 
     return true;
   }
@@ -62,14 +59,18 @@ class LikeButton {
     const nameVoted = `${selector}_voted`;
     const nameFavorite = `${selector}__icon_favorite`;
 
-    if (this._isLiked) {
-      if (this._iconElement && this._likeElement) {
+    const toggleClass = () => {
+      if (this._isLiked) {
         this._iconElement.classList.add(nameFavorite);
         this._likeElement.classList.add(nameVoted);
+      } else {
+        this._iconElement.classList.remove(nameFavorite);
+        this._likeElement.classList.remove(nameVoted);
       }
-    } else if (this._iconElement && this._likeElement) {
-      this._iconElement.classList.remove(nameFavorite);
-      this._likeElement.classList.remove(nameVoted);
+    };
+
+    if (this._iconElement && this._likeElement) {
+      toggleClass();
     }
   }
 
@@ -78,7 +79,10 @@ class LikeButton {
   }
 
   _handleLinkKeydown(event) {
-    if (event.key === 'Enter' || event.key === ' ') {
+    const isEnter = event.key === 'Enter';
+    const isSpace = event.key === ' ';
+
+    if (isEnter || isSpace) {
       this.toggleLike();
       event.preventDefault();
     }

@@ -144,11 +144,17 @@ class Slider {
   }
 
   static _getCoordinatesXY(event) {
-    if (event.type === 'touchstart' || event.type === 'touchmove') {
+    const isTouchStart = event.type === 'touchstart';
+    const isTouchMove = event.type === 'touchmove';
+
+    if (isTouchStart || isTouchMove) {
       return [event.touches[0].clientX, event.touches[0].clientY];
     }
 
-    if (event.type === 'mousedown' || event.type === 'mousemove') {
+    const isMouseDown = event.type === 'mousedown';
+    const isMouseMove = event.type === 'mousemove';
+
+    if (isMouseDown || isMouseMove) {
       return [event.clientX, event.clientY];
     }
     return [];
@@ -179,26 +185,28 @@ class Slider {
 
     const handleSwipeMove = (event) => {
       if (!xyDown) {
-        return;
+        return false;
       }
 
-      const touchmove = event.type === 'touchmove';
-      const mousemove = event.type === 'mousemove';
+      const isTouchMove = event.type === 'touchmove';
+      const isButtonPressed = event.buttons === 1;
+      const isMouseMove = event.type === 'mousemove' && isButtonPressed;
 
-      if (touchmove || (mousemove && event.buttons === 1)) {
-        const xyUp = Slider._getCoordinatesXY(event);
+      if (!isTouchMove && !isMouseMove) return false;
 
-        const isShift = Math.abs((xyUp[0] - xyDown[0])) > 20;
-        const isTimeInterval = (Number(new Date()) - this._timePress) > 200;
+      const xyUp = Slider._getCoordinatesXY(event);
+      const isShift = Math.abs((xyUp[0] - xyDown[0])) > 20;
+      const isTimeInterval = (Number(new Date()) - this._timePress) > 200;
 
-        if (isShift && isTimeInterval) {
-          this._swipeDirection([
-            xyDown[0] - xyUp[0],
-            xyDown[1] - xyUp[1],
-          ]);
-          xyDown = [];
-        }
+      if (isShift && isTimeInterval) {
+        this._swipeDirection([
+          xyDown[0] - xyUp[0],
+          xyDown[1] - xyUp[1],
+        ]);
+        xyDown = [];
       }
+
+      return true;
     };
 
     this._sliderWrap.addEventListener('touchstart', handleSwipeStart);

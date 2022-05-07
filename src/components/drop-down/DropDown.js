@@ -204,10 +204,7 @@ class DropDown {
     if (!this._inputElement || !this._tipElement) return false;
 
     this._inputElement.addEventListener('mouseup', this._handleInputMouseup);
-    this._inputElement.addEventListener(
-      'mousedown',
-      this._handleInputMousedown,
-    );
+    this._inputElement.addEventListener('mousedown', this._handleInputMousedown);
     this._inputElement.addEventListener('focus', this._handleInputFocus);
     this._inputElement.addEventListener('keydown', this._handleInputKeydown);
     this._tipElement.addEventListener('click', this._handleTipClick);

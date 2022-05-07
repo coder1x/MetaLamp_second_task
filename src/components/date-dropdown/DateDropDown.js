@@ -66,8 +66,8 @@ class DateDropDown {
       const timestampTo = Date.parse(dateTo) / 1000 / 60;
 
       if (timestampFrom > timestampTo) {
-        const datesStr = dateTo.split('.');
-        dateTo = `${datesStr[0]}/${datesStr[1]}/${Number(datesStr[2]) + 1}`;
+        const datesString = dateTo.split('.');
+        dateTo = `${datesString[0]}/${datesString[1]}/${Number(datesString[2]) + 1}`;
       }
 
       this.calendar.selectDate([
@@ -85,17 +85,20 @@ class DateDropDown {
   }
 
   toggleVisibility(isVisible = false) {
-    const nameModif = `${this.className.replace(/^\.js-/, '')}_visible`;
+    const modifier = `${this.className.replace(/^\.js-/, '')}_visible`;
     const visible = DateDropDown.getVisible(this.calendarWrapper);
     const { classList } = this.element;
-    if (this._isToggle === isVisible && visible) {
-      classList.remove(nameModif);
+
+    const isVisibleCalendar = this._isToggle === isVisible;
+
+    if (isVisibleCalendar && visible) {
+      classList.remove(modifier);
 
       if (!this.isRange) {
         this.inputFrom.value = '';
       }
     } else {
-      classList.add(nameModif);
+      classList.add(modifier);
     }
     this._isToggle = isVisible;
   }
@@ -104,12 +107,12 @@ class DateDropDown {
     const isClicked = Boolean(
       [
         this.inputFrom,
-        this.imgLeft,
-        this.imgRight,
+        this.imageLeft,
+        this.imageRight,
         this.inputTo,
-      ].find((item) => item === event.target) ?? this._isElemClicked,
+      ].find((item) => item === event.target) ?? this._isElementClicked,
     );
-    this._isElemClicked = false;
+    this._isElementClicked = false;
     const visible = DateDropDown.getVisible(this.calendarWrapper);
 
     if (!isClicked && visible) {
@@ -141,7 +144,7 @@ class DateDropDown {
   }
 
   handleCalendarWrapClick() {
-    this._isElemClicked = true;
+    this._isElementClicked = true;
   }
 
   handleInputKeydown(event) {
@@ -164,7 +167,7 @@ class DateDropDown {
   handleClearButtonClick(event) {
     event.preventDefault();
     this.calendar.clear();
-    if (!this.imgRight) {
+    if (!this.imageRight) {
       this.inputFrom.value = '';
       this.inputFrom.placeholder = '';
     }
@@ -205,14 +208,14 @@ class DateDropDown {
     this.isRange = this.inputs.length > 1;
 
     [this.inputFrom] = this.inputs;
-    this.imgLeft = this.inputFrom.nextSibling;
+    this.imageLeft = this.inputFrom.nextSibling;
 
     this.clearButton = getElement('clear');
     this.acceptButton = getElement('apply');
 
     if (this.isRange) {
       [, this.inputTo] = this.inputs;
-      this.imgRight = this.inputTo.nextSibling;
+      this.imageRight = this.inputTo.nextSibling;
 
       this.inputFrom.placeholder = this.defaultText;
       this.inputTo.placeholder = this.defaultText;
@@ -299,10 +302,7 @@ class DateDropDown {
     };
 
     if (this.isRange) {
-      checkValidity(Boolean(
-        this.inputFrom.value
-        && this.inputTo.value,
-      ));
+      checkValidity(Boolean(this.inputFrom.value && this.inputTo.value));
     } else {
       let isValidDate = true;
       const dates = this.inputHidden.value.split('-');
@@ -327,10 +327,7 @@ class DateDropDown {
   }
 
   _bindEvent() {
-    this.calendarWrapper.addEventListener(
-      'click',
-      this.handleCalendarWrapClick,
-    );
+    this.calendarWrapper.addEventListener('click', this.handleCalendarWrapClick);
     this.inputFrom.addEventListener('click', this.handleInputFromClick);
     this.inputFrom.addEventListener('keydown', this.handleInputKeydown);
 
