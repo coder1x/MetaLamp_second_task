@@ -5,10 +5,23 @@ block title
   title landing page
 block content
   main.landing-content
-
+    -const roomMobileXxs = require('./img/room-mobile-xxs.webp')
+    -const roomMobileSm = require('./img/room-mobile-sm.webp')
+    -const room = require('./img/room.webp');
+    
     section.landing-content__search-room
       .landing-content__relation-ratio
-      img(class='landing-content__background' src=require('./img/room.webp'), alt='Лучшие номера для вашей работы, отдыха и просто вдохновения')
+
+      picture
+        source(media="(max-width: 574px)" srcset=roomMobileXxs)
+        source(media="(max-width: 766px)" srcset=roomMobileSm)
+        source(media="(min-width: 767px)" srcset=room)
+        img(
+          class='landing-content__background'
+          src=room 
+          alt="Лучшие номера для вашей работы, отдыха и просто вдохновения"
+          )
+
 
       .landing-content__search-room-wrapper
         .landing-content__top

@@ -3,14 +3,6 @@ $color-link: $Dark-Shade-50;
 $color-link-focus: $Dark-Shade-100;
 
 .page {
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100px;
-    width: 100%;
-    flex: 1 0 auto;
-  }
-
   &__logo {
     margin-left: 30px;
     margin-top: 30px;

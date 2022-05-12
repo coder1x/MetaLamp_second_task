@@ -201,9 +201,13 @@ $color-days-names: $Purple;
 
 .date-dropdown {
   display: flex;
-  flex-wrapper: wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
+
+  @include media-breakpoint-down($xs) {
+    flex-direction: column;
+  }
 
   &__label-text {
     margin-bottom: 5px;
@@ -254,7 +258,6 @@ $color-days-names: $Purple;
   &__date-wrapper {
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
-      width: 100%;
     }
   }
 

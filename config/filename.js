@@ -7,14 +7,14 @@ module.exports = {
     let dir = '';
 
     if (ext === 'css') {
-      dir = path.join('.', paths.assets, 'css/');
+      dir = 'assets/css/';
     } else if (ext === 'js') {
-      dir = path.join('.', paths.assets, 'js/');
+      dir = 'assets/js/';
     }
 
     if (env.isDev) {
       return `${dir}[name].${ext}`;
     }
-    return `${dir}[name].[hash].${ext}`;
+    return `${dir}[name].[contenthash].${ext}`;
   },
 };

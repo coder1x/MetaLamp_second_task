@@ -18,8 +18,8 @@ $color-subscrip-header: $Dark-Shade-100;
     padding-right: $size-padding;
     box-sizing: border-box;
     @include media-breakpoint-down($sm) {
-      box-shadow: none;
-      height: auto;
+      min-height: unset;
+      padding-bottom: 20px;
     }
   }
 
@@ -31,7 +31,8 @@ $color-subscrip-header: $Dark-Shade-100;
     margin-top: 100px;
     overflow-wrapper: break-word;
     @include media-breakpoint-down($sm) {
-      margin-top: 120px;
+      margin-top: 70px;
+      max-width: unset;
     }
   }
 
@@ -44,16 +45,11 @@ $color-subscrip-header: $Dark-Shade-100;
 
     @include max-row(8);
 
-    @include media-breakpoint-down($sm) {
-      display: none;
-    }
+
   }
 
   &__logo-wrapper {
     margin-bottom: 13px;
-    @include media-breakpoint-down($sm) {
-      text-align: center;
-    }
   }
 
   &__navigation-wrapper {
@@ -92,6 +88,11 @@ $color-subscrip-header: $Dark-Shade-100;
     padding-left: $size-padding;
     padding-right: $size-padding;
     box-sizing: border-box;
+
+    @include media-breakpoint-down($sm) {
+      padding-top: 20px;
+    }
+  
   }
 
   &__top-wrapper {
@@ -148,9 +149,7 @@ $color-subscrip-header: $Dark-Shade-100;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    @include media-breakpoint-down($sm) {
-      padding-bottom: 91px;
-    }
+
   }
 
   &__copyright {
