@@ -62,7 +62,7 @@ mixin header(options = {})
                 li(class=`${classComponent}__item-down`) 
                   a(class=`${classComponent}__link` href='https://change-me')=text
 
-      -if (type == 'authorized'){
+      -if (type === 'authorized'){
           div(class=`${classComponent}__user`)
             a(class=`${classComponent}__nikname` href='https://change-me') Юлий Цезарь
       -}

@@ -96,7 +96,7 @@
   },
   "buttons": {
     "text": "Фильтр номеров",
-    "type": "btn-popup",
+    "type": "button-popup",
     "modifier": [
       "link"
     ]
