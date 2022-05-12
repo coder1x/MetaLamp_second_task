@@ -61,7 +61,7 @@
     margin-top: 30px;
 
     @include media-breakpoint-down($md) {
-      max-width: 319px;
+      max-width: 310px;
       margin: 30px auto 0px;
       > div {
         justify-content: center;
@@ -91,11 +91,11 @@
   }
 
   &__regulations-wrapper {
-    margin-top: 32px;
+    margin-top: 31px;
   }
 
   &__availability-wrapper {
-    margin-top: 19px;
+    margin-top: 13px;
 
     @include media-breakpoint-down($xs) {
       margin-top: 30px;
@@ -103,7 +103,7 @@
   }
 
   &__facilities-wrapper {
-    margin-top: 20px;
+    margin-top: 16px;
     @include media-breakpoint-down($md) {
       max-width: 310px;
       margin: 20px auto 0px;
@@ -115,7 +115,7 @@
   }
 
   &__additional-amenities-wrapper {
-    margin-top: 30px;
+    margin-top: 29px;
 
     @include media-breakpoint-down($md) {
       max-width: 312px;

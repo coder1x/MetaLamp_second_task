@@ -34,7 +34,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__label {
-    width: 100%;
+    width: calc(100% - 29px);
     position: relative;
     display: flex;
     flex-direction: column;
