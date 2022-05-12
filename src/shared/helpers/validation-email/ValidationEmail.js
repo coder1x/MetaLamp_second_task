@@ -1,6 +1,6 @@
 import autoBind from 'auto-bind';
 
-import message from '@com/message/message';
+import message from '../message/message';
 
 class ValidationEmail {
   constructor(options) {

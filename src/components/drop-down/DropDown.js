@@ -1,6 +1,6 @@
 import autoBind from 'auto-bind';
 
-import message from '@com/message/message';
+import message from '@shared/helpers/message/message';
 
 class DropDown {
   constructor(className, component) {
