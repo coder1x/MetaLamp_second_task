@@ -1,6 +1,6 @@
 $color-text: $Dark-Shade-75;
 $color-dot: $Dark-Shade-25;
-$colot-header: $Dark-Shade-100;
+$color-header: $Dark-Shade-100;
 
 .bullet-list {
   &__header {
@@ -9,7 +9,7 @@ $colot-header: $Dark-Shade-100;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: $colot-header;
+    color: $color-header;
     margin-bottom: 15px;
   }
 

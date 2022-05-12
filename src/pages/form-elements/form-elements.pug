@@ -45,88 +45,88 @@ html(lang='ru')
     main.elements-content
       section.map-elements 
 
-        .colomn-left 
-          .colomn-left__text-field
+        .column-left 
+          .column-left__text-field
             +text-field(textField.email)
 
-          .colomn-left__text-field
+          .column-left__text-field
             +text-field(textField.name)
           
-          .colomn-left__guest
+          .column-left__guest
             +drop-down(dropDown.guest)
 
-          .colomn-left__text-field
+          .column-left__text-field
             +text-field(textField.date)
 
-          .colomn-left__date-dropdown
+          .column-left__date-dropdown
             +date-dropdown(dateDropdown)
 
-          .colomn-left__filter-date
+          .column-left__filter-date
             +date-dropdown(filterDate)
 
-          .colomn-left__subscrip-textfield
+          .column-left__subscrip-textfield
             +subscrip-textfield(subscrip)
 
-          .colomn-left__rooms
+          .column-left__rooms
             +drop-down(dropDown.rooms)
           
-          .colomn-left__checkbox-list
+          .column-left__checkbox-list
             +checkbox-list(checkboxList.expandable)
 
-          .colomn-left__feature
+          .column-left__feature
             +feature(feature.comfort)
 
-          .colomn-left__feature
+          .column-left__feature
             +feature(feature.convenience)
 
         .map-elements__wrapper-right
           .map-elements__column
-            .colomn-center 
-              .colomn-center__checkbox-list
+            .column-center 
+              .column-center__checkbox-list
                 +checkbox-list(checkboxList.buttons)
 
-              .colomn-center__radio-buttons
+              .column-center__radio-buttons
                 +radio-buttons(radioButtons)
 
-              .colomn-center__toggle
+              .column-center__toggle
                 +toggle(toggleButtons)
 
-              .colomn-center__like-button
+              .column-center__like-button
                 +like-button({label:'like button'})
 
-              .colomn-center__star-rating
+              .column-center__star-rating
                 +star-rating(rateButton)
 
-              .colomn-center__checkbox-listRich
+              .column-center__checkbox-listRich
                 +checkbox-list(checkboxList.richCheckbox)
 
-            .colomn-right
-              .colomn-right__range-slider
+            .column-right
+              .column-right__range-slider
                 +range-slider({
                   label:'Range Slider'
                 })
-              span.colomn-right__logo buttons
+              span.column-right__logo buttons
 
-              .colomn-right__link
+              .column-right__link
                 +buttons(buttons.link)
 
-              .colomn-right__link-border
+              .column-right__link-border
                 +buttons(buttons.linkBorder)
 
-              .colomn-right__button-text
+              .column-right__button-text
                 +buttons(buttons.text)
 
-              .colomn-right__submit
+              .column-right__submit
                 +buttons(buttons.submit)
 
-              .colomn-right__pagination
+              .column-right__pagination
                 +pagination({
                   label:'pagination'
                 })
 
-              .colomn-right__bullet-list
+              .column-right__bullet-list
                 +bullet-list(bulletList)
                 
-          .colomn-bottom
-            .colomn-bottom__comment
+          .column-bottom
+            .column-bottom__comment
               +comment(comment)

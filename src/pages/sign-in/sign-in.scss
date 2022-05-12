@@ -1,6 +1,6 @@
 .sign-in-content {
   width: 100%;
-  word-wrapper: break-word;
+  word-wrap: break-word;
   flex: 1 0 auto;
 
   @include media-breakpoint-down($sm) {

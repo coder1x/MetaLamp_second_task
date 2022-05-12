@@ -4,7 +4,7 @@ $color-header: #1f2041;
 $color-text: $Dark-Shade-50;
 $color-lux: $Purple;
 $color-dot: #fff;
-$color-header-backgr: $Dark-Shade-1;
+$color-header-background: $Dark-Shade-1;
 $color-focus: $Dark-Shade-100;
 $color-background-prev-next: linear-gradient(
   90deg,
@@ -142,7 +142,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
   &__number-wrapper,
   &__price-wrapper {
     display: flex;
-    flex-wrapper: wrap;
+    flex-wrap: wrap;
     align-items: flex-end;
   }
 
@@ -157,7 +157,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     position: absolute;
     bottom: -12px;
     content: "";
-    background: $color-header-backgr;
+    background: $color-header-background;
     width: calc(100% - 39px);
     height: 1px;
   }
@@ -227,7 +227,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 
   &__rate-wrapper {
     display: flex;
-    flex-wrapper: wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 17px;
     padding-left: 22px;

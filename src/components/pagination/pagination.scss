@@ -1,12 +1,12 @@
-$colot-header: $Dark-Shade-100;
+$color-header: $Dark-Shade-100;
 $color-text: $Dark-Shade-75;
 $color-backgroundLG: $Purple;
 $color-numbers: $Dark-Shade-50;
 $color-current: $color-white;
 $color-button-focus: $Dark-Shade-100;
-$color-button-backgr: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-$color-current-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba4f9 100%);
-$color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba4f9 100%);
+$color-button-background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+$color-current-background: linear-gradient(180deg, $color-backgroundLG 0%, #8ba4f9 100%);
+$color-page-numbers-background: linear-gradient(180deg, $color-backgroundLG 0%, #8ba4f9 100%);
 
 .pagination {
   width: 100%;
@@ -29,7 +29,7 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: $colot-header;
+    color: $color-header;
     margin-bottom: 16px;
   }
 
@@ -58,7 +58,7 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
 
   &__next,
   &__prev {
-    background: $color-button-backgr;
+    background: $color-button-background;
   }
 
   &__next:focus,
@@ -77,13 +77,13 @@ $color-page-numbers-backgr: linear-gradient(180deg, $color-backgroundLG 0%, #8ba
     font-size: 12px;
     line-height: 15px;
     color: $color-current;
-    background: $color-current-backgr;
+    background: $color-current-background;
   }
 
   &__page-numbers:hover {
     border-radius: 50%;
     color: $color-current;
-    background: $color-page-numbers-backgr;
+    background: $color-page-numbers-background;
   }
 
   &__page-numbers,

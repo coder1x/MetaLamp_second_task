@@ -1,7 +1,7 @@
 $color-focus: $Dark-Shade-100;
-$color-submit-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+$color-submit-background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+$color-link-background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $color-text-hover: $Dark-Shade-50;
-$color-link-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $color-link-border: inset 0px 2px 0px 0px #bc9cff, inset 0px 0px 0px 2px #8ba4f9;
 $color-text: $Purple;
 $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 0px 0px 0px 2px rgba(139, 164, 249, 0.5);
@@ -56,7 +56,7 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
     height: 44px;
     border-radius: 22px;
     box-sizing: border-box;
-    background: $color-submit-backgr;
+    background: $color-submit-background;
     border: 0;
     cursor: pointer;
   }
@@ -84,7 +84,7 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
   }
 
   &_link {
-    background: $color-link-backgr;
+    background: $color-link-background;
   }
 
   &_link:hover {

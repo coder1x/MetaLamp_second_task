@@ -24,7 +24,7 @@
   }
 }
 
-.colomn-left {
+.column-left {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -71,7 +71,7 @@
   }
 }
 
-.colomn-center {
+.column-center {
   margin-left: 116px;
   width: 100%;
   max-width: 260px;
@@ -101,7 +101,7 @@
   }
 }
 
-.colomn-right {
+.column-right {
   margin-left: 132px;
   width: 100%;
   max-width: 322px;
@@ -150,7 +150,7 @@
   }
 }
 
-.colomn-bottom {
+.column-bottom {
   &__comment {
     margin-top: 100px;
     max-width: 711px;

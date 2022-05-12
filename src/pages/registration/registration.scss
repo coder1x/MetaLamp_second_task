@@ -1,6 +1,6 @@
 .registration-content {
   width: 100%;
-  word-wrapper: break-word;
+  word-wrap: break-word;
   min-height: 683px;
   flex: 1 0 auto;
 }
@@ -12,7 +12,6 @@
   max-height: 683px;
   position: relative;
   display: flex;
-  //overflow: hidden;
 
   &__relation-ratio {
     padding-top: 51.97%;

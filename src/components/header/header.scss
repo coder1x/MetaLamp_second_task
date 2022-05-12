@@ -17,7 +17,7 @@ $color-focus: $Dark-Shade-100;
 
   &__wrapper {
     min-height: 70px;
-    max-width: $max-wraper;
+    max-width: $max-wrapper;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -171,7 +171,7 @@ $color-focus: $Dark-Shade-100;
 
   &__items {
     display: flex;
-    flex-wrapper: wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
