@@ -5,10 +5,22 @@ block title
   title registration
 block content
   main.registration-content
-  
+    -const bedroomXxs = require('./img/bedroom-xxs.webp')
+    -const bedroomSm = require('./img/bedroom-sm.webp')
+    -const bedroom = require('./img/bedroom.webp');
+
     section.registration-form
       .registration-form__relation-ratio
-      img(class='registration-form__background' src=require('./img/bedroom.webp'), alt='номер')
+      picture
+        source(media='(max-width: 574px)' srcset=bedroomXxs)
+        source(media='(max-width: 766px)' srcset=bedroomSm)
+        source(media='(min-width: 767px)' srcset=bedroom)
+        img(
+          class='registration-form__background'
+          src=bedroom 
+          alt='номер'
+          )
+
       .registration-form__wrapper
         .registration-form__registration-wrapper
           +registration({

@@ -15,7 +15,6 @@
   max-height: 683px;
   position: relative;
   display: flex;
-  //overflow: hidden;
 
   &__relation-ratio {
     padding-top: 51.97%;
@@ -32,10 +31,6 @@
     @include media-breakpoint-down($lg) {
       top: 0;
       bottom: unset;
-    }
-
-    @include media-breakpoint-down($sm) {
-      display: none;
     }
   }
 

@@ -9,7 +9,7 @@
   width: 100%;
   margin: 0 auto;
   max-width: $xxl;
-  max-height: 683px;
+  max-height: 685px;
   position: relative;
   display: flex;
 
@@ -28,10 +28,6 @@
     @include media-breakpoint-down($lg) {
       top: 0;
       bottom: unset;
-    }
-
-    @include media-breakpoint-down($sm) {
-      display: none;
     }
   }
 
