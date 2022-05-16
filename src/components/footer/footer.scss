@@ -45,11 +45,18 @@ $color-subscrip-header: $Dark-Shade-100;
 
     @include max-row(8);
 
+    @include media-breakpoint-down($sm) {
+      display: none;
+    }
 
   }
 
   &__logo-wrapper {
     margin-bottom: 13px;
+
+    @include media-breakpoint-down($sm) {
+      text-align: center;
+    }
   }
 
   &__navigation-wrapper {
