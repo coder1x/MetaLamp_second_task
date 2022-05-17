@@ -2,7 +2,7 @@ import autoBind from 'auto-bind';
 
 import message from '@shared/helpers/message/message';
 
-import ValidationEmail from '@shared/helpers/validation-email/ValidationEmail';
+import ValidationEmail from '@shared/helpers/validationEmail/ValidationEmail';
 
 class SubscriptionTextField {
   constructor(className, wrapper) {

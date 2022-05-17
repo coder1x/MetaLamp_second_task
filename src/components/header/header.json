@@ -16,7 +16,7 @@
   "buttons": {
     "signIn": {
       "text": "Войти",
-      "link": "https://change-me",
+      "link": "/sign-in.html",
       "type": "link",
       "modifier": [
         "link-border",
@@ -25,7 +25,7 @@
     },
     "registration": {
       "text": "зарегистрироваться",
-      "link": "https://change-me",
+      "link": "/registration.html",
       "type": "link",
       "modifier": [
         "link",

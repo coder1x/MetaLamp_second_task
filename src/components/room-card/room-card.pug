@@ -25,7 +25,7 @@ mixin room-card(options = {})
 
     div(class=`${classComponent}__slider-wrapper js-${classComponent}__slider-wrapper`)
       div(class=`${classComponent}__relation-ratio`)
-      a(class=`${classComponent}__link js-${classComponent}__link` href='https://change-me' aria-label='карточка номера')
+      a(class=`${classComponent}__link js-${classComponent}__link` href='/room-details.html' aria-label='карточка номера')
         img(class=`${classComponent}__slide ${classComponent}__slide_visible js-${classComponent}__slide` src=require('./img/beige-room.webp'), alt='номер люкс')
         img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/crimson-room.webp'), alt='номер люкс')
         img(class=`${classComponent}__slide js-${classComponent}__slide` src=require('./img/red-room.webp'), alt='номер люкс')
@@ -36,7 +36,7 @@ mixin room-card(options = {})
       button(class=`${classComponent}__next-wrapper js-${classComponent}__next-wrapper` aria-label='следующий слайд')
         img(class=`${classComponent}__next` src=require('./img/expand-more.svg'), alt='стрелка в право')
 
-    a(class=`${classComponent}__header-wrapper` href='https://change-me')
+    a(class=`${classComponent}__header-wrapper` href='/room-details.html')
       div(class=`${classComponent}__number-wrapper`)
         span(class=`${classComponent}__header-num`) №
         p(class=`${classComponent}__header`)= number

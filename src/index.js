@@ -2,8 +2,8 @@
 import $ from 'jquery';
 import 'focus-visible/dist/focus-visible.min.js';
 
-import '@shared/helpers/masked-textfield/render';
-import '@shared/helpers/validation-email/render';
+import '@shared/helpers/maskedTextField/render';
+import '@shared/helpers/validationEmail/render';
 import '@shared/helpers/message/message.scss';
 import '@styles/styles';
 
