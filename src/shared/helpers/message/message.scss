@@ -6,7 +6,7 @@ $color-close:$Purple;
 
 
 .message-toxin{
-  position: absolute;
+  position: fixed;
   background-color: $color-background;
   border: 1px solid $color-border;
   box-sizing: border-box;
