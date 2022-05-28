@@ -138,12 +138,12 @@ class DropDown {
     }
   }
 
-  _handleInputMouseup() {
+  _handleInputMouseUp() {
     this._toggleVisibility();
     this._isClicked = false;
   }
 
-  _handleInputMousedown() {
+  _handleInputMouseDown() {
     this._isClicked = true;
   }
 
@@ -151,7 +151,7 @@ class DropDown {
     if (!this._isClicked) { this._toggleVisibility(); }
   }
 
-  _handleInputKeydown(event) {
+  _handleInputKeyDown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
       this._toggleVisibility(true);
@@ -165,14 +165,14 @@ class DropDown {
     this._toggleVisibility();
   }
 
-  _handleSelectKeydown(event) {
+  _handleSelectKeyDown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
       this._toggleVisibility(true);
     }
   }
 
-  _handleApplyClick(event) {
+  _handleButtonApplyClick(event) {
     event.preventDefault();
 
     if (!(this._inputElement instanceof HTMLInputElement)) return false;
@@ -187,7 +187,7 @@ class DropDown {
     return true;
   }
 
-  _handleClearClick(event) {
+  _handleButtonClearClick(event) {
     event.preventDefault();
     this.resetValue();
   }
@@ -203,25 +203,25 @@ class DropDown {
   _bindEvent() {
     if (!this._inputElement || !this._tipElement) return false;
 
-    this._inputElement.addEventListener('mouseup', this._handleInputMouseup);
-    this._inputElement.addEventListener('mousedown', this._handleInputMousedown);
+    this._inputElement.addEventListener('mouseup', this._handleInputMouseUp);
+    this._inputElement.addEventListener('mousedown', this._handleInputMouseDown);
     this._inputElement.addEventListener('focus', this._handleInputFocus);
-    this._inputElement.addEventListener('keydown', this._handleInputKeydown);
+    this._inputElement.addEventListener('keydown', this._handleInputKeyDown);
     this._tipElement.addEventListener('click', this._handleTipClick);
 
     if (this._selectElement) {
       this._selectElement.addEventListener(
         'keydown',
-        this._handleSelectKeydown,
+        this._handleSelectKeyDown,
       );
     }
 
     if (this._applyButton) {
-      this._applyButton.addEventListener('click', this._handleApplyClick);
+      this._applyButton.addEventListener('click', this._handleButtonApplyClick);
     }
 
     if (this._clearButton) {
-      this._clearButton.addEventListener('click', this._handleClearClick);
+      this._clearButton.addEventListener('click', this._handleButtonClearClick);
     }
 
     const _bindEventDocument = (event) => {

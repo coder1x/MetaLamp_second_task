@@ -20,7 +20,7 @@ class RangeSlider {
     this.dotFocus = 'from';
   }
 
-  handleDotFocus() {
+  handleToFocus() {
     this.dotFocus = 'to';
   }
 
@@ -76,7 +76,7 @@ class RangeSlider {
   _bindEventDot({
     from, to, min, max,
   }) {
-    const handleMovement = (event, flag = false) => {
+    const handleFromKeyDown = (event, flag = false) => {
       const value = flag ? to : from;
       const dotName = flag ? 'to' : 'from';
 
@@ -93,14 +93,14 @@ class RangeSlider {
       }
     };
 
-    const handleDotKeydown = (event) => {
-      handleMovement(event, true);
+    const handleToKeyDown = (event) => {
+      handleFromKeyDown(event, true);
     };
 
     this.dotFrom.addEventListener('focus', this.handleFromFocus);
-    this.dotTo.addEventListener('focus', this.handleDotFocus);
-    this.dotFrom.addEventListener('keydown', handleMovement);
-    this.dotTo.addEventListener('keydown', handleDotKeydown);
+    this.dotTo.addEventListener('focus', this.handleToFocus);
+    this.dotFrom.addEventListener('keydown', handleFromKeyDown);
+    this.dotTo.addEventListener('keydown', handleToKeyDown);
   }
 }
 

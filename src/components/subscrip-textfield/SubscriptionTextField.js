@@ -25,7 +25,7 @@ class SubscriptionTextField {
     }
   }
 
-  _handleInputKeydown(event) {
+  _handleInputKeyDown(event) {
     if (event.key === 'Enter') {
       this._checkEmail();
     }
@@ -38,7 +38,7 @@ class SubscriptionTextField {
   _bindEvent() {
     if (!this.input || !this.link) return false;
 
-    this.input.addEventListener('keydown', this._handleInputKeydown);
+    this.input.addEventListener('keydown', this._handleInputKeyDown);
     this.link.addEventListener('click', this._handleLinkClick);
 
     return true;

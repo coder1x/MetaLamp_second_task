@@ -24,7 +24,7 @@ class ValidationEmail {
     if (event) { this._bindEvent(event); }
   }
 
-  _handleInputElement() {
+  _handleInputEvent() {
     if (!this.validateField()) {
       message(this._message);
     }
@@ -32,7 +32,7 @@ class ValidationEmail {
 
   _bindEvent(event) {
     if (!this.inputElement) return false;
-    this.inputElement.addEventListener(event, this._handleInputElement);
+    this.inputElement.addEventListener(event, this._handleInputEvent);
     return true;
   }
 }

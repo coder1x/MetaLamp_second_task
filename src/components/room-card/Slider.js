@@ -113,7 +113,7 @@ class Slider {
     return true;
   }
 
-  _handleLinkSlideClick(event) {
+  _handleLinkClick(event) {
     if (this._isSwipedMove) {
       event.preventDefault();
     }
@@ -137,7 +137,7 @@ class Slider {
 
     if (!this._linkSlide || !this._dotElement) return false;
 
-    this._linkSlide.addEventListener('click', this._handleLinkSlideClick);
+    this._linkSlide.addEventListener('click', this._handleLinkClick);
     this._dotElement.addEventListener('click', this._handleDotClick);
 
     return true;
@@ -169,21 +169,23 @@ class Slider {
     this._isSwipedMove = true;
   }
 
+  _handleLinkFocus() {
+    if (this._isSwipe) {
+      this._linkSlide.blur();
+    }
+    this._isSwipe = false;
+  }
+
   _bindEventSwipe() {
     let xyDown = [];
-    this._linkSlide.addEventListener('focus', () => {
-      if (this._isSwipe) {
-        this._linkSlide.blur();
-      }
-      this._isSwipe = false;
-    });
+    this._linkSlide.addEventListener('focus', this._handleLinkFocus);
 
-    const handleSwipeStart = (event) => {
+    const handleSliderTouchStartMouseDown = (event) => {
       this._isSwipe = true;
       xyDown = Slider._getCoordinatesXY(event);
     };
 
-    const handleSwipeMove = (event) => {
+    const handleSliderTouchMoveMouseMove = (event) => {
       if (!xyDown) {
         return false;
       }
@@ -209,10 +211,10 @@ class Slider {
       return true;
     };
 
-    this._sliderWrap.addEventListener('touchstart', handleSwipeStart);
-    this._sliderWrap.addEventListener('touchmove', handleSwipeMove);
-    this._sliderWrap.addEventListener('mousedown', handleSwipeStart);
-    this._sliderWrap.addEventListener('mousemove', handleSwipeMove);
+    this._sliderWrap.addEventListener('touchstart', handleSliderTouchStartMouseDown);
+    this._sliderWrap.addEventListener('touchmove', handleSliderTouchMoveMouseMove);
+    this._sliderWrap.addEventListener('mousedown', handleSliderTouchStartMouseDown);
+    this._sliderWrap.addEventListener('mousemove', handleSliderTouchMoveMouseMove);
   }
 }
 

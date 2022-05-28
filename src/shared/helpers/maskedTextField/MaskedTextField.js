@@ -8,7 +8,7 @@ class MaskedTextField {
     this.message = options.message;
     this._tempValue = '';
     const { element } = options;
-    if (element) { this._setActions(element); }
+    if (element) { this._bindEvent(element); }
   }
 
   _validateData(data) {
@@ -43,7 +43,7 @@ class MaskedTextField {
     return this._tempValue;
   }
 
-  _handleInput(event) {
+  _handleInputInput(event) {
     const domElement = event.target;
 
     let value = domElement.value.replace(/[^.\d]/g, '');
@@ -106,9 +106,9 @@ class MaskedTextField {
     return false;
   }
 
-  _setActions(elem) {
+  _bindEvent(elem) {
     elem.addEventListener('change', this._handleInputChange);
-    elem.addEventListener('input', this._handleInput);
+    elem.addEventListener('input', this._handleInputInput);
   }
 }
 

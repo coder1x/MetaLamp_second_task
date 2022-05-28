@@ -13,7 +13,7 @@ class CheckBoxList {
     this._bindEvent();
   }
 
-  toggleVisible() {
+  handleHeaderClick() {
     let display = '';
 
     if (this._wrapper) {
@@ -46,7 +46,7 @@ class CheckBoxList {
     }
   }
 
-  _handleKeydown(event) {
+  _handleHeaderKeyDown(event) {
     const { key } = event;
 
     const isEnter = key === 'Enter';
@@ -54,7 +54,7 @@ class CheckBoxList {
 
     if (isEnter || isSpace) {
       event.preventDefault();
-      this.toggleVisible();
+      this.handleHeaderClick();
     } else if (key === 'Escape') {
       event.preventDefault();
       this._toggleModifier(this.element, '_visible', false);
@@ -63,8 +63,8 @@ class CheckBoxList {
 
   _bindEvent() {
     if (this._imageElement && this._headerElement) {
-      this._headerElement.addEventListener('click', this.toggleVisible);
-      this._headerElement.addEventListener('keydown', this._handleKeydown);
+      this._headerElement.addEventListener('click', this.handleHeaderClick);
+      this._headerElement.addEventListener('keydown', this._handleHeaderKeyDown);
     }
   }
 }

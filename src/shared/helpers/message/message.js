@@ -1,8 +1,8 @@
-function handleClose(event) {
+function handleButtonClick(event) {
   event.target.parentElement.remove();
 }
 
-function handleKeydownClose(event) {
+function handleButtonKeyDown(event) {
   const { key } = event;
   if (key === 'Escape') {
     event.preventDefault();
@@ -31,8 +31,8 @@ function message(text) {
   const bodyElement = document.querySelector('body');
   bodyElement.appendChild(wrapper);
 
-  buttonClose.addEventListener('click', handleClose);
-  buttonClose.addEventListener('keydown', handleKeydownClose);
+  buttonClose.addEventListener('click', handleButtonClick);
+  buttonClose.addEventListener('keydown', handleButtonKeyDown);
 
   return true;
 }

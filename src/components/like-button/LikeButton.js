@@ -74,11 +74,11 @@ class LikeButton {
     }
   }
 
-  _handleLinkClick() {
+  _handleLikeClick() {
     this.toggleLike();
   }
 
-  _handleLinkKeydown(event) {
+  _handleLikeKeyDown(event) {
     const isEnter = event.key === 'Enter';
     const isSpace = event.key === ' ';
 
@@ -91,8 +91,8 @@ class LikeButton {
   _bindEvent() {
     if (!this._linkElement) return false;
 
-    this._linkElement.addEventListener('click', this._handleLinkClick);
-    this._linkElement.addEventListener('keydown', this._handleLinkKeydown);
+    this._linkElement.addEventListener('click', this._handleLikeClick);
+    this._linkElement.addEventListener('keydown', this._handleLikeKeyDown);
 
     return true;
   }

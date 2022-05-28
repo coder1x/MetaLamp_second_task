@@ -38,7 +38,7 @@ class Sidebar {
     return true;
   }
 
-  _handleButtonClick(event) {
+  _handleButtonWrapperClick(event) {
     this._isClicked = true;
     this._toggle();
 
@@ -48,11 +48,11 @@ class Sidebar {
     domElement.setAttribute('aria-expanded', expanded);
   }
 
-  _handleBlockClick() {
+  _handleSearchRoomFilterClick() {
     this._isClicked = true;
   }
 
-  _handleBlockKeydown(event) {
+  _handleSearchRoomFilterKeyDown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
       this._toggle();
@@ -85,9 +85,9 @@ class Sidebar {
   _bindEvent() {
     if (!this.block || !this.button) return false;
 
-    this.button.addEventListener('click', this._handleButtonClick);
-    this.block.addEventListener('click', this._handleBlockClick);
-    this.block.addEventListener('keydown', this._handleBlockKeydown);
+    this.button.addEventListener('click', this._handleButtonWrapperClick);
+    this.block.addEventListener('click', this._handleSearchRoomFilterClick);
+    this.block.addEventListener('keydown', this._handleSearchRoomFilterKeyDown);
     document.addEventListener('focusin', this._handleDocumentFocusin);
     document.addEventListener('click', this._handleDocumentClick);
 

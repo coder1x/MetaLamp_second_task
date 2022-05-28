@@ -114,7 +114,7 @@ class HeaderMenu {
     return true;
   }
 
-  _handleTrackMouse(event) {
+  _handleTrackMouseOut(event) {
     const domElement = event.relatedTarget;
     const isElement = domElement.closest(`.${this._getModifier()}`) ?? false;
     if (!isElement) {
@@ -124,7 +124,7 @@ class HeaderMenu {
   }
 
   _trackMouse(element) { // следим за курсором когда он попадает на список
-    element.addEventListener('mouseout', this._handleTrackMouse);
+    element.addEventListener('mouseout', this._handleTrackMouseOut);
   }
 
   _closeList(element) {
@@ -155,7 +155,7 @@ class HeaderMenu {
     }
   }
 
-  _handleButtonClick(event) {
+  _handleToggleClick(event) {
     const element = event.currentTarget;
 
     let expanded = element.getAttribute('aria-expanded');
@@ -164,7 +164,7 @@ class HeaderMenu {
     this._toggle();
   }
 
-  _handleButtonKeydown(event) {
+  _handleToggleKeyDown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
       this._toggle();
@@ -178,7 +178,7 @@ class HeaderMenu {
     if (index != null) { this._showList(index); }
   }
 
-  _handleMenuKeydown(event) {
+  _handleMenuKeyDown(event) {
     if (event.key === 'Escape') {
       this.closeAll();
       return true;
@@ -226,14 +226,14 @@ class HeaderMenu {
   _bindEvent() {
     if (!this._button || !this._nav) return false;
 
-    this._button.addEventListener('click', this._handleButtonClick);
-    this._button.addEventListener('keydown', this._handleButtonKeydown);
-    this._nav.addEventListener('keydown', this._handleButtonKeydown);
+    this._button.addEventListener('click', this._handleToggleClick);
+    this._button.addEventListener('keydown', this._handleToggleKeyDown);
+    this._nav.addEventListener('keydown', this._handleToggleKeyDown);
 
     if (Array.isArray(this._linksDown)) {
       this._linksDown.forEach((item) => {
         item.addEventListener('mouseover', this._handleMenuMouseover);
-        item.addEventListener('keydown', this._handleMenuKeydown);
+        item.addEventListener('keydown', this._handleMenuKeyDown);
       });
     }
 

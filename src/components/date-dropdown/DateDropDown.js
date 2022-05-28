@@ -125,7 +125,7 @@ class DateDropDown {
     element.value = this.inputHidden.value.replace('-', ' - ');
   }
 
-  handleFilterFocusout(event) {
+  handleFilterFocusOut(event) {
     const element = event.currentTarget;
     if (!this.isClicked) { element.value = ''; }
     this.isClicked = false;
@@ -143,11 +143,11 @@ class DateDropDown {
     element.value = element.value.replace(/[^.-\d\s]/g, '');
   }
 
-  handleCalendarWrapClick() {
+  handleCalendarWrapperClick() {
     this._isElementClicked = true;
   }
 
-  handleInputKeydown(event) {
+  handleInputKeyDown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
       this.element.classList.remove(`${this.className.replace(/^\.js-/, '')}_visible`);
@@ -321,19 +321,19 @@ class DateDropDown {
 
   _bindEventFilter() {
     this.inputFrom.addEventListener('focus', this.handleFilterFocus);
-    this.inputFrom.addEventListener('focusout', this.handleFilterFocusout);
+    this.inputFrom.addEventListener('focusout', this.handleFilterFocusOut);
     this.inputFrom.addEventListener('change', this.handleFilterChange);
     this.inputFrom.addEventListener('input', DateDropDown.handleFilterInput);
   }
 
   _bindEvent() {
-    this.calendarWrapper.addEventListener('click', this.handleCalendarWrapClick);
+    this.calendarWrapper.addEventListener('click', this.handleCalendarWrapperClick);
     this.inputFrom.addEventListener('click', this.handleInputFromClick);
-    this.inputFrom.addEventListener('keydown', this.handleInputKeydown);
+    this.inputFrom.addEventListener('keydown', this.handleInputKeyDown);
 
     if (this.isRange) {
       this.inputFrom.addEventListener('input', this.handleInputFromInput);
-      this.inputTo.addEventListener('keydown', this.handleInputKeydown);
+      this.inputTo.addEventListener('keydown', this.handleInputKeyDown);
       this.inputTo.addEventListener('input', this.handleInputToInput);
       this.inputTo.addEventListener('click', this.handleInputToClick);
     } else {
