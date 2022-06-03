@@ -51,7 +51,8 @@ class DateDropDown {
       this.calendar.clear();
       const dates = this.inputHidden.value.split('-');
 
-      if (dates.length < 2) return false;
+      const numberOfDates = 2;
+      if (dates.length < numberOfDates) return false;
 
       const dateFrom = DateDropDown.getDate(
         DateDropDown.trimDate(dates[0]),
@@ -62,8 +63,10 @@ class DateDropDown {
         true,
       );
 
-      const timestampFrom = Date.parse(dateFrom) / 1000 / 60;
-      const timestampTo = Date.parse(dateTo) / 1000 / 60;
+      const milliseconds = 1000;
+      const seconds = 60;
+      const timestampFrom = Date.parse(dateFrom) / milliseconds / seconds;
+      const timestampTo = Date.parse(dateTo) / milliseconds / seconds;
 
       if (timestampFrom > timestampTo) {
         const datesString = dateTo.split('.');
@@ -156,12 +159,14 @@ class DateDropDown {
 
   handleInputFromInput(event) {
     const element = event.currentTarget;
-    if (element.value.length === 10) { this.setRange(); }
+    const maxLengthDate = 10;
+    if (element.value.length === maxLengthDate) { this.setRange(); }
   }
 
   handleInputToInput(event) {
     const element = event.currentTarget;
-    if (element.value.length === 10) { this.setRange(); }
+    const maxLengthDate = 10;
+    if (element.value.length === maxLengthDate) { this.setRange(); }
   }
 
   handleClearButtonClick(event) {

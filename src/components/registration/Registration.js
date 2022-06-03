@@ -31,21 +31,26 @@ class Registration {
 
   static _messageError(string, length) {
     let isValid = true;
+    const minLengthName = 3;
+    const maxLengthDate = 10;
+    const minLengthEmail = 5;
+    const minLengthPassword = 6;
+
     switch (string) {
       case 'name':
-        isValid = Registration._checkLength(length < 3, 'Имя');
+        isValid = Registration._checkLength(length < minLengthName, 'Имя');
         break;
       case 'surname':
-        isValid = Registration._checkLength(length < 3, 'Фамилию');
+        isValid = Registration._checkLength(length < minLengthName, 'Фамилию');
         break;
       case 'date':
-        isValid = Registration._checkLength(length !== 10, 'дату рождения');
+        isValid = Registration._checkLength(length !== maxLengthDate, 'дату рождения');
         break;
       case 'email':
-        isValid = Registration._checkLength(length < 5, 'Email');
+        isValid = Registration._checkLength(length < minLengthEmail, 'Email');
         break;
       case 'pass':
-        isValid = Registration._checkLength(length < 6, 'Пароль');
+        isValid = Registration._checkLength(length < minLengthPassword, 'Пароль');
         break;
       default:
         break;

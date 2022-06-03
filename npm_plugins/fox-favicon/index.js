@@ -66,23 +66,15 @@ class FoxFavicon {
 
   setHeadLink(callback) {
     const urlManifest = this.options.pathManifest + 'manifest.json';
-    const urlBrowserconfig =
-      this.options.pathManifest + 'browserconfig.xml';
+    const urlBrowserconfig = this.options.pathManifest + 'browserconfig.xml';
 
-    const urlYandexBrowser =
-      this.options.pathManifest + 'yandex-browser-manifest.json';
+    const urlYandexBrowser = this.options.pathManifest + 'yandex-browser-manifest.json';
 
-    const manifest =
-      '<link rel="manifest" href="' +
-      urlManifest + '">';
+    const manifest = '<link rel="manifest" href="' + urlManifest + '">';
 
-    const browserconfig =
-      '<meta name="msapplication-config" content="' +
-      urlBrowserconfig + '">';
+    const browserconfig = '<meta name="msapplication-config" content="' + urlBrowserconfig + '">';
 
-    const yandexBrowser =
-      '<link rel="yandex-tableau-widget" href="' +
-      urlYandexBrowser + '">';
+    const yandexBrowser = '<link rel="yandex-tableau-widget" href="' + urlYandexBrowser + '">';
 
     const masTeg = [manifest, browserconfig, yandexBrowser];
 
