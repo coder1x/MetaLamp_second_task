@@ -6,11 +6,11 @@ mixin logo(options = {})
       addClass = '',
     } = options;
 
-    const classComponent = 'logo'
-    let className = classComponent
+    const CLASS_COMPONENT = 'logo'
+    let className = CLASS_COMPONENT
     if(modifier){
       for(let item of modifier)
-        className += ` ${classComponent}_${item}`
+        className += ` ${CLASS_COMPONENT}_${item}`
     }
     if(addClass){
       className += ` ${addClass}`

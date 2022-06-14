@@ -78,7 +78,7 @@ class FoxFavicon {
 
     const masTeg = [manifest, browserconfig, yandexBrowser];
 
-    const nameSearch = [
+    const NAME_SEARCH = [
       'rel="manifest"',
       'name="msapplication-config"',
       'rel="yandex-tableau-widget"'
@@ -91,7 +91,7 @@ class FoxFavicon {
         let masAttr = str.split(' ');
         let teg = '';
         for (let attr of masAttr) {
-          const index = nameSearch.indexOf(attr, 0); // получаем индекс совпавшего элемента
+          const index = NAME_SEARCH.indexOf(attr, 0); // получаем индекс совпавшего элемента
 
           if (index != -1) {
             teg = masTeg[index];

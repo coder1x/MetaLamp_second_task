@@ -9,19 +9,19 @@ mixin feature(options = {})
       addClass = '',
     } = options;
 
-    const classComponent = 'feature'
-    let className = classComponent
+    const CLASS_COMPONENT = 'feature'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
   div(class=className)
-    div(class=`${classComponent}__wrapper-icon`)
-      img(class=`${classComponent}__icon` src=require('./img/'+src) alt=alt)
+    div(class=`${CLASS_COMPONENT}__wrapper-icon`)
+      img(class=`${CLASS_COMPONENT}__icon` src=require('./img/'+src) alt=alt)
       
-    div(class=`${classComponent}__description`)
-      span(class=`${classComponent}__header`)=header
-      p(class=`${classComponent}__text`)=text
+    div(class=`${CLASS_COMPONENT}__description`)
+      span(class=`${CLASS_COMPONENT}__header`)=header
+      p(class=`${CLASS_COMPONENT}__text`)=text

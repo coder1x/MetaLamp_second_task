@@ -10,11 +10,11 @@ mixin comment(options = {})
       addClass = '',
     } = options;
 
-    const classComponent = 'comment'
-    let className = classComponent
+    const CLASS_COMPONENT = 'comment'
+    let className = CLASS_COMPONENT
     
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
@@ -22,15 +22,15 @@ mixin comment(options = {})
 
   article(class=className)
   
-    div(class=`${classComponent}__avatar-wrapper`)
-      figure(class=`${classComponent}__author`)
-        img(class=`${classComponent}__avatar` src=require('./img/'+src), alt=name)
-      div(class=`${classComponent}__like-wrapper`)
+    div(class=`${CLASS_COMPONENT}__avatar-wrapper`)
+      figure(class=`${CLASS_COMPONENT}__author`)
+        img(class=`${CLASS_COMPONENT}__avatar` src=require('./img/'+src), alt=name)
+      div(class=`${CLASS_COMPONENT}__like-wrapper`)
         +like-button({isLabeled:true})
 
-    div(class=`${classComponent}__message-wrapper`)
-      header(class=`${classComponent}__header-wrapper`)
-        a(class=`${classComponent}__name` href='https://change-me')= name
-        p(class=`${classComponent}__date`)= date
-      p(class=`${classComponent}__message`)= message
+    div(class=`${CLASS_COMPONENT}__message-wrapper`)
+      header(class=`${CLASS_COMPONENT}__header-wrapper`)
+        a(class=`${CLASS_COMPONENT}__name` href='https://change-me')= name
+        p(class=`${CLASS_COMPONENT}__date`)= date
+      p(class=`${CLASS_COMPONENT}__message`)= message
       

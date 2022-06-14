@@ -7,20 +7,20 @@ mixin navigation(options = {})
       addClass = ''
     } = options;
 
-    const classComponent = 'navigation'
-    let className = classComponent
+    const CLASS_COMPONENT = 'navigation'
+    let className = CLASS_COMPONENT
     if(modifier){
       for(let item of modifier)
-        className += ` ${classComponent}_${item}`
+        className += ` ${CLASS_COMPONENT}_${item}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
     
   div(class=className)
-    ul(class=`${classComponent}__items` role='navigation')
-      lh(class=`${classComponent}__header`)= header
+    ul(class=`${CLASS_COMPONENT}__items` role='navigation')
+      lh(class=`${CLASS_COMPONENT}__header`)= header
       -for(let i=0; i<strings.length; i++){
-          li(class=`${classComponent}__item`)
-            a(class=`${classComponent}__link` href='https://change-me')= strings[i]
+          li(class=`${CLASS_COMPONENT}__item`)
+            a(class=`${CLASS_COMPONENT}__link` href='https://change-me')= strings[i]
       -}

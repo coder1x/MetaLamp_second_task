@@ -9,7 +9,7 @@ module.exports = {
       `${paths.src}/pages/**/*.json`,
     ],
     compress: true,
-    port: 8080,
+    port: 8081,
     historyApiFallback: true,
     open: true,
   },

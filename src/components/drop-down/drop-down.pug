@@ -14,42 +14,42 @@ mixin drop-down(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'drop-down'
-    let className = classComponent
+    const CLASS_COMPONENT = 'drop-down'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  div(class=`${className} js-${classComponent}`)
+  div(class=`${className} js-${CLASS_COMPONENT}`)
     - if(!isLabeled){
-        p(class=`${classComponent}__text-header`)= label
+        p(class=`${CLASS_COMPONENT}__text-header`)= label
     -}
 
-    div(class=`${classComponent}__wrapper`)
-      input(class=`${classComponent}__input js-${classComponent}__input` type='text' placeholder=value value='' name=name readonly)
-      img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('./img/tip.svg') alt='угалок')
+    div(class=`${CLASS_COMPONENT}__wrapper`)
+      input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input` type='text' placeholder=value value='' name=name readonly)
+      img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=require('./img/tip.svg') alt='угалок')
 
-      ul(class=`${classComponent}__select js-${classComponent}__select`)
+      ul(class=`${CLASS_COMPONENT}__select js-${CLASS_COMPONENT}__select`)
         - for(let i=0; i<words[0].length; i++)  {
-            li(class=`${classComponent}__select-item js-${classComponent}__select-item` data-type= words[1][i])
-              p(class=`${classComponent}__text`)= words[0][i]
-              button(class=`${classComponent}__minus js-${classComponent}__minus` aria-label='минус') -
-              span(class=`${classComponent}__value js-${classComponent}__value`) 0
-              button(class=`${classComponent}__plus js-${classComponent}__plus` data-max=maxValue[i] aria-label='плюс') +
+            li(class=`${CLASS_COMPONENT}__select-item js-${CLASS_COMPONENT}__select-item` data-type= words[1][i])
+              p(class=`${CLASS_COMPONENT}__text`)= words[0][i]
+              button(class=`${CLASS_COMPONENT}__minus js-${CLASS_COMPONENT}__minus` aria-label='минус') -
+              span(class=`${CLASS_COMPONENT}__value js-${CLASS_COMPONENT}__value`) 0
+              button(class=`${CLASS_COMPONENT}__plus js-${CLASS_COMPONENT}__plus` data-max=maxValue[i] aria-label='плюс') +
         -}
         
         -if(button){
-            li(class=`${classComponent}__buttons`)
-              div(class=`${classComponent}__button-clear js-${classComponent}__button-clear`)
+            li(class=`${CLASS_COMPONENT}__buttons`)
+              div(class=`${CLASS_COMPONENT}__button-clear js-${CLASS_COMPONENT}__button-clear`)
                 +buttons({
                   text:'очистить',
                   type:'button',
                   modifier:['text']
                       })
-              div(class=`${classComponent}__button-apply js-${classComponent}__button-apply`)
+              div(class=`${CLASS_COMPONENT}__button-apply js-${CLASS_COMPONENT}__button-apply`)
                 +buttons({
                   text:'применить',
                   type:'button',

@@ -31,26 +31,26 @@ class Registration {
 
   static _messageError(string, length) {
     let isValid = true;
-    const minLengthName = 3;
-    const maxLengthDate = 10;
-    const minLengthEmail = 5;
-    const minLengthPassword = 6;
+    const MIN_LENGTH_NAME = 3;
+    const MAX_LENGTH_DATE = 10;
+    const MIN_LENGTH_EMAIL = 5;
+    const MIN_LENGTH_PASSWORD = 6;
 
     switch (string) {
       case 'name':
-        isValid = Registration._checkLength(length < minLengthName, 'Имя');
+        isValid = Registration._checkLength(length < MIN_LENGTH_NAME, 'Имя');
         break;
       case 'surname':
-        isValid = Registration._checkLength(length < minLengthName, 'Фамилию');
+        isValid = Registration._checkLength(length < MIN_LENGTH_NAME, 'Фамилию');
         break;
       case 'date':
-        isValid = Registration._checkLength(length !== maxLengthDate, 'дату рождения');
+        isValid = Registration._checkLength(length !== MAX_LENGTH_DATE, 'дату рождения');
         break;
       case 'email':
-        isValid = Registration._checkLength(length < minLengthEmail, 'Email');
+        isValid = Registration._checkLength(length < MIN_LENGTH_EMAIL, 'Email');
         break;
       case 'pass':
-        isValid = Registration._checkLength(length < minLengthPassword, 'Пароль');
+        isValid = Registration._checkLength(length < MIN_LENGTH_PASSWORD, 'Пароль');
         break;
       default:
         break;
@@ -59,10 +59,10 @@ class Registration {
   }
 
   _validation() {
-    const fields = ['name', 'surname', 'date', 'email', 'pass'];
+    const FIELDS = ['name', 'surname', 'date', 'email', 'pass'];
 
-    for (let i = 0; i < fields.length; i += 1) {
-      const item = fields[i];
+    for (let i = 0; i < FIELDS.length; i += 1) {
+      const item = FIELDS[i];
       const domElement = this.getElement(item);
 
       if (domElement && !Registration._messageError(item, domElement.value.length)) {

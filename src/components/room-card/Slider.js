@@ -13,8 +13,8 @@ class Slider {
   }
 
   setVisible(index) {
-    const time = 150;
-    const delay = Number(new Date()) - this._timePress > time;
+    const TIME = 150;
+    const delay = Number(new Date()) - this._timePress > TIME;
 
     if (delay && Array.isArray(this._slidesElement)) {
       this._toggle(this._slidesElement[this._indexSlide], true);
@@ -50,8 +50,8 @@ class Slider {
   }
 
   _toggle(slide, isVisible = false) {
-    const prefix = '__slide_visible';
-    const selector = `${this.className.replace(/^\.js-/, '')}${prefix}`;
+    const PREFIX = '__slide_visible';
+    const selector = `${this.className.replace(/^\.js-/, '')}${PREFIX}`;
 
     const { classList } = slide;
 
@@ -197,11 +197,11 @@ class Slider {
 
       if (!isTouchMove && !isMouseMove) return false;
 
-      const time = 200;
-      const shift = 20;
+      const TIME = 200;
+      const SHIFT = 20;
       const xyUp = Slider._getCoordinatesXY(event);
-      const isShift = Math.abs((xyUp[0] - xyDown[0])) > shift;
-      const isTimeInterval = (Number(new Date()) - this._timePress) > time;
+      const isShift = Math.abs((xyUp[0] - xyDown[0])) > SHIFT;
+      const isTimeInterval = (Number(new Date()) - this._timePress) > TIME;
 
       if (isShift && isTimeInterval) {
         this._swipeDirection([

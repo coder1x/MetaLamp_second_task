@@ -10,31 +10,31 @@ mixin checkbox-list(options = {})
       isClicked,
     } = options;
 
-    const classComponent = 'checkbox-list'
-    let className = classComponent
+    const CLASS_COMPONENT = 'checkbox-list'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
     
-  div(class=`${className} js-${classComponent}`)
-    fieldset(class=`${classComponent}__items`)
+  div(class=`${className} js-${CLASS_COMPONENT}`)
+    fieldset(class=`${CLASS_COMPONENT}__items`)
 
       -if(!isLabeled){
         -if(!isClicked){
-          legend(class=`${classComponent}__header js-${classComponent}__header` tabindex='0' aria-label='раскрывающийся список')= legend
-              img(class=`${classComponent}__tip js-${classComponent}__tip` src=require('./img/tip.svg') alt='угалок')
+          legend(class=`${CLASS_COMPONENT}__header js-${CLASS_COMPONENT}__header` tabindex='0' aria-label='раскрывающийся список')= legend
+              img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=require('./img/tip.svg') alt='угалок')
         -} else {
-          legend(class=`${classComponent}__header js-${classComponent}__header`)= legend
+          legend(class=`${CLASS_COMPONENT}__header js-${CLASS_COMPONENT}__header`)= legend
         -}  
       -}
       
-      div(class=`${classComponent}__wrapper js-${classComponent}__wrapper`)
+      div(class=`${CLASS_COMPONENT}__wrapper js-${CLASS_COMPONENT}__wrapper`)
         each value, index in words
-          label(class=`${classComponent}__label`)= value
-            input(class=`${classComponent}__input` type='checkbox' name=value)
-            span(class=`${classComponent}__before`)
+          label(class=`${CLASS_COMPONENT}__label`)= value
+            input(class=`${CLASS_COMPONENT}__input` type='checkbox' name=value)
+            span(class=`${CLASS_COMPONENT}__before`)
             -if(strings.length)
-              span(class=`${classComponent}__text`)=strings[index]
+              span(class=`${CLASS_COMPONENT}__text`)=strings[index]

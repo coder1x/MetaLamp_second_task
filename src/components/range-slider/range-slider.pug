@@ -7,24 +7,24 @@ mixin range-slider(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'range-slider'
-    let className = classComponent
+    const CLASS_COMPONENT = 'range-slider'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  div(class=`${className} js-${classComponent}`)
-    div(class=`${classComponent}__wrapper`)
+  div(class=`${className} js-${CLASS_COMPONENT}`)
+    div(class=`${CLASS_COMPONENT}__wrapper`)
     
-      div(class=`${classComponent}__header`)
+      div(class=`${CLASS_COMPONENT}__header`)
         - if(!isLabeled){
-            p(class=`${classComponent}__label`)= label
+            p(class=`${CLASS_COMPONENT}__label`)= label
         -}
-        span(class=`${classComponent}__value js-${classComponent}__value`)
-      input(class=`${classComponent}__input js-${classComponent}__input`
+        span(class=`${CLASS_COMPONENT}__value js-${CLASS_COMPONENT}__value`)
+      input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input`
       type='hidden' 
       name='price' 
       value='' 

@@ -12,38 +12,38 @@ mixin booking(options = {})
       lux,
     } = options;
 
-    const classComponent = 'booking'
-    let className = classComponent
+    const CLASS_COMPONENT = 'booking'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  article(class=`${className} js-${classComponent}`)
-    div(class=`${classComponent}__header-wrapper`)
+  article(class=`${className} js-${CLASS_COMPONENT}`)
+    div(class=`${CLASS_COMPONENT}__header-wrapper`)
 
-      div(class=`${classComponent}__number-wrapper`)
-        span(class=`${classComponent}__header-num`) №
-        p(class=`${classComponent}__header`)= number
+      div(class=`${CLASS_COMPONENT}__number-wrapper`)
+        span(class=`${CLASS_COMPONENT}__header-num`) №
+        p(class=`${CLASS_COMPONENT}__header`)= number
         - if(lux){
-            span(class=`${classComponent}__lux`) люкс
+            span(class=`${CLASS_COMPONENT}__lux`) люкс
         -}
 
-      div(class=`${classComponent}__price-wrapper`)
-        span(class=`${classComponent}__price`)= price+'₽'
-        span(class=`${classComponent}__price-text`) в сутки
+      div(class=`${CLASS_COMPONENT}__price-wrapper`)
+        span(class=`${CLASS_COMPONENT}__price`)= price+'₽'
+        span(class=`${CLASS_COMPONENT}__price-text`) в сутки
 
-    form(class=`${classComponent}__form` action='' method='post')
-      fieldset(class=`${classComponent}__date-wrapper js-${classComponent}__date-wrapper`)
+    form(class=`${CLASS_COMPONENT}__form` action='' method='post')
+      fieldset(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)
         +date-dropdown({
           label: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
           class: 'js-masked-date'
           })
 
-      div(class=`${classComponent}__dropdown-wrapper js-${classComponent}__dropdown-wrapper`)
+      div(class=`${CLASS_COMPONENT}__dropdown-wrapper js-${CLASS_COMPONENT}__dropdown-wrapper`)
         +drop-down({
           label:'гости',
           value: 'Сколько гостей',
@@ -57,24 +57,24 @@ mixin booking(options = {})
           button:true
           })
 
-      div(class=`${classComponent}__day-wrapper`)
-        p(class=`${classComponent}__day-calc`) 9 990₽ х 4 суток
-        span(class=`${classComponent}__day-price`) 39 960₽
+      div(class=`${CLASS_COMPONENT}__day-wrapper`)
+        p(class=`${CLASS_COMPONENT}__day-calc`) 9 990₽ х 4 суток
+        span(class=`${CLASS_COMPONENT}__day-price`) 39 960₽
 
-      div(class=`${classComponent}__services-wrapper`)
-        p(class=`${classComponent}__services`) Сбор за услуги: скидка 2 179₽
-        span(class=`${classComponent}__services-price`) 0₽
+      div(class=`${CLASS_COMPONENT}__services-wrapper`)
+        p(class=`${CLASS_COMPONENT}__services`) Сбор за услуги: скидка 2 179₽
+        span(class=`${CLASS_COMPONENT}__services-price`) 0₽
 
-      div(class=`${classComponent}__services-wrapper`)
-        p(class=`${classComponent}__services`) Сбор за дополнительные услуги
-        span(class=`${classComponent}__services-price`) 300₽
+      div(class=`${CLASS_COMPONENT}__services-wrapper`)
+        p(class=`${CLASS_COMPONENT}__services`) Сбор за дополнительные услуги
+        span(class=`${CLASS_COMPONENT}__services-price`) 300₽
         
-      div(class=`${classComponent}__total-wrapper`)
-        span(class=`${classComponent}__total-text`) Итого
-        div(class=`${classComponent}__total-dot`)
-        span(class=`${classComponent}__total-price`) 38 081₽
+      div(class=`${CLASS_COMPONENT}__total-wrapper`)
+        span(class=`${CLASS_COMPONENT}__total-text`) Итого
+        div(class=`${CLASS_COMPONENT}__total-dot`)
+        span(class=`${CLASS_COMPONENT}__total-price`) 38 081₽
 
-      div(class=`${classComponent}__button-wrapper js-${classComponent}__button-wrapper`)
+      div(class=`${CLASS_COMPONENT}__button-wrapper js-${CLASS_COMPONENT}__button-wrapper`)
         +buttons({
           text:'забронировать',
           type:'submit',

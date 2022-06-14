@@ -79,17 +79,17 @@ class RangeSlider {
     const handleFromKeyDown = (event, flag = false) => {
       const value = flag ? to : from;
       const dotName = flag ? 'to' : 'from';
-      const shift = 50;
+      const SHIFT = 50;
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         this.$myRange.update({
-          [dotName]: value >= min ? value - shift : value,
+          [dotName]: value >= min ? value - SHIFT : value,
         });
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
         this.$myRange.update({
-          [dotName]: value <= max ? value + shift : value,
+          [dotName]: value <= max ? value + SHIFT : value,
         });
       }
     };

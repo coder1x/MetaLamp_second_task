@@ -12,8 +12,8 @@ mixin registration(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'registration'
-    let className = classComponent
+    const CLASS_COMPONENT = 'registration'
+    let className = CLASS_COMPONENT
 
     const {
       textField,
@@ -22,50 +22,50 @@ mixin registration(options = {})
     } = require('./registration.json');
 
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  article(class=`${className} js-${classComponent}`)
+  article(class=`${className} js-${CLASS_COMPONENT}`)
     - if(!isLabeled){
-        header(class=`${classComponent}__header-wrapper`)
-          h1(class=`${classComponent}__header`)= header
+        header(class=`${CLASS_COMPONENT}__header-wrapper`)
+          h1(class=`${CLASS_COMPONENT}__header`)= header
     -}
 
-    form(class=`${classComponent}__form` action='' method='post')
-      fieldset(class=`${classComponent}__full-name`)
+    form(class=`${CLASS_COMPONENT}__form` action='' method='post')
+      fieldset(class=`${CLASS_COMPONENT}__full-name`)
 
-        div(class=`${classComponent}__name-wrapper js-${classComponent}__name-wrapper`)
+        div(class=`${CLASS_COMPONENT}__name-wrapper js-${CLASS_COMPONENT}__name-wrapper`)
           +text-field(textField.name)
 
-        div(class=`${classComponent}__surname-wrapper js-${classComponent}__surname-wrapper`)
+        div(class=`${CLASS_COMPONENT}__surname-wrapper js-${CLASS_COMPONENT}__surname-wrapper`)
           +text-field(textField.surname)
 
-      div(class=`${classComponent}__gender-wrapper`)
+      div(class=`${CLASS_COMPONENT}__gender-wrapper`)
         +radio-buttons({
           isLabeled:true
         })
 
-      div(class=`${classComponent}__date-wrapper js-${classComponent}__date-wrapper`)
+      div(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)
           +text-field(textField.date)
 
-      fieldset(class=`${classComponent}__identification`)
-        legend(class=`${classComponent}__data-text`) данные для входа в сервис
+      fieldset(class=`${CLASS_COMPONENT}__identification`)
+        legend(class=`${CLASS_COMPONENT}__data-text`) данные для входа в сервис
 
-        div(class=`${classComponent}__email-wrapper js-${classComponent}__email-wrapper`)
+        div(class=`${CLASS_COMPONENT}__email-wrapper js-${CLASS_COMPONENT}__email-wrapper`)
           +text-field(textField.email)
 
-        div(class=`${classComponent}__password-wrapper js-${classComponent}__password-wrapper`)
+        div(class=`${CLASS_COMPONENT}__password-wrapper js-${CLASS_COMPONENT}__password-wrapper`)
           +text-field(textField.password)
 
-      div(class=`${classComponent}__toggle-wrapper`)
+      div(class=`${CLASS_COMPONENT}__toggle-wrapper`)
         +toggle(toggleButtons)
 
-      div(class=`${classComponent}__submit-wrapper js-${classComponent}__submit-wrapper`)
+      div(class=`${CLASS_COMPONENT}__submit-wrapper js-${CLASS_COMPONENT}__submit-wrapper`)
         +buttons(buttons.submit)
         
-      div(class=`${classComponent}__sign-in`)
-        p(class=`${classComponent}__text-in`) Уже есть аккаунт на Toxin
+      div(class=`${CLASS_COMPONENT}__sign-in`)
+        p(class=`${CLASS_COMPONENT}__text-in`) Уже есть аккаунт на Toxin
         +buttons(buttons.link)

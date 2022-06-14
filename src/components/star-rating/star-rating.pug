@@ -8,10 +8,10 @@ mixin star-rating(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'star-rating'
-    let className = classComponent
+    const CLASS_COMPONENT = 'star-rating'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
@@ -26,12 +26,12 @@ mixin star-rating(options = {})
     ]
 
   div(class=className)
-    fieldset(class=`${classComponent}__stars`)
+    fieldset(class=`${CLASS_COMPONENT}__stars`)
       - if(!isLabeled){
-          legend(class=`${classComponent}__header`)= label
+          legend(class=`${CLASS_COMPONENT}__header`)= label
       -}
       
-      div(class=`${classComponent}__group`)
+      div(class=`${CLASS_COMPONENT}__group`)
         - for(let i=0; i<labels.length; i++)  {
-            input(class=`${classComponent}__star` type='radio' name=name value=i+1 aria-label=labels[i])
+            input(class=`${CLASS_COMPONENT}__star` type='radio' name=name value=i+1 aria-label=labels[i])
         -}

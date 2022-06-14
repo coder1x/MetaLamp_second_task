@@ -5,10 +5,10 @@ mixin logo-group(options = {})
       addClass = '',
     } = options;
 
-    const classComponent = 'logo-group'
-    let className = classComponent
+    const CLASS_COMPONENT = 'logo-group'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`

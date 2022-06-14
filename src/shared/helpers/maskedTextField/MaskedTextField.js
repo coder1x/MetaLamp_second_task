@@ -61,20 +61,20 @@ class MaskedTextField {
       value = `${value.substr(0, stringLength - 1)}0${value[stringLength - 1]}`;
     }
 
-    const day = '^(0|[1-9]|0[1-9]|[12][0-9]|3[01])';
-    const month = `${day}\\.(0|[1-9]|0[1-9]|1[012])`;
-    const year = `${month}\\.([1-2]|19|20|19\\d|20\\d|19\\d\\d|20\\d\\d)$`;
+    const DAY = '^(0|[1-9]|0[1-9]|[12][0-9]|3[01])';
+    const MONTH = `${DAY}\\.(0|[1-9]|0[1-9]|1[012])`;
+    const YEAR = `${MONTH}\\.([1-2]|19|20|19\\d|20\\d|19\\d\\d|20\\d\\d)$`;
 
     const point = `${value}.`;
     const lastDate = point !== this._tempValue;
 
     domElement.value = this._validateData({
       value,
-      day,
+      day: DAY,
       lastDate,
       point,
-      month,
-      year,
+      month: MONTH,
+      year: YEAR,
     });
 
     this._tempValue = domElement.value;
@@ -84,10 +84,10 @@ class MaskedTextField {
 
   _handleInputChange(event) {
     const { target } = event;
-    const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+    const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
     const dateTarget = target.value;
 
-    if (!regexp.test(dateTarget)) return false;
+    if (!REGEXP.test(dateTarget)) return false;
 
     const dates = dateTarget.split('.').map((item) => Number(item.replace(/^0/, '')));
     dates[1] -= 1;

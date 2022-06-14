@@ -8,22 +8,22 @@ mixin subscrip-textfield(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'subscrip-textfield'
-    let className = classComponent
+    const CLASS_COMPONENT = 'subscrip-textfield'
+    let className = CLASS_COMPONENT
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  div(class=`${className} js-${classComponent}`)
-    div(class=`${classComponent}__wrapper`)
+  div(class=`${className} js-${CLASS_COMPONENT}`)
+    div(class=`${CLASS_COMPONENT}__wrapper`)
       if !isLabeled
-        p(class=`${classComponent}__label-text`)= label
+        p(class=`${CLASS_COMPONENT}__label-text`)= label
 
-      label(class=`${classComponent}__label`)
-        input(class=`${classComponent}__input` type='text' placeholder=value value='' name='subscrip')
+      label(class=`${CLASS_COMPONENT}__label`)
+        input(class=`${CLASS_COMPONENT}__input` type='text' placeholder=value value='' name='subscrip')
         
-      button(class=`${classComponent}__link js-${classComponent}__link` aria-label='подписаться' title='подписаться')
-        img(class=`${classComponent}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')
+      button(class=`${CLASS_COMPONENT}__link js-${CLASS_COMPONENT}__link` aria-label='подписаться' title='подписаться')
+        img(class=`${CLASS_COMPONENT}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')

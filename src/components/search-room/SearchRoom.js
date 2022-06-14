@@ -41,8 +41,8 @@ class SearchRoom {
       valueInputTo = inputTo.value.length;
     }
 
-    const maxLengthDate = 10;
-    const isLengthString = valueInputFrom === maxLengthDate && valueInputTo === maxLengthDate;
+    const MAX_LENGTH_DATE = 10;
+    const isLengthString = valueInputFrom === MAX_LENGTH_DATE && valueInputTo === MAX_LENGTH_DATE;
 
     if (isLengthString) {
       return true;

@@ -9,8 +9,8 @@ mixin footer(options = {})
       addClass = '',
     } = options;
 
-    const classComponent = 'footer'
-    let className = classComponent
+    const CLASS_COMPONENT = 'footer'
+    let className = CLASS_COMPONENT
 
     const {
       socialData,
@@ -20,41 +20,41 @@ mixin footer(options = {})
 
     if(modifier){
       for(let item of modifier)
-        className += ` ${classComponent}_${item}`
+        className += ` ${CLASS_COMPONENT}_${item}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
   footer(class=className role='contentinfo')
-    div(class=`${classComponent}__top`)
-      div(class=`${classComponent}__top-wrapper`)
+    div(class=`${CLASS_COMPONENT}__top`)
+      div(class=`${CLASS_COMPONENT}__top-wrapper`)
 
-        div(class=`${classComponent}__recommendation-wrapper`)
-          div(class=`${classComponent}__logo-wrapper`)
+        div(class=`${CLASS_COMPONENT}__recommendation-wrapper`)
+          div(class=`${CLASS_COMPONENT}__logo-wrapper`)
             +logo({link:'/landing-page.html'})
-          p(class=`${classComponent}__recommendation-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+          p(class=`${CLASS_COMPONENT}__recommendation-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
 
-        div(class=`${classComponent}__navigation-wrapper`)
+        div(class=`${CLASS_COMPONENT}__navigation-wrapper`)
           +navigation(navigation.different)
 
-        div(class=`${classComponent}__about-us-wrapper`)
+        div(class=`${CLASS_COMPONENT}__about-us-wrapper`)
           +navigation(navigation.about)
 
-        div(class=`${classComponent}__support-wrapper`)
+        div(class=`${CLASS_COMPONENT}__support-wrapper`)
           +navigation(navigation.support)
 
-        div(class=`${classComponent}__subscrip-wrapper`)
-          p(class=`${classComponent}__subscrip-header`) Подписка
-          p(class=`${classComponent}__subscrip-text`) Получайте специальные предложения и новости сервиса
+        div(class=`${CLASS_COMPONENT}__subscrip-wrapper`)
+          p(class=`${CLASS_COMPONENT}__subscrip-header`) Подписка
+          p(class=`${CLASS_COMPONENT}__subscrip-text`) Получайте специальные предложения и новости сервиса
           +subscrip-textfield(subscrip)
 
-    div(class=`${classComponent}__bottom`)
-      div(class=`${classComponent}__bottom-wrapper`)
-        p(class=`${classComponent}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
+    div(class=`${CLASS_COMPONENT}__bottom`)
+      div(class=`${CLASS_COMPONENT}__bottom-wrapper`)
+        p(class=`${CLASS_COMPONENT}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
 
-        ul(class=`${classComponent}__social`)
+        ul(class=`${CLASS_COMPONENT}__social`)
           each icon, text in socialData
-            li(class=`${classComponent}__social-item`)
-              a(class=`${classComponent}__social-link` href='https://change-me')
-                img(class=`${classComponent}__social-icon` src=require('./img/'+icon) alt=text title=text)
+            li(class=`${CLASS_COMPONENT}__social-item`)
+              a(class=`${CLASS_COMPONENT}__social-link` href='https://change-me')
+                img(class=`${CLASS_COMPONENT}__social-icon` src=require('./img/'+icon) alt=text title=text)

@@ -10,8 +10,8 @@ mixin sign-in(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'sign-in'
-    let className = classComponent
+    const CLASS_COMPONENT = 'sign-in'
+    let className = CLASS_COMPONENT
 
     const {
       textField,
@@ -19,30 +19,30 @@ mixin sign-in(options = {})
     } = require('./sign-in.json'); 
 
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  article(class=`${className} js-${classComponent}`)
+  article(class=`${className} js-${CLASS_COMPONENT}`)
     - if(!isLabeled){
-        header(class=`${classComponent}__header-wrapper`)
-          h1(class=`${classComponent}__header`)= header
+        header(class=`${CLASS_COMPONENT}__header-wrapper`)
+          h1(class=`${CLASS_COMPONENT}__header`)= header
     -}
 
-    form(class=`${classComponent}__form` action='' method='post')
-      fieldset(class=`${classComponent}__authorization`)
+    form(class=`${CLASS_COMPONENT}__form` action='' method='post')
+      fieldset(class=`${CLASS_COMPONENT}__authorization`)
 
-        div(class=`${classComponent}__email-wrapper js-${classComponent}__email-wrapper`)
+        div(class=`${CLASS_COMPONENT}__email-wrapper js-${CLASS_COMPONENT}__email-wrapper`)
           +text-field(textField.email)
 
-        div(class=`${classComponent}__password-wrapper js-${classComponent}__password-wrapper`)
+        div(class=`${CLASS_COMPONENT}__password-wrapper js-${CLASS_COMPONENT}__password-wrapper`)
           +text-field(textField.password)
 
-        div(class=`${classComponent}__button-wrapper js-${classComponent}__button-wrapper`)
+        div(class=`${CLASS_COMPONENT}__button-wrapper js-${CLASS_COMPONENT}__button-wrapper`)
           +buttons(buttons.submit)
           
-      div(class=`${classComponent}__registration-wrapper`)
-        p(class=`${classComponent}__text-registration`) Нет аккаунта на Toxin ?
+      div(class=`${CLASS_COMPONENT}__registration-wrapper`)
+        p(class=`${CLASS_COMPONENT}__text-registration`) Нет аккаунта на Toxin ?
         +buttons(buttons.link)

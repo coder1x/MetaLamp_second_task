@@ -36,9 +36,9 @@ class DateDropDown {
   setRange() {
     if (this.isRange) {
       const dateFrom = this.inputFrom.value;
-      const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+      const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
-      if (!regexp.test(dateFrom)) return false;
+      if (!REGEXP.test(dateFrom)) return false;
 
       const dateTo = this.inputTo.value;
       this.calendar.clear();
@@ -51,8 +51,8 @@ class DateDropDown {
       this.calendar.clear();
       const dates = this.inputHidden.value.split('-');
 
-      const numberOfDates = 2;
-      if (dates.length < numberOfDates) return false;
+      const NUMBER_OF_DATES = 2;
+      if (dates.length < NUMBER_OF_DATES) return false;
 
       const dateFrom = DateDropDown.getDate(
         DateDropDown.trimDate(dates[0]),
@@ -63,10 +63,10 @@ class DateDropDown {
         true,
       );
 
-      const milliseconds = 1000;
-      const seconds = 60;
-      const timestampFrom = Date.parse(dateFrom) / milliseconds / seconds;
-      const timestampTo = Date.parse(dateTo) / milliseconds / seconds;
+      const MILLISECONDS = 1000;
+      const SECONDS = 60;
+      const timestampFrom = Date.parse(dateFrom) / MILLISECONDS / SECONDS;
+      const timestampTo = Date.parse(dateTo) / MILLISECONDS / SECONDS;
 
       if (timestampFrom > timestampTo) {
         const datesString = dateTo.split('.');
@@ -159,14 +159,14 @@ class DateDropDown {
 
   handleInputFromInput(event) {
     const element = event.currentTarget;
-    const maxLengthDate = 10;
-    if (element.value.length === maxLengthDate) { this.setRange(); }
+    const MAX_LENGTH_DATE = 10;
+    if (element.value.length === MAX_LENGTH_DATE) { this.setRange(); }
   }
 
   handleInputToInput(event) {
     const element = event.currentTarget;
-    const maxLengthDate = 10;
-    if (element.value.length === maxLengthDate) { this.setRange(); }
+    const MAX_LENGTH_DATE = 10;
+    if (element.value.length === MAX_LENGTH_DATE) { this.setRange(); }
   }
 
   handleClearButtonClick(event) {
@@ -311,10 +311,10 @@ class DateDropDown {
     } else {
       let isValidDate = true;
       const dates = this.inputHidden.value.split('-');
-      const regexp = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+      const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
       for (let i = 0; i < dates.length; i += 1) {
-        if (!regexp.test(trimDate(dates[i]))) {
+        if (!REGEXP.test(trimDate(dates[i]))) {
           isValidDate = false;
           break;
         }

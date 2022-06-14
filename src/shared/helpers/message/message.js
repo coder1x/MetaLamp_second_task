@@ -11,19 +11,19 @@ function handleButtonKeyDown(event) {
 }
 
 function message(text) {
-  const selector = 'message-toxin';
+  const SELECTOR = 'message-toxin';
 
-  const popUp = document.querySelector(`.${selector}`);
+  const popUp = document.querySelector(`.${SELECTOR}`);
   if (popUp) return false;
 
   const wrapper = document.createElement('article');
-  wrapper.classList.add(selector);
+  wrapper.classList.add(SELECTOR);
   const buttonClose = document.createElement('button');
   buttonClose.innerText = '✖';
-  buttonClose.classList.add(`${selector}__close`);
+  buttonClose.classList.add(`${SELECTOR}__close`);
   const paragraph = document.createElement('p');
   paragraph.innerText = text;
-  paragraph.classList.add(`${selector}__text`);
+  paragraph.classList.add(`${SELECTOR}__text`);
 
   wrapper.appendChild(buttonClose);
   wrapper.appendChild(paragraph);

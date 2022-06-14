@@ -7,8 +7,8 @@ mixin diagram(options = {})
       isLabeled,
     } = options;
 
-    let classComponent = 'diagram'
-    let className = classComponent
+    let CLASS_COMPONENT = 'diagram'
+    let className = CLASS_COMPONENT
     const data = [
       ['130','excellent','Великолепно'],
       ['65','good','Хорошо'],
@@ -16,19 +16,19 @@ mixin diagram(options = {})
       ['0','disappointed','Разочарован'],
     ]
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
     }
 
-  div(class=`${classComponent} js-${classComponent}`)
+  div(class=`${CLASS_COMPONENT} js-${CLASS_COMPONENT}`)
     - if(!isLabeled){
-        h2(class=`${classComponent}__header`)= label
+        h2(class=`${CLASS_COMPONENT}__header`)= label
     -}
     
-    div(class=`${classComponent}__wrapper`)
-      canvas(class=`${classComponent}__canvas js-${classComponent}__canvas` width='240' height='240')
-      ul(class=`${classComponent}__colors`)
+    div(class=`${CLASS_COMPONENT}__wrapper`)
+      canvas(class=`${CLASS_COMPONENT}__canvas js-${CLASS_COMPONENT}__canvas` width='240' height='240')
+      ul(class=`${CLASS_COMPONENT}__colors`)
         each item in data
-          li(class=`${classComponent}__colors-item js-${classComponent}__colors-item` date-grade=item[0] date-name=item[1])=item[2]
+          li(class=`${CLASS_COMPONENT}__colors-item js-${CLASS_COMPONENT}__colors-item` date-grade=item[0] date-name=item[1])=item[2]

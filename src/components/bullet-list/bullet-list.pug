@@ -8,11 +8,11 @@ mixin bullet-list(options = {})
       isLabeled,
     } = options;
 
-    const classComponent = 'bullet-list'
-    let className = classComponent
+    const CLASS_COMPONENT = 'bullet-list'
+    let className = CLASS_COMPONENT
 
     if(modifier){
-      className += ` ${classComponent}_${modifier}`
+      className += ` ${CLASS_COMPONENT}_${modifier}`
     }
     if(addClass){
       className += ` ${addClass}`
@@ -20,10 +20,10 @@ mixin bullet-list(options = {})
 
   div(class=className)
     - if(!isLabeled){
-        p(class=`${classComponent}__header`)= label
+        p(class=`${CLASS_COMPONENT}__header`)= label
     -}
     
-    ul(class=`${classComponent}__items`)
+    ul(class=`${CLASS_COMPONENT}__items`)
       -for(let item of text){
-        li(class=`${classComponent}__item`)= item
+        li(class=`${CLASS_COMPONENT}__item`)= item
       -}

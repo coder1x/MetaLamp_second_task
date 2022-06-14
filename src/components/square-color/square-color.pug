@@ -1,15 +1,15 @@
 mixin square-color(textTop,textBot,modifier)
   - 
-    const className = 'square-color'
-    let classSquare = `${className}__square`
+    const CLASS_COMPONENT = 'square-color'
+    let classSquare = `${CLASS_COMPONENT}__square`
     const modifierSquare = modifier ?? ''
     if(modifierSquare){
       classSquare += ` ${classSquare}_${modifierSquare}`
     }
 
-  div(class=className)
+  div(class=CLASS_COMPONENT)
     div(class=classSquare)
     
     div.squareColor__text
-      p(class=`${className}__color`)= textTop
-      p(class=`${className}__hexColor`)= textBot
+      p(class=`${CLASS_COMPONENT}__color`)= textTop
+      p(class=`${CLASS_COMPONENT}__hexColor`)= textBot

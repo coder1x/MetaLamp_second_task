@@ -12,15 +12,15 @@ class Diagram {
       y: this.canvas.height,
     };
 
-    const radiusGradient = 180;
+    const RADIUS_GRADIENT = 180;
 
     const gradientColor = [
       {
         name: 'excellent',
-        x1: center.x + radiusGradient,
+        x1: center.x + RADIUS_GRADIENT,
         y1: center.y,
         x2: center.x,
-        y2: center.y + radiusGradient,
+        y2: center.y + RADIUS_GRADIENT,
         colorStops: [
           { stop: 0, color: '#FFE39C' },
           { stop: 1, color: '#FFBA9C' },
@@ -29,8 +29,8 @@ class Diagram {
       {
         name: 'good',
         x1: center.x,
-        y1: center.y - radiusGradient,
-        x2: center.x + radiusGradient,
+        y1: center.y - RADIUS_GRADIENT,
+        x2: center.x + RADIUS_GRADIENT,
         y2: center.y,
         colorStops: [
           { stop: 0, color: '#6FCF97' },
@@ -40,8 +40,8 @@ class Diagram {
       {
         name: 'satisfactorily',
         x1: center.x,
-        y1: center.y - radiusGradient,
-        x2: center.x + radiusGradient,
+        y1: center.y - RADIUS_GRADIENT,
+        x2: center.x + RADIUS_GRADIENT,
         y2: center.y,
         colorStops: [
           { stop: 0, color: '#BC9CFF' },
@@ -50,10 +50,10 @@ class Diagram {
       },
       {
         name: 'disappointed',
-        x1: center.x - radiusGradient,
+        x1: center.x - RADIUS_GRADIENT,
         y1: center.y,
         x2: center.x,
-        y2: center.y - radiusGradient,
+        y2: center.y - RADIUS_GRADIENT,
         colorStops: [
           { stop: 0, color: '#909090' },
           { stop: 1, color: '#3D4975' },
@@ -140,16 +140,16 @@ class Diagram {
 
   _buildDiagram() {
     // ----------------- options ---------------------
-    const scaling = 2;
-    const coordinatesX = 60 * scaling;
-    const coordinatesY = 60 * scaling;
-    const radius = 57 * scaling;
-    const space = 0.022;
-    const fontSize = 24 * scaling;
-    const fontText = 15 * scaling;
+    const SCALING = 2;
+    const coordinatesX = 60 * SCALING;
+    const coordinatesY = 60 * SCALING;
+    const radius = 57 * SCALING;
+    const SPACE = 0.022;
+    const fontSize = 24 * SCALING;
+    const fontText = 15 * SCALING;
 
     if (this._canvasContext instanceof CanvasRenderingContext2D) {
-      this._canvasContext.lineWidth = 4 * scaling;
+      this._canvasContext.lineWidth = 4 * SCALING;
     }
     // ----------------- end options ------------------
 
@@ -168,8 +168,8 @@ class Diagram {
 
     for (let i = 0; i < angle.length; i += 1) {
       endLine = 2 * Math.PI * angle[i];
-      const start = startLine + dot + space;
-      const end = startLine + endLine + dot - space;
+      const start = startLine + dot + SPACE;
+      const end = startLine + endLine + dot - SPACE;
 
       this._canvasContext.beginPath();
       this._canvasContext.arc(coordinatesX, coordinatesY, radius, start, end);
@@ -191,12 +191,12 @@ class Diagram {
         this._canvasContext.font = `bold ${fontSize}px Montserrat`;
         this._canvasContext.fillText(
           String(percent),
-          60 * scaling,
-          50 * scaling,
+          60 * SCALING,
+          50 * SCALING,
         );
 
         this._canvasContext.font = `normal ${fontText}px Montserrat`;
-        this._canvasContext.fillText('голосов', 60 * scaling, 73 * scaling);
+        this._canvasContext.fillText('голосов', 60 * SCALING, 73 * SCALING);
       }
     });
     return true;

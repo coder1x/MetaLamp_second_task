@@ -22,9 +22,9 @@ fs.readdirSync(pagesDir).forEach((file) => {
   pages.push(file.split('/', 2));
 });
 
-const description = 'Лучшие номера для вашей работы,'
+const DESCRIPTION = 'Лучшие номера для вашей работы,'
   + ' отдыха и просто вдохновения';
-const keywords = 'Номера, Отель';
+const KEYWORDS = 'Номера, Отель';
 
 const plugins = [];
 
@@ -60,11 +60,11 @@ plugins.push(
       },
       description: {
         name: 'description',
-        content: description,
+        content: DESCRIPTION,
       },
       keywords: {
         name: 'keywords',
-        content: keywords,
+        content: KEYWORDS,
       },
       'twitter-card': {
         name: 'twitter:card',
