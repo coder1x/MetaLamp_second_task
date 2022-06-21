@@ -17,13 +17,13 @@ mixin subscrip-textfield(options = {})
       className += ` ${addClass}`
     }
 
-  div(class=`${className} js-${CLASS_COMPONENT}`)
+  form(class=`${className} js-${CLASS_COMPONENT}` action='' method='post')
     div(class=`${CLASS_COMPONENT}__wrapper`)
       if !isLabeled
         p(class=`${CLASS_COMPONENT}__label-text`)= label
 
       label(class=`${CLASS_COMPONENT}__label`)
-        input(class=`${CLASS_COMPONENT}__input` type='text' placeholder=value value='' name='subscrip')
+        input(class=`${CLASS_COMPONENT}__input` type='email' placeholder=value value='' name='subscrip')
         
-      button(class=`${CLASS_COMPONENT}__link js-${CLASS_COMPONENT}__link` aria-label='подписаться' title='подписаться')
+      button(class=`${CLASS_COMPONENT}__link js-${CLASS_COMPONENT}__link` type="submit" aria-label='подписаться' title='подписаться')
         img(class=`${CLASS_COMPONENT}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')

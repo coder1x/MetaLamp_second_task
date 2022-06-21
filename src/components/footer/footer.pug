@@ -56,5 +56,5 @@ mixin footer(options = {})
         ul(class=`${CLASS_COMPONENT}__social`)
           each icon, text in socialData
             li(class=`${CLASS_COMPONENT}__social-item`)
-              a(class=`${CLASS_COMPONENT}__social-link` href='https://change-me')
+              a(class=`${CLASS_COMPONENT}__social-link` href='https://change-me' target='_blank' rel='noopener noreferrer')
                 img(class=`${CLASS_COMPONENT}__social-icon` src=require('./img/'+icon) alt=text title=text)
