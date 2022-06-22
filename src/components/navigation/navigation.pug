@@ -18,8 +18,8 @@ mixin navigation(options = {})
     }
     
   div(class=className)
-    ul(class=`${CLASS_COMPONENT}__items` role='navigation')
-      lh(class=`${CLASS_COMPONENT}__header`)= header
+    ul(class=`${CLASS_COMPONENT}__items`)
+      li(class=`${CLASS_COMPONENT}__header`)= header
       -for(let i=0; i<strings.length; i++){
           li(class=`${CLASS_COMPONENT}__item`)
             a(class=`${CLASS_COMPONENT}__link` href='https://change-me')= strings[i]

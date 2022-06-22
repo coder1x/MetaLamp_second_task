@@ -61,6 +61,10 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
     cursor: pointer;
   }
 
+  &_submit:hover {
+    opacity: 0.5;
+  }
+
   &__icon {
     position: absolute;
     top: 0;

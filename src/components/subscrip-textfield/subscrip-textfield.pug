@@ -17,7 +17,7 @@ mixin subscrip-textfield(options = {})
       className += ` ${addClass}`
     }
 
-  form(class=`${className} js-${CLASS_COMPONENT}` action='' method='post')
+  form(class=`${className} js-${CLASS_COMPONENT}` action='https://change-me' method='post')
     div(class=`${CLASS_COMPONENT}__wrapper`)
       if !isLabeled
         p(class=`${CLASS_COMPONENT}__label-text`)= label

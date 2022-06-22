@@ -39,13 +39,13 @@ mixin header(options = {})
         span(class=`${CLASS_COMPONENT}__toggle-line js-${CLASS_COMPONENT}__toggle-line`)
 
       nav(class=`${CLASS_COMPONENT}__menu-wrapper js-${CLASS_COMPONENT}__menu-wrapper`)
-        ul(class=`${CLASS_COMPONENT}__items` role='navigation')
+        ul(class=`${CLASS_COMPONENT}__items`)
           li(class=`${CLASS_COMPONENT}__item`)
             a(class=`${CLASS_COMPONENT}__link ${current}` href='https://change-me') О нас
           li(class=`${CLASS_COMPONENT}__item`)
             a(class=`${CLASS_COMPONENT}__link-down js-${CLASS_COMPONENT}__link-down` href='https://change-me') Услуги
               img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=tipSvg, alt='уголок')
-            ul(class=`${CLASS_COMPONENT}__items-down js-${CLASS_COMPONENT}__items-down` role='navigation')
+            ul(class=`${CLASS_COMPONENT}__items-down js-${CLASS_COMPONENT}__items-down`)
               each text in service
                 li(class=`${CLASS_COMPONENT}__item-down`)
                   a(class=`${CLASS_COMPONENT}__link` href='https://change-me')=text
@@ -57,7 +57,7 @@ mixin header(options = {})
           li(class=`${CLASS_COMPONENT}__item`)
             a(class=`${CLASS_COMPONENT}__link-down js-${CLASS_COMPONENT}__link-down` href='https://change-me') Соглашения
               img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=tipSvg, alt='уголок')
-            ul(class=`${CLASS_COMPONENT}__items-down js-${CLASS_COMPONENT}__items-down` role='navigation')
+            ul(class=`${CLASS_COMPONENT}__items-down js-${CLASS_COMPONENT}__items-down`)
               each text in agreements
                 li(class=`${CLASS_COMPONENT}__item-down`) 
                   a(class=`${CLASS_COMPONENT}__link` href='https://change-me')=text
