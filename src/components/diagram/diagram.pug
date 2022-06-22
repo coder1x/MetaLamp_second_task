@@ -31,4 +31,4 @@ mixin diagram(options = {})
       canvas(class=`${CLASS_COMPONENT}__canvas js-${CLASS_COMPONENT}__canvas` width='240' height='240')
       ul(class=`${CLASS_COMPONENT}__colors`)
         each item in data
-          li(class=`${CLASS_COMPONENT}__colors-item js-${CLASS_COMPONENT}__colors-item` date-grade=item[0] date-name=item[1])=item[2]
+          li(class=`${CLASS_COMPONENT}__colors-item js-${CLASS_COMPONENT}__colors-item` data-grade=item[0] data-name=item[1])=item[2]

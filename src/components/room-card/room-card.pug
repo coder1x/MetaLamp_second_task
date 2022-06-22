@@ -36,16 +36,17 @@ mixin room-card(options = {})
       button(class=`${CLASS_COMPONENT}__next-wrapper js-${CLASS_COMPONENT}__next-wrapper` aria-label='следующий слайд')
         img(class=`${CLASS_COMPONENT}__next` src=require('./img/expand-more.svg'), alt='стрелка в право')
 
-    a(class=`${CLASS_COMPONENT}__header-wrapper` href='/room-details.html')
-      div(class=`${CLASS_COMPONENT}__number-wrapper`)
-        span(class=`${CLASS_COMPONENT}__header-num`) №
-        p(class=`${CLASS_COMPONENT}__header`)= number
-        - if(lux){
-            span(class=`${CLASS_COMPONENT}__lux`) люкс
-        -}
-      div(class=`${CLASS_COMPONENT}__price-wrapper`)
-        span(class=`${CLASS_COMPONENT}__price`)= price+'₽'
-        span(class=`${CLASS_COMPONENT}__price-text`) в сутки
+    h2(class=`${CLASS_COMPONENT}__title`)
+      a(class=`${CLASS_COMPONENT}__header-wrapper` href='/room-details.html')
+        span(class=`${CLASS_COMPONENT}__number-wrapper`)
+          span(class=`${CLASS_COMPONENT}__header-num`) №
+          span(class=`${CLASS_COMPONENT}__header`)= number
+          - if(lux){
+              span(class=`${CLASS_COMPONENT}__lux`) люкс
+          -}
+        span(class=`${CLASS_COMPONENT}__price-wrapper`)
+          span(class=`${CLASS_COMPONENT}__price`)= price+'₽'
+          span(class=`${CLASS_COMPONENT}__price-text`) в сутки
         
     div(class=`${CLASS_COMPONENT}__rate-wrapper`)
       +star-rating({

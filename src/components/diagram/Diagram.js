@@ -93,8 +93,8 @@ class Diagram {
     if (!Array.isArray(listItems)) return [];
 
     listItems.forEach((item) => {
-      const number = getDataNumber(item, 'date-grade');
-      const name = item.getAttribute('date-name');
+      const number = getDataNumber(item, 'data-grade');
+      const name = item.getAttribute('data-name');
 
       if (number && name) {
         data.push(number);
