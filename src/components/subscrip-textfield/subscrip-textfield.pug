@@ -20,7 +20,7 @@ mixin subscrip-textfield(options = {})
   form(class=`${className} js-${CLASS_COMPONENT}` action='https://change-me' method='post')
     div(class=`${CLASS_COMPONENT}__wrapper`)
       if !isLabeled
-        p(class=`${CLASS_COMPONENT}__label-text`)= label
+        h2(class=`${CLASS_COMPONENT}__label-text`)= label
 
       label(class=`${CLASS_COMPONENT}__label`)
         input(class=`${CLASS_COMPONENT}__input` type='email' placeholder=value value='' name='subscrip')

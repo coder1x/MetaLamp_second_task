@@ -191,10 +191,6 @@ $color-days-names: $Purple;
   }
 }
 
-
-
-
-
 .date-dropdown {
   display: flex;
   flex-wrap: wrap;
@@ -205,25 +201,23 @@ $color-days-names: $Purple;
     flex-direction: column;
   }
 
-  &__label-text {
-    margin-bottom: 5px;
+  &__label {
+    position: relative;
     @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
     color: $color-label;
-  }
-
-  &__label {
-    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   &__tip {
     position: absolute;
     width: 13px;
-    right: 14px;
-    bottom: 3px;
+    right: 15px;
+    bottom: 17px;
     cursor: pointer;
     transform: rotate(0deg);
     transition: transform 0.5s;
@@ -258,6 +252,7 @@ $color-days-names: $Purple;
   }
 
   &__input {
+    margin-top: 5px;
     width: 100%;
     max-width: 150px;
     height: 44px;

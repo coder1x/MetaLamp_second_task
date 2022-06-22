@@ -22,7 +22,7 @@ mixin text-field(options = {})
   div(class=className)
     label(class=`${CLASS_COMPONENT}__label`)
       - if(!isLabeled){
-          p(class=`${CLASS_COMPONENT}__label-text`)= label
+        =label
       -}
       input(class=`${CLASS_COMPONENT}__input` type=typeField placeholder=placeholder value='' name=name)
       

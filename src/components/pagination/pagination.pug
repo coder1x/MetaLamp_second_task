@@ -18,7 +18,7 @@ mixin pagination(options = {})
 
   div(class=className)
     - if(!isLabeled){
-        p(class=`${CLASS_COMPONENT}__header`)= label
+        h2(class=`${CLASS_COMPONENT}__header`)= label
     -}
     
     div(class=`${CLASS_COMPONENT}__links`)

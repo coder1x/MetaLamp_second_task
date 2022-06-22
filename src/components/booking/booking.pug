@@ -22,16 +22,16 @@ mixin booking(options = {})
     }
 
   article(class=`${className} js-${CLASS_COMPONENT}`)
-    div(class=`${CLASS_COMPONENT}__header-wrapper`)
+    h2(class=`${CLASS_COMPONENT}__header-wrapper`)
 
-      div(class=`${CLASS_COMPONENT}__number-wrapper`)
+      span(class=`${CLASS_COMPONENT}__number-wrapper`)
         span(class=`${CLASS_COMPONENT}__header-num`) №
-        p(class=`${CLASS_COMPONENT}__header`)= number
+        span(class=`${CLASS_COMPONENT}__header`)= number
         - if(lux){
             span(class=`${CLASS_COMPONENT}__lux`) люкс
         -}
 
-      div(class=`${CLASS_COMPONENT}__price-wrapper`)
+      span(class=`${CLASS_COMPONENT}__price-wrapper`)
         span(class=`${CLASS_COMPONENT}__price`)= price+'₽'
         span(class=`${CLASS_COMPONENT}__price-text`) в сутки
 

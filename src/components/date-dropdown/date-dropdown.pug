@@ -26,11 +26,11 @@ mixin date-dropdown(options = {})
     - for(let i=0; i<num; i++)  {
         div(class=`${CLASS_COMPONENT}__date-wrapper`)
 
-          - if(!isLabeled){
-              p(class=`${CLASS_COMPONENT}__label-text`)= label[i]
-          -}
-
           label(class=`${CLASS_COMPONENT}__label`)
+
+            - if(!isLabeled){
+                = label[i]
+            -}
 
             -if(filter){
                 input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input` type='text' placeholder=''  autocomplete='off')
