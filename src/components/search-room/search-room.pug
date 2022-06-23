@@ -6,9 +6,7 @@ mixin search-room(options = {})
   -
     const {
       header = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'search-room'
@@ -20,18 +18,15 @@ mixin search-room(options = {})
       buttons,
     } = require('./search-room.json'); 
 
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  if addClass
+    - className += ` ${addClass}`
+  
 
   article(class=`${className} js-${CLASS_COMPONENT}`)
-    - if(!isLabeled){
-        header(class=`${CLASS_COMPONENT}__header-wrapper`)
-          h1(class=`${CLASS_COMPONENT}__header`)= header
-    -}
+    if header
+      header(class=`${CLASS_COMPONENT}__header-wrapper`)
+        h1(class=`${CLASS_COMPONENT}__header`)= header
+    
 
     form(class=`${CLASS_COMPONENT}__form` action='https://change-me' method='post')
       fieldset(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)

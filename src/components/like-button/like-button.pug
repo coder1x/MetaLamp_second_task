@@ -2,24 +2,20 @@ mixin like-button(options = {})
   -
     const {
       label = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'like-button'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   div(class=`${className} js-${CLASS_COMPONENT}`)
-    - if(!isLabeled){
-        h2(class=`${CLASS_COMPONENT}__header`)= label
-    -}
+    if label
+      h2(class=`${CLASS_COMPONENT}__header`)= label
+    
     
     button(class=`${CLASS_COMPONENT}__like js-${CLASS_COMPONENT}__like` aria-label='поставить лайк')
       span(class=`${CLASS_COMPONENT}__icon js-${CLASS_COMPONENT}__icon`) heart

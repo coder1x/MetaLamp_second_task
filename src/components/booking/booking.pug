@@ -7,19 +7,16 @@ mixin booking(options = {})
     const {
       number = '',
       price = '',
-      modifier = '',
       addClass = '',
       lux,
     } = options;
 
     const CLASS_COMPONENT = 'booking'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  
+  if addClass
+    - className += ` ${addClass}`
+    
 
   article(class=`${className} js-${CLASS_COMPONENT}`)
     h2(class=`${CLASS_COMPONENT}__header-wrapper`)
@@ -27,9 +24,8 @@ mixin booking(options = {})
       span(class=`${CLASS_COMPONENT}__number-wrapper`)
         span(class=`${CLASS_COMPONENT}__header-num`) №
         span(class=`${CLASS_COMPONENT}__header`)= number
-        - if(lux){
-            span(class=`${CLASS_COMPONENT}__lux`) люкс
-        -}
+        if lux
+          span(class=`${CLASS_COMPONENT}__lux`) люкс
 
       span(class=`${CLASS_COMPONENT}__price-wrapper`)
         span(class=`${CLASS_COMPONENT}__price`)= price+'₽'

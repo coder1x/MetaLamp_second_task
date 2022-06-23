@@ -3,23 +3,19 @@ mixin subscrip-textfield(options = {})
     const {
       label = '',
       value = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'subscrip-textfield'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   form(class=`${className} js-${CLASS_COMPONENT}` action='https://change-me' method='post')
     div(class=`${CLASS_COMPONENT}__wrapper`)
-      if !isLabeled
+      if label
         h2(class=`${CLASS_COMPONENT}__label-text`)= label
 
       label(class=`${CLASS_COMPONENT}__label`)

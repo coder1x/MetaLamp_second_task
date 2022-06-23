@@ -2,25 +2,21 @@ mixin radio-buttons(options = {})
   -
     const {
       label = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'radio-buttons'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   div(class=className)
     fieldset(class=`${CLASS_COMPONENT}__items`)
-      - if(!isLabeled){
-          legend(class=`${CLASS_COMPONENT}__header`)= label
-      -}
+      if label
+        legend(class=`${CLASS_COMPONENT}__header`)= label
+      
 
         label(class=`${CLASS_COMPONENT}__label`) Мужчина
           input(class=`${CLASS_COMPONENT}__input` type='radio' name='gender' checked)

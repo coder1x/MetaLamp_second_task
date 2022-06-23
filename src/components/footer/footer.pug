@@ -5,7 +5,6 @@ include ../navigation/navigation.pug
 mixin footer(options = {})
   -
     const {
-      modifier = [],
       addClass = '',
     } = options;
 
@@ -17,14 +16,9 @@ mixin footer(options = {})
       navigation,
       subscrip,
     } = require('./footer.json'); 
-
-    if(modifier){
-      for(let item of modifier)
-        className += ` ${CLASS_COMPONENT}_${item}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  
+  if addClass
+    - className += ` ${addClass}`
 
   footer(class=className)
     div(class=`${CLASS_COMPONENT}__top`)

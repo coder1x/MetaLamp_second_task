@@ -1,13 +1,11 @@
 {
   "textField": {
     "name": {
-      "isLabeled": true,
       "placeholder": "Имя",
       "typeField": "text",
       "name": "name"
     },
     "surname": {
-      "isLabeled": true,
       "placeholder": "Фамилия",
       "typeField": "text",
       "name": "surname"
@@ -20,20 +18,17 @@
       "addClass": "js-masked-date"
     },
     "email": {
-      "isLabeled": true,
       "placeholder": "Email",
       "typeField": "email",
       "name": "email"
     },
     "password": {
-      "isLabeled": true,
       "placeholder": "Пароль",
       "typeField": "password",
       "name": "password"
     }
   },
   "toggleButtons": {
-    "isLabeled": true,
     "label": "Получать спецпредложения"
   },
   "buttons": {

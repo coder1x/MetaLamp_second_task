@@ -11,12 +11,12 @@ mixin feature(options = {})
 
     const CLASS_COMPONENT = 'feature'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  if modifier
+    - className += ` ${CLASS_COMPONENT}_none-border`
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   div(class=className)
     div(class=`${CLASS_COMPONENT}__wrapper-icon`)

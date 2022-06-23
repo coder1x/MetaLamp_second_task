@@ -6,7 +6,6 @@ mixin header(options = {})
     let { current } = options; 
     const {
       type = '',
-      modifier = '',
       addClass = '',
     } = options;
 
@@ -20,15 +19,11 @@ mixin header(options = {})
       buttons,
     } = require('./header.json');
 
-    if(current){
-      current =`${CLASS_COMPONENT}__link_current`
-    }
-    if(modifier){
-      className +=` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className +=` ${addClass}`
-    }
+  if current
+    - current =`${CLASS_COMPONENT}__link_current`
+  
+    if addClass
+    - className +=` ${addClass}`
 
   header(class=`${className} js-${CLASS_COMPONENT}`)
     div(class=`${CLASS_COMPONENT}__wrapper`)

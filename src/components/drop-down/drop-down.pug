@@ -11,22 +11,21 @@ mixin drop-down(options = {})
       modifier = '',
       addClass = '',
       button,
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'drop-down'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  if modifier
+    - className += ` ${CLASS_COMPONENT}_${modifier}`
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   div(class=`${className} js-${CLASS_COMPONENT}`)
-    - if(!isLabeled){
-        h2(class=`${CLASS_COMPONENT}__text-header`)= label
-    -}
+    if label
+      h2(class=`${CLASS_COMPONENT}__text-header`)= label
+    
 
     div(class=`${CLASS_COMPONENT}__wrapper`)
       input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input` type='text' placeholder=value value='' name=name readonly)

@@ -6,23 +6,22 @@ mixin checkbox-list(options = {})
       legend = '',
       modifier = '',
       addClass = '',
-      isLabeled,
       isClicked,
     } = options;
 
     const CLASS_COMPONENT = 'checkbox-list'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  if modifier
+    - className += ` ${CLASS_COMPONENT}_${modifier}`
+
+  if addClass
+    - className += ` ${addClass}`
+  
     
   div(class=`${className} js-${CLASS_COMPONENT}`)
     fieldset(class=`${CLASS_COMPONENT}__items`)
 
-      -if(!isLabeled){
+      -if(legend){
         -if(!isClicked){
           legend(class=`${CLASS_COMPONENT}__header js-${CLASS_COMPONENT}__header` tabindex='0' aria-label='раскрывающийся список')= legend
               img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=require('./img/tip.svg') alt='угалок')

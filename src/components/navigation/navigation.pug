@@ -3,19 +3,14 @@ mixin navigation(options = {})
     const {
       header = '',
       strings = [],
-      modifier = [],
       addClass = ''
     } = options;
 
     const CLASS_COMPONENT = 'navigation'
     let className = CLASS_COMPONENT
-    if(modifier){
-      for(let item of modifier)
-        className += ` ${CLASS_COMPONENT}_${item}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  
+  if addClass
+    - className += ` ${addClass}`
     
   div(class=className)
     ul(class=`${CLASS_COMPONENT}__items`)

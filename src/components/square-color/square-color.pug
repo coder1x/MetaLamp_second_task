@@ -3,9 +3,9 @@ mixin square-color(textTop,textBot,modifier)
     const CLASS_COMPONENT = 'square-color'
     let classSquare = `${CLASS_COMPONENT}__square`
     const modifierSquare = modifier ?? ''
-    if(modifierSquare){
-      classSquare += ` ${classSquare}_${modifierSquare}`
-    }
+  if modifierSquare
+    - classSquare += ` ${classSquare}_${modifierSquare}`
+  
 
   div(class=CLASS_COMPONENT)
     div(class=classSquare)

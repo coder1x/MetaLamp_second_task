@@ -8,18 +8,15 @@ mixin room-card(options = {})
       price = '',
       reviews = '',
       lux,
-      modifier = '',
       addClass = '',
     } = options;
 
     const CLASS_COMPONENT = 'room-card'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   article(class=`${className} js-${CLASS_COMPONENT}`)
 
@@ -41,18 +38,15 @@ mixin room-card(options = {})
         span(class=`${CLASS_COMPONENT}__number-wrapper`)
           span(class=`${CLASS_COMPONENT}__header-num`) №
           span(class=`${CLASS_COMPONENT}__header`)= number
-          - if(lux){
-              span(class=`${CLASS_COMPONENT}__lux`) люкс
-          -}
+          if lux
+            span(class=`${CLASS_COMPONENT}__lux`) люкс
+          
         span(class=`${CLASS_COMPONENT}__price-wrapper`)
           span(class=`${CLASS_COMPONENT}__price`)= price+'₽'
           span(class=`${CLASS_COMPONENT}__price-text`) в сутки
         
     div(class=`${CLASS_COMPONENT}__rate-wrapper`)
-      +star-rating({
-        isLabeled:true,
-        name:rateName
-        })
+      +star-rating({name:rateName})
       div(class=`${CLASS_COMPONENT}__reviews-wrapper`)
         span(class=`${CLASS_COMPONENT}__reviews`)= reviews
         span(class=`${CLASS_COMPONENT}__reviews-text`) Отзывов

@@ -3,20 +3,17 @@ mixin star-rating(options = {})
     const {
       label = '',
       name = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'star-rating'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
 
+  if addClass
+    - className += ` ${addClass}`
+  
+
+  - 
     labels = [
     'Ужасно',
     'Плохо', 
@@ -27,9 +24,9 @@ mixin star-rating(options = {})
 
   div(class=className)
     fieldset(class=`${CLASS_COMPONENT}__stars`)
-      - if(!isLabeled){
-          legend(class=`${CLASS_COMPONENT}__header`)= label
-      -}
+      if label
+        legend(class=`${CLASS_COMPONENT}__header`)= label
+      
       
       div(class=`${CLASS_COMPONENT}__group`)
         - for(let i=0; i<labels.length; i++)  {

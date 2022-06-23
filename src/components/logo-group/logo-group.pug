@@ -1,18 +1,15 @@
 mixin logo-group(options = {})
   -
     const {
-      modifier = '',
       addClass = '',
     } = options;
 
     const CLASS_COMPONENT = 'logo-group'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
     
   div(class=className)
     svg(width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg')

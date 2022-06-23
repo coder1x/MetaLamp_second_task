@@ -5,24 +5,20 @@ mixin text-field(options = {})
       placeholder = '',
       typeField = '',
       name = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'text-field'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
     
   div(class=className)
     label(class=`${CLASS_COMPONENT}__label`)
-      - if(!isLabeled){
+      if label
         =label
-      -}
+      
       input(class=`${CLASS_COMPONENT}__input` type=typeField placeholder=placeholder value='' name=name)
       

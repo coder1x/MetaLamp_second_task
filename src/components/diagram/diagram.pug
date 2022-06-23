@@ -2,9 +2,7 @@ mixin diagram(options = {})
   -
     const {
       label = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     let CLASS_COMPONENT = 'diagram'
@@ -15,17 +13,14 @@ mixin diagram(options = {})
       ['65','satisfactorily','Удовлетворительно'],
       ['0','disappointed','Разочарован'],
     ]
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   div(class=`${CLASS_COMPONENT} js-${CLASS_COMPONENT}`)
-    - if(!isLabeled){
-        h2(class=`${CLASS_COMPONENT}__header`)= label
-    -}
+    if label
+      h2(class=`${CLASS_COMPONENT}__header`)= label
     
     div(class=`${CLASS_COMPONENT}__wrapper`)
       canvas(class=`${CLASS_COMPONENT}__canvas js-${CLASS_COMPONENT}__canvas` width='240' height='240')

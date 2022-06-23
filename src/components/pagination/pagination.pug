@@ -2,24 +2,20 @@ mixin pagination(options = {})
   -
     const {
       label = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'pagination'
     let className = CLASS_COMPONENT
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+
+  if addClass
+    - className += ` ${addClass}`
+  
 
   div(class=className)
-    - if(!isLabeled){
-        h2(class=`${CLASS_COMPONENT}__header`)= label
-    -}
+    if label
+      h2(class=`${CLASS_COMPONENT}__header`)= label
+    
     
     div(class=`${CLASS_COMPONENT}__links`)
       //- a(class=`${CLASS_COMPONENT}__prev` href='https://change-me' aria-label='пагинация страницы - стрелка назад' title='предыдущая страница')

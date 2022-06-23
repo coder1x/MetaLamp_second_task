@@ -7,9 +7,7 @@ mixin registration(options = {})
   -
     const {
       header = '',
-      modifier = '',
       addClass = '',
-      isLabeled,
     } = options;
 
     const CLASS_COMPONENT = 'registration'
@@ -21,18 +19,14 @@ mixin registration(options = {})
       buttons,
     } = require('./registration.json');
 
-    if(modifier){
-      className += ` ${CLASS_COMPONENT}_${modifier}`
-    }
-    if(addClass){
-      className += ` ${addClass}`
-    }
+  if addClass
+    - className += ` ${addClass}`
 
   article(class=`${className} js-${CLASS_COMPONENT}`)
-    - if(!isLabeled){
-        header(class=`${CLASS_COMPONENT}__header-wrapper`)
-          h1(class=`${CLASS_COMPONENT}__header`)= header
-    -}
+    if header
+      header(class=`${CLASS_COMPONENT}__header-wrapper`)
+        h1(class=`${CLASS_COMPONENT}__header`)= header
+    
 
     form(class=`${CLASS_COMPONENT}__form` action='https://change-me' method='post')
       fieldset(class=`${CLASS_COMPONENT}__full-name`)
@@ -44,9 +38,7 @@ mixin registration(options = {})
           +text-field(textField.surname)
 
       div(class=`${CLASS_COMPONENT}__gender-wrapper`)
-        +radio-buttons({
-          isLabeled:true
-        })
+        +radio-buttons()
 
       div(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)
           +text-field(textField.date)
