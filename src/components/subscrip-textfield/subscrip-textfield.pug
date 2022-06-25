@@ -6,20 +6,20 @@ mixin subscrip-textfield(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'subscrip-textfield'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'subscrip-textfield'
+    let className = BASE_CLASS
 
   if addClass
     - className += ` ${addClass}`
   
 
-  form(class=`${className} js-${CLASS_COMPONENT}` action='https://change-me' method='post')
-    div(class=`${CLASS_COMPONENT}__wrapper`)
+  form(class=`${className} js-${BASE_CLASS}` action='https://change-me' method='post')
+    div(class=`${BASE_CLASS}__wrapper`)
       if label
-        h2(class=`${CLASS_COMPONENT}__label-text`)= label
+        h2(class=`${BASE_CLASS}__label-text`)= label
 
-      label(class=`${CLASS_COMPONENT}__label`)
-        input(class=`${CLASS_COMPONENT}__input` type='email' placeholder=value value='' name='subscrip')
+      label(class=`${BASE_CLASS}__label`)
+        input(class=`${BASE_CLASS}__input` type='email' placeholder=value value='' name='subscrip')
         
-      button(class=`${CLASS_COMPONENT}__link js-${CLASS_COMPONENT}__link` type="submit" aria-label='подписаться' title='подписаться')
-        img(class=`${CLASS_COMPONENT}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')
+      button(class=`${BASE_CLASS}__link js-${BASE_CLASS}__link` type="submit" aria-label='подписаться' title='подписаться')
+        img(class=`${BASE_CLASS}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')

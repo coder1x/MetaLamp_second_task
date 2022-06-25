@@ -9,8 +9,8 @@ mixin search-room(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'search-room'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'search-room'
+    let className = BASE_CLASS
 
     const {
       dateDropdown,
@@ -22,18 +22,18 @@ mixin search-room(options = {})
     - className += ` ${addClass}`
   
 
-  article(class=`${className} js-${CLASS_COMPONENT}`)
+  article(class=`${className} js-${BASE_CLASS}`)
     if header
-      header(class=`${CLASS_COMPONENT}__header-wrapper`)
-        h1(class=`${CLASS_COMPONENT}__header`)= header
+      header(class=`${BASE_CLASS}__header-wrapper`)
+        h1(class=`${BASE_CLASS}__header`)= header
     
 
-    form(class=`${CLASS_COMPONENT}__form` action='https://change-me' method='post')
-      fieldset(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)
+    form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
+      fieldset(class=`${BASE_CLASS}__date-wrapper js-${BASE_CLASS}__date-wrapper`)
         +date-dropdown(dateDropdown)
 
-      div(class=`${CLASS_COMPONENT}__dropdown-wrapper js-${CLASS_COMPONENT}__dropdown-wrapper`)
+      div(class=`${BASE_CLASS}__dropdown-wrapper js-${BASE_CLASS}__dropdown-wrapper`)
         +drop-down(dropDown)
           
-      div(class=`${CLASS_COMPONENT}__button-wrapper js-${CLASS_COMPONENT}__button-wrapper`)
+      div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
         +buttons(buttons)

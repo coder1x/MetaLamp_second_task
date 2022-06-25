@@ -5,23 +5,23 @@ mixin feature(options = {})
       src = '',
       alt = '',
       text = '',
-      modifier = '',
+      isNoneBorder = false,
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'feature'
-    let className = CLASS_COMPONENT
-  if modifier
-    - className += ` ${CLASS_COMPONENT}_none-border`
+    const BASE_CLASS = 'feature'
+    let className = BASE_CLASS
+  if isNoneBorder
+    - className += ` ${BASE_CLASS}_none-border`
 
   if addClass
     - className += ` ${addClass}`
   
 
   div(class=className)
-    div(class=`${CLASS_COMPONENT}__wrapper-icon`)
-      img(class=`${CLASS_COMPONENT}__icon` src=require('./img/'+src) alt=alt)
+    div(class=`${BASE_CLASS}__wrapper-icon`)
+      img(class=`${BASE_CLASS}__icon` src=require('./img/'+src) alt=alt)
       
-    div(class=`${CLASS_COMPONENT}__description`)
-      span(class=`${CLASS_COMPONENT}__header`)=header
-      p(class=`${CLASS_COMPONENT}__text`)=text
+    div(class=`${BASE_CLASS}__description`)
+      span(class=`${BASE_CLASS}__header`)=header
+      p(class=`${BASE_CLASS}__text`)=text

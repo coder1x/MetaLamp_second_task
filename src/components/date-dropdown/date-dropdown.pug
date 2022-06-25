@@ -7,52 +7,52 @@ mixin date-dropdown(options = {})
       value = '',
       modifier = '',
       addClass = '',
-      filter,
+      filter = false,
     } = options;
 
-    const CLASS_COMPONENT = 'date-dropdown'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'date-dropdown'
+    let className = BASE_CLASS
 
   if modifier
-    - className += ` ${CLASS_COMPONENT}_${modifier}`
+    - className += ` ${BASE_CLASS}_${modifier}`
 
   if addClass
     - className += ` ${addClass}`
   
 
-  div(class=`${className} js-${CLASS_COMPONENT}`)
+  div(class=`${className} js-${BASE_CLASS}`)
     - let num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
-        div(class=`${CLASS_COMPONENT}__date-wrapper`)
+        div(class=`${BASE_CLASS}__date-wrapper`)
 
-          label(class=`${CLASS_COMPONENT}__label`)
+          label(class=`${BASE_CLASS}__label`)
 
             - if(label){
                 = label[i]
             -}
 
             -if(filter){
-                input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input` type='text' placeholder=''  autocomplete='off')
-                input(class=`${CLASS_COMPONENT}__input-hidden js-${CLASS_COMPONENT}__input-hidden` type='hidden' value=value name='date-filter')
+                input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder=''  autocomplete='off')
+                input(class=`${BASE_CLASS}__input-hidden js-${BASE_CLASS}__input-hidden` type='hidden' value=value name='date-filter')
             -}else{
-                input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
+                input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
             -}
             
-            img(class=`${CLASS_COMPONENT}__tip` src=require('./img/tip.svg') alt='уголок')
+            img(class=`${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='уголок')
     -}
 
-    div(class=`${CLASS_COMPONENT}__datepicker-wrapper js-${CLASS_COMPONENT}__datepicker-wrapper`)
-      div(class=`${CLASS_COMPONENT}__datepicker js-${CLASS_COMPONENT}__datepicker`)
-      div(class=`${CLASS_COMPONENT}__datepicker-buttons`)
+    div(class=`${BASE_CLASS}__datepicker-wrapper js-${BASE_CLASS}__datepicker-wrapper`)
+      div(class=`${BASE_CLASS}__datepicker js-${BASE_CLASS}__datepicker`)
+      div(class=`${BASE_CLASS}__datepicker-buttons`)
       
-        div(class=`${CLASS_COMPONENT}__clear js-${CLASS_COMPONENT}__clear`)
+        div(class=`${BASE_CLASS}__clear js-${BASE_CLASS}__clear`)
           +buttons({
             text:'очистить',
             type:'button',
             modifier:['text']
           })
 
-        div(class=`${CLASS_COMPONENT}__apply js-${CLASS_COMPONENT}__apply`)
+        div(class=`${BASE_CLASS}__apply js-${BASE_CLASS}__apply`)
           +buttons({
             text:'применить',
             type:'button',

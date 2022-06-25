@@ -9,23 +9,23 @@ mixin comment(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'comment'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'comment'
+    let className = BASE_CLASS
   
   if addClass
     - className += ` ${addClass}`
 
   article(class=className)
   
-    div(class=`${CLASS_COMPONENT}__avatar-wrapper`)
-      figure(class=`${CLASS_COMPONENT}__author`)
-        img(class=`${CLASS_COMPONENT}__avatar` src=require('./img/'+src), alt=name)
-      div(class=`${CLASS_COMPONENT}__like-wrapper`)
+    div(class=`${BASE_CLASS}__avatar-wrapper`)
+      figure(class=`${BASE_CLASS}__author`)
+        img(class=`${BASE_CLASS}__avatar` src=require('./img/'+src), alt=name)
+      div(class=`${BASE_CLASS}__like-wrapper`)
         +like-button()
 
-    div(class=`${CLASS_COMPONENT}__message-wrapper`)
-      header(class=`${CLASS_COMPONENT}__header-wrapper`)
-        a(class=`${CLASS_COMPONENT}__name` href='https://change-me')= name
-        p(class=`${CLASS_COMPONENT}__date`)= date
-      p(class=`${CLASS_COMPONENT}__message`)= message
+    div(class=`${BASE_CLASS}__message-wrapper`)
+      header(class=`${BASE_CLASS}__header-wrapper`)
+        a(class=`${BASE_CLASS}__name` href='https://change-me')= name
+        p(class=`${BASE_CLASS}__date`)= date
+      p(class=`${BASE_CLASS}__message`)= message
       

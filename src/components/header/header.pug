@@ -9,9 +9,9 @@ mixin header(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'header'
+    const BASE_CLASS = 'header'
     const tipSvg = require('./img/tip.svg')
-    let className = CLASS_COMPONENT
+    let className = BASE_CLASS
 
     const {
       service,
@@ -20,51 +20,51 @@ mixin header(options = {})
     } = require('./header.json');
 
   if current
-    - current =`${CLASS_COMPONENT}__link_current`
+    - current =`${BASE_CLASS}__link_current`
   
     if addClass
     - className +=` ${addClass}`
 
-  header(class=`${className} js-${CLASS_COMPONENT}`)
-    div(class=`${CLASS_COMPONENT}__wrapper`)
-      div(class=`${CLASS_COMPONENT}__link-logo`)
+  header(class=`${className} js-${BASE_CLASS}`)
+    div(class=`${BASE_CLASS}__wrapper`)
+      div(class=`${BASE_CLASS}__link-logo`)
         +logo({link:'/landing-page.html'})
 
-      button(class=`${CLASS_COMPONENT}__toggle js-${CLASS_COMPONENT}__toggle` aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
-        span(class=`${CLASS_COMPONENT}__toggle-line js-${CLASS_COMPONENT}__toggle-line`)
+      button(class=`${BASE_CLASS}__toggle js-${BASE_CLASS}__toggle` aria-haspopup aria-expanded='false' aria-label='гамбургер главного меню')
+        span(class=`${BASE_CLASS}__toggle-line js-${BASE_CLASS}__toggle-line`)
 
-      nav(class=`${CLASS_COMPONENT}__menu-wrapper js-${CLASS_COMPONENT}__menu-wrapper`)
-        ul(class=`${CLASS_COMPONENT}__items`)
-          li(class=`${CLASS_COMPONENT}__item`)
-            a(class=`${CLASS_COMPONENT}__link ${current}` href='https://change-me') О нас
-          li(class=`${CLASS_COMPONENT}__item`)
-            a(class=`${CLASS_COMPONENT}__link-down js-${CLASS_COMPONENT}__link-down` href='https://change-me') Услуги
-              img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=tipSvg, alt='уголок')
-            ul(class=`${CLASS_COMPONENT}__items-down js-${CLASS_COMPONENT}__items-down`)
+      nav(class=`${BASE_CLASS}__menu-wrapper js-${BASE_CLASS}__menu-wrapper`)
+        ul(class=`${BASE_CLASS}__items`)
+          li(class=`${BASE_CLASS}__item`)
+            a(class=`${BASE_CLASS}__link ${current}` href='https://change-me') О нас
+          li(class=`${BASE_CLASS}__item`)
+            a(class=`${BASE_CLASS}__link-down js-${BASE_CLASS}__link-down` href='https://change-me') Услуги
+              img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=tipSvg, alt='уголок')
+            ul(class=`${BASE_CLASS}__items-down js-${BASE_CLASS}__items-down`)
               each text in service
-                li(class=`${CLASS_COMPONENT}__item-down`)
-                  a(class=`${CLASS_COMPONENT}__link` href='https://change-me')=text
+                li(class=`${BASE_CLASS}__item-down`)
+                  a(class=`${BASE_CLASS}__link` href='https://change-me')=text
 
-          li(class=`${CLASS_COMPONENT}__item`)
-            a(class=`${CLASS_COMPONENT}__link` href='https://change-me') Вакансии
-          li(class=`${CLASS_COMPONENT}__item`)
-            a(class=`${CLASS_COMPONENT}__link` href='https://change-me') Новости
-          li(class=`${CLASS_COMPONENT}__item`)
-            a(class=`${CLASS_COMPONENT}__link-down js-${CLASS_COMPONENT}__link-down` href='https://change-me') Соглашения
-              img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=tipSvg, alt='уголок')
-            ul(class=`${CLASS_COMPONENT}__items-down js-${CLASS_COMPONENT}__items-down`)
+          li(class=`${BASE_CLASS}__item`)
+            a(class=`${BASE_CLASS}__link` href='https://change-me') Вакансии
+          li(class=`${BASE_CLASS}__item`)
+            a(class=`${BASE_CLASS}__link` href='https://change-me') Новости
+          li(class=`${BASE_CLASS}__item`)
+            a(class=`${BASE_CLASS}__link-down js-${BASE_CLASS}__link-down` href='https://change-me') Соглашения
+              img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=tipSvg, alt='уголок')
+            ul(class=`${BASE_CLASS}__items-down js-${BASE_CLASS}__items-down`)
               each text in agreements
-                li(class=`${CLASS_COMPONENT}__item-down`) 
-                  a(class=`${CLASS_COMPONENT}__link` href='https://change-me')=text
+                li(class=`${BASE_CLASS}__item-down`) 
+                  a(class=`${BASE_CLASS}__link` href='https://change-me')=text
 
       -if (type === 'authorized'){
-          div(class=`${CLASS_COMPONENT}__user`)
-            a(class=`${CLASS_COMPONENT}__nikname` href='https://change-me') Юлий Цезарь
+          div(class=`${BASE_CLASS}__user`)
+            a(class=`${BASE_CLASS}__nikname` href='https://change-me') Юлий Цезарь
       -}
       -else{
-          div(class=`${CLASS_COMPONENT}__signin-wrapper`)
+          div(class=`${BASE_CLASS}__signin-wrapper`)
             +buttons(buttons.signIn)
             
-          div(class=`${CLASS_COMPONENT}__registration-wrapper`)
+          div(class=`${BASE_CLASS}__registration-wrapper`)
             +buttons(buttons.registration)
       -}

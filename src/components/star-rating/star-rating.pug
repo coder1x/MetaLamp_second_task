@@ -6,8 +6,8 @@ mixin star-rating(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'star-rating'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'star-rating'
+    let className = BASE_CLASS
 
   if addClass
     - className += ` ${addClass}`
@@ -23,12 +23,12 @@ mixin star-rating(options = {})
     ]
 
   div(class=className)
-    fieldset(class=`${CLASS_COMPONENT}__stars`)
+    fieldset(class=`${BASE_CLASS}__stars`)
       if label
-        legend(class=`${CLASS_COMPONENT}__header`)= label
+        legend(class=`${BASE_CLASS}__header`)= label
       
       
-      div(class=`${CLASS_COMPONENT}__group`)
+      div(class=`${BASE_CLASS}__group`)
         - for(let i=0; i<labels.length; i++)  {
-            input(class=`${CLASS_COMPONENT}__star` type='radio' name=name value=i+1 aria-label=labels[i])
+            input(class=`${BASE_CLASS}__star` type='radio' name=name value=i+1 aria-label=labels[i])
         -}

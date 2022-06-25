@@ -6,34 +6,34 @@ mixin checkbox-list(options = {})
       legend = '',
       modifier = '',
       addClass = '',
-      isClicked,
+      isClicked = false,
     } = options;
 
-    const CLASS_COMPONENT = 'checkbox-list'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'checkbox-list'
+    let className = BASE_CLASS
   if modifier
-    - className += ` ${CLASS_COMPONENT}_${modifier}`
+    - className += ` ${BASE_CLASS}_${modifier}`
 
   if addClass
     - className += ` ${addClass}`
   
     
-  div(class=`${className} js-${CLASS_COMPONENT}`)
-    fieldset(class=`${CLASS_COMPONENT}__items`)
+  div(class=`${className} js-${BASE_CLASS}`)
+    fieldset(class=`${BASE_CLASS}__items`)
 
       -if(legend){
         -if(!isClicked){
-          legend(class=`${CLASS_COMPONENT}__header js-${CLASS_COMPONENT}__header` tabindex='0' aria-label='раскрывающийся список')= legend
-              img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=require('./img/tip.svg') alt='угалок')
+          legend(class=`${BASE_CLASS}__header js-${BASE_CLASS}__header` tabindex='0' aria-label='раскрывающийся список')= legend
+              img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='угалок')
         -} else {
-          legend(class=`${CLASS_COMPONENT}__header js-${CLASS_COMPONENT}__header`)= legend
+          legend(class=`${BASE_CLASS}__header js-${BASE_CLASS}__header`)= legend
         -}  
       -}
       
-      div(class=`${CLASS_COMPONENT}__wrapper js-${CLASS_COMPONENT}__wrapper`)
+      div(class=`${BASE_CLASS}__wrapper js-${BASE_CLASS}__wrapper`)
         each value, index in words
-          label(class=`${CLASS_COMPONENT}__label`)= value
-            input(class=`${CLASS_COMPONENT}__input` type='checkbox' name=value)
-            span(class=`${CLASS_COMPONENT}__before`)
+          label(class=`${BASE_CLASS}__label`)= value
+            input(class=`${BASE_CLASS}__input` type='checkbox' name=value)
+            span(class=`${BASE_CLASS}__before`)
             -if(strings.length)
-              span(class=`${CLASS_COMPONENT}__text`)=strings[index]
+              span(class=`${BASE_CLASS}__text`)=strings[index]

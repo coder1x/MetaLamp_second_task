@@ -6,8 +6,8 @@ mixin toggle(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'toggle'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'toggle'
+    let className = BASE_CLASS
 
   if addClass
     - className += ` ${addClass}`
@@ -15,11 +15,11 @@ mixin toggle(options = {})
 
   div(class=className)
     if header
-      h2(class=`${CLASS_COMPONENT}__header`)= header
+      h2(class=`${BASE_CLASS}__header`)= header
     
     
-    div(class=`${CLASS_COMPONENT}__wrapper`)
-      label(class=`${CLASS_COMPONENT}__label`)= label
-        input(class=`${CLASS_COMPONENT}__input` type='checkbox' name='toggle')
-        span(class=`${CLASS_COMPONENT}__before`)
+    div(class=`${BASE_CLASS}__wrapper`)
+      label(class=`${BASE_CLASS}__label`)= label
+        input(class=`${BASE_CLASS}__input` type='checkbox' name='toggle')
+        span(class=`${BASE_CLASS}__before`)
 

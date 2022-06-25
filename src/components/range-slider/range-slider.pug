@@ -5,22 +5,22 @@ mixin range-slider(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'range-slider'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'range-slider'
+    let className = BASE_CLASS
 
   if addClass
     - className += ` ${addClass}`
   
 
-  div(class=`${className} js-${CLASS_COMPONENT}`)
-    div(class=`${CLASS_COMPONENT}__wrapper`)
+  div(class=`${className} js-${BASE_CLASS}`)
+    div(class=`${BASE_CLASS}__wrapper`)
     
-      div(class=`${CLASS_COMPONENT}__header`)
+      div(class=`${BASE_CLASS}__header`)
         if label
-          h2(class=`${CLASS_COMPONENT}__label`)= label
+          h2(class=`${BASE_CLASS}__label`)= label
         
-        span(class=`${CLASS_COMPONENT}__value js-${CLASS_COMPONENT}__value`)
-      input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input`
+        span(class=`${BASE_CLASS}__value js-${BASE_CLASS}__value`)
+      input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input`
       type='hidden' 
       name='price' 
       value='' 

@@ -1,14 +1,14 @@
 mixin style-text()
-  - const CLASS_COMPONENT = 'style-text'
-  div(class=CLASS_COMPONENT)
-    h1(class=`${CLASS_COMPONENT}__teg`) h1
-    h1(class=`${CLASS_COMPONENT}__text`) This one is the sub-section or widget title
-    h2(class=`${CLASS_COMPONENT}__teg`) h2 
-    h2(class=`${CLASS_COMPONENT}__text`) Next one is the item title inside widgets
-    h3(class=`${CLASS_COMPONENT}__teg`) h3
-    h3(class=`${CLASS_COMPONENT}__text`) This is a label or CTA text
-    span(class=`${CLASS_COMPONENT}__teg`) Body  
-    p(class=`${CLASS_COMPONENT}__text`)
+  - const BASE_CLASS = 'style-text'
+  div(class=BASE_CLASS)
+    h1(class=`${BASE_CLASS}__teg`) h1
+    h1(class=`${BASE_CLASS}__text`) This one is the sub-section or widget title
+    h2(class=`${BASE_CLASS}__teg`) h2 
+    h2(class=`${BASE_CLASS}__text`) Next one is the item title inside widgets
+    h3(class=`${BASE_CLASS}__teg`) h3
+    h3(class=`${BASE_CLASS}__text`) This is a label or CTA text
+    span(class=`${BASE_CLASS}__teg`) Body  
+    p(class=`${BASE_CLASS}__text`)
       | This is the body text which is used for most<br>
       | of the design, like paragraphs, lists, etc.
 

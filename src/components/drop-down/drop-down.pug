@@ -10,45 +10,45 @@ mixin drop-down(options = {})
       maxValue = [],
       modifier = '',
       addClass = '',
-      button,
+      button = false,
     } = options;
 
-    const CLASS_COMPONENT = 'drop-down'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'drop-down'
+    let className = BASE_CLASS
   if modifier
-    - className += ` ${CLASS_COMPONENT}_${modifier}`
+    - className += ` ${BASE_CLASS}_${modifier}`
 
   if addClass
     - className += ` ${addClass}`
   
 
-  div(class=`${className} js-${CLASS_COMPONENT}`)
+  div(class=`${className} js-${BASE_CLASS}`)
     if label
-      h2(class=`${CLASS_COMPONENT}__text-header`)= label
+      h2(class=`${BASE_CLASS}__text-header`)= label
     
 
-    div(class=`${CLASS_COMPONENT}__wrapper`)
-      input(class=`${CLASS_COMPONENT}__input js-${CLASS_COMPONENT}__input` type='text' placeholder=value value='' name=name readonly)
-      img(class=`${CLASS_COMPONENT}__tip js-${CLASS_COMPONENT}__tip` src=require('./img/tip.svg') alt='угалок')
+    div(class=`${BASE_CLASS}__wrapper`)
+      input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder=value value='' name=name readonly)
+      img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='угалок')
 
-      ul(class=`${CLASS_COMPONENT}__select js-${CLASS_COMPONENT}__select`)
+      ul(class=`${BASE_CLASS}__select js-${BASE_CLASS}__select`)
         - for(let i=0; i<words[0].length; i++)  {
-            li(class=`${CLASS_COMPONENT}__select-item js-${CLASS_COMPONENT}__select-item` data-type= words[1][i])
-              p(class=`${CLASS_COMPONENT}__text`)= words[0][i]
-              button(class=`${CLASS_COMPONENT}__minus js-${CLASS_COMPONENT}__minus` aria-label='минус') -
-              span(class=`${CLASS_COMPONENT}__value js-${CLASS_COMPONENT}__value`) 0
-              button(class=`${CLASS_COMPONENT}__plus js-${CLASS_COMPONENT}__plus` data-max=maxValue[i] aria-label='плюс') +
+            li(class=`${BASE_CLASS}__select-item js-${BASE_CLASS}__select-item` data-type= words[1][i])
+              p(class=`${BASE_CLASS}__text`)= words[0][i]
+              button(class=`${BASE_CLASS}__minus js-${BASE_CLASS}__minus` aria-label='минус') -
+              span(class=`${BASE_CLASS}__value js-${BASE_CLASS}__value`) 0
+              button(class=`${BASE_CLASS}__plus js-${BASE_CLASS}__plus` data-max=maxValue[i] aria-label='плюс') +
         -}
         
         -if(button){
-            li(class=`${CLASS_COMPONENT}__buttons`)
-              div(class=`${CLASS_COMPONENT}__button-clear js-${CLASS_COMPONENT}__button-clear`)
+            li(class=`${BASE_CLASS}__buttons`)
+              div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
                 +buttons({
                   text:'очистить',
                   type:'button',
                   modifier:['text']
                       })
-              div(class=`${CLASS_COMPONENT}__button-apply js-${CLASS_COMPONENT}__button-apply`)
+              div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
                 +buttons({
                   text:'применить',
                   type:'button',

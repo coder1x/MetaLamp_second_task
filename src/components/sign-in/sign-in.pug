@@ -8,8 +8,8 @@ mixin sign-in(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'sign-in'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'sign-in'
+    let className = BASE_CLASS
 
     const {
       textField,
@@ -20,24 +20,24 @@ mixin sign-in(options = {})
     - className += ` ${addClass}`
   
 
-  article(class=`${className} js-${CLASS_COMPONENT}`)
+  article(class=`${className} js-${BASE_CLASS}`)
     if header
-      header(class=`${CLASS_COMPONENT}__header-wrapper`)
-        h1(class=`${CLASS_COMPONENT}__header`)= header
+      header(class=`${BASE_CLASS}__header-wrapper`)
+        h1(class=`${BASE_CLASS}__header`)= header
 
 
-    form(class=`${CLASS_COMPONENT}__form` action='https://change-me' method='post')
-      fieldset(class=`${CLASS_COMPONENT}__authorization`)
+    form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
+      fieldset(class=`${BASE_CLASS}__authorization`)
 
-        div(class=`${CLASS_COMPONENT}__email-wrapper js-${CLASS_COMPONENT}__email-wrapper`)
+        div(class=`${BASE_CLASS}__email-wrapper js-${BASE_CLASS}__email-wrapper`)
           +text-field(textField.email)
 
-        div(class=`${CLASS_COMPONENT}__password-wrapper js-${CLASS_COMPONENT}__password-wrapper`)
+        div(class=`${BASE_CLASS}__password-wrapper js-${BASE_CLASS}__password-wrapper`)
           +text-field(textField.password)
 
-        div(class=`${CLASS_COMPONENT}__button-wrapper js-${CLASS_COMPONENT}__button-wrapper`)
+        div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
           +buttons(buttons.submit)
           
-      div(class=`${CLASS_COMPONENT}__registration-wrapper`)
-        p(class=`${CLASS_COMPONENT}__text-registration`) Нет аккаунта на Toxin ?
+      div(class=`${BASE_CLASS}__registration-wrapper`)
+        p(class=`${BASE_CLASS}__text-registration`) Нет аккаунта на Toxin ?
         +buttons(buttons.link)

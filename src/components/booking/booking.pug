@@ -8,38 +8,38 @@ mixin booking(options = {})
       number = '',
       price = '',
       addClass = '',
-      lux,
+      isLux = false,
     } = options;
 
-    const CLASS_COMPONENT = 'booking'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'booking'
+    let className = BASE_CLASS
   
   if addClass
     - className += ` ${addClass}`
     
 
-  article(class=`${className} js-${CLASS_COMPONENT}`)
-    h2(class=`${CLASS_COMPONENT}__header-wrapper`)
+  article(class=`${className} js-${BASE_CLASS}`)
+    h2(class=`${BASE_CLASS}__header-wrapper`)
 
-      span(class=`${CLASS_COMPONENT}__number-wrapper`)
-        span(class=`${CLASS_COMPONENT}__header-num`) №
-        span(class=`${CLASS_COMPONENT}__header`)= number
+      span(class=`${BASE_CLASS}__number-wrapper`)
+        span(class=`${BASE_CLASS}__header-num`) №
+        span(class=`${BASE_CLASS}__header`)= number
         if lux
-          span(class=`${CLASS_COMPONENT}__lux`) люкс
+          span(class=`${BASE_CLASS}__lux`) люкс
 
-      span(class=`${CLASS_COMPONENT}__price-wrapper`)
-        span(class=`${CLASS_COMPONENT}__price`)= price+'₽'
-        span(class=`${CLASS_COMPONENT}__price-text`) в сутки
+      span(class=`${BASE_CLASS}__price-wrapper`)
+        span(class=`${BASE_CLASS}__price`)= price+'₽'
+        span(class=`${BASE_CLASS}__price-text`) в сутки
 
-    form(class=`${CLASS_COMPONENT}__form` action='https://change-me' method='post')
-      fieldset(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)
+    form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
+      fieldset(class=`${BASE_CLASS}__date-wrapper js-${BASE_CLASS}__date-wrapper`)
         +date-dropdown({
           label: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
           class: 'js-masked-date'
           })
 
-      div(class=`${CLASS_COMPONENT}__dropdown-wrapper js-${CLASS_COMPONENT}__dropdown-wrapper`)
+      div(class=`${BASE_CLASS}__dropdown-wrapper js-${BASE_CLASS}__dropdown-wrapper`)
         +drop-down({
           label:'гости',
           value: 'Сколько гостей',
@@ -53,24 +53,24 @@ mixin booking(options = {})
           button:true
           })
 
-      div(class=`${CLASS_COMPONENT}__day-wrapper`)
-        p(class=`${CLASS_COMPONENT}__day-calc`) 9 990₽ х 4 суток
-        span(class=`${CLASS_COMPONENT}__day-price`) 39 960₽
+      div(class=`${BASE_CLASS}__day-wrapper`)
+        p(class=`${BASE_CLASS}__day-calc`) 9 990₽ х 4 суток
+        span(class=`${BASE_CLASS}__day-price`) 39 960₽
 
-      div(class=`${CLASS_COMPONENT}__services-wrapper`)
-        p(class=`${CLASS_COMPONENT}__services`) Сбор за услуги: скидка 2 179₽
-        span(class=`${CLASS_COMPONENT}__services-price`) 0₽
+      div(class=`${BASE_CLASS}__services-wrapper`)
+        p(class=`${BASE_CLASS}__services`) Сбор за услуги: скидка 2 179₽
+        span(class=`${BASE_CLASS}__services-price`) 0₽
 
-      div(class=`${CLASS_COMPONENT}__services-wrapper`)
-        p(class=`${CLASS_COMPONENT}__services`) Сбор за дополнительные услуги
-        span(class=`${CLASS_COMPONENT}__services-price`) 300₽
+      div(class=`${BASE_CLASS}__services-wrapper`)
+        p(class=`${BASE_CLASS}__services`) Сбор за дополнительные услуги
+        span(class=`${BASE_CLASS}__services-price`) 300₽
         
-      div(class=`${CLASS_COMPONENT}__total-wrapper`)
-        span(class=`${CLASS_COMPONENT}__total-text`) Итого
-        div(class=`${CLASS_COMPONENT}__total-dot`)
-        span(class=`${CLASS_COMPONENT}__total-price`) 38 081₽
+      div(class=`${BASE_CLASS}__total-wrapper`)
+        span(class=`${BASE_CLASS}__total-text`) Итого
+        div(class=`${BASE_CLASS}__total-dot`)
+        span(class=`${BASE_CLASS}__total-price`) 38 081₽
 
-      div(class=`${CLASS_COMPONENT}__button-wrapper js-${CLASS_COMPONENT}__button-wrapper`)
+      div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
         +buttons({
           text:'забронировать',
           type:'submit',

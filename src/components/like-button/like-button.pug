@@ -5,18 +5,18 @@ mixin like-button(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'like-button'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'like-button'
+    let className = BASE_CLASS
 
   if addClass
     - className += ` ${addClass}`
   
 
-  div(class=`${className} js-${CLASS_COMPONENT}`)
+  div(class=`${className} js-${BASE_CLASS}`)
     if label
-      h2(class=`${CLASS_COMPONENT}__header`)= label
+      h2(class=`${BASE_CLASS}__header`)= label
     
     
-    button(class=`${CLASS_COMPONENT}__like js-${CLASS_COMPONENT}__like` aria-label='поставить лайк')
-      span(class=`${CLASS_COMPONENT}__icon js-${CLASS_COMPONENT}__icon`) heart
-      span(class=`${CLASS_COMPONENT}__value js-${CLASS_COMPONENT}__value`) 2
+    button(class=`${BASE_CLASS}__like js-${BASE_CLASS}__like` aria-label='поставить лайк')
+      span(class=`${BASE_CLASS}__icon js-${BASE_CLASS}__icon`) heart
+      span(class=`${BASE_CLASS}__value js-${BASE_CLASS}__value`) 2

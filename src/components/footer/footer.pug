@@ -8,8 +8,8 @@ mixin footer(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'footer'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'footer'
+    let className = BASE_CLASS
 
     const {
       socialData,
@@ -21,34 +21,34 @@ mixin footer(options = {})
     - className += ` ${addClass}`
 
   footer(class=className)
-    div(class=`${CLASS_COMPONENT}__top`)
-      div(class=`${CLASS_COMPONENT}__top-wrapper`)
+    div(class=`${BASE_CLASS}__top`)
+      div(class=`${BASE_CLASS}__top-wrapper`)
 
-        div(class=`${CLASS_COMPONENT}__recommendation-wrapper`)
-          div(class=`${CLASS_COMPONENT}__logo-wrapper`)
+        div(class=`${BASE_CLASS}__recommendation-wrapper`)
+          div(class=`${BASE_CLASS}__logo-wrapper`)
             +logo({link:'/landing-page.html'})
-          p(class=`${CLASS_COMPONENT}__recommendation-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+          p(class=`${BASE_CLASS}__recommendation-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
 
-        div(class=`${CLASS_COMPONENT}__navigation-wrapper`)
+        div(class=`${BASE_CLASS}__navigation-wrapper`)
           +navigation(navigation.different)
 
-        div(class=`${CLASS_COMPONENT}__about-us-wrapper`)
+        div(class=`${BASE_CLASS}__about-us-wrapper`)
           +navigation(navigation.about)
 
-        div(class=`${CLASS_COMPONENT}__support-wrapper`)
+        div(class=`${BASE_CLASS}__support-wrapper`)
           +navigation(navigation.support)
 
-        div(class=`${CLASS_COMPONENT}__subscrip-wrapper`)
-          p(class=`${CLASS_COMPONENT}__subscrip-header`) Подписка
-          p(class=`${CLASS_COMPONENT}__subscrip-text`) Получайте специальные предложения и новости сервиса
+        div(class=`${BASE_CLASS}__subscrip-wrapper`)
+          p(class=`${BASE_CLASS}__subscrip-header`) Подписка
+          p(class=`${BASE_CLASS}__subscrip-text`) Получайте специальные предложения и новости сервиса
           +subscrip-textfield(subscrip)
 
-    div(class=`${CLASS_COMPONENT}__bottom`)
-      div(class=`${CLASS_COMPONENT}__bottom-wrapper`)
-        p(class=`${CLASS_COMPONENT}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
+    div(class=`${BASE_CLASS}__bottom`)
+      div(class=`${BASE_CLASS}__bottom-wrapper`)
+        p(class=`${BASE_CLASS}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
 
-        ul(class=`${CLASS_COMPONENT}__social`)
+        ul(class=`${BASE_CLASS}__social`)
           each icon, text in socialData
-            li(class=`${CLASS_COMPONENT}__social-item`)
-              a(class=`${CLASS_COMPONENT}__social-link` href='https://change-me' target='_blank' rel='noopener noreferrer')
-                img(class=`${CLASS_COMPONENT}__social-icon` src=require('./img/'+icon) alt=text title=text)
+            li(class=`${BASE_CLASS}__social-item`)
+              a(class=`${BASE_CLASS}__social-link` href='https://change-me' target='_blank' rel='noopener noreferrer')
+                img(class=`${BASE_CLASS}__social-icon` src=require('./img/'+icon) alt=text title=text)

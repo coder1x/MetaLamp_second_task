@@ -8,11 +8,11 @@ mixin buttons(options)
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'buttons'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'buttons'
+    let className = BASE_CLASS
   if modifier
     each item in modifier
-      - className += ` ${CLASS_COMPONENT}_${item}`
+      - className += ` ${BASE_CLASS}_${item}`
     
   if addClass
     - className += ` ${addClass}`
@@ -26,5 +26,5 @@ mixin buttons(options)
       button(class=className aria-haspopup aria-expanded='false')=text
     when 'submit'
       button(class=className type='submit')=text
-        img(class=`${CLASS_COMPONENT}__icon` src=require('./img/arrow-forward.svg') alt='стрелка вперед')
+        img(class=`${BASE_CLASS}__icon` src=require('./img/arrow-forward.svg') alt='стрелка вперед')
     

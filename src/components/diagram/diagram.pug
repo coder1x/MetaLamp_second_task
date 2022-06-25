@@ -5,8 +5,8 @@ mixin diagram(options = {})
       addClass = '',
     } = options;
 
-    let CLASS_COMPONENT = 'diagram'
-    let className = CLASS_COMPONENT
+    let BASE_CLASS = 'diagram'
+    let className = BASE_CLASS
     const data = [
       ['130','excellent','Великолепно'],
       ['65','good','Хорошо'],
@@ -18,12 +18,12 @@ mixin diagram(options = {})
     - className += ` ${addClass}`
   
 
-  div(class=`${CLASS_COMPONENT} js-${CLASS_COMPONENT}`)
+  div(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     if label
-      h2(class=`${CLASS_COMPONENT}__header`)= label
+      h2(class=`${BASE_CLASS}__header`)= label
     
-    div(class=`${CLASS_COMPONENT}__wrapper`)
-      canvas(class=`${CLASS_COMPONENT}__canvas js-${CLASS_COMPONENT}__canvas` width='240' height='240')
-      ul(class=`${CLASS_COMPONENT}__colors`)
+    div(class=`${BASE_CLASS}__wrapper`)
+      canvas(class=`${BASE_CLASS}__canvas js-${BASE_CLASS}__canvas` width='240' height='240')
+      ul(class=`${BASE_CLASS}__colors`)
         each item in data
-          li(class=`${CLASS_COMPONENT}__colors-item js-${CLASS_COMPONENT}__colors-item` data-grade=item[0] data-name=item[1])=item[2]
+          li(class=`${BASE_CLASS}__colors-item js-${BASE_CLASS}__colors-item` data-grade=item[0] data-name=item[1])=item[2]

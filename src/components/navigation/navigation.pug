@@ -6,16 +6,16 @@ mixin navigation(options = {})
       addClass = ''
     } = options;
 
-    const CLASS_COMPONENT = 'navigation'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'navigation'
+    let className = BASE_CLASS
   
   if addClass
     - className += ` ${addClass}`
     
   div(class=className)
-    ul(class=`${CLASS_COMPONENT}__items`)
-      li(class=`${CLASS_COMPONENT}__header`)= header
+    ul(class=`${BASE_CLASS}__items`)
+      li(class=`${BASE_CLASS}__header`)= header
       -for(let i=0; i<strings.length; i++){
-          li(class=`${CLASS_COMPONENT}__item`)
-            a(class=`${CLASS_COMPONENT}__link` href='https://change-me')= strings[i]
+          li(class=`${BASE_CLASS}__item`)
+            a(class=`${BASE_CLASS}__link` href='https://change-me')= strings[i]
       -}

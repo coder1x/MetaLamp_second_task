@@ -10,8 +10,8 @@ mixin registration(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'registration'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'registration'
+    let className = BASE_CLASS
 
     const {
       textField,
@@ -22,42 +22,42 @@ mixin registration(options = {})
   if addClass
     - className += ` ${addClass}`
 
-  article(class=`${className} js-${CLASS_COMPONENT}`)
+  article(class=`${className} js-${BASE_CLASS}`)
     if header
-      header(class=`${CLASS_COMPONENT}__header-wrapper`)
-        h1(class=`${CLASS_COMPONENT}__header`)= header
+      header(class=`${BASE_CLASS}__header-wrapper`)
+        h1(class=`${BASE_CLASS}__header`)= header
     
 
-    form(class=`${CLASS_COMPONENT}__form` action='https://change-me' method='post')
-      fieldset(class=`${CLASS_COMPONENT}__full-name`)
+    form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
+      fieldset(class=`${BASE_CLASS}__full-name`)
 
-        div(class=`${CLASS_COMPONENT}__name-wrapper js-${CLASS_COMPONENT}__name-wrapper`)
+        div(class=`${BASE_CLASS}__name-wrapper js-${BASE_CLASS}__name-wrapper`)
           +text-field(textField.name)
 
-        div(class=`${CLASS_COMPONENT}__surname-wrapper js-${CLASS_COMPONENT}__surname-wrapper`)
+        div(class=`${BASE_CLASS}__surname-wrapper js-${BASE_CLASS}__surname-wrapper`)
           +text-field(textField.surname)
 
-      div(class=`${CLASS_COMPONENT}__gender-wrapper`)
+      div(class=`${BASE_CLASS}__gender-wrapper`)
         +radio-buttons()
 
-      div(class=`${CLASS_COMPONENT}__date-wrapper js-${CLASS_COMPONENT}__date-wrapper`)
+      div(class=`${BASE_CLASS}__date-wrapper js-${BASE_CLASS}__date-wrapper`)
           +text-field(textField.date)
 
-      fieldset(class=`${CLASS_COMPONENT}__identification`)
-        legend(class=`${CLASS_COMPONENT}__data-text`) данные для входа в сервис
+      fieldset(class=`${BASE_CLASS}__identification`)
+        legend(class=`${BASE_CLASS}__data-text`) данные для входа в сервис
 
-        div(class=`${CLASS_COMPONENT}__email-wrapper js-${CLASS_COMPONENT}__email-wrapper`)
+        div(class=`${BASE_CLASS}__email-wrapper js-${BASE_CLASS}__email-wrapper`)
           +text-field(textField.email)
 
-        div(class=`${CLASS_COMPONENT}__password-wrapper js-${CLASS_COMPONENT}__password-wrapper`)
+        div(class=`${BASE_CLASS}__password-wrapper js-${BASE_CLASS}__password-wrapper`)
           +text-field(textField.password)
 
-      div(class=`${CLASS_COMPONENT}__toggle-wrapper`)
+      div(class=`${BASE_CLASS}__toggle-wrapper`)
         +toggle(toggleButtons)
 
-      div(class=`${CLASS_COMPONENT}__submit-wrapper js-${CLASS_COMPONENT}__submit-wrapper`)
+      div(class=`${BASE_CLASS}__submit-wrapper js-${BASE_CLASS}__submit-wrapper`)
         +buttons(buttons.submit)
         
-      div(class=`${CLASS_COMPONENT}__sign-in`)
-        p(class=`${CLASS_COMPONENT}__text-in`) Уже есть аккаунт на Toxin
+      div(class=`${BASE_CLASS}__sign-in`)
+        p(class=`${BASE_CLASS}__text-in`) Уже есть аккаунт на Toxin
         +buttons(buttons.link)

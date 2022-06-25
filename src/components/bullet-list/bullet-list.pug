@@ -2,16 +2,16 @@ mixin bullet-list(options = {})
   -
     const {
       label = '',
-      items = '',
-      modifier = '',
+      items = [],
+      isBig = false,
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'bullet-list'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'bullet-list'
+    let className = BASE_CLASS
 
-  if modifier
-    - className += ` ${CLASS_COMPONENT}_big`
+  if isBig
+    - className += ` ${BASE_CLASS}_big`
 
   if addClass
     - className += ` ${addClass}`
@@ -19,10 +19,10 @@ mixin bullet-list(options = {})
 
   div(class=className)
     if label
-      h2(class=`${CLASS_COMPONENT}__header`)= label
+      h2(class=`${BASE_CLASS}__header`)= label
     
     
-    ul(class=`${CLASS_COMPONENT}__items`)
+    ul(class=`${BASE_CLASS}__items`)
       each item in items
-        li(class=`${CLASS_COMPONENT}__item`)= item
+        li(class=`${BASE_CLASS}__item`)= item
 

@@ -8,17 +8,17 @@ mixin text-field(options = {})
       addClass = '',
     } = options;
 
-    const CLASS_COMPONENT = 'text-field'
-    let className = CLASS_COMPONENT
+    const BASE_CLASS = 'text-field'
+    let className = BASE_CLASS
 
   if addClass
     - className += ` ${addClass}`
   
     
   div(class=className)
-    label(class=`${CLASS_COMPONENT}__label`)
+    label(class=`${BASE_CLASS}__label`)
       if label
         =label
       
-      input(class=`${CLASS_COMPONENT}__input` type=typeField placeholder=placeholder value='' name=name)
+      input(class=`${BASE_CLASS}__input` type=typeField placeholder=placeholder value='' name=name)
       
