@@ -10,17 +10,6 @@ block content
     -const bedroom = require('./img/bedroom.webp');
 
     section.registration-form
-      .registration-form__relation-ratio
-      picture
-        source(media='(max-width: 574px)' srcset=bedroomXxs)
-        source(media='(max-width: 766px)' srcset=bedroomSm)
-        source(media='(min-width: 767px)' srcset=bedroom)
-        img(
-          class='registration-form__background'
-          src=bedroom 
-          alt='номер'
-          )
-
       .registration-form__wrapper
         .registration-form__registration-wrapper
           +registration({

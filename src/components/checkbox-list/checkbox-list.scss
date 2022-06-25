@@ -6,6 +6,8 @@ $color-border-focus: $Dark-Shade-100;
 $color-focus: $Dark-Shade-100;
 
 .checkbox-list {
+  width: 100%;
+  max-width: 222px;
   &__header {
     position: relative;
     width: 100%;

@@ -24,7 +24,7 @@ mixin booking(options = {})
       span(class=`${BASE_CLASS}__number-wrapper`)
         span(class=`${BASE_CLASS}__header-num`) №
         span(class=`${BASE_CLASS}__header`)= number
-        if lux
+        if isLux
           span(class=`${BASE_CLASS}__lux`) люкс
 
       span(class=`${BASE_CLASS}__price-wrapper`)

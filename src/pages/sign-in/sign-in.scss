@@ -12,14 +12,12 @@
   width: 100%;
   margin: 0 auto;
   max-width: $xxl;
-  max-height: 683px;
+  min-height: 685px;
   position: relative;
   display: flex;
+  height: 100%;
+  background: #fff url('\\img\\bedroom.webp') bottom/cover no-repeat;
 
-  &__relation-ratio {
-    padding-top: 51.97%;
-    height: 0;
-  }
 
   &__background {
     position: absolute;
@@ -52,10 +50,6 @@
     margin: auto;
     width: 100%;
     max-width: 380px;
-
-    @include media-breakpoint-down($sm) {
-      margin-top: 18px;
-    }
 
     @include media-breakpoint-down($xs) {
       max-width: unset;

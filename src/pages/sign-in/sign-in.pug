@@ -10,18 +10,6 @@ block content
     -const bedroom = require('./img/bedroom.webp');
 
     section.sign-in-form
-      .sign-in-form__relation-ratio
-
-      picture
-        source(media='(max-width: 574px)' srcset=bedroomXxs)
-        source(media='(max-width: 766px)' srcset=bedroomSm)
-        source(media='(min-width: 767px)' srcset=bedroom)
-        img(
-          class='sign-in-form__background'
-          src=bedroom 
-          alt='номер'
-          )
-      
       .sign-in-form__wrapper
         .sign-in-form__sign-in-wrapper
           +sign-in({
