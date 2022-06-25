@@ -8,18 +8,13 @@ $color-focus: $Dark-Shade-100;
   flex-direction: column;
   position: relative;
 
-  &__text-header {
-    margin-bottom: 5px;
+  &__title {
     @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
     color: $color-label;
-  }
-
-  &__wrapper {
-    position: relative;
   }
 
   &__tip {
@@ -84,7 +79,8 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__select {
-    width: calc(100% - 2px);
+    width: 100%;
+    box-sizing: border-box;
     background: $color-background;
     display: none;
     border: 1px solid $color-border-hover;
@@ -92,7 +88,7 @@ $color-focus: $Dark-Shade-100;
     border-bottom-right-radius: 4px;
     z-index: 5;
     position: absolute;
-    top: 43px;
+    top: 63px;
   }
 
   &__select-item:first-child {
@@ -124,6 +120,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__input {
+    margin-top: 5px;
     width: 100%;
     height: 44px;
     padding-left: 15px;

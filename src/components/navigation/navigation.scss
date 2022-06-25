@@ -6,7 +6,7 @@ $color-focus: $Dark-Shade-100;
   padding-right: 10px;
   box-sizing: border-box;
 
-  &__header {
+  &__title {
     margin-bottom: 22px;
     @include font-family("Montserrat");
     font-weight: bold;

@@ -23,35 +23,31 @@ mixin drop-down(options = {})
   
 
   div(class=`${className} js-${BASE_CLASS}`)
-    if label
-      h2(class=`${BASE_CLASS}__text-header`)= label
-    
-
-    div(class=`${BASE_CLASS}__wrapper`)
+    label(class=`${BASE_CLASS}__title`)= label
       input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder=value value='' name=name readonly)
-      img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='угалок')
+      img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='уголок')
 
-      ul(class=`${BASE_CLASS}__select js-${BASE_CLASS}__select`)
-        - for(let i=0; i<words[0].length; i++)  {
-            li(class=`${BASE_CLASS}__select-item js-${BASE_CLASS}__select-item` data-type= words[1][i])
-              p(class=`${BASE_CLASS}__text`)= words[0][i]
-              button(class=`${BASE_CLASS}__minus js-${BASE_CLASS}__minus` aria-label='минус') -
-              span(class=`${BASE_CLASS}__value js-${BASE_CLASS}__value`) 0
-              button(class=`${BASE_CLASS}__plus js-${BASE_CLASS}__plus` data-max=maxValue[i] aria-label='плюс') +
-        -}
-        
-        -if(button){
-            li(class=`${BASE_CLASS}__buttons`)
-              div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
-                +buttons({
-                  text:'очистить',
-                  type:'button',
-                  modifier:['text']
-                      })
-              div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
-                +buttons({
-                  text:'применить',
-                  type:'button',
-                  modifier:['text']
-                      })
-        -}
+    ul(class=`${BASE_CLASS}__select js-${BASE_CLASS}__select`)
+      - for(let i=0; i<words[0].length; i++)  {
+          li(class=`${BASE_CLASS}__select-item js-${BASE_CLASS}__select-item` data-type= words[1][i])
+            p(class=`${BASE_CLASS}__text`)= words[0][i]
+            button(class=`${BASE_CLASS}__minus js-${BASE_CLASS}__minus` aria-label='минус') -
+            span(class=`${BASE_CLASS}__value js-${BASE_CLASS}__value`) 0
+            button(class=`${BASE_CLASS}__plus js-${BASE_CLASS}__plus` data-max=maxValue[i] aria-label='плюс') +
+      -}
+      
+      -if(button){
+          li(class=`${BASE_CLASS}__buttons`)
+            div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
+              +buttons({
+                text:'очистить',
+                type:'button',
+                modifier:['text']
+                    })
+            div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
+              +buttons({
+                text:'применить',
+                type:'button',
+                modifier:['text']
+                    })
+      -}
