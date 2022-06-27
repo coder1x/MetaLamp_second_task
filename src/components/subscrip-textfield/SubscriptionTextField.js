@@ -17,22 +17,23 @@ class SubscriptionTextField {
     this._bindEvent();
   }
 
-  _checkEmail() {
+  _checkEmail(event) {
     if (this._validationEmail && this._validationEmail.validateField()) {
       message('Вы оформили подписку.');
     } else {
       message('Вы ввели неверный Email.');
+      event.preventDefault();
     }
   }
 
   _handleInputKeyDown(event) {
     if (event.key === 'Enter') {
-      this._checkEmail();
+      this._checkEmail(event);
     }
   }
 
-  _handleLinkClick() {
-    this._checkEmail();
+  _handleLinkClick(event) {
+    this._checkEmail(event);
   }
 
   _bindEvent() {

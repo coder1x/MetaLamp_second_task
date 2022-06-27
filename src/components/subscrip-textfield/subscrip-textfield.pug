@@ -14,12 +14,10 @@ mixin subscrip-textfield(options = {})
   
 
   form(class=`${className} js-${BASE_CLASS}` action='https://change-me' method='post')
-    div(class=`${BASE_CLASS}__wrapper`)
-      if label
-        h2(class=`${BASE_CLASS}__label-text`)= label
+    if label
+      h2(class=`${BASE_CLASS}__label-text`)= label
 
-      label(class=`${BASE_CLASS}__label`)
-        input(class=`${BASE_CLASS}__input` type='email' placeholder=value value='' name='subscrip')
-        
-      button(class=`${BASE_CLASS}__link js-${BASE_CLASS}__link` type="submit" aria-label='подписаться' title='подписаться')
-        img(class=`${BASE_CLASS}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')
+    input(class=`${BASE_CLASS}__input` type='email' placeholder=value value='' name='subscrip')
+      
+    button(class=`${BASE_CLASS}__link js-${BASE_CLASS}__link` type="submit" aria-label='подписаться' title='подписаться')
+      img(class=`${BASE_CLASS}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')
