@@ -13,7 +13,7 @@
   position: relative;
   display: flex;
   height: 100%;
-  background: #fff url('\\img\\bedroom.webp') bottom/cover no-repeat;
+  background: #fff url('./img/bedroom.webp') bottom/cover no-repeat;
 
   @include media-breakpoint-down($xs) {
    min-height: 760px;
