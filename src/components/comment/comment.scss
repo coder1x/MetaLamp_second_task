@@ -44,7 +44,6 @@ $color-focus: $Dark-Shade-100;
     line-height: 25px;
     color: $color-name;
     overflow-wrap: break-word;
-    @include max-row(3);
   }
 
   &__name:focus {

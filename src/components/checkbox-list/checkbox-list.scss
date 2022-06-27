@@ -7,7 +7,7 @@ $color-focus: $Dark-Shade-100;
 
 .checkbox-list {
   width: 100%;
-  max-width: 222px;
+
   &__header {
     position: relative;
     width: 100%;
@@ -27,6 +27,8 @@ $color-focus: $Dark-Shade-100;
 
   &__wrapper {
     display: none;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   &__items {
@@ -36,9 +38,8 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__label {
-    width: calc(100% - 29px);
     position: relative;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     @include font-family("Montserrat");
     font-weight: normal;
@@ -125,7 +126,7 @@ $color-focus: $Dark-Shade-100;
   // ---------------------------- modif
 
   &_visible &__wrapper {
-    display: block;
+    display: flex;
   }
 
   &_visible &__tip {
@@ -135,7 +136,7 @@ $color-focus: $Dark-Shade-100;
   // ---------------------------- modif Checkbox Buttons
 
   &_visibleBut &__wrapper {
-    display: block;
+    display: flex;
   }
 
   &_visibleBut &__header {

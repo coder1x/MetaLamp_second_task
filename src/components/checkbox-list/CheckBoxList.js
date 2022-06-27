@@ -21,7 +21,7 @@ class CheckBoxList {
         .getPropertyValue('display');
     }
 
-    this._toggleModifier(this.element, '_visible', display !== 'block');
+    this._toggleModifier(this.element, '_visible', display !== 'flex');
   }
 
   _getElement(string, parentElement) {
