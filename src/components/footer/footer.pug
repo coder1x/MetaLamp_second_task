@@ -1,4 +1,4 @@
-include ../subscrip-textfield/subscrip-textfield.pug
+include ../subscription-textfield/subscription-textfield.pug
 include ../logo/logo.pug
 include ../navigation/navigation.pug
 
@@ -41,7 +41,7 @@ mixin footer(options = {})
         div(class=`${BASE_CLASS}__subscrip-wrapper`)
           p(class=`${BASE_CLASS}__subscrip-header`) Подписка
           p(class=`${BASE_CLASS}__subscrip-text`) Получайте специальные предложения и новости сервиса
-          +subscrip-textfield(subscrip)
+          +subscription-textfield(subscrip)
 
     div(class=`${BASE_CLASS}__bottom`)
       div(class=`${BASE_CLASS}__bottom-wrapper`)

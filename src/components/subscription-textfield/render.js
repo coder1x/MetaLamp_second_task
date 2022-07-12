@@ -8,4 +8,4 @@ function renderSubscrip(className) {
   return components;
 }
 
-renderSubscrip('.js-subscrip-textfield');
+renderSubscrip('.js-subscription-textfield');
