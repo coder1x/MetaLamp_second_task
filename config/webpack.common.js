@@ -8,11 +8,9 @@ const optimization = require('./optimization');
 
 const devServer = require('./webpack.devServer.js');
 
-let config = null;
-
 const points = [];
 
-if (env.isProd) {
+if (!env.isDev) {
   points.push('./index.js');
 } else {
   points.push('webpack/hot/dev-server');

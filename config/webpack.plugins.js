@@ -17,9 +17,8 @@ const paths = require('./paths');
 
 const pagesDir = path.join(paths.src, '/pages/');
 
-const pages = [];
-fs.readdirSync(pagesDir).forEach((file) => {
-  pages.push(file.split('/', 2));
+const pages = fs.readdirSync(pagesDir).map((file) => {
+  return file.split('/', 2);
 });
 
 const DESCRIPTION = 'Лучшие номера для вашей работы,'
@@ -111,8 +110,6 @@ plugins.push(
   new FoxFavicon({
     src: path.join(paths.src, paths.assets, 'images/icon/favicon.png'),
     path: 'assets/favicons/',
-    // pathManifest: '/assets/favicons/',
-    // 'https://plugins.su/
     urlIcon: 'assets/favicons/',
     devMode: env.isDev,
     appName: 'бронирование номеров в TOXIN отель.',
