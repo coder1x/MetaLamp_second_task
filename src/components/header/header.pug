@@ -1,4 +1,4 @@
-include ../buttons/buttons.pug
+include ../button/button.pug
 include ../logo/logo.pug
 
 mixin header(options = {})
@@ -16,7 +16,7 @@ mixin header(options = {})
     const {
       service,
       agreements,
-      buttons,
+      button,
     } = require('./header.json');
 
   if current
@@ -63,8 +63,8 @@ mixin header(options = {})
       -}
       -else{
           div(class=`${BASE_CLASS}__signin-wrapper`)
-            +buttons(buttons.signIn)
+            +button(button.signIn)
             
           div(class=`${BASE_CLASS}__registration-wrapper`)
-            +buttons(buttons.registration)
+            +button(button.registration)
       -}

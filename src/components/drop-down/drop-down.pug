@@ -1,4 +1,4 @@
-include ../buttons/buttons.pug
+include ../button/button.pug
 
 mixin drop-down(options = {})
   -
@@ -39,13 +39,13 @@ mixin drop-down(options = {})
       -if(button){
           li(class=`${BASE_CLASS}__buttons`)
             div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
-              +buttons({
+              +button({
                 text:'очистить',
                 type:'button',
                 modifier:['text']
                     })
             div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
-              +buttons({
+              +button({
                 text:'применить',
                 type:'button',
                 modifier:['text']

@@ -28,10 +28,10 @@
       "name": "password"
     }
   },
-  "toggleButtons": {
+  "toggleButton": {
     "label": "Получать спецпредложения"
   },
-  "buttons": {
+  "button": {
     "submit": {
       "text": "зарегистрироваться",
       "type": "submit",

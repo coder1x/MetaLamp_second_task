@@ -1,6 +1,6 @@
 include ../date-dropdown/date-dropdown.pug
 include ../drop-down/drop-down.pug
-include ../buttons/buttons.pug
+include ../button/button.pug
 
 mixin search-room(options = {})
   -
@@ -15,7 +15,7 @@ mixin search-room(options = {})
     const {
       dateDropdown,
       dropDown,
-      buttons,
+      button,
     } = require('./search-room.json'); 
 
   if addClass
@@ -36,4 +36,4 @@ mixin search-room(options = {})
         +drop-down(dropDown)
           
       div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
-        +buttons(buttons)
+        +button(button)

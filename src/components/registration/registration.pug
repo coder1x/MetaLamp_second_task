@@ -1,7 +1,7 @@
 include ../text-field/text-field.pug
 include ../radio-buttons/radio-buttons.pug
 include ../toggle/toggle.pug
-include ../buttons/buttons.pug
+include ../button/button.pug
 
 mixin registration(options = {})
   -
@@ -15,8 +15,8 @@ mixin registration(options = {})
 
     const {
       textField,
-      toggleButtons,
-      buttons,
+      toggleButton,
+      button,
     } = require('./registration.json');
 
   if addClass
@@ -53,11 +53,11 @@ mixin registration(options = {})
           +text-field(textField.password)
 
       div(class=`${BASE_CLASS}__toggle-wrapper`)
-        +toggle(toggleButtons)
+        +toggle(toggleButton)
 
       div(class=`${BASE_CLASS}__submit-wrapper js-${BASE_CLASS}__submit-wrapper`)
-        +buttons(buttons.submit)
+        +button(button.submit)
         
       div(class=`${BASE_CLASS}__sign-in`)
         p(class=`${BASE_CLASS}__text-in`) Уже есть аккаунт на Toxin
-        +buttons(buttons.link)
+        +button(button.link)

@@ -13,7 +13,7 @@
     "Соглашения 4",
     "Соглашения 5"
   ],
-  "buttons": {
+  "button": {
     "signIn": {
       "text": "Войти",
       "link": "/sign-in.html",

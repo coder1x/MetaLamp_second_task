@@ -1,5 +1,5 @@
 include ../text-field/text-field.pug
-include ../buttons/buttons.pug
+include ../button/button.pug
 
 mixin sign-in(options = {})
   -
@@ -13,7 +13,7 @@ mixin sign-in(options = {})
 
     const {
       textField,
-      buttons,
+      button,
     } = require('./sign-in.json'); 
 
   if addClass
@@ -36,8 +36,8 @@ mixin sign-in(options = {})
           +text-field(textField.password)
 
         div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
-          +buttons(buttons.submit)
+          +button(button.submit)
           
       div(class=`${BASE_CLASS}__registration-wrapper`)
         p(class=`${BASE_CLASS}__text-registration`) Нет аккаунта на Toxin ?
-        +buttons(buttons.link)
+        +button(button.link)

@@ -1,4 +1,4 @@
-include ../buttons/buttons.pug
+include ../button/button.pug
 
 mixin date-dropdown(options = {})
   -
@@ -46,14 +46,14 @@ mixin date-dropdown(options = {})
       div(class=`${BASE_CLASS}__datepicker-buttons`)
       
         div(class=`${BASE_CLASS}__clear js-${BASE_CLASS}__clear`)
-          +buttons({
+          +button({
             text:'очистить',
             type:'button',
             modifier:['text']
           })
 
         div(class=`${BASE_CLASS}__apply js-${BASE_CLASS}__apply`)
-          +buttons({
+          +button({
             text:'применить',
             type:'button',
             modifier:['text']

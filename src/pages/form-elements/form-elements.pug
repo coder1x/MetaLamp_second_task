@@ -10,7 +10,7 @@ include ../../components/toggle/toggle.pug
 include ../../components/like-button/like-button.pug
 include ../../components/star-rating/star-rating.pug
 include ../../components/range-slider/range-slider.pug
-include ../../components/buttons/buttons.pug
+include ../../components/button/button.pug
 include ../../components/pagination/pagination.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/comment/comment.pug
@@ -25,9 +25,9 @@ include ../../components/comment/comment.pug
     checkboxList,
     feature,
     radioButtons,
-    toggleButtons,
+    toggleButton,
     rateButton,
-    buttons,
+    button,
     bulletList,
     comment,
   } = require('./form-elements.json');
@@ -89,7 +89,7 @@ html(lang='ru')
                 +radio-buttons(radioButtons)
 
               .column-center__toggle
-                +toggle(toggleButtons)
+                +toggle(toggleButton)
 
               .column-center__like-button
                 +like-button({label:'like button'})
@@ -108,16 +108,16 @@ html(lang='ru')
               span.column-right__logo buttons
 
               .column-right__link
-                +buttons(buttons.link)
+                +button(button.link)
 
               .column-right__link-border
-                +buttons(buttons.linkBorder)
+                +button(button.linkBorder)
 
               .column-right__button-text
-                +buttons(buttons.text)
+                +button(button.text)
 
               .column-right__submit
-                +buttons(buttons.submit)
+                +button(button.submit)
 
               .column-right__pagination
                 +pagination({

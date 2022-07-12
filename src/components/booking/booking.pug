@@ -1,6 +1,6 @@
 include ../date-dropdown/date-dropdown.pug
 include ../drop-down/drop-down.pug
-include ../buttons/buttons.pug
+include ../button/button.pug
 
 mixin booking(options = {})
   -
@@ -71,7 +71,7 @@ mixin booking(options = {})
         span(class=`${BASE_CLASS}__total-price`) 38 081₽
 
       div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
-        +buttons({
+        +button({
           text:'забронировать',
           type:'submit',
           modifier:['submit']

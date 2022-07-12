@@ -5,7 +5,7 @@ include ../../components/date-dropdown/date-dropdown.pug
 include ../../components/drop-down/drop-down.pug
 include ../../components/range-slider/range-slider.pug
 include ../../components/checkbox-list/checkbox-list.pug
-include ../../components/buttons/buttons.pug
+include ../../components/button/button.pug
 
 block title 
   title search room
@@ -16,7 +16,7 @@ block content
       dateDropdown,
       dropDown,
       checkboxList,
-      buttons,
+      button,
       } = require('./search-room.json'); 
 
   main.search-room-content
@@ -48,7 +48,7 @@ block content
           +checkbox-list(checkboxList.additionalAmenities)
 
       .search-room-content__button-wrapper
-        +buttons(buttons)
+        +button(button)
 
       section.search-room-cards
         h1.search-room-cards__header Номера, которые мы для вас подобрали

@@ -30,7 +30,7 @@
     ],
     "button": true
   },
-  "buttons": {
+  "button": {
     "text": "подобрать номер",
     "type": "submit",
     "modifier": [

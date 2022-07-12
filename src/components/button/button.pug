@@ -1,4 +1,4 @@
-mixin buttons(options)
+mixin button(options)
   -
     const {
       text = '',
@@ -8,7 +8,7 @@ mixin buttons(options)
       addClass = '',
     } = options;
 
-    const BASE_CLASS = 'buttons'
+    const BASE_CLASS = 'button'
     let className = BASE_CLASS
   if modifier
     each item in modifier

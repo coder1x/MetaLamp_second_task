@@ -94,7 +94,7 @@
       "legend": "дополнительные удобства"
     }
   },
-  "buttons": {
+  "button": {
     "text": "Фильтр номеров",
     "type": "button-popup",
     "modifier": [

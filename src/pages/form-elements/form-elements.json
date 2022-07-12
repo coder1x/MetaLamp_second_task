@@ -142,7 +142,7 @@
   "radioButtons": {
     "label": "Radio Buttons"
   },
-  "toggleButtons": {
+  "toggleButton": {
     "header": "Toggle",
     "label": "Получать спецпредложения"
   },
@@ -150,7 +150,7 @@
     "label": "rate button",
     "name": "rating"
   },
-  "buttons": {
+  "button": {
     "link": {
       "text": "CLICK ME",
       "link": "https://change-me",
