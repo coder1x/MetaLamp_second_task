@@ -1,6 +1,6 @@
-$color-square-text: $Dark-Shade-100;
+$colored-square-text: $Dark-Shade-100;
 
-.square-color {
+.colored-square {
   width: 100%;
   max-width: 281.26px;
 
@@ -52,7 +52,7 @@ $color-square-text: $Dark-Shade-100;
   &__color {
     @include font-family("Montserrat");
     font-weight: bold;
-    color: $color-square-text;
+    color: $colored-square-text;
     font-size: 19px;
     line-height: 28px;
   }
@@ -60,7 +60,7 @@ $color-square-text: $Dark-Shade-100;
   &__hexColor {
     @include font-family("Montserrat");
     font-weight: normal;
-    color: $color-square-text;
+    color: $colored-square-text;
     font-size: 19px;
     line-height: 28px;
   }

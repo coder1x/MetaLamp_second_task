@@ -1,10 +1,10 @@
 include ../../components/logo-group/logo-group.pug
-include ../../components/square-color/square-color.pug
+include ../../components/colored-square/colored-square.pug
 include ../../components/styled-text/styled-text.pug
 
 -
   const {
-    squareColor,
+    coloredSquare,
   } = require('./colors-type.json');
 
 doctype html
@@ -21,26 +21,26 @@ html(lang='ru')
       section.map-information 
 
         .map-information__color 
-          .map-information__square-color
-            +square-color(...squareColor.darkShade100)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.darkShade100)
 
-          .map-information__square-color
-            +square-color(...squareColor.darkShade75)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.darkShade75)
 
-          .map-information__square-color
-            +square-color(...squareColor.darkShade50)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.darkShade50)
 
-          .map-information__square-color
-            +square-color(...squareColor.darkShade25)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.darkShade25)
 
-          .map-information__square-color
-            +square-color(...squareColor.darkShade5)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.darkShade5)
 
-          .map-information__square-color
-            +square-color(...squareColor.purple)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.purple)
 
-          .map-information__square-color
-            +square-color(...squareColor.green)
+          .map-information__colored-square
+            +colored-square(...coloredSquare.green)
             
         .map-information__text
           .map-information__styled-text
