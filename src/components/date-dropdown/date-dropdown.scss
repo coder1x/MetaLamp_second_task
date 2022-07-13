@@ -92,7 +92,7 @@ $color-days-names: $Purple;
         grid-auto-columns: 40px;
 
         @include media-breakpoint-down($xs) {
-          grid-auto-rows: 35px;
+          grid-auto-rows: 47px;
           grid-auto-columns: 35px;
         }
       }
@@ -127,7 +127,7 @@ $color-days-names: $Purple;
       width: 40px;
 
       @include media-breakpoint-down($xs) {
-        width: 35px;
+        width: 47px;
       }
     }
 
@@ -156,7 +156,7 @@ $color-days-names: $Purple;
       border-radius: 0px;
       width: 40px;
       @include media-breakpoint-down($xs) {
-        width: 35px;
+        width: 49px;
       }
     }
 
@@ -294,11 +294,12 @@ $color-days-names: $Purple;
     background: $color-background;
     box-shadow: 0px 10px 20px $color-datepicker-shadow;
     width: 100%;
-    @include media-breakpoint-down($xs) {
-      width: auto;
-    }
+    // @include media-breakpoint-down($xs) {
+    //   width: auto;
+    // }
     min-width: 266px;
-    max-width: 320px;
+    //max-width: 320px;
+    max-width: 358px;
   }
 
   &__back{
@@ -370,8 +371,8 @@ $color-days-names: $Purple;
         height: 40px;
 
         @include media-breakpoint-down($xs) {
-          max-width: 35px;
-          height: 35px;
+          max-width: 49px;
+          height: 47px;
         }
       }
       &-cell.-month-,
@@ -388,7 +389,7 @@ $color-days-names: $Purple;
 
     @include media-breakpoint-down($xs) {
       max-width: 35px;
-      height: 35px;
+      height: 47px;
     }
   }
 
@@ -398,7 +399,7 @@ $color-days-names: $Purple;
 
     @include media-breakpoint-down($xs) {
       max-width: 35px;
-      height: 35px;
+      height: 47px;
     }
   }
 
