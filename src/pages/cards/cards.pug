@@ -13,21 +13,17 @@ html(lang='ru')
 
   body.cards-wrapper
     .cards-wrapper__logo
-      +logo-group({})
+      +logo-group()
 
     main.cards-content
       section.cards 
 
         .cards__left
           .cards__search-room
-            +search-room({
-              header:'Найдём номера под ваши пожелания'
-            })
+            +search-room('Найдём номера под ваши пожелания')
 
           .cards__registration
-            +registration({
-              header:'Регистрация аккаунта'
-            })
+            +registration('Регистрация аккаунта')
 
         .cards__center
           .cards__center__booking
@@ -38,9 +34,7 @@ html(lang='ru')
             })
             
           .cards__center__sign-in
-            +sign-in({
-              header:'Войти',
-            })
+            +sign-in('Войти')
 
         .cards__right
           .cards__right__room-card

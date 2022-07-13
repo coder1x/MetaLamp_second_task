@@ -16,7 +16,7 @@
       "placeholder": "ДД.ММ.ГГГГ",
       "typeField": "text",
       "name": "Date",
-      "addClass": "js-masked-date"
+      "isMaskedDate": true
     }
   },
   "dropDown": {
@@ -71,8 +71,7 @@
     "label": [
       "date Dropdown",
       "date Dropdown"
-    ],
-    "addClass": "js-masked-date"
+    ]
   },
   "filterDate": {
     "label": [
@@ -108,7 +107,9 @@
       ],
       "legend": "Checkbox Buttons",
       "isClicked": true,
-      "modifier": "visibleBut"
+      "modifier": [
+        "visibleBut"
+      ]
     },
     "richCheckbox": {
       "words": [
@@ -121,8 +122,10 @@
       ],
       "legend": "rich Checkbox Buttons",
       "isClicked": true,
-      "modifier": "visibleBut",
-      "addClass": "checkbox-list_rich"
+      "modifier": [
+        "visibleBut",
+        "rich"
+      ]
     }
   },
   "feature": {
@@ -139,9 +142,7 @@
       "text": "Окно в каждой из спален"
     }
   },
-  "radioButtons": {
-    "label": "Radio Buttons"
-  },
+  "radioButtons": "Radio Buttons",
   "toggleButton": {
     "header": "Toggle",
     "label": "Получать спецпредложения"

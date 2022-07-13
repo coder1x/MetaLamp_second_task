@@ -3,17 +3,11 @@ mixin subscription-textfield(options = {})
     const {
       label = '',
       value = '',
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'subscription-textfield'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  form(class=`${className} js-${BASE_CLASS}` action='https://change-me' method='post')
+  form(class=`${BASE_CLASS} js-${BASE_CLASS}` action='https://change-me' method='post')
     if label
       h2(class=`${BASE_CLASS}__label-text`)= label
 

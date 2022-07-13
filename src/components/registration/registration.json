@@ -15,7 +15,7 @@
       "placeholder": "ДД.ММ.ГГГГ",
       "typeField": "text",
       "name": "date",
-      "addClass": "js-masked-date"
+      "isMaskedDate": true
     },
     "email": {
       "placeholder": "Email",

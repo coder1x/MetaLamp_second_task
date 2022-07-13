@@ -8,17 +8,11 @@ mixin room-card(options = {})
       price = '',
       reviews = '',
       isLux = false,
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'room-card'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  article(class=`${className} js-${BASE_CLASS}`)
+  article(class=`${BASE_CLASS} js-${BASE_CLASS}`)
 
     div(class=`${BASE_CLASS}__slider-wrapper js-${BASE_CLASS}__slider-wrapper`)
       div(class=`${BASE_CLASS}__relation-ratio`)

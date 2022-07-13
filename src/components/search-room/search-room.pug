@@ -2,15 +2,9 @@ include ../date-dropdown/date-dropdown.pug
 include ../drop-down/drop-down.pug
 include ../button/button.pug
 
-mixin search-room(options = {})
+mixin search-room(header = '')
   -
-    const {
-      header = '',
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'search-room'
-    let className = BASE_CLASS
 
     const {
       dateDropdown,
@@ -18,16 +12,11 @@ mixin search-room(options = {})
       button,
     } = require('./search-room.json'); 
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  article(class=`${className} js-${BASE_CLASS}`)
+  article(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     if header
       header(class=`${BASE_CLASS}__header-wrapper`)
         h1(class=`${BASE_CLASS}__header`)= header
     
-
     form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
       fieldset(class=`${BASE_CLASS}__date-wrapper js-${BASE_CLASS}__date-wrapper`)
         +date-dropdown(dateDropdown)

@@ -6,16 +6,11 @@ mixin comment(options = {})
       name = '',
       date = '',
       message = '',
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'comment'
-    let className = BASE_CLASS
   
-  if addClass
-    - className += ` ${addClass}`
-
-  article(class=className)
+  article(class=BASE_CLASS)
   
     div(class=`${BASE_CLASS}__avatar-wrapper`)
       figure(class=`${BASE_CLASS}__author`)

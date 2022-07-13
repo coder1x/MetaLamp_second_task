@@ -4,8 +4,7 @@
       "прибытие",
       "выезд"
     ],
-    "placeholder": "ДД.ММ.ГГГГ",
-    "addClass": "js-masked-date"
+    "placeholder": "ДД.ММ.ГГГГ"
   },
   "dropDown": {
     "label": "гости",

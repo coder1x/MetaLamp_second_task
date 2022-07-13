@@ -1,21 +1,10 @@
-mixin pagination(options = {})
+mixin pagination(label = '')
   -
-    const {
-      label = '',
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'pagination'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  div(class=className)
+  div(class=BASE_CLASS)
     if label
       h2(class=`${BASE_CLASS}__header`)= label
-    
     
     div(class=`${BASE_CLASS}__links`)
       //- a(class=`${BASE_CLASS}__prev` href='https://change-me' aria-label='пагинация страницы - стрелка назад' title='предыдущая страница')

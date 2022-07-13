@@ -6,17 +6,12 @@ mixin feature(options = {})
       alt = '',
       text = '',
       isNoneBorder = false,
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'feature'
     let className = BASE_CLASS
   if isNoneBorder
     - className += ` ${BASE_CLASS}_none-border`
-
-  if addClass
-    - className += ` ${addClass}`
-  
 
   div(class=className)
     div(class=`${BASE_CLASS}__wrapper-icon`)

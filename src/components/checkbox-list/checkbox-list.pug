@@ -4,20 +4,17 @@ mixin checkbox-list(options = {})
       words = [],
       strings = [],
       legend = '',
-      modifier = '',
-      addClass = '',
+      modifier = [],
       isClicked = false,
     } = options;
 
     const BASE_CLASS = 'checkbox-list'
     let className = BASE_CLASS
-  if modifier
-    - className += ` ${BASE_CLASS}_${modifier}`
-
-  if addClass
-    - className += ` ${addClass}`
-  
     
+  if modifier
+    each item in modifier
+      - className += ` ${BASE_CLASS}_${item}`
+
   div(class=`${className} js-${BASE_CLASS}`)
     fieldset(class=`${BASE_CLASS}__items`)
 

@@ -3,6 +3,7 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
 import message from '@shared/helpers/message/message';
+import MaskedTextField from '@shared/helpers/maskedTextField/maskedTextField';
 
 class DateDropDown {
   constructor(className, element) {
@@ -224,6 +225,13 @@ class DateDropDown {
 
       this.inputFrom.placeholder = this.defaultText;
       this.inputTo.placeholder = this.defaultText;
+
+      new MaskedTextField({
+        element: this.inputFrom,
+      });
+      new MaskedTextField({
+        element: this.inputTo,
+      });
     }
   }
 

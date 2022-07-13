@@ -1,23 +1,12 @@
-mixin radio-buttons(options = {})
+mixin radio-buttons(label = '')
   -
-    const {
-      label = '',
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'radio-buttons'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  div(class=className)
+  div(class=BASE_CLASS)
     fieldset(class=`${BASE_CLASS}__items`)
       if label
         legend(class=`${BASE_CLASS}__header`)= label
       
-
         label(class=`${BASE_CLASS}__label`) Мужчина
           input(class=`${BASE_CLASS}__input` type='radio' name='gender' checked)
           span(class=`${BASE_CLASS}__before`)

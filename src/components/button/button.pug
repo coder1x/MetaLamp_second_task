@@ -5,7 +5,6 @@ mixin button(options)
       link = '',
       type = '',
       modifier = [],
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'button'
@@ -13,9 +12,6 @@ mixin button(options)
   if modifier
     each item in modifier
       - className += ` ${BASE_CLASS}_${item}`
-    
-  if addClass
-    - className += ` ${addClass}`
     
   case type
     when 'link'

@@ -3,20 +3,13 @@ mixin toggle(options = {})
     const {
       header = '',
       label = '',
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'toggle'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  div(class=className)
+  div(class=BASE_CLASS)
     if header
       h2(class=`${BASE_CLASS}__header`)= header
-    
     
     div(class=`${BASE_CLASS}__wrapper`)
       label(class=`${BASE_CLASS}__label`)= label

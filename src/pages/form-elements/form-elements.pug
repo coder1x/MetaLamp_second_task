@@ -40,7 +40,7 @@ html(lang='ru')
 
   body.elements-wrapper
     .elements-wrapper__logo
-      +logo-group({})
+      +logo-group()
 
     main.elements-content
       section.map-elements 
@@ -92,7 +92,7 @@ html(lang='ru')
                 +toggle(toggleButton)
 
               .column-center__like-button
-                +like-button({label:'like button'})
+                +like-button('like button')
 
               .column-center__star-rating
                 +star-rating(rateButton)
@@ -102,9 +102,7 @@ html(lang='ru')
 
             .column-right
               .column-right__range-slider
-                +range-slider({
-                  label:'Range Slider'
-                })
+                +range-slider('Range Slider')
               span.column-right__logo buttons
 
               .column-right__link
@@ -120,9 +118,7 @@ html(lang='ru')
                 +button(button.submit)
 
               .column-right__pagination
-                +pagination({
-                  label:'pagination'
-                })
+                +pagination('pagination')
 
               .column-right__bullet-list
                 +bullet-list(bulletList)

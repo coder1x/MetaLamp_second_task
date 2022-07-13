@@ -9,7 +9,6 @@ mixin drop-down(options = {})
       words = [[]],
       maxValue = [],
       modifier = '',
-      addClass = '',
       button = false,
     } = options;
 
@@ -17,10 +16,6 @@ mixin drop-down(options = {})
     let className = BASE_CLASS
   if modifier
     - className += ` ${BASE_CLASS}_${modifier}`
-
-  if addClass
-    - className += ` ${addClass}`
-  
 
   div(class=`${className} js-${BASE_CLASS}`)
     label(class=`${BASE_CLASS}__title`)= label

@@ -1,18 +1,8 @@
-mixin range-slider(options = {})
+mixin range-slider(label = '')
   -
-    const {
-      label = '',
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'range-slider'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  div(class=`${className} js-${BASE_CLASS}`)
+  div(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     div(class=`${BASE_CLASS}__wrapper`)
     
       div(class=`${BASE_CLASS}__header`)

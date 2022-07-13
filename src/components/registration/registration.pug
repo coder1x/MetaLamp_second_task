@@ -3,15 +3,9 @@ include ../radio-buttons/radio-buttons.pug
 include ../toggle/toggle.pug
 include ../button/button.pug
 
-mixin registration(options = {})
+mixin registration(header = '')
   -
-    const {
-      header = '',
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'registration'
-    let className = BASE_CLASS
 
     const {
       textField,
@@ -19,15 +13,11 @@ mixin registration(options = {})
       button,
     } = require('./registration.json');
 
-  if addClass
-    - className += ` ${addClass}`
-
-  article(class=`${className} js-${BASE_CLASS}`)
+  article(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     if header
       header(class=`${BASE_CLASS}__header-wrapper`)
         h1(class=`${BASE_CLASS}__header`)= header
     
-
     form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
       fieldset(class=`${BASE_CLASS}__full-name`)
 

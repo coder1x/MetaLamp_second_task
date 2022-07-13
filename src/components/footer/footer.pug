@@ -2,25 +2,17 @@ include ../subscription-textfield/subscription-textfield.pug
 include ../logo/logo.pug
 include ../navigation/navigation.pug
 
-mixin footer(options = {})
+mixin footer()
   -
-    const {
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'footer'
-    let className = BASE_CLASS
 
     const {
       socialData,
       navigation,
       subscrip,
     } = require('./footer.json'); 
-  
-  if addClass
-    - className += ` ${addClass}`
 
-  footer(class=className)
+  footer(class=BASE_CLASS)
     div(class=`${BASE_CLASS}__top`)
       div(class=`${BASE_CLASS}__top-wrapper`)
 

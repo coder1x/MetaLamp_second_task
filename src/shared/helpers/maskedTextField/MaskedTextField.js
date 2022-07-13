@@ -5,7 +5,7 @@ import message from '@shared/helpers/message/message';
 class MaskedTextField {
   constructor(options) {
     autoBind(this);
-    this.message = options.message;
+    this.message = options.message ?? 'Введена некорректная дата!';
     this._tempValue = '';
     const { element } = options;
     if (element) { this._bindEvent(element); }
@@ -106,9 +106,9 @@ class MaskedTextField {
     return false;
   }
 
-  _bindEvent(elem) {
-    elem.addEventListener('change', this._handleInputChange);
-    elem.addEventListener('input', this._handleInputInput);
+  _bindEvent(element) {
+    element.addEventListener('change', this._handleInputChange);
+    element.addEventListener('input', this._handleInputInput);
   }
 }
 

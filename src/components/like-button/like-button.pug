@@ -1,21 +1,10 @@
-mixin like-button(options = {})
+mixin like-button(label = '')
   -
-    const {
-      label = '',
-      addClass = '',
-    } = options;
-
     const BASE_CLASS = 'like-button'
-    let className = BASE_CLASS
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
-  div(class=`${className} js-${BASE_CLASS}`)
+  div(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     if label
       h2(class=`${BASE_CLASS}__header`)= label
-    
     
     button(class=`${BASE_CLASS}__like js-${BASE_CLASS}__like` aria-label='поставить лайк')
       span(class=`${BASE_CLASS}__icon js-${BASE_CLASS}__icon`) heart

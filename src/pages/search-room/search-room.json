@@ -64,7 +64,9 @@
       ],
       "legend": "правила дома",
       "isClicked": true,
-      "modifier": "visibleBut"
+      "modifier": [
+        "visibleBut"
+      ]
     },
     "availability": {
       "words": [
@@ -77,8 +79,10 @@
       ],
       "legend": "доступность",
       "isClicked": true,
-      "modifier": "visibleBut",
-      "addClass": "checkbox-list_rich"
+      "modifier": [
+        "visibleBut",
+        "rich"
+      ]
     },
     "additionalAmenities": {
       "words": [

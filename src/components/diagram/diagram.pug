@@ -1,22 +1,13 @@
-mixin diagram(options = {})
+mixin diagram(label = '')
   -
-    const {
-      label = '',
-      addClass = '',
-    } = options;
+    const BASE_CLASS = 'diagram'
 
-    let BASE_CLASS = 'diagram'
-    let className = BASE_CLASS
     const data = [
       ['130','excellent','Великолепно'],
       ['65','good','Хорошо'],
       ['65','satisfactorily','Удовлетворительно'],
       ['0','disappointed','Разочарован'],
     ]
-
-  if addClass
-    - className += ` ${addClass}`
-  
 
   div(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     if label

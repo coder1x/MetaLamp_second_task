@@ -4,7 +4,6 @@ mixin bullet-list(options = {})
       label = '',
       items = [],
       isBig = false,
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'bullet-list'
@@ -13,14 +12,9 @@ mixin bullet-list(options = {})
   if isBig
     - className += ` ${BASE_CLASS}_big`
 
-  if addClass
-    - className += ` ${addClass}`
-  
-
   div(class=className)
     if label
       h2(class=`${BASE_CLASS}__header`)= label
-    
     
     ul(class=`${BASE_CLASS}__items`)
       each item in items

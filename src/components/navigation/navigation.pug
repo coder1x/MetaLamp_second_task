@@ -3,16 +3,11 @@ mixin navigation(options = {})
     const {
       header = '',
       strings = [],
-      addClass = ''
     } = options;
 
     const BASE_CLASS = 'navigation'
-    let className = BASE_CLASS
-  
-  if addClass
-    - className += ` ${addClass}`
     
-  div(class=className)
+  div(class=BASE_CLASS)
     ul(class=`${BASE_CLASS}__items`)
       li(class=`${BASE_CLASS}__header`)
             h2(class=`${BASE_CLASS}__title`)= header

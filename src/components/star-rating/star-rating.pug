@@ -3,15 +3,9 @@ mixin star-rating(options = {})
     const {
       label = '',
       name = '',
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'star-rating'
-    let className = BASE_CLASS
-
-  if addClass
-    - className += ` ${addClass}`
-  
 
   - 
     labels = [
@@ -22,7 +16,7 @@ mixin star-rating(options = {})
     'Отлично', 
     ]
 
-  div(class=className)
+  div(class=BASE_CLASS)
     fieldset(class=`${BASE_CLASS}__stars`)
       if label
         legend(class=`${BASE_CLASS}__header`)= label

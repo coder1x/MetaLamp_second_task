@@ -6,7 +6,6 @@ mixin date-dropdown(options = {})
       label = '',
       value = '',
       modifier = '',
-      addClass = '',
       filter = false,
     } = options;
 
@@ -15,10 +14,6 @@ mixin date-dropdown(options = {})
 
   if modifier
     - className += ` ${BASE_CLASS}_${modifier}`
-
-  if addClass
-    - className += ` ${addClass}`
-  
 
   div(class=`${className} js-${BASE_CLASS}`)
     - let num = filter ? 1 : 2;

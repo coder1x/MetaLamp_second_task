@@ -6,12 +6,10 @@ mixin header(options = {})
     let { current } = options; 
     const {
       type = '',
-      addClass = '',
     } = options;
 
     const BASE_CLASS = 'header'
     const tipSvg = require('./img/tip.svg')
-    let className = BASE_CLASS
 
     const {
       service,
@@ -21,11 +19,8 @@ mixin header(options = {})
 
   if current
     - current =`${BASE_CLASS}__link_current`
-  
-    if addClass
-    - className +=` ${addClass}`
 
-  header(class=`${className} js-${BASE_CLASS}`)
+  header(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     div(class=`${BASE_CLASS}__wrapper`)
       div(class=`${BASE_CLASS}__link-logo`)
         +logo({link:'/landing-page.html'})

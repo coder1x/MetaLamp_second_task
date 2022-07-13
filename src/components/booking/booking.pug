@@ -7,18 +7,12 @@ mixin booking(options = {})
     const {
       number = '',
       price = '',
-      addClass = '',
       isLux = false,
     } = options;
 
     const BASE_CLASS = 'booking'
-    let className = BASE_CLASS
-  
-  if addClass
-    - className += ` ${addClass}`
-    
 
-  article(class=`${className} js-${BASE_CLASS}`)
+  article(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     h2(class=`${BASE_CLASS}__header-wrapper`)
 
       span(class=`${BASE_CLASS}__number-wrapper`)
@@ -36,7 +30,6 @@ mixin booking(options = {})
         +date-dropdown({
           label: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
-          class: 'js-masked-date'
           })
 
       div(class=`${BASE_CLASS}__dropdown-wrapper js-${BASE_CLASS}__dropdown-wrapper`)
