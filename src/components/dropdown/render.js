@@ -8,4 +8,4 @@ function renderDropDown(className) {
   return components;
 }
 
-renderDropDown('.js-drop-down');
+renderDropDown('.js-dropdown');

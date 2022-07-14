@@ -1,5 +1,5 @@
 include ../date-dropdown/date-dropdown.pug
-include ../drop-down/drop-down.pug
+include ../dropdown/dropdown.pug
 include ../button/button.pug
 
 mixin booking(options = {})
@@ -33,7 +33,7 @@ mixin booking(options = {})
           })
 
       div(class=`${BASE_CLASS}__dropdown-wrapper js-${BASE_CLASS}__dropdown-wrapper`)
-        +drop-down({
+        +dropdown({
           label:'гости',
           value: 'Сколько гостей',
           name:'Guest',
@@ -67,5 +67,5 @@ mixin booking(options = {})
         +button({
           text:'забронировать',
           type:'submit',
-          modifier:['submit']
+          modifiers:['submit']
         })

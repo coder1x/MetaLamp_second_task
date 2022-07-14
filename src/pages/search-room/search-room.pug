@@ -2,7 +2,7 @@ extends ../layout/layout.pug
 include ../../components/room-card/room-card.pug
 include ../../components/pagination/pagination.pug
 include ../../components/date-dropdown/date-dropdown.pug
-include ../../components/drop-down/drop-down.pug
+include ../../components/dropdown/dropdown.pug
 include ../../components/range-slider/range-slider.pug
 include ../../components/checkbox-list/checkbox-list.pug
 include ../../components/button/button.pug
@@ -27,7 +27,7 @@ block content
           +date-dropdown(dateDropdown)
 
         .search-room-filter__guests-wrapper
-          +drop-down(dropDown.guest)
+          +dropdown(dropDown.guest)
 
         .search-room-filter__price-wrapper
           +range-slider('диапазон цены')
@@ -40,7 +40,7 @@ block content
           +checkbox-list(checkboxList.availability)
 
         .search-room-filter__facilities-wrapper
-          +drop-down(dropDown.rooms)
+          +dropdown(dropDown.rooms)
 
         .search-room-filter__additional-amenities-wrapper
           +checkbox-list(checkboxList.additionalAmenities)

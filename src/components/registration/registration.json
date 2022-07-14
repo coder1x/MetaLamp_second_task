@@ -35,7 +35,7 @@
     "submit": {
       "text": "зарегистрироваться",
       "type": "submit",
-      "modifier": [
+      "modifiers": [
         "submit"
       ]
     },
@@ -43,7 +43,7 @@
       "text": "Войти",
       "link": "https://change-me",
       "type": "link",
-      "modifier": [
+      "modifiers": [
         "link-border"
       ]
     }

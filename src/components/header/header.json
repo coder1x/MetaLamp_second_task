@@ -18,7 +18,7 @@
       "text": "Войти",
       "link": "/sign-in.html",
       "type": "link",
-      "modifier": [
+      "modifiers": [
         "link-border",
         "header"
       ]
@@ -27,7 +27,7 @@
       "text": "зарегистрироваться",
       "link": "/registration.html",
       "type": "link",
-      "modifier": [
+      "modifiers": [
         "link",
         "header"
       ]

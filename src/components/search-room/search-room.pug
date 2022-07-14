@@ -1,5 +1,5 @@
 include ../date-dropdown/date-dropdown.pug
-include ../drop-down/drop-down.pug
+include ../dropdown/dropdown.pug
 include ../button/button.pug
 
 mixin search-room(header = '')
@@ -22,7 +22,7 @@ mixin search-room(header = '')
         +date-dropdown(dateDropdown)
 
       div(class=`${BASE_CLASS}__dropdown-wrapper js-${BASE_CLASS}__dropdown-wrapper`)
-        +drop-down(dropDown)
+        +dropdown(dropDown)
           
       div(class=`${BASE_CLASS}__button-wrapper js-${BASE_CLASS}__button-wrapper`)
         +button(button)

@@ -107,7 +107,7 @@
       ],
       "legend": "Checkbox Buttons",
       "isClicked": true,
-      "modifier": [
+      "modifiers": [
         "visibleBut"
       ]
     },
@@ -122,7 +122,7 @@
       ],
       "legend": "rich Checkbox Buttons",
       "isClicked": true,
-      "modifier": [
+      "modifiers": [
         "visibleBut",
         "rich"
       ]
@@ -156,7 +156,7 @@
       "text": "CLICK ME",
       "link": "https://change-me",
       "type": "link",
-      "modifier": [
+      "modifiers": [
         "link"
       ]
     },
@@ -164,21 +164,21 @@
       "text": "CLICK ME",
       "link": "https://change-me",
       "type": "link",
-      "modifier": [
+      "modifiers": [
         "link-border"
       ]
     },
     "text": {
       "text": "CLICK ME",
       "type": "button",
-      "modifier": [
+      "modifiers": [
         "text"
       ]
     },
     "submit": {
       "text": "перейти к оплате",
       "type": "submit",
-      "modifier": [
+      "modifiers": [
         "submit"
       ]
     }

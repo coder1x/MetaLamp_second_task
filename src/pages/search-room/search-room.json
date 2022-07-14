@@ -64,7 +64,7 @@
       ],
       "legend": "правила дома",
       "isClicked": true,
-      "modifier": [
+      "modifiers": [
         "visibleBut"
       ]
     },
@@ -79,7 +79,7 @@
       ],
       "legend": "доступность",
       "isClicked": true,
-      "modifier": [
+      "modifiers": [
         "visibleBut",
         "rich"
       ]
@@ -101,7 +101,7 @@
   "button": {
     "text": "Фильтр номеров",
     "type": "button-popup",
-    "modifier": [
+    "modifiers": [
       "link"
     ]
   }

@@ -4,13 +4,14 @@ mixin button(options)
       text = '',
       link = '',
       type = '',
-      modifier = [],
+      modifiers = [],
     } = options;
 
     const BASE_CLASS = 'button'
     let className = BASE_CLASS
-  if modifier
-    each item in modifier
+    
+  if modifiers.length !== 0
+    each item in modifiers
       - className += ` ${BASE_CLASS}_${item}`
     
   case type

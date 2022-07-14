@@ -1,6 +1,6 @@
 include ../../components/logo-group/logo-group.pug
 include ../../components/text-field/text-field.pug
-include ../../components/drop-down/drop-down.pug
+include ../../components/dropdown/dropdown.pug
 include ../../components/date-dropdown/date-dropdown.pug
 include ../../components/subscription-textfield/subscription-textfield.pug
 include ../../components/checkbox-list/checkbox-list.pug
@@ -53,7 +53,7 @@ html(lang='ru')
             +text-field(textField.name)
           
           .column-left__guest
-            +drop-down(dropDown.guest)
+            +dropdown(dropDown.guest)
 
           .column-left__text-field
             +text-field(textField.date)
@@ -68,7 +68,7 @@ html(lang='ru')
             +subscription-textfield(subscrip)
 
           .column-left__rooms
-            +drop-down(dropDown.rooms)
+            +dropdown(dropDown.rooms)
           
           .column-left__checkbox-list
             +checkbox-list(checkboxList.expandable)

@@ -39,10 +39,10 @@ components
 | | |  arrow-forward.svg
 | | |  tip.svg
 |
-└─── drop-down
-| |  drop-down.pug
+└─── dropdown
+| |  dropdown.pug
 | |  DropDown.js
-| |  drop-down.scss
+| |  dropdown.scss
 | └─── img
 | | |  tip.svg
 ```

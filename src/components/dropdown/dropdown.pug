@@ -1,6 +1,6 @@
 include ../button/button.pug
 
-mixin drop-down(options = {})
+mixin dropdown(options = {})
   -
     const {
       label = '',
@@ -12,7 +12,7 @@ mixin drop-down(options = {})
       button = false,
     } = options;
 
-    const BASE_CLASS = 'drop-down'
+    const BASE_CLASS = 'dropdown'
     let className = BASE_CLASS
   if modifier
     - className += ` ${BASE_CLASS}_${modifier}`
@@ -37,12 +37,12 @@ mixin drop-down(options = {})
               +button({
                 text:'очистить',
                 type:'button',
-                modifier:['text']
+                modifiers:['text']
                     })
             div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
               +button({
                 text:'применить',
                 type:'button',
-                modifier:['text']
+                modifiers:['text']
                     })
       -}

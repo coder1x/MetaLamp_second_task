@@ -32,7 +32,7 @@
   "button": {
     "text": "подобрать номер",
     "type": "submit",
-    "modifier": [
+    "modifiers": [
       "submit"
     ]
   }
