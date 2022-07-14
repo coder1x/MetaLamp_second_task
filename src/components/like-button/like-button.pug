@@ -1,5 +1,8 @@
-mixin like-button(label = '')
+mixin like-button(options = {})
   -
+    const {
+      label = ''
+    } = options;
     const BASE_CLASS = 'like-button'
 
   div(class=`${BASE_CLASS} js-${BASE_CLASS}`)

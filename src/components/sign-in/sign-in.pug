@@ -1,8 +1,11 @@
 include ../text-field/text-field.pug
 include ../button/button.pug
 
-mixin sign-in(header = '')
+mixin sign-in(options = {})
   -
+    const {
+      header = ''
+    } = options;
     const BASE_CLASS = 'sign-in'
 
     const {

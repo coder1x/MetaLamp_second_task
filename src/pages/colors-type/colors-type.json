@@ -1,39 +1,39 @@
 {
   "coloredSquare": {
-    "darkShade100": [
-      "Dark Shade 100%",
-      "#1F2041",
-      "dark-shade-100"
-    ],
-    "darkShade75": [
-      "Dark Shade 75%",
-      "#1F2041",
-      "dark-shade-75"
-    ],
-    "darkShade50": [
-      "Dark Shade 50%",
-      "#1F2041",
-      "dark-shade-50"
-    ],
-    "darkShade25": [
-      "Dark Shade 25%",
-      "#1F2041",
-      "dark-shade-25"
-    ],
-    "darkShade5": [
-      "Dark Shade 5%",
-      "#1F2041",
-      "dark-shade-5"
-    ],
-    "purple": [
-      "Purple",
-      "#BC9CFF",
-      "purple"
-    ],
-    "green": [
-      "Green",
-      "#6FCF97",
-      "green"
-    ]
+    "darkShade100": {
+      "textTop": "Dark Shade 100%",
+      "textBot": "#1F2041",
+      "modifier": "dark-shade-100"
+    },
+    "darkShade75": {
+      "textTop": "Dark Shade 75%",
+      "textBot": "#1F2041",
+      "modifier": "dark-shade-75"
+    },
+    "darkShade50": {
+      "textTop": "Dark Shade 50%",
+      "textBot": "#1F2041",
+      "modifier": "dark-shade-50"
+    },
+    "darkShade25": {
+      "textTop": "Dark Shade 25%",
+      "textBot": "#1F2041",
+      "modifier": "dark-shade-25"
+    },
+    "darkShade5": {
+      "textTop": "Dark Shade 5%",
+      "textBot": "#1F2041",
+      "modifier": "dark-shade-5"
+    },
+    "purple": {
+      "textTop": "Purple",
+      "textBot": "#BC9CFF",
+      "modifier": "purple"
+    },
+    "green": {
+      "textTop": "Green",
+      "textBot": "#6FCF97",
+      "modifier": "green"
+    }
   }
 }

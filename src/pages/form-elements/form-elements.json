@@ -142,7 +142,9 @@
       "text": "Окно в каждой из спален"
     }
   },
-  "radioButtons": "Radio Buttons",
+  "radioButtons": {
+    "label": "Radio Buttons"
+  },
   "toggleButton": {
     "header": "Toggle",
     "label": "Получать спецпредложения"

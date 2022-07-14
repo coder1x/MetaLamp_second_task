@@ -20,10 +20,10 @@ html(lang='ru')
 
         .cards__left
           .cards__search-room
-            +search-room('Найдём номера под ваши пожелания')
+            +search-room({header:'Найдём номера под ваши пожелания'})
 
           .cards__registration
-            +registration('Регистрация аккаунта')
+            +registration({header:'Регистрация аккаунта'})
 
         .cards__center
           .cards__center__booking
@@ -34,7 +34,7 @@ html(lang='ru')
             })
             
           .cards__center__sign-in
-            +sign-in('Войти')
+            +sign-in({header:'Войти'})
 
         .cards__right
           .cards__right__room-card

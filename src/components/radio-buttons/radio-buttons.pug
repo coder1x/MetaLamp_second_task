@@ -1,5 +1,8 @@
-mixin radio-buttons(label = '')
+mixin radio-buttons(options = {})
   -
+    const {
+      label = ''
+    } = options;
     const BASE_CLASS = 'radio-buttons'
 
   div(class=BASE_CLASS)

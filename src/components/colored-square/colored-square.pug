@@ -1,5 +1,10 @@
-mixin colored-square(textTop,textBot,modifier)
+mixin colored-square(options = {})
   - 
+    const {
+      textTop = '',
+      textBot = '',
+      modifier = ''
+    } = options;
     const BASE_CLASS = 'colored-square'
     let classSquare = `${BASE_CLASS}__square`
     const modifierSquare = modifier ?? ''

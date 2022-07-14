@@ -1,5 +1,8 @@
-mixin diagram(label = '')
+mixin diagram(options = {})
   -
+    const {
+      label = ''
+    } = options;
     const BASE_CLASS = 'diagram'
 
     const data = [

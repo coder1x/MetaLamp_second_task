@@ -3,8 +3,11 @@ include ../radio-buttons/radio-buttons.pug
 include ../toggle/toggle.pug
 include ../button/button.pug
 
-mixin registration(header = '')
+mixin registration(options = {})
   -
+    const {
+      header = ''
+    } = options;
     const BASE_CLASS = 'registration'
 
     const {

@@ -2,8 +2,11 @@ include ../date-dropdown/date-dropdown.pug
 include ../dropdown/dropdown.pug
 include ../button/button.pug
 
-mixin search-room(header = '')
+mixin search-room(options = {})
   -
+    const {
+      header = ''
+    } = options;
     const BASE_CLASS = 'search-room'
 
     const {
