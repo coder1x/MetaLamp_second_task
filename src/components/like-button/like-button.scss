@@ -31,11 +31,15 @@ $color-focus: $Dark-Shade-100;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    &:focus {
+      outline-offset: 3px;
+      outline: 2px solid $color-focus;
+    }
   }
 
-  &__like:focus {
-    outline-offset: 3px;
-    outline: 2px solid $color-focus;
+  &_voted &__like {
+    border-color: $color-like-voted;
   }
 
   &__icon{
@@ -49,14 +53,6 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-  &_voted &__like {
-    border-color: $color-like-voted;
-  }
-
-  &_voted &__value {
-    color: $color-like-voted;
-  }
-
   &__value {
     @include font-family("Montserrat");
     font-weight: normal;
@@ -64,5 +60,9 @@ $color-focus: $Dark-Shade-100;
     font-size: 10px;
     line-height: 12px;
     color: $color-like;
+  }
+
+  &_voted &__value {
+    color: $color-like-voted;
   }
 }

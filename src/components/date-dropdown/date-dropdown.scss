@@ -68,9 +68,11 @@ $color-days-names: $Purple;
         margin-right: 22px;
       }
 
-      &-nav--action:hover,
-      &-nav--title:hover {
-        background-color: $color-background;
+      &-nav--action,
+      &-nav--title {
+        &:hover{
+          background-color: $color-background;
+        }
       }
 
       &-body--day-name {
@@ -223,6 +225,10 @@ $color-days-names: $Purple;
     transition: transform 0.5s;
   }
 
+  &_visible &__tip {
+    transform: rotate(180deg);
+  }
+
   &__text,
   &__value {
     @include font-family("Montserrat");
@@ -251,6 +257,12 @@ $color-days-names: $Purple;
     }
   }
 
+  &_filter &__date-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 310px;
+  }
+
   &__input {
     margin-top: 5px;
     width: 100%;
@@ -272,15 +284,20 @@ $color-days-names: $Purple;
     @include media-breakpoint-down($xs) {
       max-width: unset;
     }
+
+    &::placeholder {
+      color: $color-input;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid $color-border-hover;
+    }
   }
 
-  &__input::placeholder {
-    color: $color-input;
-  }
-
-  &__input:hover,
-  &__input:focus {
-    border: 1px solid $color-border-hover;
+  &_filter &__input {
+    width: 100%;
+    max-width: none;
   }
 
   &__datepicker-wrapper {
@@ -294,12 +311,14 @@ $color-days-names: $Purple;
     background: $color-background;
     box-shadow: 0px 10px 20px $color-datepicker-shadow;
     width: 100%;
-    // @include media-breakpoint-down($xs) {
-    //   width: auto;
-    // }
     min-width: 266px;
-    //max-width: 320px;
     max-width: 358px;
+  }
+
+  &_visible &__datepicker-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-background;
   }
 
   &__back{
@@ -333,16 +352,6 @@ $color-days-names: $Purple;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     height: 51px;
-  }
-
-  &_visible &__datepicker-wrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: $color-background;
-  }
-
-  &_visible &__tip {
-    transform: rotate(180deg);
   }
 
   &__clear {
@@ -383,6 +392,28 @@ $color-days-names: $Purple;
     }
   }
 
+  &_filter .date-dropdown__datepicker {
+    .air-datepicker {
+      width: 264px;
+      margin: 0 auto;
+
+      &--content {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      &-cell,
+      &-body--day-name {
+        height: 35px;
+        width: 35px;
+      }
+      &-body--cells.-days- {
+        grid-auto-rows: 35px;
+        grid-auto-columns: 35px;
+      }
+    }
+  }
+
   .air-datepicker-cell.-day-.-range-from-::after {
     width: 40px;
     height: 40px;
@@ -410,45 +441,6 @@ $color-days-names: $Purple;
     @include media-breakpoint-down($xs) {
       max-width: 35px;
       height: 35px;
-    }
-  }
-
-  //----------------------------------------------- modifier filter
-
-  &_filter &__date-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  &_filter &__date-wrapper {
-    width: 100%;
-    max-width: 310px;
-  }
-
-  &_filter &__input {
-    width: 100%;
-    max-width: none;
-  }
-
-  &_filter .date-dropdown__datepicker {
-    .air-datepicker {
-      width: 264px;
-      margin: 0 auto;
-
-      &--content {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      &-cell,
-      &-body--day-name {
-        height: 35px;
-        width: 35px;
-      }
-      &-body--cells.-days- {
-        grid-auto-rows: 35px;
-        grid-auto-columns: 35px;
-      }
     }
   }
 

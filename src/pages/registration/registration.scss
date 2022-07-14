@@ -16,7 +16,7 @@
   background: #fff url('./img/bedroom.webp') bottom/cover no-repeat;
 
   @include media-breakpoint-down($xs) {
-   min-height: 760px;
+    min-height: 760px;
   }
 
   &__background {

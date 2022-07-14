@@ -8,13 +8,13 @@ mixin bullet-list(options = {})
 
     const BASE_CLASS = 'bullet-list'
     let className = BASE_CLASS
-
+    let modifier = '';
   if isBig
-    - className += ` ${BASE_CLASS}_big`
+    - modifier = `_big`
 
   div(class=className)
     if label
-      h2(class=`${BASE_CLASS}__header`)= label
+      h2(class=`${BASE_CLASS}__header${modifier}`)= label
     
     ul(class=`${BASE_CLASS}__items`)
       each item in items

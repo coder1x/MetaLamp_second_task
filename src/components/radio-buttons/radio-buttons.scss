@@ -34,11 +34,21 @@ $color-focus: $Dark-Shade-100;
     z-index: 0;
     border: 0;
     padding: 0;
+
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 12px;
+    }
   }
 
-  &__input:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 12px;
+  &__input:checked + &__before {
+    border-color: $color-radio-border;
+    background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
+    box-shadow: inset 0px 0px 0px 3.5px $color-background;
+  }
+
+  &__input:focus + &__before {
+    border: 1px solid $color-radio;
   }
 
   &__label {
@@ -57,6 +67,10 @@ $color-focus: $Dark-Shade-100;
     color: $color-radio-label;
   }
 
+  &__items &__label &__before_border {
+    border: 2px solid $color-border-focus;
+  }
+
   &__before {
     width: 20px;
     height: 20px;
@@ -68,29 +82,15 @@ $color-focus: $Dark-Shade-100;
     box-sizing: border-box;
     cursor: pointer;
     background-color: #fff;
-  }
 
-  &__before::before {
-    content: "";
-    width: 26px;
-    height: 25px;
-    position: absolute;
-    left: -4px;
-    bottom: -3px;
-    box-sizing: border-box;
-  }
-
-  &__input:checked + &__before {
-    border-color: $color-radio-border;
-    background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
-    box-shadow: inset 0px 0px 0px 3.5px $color-background;
-  }
-
-  &__input:focus + &__before {
-    border: 1px solid $color-radio;
-  }
-
-  &__items &__label &__before_border {
-    border: 2px solid $color-border-focus;
+    &::before {
+      content: "";
+      width: 26px;
+      height: 25px;
+      position: absolute;
+      left: -4px;
+      bottom: -3px;
+      box-sizing: border-box;
+    }
   }
 }

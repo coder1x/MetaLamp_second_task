@@ -201,12 +201,14 @@ $color-subscrip-header: $Dark-Shade-100;
   &__social-item:last-child {
     margin-right: 1px;
   }
-}
 
-.footer .footer__top-wrapper,
-.footer .footer__bottom-wrapper {
+  &__top-wrapper,
+  &__bottom-wrapper {
   @include media-breakpoint-down($sm) {
     flex-direction: column;
     align-items: center;
   }
 }
+}
+
+

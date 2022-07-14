@@ -59,31 +59,11 @@ $color-page-numbers-background: linear-gradient(180deg, $color-backgroundLG 0%, 
   &__next,
   &__prev {
     background: $color-button-background;
-  }
 
-  &__next:focus,
-  &__prev:focus {
-    outline-offset: 4px;
-    outline: 2px solid $color-button-focus;
-  }
-
-  &__page-numbers:focus {
-    outline: 2px solid $color-button-focus;
-  }
-
-  &__current {
-    @include font-family("Montserrat");
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-    color: $color-current;
-    background: $color-current-background;
-  }
-
-  &__page-numbers:hover {
-    border-radius: 50%;
-    color: $color-current;
-    background: $color-page-numbers-background;
+    &:focus {
+      outline-offset: 4px;
+      outline: 2px solid $color-button-focus;
+    }
   }
 
   &__page-numbers,
@@ -99,5 +79,26 @@ $color-page-numbers-background: linear-gradient(180deg, $color-backgroundLG 0%, 
     font-size: 12px;
     line-height: 15px;
     color: $color-numbers;
+  }
+
+  &__page-numbers{
+    &:focus {
+      outline: 2px solid $color-button-focus;
+    }
+
+    &:hover {
+      border-radius: 50%;
+      color: $color-current;
+      background: $color-page-numbers-background;
+    }
+  }
+
+  &__current {
+    @include font-family("Montserrat");
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-current;
+    background: $color-current-background;
   }
 }

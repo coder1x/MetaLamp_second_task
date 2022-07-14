@@ -17,8 +17,6 @@ $color-focus: $Dark-Shade-100;
     color: $color-label;
   }
 
-
-
   &__tip {
     width: 17px;
   }
@@ -36,11 +34,11 @@ $color-focus: $Dark-Shade-100;
     cursor: pointer;
     transform: rotate(0deg);
     transition: transform 0.5s;
-  }
 
-  &__link:focus {
-    outline-offset: 5px;
-    outline: 2px solid $color-focus;
+    &:focus {
+      outline-offset: 5px;
+      outline: 2px solid $color-focus;
+    }
   }
 
   &__text,
@@ -80,14 +78,14 @@ $color-focus: $Dark-Shade-100;
     font-size: 14px;
     line-height: 24px;
     box-sizing: border-box;
-  }
 
-  &__input::placeholder {
-    color: $style-text;
-  }
-
-  &__input:hover,
-  &__input:focus {
-    border: 1px solid $color-border-hover;
+    &::placeholder {
+      color: $style-text;
+    }
+  
+    &:hover,
+    &:focus {
+      border: 1px solid $color-border-hover;
+    }
   }
 }

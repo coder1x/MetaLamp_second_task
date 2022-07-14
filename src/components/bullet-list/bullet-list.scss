@@ -11,16 +11,16 @@ $color-header: $Dark-Shade-100;
     text-transform: uppercase;
     color: $color-header;
     margin-bottom: 15px;
-  }
 
-  &_big &__header {
-    font-size: 19px;
-    line-height: 23px;
-    text-transform: none;
-    margin-bottom: 19px;
-
-    @include media-breakpoint-up($xs) {
-      margin-left: 19px;
+    &_big {
+      font-size: 19px;
+      line-height: 23px;
+      text-transform: none;
+      margin-bottom: 19px;
+  
+      @include media-breakpoint-up($xs) {
+        margin-left: 19px;
+      }
     }
   }
 
@@ -38,16 +38,16 @@ $color-header: $Dark-Shade-100;
     line-height: 24px;
     color: $color-text;
     margin-bottom: 10px;
-  }
 
-  &__item::before {
-    position: absolute;
-    top: 7px;
-    left: 1px;
-    content: "";
-    width: 10px;
-    height: 10px;
-    background-color: $color-dot;
-    border-radius: 50%;
+    &::before {
+      position: absolute;
+      top: 7px;
+      left: 1px;
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: $color-dot;
+      border-radius: 50%;
+    }
   }
 }

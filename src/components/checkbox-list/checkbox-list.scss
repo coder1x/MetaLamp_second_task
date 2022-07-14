@@ -19,16 +19,29 @@ $color-focus: $Dark-Shade-100;
     text-transform: uppercase;
     color: $color-label;
     cursor: pointer;
+
+    &:focus {
+      outline-offset: 6px;
+      outline: 2px solid $color-border-focus;
+    }
   }
-  &__header:focus {
-    outline-offset: 6px;
-    outline: 2px solid $color-border-focus;
+
+  &_visibleBut &__header {
+    cursor: default;
   }
 
   &__wrapper {
     display: none;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  &_visible &__wrapper {
+    display: flex;
+  }
+
+  &_visibleBut &__wrapper {
+    display: flex;
   }
 
   &__items {
@@ -51,6 +64,12 @@ $color-focus: $Dark-Shade-100;
     margin-bottom: 12px;
   }
 
+  &_rich &__label {
+    @include font-family("Montserrat");
+    font-weight: bold;
+    color: $color-checkbox-rich;
+  }
+
   &__text {
     @include font-family("Montserrat");
     font-weight: normal;
@@ -69,11 +88,11 @@ $color-focus: $Dark-Shade-100;
     z-index: 0;
     border: 0;
     padding: 0;
-  }
 
-  &__input:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 12px;
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 12px;
+    }
   }
 
   &__before {
@@ -123,29 +142,7 @@ $color-focus: $Dark-Shade-100;
     transition: transform 0.5s;
   }
 
-  &_visible &__wrapper {
-    display: flex;
-  }
-
   &_visible &__tip {
     transform: rotate(180deg);
-  }
-
-  // ---------------------------- modifier Checkbox Buttons
-
-  &_visibleBut &__wrapper {
-    display: flex;
-  }
-
-  &_visibleBut &__header {
-    cursor: default;
-  }
-
-  // ---------------------------- modifier RICH
-
-  &_rich &__label {
-    @include font-family("Montserrat");
-    font-weight: bold;
-    color: $color-checkbox-rich;
   }
 }

@@ -59,11 +59,11 @@ $color-focus: $Dark-Shade-100;
       margin-left: 0;
       margin-right: 0;
     }
-  }
 
-  &__toggle:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 4px;
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 4px;
+    }
   }
 
   &__toggle-line {
@@ -72,48 +72,48 @@ $color-focus: $Dark-Shade-100;
     width: 40px;
     height: 4px;
     transition: height 0.3s;
-  }
 
-  &__toggle-line::after {
-    position: absolute;
-    content: "";
-    top: 1px;
-    left: 0;
-    background: $color-line-backgr;
-    width: 40px;
-    height: 4px;
-    transform: rotate(0deg);
-    transition: transform 0.5s;
-  }
-
-  &__toggle-line::before {
-    position: absolute;
-    content: "";
-    bottom: 1px;
-    left: 0;
-    background: $color-line-backgr;
-    width: 40px;
-    height: 4px;
-    transform: rotate(0deg);
-    transition: transform 0.5s;
-  }
-
-  &__toggle-line_visible {
-    height: 0px;
-    transition: height 0.5s;
-    &::before {
-      transform: rotate(-50deg);
-      transition: transform 0.3s;
-      bottom: 12px;
-      background: $color-line-close;
-    }
     &::after {
-      transform: rotate(50deg);
-      transition: transform 0.3s;
-      top: 11px;
-      background: $color-line-close;
+      position: absolute;
+      content: "";
+      top: 1px;
+      left: 0;
+      background: $color-line-backgr;
+      width: 40px;
+      height: 4px;
+      transform: rotate(0deg);
+      transition: transform 0.5s;
     }
-}
+
+    &::before {
+      position: absolute;
+      content: "";
+      bottom: 1px;
+      left: 0;
+      background: $color-line-backgr;
+      width: 40px;
+      height: 4px;
+      transform: rotate(0deg);
+      transition: transform 0.5s;
+    }
+
+    &_visible {
+      height: 0px;
+      transition: height 0.5s;
+      &::before {
+        transform: rotate(-50deg);
+        transition: transform 0.3s;
+        bottom: 12px;
+        background: $color-line-close;
+      }
+      &::after {
+        transform: rotate(50deg);
+        transition: transform 0.3s;
+        top: 11px;
+        background: $color-line-close;
+      }
+    }
+  }
 
   &__link,
   &__link-down {
@@ -128,12 +128,11 @@ $color-focus: $Dark-Shade-100;
     &_current {
       font-weight: bold;
     }
-  }
 
-  &__link:focus,
-  &__link-down:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 4px;
+    &:focus{
+      outline: 2px solid $color-focus;
+      outline-offset: 4px;
+    }
   }
 
   &__tip {
@@ -161,10 +160,10 @@ $color-focus: $Dark-Shade-100;
       width: 100%;
       padding-bottom: 10px;
     }
-  }
 
-  &__item:first-child {
-    margin-left: 0;
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   &__menu-wrapper {
@@ -184,11 +183,11 @@ $color-focus: $Dark-Shade-100;
     @include media-breakpoint-down($xs) {
       top: 180px;
     }
-  }
 
-  &__menu-wrapper_visible {
-    display: block;
-}
+    &_visible {
+      display: block;
+    }
+  }
 
   &__items {
     display: flex;
@@ -254,11 +253,11 @@ $color-focus: $Dark-Shade-100;
       margin-left: 0px;
       margin-top: 20px;
     }
-  }
 
-  &__nikname:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 4px;
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 4px;
+    }
   }
 
   &__registration-wrapper {

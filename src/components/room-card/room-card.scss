@@ -97,22 +97,12 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     padding: 0;
   }
 
-  &__prev-wrapper:hover,
-  &__prev-wrapper:focus {
-    border-top-left-radius: 4px;
-    background: $color-background-prev-next;
-  }
-
-  &__next-wrapper:hover,
-  &__next-wrapper:focus {
-    border-top-left-radius: 4px;
-    background: $color-background-prev-next;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-  }
-
-  &__next-wrapper:focus,
-  &__prev-wrapper:focus {
-    outline: 2px solid $color-focus;
+  &__prev-wrapper{
+    &:hover,
+    &:focus {
+      border-top-left-radius: 4px;
+      background: $color-background-prev-next;
+    }
   }
 
   &__prev-wrapper:hover > &__prev,
@@ -120,9 +110,25 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     display: inline;
   }
 
+  &__next-wrapper{
+    &:hover,
+    &:focus {
+      border-top-left-radius: 4px;
+      background: $color-background-prev-next;
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+  }
+
   &__next-wrapper:hover > &__next,
   &__next-wrapper:focus > &__next {
     display: inline;
+  }
+
+  &__next-wrapper,
+  &__prev-wrapper {
+    &:focus{
+      outline: 2px solid $color-focus;
+    }
   }
 
   &__prev-wrapper {
@@ -151,20 +157,22 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 21px;
-  }
+    padding-left: 21px;
+    padding-right: 17px;
 
-  &__header-wrapper::before {
-    position: absolute;
-    bottom: -12px;
-    content: "";
-    background: $color-header-background;
-    width: calc(100% - 39px);
-    height: 1px;
-  }
+    &::before {
+      position: absolute;
+      bottom: -12px;
+      content: "";
+      background: $color-header-background;
+      width: calc(100% - 39px);
+      height: 1px;
+    }
 
-  &__header-wrapper:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 4px;
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 4px;
+    }
   }
 
   &__header {
@@ -218,11 +226,6 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     text-transform: uppercase;
     color: $color-lux;
     margin-left: 8px;
-  }
-
-  &__header-wrapper {
-    padding-left: 21px;
-    padding-right: 17px;
   }
 
   &__rate-wrapper {
