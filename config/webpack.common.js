@@ -10,12 +10,10 @@ const devServer = require('./webpack.devServer.js');
 
 const points = [];
 
-if (!env.isDev) {
-  points.push('./index.js');
-} else {
+if (env.isDev)
   points.push('webpack/hot/dev-server');
-  points.push('./index.js');
-}
+
+points.push('./index.js');
 
 module.exports = merge(devServer, {
 

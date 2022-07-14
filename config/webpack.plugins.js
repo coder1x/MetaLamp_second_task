@@ -21,8 +21,7 @@ const pages = fs.readdirSync(pagesDir).map((file) => {
   return file.split('/', 2);
 });
 
-const DESCRIPTION = 'Лучшие номера для вашей работы,'
-  + ' отдыха и просто вдохновения';
+const DESCRIPTION = 'Лучшие номера для вашей работы, отдыха и просто вдохновения';
 const KEYWORDS = 'Номера, Отель';
 
 const plugins = [];

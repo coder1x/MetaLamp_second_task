@@ -123,8 +123,6 @@ $color-focus: $Dark-Shade-100;
     transition: transform 0.5s;
   }
 
-  // ---------------------------- modif
-
   &_visible &__wrapper {
     display: flex;
   }
@@ -133,7 +131,7 @@ $color-focus: $Dark-Shade-100;
     transform: rotate(180deg);
   }
 
-  // ---------------------------- modif Checkbox Buttons
+  // ---------------------------- modifier Checkbox Buttons
 
   &_visibleBut &__wrapper {
     display: flex;
@@ -143,7 +141,7 @@ $color-focus: $Dark-Shade-100;
     cursor: default;
   }
 
-  // ---------------------------- modif RICH
+  // ---------------------------- modifier RICH
 
   &_rich &__label {
     @include font-family("Montserrat");

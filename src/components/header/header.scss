@@ -98,6 +98,23 @@ $color-focus: $Dark-Shade-100;
     transition: transform 0.5s;
   }
 
+  &__toggle-line_visible {
+    height: 0px;
+    transition: height 0.5s;
+    &::before {
+      transform: rotate(-50deg);
+      transition: transform 0.3s;
+      bottom: 12px;
+      background: $color-line-close;
+    }
+    &::after {
+      transform: rotate(50deg);
+      transition: transform 0.3s;
+      top: 11px;
+      background: $color-line-close;
+    }
+}
+
   &__link,
   &__link-down {
     display: inline-block;
@@ -168,6 +185,10 @@ $color-focus: $Dark-Shade-100;
       top: 180px;
     }
   }
+
+  &__menu-wrapper_visible {
+    display: block;
+}
 
   &__items {
     display: flex;
@@ -246,29 +267,5 @@ $color-focus: $Dark-Shade-100;
       margin-left: 0px;
     }
   }
-}
 
-.header .header__menu-wrapper {
-  &_visible {
-    display: block;
-  }
-}
-
-.header .header__toggle-line {
-  &_visible {
-    height: 0px;
-    transition: height 0.5s;
-    &::before {
-      transform: rotate(-50deg);
-      transition: transform 0.3s;
-      bottom: 12px;
-      background: $color-line-close;
-    }
-    &::after {
-      transform: rotate(50deg);
-      transition: transform 0.3s;
-      top: 11px;
-      background: $color-line-close;
-    }
-  }
 }
