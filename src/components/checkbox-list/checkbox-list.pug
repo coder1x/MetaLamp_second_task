@@ -1,8 +1,7 @@
 mixin checkbox-list(options = {})
   -
     const {
-      words = [],
-      strings = [],
+      items = [{}],
       legend = '',
       modifiers = [],
       isClicked = false,
@@ -28,9 +27,10 @@ mixin checkbox-list(options = {})
       -}
       
       div(class=`${BASE_CLASS}__wrapper js-${BASE_CLASS}__wrapper`)
-        each value, index in words
-          label(class=`${BASE_CLASS}__label`)= value
-            input(class=`${BASE_CLASS}__input` type='checkbox' name=value)
-            span(class=`${BASE_CLASS}__before`)
-            -if(strings.length)
-              span(class=`${BASE_CLASS}__text`)=strings[index]
+        each item in items
+          if item.word
+            label(class=`${BASE_CLASS}__label`)= item.word
+              input(class=`${BASE_CLASS}__input` type='checkbox' name=item.word)
+              span(class=`${BASE_CLASS}__before`)
+              if item.string
+                span(class=`${BASE_CLASS}__text`)=item.string
