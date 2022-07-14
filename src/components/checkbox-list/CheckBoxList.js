@@ -14,14 +14,7 @@ class CheckBoxList {
   }
 
   handleHeaderClick() {
-    let display = '';
-
-    if (this._wrapper) {
-      display = window.getComputedStyle(this._wrapper, null)
-        .getPropertyValue('display');
-    }
-
-    this._toggleModifier(this.element, '_visible', display !== 'flex');
+    this._toggleModifier(this.element, '_visible');
   }
 
   _getElement(string, parentElement) {
@@ -39,11 +32,11 @@ class CheckBoxList {
     const classWithModifier = `${this.className.replace(/^\.js-/, '')}${modifier}`;
     const { classList } = element;
 
-    if (isVisible) {
-      classList.add(classWithModifier);
-    } else {
-      classList.remove(classWithModifier);
-    }
+    if (isVisible && !classList.contains(classWithModifier)) return false;
+
+    classList.toggle(classWithModifier);
+
+    return true;
   }
 
   _handleHeaderKeyDown(event) {
@@ -57,7 +50,7 @@ class CheckBoxList {
       this.handleHeaderClick();
     } else if (key === 'Escape') {
       event.preventDefault();
-      this._toggleModifier(this.element, '_visible', false);
+      this._toggleModifier(this.element, '_visible', true);
     }
   }
 
