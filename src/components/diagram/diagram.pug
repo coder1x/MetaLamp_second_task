@@ -1,16 +1,10 @@
 mixin diagram(options = {})
   -
     const {
-      label = ''
+      label = '',
+      data = []
     } = options;
     const BASE_CLASS = 'diagram'
-
-    const data = [
-      ['130','excellent','Великолепно'],
-      ['65','good','Хорошо'],
-      ['65','satisfactorily','Удовлетворительно'],
-      ['0','disappointed','Разочарован'],
-    ]
 
   div(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     if label

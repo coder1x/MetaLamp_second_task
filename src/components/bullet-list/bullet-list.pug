@@ -10,7 +10,7 @@ mixin bullet-list(options = {})
     let className = BASE_CLASS
     let modifier = '';
   if isBig
-    - modifier = `_big`
+    - modifier = ` ${BASE_CLASS}__header_big`
 
   div(class=className)
     if label

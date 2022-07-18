@@ -20,6 +20,31 @@
       "isNoneBorder": true
     }
   },
+  "diagram": {
+    "label": "Впечатления от номера",
+    "data": [
+      [
+        "130",
+        "excellent",
+        "Великолепно"
+      ],
+      [
+        "65",
+        "good",
+        "Хорошо"
+      ],
+      [
+        "65",
+        "satisfactorily",
+        "Удовлетворительно"
+      ],
+      [
+        "0",
+        "disappointed",
+        "Разочарован"
+      ]
+    ]
+  },
   "booking": {
     "number": "888",
     "isLux": true,

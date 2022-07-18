@@ -1,5 +1,10 @@
-mixin pagination(label = '')
+mixin pagination(options = {})
   -
+    const {
+      label = '',
+      isButtonPrev = false
+    } = options;
+
     const BASE_CLASS = 'pagination'
 
   div(class=BASE_CLASS)
@@ -7,8 +12,9 @@ mixin pagination(label = '')
       h2(class=`${BASE_CLASS}__header`)= label
     
     div(class=`${BASE_CLASS}__links`)
-      //- a(class=`${BASE_CLASS}__prev` href='https://change-me' aria-label='пагинация страницы - стрелка назад' title='предыдущая страница')
-      //-   img(class=`${BASE_CLASS}__prev-img` src='assets/images/pagination/img/arrow-forward.svg', alt='prev')
+      if isButtonPrev
+        a(class=`${BASE_CLASS}__prev` href='https://change-me' aria-label='пагинация страницы - стрелка назад' title='предыдущая страница')
+          img(class=`${BASE_CLASS}__prev-img` src=require('./img/arrow-forward.svg'), alt='prev')
       span(class=`${BASE_CLASS}__current`) 1
       a(class=`${BASE_CLASS}__page-numbers` href='https://change-me' aria-label='пагинация страницы 2') 2
       a(class=`${BASE_CLASS}__page-numbers` href='https://change-me' aria-label='пагинация страницы 3') 3
