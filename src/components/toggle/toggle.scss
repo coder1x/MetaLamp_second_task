@@ -37,15 +37,17 @@ $color-focus: $Dark-Shade-100;
       outline: 2px solid $color-focus;
       outline-offset: 12px;
     }
+
+    &:checked + .toggle__before {
+      border-color: $color-toggle-border;
+
+      &:after {
+        left: 22px;
+        background: linear-gradient(180deg, $color-toggle-border 0%, #8ba4f9 100%);
+      }
+    }
   }
 
-  &__input:checked + &__before {
-    border-color: $color-toggle-border;
-  }
-  &__input:checked + &__before:after {
-    left: 22px;
-    background: linear-gradient(180deg, $color-toggle-border 0%, #8ba4f9 100%);
-  }
 
   &__wrapper {
     position: relative;

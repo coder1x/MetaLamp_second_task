@@ -1,17 +1,22 @@
-.colors-type-wrapper {
+.colors-type {
   &__logo {
     margin-top: 30px;
     margin-left: 30px;
   }
-}
 
-.map-information {
-  display: flex;
-  flex-direction: row;
-  padding-left: 150px;
-  padding-top: 59px;
-  padding-bottom: 145px;
-  box-sizing: border-box;
+  &__content-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-left: 150px;
+    padding-top: 59px;
+    padding-bottom: 145px;
+    box-sizing: border-box;
+  }
+
+  &__colored-square {
+    margin-bottom: 20px;
+    min-width: 236px;
+  }
 
   &__text {
     width: 100%;
@@ -19,10 +24,5 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-  }
-
-  &__colored-square {
-    margin-bottom: 20px;
-    min-width: 236px;
   }
 }

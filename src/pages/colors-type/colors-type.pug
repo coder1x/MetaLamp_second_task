@@ -13,35 +13,35 @@ html(lang='ru')
     meta(charset='utf-8')
     title colors type
 
-  body.colors-type-wrapper
-    .colors-type-wrapper__logo
+  body.colors-type
+    .colors-type__logo
       +logo-group()
 
-    main.colors-type-content
-      section.map-information 
+    main.colors-type__content
+      section.colors-type__content-wrapper 
 
-        .map-information__color 
-          .map-information__colored-square
+        .colors-type__map-colors 
+          .colors-type__colored-square
             +colored-square(coloredSquare.darkShade100)
 
-          .map-information__colored-square
+          .colors-type__colored-square
             +colored-square(coloredSquare.darkShade75)
 
-          .map-information__colored-square
+          .colors-type__colored-square
             +colored-square(coloredSquare.darkShade50)
 
-          .map-information__colored-square
+          .colors-type__colored-square
             +colored-square(coloredSquare.darkShade25)
 
-          .map-information__colored-square
+          .colors-type__colored-square
             +colored-square(coloredSquare.darkShade5)
 
-          .map-information__colored-square
+          .colors-type__colored-square
             +colored-square(coloredSquare.purple)
 
-          .map-information__colored-square
+          .colors-type__colored-square
             +colored-square(coloredSquare.green)
             
-        .map-information__text
-          .map-information__styled-text
+        .colors-type__text
+          .colors-type__styled-text
             +styled-text()

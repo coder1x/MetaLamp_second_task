@@ -14,6 +14,6 @@ mixin colored-square(options = {})
   div(class=BASE_CLASS)
     div(class=classSquare)
     
-    div.squareColor__text
+    div(class=`${BASE_CLASS}__text`)
       p(class=`${BASE_CLASS}__color`)= textTop
-      p(class=`${BASE_CLASS}__hexColor`)= textBot
+      p(class=`${BASE_CLASS}__hex-color`)= textBot

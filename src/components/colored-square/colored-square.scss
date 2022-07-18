@@ -57,7 +57,7 @@ $colored-square-text: $Dark-Shade-100;
     line-height: 28px;
   }
 
-  &__hexColor {
+  &__hex-color {
     @include font-family("Montserrat");
     font-weight: normal;
     color: $colored-square-text;

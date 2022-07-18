@@ -1,34 +1,25 @@
-.elements-wrapper {
+$color-title-buttons: $Dark-Shade-100;
+
+.form-elements {
   &__logo {
     margin-top: 30px;
     margin-left: 30px;
   }
-}
 
-.map-elements {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding-top: 63px;
-  padding-left: 141px;
+  &__content{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 63px;
+    padding-left: 141px;
+  }
 
-  &__wrapper-right {
+  &__column-left {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 330px;
   }
-
-  &__column {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
-.column-left {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 330px;
 
   &__text-field {
     padding-bottom: 20px;
@@ -69,19 +60,30 @@
   &__feature {
     padding-bottom: 21px;
   }
-}
 
-.column-center {
-  margin-left: 116px;
-  width: 100%;
-  max-width: 260px;
+  &__column-right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
-  &__checkbox-list {
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__container-center{
+    margin-left: 116px;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  &__checkbox-list-buttons {
     max-width: 222px;
     margin-bottom: 30px;
   }
 
-  &__checkbox-listRich {
+  &__checkbox-list-rich {
     max-width: 230px;
     margin-top: 40px;
   }
@@ -99,25 +101,25 @@
     max-width: 222px;
     margin-bottom: 36px;
   }
-}
 
-.column-right {
-  margin-left: 132px;
-  width: 100%;
-  max-width: 322px;
+  &__container-right{
+    margin-left: 132px;
+    width: 100%;
+    max-width: 322px;
+  }
 
   &__range-slider {
     max-width: 266px;
     margin-bottom: 31px;
   }
 
-  &__logo {
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  &__title-buttons {
+    @include font-family("Montserrat");
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: #1f2041;
+    color: $color-title-buttons;
   }
 
   &__link {
@@ -148,9 +150,7 @@
     margin-top: 30px;
     max-width: 255px;
   }
-}
 
-.column-bottom {
   &__comment {
     margin-top: 100px;
     max-width: 711px;

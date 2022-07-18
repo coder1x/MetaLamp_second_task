@@ -183,23 +183,23 @@ $color-subscrip-header: $Dark-Shade-100;
 
   &__social-link {
     display: inline-block;
-  }
 
-  &__social-link:focus {
-    outline: 2px solid $color-focus;
-    outline-offset: 4px;
+    &:focus {
+      outline: 2px solid $color-focus;
+      outline-offset: 4px;
+    }
   }
 
   &__social-item {
     margin-left: 22px;
-  }
 
-  &__social-item:first-child {
-    margin-left: 0px;
-  }
-
-  &__social-item:last-child {
-    margin-right: 1px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  
+    &:last-child {
+      margin-right: 1px;
+    }
   }
 
   &__top-wrapper,

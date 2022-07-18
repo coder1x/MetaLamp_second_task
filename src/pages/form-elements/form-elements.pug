@@ -38,91 +38,89 @@ html(lang='ru')
     meta(charset='utf-8')
     title form elements
 
-  body.elements-wrapper
-    .elements-wrapper__logo
+  body.form-elements
+    .form-elements__logo
       +logo-group()
 
-    main.elements-content
-      section.map-elements 
+    main.form-elements__content
+      .form-elements__column-left 
+        .form-elements__text-field
+          +text-field(textField.email)
 
-        .column-left 
-          .column-left__text-field
-            +text-field(textField.email)
+        .form-elements__text-field
+          +text-field(textField.name)
+        
+        .form-elements__guest
+          +dropdown(dropDown.guest)
 
-          .column-left__text-field
-            +text-field(textField.name)
-          
-          .column-left__guest
-            +dropdown(dropDown.guest)
+        .form-elements__text-field
+          +text-field(textField.date)
 
-          .column-left__text-field
-            +text-field(textField.date)
+        .form-elements__date-dropdown
+          +date-dropdown(dateDropdown)
 
-          .column-left__date-dropdown
-            +date-dropdown(dateDropdown)
+        .form-elements__filter-date
+          +date-dropdown(filterDate)
 
-          .column-left__filter-date
-            +date-dropdown(filterDate)
+        .form-elements__subscrip-textfield
+          +subscription-textfield(subscrip)
 
-          .column-left__subscrip-textfield
-            +subscription-textfield(subscrip)
+        .form-elements__rooms
+          +dropdown(dropDown.rooms)
+        
+        .form-elements__checkbox-list
+          +checkbox-list(checkboxList.expandable)
 
-          .column-left__rooms
-            +dropdown(dropDown.rooms)
-          
-          .column-left__checkbox-list
-            +checkbox-list(checkboxList.expandable)
+        .form-elements__feature
+          +feature(feature.comfort)
 
-          .column-left__feature
-            +feature(feature.comfort)
+        .form-elements__feature
+          +feature(feature.convenience)
 
-          .column-left__feature
-            +feature(feature.convenience)
+      .form-elements__column-right
+        .form-elements__container
+          .form-elements__container-center 
+            .form-elements__checkbox-list-buttons
+              +checkbox-list(checkboxList.buttons)
 
-        .map-elements__wrapper-right
-          .map-elements__column
-            .column-center 
-              .column-center__checkbox-list
-                +checkbox-list(checkboxList.buttons)
+            .form-elements__radio-buttons
+              +radio-buttons(radioButtons)
 
-              .column-center__radio-buttons
-                +radio-buttons(radioButtons)
+            .form-elements__toggle
+              +toggle(toggleButton)
 
-              .column-center__toggle
-                +toggle(toggleButton)
+            .form-elements__like-button
+              +like-button({label:'like button'})
 
-              .column-center__like-button
-                +like-button({label:'like button'})
+            .form-elements__star-rating
+              +star-rating(rateButton)
 
-              .column-center__star-rating
-                +star-rating(rateButton)
+            .form-elements__checkbox-list-rich
+              +checkbox-list(checkboxList.richCheckbox)
 
-              .column-center__checkbox-listRich
-                +checkbox-list(checkboxList.richCheckbox)
+          .form-elements__container-right
+            .form-elements__range-slider
+              +range-slider({label:'Range Slider'})
+            span.form-elements__title-buttons buttons
 
-            .column-right
-              .column-right__range-slider
-                +range-slider({label:'Range Slider'})
-              span.column-right__logo buttons
+            .form-elements__link
+              +button(button.link)
 
-              .column-right__link
-                +button(button.link)
+            .form-elements__link-border
+              +button(button.linkBorder)
 
-              .column-right__link-border
-                +button(button.linkBorder)
+            .form-elements__button-text
+              +button(button.text)
 
-              .column-right__button-text
-                +button(button.text)
+            .form-elements__submit
+              +button(button.submit)
 
-              .column-right__submit
-                +button(button.submit)
+            .form-elements__pagination
+              +pagination({label:'pagination'})
 
-              .column-right__pagination
-                +pagination({label:'pagination'})
-
-              .column-right__bullet-list
-                +bullet-list(bulletList)
-                
-          .column-bottom
-            .column-bottom__comment
-              +comment(comment)
+            .form-elements__bullet-list
+              +bullet-list(bulletList)
+              
+        .form-elements__column-bottom
+          .form-elements__comment
+            +comment(comment)

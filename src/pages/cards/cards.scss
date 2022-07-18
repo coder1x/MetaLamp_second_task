@@ -25,13 +25,13 @@
     width: 100%;
     max-width: 380px;
   }
-}
 
-.cards__center {
-  margin-left: 40px;
-  width: 100%;
-  max-width: 390px;
-
+  &__center {
+    margin-left: 40px;
+    width: 100%;
+    max-width: 390px;
+  }
+  
   &__booking {
     margin-bottom: 40px;
     width: 100%;
@@ -43,14 +43,19 @@
     width: 100%;
     max-width: 380px;
   }
-}
 
-.cards__right {
-  margin-left: 40px;
-  width: 100%;
-  max-width: 340px;
+  
+  &__right {
+    margin-left: 40px;
+    width: 100%;
+    max-width: 340px;
+  }
+  
   &__room-card {
     width: 100%;
     max-width: 270px;
   }
+  
 }
+
+

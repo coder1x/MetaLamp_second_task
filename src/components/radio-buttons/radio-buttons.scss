@@ -39,16 +39,16 @@ $color-focus: $Dark-Shade-100;
       outline: 2px solid $color-focus;
       outline-offset: 12px;
     }
-  }
 
-  &__input:checked + &__before {
-    border-color: $color-radio-border;
-    background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
-    box-shadow: inset 0px 0px 0px 3.5px $color-background;
-  }
-
-  &__input:focus + &__before {
-    border: 1px solid $color-radio;
+    &:checked + .radio-buttons__before {
+      border-color: $color-radio-border;
+      background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
+      box-shadow: inset 0px 0px 0px 3.5px $color-background;
+    }
+  
+    &:focus + .radio-buttons__before {
+      border: 1px solid $color-radio;
+    }
   }
 
   &__label {
