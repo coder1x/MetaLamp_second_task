@@ -66,8 +66,7 @@ plugins.push(
       },
       'twitter-description': {
         name: 'twitter:description',
-        content: 'Лучшие номера для вашей работы,'
-          + ' отдыха и просто вдохновения',
+        content: 'Лучшие номера для вашей работы, отдыха и просто вдохновения',
       },
       'twitter-site': {
         name: 'twitter:site',
@@ -87,8 +86,7 @@ plugins.push(
       },
       'og-description': {
         property: 'og:description',
-        content: 'Лучшие номера для вашей работы,'
-          + ' отдыха и просто вдохновения',
+        content: 'Лучшие номера для вашей работы, отдыха и просто вдохновения',
       },
       'og-image': {
         property: 'og:image',
@@ -113,8 +111,7 @@ plugins.push(
     devMode: env.isDev,
     appName: 'бронирование номеров в TOXIN отель.',
     appShortName: 'TOXIN',
-    appDescription: 'Лучшие номера для вашей работы,'
-      + ' отдыха и просто вдохновения',
+    appDescription: 'Лучшие номера для вашей работы, отдыха и просто вдохновения',
     developerName: 'coder1',
     developerURL: 'https://github.com/coder1x/',
     icons: {

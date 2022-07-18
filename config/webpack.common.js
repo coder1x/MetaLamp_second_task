@@ -8,12 +8,9 @@ const optimization = require('./optimization');
 
 const devServer = require('./webpack.devServer.js');
 
-const points = [];
+const points = ['./index.js'];
 
-if (env.isDev)
-  points.push('webpack/hot/dev-server');
-
-points.push('./index.js');
+if (env.isDev) { points.push('webpack/hot/dev-server'); }
 
 module.exports = merge(devServer, {
 
