@@ -7,9 +7,9 @@ mixin dropdown(options = {})
       value = '',
       name = '',
       words = [[]],
-      maxValue = [],
+      maxValues = [],
       modifier = '',
-      button = false,
+      isButton = false,
     } = options;
 
     const BASE_CLASS = 'dropdown'
@@ -28,10 +28,10 @@ mixin dropdown(options = {})
             p(class=`${BASE_CLASS}__text`)= words[0][i]
             button(class=`${BASE_CLASS}__minus js-${BASE_CLASS}__minus` aria-label='минус') -
             span(class=`${BASE_CLASS}__value js-${BASE_CLASS}__value`) 0
-            button(class=`${BASE_CLASS}__plus js-${BASE_CLASS}__plus` data-max=maxValue[i] aria-label='плюс') +
+            button(class=`${BASE_CLASS}__plus js-${BASE_CLASS}__plus` data-max=maxValues[i] aria-label='плюс') +
       -}
       
-      -if(button){
+      -if(isButton){
           li(class=`${BASE_CLASS}__buttons`)
             div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
               +button({

@@ -1,3 +1,11 @@
 import Diagram from './Diagram.js';
 
-new Diagram('.js-diagram');
+function renderDropDown(className) {
+  const components = [];
+  document.querySelectorAll(className).forEach(() => {
+    components.push(new Diagram(className));
+  });
+  return components;
+}
+
+renderDropDown('.js-diagram');

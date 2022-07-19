@@ -22,12 +22,12 @@
         "младенец,младенца,младенцев"
       ]
     ],
-    "maxValue": [
+    "maxValues": [
       "10",
       "12",
       "5"
     ],
-    "button": true
+    "isButton": true
   },
   "button": {
     "text": "подобрать номер",

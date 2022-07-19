@@ -7,6 +7,10 @@ class DropDown {
     autoBind(this);
     this.className = className;
     this.element = component;
+
+    console.log(className);
+    console.log(component);
+
     this._init();
   }
 
