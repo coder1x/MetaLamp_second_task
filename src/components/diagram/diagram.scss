@@ -60,33 +60,18 @@ $color-item: $Dark-Shade-75;
     line-height: 18px;
     color: $color-item;
     margin-top: 6px;
-
-    &::before {
-      position: absolute;
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      top: 50%;
-      left: -10px;
-      transform: translate(-50%, -50%);
-      box-sizing: border-box;
-    }
-
-    &:nth-child(1)::before {
-      background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
-    }
-  
-    &:nth-child(2)::before {
-      background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-    }
-  
-    &:nth-child(3)::before {
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-    }
-  
-    &:nth-child(4)::before {
-      background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
-    }
   }
+
+  &__colors-dot{
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    left: -10px;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+  }
+
 }

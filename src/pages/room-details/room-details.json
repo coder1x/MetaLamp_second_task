@@ -22,27 +22,67 @@
   },
   "diagram": {
     "label": "Впечатления от номера",
-    "data": [
-      [
-        "130",
-        "excellent",
-        "Великолепно"
-      ],
-      [
-        "65",
-        "good",
-        "Хорошо"
-      ],
-      [
-        "65",
-        "satisfactorily",
-        "Удовлетворительно"
-      ],
-      [
-        "0",
-        "disappointed",
-        "Разочарован"
-      ]
+    "votes": [
+      {
+        "votes": "130",
+        "name": "excellent",
+        "title": "Великолепно",
+        "colorStops": [
+          {
+            "stop": "0",
+            "color": "#FFE39C"
+          },
+          {
+            "stop": "1",
+            "color": "#FFBA9C"
+          }
+        ]
+      },
+      {
+        "votes": "65",
+        "name": "good",
+        "title": "Хорошо",
+        "colorStops": [
+          {
+            "stop": "0",
+            "color": "#6FCF97"
+          },
+          {
+            "stop": "1",
+            "color": "#66D2EA"
+          }
+        ]
+      },
+      {
+        "votes": "65",
+        "name": "satisfactorily",
+        "title": "Удовлетворительно",
+        "colorStops": [
+          {
+            "stop": "0",
+            "color": "#BC9CFF"
+          },
+          {
+            "stop": "1",
+            "color": "#8BA4F9"
+          }
+        ]
+      },
+      {
+        "votes": "0",
+        "name": "disappointed",
+        "title": "Разочарован",
+        "colorStops": [
+          {
+            "stop": "0",
+            "color": "#909090"
+          },
+          {
+            "stop": "1",
+            "color": "#3D4975"
+          }
+        ]
+      }
     ]
   },
   "booking": {

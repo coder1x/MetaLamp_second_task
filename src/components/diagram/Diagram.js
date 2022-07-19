@@ -4,7 +4,19 @@ class Diagram {
     this._init();
   }
 
-  getColors() {
+  _init() {
+    this._nameLine = [];
+    this._rating = [];
+    this._titles = [];
+
+    this._getDataAttribute();
+    this._getData();
+    if (this._setDomElement()) {
+      this._buildDiagram();
+    }
+  }
+
+  _getColors() {
     if (!this.canvas) return false;
 
     const center = {
@@ -13,63 +25,15 @@ class Diagram {
     };
 
     const RADIUS_GRADIENT = 180;
-
-    const gradientColor = [
-      {
-        name: 'excellent',
-        x1: center.x + RADIUS_GRADIENT,
-        y1: center.y,
-        x2: center.x,
-        y2: center.y + RADIUS_GRADIENT,
-        colorStops: [
-          { stop: 0, color: '#FFE39C' },
-          { stop: 1, color: '#FFBA9C' },
-        ],
-      },
-      {
-        name: 'good',
-        x1: center.x,
-        y1: center.y - RADIUS_GRADIENT,
-        x2: center.x + RADIUS_GRADIENT,
-        y2: center.y,
-        colorStops: [
-          { stop: 0, color: '#6FCF97' },
-          { stop: 1, color: '#66D2EA' },
-        ],
-      },
-      {
-        name: 'satisfactorily',
-        x1: center.x,
-        y1: center.y - RADIUS_GRADIENT,
-        x2: center.x + RADIUS_GRADIENT,
-        y2: center.y,
-        colorStops: [
-          { stop: 0, color: '#BC9CFF' },
-          { stop: 1, color: '#8BA4F9' },
-        ],
-      },
-      {
-        name: 'disappointed',
-        x1: center.x - RADIUS_GRADIENT,
-        y1: center.y,
-        x2: center.x,
-        y2: center.y - RADIUS_GRADIENT,
-        colorStops: [
-          { stop: 0, color: '#909090' },
-          { stop: 1, color: '#3D4975' },
-        ],
-      },
-    ];
-
     const color = new Map();
 
-    gradientColor.forEach((item) => {
+    this.dataVotes.forEach((item) => {
       if (this._canvasContext instanceof CanvasRenderingContext2D) {
         const gradient = this._canvasContext.createLinearGradient(
-          item.x1,
-          item.y1,
-          item.x2,
-          item.y2,
+          center.x + RADIUS_GRADIENT,
+          center.y,
+          center.x,
+          center.y + RADIUS_GRADIENT,
         );
 
         item.colorStops.forEach((colorStop) => {
@@ -78,49 +42,29 @@ class Diagram {
         color.set(item.name, gradient);
       }
     });
-
     return color;
   }
 
-  getAttribute() {
-    const data = [];
-    const getDataNumber = (
-      elem,
-      attribute,
-    ) => Number(elem.getAttribute(attribute)) ?? 0;
-
-    const listItems = this._getElements('__colors-item');
-    if (!Array.isArray(listItems)) return [];
-
-    listItems.forEach((item) => {
-      const number = getDataNumber(item, 'data-grade');
-      const name = item.getAttribute('data-name');
-
-      if (number && name) {
-        data.push(number);
-        this._nameLine.push(name);
-      }
+  _getData() {
+    this.dataVotes.forEach((item) => {
+      this._titles.push(item.title);
+      this._rating.push(Number(item.votes) ?? 0);
+      this._nameLine.push(item.name);
     });
 
     this._nameLine = this._nameLine.reverse();
-    return data.reverse();
-  }
+    this._rating = this._rating.reverse();
 
-  _init() {
-    this._nameLine = [];
-    if (this._setDomElement()) {
-      this._buildDiagram();
+    const index = this._rating.findIndex((item) => item === 0);
+    if (index !== -1) {
+      this._rating.splice(index, 1);
+      this._nameLine.splice(index, 1);
     }
   }
 
-  _getElements(string, parentElement) {
-    const element = parentElement ?? this.element;
-    if (element) {
-      return [
-        ...element.querySelectorAll(`${this.className}${string}`),
-      ];
-    }
-    return null;
+  _getDataAttribute() {
+    this.element = document.querySelector(this.className);
+    this.dataVotes = JSON.parse(this.element.getAttribute('data-votes'));
   }
 
   _getElement(string, parentElement) {
@@ -130,8 +74,28 @@ class Diagram {
   }
 
   _setDomElement() {
-    this.element = document.querySelector(this.className);
     if (!this.element) return false;
+    const diagramSelector = this.className.replace(/^\.js-/, '');
+    const listSelector = `.${diagramSelector}__colors`;
+
+    const list = this.element.querySelector(listSelector);
+
+    this._titles.forEach((title, index) => {
+      const liElement = document.createElement('li');
+      liElement.classList.add(`${diagramSelector}__colors-item`);
+      liElement.innerText = title;
+      list.append(liElement);
+
+      const divElement = document.createElement('div');
+      divElement.classList.add(`${diagramSelector}__colors-dot`);
+
+      const { colorStops } = this.dataVotes[index];
+
+      divElement.style.background = `linear-gradient(180deg, 
+        ${colorStops[0].color} 0%, ${colorStops[1].color} 100%)`;
+
+      liElement.append(divElement);
+    });
 
     this.canvas = this._getElement('__canvas');
     if (this.canvas) { this._canvasContext = this.canvas.getContext('2d'); }
@@ -139,6 +103,7 @@ class Diagram {
   }
 
   _buildDiagram() {
+    const color = this._getColors();
     // ----------------- options ---------------------
     const SCALING = 2;
     const coordinatesX = 60 * SCALING;
@@ -153,12 +118,8 @@ class Diagram {
     }
     // ----------------- end options ------------------
 
-    const rating = this.getAttribute();
-
-    const percent = rating.reduce((a, b) => a + b);
-    const angle = rating.map((item) => Number((item / percent).toFixed(2)));
-
-    const color = this.getColors();
+    const percent = this._rating.reduce((a, b) => a + b);
+    const angle = this._rating.map((item) => Number((item / percent).toFixed(2)));
 
     let endLine = 0;
     let startLine = 0;

@@ -2,16 +2,17 @@ mixin diagram(options = {})
   -
     const {
       label = '',
-      data = []
+      votes = []
     } = options;
     const BASE_CLASS = 'diagram'
 
-  div(class=`${BASE_CLASS} js-${BASE_CLASS}`)
+    const data = JSON.stringify(votes)
+
+  div(class=`${BASE_CLASS} js-${BASE_CLASS}` data-votes=`${data}`)
     if label
       h2(class=`${BASE_CLASS}__header`)= label
     
     div(class=`${BASE_CLASS}__wrapper`)
       canvas(class=`${BASE_CLASS}__canvas js-${BASE_CLASS}__canvas` width='240' height='240')
       ul(class=`${BASE_CLASS}__colors`)
-        each item in data
-          li(class=`${BASE_CLASS}__colors-item js-${BASE_CLASS}__colors-item` data-grade=item[0] data-name=item[1])=item[2]
+
