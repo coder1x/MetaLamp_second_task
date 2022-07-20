@@ -106,8 +106,9 @@ go to `http://localhost:8080/`
 #### On the production server create the bundle files
 ```commandline
 npm run build
+```
 
-#### code review with ESLint
+#### Code review with ESLint
 ```commandline
 npm run linter
 ```
