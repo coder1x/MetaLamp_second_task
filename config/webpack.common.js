@@ -10,7 +10,9 @@ const devServer = require('./webpack.devServer.js');
 
 const points = [];
 
-if (env.isDev) { points.push('webpack/hot/dev-server'); }
+if (env.isDev) {
+  points.push('webpack/hot/dev-server');
+}
 
 points.push('./index.js');
 

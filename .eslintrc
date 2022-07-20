@@ -16,7 +16,7 @@
     "no-console": "off",
     "no-var": 1,
     "camelcase": 1,
-    "no-nested-ternary": 1,
+    "no-nested-ternary": "error",
     "no-template-curly-in-string": 1,
     "no-self-compare": 1,
     "import/no-unresolved": "off",
@@ -25,6 +25,7 @@
     "no-underscore-dangle": "off",
     "no-new": "off",
     "no-loss-of-precision": "off",
+    "nonblock-statement-body-position": "error",
     "semi": [
       1
     ],
