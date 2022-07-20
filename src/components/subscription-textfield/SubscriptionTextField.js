@@ -37,7 +37,7 @@ class SubscriptionTextField {
   }
 
   _bindEvent() {
-    if (!this.input || !this.link) return false;
+    if (!this.input || !this.link) { return false; }
 
     this.input.addEventListener('keydown', this._handleInputKeyDown);
     this.link.addEventListener('click', this._handleLinkClick);

@@ -9,20 +9,20 @@ class HeaderMenu {
     this._startMenu();
   }
 
-  _getElements(string, parentElement) {
+  _getElements(selector, parentElement) {
     return [
       ...(parentElement ?? this.element)
-        .querySelectorAll(`${this.className}${string}`),
+        .querySelectorAll(`${this.className}${selector}`),
     ];
   }
 
-  _getElement(string, parentElement) {
+  _getElement(selector, parentElement) {
     return (parentElement ?? this.element)
-      .querySelector(`${this.className}${string}`);
+      .querySelector(`${this.className}${selector}`);
   }
 
   closeAll() {
-    if (!this._showElement) return false;
+    if (!this._showElement) { return false; }
 
     if (this._showElement.length) {
       this._showElement.forEach((element) => {
@@ -59,7 +59,7 @@ class HeaderMenu {
   }
 
   _getIndex(element) {
-    if (!this._links) return null;
+    if (!this._links) { return null; }
     return this._links.get(element);
   }
 
@@ -83,11 +83,11 @@ class HeaderMenu {
   }
 
   _showList(index) {
-    if (this._button && HeaderMenu._isButtonVisible(this._button)) return false;
+    if (this._button && HeaderMenu._isButtonVisible(this._button)) { return false; }
 
     this.closeAll();
 
-    if (!Array.isArray(this._items)) return false;
+    if (!Array.isArray(this._items)) { return false; }
 
     const element = this._items[index];
 
@@ -102,7 +102,7 @@ class HeaderMenu {
   }
 
   _closeTip() {
-    if (!Array.isArray(this._showTip)) return false;
+    if (!Array.isArray(this._showTip)) { return false; }
 
     if (this._showTip.length) {
       this._showTip.forEach((elem) => {
@@ -184,14 +184,14 @@ class HeaderMenu {
       return true;
     }
 
-    if (event.key !== ' ') return false;
+    if (event.key !== ' ') { return false; }
 
     event.preventDefault();
     const currentElement = event.currentTarget;
 
     let index = this._getIndex(currentElement);
 
-    if (index == null) return false;
+    if (index == null) { return false; }
 
     let element = null;
     if (Array.isArray(this._items)) { element = this._items[index]; }
@@ -224,7 +224,7 @@ class HeaderMenu {
   }
 
   _bindEvent() {
-    if (!this._button || !this._nav) return false;
+    if (!this._button || !this._nav) { return false; }
 
     this._button.addEventListener('click', this._handleToggleClick);
     this._button.addEventListener('keydown', this._handleToggleKeyDown);

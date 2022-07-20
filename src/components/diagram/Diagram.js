@@ -17,7 +17,7 @@ class Diagram {
   }
 
   _getColors() {
-    if (!this.canvas) return false;
+    if (!this.canvas) { return false; }
 
     const center = {
       x: this.canvas.width,
@@ -67,14 +67,14 @@ class Diagram {
     this.dataVotes = JSON.parse(this.element.getAttribute('data-votes'));
   }
 
-  _getElement(string, parentElement) {
+  _getElement(selector, parentElement) {
     const element = parentElement ?? this.element;
-    if (!element) return null;
-    return element.querySelector(`${this.className}${string}`);
+    if (!element) { return null; }
+    return element.querySelector(`${this.className}${selector}`);
   }
 
   _setDomElement() {
-    if (!this.element) return false;
+    if (!this.element) { return false; }
     const diagramSelector = this.className.replace(/^\.js-/, '');
     const listSelector = `.${diagramSelector}__colors`;
 
@@ -125,7 +125,7 @@ class Diagram {
     let startLine = 0;
     const dot = (Math.PI / 180) * 270;
 
-    if (!(this._canvasContext instanceof CanvasRenderingContext2D)) return false;
+    if (!(this._canvasContext instanceof CanvasRenderingContext2D)) { return false; }
 
     for (let i = 0; i < angle.length; i += 1) {
       endLine = 2 * Math.PI * angle[i];

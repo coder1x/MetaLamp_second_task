@@ -17,7 +17,7 @@ class SignIn {
   }
 
   _checkField() {
-    if (!this._emailInputs || !this._passwordInput) return false;
+    if (!this._emailInputs || !this._passwordInput) { return false; }
 
     if (!this._emailInputs.value) {
       message('Введите Email');

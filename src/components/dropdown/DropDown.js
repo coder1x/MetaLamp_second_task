@@ -8,9 +8,6 @@ class DropDown {
     this.className = className;
     this.element = component;
 
-    console.log(className);
-    console.log(component);
-
     this._init();
   }
 
@@ -18,29 +15,27 @@ class DropDown {
     const buttonMinus = this._getElement('__minus', item);
     const buttonPlus = this._getElement('__plus', item);
 
-    const getModifier = (selectorElement, modifier) => this.className.replace(/^\.js-/, '') + selectorElement + modifier;
-
-    let classWithModifier = getModifier('__minus', '_disable');
+    const classModifierMinus = this._getModifier('__minus', '_disable');
     const value = Number(this._getElement('__value', item).innerText);
 
     if (!value) {
-      buttonMinus.classList.add(classWithModifier);
+      buttonMinus.classList.add(classModifierMinus);
       buttonMinus.disabled = true;
     } else {
-      buttonMinus.classList.remove(classWithModifier);
+      buttonMinus.classList.remove(classModifierMinus);
       buttonMinus.disabled = false;
     }
 
     const maxValue = Number(buttonPlus.getAttribute('data-max'));
-    classWithModifier = getModifier('__plus', '_disable');
+    const classModifierPlus = this._getModifier('__plus', '_disable');
 
     let isDisabled = false;
     const { classList } = buttonPlus;
     if (value >= maxValue) {
-      classList.add(classWithModifier);
+      classList.add(classModifierPlus);
       isDisabled = true;
     } else {
-      classList.remove(classWithModifier);
+      classList.remove(classModifierPlus);
     }
 
     this._isButtonPlus = isDisabled;
@@ -48,7 +43,7 @@ class DropDown {
   }
 
   resetValue() {
-    if (!this._values || !this._inputElement) return false;
+    if (!this._values || !this._inputElement) { return false; }
 
     this._values.forEach((item) => {
       const spanElement = item;
@@ -57,7 +52,7 @@ class DropDown {
 
     this._inputElement.value = this.defaultText;
 
-    if (!this._items || !this._clearButton) return false;
+    if (!this._items || !this._clearButton) { return false; }
 
     this._items.map((item) => this.checkValue(item));
     this._toggleModifier(this._clearButton, '__button-clear_visible');
@@ -66,15 +61,15 @@ class DropDown {
   }
 
   static declineWords(number, words) {
-    return words[(number % 100 > 4
-      && number % 100 < 20) ? 2
-      : [2, 0, 1, 1, 1, 2][(number % 10 < 5)
-        ? number % 10 : 5]];
+    const numbersUpToFive = number % 10 < 5 ? number % 10 : 5;
+    const isPlural = number % 100 > 4 && number % 100 < 20;
+
+    return words[isPlural ? 2 : [2, 0, 1, 1, 1, 2][numbersUpToFive]];
   }
 
   getCategories() {
     const fields = new Map();
-    if (!Array.isArray(this._values)) return false;
+    if (!Array.isArray(this._values)) { return false; }
 
     for (let i = 0; i < this._values.length; i += 1) {
       const typeText = this._declensions[i].join(',');
@@ -99,16 +94,20 @@ class DropDown {
     this._bindEventSelect();
   }
 
-  _getElements(string, parentElement) {
+  _getModifier(selectorElement, modifier) {
+    return `${this.className.replace(/^\.js-/, '')}${selectorElement}${modifier}`;
+  }
+
+  _getElements(selector, parentElement) {
     return [
       ...(parentElement ?? this.element)
-        .querySelectorAll(this.className + string),
+        .querySelectorAll(this.className + selector),
     ];
   }
 
-  _getElement(string, parentElement) {
+  _getElement(selector, parentElement) {
     return (parentElement ?? this.element)
-      .querySelector(this.className + string);
+      .querySelector(this.className + selector);
   }
 
   _setDomElement() {
@@ -120,10 +119,8 @@ class DropDown {
 
     this._items.forEach((item) => {
       this.checkValue(item);
+      this._values.push(this._getElement('__value', item));
 
-      if (this._values) {
-        this._values.push(this._getElement('__value', item));
-      }
       this._readingAttributes(item);
     });
 
@@ -179,7 +176,7 @@ class DropDown {
   _handleButtonApplyClick(event) {
     event.preventDefault();
 
-    if (!(this._inputElement instanceof HTMLInputElement)) return false;
+    if (!(this._inputElement instanceof HTMLInputElement)) { return false; }
     const defaultText = this._inputElement.value === this.defaultText;
     const isInputClear = defaultText || !this._inputElement.value;
 
@@ -205,7 +202,7 @@ class DropDown {
   }
 
   _bindEvent() {
-    if (!this._inputElement || !this._tipElement) return false;
+    if (!this._inputElement || !this._tipElement) { return false; }
 
     this._inputElement.addEventListener('mouseup', this._handleInputMouseUp);
     this._inputElement.addEventListener('mousedown', this._handleInputMouseDown);
@@ -228,12 +225,8 @@ class DropDown {
       this._clearButton.addEventListener('click', this._handleButtonClearClick);
     }
 
-    const _bindEventDocument = (event) => {
-      document.addEventListener(event, this._handleDocumentEvent);
-    };
-
-    _bindEventDocument('click');
-    _bindEventDocument('focusin');
+    document.addEventListener('click', this._handleDocumentEvent);
+    document.addEventListener('focusin', this._handleDocumentEvent);
 
     return true;
   }
@@ -244,7 +237,7 @@ class DropDown {
   }
 
   _toggleVisibility(isVisible = false) {
-    if (!this._selectElement) return;
+    if (!this._selectElement) { return; }
 
     this._toggleModifier(
       this.element,
@@ -309,28 +302,28 @@ class DropDown {
     }
   }
 
+  static _mergeText(
+    value,
+    words,
+    text,
+    isMultiString = false,
+  ) {
+    const number = Number(value);
+    if (!number) { return text; }
+
+    if (!isMultiString) {
+      return `${text}${number} ${DropDown.declineWords(number, words)}`;
+    }
+    const comma = text ? ', ' : '';
+    return `${text}${comma + number} ${DropDown.declineWords(number, words)}`;
+  }
+
   _createInputText() {
     let text = '';
-    const mergeText = (
-      value,
-      strings,
-      isMultiString = false,
-    ) => {
-      const number = Number(value);
-      if (!number) return;
-
-      if (!isMultiString) {
-        text += `${number} ${DropDown.declineWords(number, strings)}`;
-      } else {
-        const comma = text ? ', ' : '';
-        text += `${comma + number} ${DropDown.declineWords(number, strings)}`;
-      }
-    };
-
     let isMultiStringLock = false;
 
     this.getCategories().forEach((value, key) => {
-      mergeText(value, key.split(','), Boolean(isMultiStringLock));
+      text = DropDown._mergeText(value, key.split(','), text, Boolean(isMultiStringLock));
       isMultiStringLock = true;
     });
 

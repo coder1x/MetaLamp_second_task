@@ -14,7 +14,7 @@ function message(text) {
   const SELECTOR = 'message-toxin';
 
   const popUp = document.querySelector(`.${SELECTOR}`);
-  if (popUp) return false;
+  if (popUp) { return false; }
 
   const wrapper = document.createElement('article');
   wrapper.classList.add(SELECTOR);

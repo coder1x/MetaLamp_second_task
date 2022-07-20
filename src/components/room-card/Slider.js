@@ -102,7 +102,7 @@ class Slider {
   }
 
   _handleNextClick() {
-    if (!Array.isArray(this._slidesElement)) return false;
+    if (!Array.isArray(this._slidesElement)) { return false; }
 
     const length = this._slidesElement.length - 1;
     if (this._indexSlide < length) {
@@ -131,12 +131,12 @@ class Slider {
   }
 
   _bindEvent() {
-    if (!this._prevElement || !this._nextElement) return false;
+    if (!this._prevElement || !this._nextElement) { return false; }
 
     this._prevElement.addEventListener('click', this._handlePrevClick);
     this._nextElement.addEventListener('click', this._handleNextClick);
 
-    if (!this._linkSlide || !this._dotElement) return false;
+    if (!this._linkSlide || !this._dotElement) { return false; }
 
     this._linkSlide.addEventListener('click', this._handleLinkClick);
     this._dotElement.addEventListener('click', this._handleDotClick);
@@ -195,7 +195,7 @@ class Slider {
       const isButtonPressed = event.buttons === 1;
       const isMouseMove = event.type === 'mousemove' && isButtonPressed;
 
-      if (!isTouchMove && !isMouseMove) return false;
+      if (!isTouchMove && !isMouseMove) { return false; }
 
       const TIME = 200;
       const SHIFT = 20;

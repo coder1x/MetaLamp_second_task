@@ -87,7 +87,7 @@ class MaskedTextField {
     const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
     const dateTarget = target.value;
 
-    if (!REGEXP.test(dateTarget)) return false;
+    if (!REGEXP.test(dateTarget)) { return false; }
 
     const dates = dateTarget.split('.').map((item) => Number(item.replace(/^0/, '')));
     dates[1] -= 1;

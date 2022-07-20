@@ -17,14 +17,14 @@ class Sidebar {
   }
 
   _getVisibility() {
-    if (!this.block) return false;
+    if (!this.block) { return false; }
 
     return window.getComputedStyle(this.block, null)
       .getPropertyValue('display') !== 'none';
   }
 
   _toggle(isVisible = this._getVisibility()) {
-    if (!this.block) return false;
+    if (!this.block) { return false; }
 
     const { classList } = this.block;
 
@@ -65,7 +65,7 @@ class Sidebar {
     const isVisible = this._getVisibility() && this.button;
     const isFocusDocument = (!linkElement && isVisible);
 
-    if (!isFocusDocument) return false;
+    if (!isFocusDocument) { return false; }
 
     const element = this.button.querySelector('button');
     const path = (event.composedPath && event.composedPath());
@@ -83,7 +83,7 @@ class Sidebar {
   }
 
   _bindEvent() {
-    if (!this.block || !this.button) return false;
+    if (!this.block || !this.button) { return false; }
 
     this.button.addEventListener('click', this._handleButtonWrapperClick);
     this.block.addEventListener('click', this._handleSearchRoomFilterClick);

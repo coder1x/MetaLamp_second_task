@@ -39,7 +39,7 @@ class LikeButton {
   }
 
   _setDomElement() {
-    if (!this._likeElement) return false;
+    if (!this._likeElement) { return false; }
     this._iconElement = this._likeElement.querySelector(`${this.nameClass}__icon`);
     this._valueElement = this._likeElement.querySelector(`${this.nameClass}__value`);
     this._linkElement = this._likeElement.querySelector(`${this.nameClass}__like`);
@@ -54,23 +54,23 @@ class LikeButton {
     localStorage.setItem(this._stringKey, String(isRecord));
   }
 
-  _toggleStyle() {
+  _toggleClass() {
     const selector = this.nameClass.replace(/^\.js-/, '');
     const nameVoted = `${selector}_voted`;
     const nameFavorite = `${selector}__icon_favorite`;
 
-    const toggleClass = () => {
-      if (this._isLiked) {
-        this._iconElement.classList.add(nameFavorite);
-        this._likeElement.classList.add(nameVoted);
-      } else {
-        this._iconElement.classList.remove(nameFavorite);
-        this._likeElement.classList.remove(nameVoted);
-      }
-    };
+    if (this._isLiked) {
+      this._iconElement.classList.add(nameFavorite);
+      this._likeElement.classList.add(nameVoted);
+    } else {
+      this._iconElement.classList.remove(nameFavorite);
+      this._likeElement.classList.remove(nameVoted);
+    }
+  }
 
+  _toggleStyle() {
     if (this._iconElement && this._likeElement) {
-      toggleClass();
+      this._toggleClass();
     }
   }
 
@@ -89,7 +89,7 @@ class LikeButton {
   }
 
   _bindEvent() {
-    if (!this._linkElement) return false;
+    if (!this._linkElement) { return false; }
 
     this._linkElement.addEventListener('click', this._handleLikeClick);
     this._linkElement.addEventListener('keydown', this._handleLikeKeyDown);

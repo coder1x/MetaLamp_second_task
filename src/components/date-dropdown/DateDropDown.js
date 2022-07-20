@@ -39,7 +39,7 @@ class DateDropDown {
       const dateFrom = this.inputFrom.value;
       const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
-      if (!REGEXP.test(dateFrom)) return false;
+      if (!REGEXP.test(dateFrom)) { return false; }
 
       const dateTo = this.inputTo.value;
       this.calendar.clear();
@@ -53,7 +53,7 @@ class DateDropDown {
       const dates = this.inputHidden.value.split('-');
 
       const NUMBER_OF_DATES = 2;
-      if (dates.length < NUMBER_OF_DATES) return false;
+      if (dates.length < NUMBER_OF_DATES) { return false; }
 
       const dateFrom = DateDropDown.getDate(
         DateDropDown.trimDate(dates[0]),
@@ -236,7 +236,7 @@ class DateDropDown {
   }
 
   _getDateFilter(dateFilter) {
-    if (!dateFilter) return '';
+    if (!dateFilter) { return ''; }
 
     const dates = dateFilter.split('.');
     return `${dates[0]} ${this._months[Number(dates[1]) - 1]}`;
@@ -251,7 +251,7 @@ class DateDropDown {
 
     const dates = date.formattedDate;
 
-    if (dates.length !== 2) return false;
+    if (dates.length !== 2) { return false; }
 
     if (this.isRange) {
       [this.inputFrom.value] = dates;
@@ -299,36 +299,36 @@ class DateDropDown {
     });
   }
 
-  _validateRange(isShown = false) {
-    function trimDate(dateText) {
-      return dateText.trim().split(' ')[0];
+  static _trimDate(dateText) {
+    return dateText.trim().split(' ')[0];
+  }
+
+  _checkValidity(isValid, isShown) {
+    if (!isValid) {
+      message('Выберите диапазон');
+      return false;
     }
 
-    const checkValidity = (isValid) => {
-      if (!isValid) {
-        message('Выберите диапазон');
-        return false;
-      }
+    if (!isShown) { this.toggleVisibility(this._isToggle); }
+    return true;
+  }
 
-      if (!isShown) { this.toggleVisibility(this._isToggle); }
-      return true;
-    };
-
+  _validateRange(isShown = false) {
     if (this.isRange) {
-      checkValidity(Boolean(this.inputFrom.value && this.inputTo.value));
+      this._checkValidity(Boolean(this.inputFrom.value && this.inputTo.value), isShown);
     } else {
       let isValidDate = true;
       const dates = this.inputHidden.value.split('-');
       const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
       for (let i = 0; i < dates.length; i += 1) {
-        if (!REGEXP.test(trimDate(dates[i]))) {
+        if (!REGEXP.test(this._trimDate(dates[i]))) {
           isValidDate = false;
           break;
         }
       }
 
-      checkValidity(isValidDate);
+      this._checkValidity(isValidDate, isShown);
     }
   }
 

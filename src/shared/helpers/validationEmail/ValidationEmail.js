@@ -9,7 +9,7 @@ class ValidationEmail {
   }
 
   validateField() {
-    if (!this._regExpEmail || !this.inputElement) return false;
+    if (!this._regExpEmail || !this.inputElement) { return false; }
 
     return !!this._regExpEmail.test(this.inputElement.value);
   }
@@ -31,7 +31,7 @@ class ValidationEmail {
   }
 
   _bindEvent(event) {
-    if (!this.inputElement) return false;
+    if (!this.inputElement) { return false; }
     this.inputElement.addEventListener(event, this._handleInputEvent);
     return true;
   }

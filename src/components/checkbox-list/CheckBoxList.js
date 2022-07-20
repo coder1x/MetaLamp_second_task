@@ -17,8 +17,8 @@ class CheckBoxList {
     this._toggleModifier(this.element, '_visible');
   }
 
-  _getElement(string, parentElement) {
-    const selector = `${this.className}${string}`;
+  _getElement(className, parentElement) {
+    const selector = `${this.className}${className}`;
     return (parentElement ?? this.element).querySelector(selector);
   }
 
@@ -32,7 +32,7 @@ class CheckBoxList {
     const classWithModifier = `${this.className.replace(/^\.js-/, '')}${modifier}`;
     const { classList } = element;
 
-    if (isVisible && !classList.contains(classWithModifier)) return false;
+    if (isVisible && !classList.contains(classWithModifier)) { return false; }
 
     classList.toggle(classWithModifier);
 

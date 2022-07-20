@@ -28,8 +28,7 @@ class RangeSlider {
     [this.dotFrom] = this.element.getElementsByClassName('irs-handle from');
     [this.dotTo] = this.element.getElementsByClassName('irs-handle to');
 
-    this.element.getElementsByClassName('irs-line')[0]
-      .setAttribute('tabindex', '-2');
+    this.element.getElementsByClassName('irs-line')[0].setAttribute('tabindex', '-2');
     this.dotFrom.setAttribute('tabindex', '0');
     this.dotTo.setAttribute('tabindex', '0');
 
@@ -39,7 +38,8 @@ class RangeSlider {
       if (this.dotFocus === 'to') { this.dotTo.focus(); }
     }
 
-    this._bindEventDot(data);
+    this._RangeSliderData = data;
+    this._bindEventDot();
   }
 
   _setDomElement() {
@@ -73,35 +73,39 @@ class RangeSlider {
     }).data('ionRangeSlider');
   }
 
-  _bindEventDot({
-    from, to, min, max,
-  }) {
-    const handleFromKeyDown = (event, flag = false) => {
-      const value = flag ? to : from;
-      const dotName = flag ? 'to' : 'from';
-      const SHIFT = 50;
+  _handleFromKeyDown(event, flag = false) {
+    const {
+      from = 0,
+      to = 0,
+      min = 0,
+      max = 0,
+    } = this._RangeSliderData;
+    const value = flag ? to : from;
+    const dotName = flag ? 'to' : 'from';
+    const SHIFT = 50;
 
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        this.$myRange.update({
-          [dotName]: value >= min ? value - SHIFT : value,
-        });
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        this.$myRange.update({
-          [dotName]: value <= max ? value + SHIFT : value,
-        });
-      }
-    };
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      this.$myRange.update({
+        [dotName]: value >= min ? value - SHIFT : value,
+      });
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      this.$myRange.update({
+        [dotName]: value <= max ? value + SHIFT : value,
+      });
+    }
+  }
 
-    const handleToKeyDown = (event) => {
-      handleFromKeyDown(event, true);
-    };
+  _handleToKeyDown(event) {
+    this._handleFromKeyDown(event, true);
+  }
 
+  _bindEventDot() {
     this.dotFrom.addEventListener('focus', this.handleFromFocus);
     this.dotTo.addEventListener('focus', this.handleToFocus);
-    this.dotFrom.addEventListener('keydown', handleFromKeyDown);
-    this.dotTo.addEventListener('keydown', handleToKeyDown);
+    this.dotFrom.addEventListener('keydown', this._handleFromKeyDown);
+    this.dotTo.addEventListener('keydown', this._handleToKeyDown);
   }
 }
 
