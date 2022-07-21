@@ -1,6 +1,6 @@
 $color-box-shadow: $Dark-Shade-5;
 $color-user-border: $Dark-Shade-1;
-$color-nikname: $Dark-Shade-50;
+$color-nickname: $Dark-Shade-50;
 $color-line-backgr: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $color-link: $Dark-Shade-50;
 $color-line-close: $Dark-Shade-50;
@@ -241,13 +241,13 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-  &__nikname {
+  &__nickname {
     margin-left: 20px;
     @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    color: $color-nikname;
+    color: $color-nickname;
 
     @include media-breakpoint-down($xs) {
       margin-left: 0px;
