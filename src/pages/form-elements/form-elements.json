@@ -167,7 +167,19 @@
     }
   },
   "radioButtons": {
-    "label": "Radio Buttons"
+    "label": "Radio Buttons",
+    "items": [
+      {
+        "title": "Мужчина",
+        "name": "gender",
+        "isChecked": true
+      },
+      {
+        "title": "Женщина",
+        "name": "gender",
+        "isChecked": false
+      }
+    ]
   },
   "toggleButton": {
     "header": "Toggle",

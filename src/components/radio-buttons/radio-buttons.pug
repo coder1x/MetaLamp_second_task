@@ -1,7 +1,8 @@
 mixin radio-buttons(options = {})
   -
     const {
-      label = ''
+      label = '',
+      items = [],
     } = options;
     const BASE_CLASS = 'radio-buttons'
 
@@ -9,12 +10,8 @@ mixin radio-buttons(options = {})
     fieldset(class=`${BASE_CLASS}__items`)
       if label
         legend(class=`${BASE_CLASS}__header`)= label
-      
-        label(class=`${BASE_CLASS}__label`) Мужчина
-          input(class=`${BASE_CLASS}__input` type='radio' name='gender' checked)
-          span(class=`${BASE_CLASS}__before`)
-          
-        label(class=`${BASE_CLASS}__label`) Женщина
-          input(class=`${BASE_CLASS}__input` type='radio' name='gender')
+      each item in items
+        label(class=`${BASE_CLASS}__label`)= item.title
+          input(class=`${BASE_CLASS}__input` type='radio' name=item.name checked=item.isChecked)
           span(class=`${BASE_CLASS}__before`)
 

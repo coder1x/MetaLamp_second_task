@@ -28,6 +28,18 @@
       "name": "password"
     }
   },
+  "radioButtons": [
+    {
+      "title": "Мужчина",
+      "name": "gender",
+      "isChecked": true
+    },
+    {
+      "title": "Женщина",
+      "name": "gender",
+      "isChecked": false
+    }
+  ],
   "toggleButton": {
     "label": "Получать спецпредложения"
   },
