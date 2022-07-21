@@ -43,4 +43,4 @@ mixin footer()
           each icon, text in socialData
             li(class=`${BASE_CLASS}__social-item`)
               a(class=`${BASE_CLASS}__social-link` href='https://change-me' target='_blank' rel='noopener noreferrer')
-                img(class=`${BASE_CLASS}__social-icon` src=require('./img/'+icon) alt=text title=text)
+                img(class=`${BASE_CLASS}__social-icon` src=require(`./img/${icon}`) alt=text title=text)

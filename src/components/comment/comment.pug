@@ -14,7 +14,7 @@ mixin comment(options = {})
   
     div(class=`${BASE_CLASS}__avatar-wrapper`)
       figure(class=`${BASE_CLASS}__author`)
-        img(class=`${BASE_CLASS}__avatar` src=require('./img/'+src), alt=name)
+        img(class=`${BASE_CLASS}__avatar` src=require(`./img/${src}`), alt=name)
       div(class=`${BASE_CLASS}__like-wrapper`)
         +like-button()
 

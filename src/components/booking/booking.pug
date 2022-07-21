@@ -22,7 +22,7 @@ mixin booking(options = {})
           span(class=`${BASE_CLASS}__lux`) люкс
 
       span(class=`${BASE_CLASS}__price-wrapper`)
-        span(class=`${BASE_CLASS}__price`)= price+'₽'
+        span(class=`${BASE_CLASS}__price`)= `${price}₽`
         span(class=`${BASE_CLASS}__price-text`) в сутки
 
     form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')

@@ -22,4 +22,4 @@ html(lang='ru')
               lh.toxin-links__header Меню страниц - TOXIN
               each link, title in menuData
                 li.toxin-links__item
-                  a(class='toxin-links__link' href='/'+link target='_blank' rel='noopener noreferrer')=title
+                  a(class='toxin-links__link' href=`/${link}` target='_blank' rel='noopener noreferrer')=title

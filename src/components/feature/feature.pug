@@ -15,7 +15,7 @@ mixin feature(options = {})
 
   div(class=className)
     div(class=`${BASE_CLASS}__wrapper-icon`)
-      img(class=`${BASE_CLASS}__icon` src=require('./img/'+src) alt=alt)
+      img(class=`${BASE_CLASS}__icon` src=require(`./img/${src}`) alt=alt)
       
     div(class=`${BASE_CLASS}__description`)
       span(class=`${BASE_CLASS}__header`)=header

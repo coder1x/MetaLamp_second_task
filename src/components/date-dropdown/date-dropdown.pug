@@ -30,7 +30,7 @@ mixin date-dropdown(options = {})
                 input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder=''  autocomplete='off')
                 input(class=`${BASE_CLASS}__input-hidden js-${BASE_CLASS}__input-hidden` type='hidden' value=value name='date-filter')
             -}else{
-                input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder='' value=value name='date-'+i autocomplete='off')
+                input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder='' value=value name=`date-${i}` autocomplete='off')
             -}
             
             img(class=`${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='уголок')
