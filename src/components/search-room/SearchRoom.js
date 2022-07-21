@@ -26,9 +26,13 @@ class SearchRoom {
     let inputFrom = null;
     let inputTo = null;
 
-    if (this._dateInputs) { [inputFrom] = this._dateInputs; }
+    if (this._dateInputs) {
+      [inputFrom] = this._dateInputs;
+    }
 
-    if (this._dateInputs) { [, inputTo] = this._dateInputs; }
+    if (this._dateInputs) {
+      [, inputTo] = this._dateInputs;
+    }
 
     let valueInputFrom = 0;
     let valueInputTo = 0;

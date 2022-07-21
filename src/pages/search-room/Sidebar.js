@@ -17,21 +17,27 @@ class Sidebar {
   }
 
   _getVisibility() {
-    if (!this.block) { return false; }
+    if (!this.block) {
+      return false;
+    }
 
     return window.getComputedStyle(this.block, null)
       .getPropertyValue('display') !== 'none';
   }
 
   _toggle(isVisible = this._getVisibility()) {
-    if (!this.block) { return false; }
+    if (!this.block) {
+      return false;
+    }
 
     const { classList } = this.block;
 
     if (!isVisible) {
       classList.add(this.classVisible);
       const element = this.block.querySelector('input');
-      if (element) { element.focus(); }
+      if (element) {
+        element.focus();
+      }
     } else {
       classList.remove(this.classVisible);
     }
@@ -65,7 +71,9 @@ class Sidebar {
     const isVisible = this._getVisibility() && this.button;
     const isFocusDocument = (!linkElement && isVisible);
 
-    if (!isFocusDocument) { return false; }
+    if (!isFocusDocument) {
+      return false;
+    }
 
     const element = this.button.querySelector('button');
     const path = (event.composedPath && event.composedPath());
@@ -78,12 +86,16 @@ class Sidebar {
   }
 
   _handleDocumentClick() {
-    if (this._getVisibility() && !this._isClicked) { this._toggle(true); }
+    if (this._getVisibility() && !this._isClicked) {
+      this._toggle(true);
+    }
     this._isClicked = false;
   }
 
   _bindEvent() {
-    if (!this.block || !this.button) { return false; }
+    if (!this.block || !this.button) {
+      return false;
+    }
 
     this.button.addEventListener('click', this._handleButtonWrapperClick);
     this.block.addEventListener('click', this._handleSearchRoomFilterClick);

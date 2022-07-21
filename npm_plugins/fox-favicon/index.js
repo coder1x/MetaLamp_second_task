@@ -173,7 +173,9 @@ class FoxFavicon {
   }
 
   apply(compiler) {
-    if (this.options.devMode) { return false; }
+    if (this.options.devMode) {
+      return false;
+    }
     let { output } = compiler.options;
 
     if (!fs.existsSync(output.path)) { // проверяем есть ли адрес до папки dist

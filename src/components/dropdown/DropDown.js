@@ -43,7 +43,9 @@ class DropDown {
   }
 
   resetValue() {
-    if (!this._values || !this._inputElement) { return false; }
+    if (!this._values || !this._inputElement) {
+      return false;
+    }
 
     this._values.forEach((item) => {
       const spanElement = item;
@@ -52,7 +54,9 @@ class DropDown {
 
     this._inputElement.value = this.defaultText;
 
-    if (!this._items || !this._clearButton) { return false; }
+    if (!this._items || !this._clearButton) {
+      return false;
+    }
 
     this._items.map((item) => this.checkValue(item));
     this._toggleModifier(this._clearButton, '__button-clear_visible');
@@ -69,7 +73,9 @@ class DropDown {
 
   getCategories() {
     const fields = new Map();
-    if (!Array.isArray(this._values)) { return false; }
+    if (!Array.isArray(this._values)) {
+      return false;
+    }
 
     for (let i = 0; i < this._values.length; i += 1) {
       const typeText = this._declensions[i].join(',');
@@ -149,7 +155,9 @@ class DropDown {
   }
 
   _handleInputFocus() {
-    if (!this._isClicked) { this._toggleVisibility(); }
+    if (!this._isClicked) {
+      this._toggleVisibility();
+    }
   }
 
   _handleInputKeyDown(event) {
@@ -176,7 +184,9 @@ class DropDown {
   _handleButtonApplyClick(event) {
     event.preventDefault();
 
-    if (!(this._inputElement instanceof HTMLInputElement)) { return false; }
+    if (!(this._inputElement instanceof HTMLInputElement)) {
+      return false;
+    }
     const defaultText = this._inputElement.value === this.defaultText;
     const isInputClear = defaultText || !this._inputElement.value;
 
@@ -202,7 +212,9 @@ class DropDown {
   }
 
   _bindEvent() {
-    if (!this._inputElement || !this._tipElement) { return false; }
+    if (!this._inputElement || !this._tipElement) {
+      return false;
+    }
 
     this._inputElement.addEventListener('mouseup', this._handleInputMouseUp);
     this._inputElement.addEventListener('mousedown', this._handleInputMouseDown);
@@ -237,7 +249,9 @@ class DropDown {
   }
 
   _toggleVisibility(isVisible = false) {
-    if (!this._selectElement) { return; }
+    if (!this._selectElement) {
+      return;
+    }
 
     this._toggleModifier(
       this.element,
@@ -309,7 +323,9 @@ class DropDown {
     isMultiString = false,
   ) {
     const number = Number(value);
-    if (!number) { return text; }
+    if (!number) {
+      return text;
+    }
 
     if (!isMultiString) {
       return `${text}${number} ${DropDown.declineWords(number, words)}`;

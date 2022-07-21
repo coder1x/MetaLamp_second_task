@@ -73,7 +73,9 @@ class Registration {
   }
 
   _handleButtonClick(event) {
-    if (!this._validation()) { event.preventDefault(); }
+    if (!this._validation()) {
+      event.preventDefault();
+    }
   }
 
   _bindEvent() {

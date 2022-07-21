@@ -32,7 +32,9 @@ class CheckBoxList {
     const classWithModifier = `${this.className.replace(/^\.js-/, '')}${modifier}`;
     const { classList } = element;
 
-    if (isVisible && !classList.contains(classWithModifier)) { return false; }
+    if (isVisible && !classList.contains(classWithModifier)) {
+      return false;
+    }
 
     classList.toggle(classWithModifier);
 

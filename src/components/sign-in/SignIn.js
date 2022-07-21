@@ -17,7 +17,9 @@ class SignIn {
   }
 
   _checkField() {
-    if (!this._emailInputs || !this._passwordInput) { return false; }
+    if (!this._emailInputs || !this._passwordInput) {
+      return false;
+    }
 
     if (!this._emailInputs.value) {
       message('Введите Email');
@@ -32,7 +34,9 @@ class SignIn {
   }
 
   _handleButtonClick(event) {
-    if (!this._checkField()) { event.preventDefault(); }
+    if (!this._checkField()) {
+      event.preventDefault();
+    }
   }
 
   _setAction() {

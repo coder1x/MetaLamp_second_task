@@ -39,7 +39,9 @@ class LikeButton {
   }
 
   _setDomElement() {
-    if (!this._likeElement) { return false; }
+    if (!this._likeElement) {
+      return false;
+    }
     this._iconElement = this._likeElement.querySelector(`${this.nameClass}__icon`);
     this._valueElement = this._likeElement.querySelector(`${this.nameClass}__value`);
     this._linkElement = this._likeElement.querySelector(`${this.nameClass}__like`);
@@ -89,7 +91,9 @@ class LikeButton {
   }
 
   _bindEvent() {
-    if (!this._linkElement) { return false; }
+    if (!this._linkElement) {
+      return false;
+    }
 
     this._linkElement.addEventListener('click', this._handleLikeClick);
     this._linkElement.addEventListener('keydown', this._handleLikeKeyDown);

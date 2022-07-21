@@ -33,9 +33,13 @@ class RangeSlider {
     this.dotTo.setAttribute('tabindex', '0');
 
     if (isDotFocused) {
-      if (this.dotFocus === 'from') { this.dotFrom.focus(); }
+      if (this.dotFocus === 'from') {
+        this.dotFrom.focus();
+      }
 
-      if (this.dotFocus === 'to') { this.dotTo.focus(); }
+      if (this.dotFocus === 'to') {
+        this.dotTo.focus();
+      }
     }
 
     this._RangeSliderData = data;

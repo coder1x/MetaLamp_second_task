@@ -21,7 +21,9 @@ class DateDropDown {
     this._createCalendar();
     this._bindEvent();
 
-    if (!this.isRange) { this.setRange(); }
+    if (!this.isRange) {
+      this.setRange();
+    }
   }
 
   static getDate(date, flag = false) {
@@ -39,7 +41,9 @@ class DateDropDown {
       const dateFrom = this.inputFrom.value;
       const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
-      if (!REGEXP.test(dateFrom)) { return false; }
+      if (!REGEXP.test(dateFrom)) {
+        return false;
+      }
 
       const dateTo = this.inputTo.value;
       this.calendar.clear();
@@ -53,7 +57,9 @@ class DateDropDown {
       const dates = this.inputHidden.value.split('-');
 
       const NUMBER_OF_DATES = 2;
-      if (dates.length < NUMBER_OF_DATES) { return false; }
+      if (dates.length < NUMBER_OF_DATES) {
+        return false;
+      }
 
       const dateFrom = DateDropDown.getDate(
         DateDropDown.trimDate(dates[0]),
@@ -131,7 +137,9 @@ class DateDropDown {
 
   handleFilterFocusOut(event) {
     const element = event.currentTarget;
-    if (!this.isClicked) { element.value = ''; }
+    if (!this.isClicked) {
+      element.value = '';
+    }
     this.isClicked = false;
   }
 
@@ -161,13 +169,17 @@ class DateDropDown {
   handleInputFromInput(event) {
     const element = event.currentTarget;
     const MAX_LENGTH_DATE = 10;
-    if (element.value.length === MAX_LENGTH_DATE) { this.setRange(); }
+    if (element.value.length === MAX_LENGTH_DATE) {
+      this.setRange();
+    }
   }
 
   handleInputToInput(event) {
     const element = event.currentTarget;
     const MAX_LENGTH_DATE = 10;
-    if (element.value.length === MAX_LENGTH_DATE) { this.setRange(); }
+    if (element.value.length === MAX_LENGTH_DATE) {
+      this.setRange();
+    }
   }
 
   handleClearButtonClick(event) {
@@ -236,7 +248,9 @@ class DateDropDown {
   }
 
   _getDateFilter(dateFilter) {
-    if (!dateFilter) { return ''; }
+    if (!dateFilter) {
+      return '';
+    }
 
     const dates = dateFilter.split('.');
     return `${dates[0]} ${this._months[Number(dates[1]) - 1]}`;
@@ -245,13 +259,17 @@ class DateDropDown {
   _inputDate(date) {
     if (!date) {
       this.inputFrom.value = '';
-      if (this.isRange) { this.inputTo.value = ''; }
+      if (this.isRange) {
+        this.inputTo.value = '';
+      }
       return false;
     }
 
     const dates = date.formattedDate;
 
-    if (dates.length !== 2) { return false; }
+    if (dates.length !== 2) {
+      return false;
+    }
 
     if (this.isRange) {
       [this.inputFrom.value] = dates;
@@ -309,7 +327,9 @@ class DateDropDown {
       return false;
     }
 
-    if (!isShown) { this.toggleVisibility(this._isToggle); }
+    if (!isShown) {
+      this.toggleVisibility(this._isToggle);
+    }
     return true;
   }
 
