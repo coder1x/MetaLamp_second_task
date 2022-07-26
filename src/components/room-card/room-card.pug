@@ -7,6 +7,7 @@ mixin room-card(options = {})
       number = '',
       price = '',
       reviews = '',
+      slides = [],
       isLux = false,
     } = options;
 
@@ -17,10 +18,12 @@ mixin room-card(options = {})
     div(class=`${BASE_CLASS}__slider-wrapper js-${BASE_CLASS}__slider-wrapper`)
       div(class=`${BASE_CLASS}__relation-ratio`)
       a(class=`${BASE_CLASS}__link js-${BASE_CLASS}__link` href='/room-details.html' aria-label='карточка номера')
-        img(class=`${BASE_CLASS}__slide ${BASE_CLASS}__slide_visible js-${BASE_CLASS}__slide` src=require('./img/beige-room.webp'), alt='номер люкс')
-        img(class=`${BASE_CLASS}__slide js-${BASE_CLASS}__slide` src=require('./img/crimson-room.webp'), alt='номер люкс')
-        img(class=`${BASE_CLASS}__slide js-${BASE_CLASS}__slide` src=require('./img/red-room.webp'), alt='номер люкс')
-        img(class=`${BASE_CLASS}__slide js-${BASE_CLASS}__slide` src=require('./img/blue-room.webp'), alt='номер люкс')
+        each slide in slides
+          img(
+            class=`${BASE_CLASS}__slide ${(slide.isVisible ? `${BASE_CLASS}__slide_visible` : '')} js-${BASE_CLASS}__slide` 
+            src=slide.srcImage 
+            alt='фото номера'
+            )
       div(class=`${BASE_CLASS}__dot-wrapper js-${BASE_CLASS}__dot-wrapper`)
       button(class=`${BASE_CLASS}__prev-wrapper js-${BASE_CLASS}__prev-wrapper` aria-label='предыдущий слайд')
         img(class=`${BASE_CLASS}__prev` src=require('./img/expand-more.svg'), alt='стрелка в лево')
