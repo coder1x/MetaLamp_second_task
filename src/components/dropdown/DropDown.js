@@ -107,13 +107,13 @@ class DropDown {
   _getElements(selector, parentElement) {
     return [
       ...(parentElement ?? this.element)
-        .querySelectorAll(this.className + selector),
+        .querySelectorAll(`${this.className}${selector}`),
     ];
   }
 
   _getElement(selector, parentElement) {
     return (parentElement ?? this.element)
-      .querySelector(this.className + selector);
+      .querySelector(`${this.className}${selector}`);
   }
 
   _setDomElement() {
