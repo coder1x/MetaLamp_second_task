@@ -50,15 +50,14 @@ class Slider {
   }
 
   _toggle(slide, isVisible = false) {
-    const PREFIX = '__slide_visible';
-    const selector = `${this.className.replace(/^\.js-/, '')}${PREFIX}`;
+    const displayedSlide = `${this.className.replace(/^\.js-/, '')}__slide_visible`;
 
     const { classList } = slide;
 
     if (!isVisible) {
-      classList.add(selector);
+      classList.add(displayedSlide);
     } else {
-      classList.remove(selector);
+      classList.remove(displayedSlide);
     }
   }
 

@@ -42,7 +42,7 @@ class RangeSlider {
       }
     }
 
-    this._RangeSliderData = data;
+    this._rangeSliderData = data;
     this._bindEventDot();
   }
 
@@ -83,7 +83,7 @@ class RangeSlider {
       to = 0,
       min = 0,
       max = 0,
-    } = this._RangeSliderData;
+    } = this._rangeSliderData;
     const value = flag ? to : from;
     const dotName = flag ? 'to' : 'from';
     const SHIFT = 50;
