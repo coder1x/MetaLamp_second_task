@@ -10,7 +10,9 @@ class DateDropDown {
     autoBind(this);
     this.isClicked = false;
     this.defaultText = 'ДД.ММ.ГГГГ';
-    this._setElement(className, element);
+    this.className = className;
+    this.element = element;
+    this._setElement();
     this.init();
   }
 
@@ -212,24 +214,27 @@ class DateDropDown {
     this.toggleVisibility(false);
   }
 
-  _setElement(className, element) {
-    this._selectorClear = `${className}__clear`;
+  _getElements(nameElement, parentElement) {
+    return [
+      ...(parentElement ?? this.element).querySelectorAll(`${this.className}__${nameElement}`),
+    ];
+  }
 
-    const getElement = (name) => element.querySelector(`${className}__${name}`);
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
+  }
 
-    this.className = className;
-    this.element = element;
-    this.calendar = getElement('datepicker');
-    this.calendarWrapper = getElement('datepicker-wrapper');
-    this.inputHidden = getElement('input-hidden');
-    this.inputs = element.querySelectorAll(`${className}__input`);
+  _setElement() {
+    this.calendar = this._getElement('datepicker');
+    this.calendarWrapper = this._getElement('datepicker-wrapper');
+    this.inputHidden = this._getElement('input-hidden');
+    this.inputs = this._getElements('input');
     this.isRange = this.inputs.length > 1;
-
     [this.inputFrom] = this.inputs;
     this.imageLeft = this.inputFrom.nextSibling;
 
-    this.clearButton = getElement('clear');
-    this.acceptButton = getElement('apply');
+    this.clearButton = this._getElement('clear');
+    this.acceptButton = this._getElement('apply');
 
     if (this.isRange) {
       [, this.inputTo] = this.inputs;
@@ -290,12 +295,12 @@ class DateDropDown {
   }
 
   _toggleClearButton(isVisible = false) {
-    const selector = `${this._selectorClear.replace(/^\.js-/, '')}_visible`;
+    const nameModifier = `${`${this.className}__clear`.replace(/^\.js-/, '')}_visible`;
     const { classList } = this.clearButton;
     if (isVisible) {
-      classList.add(selector);
+      classList.add(nameModifier);
     } else {
-      classList.remove(selector);
+      classList.remove(nameModifier);
     }
   }
 
@@ -342,7 +347,7 @@ class DateDropDown {
       const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
 
       for (let i = 0; i < dates.length; i += 1) {
-        if (!REGEXP.test(this._trimDate(dates[i]))) {
+        if (!REGEXP.test(DateDropDown._trimDate(dates[i]))) {
           isValidDate = false;
           break;
         }

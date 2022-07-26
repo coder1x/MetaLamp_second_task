@@ -69,12 +69,8 @@ class Diagram {
     this.dataVotes = JSON.parse(this.element.getAttribute('data-votes'));
   }
 
-  _getElement(selector, parentElement) {
-    const element = parentElement ?? this.element;
-    if (!element) {
-      return null;
-    }
-    return element.querySelector(`${this.className}${selector}`);
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
   }
 
   _setDomElement() {
@@ -103,7 +99,7 @@ class Diagram {
       liElement.append(divElement);
     });
 
-    this.canvas = this._getElement('__canvas');
+    this.canvas = this._getElement('canvas');
     if (this.canvas) {
       this._canvasContext = this.canvas.getContext('2d');
     }

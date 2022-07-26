@@ -12,11 +12,11 @@ class DropDown {
   }
 
   checkValue(item) {
-    const buttonMinus = this._getElement('__minus', item);
-    const buttonPlus = this._getElement('__plus', item);
+    const buttonMinus = this._getElement('minus', item);
+    const buttonPlus = this._getElement('plus', item);
 
     const classModifierMinus = this._getModifier('__minus', '_disable');
-    const value = Number(this._getElement('__value', item).innerText);
+    const value = Number(this._getElement('value', item).innerText);
 
     if (!value) {
       buttonMinus.classList.add(classModifierMinus);
@@ -100,41 +100,39 @@ class DropDown {
     this._bindEventSelect();
   }
 
-  _getModifier(selectorElement, modifier) {
-    return `${this.className.replace(/^\.js-/, '')}${selectorElement}${modifier}`;
+  _getModifier(nameElement, modifier) {
+    return `${this.className.replace(/^\.js-/, '')}${nameElement}${modifier}`;
   }
 
-  _getElements(selector, parentElement) {
+  _getElements(nameElement, parentElement) {
     return [
-      ...(parentElement ?? this.element)
-        .querySelectorAll(`${this.className}${selector}`),
+      ...(parentElement ?? this.element).querySelectorAll(`${this.className}__${nameElement}`),
     ];
   }
 
-  _getElement(selector, parentElement) {
-    return (parentElement ?? this.element)
-      .querySelector(`${this.className}${selector}`);
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
   }
 
   _setDomElement() {
-    this._applyButton = this._getElement('__button-apply');
-    this._clearButton = this._getElement('__button-clear');
-    this._items = this._getElements('__select-item');
+    this._applyButton = this._getElement('button-apply');
+    this._clearButton = this._getElement('button-clear');
+    this._items = this._getElements('select-item');
 
     this._values = [];
 
     this._items.forEach((item) => {
       this.checkValue(item);
-      this._values.push(this._getElement('__value', item));
+      this._values.push(this._getElement('value', item));
 
       this._readingAttributes(item);
     });
 
-    this._inputElement = this._getElement('__input');
+    this._inputElement = this._getElement('input');
 
     this.defaultText = this._inputElement.placeholder;
-    this._selectElement = this._getElement('__select');
-    this._tipElement = this._getElement('__tip');
+    this._selectElement = this._getElement('select');
+    this._tipElement = this._getElement('tip');
   }
 
   _readingAttributes(element) {
@@ -277,7 +275,7 @@ class DropDown {
     const { target } = event;
     const spanElement = event.currentTarget;
 
-    const value = this._getElement('__value', spanElement);
+    const value = this._getElement('value', spanElement);
     const isButtonMinus = target.closest(`${this.className}__minus`);
     const isButtonPlus = target.closest(`${this.className}__plus`);
 

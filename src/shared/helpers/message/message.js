@@ -11,21 +11,21 @@ function handleButtonKeyDown(event) {
 }
 
 function message(text) {
-  const SELECTOR = 'message-toxin';
+  const BASE_CLASS = 'message-toxin';
 
-  const popUp = document.querySelector(`.${SELECTOR}`);
+  const popUp = document.querySelector(`.${BASE_CLASS}`);
   if (popUp) {
     return false;
   }
 
   const wrapper = document.createElement('article');
-  wrapper.classList.add(SELECTOR);
+  wrapper.classList.add(BASE_CLASS);
   const buttonClose = document.createElement('button');
   buttonClose.innerText = '✖';
-  buttonClose.classList.add(`${SELECTOR}__close`);
+  buttonClose.classList.add(`${BASE_CLASS}__close`);
   const paragraph = document.createElement('p');
   paragraph.innerText = text;
-  paragraph.classList.add(`${SELECTOR}__text`);
+  paragraph.classList.add(`${BASE_CLASS}__text`);
 
   wrapper.appendChild(buttonClose);
   wrapper.appendChild(paragraph);

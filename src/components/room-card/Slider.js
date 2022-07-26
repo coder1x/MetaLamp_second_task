@@ -14,7 +14,7 @@ class Slider {
 
   setVisible(index) {
     const TIME = 150;
-    const delay = Number(new Date()) - this._timePress > TIME;
+    const delay = new Date().getTime() - this._timePress > TIME;
 
     if (delay && Array.isArray(this._slidesElement)) {
       this._toggle(this._slidesElement[this._indexSlide], true);
@@ -38,15 +38,23 @@ class Slider {
     this._bindEventSwipe();
   }
 
-  _setDomElement() {
-    this._slidesElement = [
-      ...this.element.querySelectorAll(`${this.className}__slide`),
+  _getElements(nameElement, parentElement) {
+    return [
+      ...(parentElement ?? this.element).querySelectorAll(`${this.className}__${nameElement}`),
     ];
-    this._dotElement = this.getElement('dot');
-    this._prevElement = this.getElement('prev');
-    this._nextElement = this.getElement('next');
-    this._sliderWrap = this.getElement('slider');
-    this._linkSlide = this.element.querySelector(`${this.className}__link`);
+  }
+
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
+  }
+
+  _setDomElement() {
+    this._slidesElement = this._getElements('slide');
+    this._dotElement = this._getElement('dot-wrapper');
+    this._prevElement = this._getElement('prev-wrapper');
+    this._nextElement = this._getElement('next-wrapper');
+    this._sliderWrap = this._getElement('slider-wrapper');
+    this._linkSlide = this._getElement('link');
   }
 
   _toggle(slide, isVisible = false) {
@@ -66,29 +74,32 @@ class Slider {
     let modifier = `${dotSelector}_paint`;
     modifier = modifier.replace(/^\.js-/, '');
     const dots = this.element.querySelectorAll(dotSelector);
+    dots[this._indexDot].classList.remove(modifier);
+    dots[this._indexSlide].classList.add(modifier);
 
-    let classListDot = dots[this._indexDot].classList;
-    classListDot.remove(modifier);
-
-    classListDot = dots[this._indexSlide].classList;
-    classListDot.add(modifier);
     this._indexDot = this._indexSlide;
   }
 
   _createDot() {
     const dotSelector = `${this.className.replace(/^\./, '')}__dot`;
 
-    if (Array.isArray(this._slidesElement)) {
-      for (let i = 0; i < this._slidesElement.length; i += 1) {
-        const dot = document.createElement('span');
-
-        dot.classList.add(dotSelector.replace(/^js-/, ''));
-        dot.classList.add(dotSelector);
-        dot.setAttribute('data-index', String(i));
-
-        if (this._dotElement) this._dotElement.appendChild(dot);
-      }
+    if (!Array.isArray(this._slidesElement)) {
+      return false;
     }
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < this._slidesElement.length; i += 1) {
+      const dot = document.createElement('span');
+
+      dot.classList.add(dotSelector.replace(/^js-/, ''));
+      dot.classList.add(dotSelector);
+      dot.setAttribute('data-index', String(i));
+
+      fragment.appendChild(dot);
+    }
+
+    this._dotElement.appendChild(fragment);
+
+    return true;
   }
 
   _handlePrevClick() {
@@ -97,7 +108,7 @@ class Slider {
     } else if (Array.isArray(this._slidesElement)) {
       this.setVisible(this._slidesElement.length - 1);
     }
-    this._timePress = Number(new Date());
+    this._timePress = new Date().getTime();
   }
 
   _handleNextClick() {
@@ -111,7 +122,7 @@ class Slider {
     } else {
       this.setVisible(0);
     }
-    this._timePress = Number(new Date());
+    this._timePress = new Date().getTime();
     return true;
   }
 
@@ -208,7 +219,7 @@ class Slider {
       const SHIFT = 20;
       const xyUp = Slider._getCoordinatesXY(event);
       const isShift = Math.abs((xyUp[0] - xyDown[0])) > SHIFT;
-      const isTimeInterval = (Number(new Date()) - this._timePress) > TIME;
+      const isTimeInterval = (new Date().getTime() - this._timePress) > TIME;
 
       if (isShift && isTimeInterval) {
         this._swipeDirection([

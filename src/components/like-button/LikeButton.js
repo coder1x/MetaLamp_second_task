@@ -1,22 +1,16 @@
 import autoBind from 'auto-bind';
 
 class LikeButton {
-  constructor(nameClass, element) {
+  constructor(className, element) {
     autoBind(this);
-    this.nameClass = nameClass;
-    if (element instanceof HTMLElement) {
-      this._stringKey = String(`${element.offsetLeft}${element.offsetTop}`);
-    }
-    this._likeElement = element;
+    this.className = className;
+    this._stringKey = String(`${element.offsetLeft}${element.offsetTop}`);
+    this.element = element;
     this._init();
   }
 
   getLikes() {
-    let number = 0;
-    if (this._valueElement) {
-      number = Number(this._valueElement.innerText);
-    }
-    return number;
+    return Number(this._valueElement.innerText);
   }
 
   toggleLike() {
@@ -38,40 +32,37 @@ class LikeButton {
     this._bindEvent();
   }
 
-  _setDomElement() {
-    if (!this._likeElement) {
-      return false;
-    }
-    this._iconElement = this._likeElement.querySelector(`${this.nameClass}__icon`);
-    this._valueElement = this._likeElement.querySelector(`${this.nameClass}__value`);
-    this._linkElement = this._likeElement.querySelector(`${this.nameClass}__like`);
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
+  }
 
-    return true;
+  _setDomElement() {
+    this._iconElement = this._getElement('icon');
+    this._valueElement = this._getElement('value');
+    this._linkElement = this._getElement('like');
   }
 
   _setLikes(likeNumber, isRecord = 'true') {
-    if (this._valueElement) {
-      this._valueElement.innerText = String(likeNumber);
-    }
+    this._valueElement.innerText = String(likeNumber);
     localStorage.setItem(this._stringKey, String(isRecord));
   }
 
   _toggleClass() {
-    const selector = this.nameClass.replace(/^\.js-/, '');
-    const nameVoted = `${selector}_voted`;
-    const nameFavorite = `${selector}__icon_favorite`;
+    const className = this.className.replace(/^\.js-/, '');
+    const nameVoted = `${className}_voted`;
+    const nameFavorite = `${className}__icon_favorite`;
 
     if (this._isLiked) {
       this._iconElement.classList.add(nameFavorite);
-      this._likeElement.classList.add(nameVoted);
+      this.element.classList.add(nameVoted);
     } else {
       this._iconElement.classList.remove(nameFavorite);
-      this._likeElement.classList.remove(nameVoted);
+      this.element.classList.remove(nameVoted);
     }
   }
 
   _toggleStyle() {
-    if (this._iconElement && this._likeElement) {
+    if (this._iconElement && this.element) {
       this._toggleClass();
     }
   }
@@ -91,14 +82,8 @@ class LikeButton {
   }
 
   _bindEvent() {
-    if (!this._linkElement) {
-      return false;
-    }
-
     this._linkElement.addEventListener('click', this._handleLikeClick);
     this._linkElement.addEventListener('keydown', this._handleLikeKeyDown);
-
-    return true;
   }
 }
 

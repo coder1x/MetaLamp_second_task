@@ -2,7 +2,7 @@ import autoBind from 'auto-bind';
 
 import message from '@shared/helpers/message/message';
 
-class SearchRoom {
+class ValidateForm {
   constructor(className, element) {
     autoBind(this);
     this.className = className;
@@ -14,25 +14,16 @@ class SearchRoom {
     this._dateInputs = [
       ...element.querySelectorAll(`${this.className}__date-wrapper input`),
     ];
-    this._guestsInput = element.querySelector(
-      `${this.className}__dropdown-wrapper input`,
-    );
-    this._buttonElement = element.querySelector(
-      `${this.className}__button-wrapper button`,
-    );
+    this._guestsInput = element.querySelector(`${this.className}__dropdown-wrapper input`);
+    this._buttonElement = element.querySelector(`${this.className}__button-wrapper button`);
   }
 
   _validateDate() {
     let inputFrom = null;
     let inputTo = null;
 
-    if (this._dateInputs) {
-      [inputFrom] = this._dateInputs;
-    }
-
-    if (this._dateInputs) {
-      [, inputTo] = this._dateInputs;
-    }
+    [inputFrom] = this._dateInputs;
+    [, inputTo] = this._dateInputs;
 
     let valueInputFrom = 0;
     let valueInputTo = 0;
@@ -88,10 +79,8 @@ class SearchRoom {
   }
 
   _bindEvent() {
-    if (this._buttonElement) {
-      this._buttonElement.addEventListener('click', this._handleButtonClick);
-    }
+    this._buttonElement.addEventListener('click', this._handleButtonClick);
   }
 }
 
-export default SearchRoom;
+export default ValidateForm;

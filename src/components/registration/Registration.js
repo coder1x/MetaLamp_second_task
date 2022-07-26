@@ -79,9 +79,7 @@ class Registration {
   }
 
   _bindEvent() {
-    if (this._buttonElement) {
-      this._buttonElement.addEventListener('click', this._handleButtonClick);
-    }
+    this._buttonElement.addEventListener('click', this._handleButtonClick);
   }
 }
 

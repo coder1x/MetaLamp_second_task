@@ -7,7 +7,7 @@ class SignIn {
     autoBind(this);
     this.className = className;
     this._setDomElement(element);
-    this._setAction();
+    this._bindEvent();
   }
 
   _setDomElement(element) {
@@ -39,10 +39,8 @@ class SignIn {
     }
   }
 
-  _setAction() {
-    if (this._buttonElement) {
-      this._buttonElement.addEventListener('click', this._handleButtonClick);
-    }
+  _bindEvent() {
+    this._buttonElement.addEventListener('click', this._handleButtonClick);
   }
 }
 

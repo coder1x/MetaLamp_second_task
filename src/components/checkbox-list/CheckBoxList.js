@@ -17,15 +17,14 @@ class CheckBoxList {
     this._toggleModifier(this.element, '_visible');
   }
 
-  _getElement(className, parentElement) {
-    const selector = `${this.className}${className}`;
-    return (parentElement ?? this.element).querySelector(selector);
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
   }
 
   _setDomElement() {
-    this._wrapper = this._getElement('__wrapper');
-    this._headerElement = this._getElement('__header');
-    this._imageElement = this._getElement('__tip');
+    this._wrapper = this._getElement('wrapper');
+    this._headerElement = this._getElement('header');
+    this._imageElement = this._getElement('tip');
   }
 
   _toggleModifier(element, modifier, isVisible = false) {

@@ -9,16 +9,14 @@ class HeaderMenu {
     this._startMenu();
   }
 
-  _getElements(selector, parentElement) {
+  _getElements(nameElement, parentElement) {
     return [
-      ...(parentElement ?? this.element)
-        .querySelectorAll(`${this.className}${selector}`),
+      ...(parentElement ?? this.element).querySelectorAll(`${this.className}__${nameElement}`),
     ];
   }
 
-  _getElement(selector, parentElement) {
-    return (parentElement ?? this.element)
-      .querySelector(`${this.className}${selector}`);
+  _getElement(nameElement, parentElement) {
+    return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
   }
 
   closeAll() {
@@ -46,12 +44,12 @@ class HeaderMenu {
   }
 
   _setDomElement() {
-    this._linksDown = this._getElements('__link-down');
-    this._items = this._getElements('__items-down');
-    this._button = this._getElement('__toggle');
-    this._hamburger = this._getElement('__toggle-line');
-    this._nav = this._getElement('__menu-wrapper');
-    this._tip = this._getElements('__tip');
+    this._linksDown = this._getElements('link-down');
+    this._items = this._getElements('items-down');
+    this._button = this._getElement('toggle');
+    this._hamburger = this._getElement('toggle-line');
+    this._nav = this._getElement('menu-wrapper');
+    this._tip = this._getElements('tip');
 
     this._links = new Map();
     for (let i = 0; i < this._linksDown.length; i += 1) {
@@ -79,11 +77,11 @@ class HeaderMenu {
   }
 
   _rotateTip(element, isRotate = false) {
-    const selector = (`${this.className}__tip_rotate`).replace(/^\.js-/, '');
+    const nameModifier = (`${this.className}__tip_rotate`).replace(/^\.js-/, '');
     if (!isRotate) {
-      element.classList.remove(selector);
+      element.classList.remove(nameModifier);
     } else {
-      element.classList.add(selector);
+      element.classList.add(nameModifier);
       if (Array.isArray(this._showTip)) {
         this._showTip.push(element);
       }
@@ -157,13 +155,13 @@ class HeaderMenu {
   }
 
   _setModifier(element, modifier, isVisible = false) {
-    const selector = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
+    const nameModifier = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
     const { classList } = element;
 
     if (!isVisible) {
-      classList.add(selector);
+      classList.add(nameModifier);
     } else {
-      classList.remove(selector);
+      classList.remove(nameModifier);
     }
   }
 
