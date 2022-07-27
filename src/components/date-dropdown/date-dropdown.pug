@@ -16,7 +16,7 @@ mixin date-dropdown(options = {})
     - className += ` ${BASE_CLASS}_${modifier}`
 
   div(class=`${className} js-${BASE_CLASS}`)
-    - let num = filter ? 1 : 2;
+    - const num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
         div(class=`${BASE_CLASS}__date-wrapper`)
 

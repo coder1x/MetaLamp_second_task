@@ -11,7 +11,7 @@ mixin navigation(options = {})
     ul(class=`${BASE_CLASS}__items`)
       li(class=`${BASE_CLASS}__header`)
             h2(class=`${BASE_CLASS}__title`)= header
-      -for(let i=0; i<strings.length; i++){
+      -strings.forEach((item)=>  {
           li(class=`${BASE_CLASS}__item`)
-            a(class=`${BASE_CLASS}__link` href='https://change-me')= strings[i]
-      -}
+            a(class=`${BASE_CLASS}__link` href='https://change-me')= item
+      -})

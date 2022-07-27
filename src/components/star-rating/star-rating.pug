@@ -8,12 +8,12 @@ mixin star-rating(options = {})
     const BASE_CLASS = 'star-rating'
 
   - 
-    labels = [
-    'Ужасно',
-    'Плохо', 
-    'Нормально', 
-    'Хорошо', 
-    'Отлично', 
+    const labels = [
+      'Ужасно',
+      'Плохо', 
+      'Нормально', 
+      'Хорошо', 
+      'Отлично', 
     ]
 
   div(class=BASE_CLASS)
@@ -21,8 +21,7 @@ mixin star-rating(options = {})
       if label
         legend(class=`${BASE_CLASS}__header`)= label
       
-      
       div(class=`${BASE_CLASS}__group`)
-        - for(let i=0; i<labels.length; i++)  {
-            input(class=`${BASE_CLASS}__star` type='radio' name=name value=i+1 aria-label=labels[i])
-        -}
+        - labels.forEach((item, index)=>  {
+            input(class=`${BASE_CLASS}__star` type='radio' name=name value=index+1 aria-label=item)
+        -})
