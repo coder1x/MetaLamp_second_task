@@ -2,6 +2,12 @@ include ../../components/logo-group/logo-group.pug
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
 
+-
+  const {
+    headerOne,
+    headerTwo,
+  } = require('./headers-footers.json');
+
 doctype html
 html(lang='ru')
   head
@@ -16,15 +22,10 @@ html(lang='ru')
       section.headers-footers 
         .headers-footers__top
           .headers-footers__authorization
-            +header({
-              current:true,
-            })
+            +header(headerOne)
 
           .headers-footers__authorized
-            +header({
-              type:'authorized',
-              current:true,
-            })
+            +header(headerTwo)
             
         .headers-footers__bottom
           +footer()

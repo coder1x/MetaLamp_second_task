@@ -1,0 +1,57 @@
+{
+  "header": {
+    "menu": [
+      {
+        "name": "О нас",
+        "isCurrent": true
+      },
+      {
+        "name": "Услуги",
+        "subMenu": [
+          "Услуга 1",
+          "Услуга 2",
+          "Услуга 3",
+          "Услуга 4",
+          "Услуга 5"
+        ]
+      },
+      {
+        "name": "Вакансии"
+      },
+      {
+        "name": "Новости"
+      },
+      {
+        "name": "Соглашения",
+        "subMenu": [
+          "Соглашения 1",
+          "Соглашения 2",
+          "Соглашения 3",
+          "Соглашения 4",
+          "Соглашения 5"
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Войти",
+        "link": "/sign-in.html",
+        "type": "link",
+        "modifiers": [
+          "link-border",
+          "header"
+        ]
+      },
+      {
+        "text": "зарегистрироваться",
+        "link": "/registration.html",
+        "type": "link",
+        "modifiers": [
+          "link",
+          "header"
+        ]
+      }
+    ],
+    "isAuthorized": false
+  }
+}

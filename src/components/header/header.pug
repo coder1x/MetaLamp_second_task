@@ -3,22 +3,15 @@ include ../logo/logo.pug
 
 mixin header(options = {})
   -
-    let { current } = options; 
     const {
-      type = '',
+      isAuthorized = false,
+      menu = [],
+      buttons = [],
     } = options;
 
     const BASE_CLASS = 'header'
     const tipSvg = require('./img/tip.svg')
-
-    const {
-      service,
-      agreements,
-      button,
-    } = require('./header.json');
-
-  if current
-    - current =`${BASE_CLASS}__link_current`
+    const current =`${BASE_CLASS}__link_current`
 
   header(class=`${BASE_CLASS} js-${BASE_CLASS}`)
     div(class=`${BASE_CLASS}__wrapper`)
@@ -30,36 +23,29 @@ mixin header(options = {})
 
       nav(class=`${BASE_CLASS}__menu-wrapper js-${BASE_CLASS}__menu-wrapper`)
         ul(class=`${BASE_CLASS}__items`)
-          li(class=`${BASE_CLASS}__item`)
-            a(class=`${BASE_CLASS}__link ${current}` href='https://change-me') О нас
-          li(class=`${BASE_CLASS}__item`)
-            a(class=`${BASE_CLASS}__link-down js-${BASE_CLASS}__link-down` href='https://change-me') Услуги
-              img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=tipSvg, alt='уголок')
-            ul(class=`${BASE_CLASS}__items-down js-${BASE_CLASS}__items-down`)
-              each text in service
-                li(class=`${BASE_CLASS}__item-down`)
-                  a(class=`${BASE_CLASS}__link` href='https://change-me')=text
 
-          li(class=`${BASE_CLASS}__item`)
-            a(class=`${BASE_CLASS}__link` href='https://change-me') Вакансии
-          li(class=`${BASE_CLASS}__item`)
-            a(class=`${BASE_CLASS}__link` href='https://change-me') Новости
-          li(class=`${BASE_CLASS}__item`)
-            a(class=`${BASE_CLASS}__link-down js-${BASE_CLASS}__link-down` href='https://change-me') Соглашения
-              img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=tipSvg, alt='уголок')
-            ul(class=`${BASE_CLASS}__items-down js-${BASE_CLASS}__items-down`)
-              each text in agreements
-                li(class=`${BASE_CLASS}__item-down`) 
-                  a(class=`${BASE_CLASS}__link` href='https://change-me')=text
+          each item in menu
+            - if(Array.isArray(item.subMenu)){
+                li(class=`${BASE_CLASS}__item`)
+                  a(class=`${BASE_CLASS}__link-down js-${BASE_CLASS}__link-down ${(item.isCurrent ? current : '')}` href='https://change-me')= item.name
+                    img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=tipSvg, alt='уголок')
 
-      -if (type === 'authorized'){
+                  ul(class=`${BASE_CLASS}__items-down js-${BASE_CLASS}__items-down`)
+                    each subItem in item.subMenu
+                      li(class=`${BASE_CLASS}__item-down`)
+                        a(class=`${BASE_CLASS}__link` href='https://change-me')= subItem
+
+            -} else {
+                li(class=`${BASE_CLASS}__item`)
+                  a(class=`${BASE_CLASS}__link ${(item.isCurrent ? current : '')}` href='https://change-me')= item.name
+            -}
+
+      -if (isAuthorized){
           div(class=`${BASE_CLASS}__user`)
             a(class=`${BASE_CLASS}__nickname` href='https://change-me') Юлий Цезарь
       -}
       -else{
-          div(class=`${BASE_CLASS}__signin-wrapper`)
-            +button(button.signIn)
-            
-          div(class=`${BASE_CLASS}__registration-wrapper`)
-            +button(button.registration)
+        each item in buttons
+          div(class=`${BASE_CLASS}__button`)
+            +button(item)
       -}

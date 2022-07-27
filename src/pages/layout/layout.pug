@@ -1,6 +1,12 @@
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
 
+
+-
+  const {
+    header,
+  } = require('./layout.json');
+
 doctype html
 html(lang='ru')
   head
@@ -8,7 +14,7 @@ html(lang='ru')
     block title
       title TOXIN
   body.page
-    +header()
+    +header(header)
     .page__wrapper
       block content
     +footer()
