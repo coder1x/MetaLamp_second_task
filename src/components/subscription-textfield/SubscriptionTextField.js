@@ -7,8 +7,7 @@ import ValidationEmail from '@shared/helpers/validationEmail/ValidationEmail';
 class SubscriptionTextField {
   constructor(className, wrapper) {
     autoBind(this);
-    this.input = wrapper.querySelector('input');
-
+    this.input = wrapper.querySelector(`${className}__input`);
     this.link = wrapper.querySelector(`${className}__link`);
     this._validationEmail = new ValidationEmail({
       element: this.input,
