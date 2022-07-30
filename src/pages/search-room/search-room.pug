@@ -21,12 +21,12 @@ block content
 
   main.search-room-content
     .search-room-content__wrapper
-      section.search-room-filter
+      section(class ='search-room-filter js-search-room-filter')
       
-        .search-room-filter__date-wrapper
+        div(class = 'search-room-filter__date-wrapper js-search-room-filter__date-wrapper')
           +date-dropdown(dateDropdown)
 
-        .search-room-filter__guests-wrapper
+        div(class = 'search-room-filter__guests-wrapper js-search-room-filter__guests-wrapper')
           +dropdown(dropDown.guest)
 
         .search-room-filter__price-wrapper
@@ -39,13 +39,13 @@ block content
         .search-room-filter__availability-wrapper
           +checkbox-list(checkboxList.availability)
 
-        .search-room-filter__facilities-wrapper
+        div(class = 'search-room-filter__facilities-wrapper js-search-room-filter__facilities-wrapper')
           +dropdown(dropDown.rooms)
 
         .search-room-filter__additional-amenities-wrapper
           +checkbox-list(checkboxList.additionalAmenities)
 
-      .search-room-content__button-wrapper
+      div(class = 'search-room-content__button-wrapper js-search-room-content__button-wrapper')
         +button(button)
 
       section.search-room-cards

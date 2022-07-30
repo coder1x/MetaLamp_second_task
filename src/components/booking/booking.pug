@@ -28,7 +28,7 @@ mixin booking(options = {})
     form(class=`${BASE_CLASS}__form` action='https://change-me' method='post')
       fieldset(class=`${BASE_CLASS}__date-wrapper js-${BASE_CLASS}__date-wrapper`)
         +date-dropdown({
-          label: ['прибытие','выезд'],
+          labels: ['прибытие','выезд'],
           placeholder:'ДД.ММ.ГГГГ',
           })
 

@@ -1,6 +1,6 @@
 import Sidebar from './Sidebar.js';
 
 new Sidebar({
-  block: '.search-room-filter',
-  button: '.search-room-content__button-wrapper',
+  block: '.js-search-room-filter',
+  button: '.js-search-room-content__button-wrapper',
 });

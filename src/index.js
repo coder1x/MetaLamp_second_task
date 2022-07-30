@@ -1,9 +1,6 @@
 /* eslint no-unused-vars: off */
 import $ from 'jquery';
 import 'focus-visible/dist/focus-visible.min.js';
-
-import '@shared/helpers/validationEmail/render';
-import '@shared/helpers/message/message.scss';
 import '@styles/styles';
 
 function requireAll(requireContext) {

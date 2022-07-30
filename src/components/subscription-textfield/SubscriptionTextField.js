@@ -1,23 +1,28 @@
 import autoBind from 'auto-bind';
 
-import message from '@shared/helpers/message/message';
-
-import ValidationEmail from '@shared/helpers/validationEmail/ValidationEmail';
+import TextField from '@com/text-field/TextField';
+import message from '@com/message/message';
 
 class SubscriptionTextField {
   constructor(className, wrapper) {
     autoBind(this);
-    this.input = wrapper.querySelector(`${className}__input`);
     this.link = wrapper.querySelector(`${className}__link`);
-    this._validationEmail = new ValidationEmail({
-      element: this.input,
-    });
-
+    this._init(wrapper);
     this._bindEvent();
   }
 
+  _init(wrapper) {
+    const textFieldElement = wrapper.querySelector('.js-text-field');
+    this._textField = new TextField({
+      element: textFieldElement,
+      type: 'email',
+    });
+
+    this.input = this._textField.inputElement;
+  }
+
   _checkEmail(event) {
-    if (this._validationEmail && this._validationEmail.validateField()) {
+    if (this._textField.validateFieldEmail()) {
       message('Вы оформили подписку.');
     } else {
       message('Вы ввели неверный Email.');

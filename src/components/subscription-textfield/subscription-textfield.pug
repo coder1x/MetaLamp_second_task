@@ -1,3 +1,5 @@
+include ../text-field/text-field.pug
+
 mixin subscription-textfield(options = {})
   -
     const {
@@ -11,7 +13,12 @@ mixin subscription-textfield(options = {})
     if label
       h2(class=`${BASE_CLASS}__label-text`)= label
 
-    input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='email' placeholder=value value='' name='subscrip')
-      
+    +text-field({
+      typeField:'email',
+      placeholder: value,
+      name:'subscrip',
+      isFilterDate: true,
+    })
+    
     button(class=`${BASE_CLASS}__link js-${BASE_CLASS}__link` type="submit" aria-label='подписаться' title='подписаться')
       img(class=`${BASE_CLASS}__tip` src=require('./img/arrow-forward.svg') alt='стрелка - подписаться')

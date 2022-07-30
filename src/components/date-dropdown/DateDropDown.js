@@ -2,15 +2,16 @@ import autoBind from 'auto-bind';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
-import message from '@shared/helpers/message/message';
-import MaskedTextField from '@shared/helpers/maskedTextField/maskedTextField';
+import message from '@com/message/message';
+
+import TextField from '@com/text-field/TextField';
 
 class DateDropDown {
-  constructor(className, element) {
+  constructor(element) {
     autoBind(this);
     this.isClicked = false;
     this.defaultText = 'ДД.ММ.ГГГГ';
-    this.className = className;
+    this.className = '.js-date-dropdown';
     this.element = element;
     this._setElement();
     this.init();
@@ -96,6 +97,24 @@ class DateDropDown {
       .getPropertyValue('display') !== 'none';
   }
 
+  validateRange() {
+    let isValidDate = true;
+    if (this.isRange) {
+      isValidDate = Boolean(this.inputFrom.value && this.inputTo.value);
+    } else {
+      const dates = this.inputHidden.value.split('-');
+      const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
+
+      for (let i = 0; i < dates.length; i += 1) {
+        if (!REGEXP.test(DateDropDown._trimDate(dates[i]))) {
+          isValidDate = false;
+          break;
+        }
+      }
+    }
+    return isValidDate;
+  }
+
   toggleVisibility(isVisible = false) {
     const modifier = `${this.className.replace(/^\.js-/, '')}_visible`;
     const visible = DateDropDown.getVisible(this.calendarWrapper);
@@ -105,12 +124,14 @@ class DateDropDown {
 
     if (isVisibleCalendar && visible) {
       classList.remove(modifier);
+      this._toggleTip();
 
       if (!this.isRange) {
         this.inputFrom.value = '';
       }
     } else {
       classList.add(modifier);
+      this._toggleTip(true);
     }
     this._isToggle = isVisible;
   }
@@ -119,8 +140,6 @@ class DateDropDown {
     const isClicked = Boolean(
       [
         this.inputFrom,
-        this.imageLeft,
-        this.imageRight,
         this.inputTo,
       ].find((item) => item === event.target) ?? this._isElementClicked,
     );
@@ -148,7 +167,7 @@ class DateDropDown {
   handleFilterChange(event) {
     const element = event.currentTarget;
     this.inputHidden.value = element.value;
-    this._validateRange(true);
+    this._checkValidity(this.validateRange(), true);
     this.setRange();
   }
 
@@ -165,6 +184,7 @@ class DateDropDown {
     if (event.key === 'Escape') {
       event.preventDefault();
       this.element.classList.remove(`${this.className.replace(/^\.js-/, '')}_visible`);
+      this._toggleTip();
     }
   }
 
@@ -187,13 +207,15 @@ class DateDropDown {
   handleClearButtonClick(event) {
     event.preventDefault();
     this.calendar.clear();
-    if (!this.imageRight) {
-      this.inputFrom.value = '';
-      this.inputFrom.placeholder = '';
-    }
+
+    this.inputFrom.value = '';
+    this.inputFrom.placeholder = this.defaultText;
 
     if (!this.isRange) {
       this.inputHidden.value = '';
+    } else {
+      this.inputTo.value = '';
+      this.inputTo.placeholder = this.defaultText;
     }
 
     this._toggleClearButton();
@@ -201,7 +223,7 @@ class DateDropDown {
 
   handleAcceptButtonClick(event) {
     event.preventDefault();
-    this._validateRange();
+    this._checkValidity(this.validateRange(), false);
   }
 
   handleInputFromClick() {
@@ -214,42 +236,58 @@ class DateDropDown {
     this.toggleVisibility(false);
   }
 
-  _getElements(nameElement, parentElement) {
-    return [
-      ...(parentElement ?? this.element).querySelectorAll(`${this.className}__${nameElement}`),
-    ];
-  }
-
   _getElement(nameElement, parentElement) {
     return (parentElement ?? this.element).querySelector(`${this.className}__${nameElement}`);
+  }
+
+  _toggleTip(isTop = false) {
+    this.TextFieldFrom.toggleTip(isTop);
+
+    if (this.TextFieldTo) {
+      this.TextFieldTo.toggleTip(isTop);
+    }
   }
 
   _setElement() {
     this.calendar = this._getElement('datepicker');
     this.calendarWrapper = this._getElement('datepicker-wrapper');
-    this.inputHidden = this._getElement('input-hidden');
-    this.inputs = this._getElements('input');
-    this.isRange = this.inputs.length > 1;
-    [this.inputFrom] = this.inputs;
-    this.imageLeft = this.inputFrom.nextSibling;
+
+    const textFields = this.element.querySelectorAll('.js-text-field');
+
+    this.inputHidden = null;
+    this.isRange = textFields.length > 1;
+
+    this.TextFieldFrom = new TextField({
+      element: textFields[0],
+    });
+
+    this.inputFrom = this.TextFieldFrom.inputElement;
 
     this.clearButton = this._getElement('clear');
     this.acceptButton = this._getElement('apply');
 
-    if (this.isRange) {
-      [, this.inputTo] = this.inputs;
-      this.imageRight = this.inputTo.nextSibling;
+    this.inputFrom.placeholder = this.defaultText;
 
-      this.inputFrom.placeholder = this.defaultText;
+    if (!this.isRange) {
+      return false;
+    }
+    const textField = new TextField({
+      element: textFields[1],
+    });
+
+    if (textField.isVisible()) {
+      this.TextFieldTo = textField;
+      this.inputTo = this.TextFieldTo.inputElement;
       this.inputTo.placeholder = this.defaultText;
 
-      new MaskedTextField({
-        element: this.inputFrom,
-      });
-      new MaskedTextField({
-        element: this.inputTo,
-      });
+      this.TextFieldFrom.selectionChecks('date');
+      this.TextFieldTo.selectionChecks('date');
+    } else {
+      this.inputHidden = textField.inputElement;
+      this.isRange = false;
     }
+
+    return true;
   }
 
   _getDateFilter(dateFilter) {
@@ -336,25 +374,6 @@ class DateDropDown {
       this.toggleVisibility(this._isToggle);
     }
     return true;
-  }
-
-  _validateRange(isShown = false) {
-    if (this.isRange) {
-      this._checkValidity(Boolean(this.inputFrom.value && this.inputTo.value), isShown);
-    } else {
-      let isValidDate = true;
-      const dates = this.inputHidden.value.split('-');
-      const REGEXP = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19\d\d|20\d\d)$/;
-
-      for (let i = 0; i < dates.length; i += 1) {
-        if (!REGEXP.test(DateDropDown._trimDate(dates[i]))) {
-          isValidDate = false;
-          break;
-        }
-      }
-
-      this._checkValidity(isValidDate, isShown);
-    }
   }
 
   _bindEventFilter() {

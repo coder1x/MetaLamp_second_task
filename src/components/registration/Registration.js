@@ -1,6 +1,7 @@
 import autoBind from 'auto-bind';
 
-import message from '@shared/helpers/message/message';
+import TextField from '@com/text-field/TextField';
+import message from '@com/message/message';
 
 class Registration {
   constructor(className, element) {
@@ -19,6 +20,19 @@ class Registration {
     this._buttonElement = this.element.querySelector(
       `${this.className}__submit-wrapper button`,
     );
+
+    const textFieldDate = this.element.querySelector(`${this.className}__date-wrapper`);
+    const textFieldEmail = this.element.querySelector(`${this.className}__email-wrapper`);
+
+    new TextField({
+      element: textFieldDate.firstElementChild,
+      type: 'date',
+    });
+
+    new TextField({
+      element: textFieldEmail.firstElementChild,
+      type: 'email',
+    });
   }
 
   static _checkLength(result, text) {
@@ -49,7 +63,7 @@ class Registration {
       case 'email':
         isValid = Registration._checkLength(length < MIN_LENGTH_EMAIL, 'Email');
         break;
-      case 'pass':
+      case 'password':
         isValid = Registration._checkLength(length < MIN_LENGTH_PASSWORD, 'Пароль');
         break;
       default:
@@ -59,7 +73,7 @@ class Registration {
   }
 
   _validation() {
-    const FIELDS = ['name', 'surname', 'date', 'email', 'pass'];
+    const FIELDS = ['name', 'surname', 'date', 'email', 'password'];
 
     for (let i = 0; i < FIELDS.length; i += 1) {
       const item = FIELDS[i];

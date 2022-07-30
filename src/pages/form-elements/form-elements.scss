@@ -6,7 +6,7 @@ $color-title-buttons: $Dark-Shade-100;
     margin-left: 30px;
   }
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -21,7 +21,9 @@ $color-title-buttons: $Dark-Shade-100;
     max-width: 330px;
   }
 
-  &__text-field {
+  &__text-field,
+  &__text-field-email,
+  &__text-field-date {
     padding-bottom: 20px;
     max-width: 320px;
   }
@@ -72,7 +74,7 @@ $color-title-buttons: $Dark-Shade-100;
     flex-direction: row;
   }
 
-  &__container-center{
+  &__container-center {
     margin-left: 116px;
     width: 100%;
     max-width: 260px;
@@ -102,7 +104,7 @@ $color-title-buttons: $Dark-Shade-100;
     margin-bottom: 36px;
   }
 
-  &__container-right{
+  &__container-right {
     margin-left: 132px;
     width: 100%;
     max-width: 322px;

@@ -1,9 +1,10 @@
 include ../button/button.pug
+include ../text-field/text-field.pug
 
 mixin date-dropdown(options = {})
   -
     const {
-      label = '',
+      labels = [],
       value = '',
       modifier = '',
       filter = false,
@@ -18,22 +19,31 @@ mixin date-dropdown(options = {})
   div(class=`${className} js-${BASE_CLASS}`)
     - const num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
-        div(class=`${BASE_CLASS}__date-wrapper`)
+      - const label = labels[i] ?? ''
+      -if(filter){
+        +text-field({
+          label,
+          typeField:'text',
+          hasTip: true,
+          isFilterDate: true,
+        })
+        +text-field({
+          typeField:'hidden',
+          value,
+          name:'date-filter',
+          isHidden: true
+        })
+      -}else {
+        +text-field({
+          label,
+          typeField:'text',
+          value,
+          name:`date-${i}`,
+          isDateMinimal:true,
+          hasTip: true,
+        })
+      -}
 
-          label(class=`${BASE_CLASS}__label`)
-
-            - if(label){
-                = label[i]
-            -}
-
-            -if(filter){
-                input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder=''  autocomplete='off')
-                input(class=`${BASE_CLASS}__input-hidden js-${BASE_CLASS}__input-hidden` type='hidden' value=value name='date-filter')
-            -}else{
-                input(class=`${BASE_CLASS}__input js-${BASE_CLASS}__input` type='text' placeholder='' value=value name=`date-${i}` autocomplete='off')
-            -}
-            
-            img(class=`${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='уголок')
     -}
 
     div(class=`${BASE_CLASS}__datepicker-wrapper js-${BASE_CLASS}__datepicker-wrapper`)

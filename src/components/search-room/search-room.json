@@ -1,6 +1,6 @@
 {
   "dateDropdown": {
-    "label": [
+    "labels": [
       "прибытие",
       "выезд"
     ],

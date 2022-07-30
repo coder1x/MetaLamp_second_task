@@ -4,21 +4,35 @@ mixin text-field(options = {})
       label = '',
       placeholder = '',
       typeField = '',
+      value = '',
       name = '',
-      isMaskedDate = false,
+      autocomplete = 'off',
+      isDateMinimal = false,
+      isHidden = false,
+      hasTip = false,
+      isFilterDate = false,
     } = options;
 
     const BASE_CLASS = 'text-field'
-
-    let className = BASE_CLASS
+    const classDateMinimal = `${BASE_CLASS}__input_date-minimal`
+    const filterDateName = `${BASE_CLASS}_filter-date`
     
-  if isMaskedDate
-      - className += ` js-${BASE_CLASS}`
-    
-  div(class=className)
+  div(
+    class=`${BASE_CLASS} js-${BASE_CLASS} ${(isFilterDate ? filterDateName : '')}`
+    data-type = isHidden ? 'hidden' : ''
+  )
     label(class=`${BASE_CLASS}__label`)
       if label
         =label
       
-      input(class=`${BASE_CLASS}__input` type=typeField placeholder=placeholder value='' name=name)
-      
+      input(
+        class=`${BASE_CLASS}__input js-${BASE_CLASS}__input ${(isDateMinimal ? classDateMinimal: '')}` 
+        type=typeField 
+        placeholder=placeholder 
+        value=value 
+        name=name
+        autocomplete=autocomplete
+        )
+        
+      if hasTip
+        img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='уголок')

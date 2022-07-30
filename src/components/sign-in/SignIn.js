@@ -1,6 +1,7 @@
 import autoBind from 'auto-bind';
 
-import message from '@shared/helpers/message/message';
+import TextField from '@com/text-field/TextField';
+import message from '@com/message/message';
 
 class SignIn {
   constructor(className, element) {
@@ -11,9 +12,16 @@ class SignIn {
   }
 
   _setDomElement(element) {
-    this._emailInputs = element.querySelector(`${this.className}__email-wrapper input`);
+    const emailElement = element.querySelector(`${this.className}__email-wrapper`);
     this._passwordInput = element.querySelector(`${this.className}__password-wrapper input`);
     this._buttonElement = element.querySelector(`${this.className}__button-wrapper button`);
+
+    const textFieldEmail = new TextField({
+      element: emailElement.firstElementChild,
+      type: 'email',
+    });
+
+    this._emailInputs = textFieldEmail.inputElement;
   }
 
   _checkField() {

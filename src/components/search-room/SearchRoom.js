@@ -4,10 +4,10 @@ import DateDropDown from '@com/date-dropdown/DateDropDown.js';
 import DropDown from '@com/dropdown/DropDown.js';
 import message from '@com/message/message';
 
-class Booking {
+class SearchRoom {
   constructor(element) {
     autoBind(this);
-    this.className = '.js-booking';
+    this.className = '.js-search-room';
     this.element = element;
 
     this._init();
@@ -52,4 +52,4 @@ class Booking {
   }
 }
 
-export default Booking;
+export default SearchRoom;

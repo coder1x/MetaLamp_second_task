@@ -1,19 +1,52 @@
 import autoBind from 'auto-bind';
 
+import DateDropDown from '@com/date-dropdown/DateDropDown.js';
+import DropDown from '@com/dropdown/DropDown.js';
+
 class Sidebar {
   constructor(options) {
     autoBind(this);
+    this.className = '.js-search-room-filter';
     this.blockClass = options.block;
     this.buttonClass = options.button;
+    this._init();
+  }
+
+  _init() {
     this._isClicked = false;
-    this._setDomElement();
-    this._bindEvent();
+    if (this._setDomElement()) {
+      this._bindEvent();
+    }
   }
 
   _setDomElement() {
+    const element = document.querySelector(this.className);
+
+    if (!element) {
+      return false;
+    }
+
+    const dateDropdownElement = element.querySelector(`${this.className}__date-wrapper`);
+    const guestsElement = element.querySelector(`${this.className}__guests-wrapper`);
+    const facilitiesElement = element.querySelector(`${this.className}__facilities-wrapper`);
+
+    this._dropdown = new DropDown(
+      guestsElement.firstElementChild,
+    );
+
+    this._dropdown = new DropDown(
+      facilitiesElement.firstElementChild,
+    );
+
+    this._dateDropdown = new DateDropDown(
+      dateDropdownElement.firstElementChild,
+    );
+
     this.button = document.querySelector(this.buttonClass);
     this.block = document.querySelector(this.blockClass);
-    this.classVisible = `${this.blockClass.replace(/^\./, '')}_visible`;
+    this.classVisible = `${this.blockClass.replace(/^\.js-/, '')}_visible`;
+
+    return true;
   }
 
   _getVisibility() {

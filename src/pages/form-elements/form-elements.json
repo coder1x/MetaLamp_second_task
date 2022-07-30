@@ -68,13 +68,13 @@
     }
   },
   "dateDropdown": {
-    "label": [
+    "labels": [
       "date Dropdown",
       "date Dropdown"
     ]
   },
   "filterDate": {
-    "label": [
+    "labels": [
       "filter date dropdown"
     ],
     "value": "19.08.2022 - 23.08.2022",

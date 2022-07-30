@@ -70,7 +70,7 @@ $color-days-names: $Purple;
 
       &-nav--action,
       &-nav--title {
-        &:hover{
+        &:hover {
           background-color: $color-background;
         }
       }
@@ -215,16 +215,6 @@ $color-days-names: $Purple;
     flex-direction: column;
   }
 
-  &__tip {
-    position: absolute;
-    width: 13px;
-    right: 15px;
-    bottom: 17px;
-    cursor: pointer;
-    transform: rotate(0deg);
-    transition: transform 0.5s;
-  }
-
   &_visible &__tip {
     transform: rotate(180deg);
   }
@@ -321,14 +311,14 @@ $color-days-names: $Purple;
     background-color: $color-background;
   }
 
-  &__back{
+  &__back {
     width: 17px;
     height: 18px;
     background-image: url("~comp/date-dropdown/img/arrow-back.svg");
     color: transparent;
   }
 
-  &__forward{
+  &__forward {
     width: 17px;
     height: 18px;
     background-image: url("~comp/date-dropdown/img/arrow-forward.svg");

@@ -14,6 +14,7 @@ include ../../components/button/button.pug
 include ../../components/pagination/pagination.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/comment/comment.pug
+include ../../components/message/message.pug
 
 -
   const {
@@ -38,34 +39,34 @@ html(lang='ru')
     meta(charset='utf-8')
     title form elements
 
-  body.form-elements
+  body( class = 'form-elements js-form-elements')
     .form-elements__logo
       +logo-group()
 
     main.form-elements__content
       .form-elements__column-left 
-        .form-elements__text-field
+        div(class = 'form-elements__text-field-email js-form-elements__text-field-email')
           +text-field(textField.email)
 
         .form-elements__text-field
           +text-field(textField.name)
         
-        .form-elements__guest
+        div(class = 'form-elements__guest js-form-elements__guest')
           +dropdown(dropDown.guest)
 
-        .form-elements__text-field
+        div(class = 'form-elements__text-field-date js-form-elements__text-field-date')
           +text-field(textField.date)
 
-        .form-elements__date-dropdown
+        div(class = 'form-elements__date-dropdown js-form-elements__date-dropdown')
           +date-dropdown(dateDropdown)
 
-        .form-elements__filter-date
+        div(class = 'form-elements__filter-date js-form-elements__filter-date')
           +date-dropdown(filterDate)
 
         .form-elements__subscrip-textfield
           +subscription-textfield(subscrip)
 
-        .form-elements__rooms
+        div(class = 'form-elements__rooms js-form-elements__rooms')
           +dropdown(dropDown.rooms)
         
         .form-elements__checkbox-list
@@ -124,3 +125,4 @@ html(lang='ru')
         .form-elements__column-bottom
           .form-elements__comment
             +comment(comment)
+    +message()

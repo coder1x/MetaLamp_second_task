@@ -1,12 +1,12 @@
 import autoBind from 'auto-bind';
 
-import message from '@shared/helpers/message/message';
+import message from '@com/message/message';
 
 class DropDown {
-  constructor(className, component) {
+  constructor(element) {
     autoBind(this);
-    this.className = className;
-    this.element = component;
+    this.className = '.js-dropdown';
+    this.element = element;
 
     this._init();
   }
@@ -62,6 +62,14 @@ class DropDown {
     this._toggleModifier(this._clearButton, '__button-clear_visible');
 
     return true;
+  }
+
+  validateData() {
+    if (!(this._inputElement instanceof HTMLInputElement)) {
+      return false;
+    }
+    const defaultText = this._inputElement.value !== this.defaultText;
+    return !defaultText || this._inputElement.value;
   }
 
   static declineWords(number, words) {
@@ -182,13 +190,7 @@ class DropDown {
   _handleButtonApplyClick(event) {
     event.preventDefault();
 
-    if (!(this._inputElement instanceof HTMLInputElement)) {
-      return false;
-    }
-    const defaultText = this._inputElement.value === this.defaultText;
-    const isInputClear = defaultText || !this._inputElement.value;
-
-    if (isInputClear) {
+    if (!this.validateData()) {
       message('Выберите количество гостей.');
     } else {
       this._toggleVisibility();

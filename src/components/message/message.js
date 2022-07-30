@@ -13,13 +13,14 @@ function handleButtonKeyDown(event) {
 function message(text) {
   const BASE_CLASS = 'message-toxin';
 
-  const popUp = document.querySelector(`.${BASE_CLASS}`);
+  const popUp = document.querySelector(`.${BASE_CLASS}__pop-up`);
   if (popUp) {
     return false;
   }
 
-  const wrapper = document.createElement('article');
-  wrapper.classList.add(BASE_CLASS);
+  const wrapper = document.createElement('div');
+  wrapper.classList.add(`${BASE_CLASS}__pop-up`);
+
   const buttonClose = document.createElement('button');
   buttonClose.innerText = '✖';
   buttonClose.classList.add(`${BASE_CLASS}__close`);
@@ -30,7 +31,7 @@ function message(text) {
   wrapper.appendChild(buttonClose);
   wrapper.appendChild(paragraph);
 
-  const bodyElement = document.querySelector('body');
+  const bodyElement = document.querySelector(`.js-${BASE_CLASS}`);
   bodyElement.appendChild(wrapper);
 
   buttonClose.addEventListener('click', handleButtonClick);
