@@ -17,14 +17,12 @@ mixin checkbox-list(options = {})
   div(class=`${className} js-${BASE_CLASS}`)
     fieldset(class=`${BASE_CLASS}__items`)
 
-      -if(legend){
-        -if(!isClicked){
+      if legend
+        if !isClicked
           legend(class=`${BASE_CLASS}__header js-${BASE_CLASS}__header` tabindex='0' aria-label='раскрывающийся список')= legend
-              img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='угалок')
-        -} else {
+            img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='угалок')
+        else
           legend(class=`${BASE_CLASS}__header js-${BASE_CLASS}__header`)= legend
-        -}  
-      -}
       
       div(class=`${BASE_CLASS}__wrapper js-${BASE_CLASS}__wrapper`)
         each item in items

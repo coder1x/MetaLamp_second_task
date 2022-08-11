@@ -20,30 +20,28 @@ mixin date-dropdown(options = {})
     - const num = filter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
       - const label = labels[i] ?? ''
-      -if(filter){
-        +text-field({
-          label,
-          typeField:'text',
-          hasTip: true,
-          isFilterDate: true,
-        })
-        +text-field({
-          typeField:'hidden',
-          value,
-          name:'date-filter',
-          isHidden: true
-        })
-      -}else {
-        +text-field({
-          label,
-          typeField:'text',
-          value,
-          name:`date-${i}`,
-          isDateMinimal:true,
-          hasTip: true,
-        })
-      -}
-
+        if filter
+          +text-field({
+            label,
+            typeField:'text',
+            hasTip: true,
+            isFilterDate: true,
+          })
+          +text-field({
+            typeField:'hidden',
+            value,
+            name:'date-filter',
+            isHidden: true
+          })
+        else 
+          +text-field({
+            label,
+            typeField:'text',
+            value,
+            name:`date-${i}`,
+            isDateMinimal:true,
+            hasTip: true,
+          })
     -}
 
     div(class=`${BASE_CLASS}__datepicker-wrapper js-${BASE_CLASS}__datepicker-wrapper`)

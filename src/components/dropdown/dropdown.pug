@@ -31,18 +31,17 @@ mixin dropdown(options = {})
             button(class=`${BASE_CLASS}__plus js-${BASE_CLASS}__plus` data-max=maxValues[index] aria-label='плюс') +
       -})
       
-      -if(isButton){
-          li(class=`${BASE_CLASS}__buttons`)
-            div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
-              +button({
-                text:'очистить',
-                type:'button',
-                modifiers:['text']
-                    })
-            div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
-              +button({
-                text:'применить',
-                type:'button',
-                modifiers:['text']
-                    })
-      -}
+      if isButton
+        li(class=`${BASE_CLASS}__buttons`)
+          div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
+            +button({
+              text:'очистить',
+              type:'button',
+              modifiers:['text']
+                  })
+          div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
+            +button({
+              text:'применить',
+              type:'button',
+              modifiers:['text']
+                  })
