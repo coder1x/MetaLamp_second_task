@@ -14,7 +14,7 @@ class Slider {
 
   setVisible(index) {
     const TIME = 150;
-    const delay = new Date().getTime() - this._timePress > TIME;
+    const delay = Date.now() - this._timePress > TIME;
 
     if (delay && Array.isArray(this._slidesElement)) {
       this._toggle(this._slidesElement[this._indexSlide], true);
@@ -108,7 +108,7 @@ class Slider {
     } else if (Array.isArray(this._slidesElement)) {
       this.setVisible(this._slidesElement.length - 1);
     }
-    this._timePress = new Date().getTime();
+    this._timePress = Date.now();
   }
 
   _handleNextClick() {
@@ -122,7 +122,7 @@ class Slider {
     } else {
       this.setVisible(0);
     }
-    this._timePress = new Date().getTime();
+    this._timePress = Date.now();
     return true;
   }
 
@@ -219,7 +219,7 @@ class Slider {
       const SHIFT = 20;
       const xyUp = Slider._getCoordinatesXY(event);
       const isShift = Math.abs((xyUp[0] - xyDown[0])) > SHIFT;
-      const isTimeInterval = (new Date().getTime() - this._timePress) > TIME;
+      const isTimeInterval = (Date.now() - this._timePress) > TIME;
 
       if (isShift && isTimeInterval) {
         this._swipeDirection([
