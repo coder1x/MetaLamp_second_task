@@ -49,7 +49,7 @@ class LikeButton {
 
   _toggleClass() {
     const className = this.className.replace(/^\.js-/, '');
-    const nameVoted = `${className}_voted`;
+    const nameVoted = `${className}_is-voted`;
     const nameFavorite = `${className}__icon_favorite`;
 
     if (this._isLiked) {

@@ -14,32 +14,34 @@ $colored-square-text: $Dark-Shade-100;
     border-radius: 6px;
     margin-right: 40px;
 
-    &_dark-shade-100 {
-      background-color: $Dark-Shade-100;
-    }
+    &_color {
+      &_dark-shade-100 {
+        background-color: $Dark-Shade-100;
+      }
 
-    &_dark-shade-75 {
-      background-color: $Dark-Shade-75;
-    }
+      &_dark-shade-75 {
+        background-color: $Dark-Shade-75;
+      }
 
-    &_dark-shade-50 {
-      background-color: $Dark-Shade-50;
-    }
+      &_dark-shade-50 {
+        background-color: $Dark-Shade-50;
+      }
 
-    &_dark-shade-25 {
-      background-color: $Dark-Shade-25;
-    }
+      &_dark-shade-25 {
+        background-color: $Dark-Shade-25;
+      }
 
-    &_dark-shade-5 {
-      background-color: $Dark-Shade-5;
-    }
+      &_dark-shade-5 {
+        background-color: $Dark-Shade-5;
+      }
 
-    &_purple {
-      background-color: $Purple;
-    }
+      &_purple {
+        background-color: $Purple;
+      }
 
-    &_green {
-      background-color: $Green;
+      &_green {
+        background-color: $Green;
+      }
     }
   }
 

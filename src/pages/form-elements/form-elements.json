@@ -64,7 +64,7 @@
         "8",
         "4"
       ],
-      "modifier": "sharp"
+      "modifier": "type_sharp"
     }
   },
   "dateDropdown": {
@@ -78,7 +78,7 @@
       "filter date dropdown"
     ],
     "value": "19.08.2022 - 23.08.2022",
-    "modifier": "filter",
+    "modifier": "type_filter",
     "filter": true
   },
   "subscrip": {
@@ -130,7 +130,7 @@
       "legend": "Checkbox Buttons",
       "isClicked": true,
       "modifiers": [
-        "visibleBut"
+        "type_buttons"
       ]
     },
     "richCheckbox": {
@@ -147,8 +147,8 @@
       "legend": "rich Checkbox Buttons",
       "isClicked": true,
       "modifiers": [
-        "visibleBut",
-        "rich"
+        "type_buttons",
+        "type_rich"
       ]
     }
   },
@@ -195,7 +195,7 @@
       "link": "https://change-me",
       "type": "link",
       "modifiers": [
-        "link"
+        "type_link"
       ]
     },
     "linkBorder": {
@@ -203,21 +203,21 @@
       "link": "https://change-me",
       "type": "link",
       "modifiers": [
-        "link-border"
+        "type_link-border"
       ]
     },
     "text": {
       "text": "CLICK ME",
       "type": "button",
       "modifiers": [
-        "text"
+        "type_text"
       ]
     },
     "submit": {
       "text": "перейти к оплате",
       "type": "submit",
       "modifiers": [
-        "submit"
+        "type_submit"
       ]
     }
   },

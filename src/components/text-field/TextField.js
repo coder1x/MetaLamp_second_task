@@ -28,7 +28,7 @@ class TextField {
       return false;
     }
 
-    const CLASS_NAME_TIP = 'text-field__tip_top';
+    const CLASS_NAME_TIP = 'text-field__tip_is-rotate';
 
     if (isTop) {
       this.tipElement.classList.add(CLASS_NAME_TIP);

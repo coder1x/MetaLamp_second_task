@@ -33,7 +33,7 @@
     "text": "подобрать номер",
     "type": "submit",
     "modifiers": [
-      "submit"
+      "type_submit"
     ]
   }
 }

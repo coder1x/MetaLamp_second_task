@@ -14,7 +14,7 @@ class CheckBoxList {
   }
 
   handleHeaderClick() {
-    this._toggleModifier(this.element, '_visible');
+    this._toggleModifier(this.element, '_type_expandable');
   }
 
   _getElement(nameElement, parentElement) {
@@ -51,7 +51,7 @@ class CheckBoxList {
       this.handleHeaderClick();
     } else if (key === 'Escape') {
       event.preventDefault();
-      this._toggleModifier(this.element, '_visible', true);
+      this._toggleModifier(this.element, '_type_expandable', true);
     }
   }
 

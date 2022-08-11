@@ -247,7 +247,7 @@ $color-days-names: $Purple;
     }
   }
 
-  &_filter &__date-wrapper {
+  &_type_filter &__date-wrapper {
     position: relative;
     width: 100%;
     max-width: 310px;
@@ -285,7 +285,7 @@ $color-days-names: $Purple;
     }
   }
 
-  &_filter &__input {
+  &_type_filter &__input {
     width: 100%;
     max-width: none;
   }
@@ -382,7 +382,7 @@ $color-days-names: $Purple;
     }
   }
 
-  &_filter .date-dropdown__datepicker {
+  &_type_filter .date-dropdown__datepicker {
     .air-datepicker {
       width: 264px;
       margin: 0 auto;
@@ -434,7 +434,7 @@ $color-days-names: $Purple;
     }
   }
 
-  &_filter {
+  &_type_filter {
     .air-datepicker-cell.-day-.-range-from-::after {
       width: 35px;
       height: 35px;
@@ -448,6 +448,10 @@ $color-days-names: $Purple;
     .air-datepicker-cell.-day-.-in-range-:hover::before {
       width: 36px;
       height: 35px;
+    }
+
+    .air-datepicker-cell.-day-.-current-.-min-date- {
+      width: 35px;
     }
   }
 

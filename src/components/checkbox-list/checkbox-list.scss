@@ -26,7 +26,7 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-  &_visibleBut &__header {
+  &_type_buttons &__header {
     cursor: default;
   }
 
@@ -36,11 +36,11 @@ $color-focus: $Dark-Shade-100;
     align-items: flex-start;
   }
 
-  &_visible &__wrapper {
+  &_type_expandable &__wrapper {
     display: flex;
   }
 
-  &_visibleBut &__wrapper {
+  &_type_buttons &__wrapper {
     display: flex;
   }
 
@@ -64,7 +64,7 @@ $color-focus: $Dark-Shade-100;
     margin-bottom: 12px;
   }
 
-  &_rich &__label {
+  &_type_rich &__label {
     @include font-family("Montserrat");
     font-weight: bold;
     color: $color-checkbox-rich;
@@ -106,7 +106,7 @@ $color-focus: $Dark-Shade-100;
     &:disabled + .checkbox-list__before {
       border-color: $Dark-Shade-1;
     }
-  
+
     &:checked:disabled + .checkbox-list__before {
       border-color: $Dark-Shade-1;
     }
@@ -142,7 +142,7 @@ $color-focus: $Dark-Shade-100;
     transition: transform 0.5s;
   }
 
-  &_visible &__tip {
+  &_type_expandable &__tip {
     transform: rotate(180deg);
   }
 }

@@ -45,7 +45,7 @@ $color-focus: $Dark-Shade-100;
       background: linear-gradient(180deg, $color-radio-border 0%, #8ba4f9 100%);
       box-shadow: inset 0px 0px 0px 3.5px $color-background;
     }
-  
+
     &:focus + .radio-buttons__before {
       border: 1px solid $color-radio;
     }

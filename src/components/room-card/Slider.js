@@ -71,7 +71,7 @@ class Slider {
 
   _paintDot() {
     const dotSelector = `${this.className}__dot`;
-    let modifier = `${dotSelector}_paint`;
+    let modifier = `${dotSelector}_is-current`;
     modifier = modifier.replace(/^\.js-/, '');
     const dots = this.element.querySelectorAll(dotSelector);
     dots[this._indexDot].classList.remove(modifier);

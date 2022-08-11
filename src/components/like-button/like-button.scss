@@ -38,17 +38,17 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-  &_voted &__like {
+  &_is-voted &__like {
     border-color: $color-like-voted;
   }
 
-  &__icon{
+  &__icon {
     width: 10px;
     height: 8px;
     background-image: url("~comp/like-button/img/like.svg");
     color: transparent;
 
-    &_favorite{
+    &_favorite {
       background-image: url("~comp/like-button/img/favorite.svg");
     }
   }

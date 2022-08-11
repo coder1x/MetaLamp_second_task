@@ -14,59 +14,6 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
   text-transform: uppercase;
   color: #fff;
 
-  &_link,
-  &_link-border {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-width: 99px;
-    height: 44px;
-    border-radius: 22px;
-    box-sizing: border-box;
-    border: 0px;
-    cursor: pointer;
-  }
-
-  &_header {
-    height: 34px;
-    min-width: auto;
-  }
-
-  &_link,
-  &_submit,
-  &_text,
-  &_link-border {
-    &:focus{
-      outline: 2px solid $color-focus;
-      outline-offset: 5px;
-    }
-  }
-
-  &_submit {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 100%;
-    max-width: 320px;
-    height: 44px;
-    border-radius: 22px;
-    box-sizing: border-box;
-    background: $color-submit-background;
-    border: 0;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
   &__icon {
     position: absolute;
     top: 0;
@@ -77,35 +24,90 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
     overflow: auto;
   }
 
-  &_text {
-    color: $color-text;
-    background-color: $color-background;
-    border: 0;
-    cursor: pointer;
-    padding: 0px;
-
-    &:hover {
-      color: $color-text-hover;
+  &_type {
+    &_link,
+    &_link-border {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      min-width: 99px;
+      height: 44px;
+      border-radius: 22px;
+      box-sizing: border-box;
+      border: 0px;
+      cursor: pointer;
     }
-  }
 
-  &_link {
-    background: $color-link-background;
-    &:hover {
-      opacity: 0.5;
+    &_header {
+      height: 34px;
+      min-width: auto;
     }
-  }
 
-  &_link-border {
-    color: $color-text;
-    background-color: $color-background;
-    position: relative;
-    background-clip: padding-box;
-    box-shadow: $color-link-border;
+    &_link,
+    &_submit,
+    &_text,
+    &_link-border {
+      &:focus {
+        outline: 2px solid $color-focus;
+        outline-offset: 5px;
+      }
+    }
 
-    &:hover,
-    &:focus {
-      box-shadow: $color-link-border-hover;
+    &_submit {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-left: 5px;
+      padding-right: 5px;
+      width: 100%;
+      max-width: 320px;
+      height: 44px;
+      border-radius: 22px;
+      box-sizing: border-box;
+      background: $color-submit-background;
+      border: 0;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &_text {
+      color: $color-text;
+      background-color: $color-background;
+      border: 0;
+      cursor: pointer;
+      padding: 0px;
+
+      &:hover {
+        color: $color-text-hover;
+      }
+    }
+
+    &_link {
+      background: $color-link-background;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &_link-border {
+      color: $color-text;
+      background-color: $color-background;
+      position: relative;
+      background-clip: padding-box;
+      box-shadow: $color-link-border;
+
+      &:hover,
+      &:focus {
+        box-shadow: $color-link-border-hover;
+      }
     }
   }
 }

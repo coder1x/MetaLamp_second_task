@@ -3,37 +3,37 @@
     "darkShade100": {
       "textTop": "Dark Shade 100%",
       "textBot": "#1F2041",
-      "modifier": "dark-shade-100"
+      "modifier": "color_dark-shade-100"
     },
     "darkShade75": {
       "textTop": "Dark Shade 75%",
       "textBot": "#1F2041",
-      "modifier": "dark-shade-75"
+      "modifier": "color_dark-shade-75"
     },
     "darkShade50": {
       "textTop": "Dark Shade 50%",
       "textBot": "#1F2041",
-      "modifier": "dark-shade-50"
+      "modifier": "color_dark-shade-50"
     },
     "darkShade25": {
       "textTop": "Dark Shade 25%",
       "textBot": "#1F2041",
-      "modifier": "dark-shade-25"
+      "modifier": "color_dark-shade-25"
     },
     "darkShade5": {
       "textTop": "Dark Shade 5%",
       "textBot": "#1F2041",
-      "modifier": "dark-shade-5"
+      "modifier": "color_dark-shade-5"
     },
     "purple": {
       "textTop": "Purple",
       "textBot": "#BC9CFF",
-      "modifier": "purple"
+      "modifier": "color_purple"
     },
     "green": {
       "textTop": "Green",
       "textBot": "#6FCF97",
-      "modifier": "green"
+      "modifier": "color_green"
     }
   }
 }

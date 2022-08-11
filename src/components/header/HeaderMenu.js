@@ -77,7 +77,7 @@ class HeaderMenu {
   }
 
   _rotateTip(element, isRotate = false) {
-    const nameModifier = (`${this.className}__tip_rotate`).replace(/^\.js-/, '');
+    const nameModifier = (`${this.className}__tip_is-rotated`).replace(/^\.js-/, '');
     if (!isRotate) {
       element.classList.remove(nameModifier);
     } else {

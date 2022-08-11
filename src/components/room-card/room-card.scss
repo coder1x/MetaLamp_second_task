@@ -79,7 +79,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     z-index: 50;
     margin-left: 3px;
 
-    &_paint {
+    &_is-current {
       background-color: $color-dot;
     }
   }
@@ -97,7 +97,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     padding: 0;
   }
 
-  &__prev-wrapper{
+  &__prev-wrapper {
     &:hover,
     &:focus {
       border-top-left-radius: 4px;
@@ -110,7 +110,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     display: inline;
   }
 
-  &__next-wrapper{
+  &__next-wrapper {
     &:hover,
     &:focus {
       border-top-left-radius: 4px;
@@ -126,7 +126,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
 
   &__next-wrapper,
   &__prev-wrapper {
-    &:focus{
+    &:focus {
       outline: 2px solid $color-focus;
     }
   }

@@ -14,8 +14,8 @@ mixin text-field(options = {})
     } = options;
 
     const BASE_CLASS = 'text-field'
-    const classDateMinimal = `${BASE_CLASS}__input_date-minimal`
-    const filterDateName = `${BASE_CLASS}_filter-date`
+    const classDateMinimal = `${BASE_CLASS}__input_type_date-minimal`
+    const filterDateName = `${BASE_CLASS}_type_filter-date`
     
   div(
     class=`${BASE_CLASS} js-${BASE_CLASS} ${(isFilterDate ? filterDateName : '')}`

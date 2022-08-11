@@ -38,8 +38,8 @@
         "link": "/sign-in.html",
         "type": "link",
         "modifiers": [
-          "link-border",
-          "header"
+          "type_link-border",
+          "type_header"
         ]
       },
       {
@@ -47,8 +47,8 @@
         "link": "/registration.html",
         "type": "link",
         "modifiers": [
-          "link",
-          "header"
+          "type_link",
+          "type_header"
         ]
       }
     ],
