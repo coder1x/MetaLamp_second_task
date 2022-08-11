@@ -155,13 +155,13 @@ class HeaderMenu {
   }
 
   _setModifier(element, modifier, isVisible = false) {
-    const nameModifier = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
+    const classNameWithModifier = `${this.className.replace(/^\.js-/, '')}${`__${modifier}_visible`}`;
     const { classList } = element;
 
     if (!isVisible) {
-      classList.add(nameModifier);
+      classList.add(classNameWithModifier);
     } else {
-      classList.remove(nameModifier);
+      classList.remove(classNameWithModifier);
     }
   }
 

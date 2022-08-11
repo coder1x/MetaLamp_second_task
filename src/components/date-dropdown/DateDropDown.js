@@ -116,21 +116,21 @@ class DateDropDown {
   }
 
   toggleVisibility(isVisible = false) {
-    const modifier = `${this.className.replace(/^\.js-/, '')}_visible`;
+    const classNameWithModifier = `${this.className.replace(/^\.js-/, '')}_visible`;
     const visible = DateDropDown.getVisible(this.calendarWrapper);
     const { classList } = this.element;
 
     const isVisibleCalendar = this._isToggle === isVisible;
 
     if (isVisibleCalendar && visible) {
-      classList.remove(modifier);
+      classList.remove(classNameWithModifier);
       this._toggleTip();
 
       if (!this.isRange) {
         this.inputFrom.value = '';
       }
     } else {
-      classList.add(modifier);
+      classList.add(classNameWithModifier);
       this._toggleTip(true);
     }
     this._isToggle = isVisible;

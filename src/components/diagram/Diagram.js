@@ -77,19 +77,19 @@ class Diagram {
     if (!this.element) {
       return false;
     }
-    const diagramSelector = this.className.replace(/^\.js-/, '');
-    const listSelector = `.${diagramSelector}__colors`;
+    const diagramClassName = this.className.replace(/^\.js-/, '');
+    const listSelector = `.${diagramClassName}__colors`;
 
     const list = this.element.querySelector(listSelector);
 
     this._titles.forEach((title, index) => {
       const liElement = document.createElement('li');
-      liElement.classList.add(`${diagramSelector}__colors-item`);
+      liElement.classList.add(`${diagramClassName}__colors-item`);
       liElement.innerText = title;
       list.append(liElement);
 
       const divElement = document.createElement('div');
-      divElement.classList.add(`${diagramSelector}__colors-dot`);
+      divElement.classList.add(`${diagramClassName}__colors-dot`);
 
       const { colorStops } = this.dataVotes[index];
 

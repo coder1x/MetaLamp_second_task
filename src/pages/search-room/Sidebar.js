@@ -44,7 +44,7 @@ class Sidebar {
 
     this.button = document.querySelector(this.buttonClass);
     this.block = document.querySelector(this.blockClass);
-    this.classVisible = `${this.blockClass.replace(/^\.js-/, '')}_visible`;
+    this.classNameWithModifier = `${this.blockClass.replace(/^\.js-/, '')}_visible`;
 
     return true;
   }
@@ -66,13 +66,13 @@ class Sidebar {
     const { classList } = this.block;
 
     if (!isVisible) {
-      classList.add(this.classVisible);
+      classList.add(this.classNameWithModifier);
       const element = this.block.querySelector('input');
       if (element) {
         element.focus();
       }
     } else {
-      classList.remove(this.classVisible);
+      classList.remove(this.classNameWithModifier);
     }
     return true;
   }

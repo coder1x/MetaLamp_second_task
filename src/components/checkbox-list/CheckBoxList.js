@@ -28,14 +28,14 @@ class CheckBoxList {
   }
 
   _toggleModifier(element, modifier, isVisible = false) {
-    const classWithModifier = `${this.className.replace(/^\.js-/, '')}${modifier}`;
+    const classNameWithModifier = `${this.className.replace(/^\.js-/, '')}${modifier}`;
     const { classList } = element;
 
-    if (isVisible && !classList.contains(classWithModifier)) {
+    if (isVisible && !classList.contains(classNameWithModifier)) {
       return false;
     }
 
-    classList.toggle(classWithModifier);
+    classList.toggle(classNameWithModifier);
 
     return true;
   }
