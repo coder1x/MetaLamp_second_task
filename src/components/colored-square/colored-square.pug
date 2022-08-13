@@ -3,16 +3,27 @@ mixin colored-square(options = {})
     const {
       textTop = '',
       textBot = '',
-      modifier = ''
+      color = ''
     } = options;
     const BASE_CLASS = 'colored-square'
-    let classSquare = `${BASE_CLASS}__square`
-    const modifierSquare = modifier ?? ''
-  if modifierSquare
-    - classSquare += ` ${classSquare}_${modifierSquare}`
+    const classSquare = `${BASE_CLASS}__square`
+
+    const colorModifiers = {
+      'darkShade100': `${classSquare}_color_dark-shade-100`,
+      'darkShade75': `${classSquare}_color_dark-shade-75`,
+      'darkShade50': `${classSquare}_color_dark-shade-50`,
+      'darkShade25': `${classSquare}_color_dark-shade-25`,
+      'darkShade5': `${classSquare}_color_dark-shade-5`,
+      'purple': `${classSquare}_color_purple`,
+      'green': `${classSquare}_color_green`,
+    }
+
+    const attributesBlock = {
+      class: [classSquare,colorModifiers[color]]
+    }
   
   div(class=BASE_CLASS)
-    div(class=classSquare)
+    div&attributes(attributesBlock)
     
     div(class=`${BASE_CLASS}__text`)
       p(class=`${BASE_CLASS}__color`)= textTop

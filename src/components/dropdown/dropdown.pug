@@ -8,14 +8,13 @@ mixin dropdown(options = {})
       name = '',
       words = [[]],
       maxValues = [],
-      modifier = '',
       isButton = false,
     } = options;
 
     const BASE_CLASS = 'dropdown'
     let className = BASE_CLASS
-  if modifier
-    - className += ` ${BASE_CLASS}_${modifier}`
+  if !isButton
+    - className += ` ${BASE_CLASS}_type_sharp`
 
   div(class=`${className} js-${BASE_CLASS}`)
     label(class=`${BASE_CLASS}__title`)= label
@@ -36,12 +35,10 @@ mixin dropdown(options = {})
           div(class=`${BASE_CLASS}__button-clear js-${BASE_CLASS}__button-clear`)
             +button({
               text:'очистить',
-              type:'button',
-              modifiers:['type_text']
+              variant: 'text'
                   })
           div(class=`${BASE_CLASS}__button-apply js-${BASE_CLASS}__button-apply`)
             +button({
               text:'применить',
-              type:'button',
-              modifiers:['type_text']
+              variant: 'text'
                   })

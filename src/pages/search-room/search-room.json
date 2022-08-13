@@ -4,8 +4,7 @@
       "даты пребывания в отеле"
     ],
     "value": "19.08.2022 - 23.08.2022",
-    "modifier": "type_filter",
-    "filter": true
+    "isFilter": true
   },
   "dropDown": {
     "guest": {
@@ -51,8 +50,7 @@
         "5",
         "8",
         "4"
-      ],
-      "modifier": "type_sharp"
+      ]
     }
   },
   "checkboxList": {
@@ -70,9 +68,7 @@
       ],
       "legend": "правила дома",
       "isClicked": true,
-      "modifiers": [
-        "type_buttons"
-      ]
+      "variant": "buttons"
     },
     "availability": {
       "items": [
@@ -87,10 +83,8 @@
       ],
       "legend": "доступность",
       "isClicked": true,
-      "modifiers": [
-        "type_buttons",
-        "type_rich"
-      ]
+      "variant": "buttons",
+      "isRich": true
     },
     "additionalAmenities": {
       "items": [
@@ -121,9 +115,6 @@
   },
   "button": {
     "text": "Фильтр номеров",
-    "type": "button-popup",
-    "modifiers": [
-      "type_link"
-    ]
+    "variant": "contained"
   }
 }

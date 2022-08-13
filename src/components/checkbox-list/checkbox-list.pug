@@ -3,18 +3,25 @@ mixin checkbox-list(options = {})
     const {
       items = [{}],
       legend = '',
-      modifiers = [],
+      variant = '',
       isClicked = false,
+      isRich = false,
     } = options;
 
     const BASE_CLASS = 'checkbox-list'
-    let className = BASE_CLASS
-    
-  if modifiers.length !== 0
-    each item in modifiers
-      - className += ` ${BASE_CLASS}_${item}`
 
-  div(class=`${className} js-${BASE_CLASS}`)
+    const variantModifiers = {
+      'buttons': `${BASE_CLASS}_variant_buttons`,
+      'expandable': `${BASE_CLASS}_variant_expandable`
+    }
+
+    const rich = isRich ? `${BASE_CLASS}_variant_rich` : '';
+
+    const attributesBlock = {
+        class: [BASE_CLASS,variantModifiers[variant],rich,`js-${BASE_CLASS}`]
+    }
+
+  div&attributes(attributesBlock)
     fieldset(class=`${BASE_CLASS}__items`)
 
       if legend

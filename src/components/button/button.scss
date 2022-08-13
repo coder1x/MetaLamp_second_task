@@ -14,19 +14,9 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
   text-transform: uppercase;
   color: #fff;
 
-  &__icon {
-    position: absolute;
-    top: 0;
-    left: auto;
-    bottom: 0;
-    right: 14px;
-    margin: auto;
-    overflow: auto;
-  }
-
-  &_type {
-    &_link,
-    &_link-border {
+  &_variant {
+    &_contained,
+    &_outlined {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -41,15 +31,10 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
       cursor: pointer;
     }
 
-    &_header {
-      height: 34px;
-      min-width: auto;
-    }
-
-    &_link,
+    &_contained,
     &_submit,
     &_text,
-    &_link-border {
+    &_outlined {
       &:focus {
         outline: 2px solid $color-focus;
         outline-offset: 5px;
@@ -73,6 +58,18 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
       border: 0;
       cursor: pointer;
 
+      &::before {
+        content: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 0.984375L17.0156 9L9 17.0156L7.59375 15.6094L13.1719 9.98438H0.984375V8.01562H13.1719L7.59375 2.39062L9 0.984375Z' fill='white'/%3E%3C/svg%3E%0A");
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 0;
+        left: auto;
+        bottom: 0;
+        right: 14px;
+        margin: auto;
+      }
+
       &:hover {
         opacity: 0.5;
       }
@@ -90,14 +87,14 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
       }
     }
 
-    &_link {
+    &_contained {
       background: $color-link-background;
       &:hover {
         opacity: 0.5;
       }
     }
 
-    &_link-border {
+    &_outlined {
       color: $color-text;
       background-color: $color-background;
       position: relative;
@@ -108,6 +105,13 @@ $color-link-border-hover: inset 0px 2px 0px 0px rgba(188, 156, 255, 0.5), inset 
       &:focus {
         box-shadow: $color-link-border-hover;
       }
+    }
+  }
+
+  &_size {
+    &_narrow {
+      height: 34px;
+      min-width: auto;
     }
   }
 }

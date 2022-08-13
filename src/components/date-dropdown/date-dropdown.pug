@@ -6,21 +6,20 @@ mixin date-dropdown(options = {})
     const {
       labels = [],
       value = '',
-      modifier = '',
-      filter = false,
+      isFilter = false,
     } = options;
 
     const BASE_CLASS = 'date-dropdown'
     let className = BASE_CLASS
 
-  if modifier
-    - className += ` ${BASE_CLASS}_${modifier}`
+  if isFilter
+    - className += ` ${BASE_CLASS}_type_filter`
 
   div(class=`${className} js-${BASE_CLASS}`)
-    - const num = filter ? 1 : 2;
+    - const num = isFilter ? 1 : 2;
     - for(let i=0; i<num; i++)  {
       - const label = labels[i] ?? ''
-        if filter
+        if isFilter
           +text-field({
             label,
             typeField:'text',
@@ -51,13 +50,11 @@ mixin date-dropdown(options = {})
         div(class=`${BASE_CLASS}__clear js-${BASE_CLASS}__clear`)
           +button({
             text:'очистить',
-            type:'button',
-            modifiers:['type_text']
+            variant: 'text'
           })
 
         div(class=`${BASE_CLASS}__apply js-${BASE_CLASS}__apply`)
           +button({
             text:'применить',
-            type:'button',
-            modifiers:['type_text']
+            variant: 'text'
           })

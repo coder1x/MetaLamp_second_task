@@ -1,27 +1,37 @@
 mixin button(options = {})
   -
     const {
-      text = '',
+      type = 'button',
+      text = 'buttonName',
       link = '',
-      type = '',
-      modifiers = [],
+      variant='',
+      size='',
     } = options;
 
     const BASE_CLASS = 'button'
-    let className = BASE_CLASS
+
+    const tag = link ? 'a' : 'button'
+
+    const variantModifiers = {
+      'contained': `${BASE_CLASS}_variant_contained`,
+      'outlined': `${BASE_CLASS}_variant_outlined`,
+      'text': `${BASE_CLASS}_variant_text`,
+      'submit': `${BASE_CLASS}_variant_submit`,
+    }
     
-  if modifiers.length !== 0
-    each item in modifiers
-      - className += ` ${BASE_CLASS}_${item}`
-    
-  case type
-    when 'link'
-      a(class=className href=link)=text
-    when 'button'
-      button(class=className)=text
-    when 'button-popup'
-      button(class=className aria-haspopup aria-expanded='false')=text
-    when 'submit'
-      button(class=className type='submit')=text
-        img(class=`${BASE_CLASS}__icon` src=require('./img/arrow-forward.svg') alt='стрелка вперед')
-    
+    const sizeModifiers = {
+      narrow: `${BASE_CLASS}_size_narrow`,
+    }
+
+    const buttonAttributes = {
+      a: {
+        class: [BASE_CLASS,variantModifiers[variant],sizeModifiers[size]],
+        href: link,
+      },
+      button: {
+        class: [BASE_CLASS,variantModifiers[variant],sizeModifiers[size]],
+        type: type,
+      }
+    }
+
+  #{tag}&attributes(buttonAttributes[tag])=text

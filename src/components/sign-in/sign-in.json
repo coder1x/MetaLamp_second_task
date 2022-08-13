@@ -15,17 +15,12 @@
     "submit": {
       "text": "войти",
       "type": "submit",
-      "modifiers": [
-        "type_submit"
-      ]
+      "variant": "submit"
     },
     "link": {
       "text": "Создать",
       "link": "https://change-me",
-      "type": "link",
-      "modifiers": [
-        "type_link-border"
-      ]
+      "variant": "outlined"
     }
   }
 }

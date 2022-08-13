@@ -36,20 +36,14 @@
       {
         "text": "Войти",
         "link": "/sign-in.html",
-        "type": "link",
-        "modifiers": [
-          "type_link-border",
-          "type_header"
-        ]
+        "variant": "outlined",
+        "size": "narrow"
       },
       {
         "text": "зарегистрироваться",
         "link": "/registration.html",
-        "type": "link",
-        "modifiers": [
-          "type_link",
-          "type_header"
-        ]
+        "variant": "contained",
+        "size": "narrow"
       }
     ],
     "isAuthorized": false

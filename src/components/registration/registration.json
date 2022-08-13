@@ -47,17 +47,12 @@
     "submit": {
       "text": "зарегистрироваться",
       "type": "submit",
-      "modifiers": [
-        "type_submit"
-      ]
+      "variant": "submit"
     },
     "link": {
       "text": "Войти",
       "link": "https://change-me",
-      "type": "link",
-      "modifiers": [
-        "type_link-border"
-      ]
+      "variant": "outlined"
     }
   }
 }

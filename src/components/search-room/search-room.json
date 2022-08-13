@@ -32,8 +32,6 @@
   "button": {
     "text": "подобрать номер",
     "type": "submit",
-    "modifiers": [
-      "type_submit"
-    ]
+    "variant": "submit"
   }
 }
