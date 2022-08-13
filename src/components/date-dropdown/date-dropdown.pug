@@ -13,7 +13,7 @@ mixin date-dropdown(options = {})
     let className = BASE_CLASS
 
   if isFilter
-    - className += ` ${BASE_CLASS}_type_filter`
+    - className += ` ${BASE_CLASS}_variant_filter`
 
   div(class=`${className} js-${BASE_CLASS}`)
     - const num = isFilter ? 1 : 2;

@@ -14,7 +14,7 @@ mixin dropdown(options = {})
     const BASE_CLASS = 'dropdown'
     let className = BASE_CLASS
   if !isButton
-    - className += ` ${BASE_CLASS}_type_sharp`
+    - className += ` ${BASE_CLASS}_variant_sharp`
 
   div(class=`${className} js-${BASE_CLASS}`)
     label(class=`${BASE_CLASS}__title`)= label
