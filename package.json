@@ -35,11 +35,8 @@
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1",
-    "webpack-merge": "^5.8.0"
-  },
-  "dependencies": {
+    "webpack-merge": "^5.8.0",
     "@types/webpack-env": "^1.16.4",
-    "air-datepicker": "^3.0.1",
     "auto-bind": "^5.0.1",
     "autobind-decorator": "^2.4.0",
     "clean-webpack-plugin": "^4.0.0",
@@ -47,13 +44,16 @@
     "focus-visible": "^5.2.0",
     "fox-favicon": "file:npm_plugins/fox-favicon",
     "fox-url-convertor": "file:npm_plugins/fox-url-convertor",
-    "ion-rangeslider": "^2.3.1",
-    "jquery": "^3.6.0",
     "normalize.css": "^8.0.1",
     "pug": "^3.0.2",
     "sass": "^1.51.0",
     "sass-resources-loader": "^2.2.5",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "air-datepicker": "^3.0.1",
+    "ion-rangeslider": "^2.3.1",
+    "jquery": "^3.6.0"
   }
 }
