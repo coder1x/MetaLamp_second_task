@@ -141,6 +141,7 @@ $color-title-buttons: $Dark-Shade-100;
   &__submit {
     margin-top: 30px;
     display: flex;
+    max-width: 320px;
   }
 
   &__pagination {

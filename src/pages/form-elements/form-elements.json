@@ -4,19 +4,28 @@
       "label": "text field",
       "placeholder": "Email",
       "typeField": "email",
-      "name": "email"
+      "name": "email",
+      "variants": [
+        "with-indent"
+      ]
     },
     "name": {
       "label": "text field",
       "typeField": "text",
-      "name": "Name"
+      "name": "Name",
+      "variants": [
+        "with-indent"
+      ]
     },
     "date": {
       "label": "masked text field",
       "placeholder": "ДД.ММ.ГГГГ",
       "typeField": "text",
       "name": "Date",
-      "isMaskedDate": true
+      "isMaskedDate": true,
+      "variants": [
+        "with-indent"
+      ]
     }
   },
   "dropDown": {

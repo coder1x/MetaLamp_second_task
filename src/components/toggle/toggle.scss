@@ -1,5 +1,5 @@
 $color-toggle-label: $Dark-Shade-75;
-$color-toggle-border: $Dark-Shade-25;
+$color-border-dark: $Dark-Shade-25;
 $color-toggle-border: $Purple;
 $color-border-focus: $Dark-Shade-100;
 $color-focus: $Dark-Shade-100;
@@ -48,7 +48,6 @@ $color-focus: $Dark-Shade-100;
     }
   }
 
-
   &__wrapper {
     position: relative;
   }
@@ -69,7 +68,7 @@ $color-focus: $Dark-Shade-100;
     width: 40px;
     height: 20px;
     background: $color-background;
-    border: 1px solid $color-toggle-border;
+    border: 1px solid $color-border-dark;
     border-radius: 10px;
     transition: 0.2s;
     box-sizing: border-box;
@@ -85,7 +84,7 @@ $color-focus: $Dark-Shade-100;
       width: 12px;
       height: 12px;
       border-radius: 10px;
-      background: $color-toggle-border;
+      background: $color-border-dark;
       cursor: pointer;
       transition: 0.2s;
     }

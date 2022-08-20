@@ -7,15 +7,32 @@ mixin text-field(options = {})
       value = '',
       name = '',
       autocomplete = 'off',
-      isDateMinimal = false,
       isHidden = false,
       hasTip = false,
       isFilterDate = false,
+      variants = [],
     } = options;
 
     const BASE_CLASS = 'text-field'
     const classDateMinimal = `${BASE_CLASS}__input_variant_date-minimal`
     const filterDateName = `${BASE_CLASS}_variant_filter-date`
+
+    const variantModifiers = {
+      'date-minimal': `${BASE_CLASS}__input_variant_date-minimal`,
+      'with-indent': `${BASE_CLASS}__input_variant_with-indent`,
+    }
+
+    const variantModifiersArray = [];
+    variants.forEach((variant) => variantModifiersArray.push(variantModifiers[variant]))
+
+    const attributesBlock = {
+        class: [`${BASE_CLASS}__input`,[...variantModifiersArray],`js-${BASE_CLASS}__input`],
+        type:typeField,
+        placeholder:placeholder,
+        value:value,
+        name:name,
+        autocomplete:autocomplete,
+    }
     
   div(
     class=`${BASE_CLASS} js-${BASE_CLASS} ${(isFilterDate ? filterDateName : '')}`
@@ -25,14 +42,7 @@ mixin text-field(options = {})
       if label
         =label
       
-      input(
-        class=`${BASE_CLASS}__input js-${BASE_CLASS}__input ${(isDateMinimal ? classDateMinimal: '')}` 
-        type=typeField 
-        placeholder=placeholder 
-        value=value 
-        name=name
-        autocomplete=autocomplete
-        )
+      input&attributes(attributesBlock)
         
       if hasTip
         img(class=`${BASE_CLASS}__tip js-${BASE_CLASS}__tip` src=require('./img/tip.svg') alt='уголок')

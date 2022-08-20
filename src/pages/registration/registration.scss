@@ -9,11 +9,10 @@
   width: 100%;
   margin: 0 auto;
   max-width: $xxl;
-  max-height: 685px;
   position: relative;
   display: flex;
   height: 100%;
-  background: #fff url('./img/bedroom.webp') bottom/cover no-repeat;
+  background: #fff url("./img/bedroom.webp") bottom/cover no-repeat;
 
   @include media-breakpoint-down($xs) {
     min-height: 760px;
@@ -35,9 +34,6 @@
   &__wrapper {
     width: 100%;
     height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,6 +47,7 @@
     width: 100%;
     max-width: 380px;
     margin-top: 19px;
+    margin-bottom: 19px;
 
     @include media-breakpoint-down($xs) {
       max-width: unset;

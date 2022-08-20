@@ -3,29 +3,44 @@
     "name": {
       "placeholder": "Имя",
       "typeField": "text",
-      "name": "name"
+      "name": "name",
+      "variants": [
+        "with-indent"
+      ]
     },
     "surname": {
       "placeholder": "Фамилия",
       "typeField": "text",
-      "name": "surname"
+      "name": "surname",
+      "variants": [
+        "with-indent"
+      ]
     },
     "date": {
       "label": "дата рождения",
       "placeholder": "ДД.ММ.ГГГГ",
       "typeField": "text",
       "name": "date",
-      "isMaskedDate": true
+      "isMaskedDate": true,
+      "variants": [
+        "with-indent"
+      ]
     },
     "email": {
       "placeholder": "Email",
       "typeField": "email",
-      "name": "email"
+      "name": "email",
+      "variants": [
+        "with-indent"
+      ]
     },
     "password": {
       "placeholder": "Пароль",
       "typeField": "password",
-      "name": "password"
+      "name": "password",
+      "variants": [
+        "with-indent"
+      ]
     }
   },
   "radioButtons": [

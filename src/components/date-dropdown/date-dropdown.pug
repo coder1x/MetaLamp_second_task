@@ -25,6 +25,7 @@ mixin date-dropdown(options = {})
             typeField:'text',
             hasTip: true,
             isFilterDate: true,
+            variants: ['with-indent'],
           })
           +text-field({
             typeField:'hidden',
@@ -38,8 +39,8 @@ mixin date-dropdown(options = {})
             typeField:'text',
             value,
             name:`date-${i}`,
-            isDateMinimal:true,
             hasTip: true,
+            variants: ['date-minimal', 'with-indent'],
           })
     -}
 

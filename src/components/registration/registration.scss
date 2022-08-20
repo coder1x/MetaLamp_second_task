@@ -22,11 +22,11 @@ $color-text-in: #000;
   }
 
   &__header {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   &__name-wrapper {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
@@ -59,10 +59,6 @@ $color-text-in: #000;
     color: $color-date-text;
   }
 
-  &__data-text {
-    margin-bottom: 5px;
-  }
-
   &__identification,
   &__full-name {
     padding: 0;
@@ -71,7 +67,7 @@ $color-text-in: #000;
   }
 
   &__email-wrapper {
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
