@@ -1,6 +1,7 @@
 $color-focus: $Dark-Shade-100;
 
 .logo {
+  @include link;
   display: inline-block;
 
   &:focus {

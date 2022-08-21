@@ -16,11 +16,14 @@ mixin button(options = {})
       'contained': `${BASE_CLASS}_variant_contained`,
       'outlined': `${BASE_CLASS}_variant_outlined`,
       'text': `${BASE_CLASS}_variant_text`,
-      'submit': `${BASE_CLASS}_variant_submit`,
     }
     
     const sizeModifiers = {
       narrow: `${BASE_CLASS}_size_narrow`,
+    }
+
+    const typeModifiers = {
+      submit: `${BASE_CLASS}_type_submit`,
     }
 
     const buttonAttributes = {
@@ -29,7 +32,7 @@ mixin button(options = {})
         href: link,
       },
       button: {
-        class: [BASE_CLASS,variantModifiers[variant],sizeModifiers[size]],
+        class: [BASE_CLASS,variantModifiers[variant],sizeModifiers[size],typeModifiers[type]],
         type: type,
       }
     }

@@ -53,5 +53,6 @@ mixin registration(options = {})
         +button(button.submit)
         
       div(class=`${BASE_CLASS}__sign-in`)
-        p(class=`${BASE_CLASS}__text-in`) Уже есть аккаунт на Toxin
-        +button(button.link)
+        p(class=`${BASE_CLASS}__text-sign-in`) Уже есть аккаунт на Toxin
+        div(class=`${BASE_CLASS}__button-sign-in-wrapper`)
+          +button(button.link)

@@ -82,8 +82,9 @@
   }
 
   &__price-text {
-    margin-top: 5px;
+    @include paragraph;
     @include font-family("Montserrat");
+    margin-top: 5px;
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
@@ -130,11 +131,13 @@
   }
 
   &__header {
-    margin-top: 30px;
     @include max-row(3);
+    @include header-level1;
+    margin-top: 30px;
   }
 
   &__cards {
+    @include list;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     grid-row-gap: 18px;

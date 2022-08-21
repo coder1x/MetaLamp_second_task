@@ -24,18 +24,6 @@ module.exports = {
         },
       },
       {
-        test: /\.(ts|tsx|js)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              configFile: 'tsconfig.web.json',
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|jpg|svg|gif|webp|avif)$/,
         type: 'asset/resource',
         generator: {

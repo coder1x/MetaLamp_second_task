@@ -32,6 +32,6 @@
   "button": {
     "text": "подобрать номер",
     "type": "submit",
-    "variant": "submit"
+    "variant": "contained"
   }
 }

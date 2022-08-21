@@ -32,4 +32,5 @@ mixin sign-in(options = {})
           
       div(class=`${BASE_CLASS}__registration-wrapper`)
         p(class=`${BASE_CLASS}__text-registration`) Нет аккаунта на Toxin ?
-        +button(button.link)
+        div(class=`${BASE_CLASS}__button-registration-wrapper`)
+          +button(button.link)

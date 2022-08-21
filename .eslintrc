@@ -1,15 +1,8 @@
 {
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "ecmaFeatures": {
-      "ts": true
-    },
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "rules": {
     "no-unused-vars": "warn",
     "no-debugger": "off",

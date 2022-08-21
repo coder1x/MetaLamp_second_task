@@ -46,10 +46,17 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
     }
   }
 
-  &__link:focus img {
-    filter: blur(1px) grayscale(1);
+  &__title {
+    @include header-level2;
   }
 
+  &__link {
+    @include link;
+
+    &:focus img {
+      filter: blur(1px) grayscale(1);
+    }
+  }
   &__dot-wrapper {
     position: absolute;
     right: 0px;
@@ -153,6 +160,7 @@ $color-dot-filter: rgba(31, 32, 65, 0.3);
   }
 
   &__header-wrapper {
+    @include link;
     position: relative;
     justify-content: space-between;
     margin-top: 20px;

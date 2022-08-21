@@ -62,7 +62,7 @@
     "submit": {
       "text": "зарегистрироваться",
       "type": "submit",
-      "variant": "submit"
+      "variant": "contained"
     },
     "link": {
       "text": "Войти",

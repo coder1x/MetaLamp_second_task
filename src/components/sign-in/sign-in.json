@@ -15,7 +15,7 @@
     "submit": {
       "text": "войти",
       "type": "submit",
-      "variant": "submit"
+      "variant": "contained"
     },
     "link": {
       "text": "Создать",

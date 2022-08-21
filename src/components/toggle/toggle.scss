@@ -6,12 +6,11 @@ $color-focus: $Dark-Shade-100;
 
 .toggle {
   &__header {
-    @include font-family("Montserrat");
+    @include header-level2;
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: $color-label;
     margin-bottom: 14px;
   }
 

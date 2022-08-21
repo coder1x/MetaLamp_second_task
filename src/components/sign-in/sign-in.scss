@@ -11,6 +11,7 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
   padding: 40px 30px 32px 28px;
 
   &__header {
+    @include header-level1;
     margin-bottom: 20px;
   }
 
@@ -45,18 +46,24 @@ $color-shadow-frame: rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__text-registration {
+    @include paragraph;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 14px;
     line-height: 18px;
     color: $color-text;
     margin-right: 10px;
+  }
+
+  &__button-registration-wrapper {
+    width: 100%;
+    max-width: 99px;
   }
 }

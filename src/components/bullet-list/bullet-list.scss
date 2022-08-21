@@ -1,23 +1,20 @@
 $color-text: $Dark-Shade-75;
 $color-dot: $Dark-Shade-25;
-$color-header: $Dark-Shade-100;
 
 .bullet-list {
   &__header {
-    @include font-family("Montserrat");
-    font-weight: bold;
+    @include header-level2;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: $color-header;
     margin-bottom: 15px;
 
-    &_big {
+    &_size_big {
       font-size: 19px;
       line-height: 23px;
       text-transform: none;
       margin-bottom: 19px;
-  
+
       @include media-breakpoint-up($xs) {
         margin-left: 19px;
       }
@@ -25,6 +22,7 @@ $color-header: $Dark-Shade-100;
   }
 
   &__items {
+    @include list;
     display: flex;
     flex-direction: column;
   }

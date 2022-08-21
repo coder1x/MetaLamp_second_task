@@ -8,21 +8,20 @@ $color-focus: $Dark-Shade-100;
   align-items: flex-start;
 
   &__header {
-    @include font-family("Montserrat");
+    @include header-level2;
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: $color-label;
     cursor: pointer;
     margin-bottom: 16px;
   }
 
   &__like {
     padding-left: 4px;
-    padding-right: 4px;
-    min-width: 40px;
-    height: 20px;
+    padding-right: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     border: 1px solid $color-like;
     box-sizing: border-box;
     background-color: $color-background;
@@ -45,6 +44,7 @@ $color-focus: $Dark-Shade-100;
   &__icon {
     width: 10px;
     height: 8px;
+    margin-right: 5px;
     background-image: url("~comp/like-button/img/like.svg");
     color: transparent;
 

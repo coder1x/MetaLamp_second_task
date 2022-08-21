@@ -21,6 +21,7 @@ $color-total-text: #1f2041;
   }
 
   &__header-wrapper {
+    @include header-level2;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -108,6 +109,11 @@ $color-total-text: #1f2041;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 16px;
+  }
+
+  &__services,
+  &__day-calc {
+    @include paragraph;
   }
 
   &__services,

@@ -210,7 +210,7 @@
     "submit": {
       "text": "перейти к оплате",
       "type": "submit",
-      "variant": "submit"
+      "variant": "contained"
     }
   },
   "bulletList": {

@@ -71,6 +71,7 @@ $color-text: $Dark-Shade-100;
   }
 
   &__text {
+    @include paragraph;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -84,6 +85,7 @@ $color-text: $Dark-Shade-100;
   }
 
   &__select {
+    @include list;
     width: 100%;
     box-sizing: border-box;
     background: $color-background;

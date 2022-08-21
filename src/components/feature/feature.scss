@@ -35,9 +35,10 @@ $color-feature-border: $Dark-Shade-1;
   }
 
   &__text {
+    @include paragraph;
+    @include font-family("Montserrat");
     font-size: 14px;
     line-height: 24px;
-    @include font-family("Montserrat");
     font-weight: normal;
     color: $color-feature;
   }

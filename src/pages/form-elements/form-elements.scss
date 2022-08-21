@@ -127,11 +127,13 @@ $color-title-buttons: $Dark-Shade-100;
   &__link {
     margin-top: 14px;
     display: flex;
+    max-width: 99px;
   }
 
   &__link-border {
     margin-top: 29px;
     display: flex;
+    max-width: 99px;
   }
 
   &__button-text {

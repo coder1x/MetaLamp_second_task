@@ -117,9 +117,10 @@ $color-focus: $Dark-Shade-100;
 
   &__link,
   &__link-down {
+    @include link;
+    @include font-family("Montserrat");
     display: inline-block;
     white-space: nowrap;
-    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
@@ -190,6 +191,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__items {
+    @include list;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -207,6 +209,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__items-down {
+    @include list;
     position: absolute;
     top: 30px;
     left: 50%;
@@ -242,8 +245,9 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__nickname {
-    margin-left: 20px;
+    @include link;
     @include font-family("Montserrat");
+    margin-left: 20px;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
@@ -261,8 +265,16 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__button {
+    &:nth-last-child(2) {
+      width: 100%;
+      max-width: 87px;
+    }
+
     &:last-child {
       margin-left: 20px;
+      width: 100%;
+      max-width: 196px;
+
       @include media-breakpoint-down($xs) {
         margin-left: 0px;
       }

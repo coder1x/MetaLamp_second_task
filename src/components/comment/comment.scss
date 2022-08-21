@@ -38,6 +38,7 @@ $color-focus: $Dark-Shade-100;
   }
 
   &__name {
+    @include link;
     @include font-family("Montserrat");
     font-weight: bold;
     font-size: 14px;
@@ -53,6 +54,7 @@ $color-focus: $Dark-Shade-100;
 
   &__date,
   &__message {
+    @include paragraph;
     @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;

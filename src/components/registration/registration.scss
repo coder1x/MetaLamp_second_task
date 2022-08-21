@@ -16,6 +16,7 @@ $color-text-in: #000;
   }
 
   &__header-wrapper {
+    margin-bottom: 15px;
     @include media-breakpoint-down($xs) {
       text-align: center;
     }
@@ -23,6 +24,7 @@ $color-text-in: #000;
 
   &__header {
     margin-bottom: 14px;
+    @include header-level1;
   }
 
   &__name-wrapper {
@@ -101,15 +103,21 @@ $color-text-in: #000;
     justify-content: space-between;
   }
 
-  &__text-in {
+  &__text-sign-in {
+    @include paragraph;
+    @include font-family("Montserrat");
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 18px;
     color: $color-text-in;
     margin-right: 10px;
+  }
+
+  &__button-sign-in-wrapper {
+    width: 100%;
+    max-width: 99px;
   }
 }

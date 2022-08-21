@@ -1,16 +1,11 @@
-$color-header: $Dark-Shade-100;
 $color-item: $Dark-Shade-75;
 
 .diagram {
   &__header {
-    @include font-family("Montserrat");
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 23px;
-    color: $color-header;
+    @include header-level2;
+    @include max-row(3);
     margin-bottom: 21px;
     overflow-wrap: break-word;
-    @include max-row(3);
 
     @include media-breakpoint-down($sm) {
       text-align: center;
@@ -46,6 +41,7 @@ $color-item: $Dark-Shade-75;
   }
 
   &__colors {
+    @include list;
     display: flex;
     flex-direction: column;
     max-width: 160px;
@@ -62,7 +58,7 @@ $color-item: $Dark-Shade-75;
     margin-top: 6px;
   }
 
-  &__colors-dot{
+  &__colors-dot {
     position: absolute;
     content: "";
     width: 10px;
@@ -73,5 +69,4 @@ $color-item: $Dark-Shade-75;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
   }
-
 }

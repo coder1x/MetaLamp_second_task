@@ -37,6 +37,7 @@ $color-subscrip-header: $Dark-Shade-100;
   }
 
   &__recommendation-text {
+    @include paragraph;
     @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
@@ -48,7 +49,6 @@ $color-subscrip-header: $Dark-Shade-100;
     @include media-breakpoint-down($sm) {
       display: none;
     }
-
   }
 
   &__logo-wrapper {
@@ -99,7 +99,6 @@ $color-subscrip-header: $Dark-Shade-100;
     @include media-breakpoint-down($sm) {
       padding-top: 20px;
     }
-  
   }
 
   &__top-wrapper {
@@ -132,6 +131,7 @@ $color-subscrip-header: $Dark-Shade-100;
   }
 
   &__subscrip-header {
+    @include paragraph;
     margin-bottom: 19px;
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: bold;
@@ -142,13 +142,14 @@ $color-subscrip-header: $Dark-Shade-100;
   }
 
   &__subscrip-text {
-    margin-bottom: 22px;
+    @include max-row(6);
+    @include paragraph;
     @include font-family("Montserrat");
+    margin-bottom: 22px;
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;
     color: $color-subscrip-text;
-    @include max-row(6);
   }
 
   &__bottom-wrapper {
@@ -156,10 +157,10 @@ $color-subscrip-header: $Dark-Shade-100;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
   }
 
   &__copyright {
+    @include paragraph;
     @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
@@ -169,6 +170,7 @@ $color-subscrip-header: $Dark-Shade-100;
   }
 
   &__social {
+    @include list;
     height: 63px;
     display: flex;
     flex-direction: row;
@@ -182,6 +184,7 @@ $color-subscrip-header: $Dark-Shade-100;
   }
 
   &__social-link {
+    @include link;
     display: inline-block;
 
     &:focus {
@@ -196,7 +199,7 @@ $color-subscrip-header: $Dark-Shade-100;
     &:first-child {
       margin-left: 0px;
     }
-  
+
     &:last-child {
       margin-right: 1px;
     }
@@ -204,11 +207,9 @@ $color-subscrip-header: $Dark-Shade-100;
 
   &__top-wrapper,
   &__bottom-wrapper {
-  @include media-breakpoint-down($sm) {
-    flex-direction: column;
-    align-items: center;
+    @include media-breakpoint-down($sm) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
-}
-
-

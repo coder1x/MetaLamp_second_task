@@ -23,7 +23,6 @@ $color-bottom-text: $Dark-Shade-75;
     }
 
     @include media-breakpoint-down($sm) {
-      
       min-height: 100%;
     }
   }
@@ -34,7 +33,6 @@ $color-bottom-text: $Dark-Shade-75;
     left: 0;
     bottom: 0;
     z-index: -1;
-
   }
 
   &__search-room-wrapper {
@@ -100,9 +98,10 @@ $color-bottom-text: $Dark-Shade-75;
   }
 
   &__bottom-text {
+    @include paragraph;
+    @include font-family("Montserrat");
     width: 100%;
     max-width: 297px;
-    @include font-family("Montserrat");
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;

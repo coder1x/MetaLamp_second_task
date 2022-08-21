@@ -6,19 +6,65 @@
 
   &__teg {
     text-transform: uppercase;
-    @include font-family("Montserrat");
     font-weight: normal;
-    color: $style-text;
     text-align: end;
+
+    &_type {
+      &_h1 {
+        @include header-level1;
+        color: $style-text;
+        font-weight: normal;
+      }
+
+      &_h2 {
+        @include header-level2;
+        color: $style-text;
+        font-weight: normal;
+      }
+
+      &_h3 {
+        @include header-level3;
+        color: $style-text;
+        font-weight: normal;
+      }
+
+      &_body {
+        color: $style-text;
+        text-transform: none;
+      }
+    }
   }
 
   &__text {
-    margin-left: 30px;
-    margin-bottom: 51px;
-  }
+    @include paragraph;
 
-  span {
-    text-transform: none;
-    color: $style-text;
+    &_type {
+      &_h1 {
+        @include header-level1;
+        margin-left: 30px;
+        margin-bottom: 51px;
+      }
+
+      &_h2 {
+        @include header-level2;
+        margin-left: 30px;
+        margin-bottom: 51px;
+      }
+
+      &_h3 {
+        @include header-level3;
+        margin-left: 30px;
+        margin-bottom: 51px;
+      }
+
+      &_body {
+        @include paragraph;
+        @include font-family("Montserrat");
+        margin-left: 30px;
+        margin-bottom: 51px;
+        font-size: 14px;
+        line-height: 23px;
+      }
+    }
   }
 }

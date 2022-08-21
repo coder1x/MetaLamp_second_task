@@ -1,14 +1,14 @@
 mixin styled-text()
   - const BASE_CLASS = 'styled-text'
   div(class=BASE_CLASS)
-    h1(class=`${BASE_CLASS}__teg`) h1
-    h1(class=`${BASE_CLASS}__text`) This one is the sub-section or widget title
-    h2(class=`${BASE_CLASS}__teg`) h2 
-    h2(class=`${BASE_CLASS}__text`) Next one is the item title inside widgets
-    h3(class=`${BASE_CLASS}__teg`) h3
-    h3(class=`${BASE_CLASS}__text`) This is a label or CTA text
-    span(class=`${BASE_CLASS}__teg`) Body  
-    p(class=`${BASE_CLASS}__text`)
+    h1(class=`${BASE_CLASS}__teg ${BASE_CLASS}__teg_type_h1`) h1
+    h1(class=`${BASE_CLASS}__text ${BASE_CLASS}__text_type_h1`) This one is the sub-section or widget title
+    h2(class=`${BASE_CLASS}__teg ${BASE_CLASS}__teg_type_h2`) h2 
+    h2(class=`${BASE_CLASS}__text ${BASE_CLASS}__text_type_h2`) Next one is the item title inside widgets
+    h3(class=`${BASE_CLASS}__teg ${BASE_CLASS}__teg_type_h3`) h3
+    h3(class=`${BASE_CLASS}__text ${BASE_CLASS}__text_type_h3`) This is a label or CTA text
+    span(class=`${BASE_CLASS}__teg ${BASE_CLASS}__teg_type_body`) Body  
+    p(class=`${BASE_CLASS}__text ${BASE_CLASS}__text_type_body`)
       | This is the body text which is used for most<br>
       | of the design, like paragraphs, lists, etc.
 
