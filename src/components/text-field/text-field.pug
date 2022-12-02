@@ -26,7 +26,7 @@ mixin text-field(options = {})
     variants.forEach((variant) => variantModifiersArray.push(variantModifiers[variant]))
 
     const attributesBlock = {
-        class: [`${BASE_CLASS}__input`,[...variantModifiersArray],`js-${BASE_CLASS}__input`],
+        class: [`${BASE_CLASS}__input`,...variantModifiersArray,`js-${BASE_CLASS}__input`],
         type:typeField,
         placeholder:placeholder,
         value:value,

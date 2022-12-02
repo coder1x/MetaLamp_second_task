@@ -3,7 +3,7 @@ second test task from MetaLamp.
 
 
 ## Demo production version
-[start page on the server](https://thylacine.ru) `https://thylacine.ru`
+[start page on the server](https://frontendx.ru/public/toxin/) `https://frontendx.ru/public/toxin/`
 
 ### File structure
 ```
